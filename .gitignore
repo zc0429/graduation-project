@@ -1,0 +1,32 @@
+# ---------- 操作系统 ----------
+.DS_Store
+Thumbs.db
+*~
+
+# ---------- IDE ----------
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# ---------- Java / Maven（server/，Windows 端） ----------
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# ---------- Node / Vite（web/，Windows 端） ----------
+node_modules/
+dist/
+*.local
+
+# ---------- 日志与临时文件 ----------
+*.log
+*.tmp
+*.bak
+
+# ---------- 参考文献原文 PDF（体积大，默认不入库；想入库则删除下一行） ----------
+docs/references/pdfs/*
+!docs/references/pdfs/.gitkeep
