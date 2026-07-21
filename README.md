@@ -49,12 +49,27 @@ git switch main && git merge dev   # 阶段完成后合并回 main
 
 > ⚠️ 本机（Linux）当前无法连通 github.com，推送前请确保网络/代理正常。
 
-1. 在 GitHub 网页创建**私有仓库**（如 `graduation-project`，不要勾选初始化 README）
-2. 执行：
+**第一步：创建远程仓库**（在能访问 GitHub 的网络下，用浏览器操作）
+
+1. 登录 https://github.com → 右上角 `+` → `New repository`
+2. 仓库名如 `graduation-project`，勾选 **Private**
+3. **不要勾选** "Add a README file" 等初始化选项（避免与本仓库冲突）
+4. 点击 `Create repository`
+
+**第二步：配置 SSH 密钥**（本机尚未配置过，两台系统各需配一次）
 
 ```bash
-git remote add origin git@github.com:zc0429/graduation-project.git   # SSH 方式（需已配置密钥）
-# 或 HTTPS 方式：git remote add origin https://github.com/zc0429/graduation-project.git
+ssh-keygen -t ed25519 -C "17268890681@163.com"   # 一路回车即可
+cat ~/.ssh/id_ed25519.pub                         # 复制输出的全部内容
+```
+
+打开 GitHub → 头像 → `Settings` → `SSH and GPG keys` → `New SSH key`，粘贴公钥保存。
+验证：`ssh -T git@github.com`，看到 "Hi zc0429!" 即成功。
+
+**第三步：关联并推送**
+
+```bash
+git remote add origin git@github.com:zc0429/graduation-project.git
 git push -u origin main
 git push -u origin dev
 ```
