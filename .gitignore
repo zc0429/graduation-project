@@ -28,6 +28,7 @@ dist/
 *.tmp
 *.bak
 .~lock.*#
+.~*
 
 # ---------- 参考文献原文 PDF（体积大，默认不入库；想入库则删除下一行） ----------
 docs/references/pdfs/*
