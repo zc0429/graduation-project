@@ -32,7 +32,7 @@
 
 ## 关键决策（勿擅自推翻）
 
-1. 论文用 **Word** 写，仓库不维护 LaTeX/Markdown 版正文
+1. **正文一律以 Markdown 输出**（任务书/开题/论文各章节都先写 `.md` 源稿存 `docs/thesis/`），**后续由 opencode 按用户要求单独整理为可交付 DOCX/PDF**，导出时再统一套用附件2 格式红线（直出 docx 的格式用户用不了，勿再直接生成 docx）
 2. 参考文献**双轨制**：`docs/references/references.bib` + `gb7714-list.md`（GB/T 7714-2015 顺序编码制）
 3. 文献 PDF 存 `docs/references/pdfs/`，**默认不入库**（.gitignore 已排除）
 4. 系统开发在 **Windows** 端进行，经 GitHub 同步；Linux 端只做论文/文档管理，**不在 Linux 构建代码**
@@ -50,7 +50,7 @@
 | 路径 | 用途 |
 |---|---|
 | `docs/materials/` | 导师提供：概要说明 PDF、学校论文模板、参考论文（含开题/任务书/中期检查范例） |
-| `docs/thesis/` | 毕业论文 .docx |
+| `docs/thesis/` | 毕业论文与提交文档：Markdown 源稿（按需单独导出 DOCX/PDF） |
 | `docs/notes/` | 开题报告、周报、**进度记录.md** |
 | `docs/references/` | 参考文献双轨管理（见其 README） |
 
@@ -63,5 +63,5 @@
 ## 当前状态与待办
 
 - 最近进度：见 `docs/notes/进度记录.md`（每次会话结束必须更新）
-- 任务书已生成并填好个人信息（`docs/thesis/任务书-AI错题分析与学习推荐系统.docx`），**待用户邮件发给导师**（stevenbug@qq.com）
+- 任务书 Markdown 源稿已就位（`docs/thesis/任务书-AI错题分析与学习推荐系统.md`，个人信息已填、按附件2 红线编排），**按用户要求导出 DOCX/PDF 后再邮件发给导师** stevenbug@qq.com
 - 下一阶段：论文一稿（需求分析）→ 参考文献积累（≥20 篇：近 3 年 ≥15、外文 ≥2）→ 开题报告
