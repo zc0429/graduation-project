@@ -32,7 +32,7 @@
 
 ## 关键决策（勿擅自推翻）
 
-1. **正文一律以 Markdown 输出**（任务书/开题/论文各章节都先写 `.md` 源稿存 `docs/thesis/`），**后续由 opencode 按用户要求单独整理为可交付 DOCX/PDF**，导出时再统一套用附件2 格式红线（直出 docx 的格式用户用不了，勿再直接生成 docx）
+1. **正文一律以 Markdown 输出**（任务书/开题/论文各章节都先写 `.md` 源稿存 `docs/thesis/`），采用**纯语义章节结构**（章节标题 + 正文），**不承担排版**；**后续由 opencode 按用户要求单独整理为可交付 DOCX/PDF**，导出时再统一套用附件2 格式红线（直出 docx 的格式用户用不了，勿再直接生成 docx）。竖排标签/vMerge 跨行等版式属于呈现层，只在导出时复刻参考 PDF 实现，不在源稿模拟。
 2. 参考文献**双轨制**：`docs/references/references.bib` + `gb7714-list.md`（GB/T 7714-2015 顺序编码制）
 3. 文献 PDF 存 `docs/references/pdfs/`，**默认不入库**（.gitignore 已排除）
 4. 系统开发在 **Windows** 端进行，经 GitHub 同步；Linux 端只做论文/文档管理，**不在 Linux 构建代码**
