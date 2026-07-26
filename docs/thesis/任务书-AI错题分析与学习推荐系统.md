@@ -87,8 +87,8 @@
 （导出时按 GB/T 7714-2015 顺序编码制，中文条目用全角标点，外文作者前加国籍（用国别代码全角括号），作者 >3 位用"等"。）
 
 1. 张海藩，牟永敏．软件工程导论［M］．6 版．北京：清华大学出版社，2013．
-2. (美)Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of individual student skills［C］//Proceedings of the 7th International Conference on AI in Education．1995：41-48．
-3. (美)Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems．2015：505-512．
+2. (美)Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1995，4(4)：253-278．
+3. (美)Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems．2015：505-513．
 4. (印)Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems．2017：5998-6008．
 5. (加)Lewis P，Perez E，Piktus A，等．Retrieval-augmented generation for knowledge-intensive NLP tasks［C］//Advances in Neural Information Processing Systems．2020：9459-9474．
 
