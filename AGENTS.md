@@ -35,15 +35,19 @@
 1. **正文一律以 Markdown 输出**（任务书/开题/论文各章节都先写 `.md` 源稿存 `docs/thesis/`），采用**纯语义章节结构**（章节标题 + 正文），**不承担排版**；**后续由 opencode 按用户要求单独整理为可交付 DOCX/PDF**，导出时再统一套用附件2 格式红线（直出 docx 的格式用户用不了，勿再直接生成 docx）。竖排标签/vMerge 跨行等版式属于呈现层，只在导出时复刻参考 PDF 实现，不在源稿模拟。
 2. 参考文献**双轨制**：`docs/references/references.bib` + `gb7714-list.md`（GB/T 7714-2015 顺序编码制）
 3. 文献 PDF 存 `docs/references/pdfs/`，**默认不入库**（.gitignore 已排除）
-4. 系统开发在 **Windows** 端进行，经 GitHub 同步；Linux 端只做论文/文档管理，**不在 Linux 构建代码**
-5. `server/`（Spring Boot 3）与 `web/`（Vue 3 + Vite）骨架**暂未创建**，待题目确定后在 Windows 端添加；后端仅生成 pom.xml（不配 Maven Wrapper）
+4. **开发端以 Linux 为主**（论文/文档/编码同机），Windows 作为备份/同步端（可装 IDEA/VS Code 后 `git pull` 取最新）；github.com 已可直连本机 SSH（曾经的"开发必须在 Windows"约束源于"Maven 缺 + github 不通"，已于 2026-08-16 全部解除）
+5. `server/`（Spring Boot 4.x 或 3.3.x，见决策7）与 `web/`（Vue 3 + Vite）骨架**仍暂未创建**（用户 2026-08-16 明确暂缓）；后端建时配 Maven Wrapper（`mvnw`）以便 Windows 端免装 Maven 直接构建
 6. 分支策略：`main` 稳定 + `dev` 日常开发
+7. **Spring Boot 版本待定（2026-08-16 发现）**：start.spring.io 默认当前 GA 已是 **Spring Boot 4.1.0**（基于 Spring Framework 7 / Jakarta EE 11 / 需 JDK 17+）；毕业论文与系统设计章节目前表述为 "Spring Boot 3.x"。建骨架前需用户决策：锁 **3.3.x**（成熟、资料多、教学常用、与现有论文表述一致）还是 **4.1.0**（最新、新特性）。若选 4.x，必须同步更新论文"相关技术介绍/概要设计"等章节的版本表述与文献。
 
-## 环境约束（Linux 端）
+## 开发工具链（Linux 端，2026-08-16 配置完成）
 
-- 无 Maven / Gradle / LaTeX / gh CLI；有 git、Node 22、Python 3、JDK 21
-- **github.com 当前直连不通**（推送需代理或换网络）
-- start.spring.io 与 npm registry 可连通
+- JDK 21.0.11（apt openjdk-21）、Maven 3.9.16（免安装包 `~/tools/maven`，PATH 已写入 `~/.bashrc` + `~/.profile`）、Node 22.23.1 / npm 10.9.8
+- Maven 镜像：`~/.m2/settings.xml` 配阿里云 public（实测 0.034s vs Maven Central 0.81s，约 24 倍速）
+- VS Code（snap）已装全套 Java/Spring 扩展：`redhat.java` + `vscjava.vscode-java-pack` + `vscode-maven` + `vscode-spring-initializr` + `vscode-spring-boot-dashboard` + `vmware.vscode-spring-boot` + `vscode-java-debug/test/dependency`
+- Git + ed25519 SSH 已通；远程 `zc0429/graduation-project` 已推送并设 upstream
+- 仍无（不需）：Gradle（用 Maven 即可）、LaTeX（论文走 Markdown→docx 路径）、gh CLI（用网页操作）、IDEA（VS Code 已替代）
+- start.spring.io 与 npm registry 可连通，可拉 Spring Boot 起步与 Vue 项目
 
 ## 目录速查
 
@@ -64,7 +68,8 @@
 
 - 最近进度：见 `docs/notes/进度记录.md`（每次会话结束必须更新）
 - **已完成（2026-07-26）**：任务书复核修正；参考文献 24 篇双轨入库（近 3 年 17、外文 14，全部联机核验真实条目，6 篇 OA PDF 在 `pdfs/`）；开题报告定稿（`docs/thesis/开题报告.md`）；毕业论文一稿+二稿源稿（`docs/thesis/毕业论文.md`：摘要+绪论+文献综述+系统分析+概要设计+详细设计，总字数 13338，自检 8 项全过）
-- **待办**：①三稿内容（第 6 章实现与测试/第 7 章总结/甘特图，待 Windows 端系统开发，禁止编造）②中文文献 [15][17][21] 页码待知网补全 ③任务书导出 DOCX/PDF 发导师 ④UML 图补画（论文占位处）
+- **已完成（2026-08-16）**：届次修正为 2027 届；GitHub 首次推送（main+dev 设 upstream）；Linux 端开发环境配置完成（Maven 3.9.16 + 阿里云镜像 + VS Code Java/Spring 扩展套件）
+- **待办**：①三稿内容（第 6 章实现与测试/第 7 章总结/甘特图，待本机端系统开发，禁止编造）②建骨架前先决策 Spring Boot 3.3.x vs 4.1.0（见决策7，影响论文表述）③中文文献 [15][17][21] 页码待知网补全 ④任务书导出 DOCX/PDF 发导师 ⑤UML 图补画（论文占位处）
 
 ## GitHub 同步
 
