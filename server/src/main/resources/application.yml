@@ -22,6 +22,10 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   global-config:
     banner: false
+    db-config:
+      # 软删除标记：1 正常，0 删除/停用（user/subject/question 的 status 字段）
+      logic-delete-value: 0
+      logic-not-delete-value: 1
 
 # 业务配置
 app:
