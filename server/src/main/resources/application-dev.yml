@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  # 开发期自动执行 DDL 与初始化数据（schema.sql 用 IF NOT EXISTS、data.sql 用 INSERT IGNORE，可重复启动）
+  # C 步建表时启用
+  # sql:
+  #   init:
+  #     mode: always
+  #     schema-locations: classpath:db/schema.sql
+  #     data-locations: classpath:db/data.sql
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

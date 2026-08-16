@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wrongbook-server
+  profiles:
+    active: dev
+  # 从工作目录 .env 读取敏感配置（.env 不入库，见 .env.example）
+  config:
+    import: optional:file:./.env[.properties]
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+
+# 业务配置
+app:
+  jwt:
+    # 开发占位默认值，生产环境必须通过 JWT_SECRET 环境变量覆盖
+    secret: ${JWT_SECRET:wrongbook-dev-secret-do-not-use-in-prod}
+    expire-hours: 24
+  # 错题图片本地存储目录（相对 server 工作目录）
+  upload-dir: ${UPLOAD_DIR:uploads}

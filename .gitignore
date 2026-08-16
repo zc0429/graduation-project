@@ -30,6 +30,13 @@ dist/
 .~lock.*#
 .~*
 
+# ---------- 环境变量与密钥（禁止入库） ----------
+.env
+**/.env
+
+# ---------- 错题图片本地上传目录 ----------
+server/uploads/
+
 # ---------- 参考文献原文 PDF（体积大，默认不入库；想入库则删除下一行） ----------
 docs/references/pdfs/*
 !docs/references/pdfs/.gitkeep
