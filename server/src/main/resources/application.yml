@@ -29,6 +29,9 @@ mybatis-plus:
 
 # 业务配置
 app:
+  # 大模型提供方：mock（默认，占位）/ openai / dashscope（预留，接入时新增对应 LlmClient 实现）
+  llm:
+    provider: mock
   jwt:
     # 开发占位默认值，生产环境必须通过 JWT_SECRET 环境变量覆盖
     secret: ${JWT_SECRET:wrongbook-dev-secret-do-not-use-in-prod}
