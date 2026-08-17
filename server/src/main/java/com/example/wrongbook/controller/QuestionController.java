@@ -5,6 +5,7 @@ import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.dto.QuestionRequest;
 import com.example.wrongbook.entity.Question;
 import com.example.wrongbook.service.QuestionService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,6 +41,14 @@ public class QuestionController {
     @GetMapping("/{id}")
     public RestResponse<Question> detail(@PathVariable Long id) {
         return RestResponse.ok(questionService.detail(id));
+    }
+
+    /** 导出错题本（.xlsx 文件流，非统一 JSON 响应） */
+    @GetMapping("/export")
+    public void export(@RequestParam(required = false) Long subjectId,
+                       @RequestParam(required = false) Long knowledgePointId,
+                       HttpServletResponse response) {
+        questionService.export(subjectId, knowledgePointId, response);
     }
 
     @PutMapping("/{id}")

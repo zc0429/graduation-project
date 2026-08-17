@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wrongbook.mapper.PracticeRecordMapper">
+
+    <select id="selectDailyCount" resultType="map">
+        SELECT DATE(create_time) AS d, COUNT(*) AS cnt
+        FROM practice_record
+        WHERE create_time &gt;= #{since}
+        <if test="userId != null">
+          AND user_id = #{userId}
+        </if>
+        GROUP BY DATE(create_time)
+    </select>
+
+</mapper>

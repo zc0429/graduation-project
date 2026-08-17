@@ -3,6 +3,7 @@ package com.example.wrongbook.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wrongbook.dto.QuestionRequest;
 import com.example.wrongbook.entity.Question;
+import jakarta.servlet.http.HttpServletResponse;
 
 public interface QuestionService {
 
@@ -20,4 +21,7 @@ public interface QuestionService {
 
     /** 删除错题（学生仅本人，逻辑删除并级联清理解析/变式题/复习计划） */
     void remove(Long id);
+
+    /** 导出错题本（.xlsx，按科目/知识点筛选，写入响应流） */
+    void export(Long subjectId, Long knowledgePointId, HttpServletResponse response);
 }

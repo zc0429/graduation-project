@@ -12,6 +12,7 @@ import com.example.wrongbook.mapper.QuestionMapper;
 import com.example.wrongbook.service.AiAnalysisService;
 import com.example.wrongbook.service.EmbeddingService;
 import com.example.wrongbook.service.LlmClient;
+import com.example.wrongbook.service.MessageService;
 import com.example.wrongbook.service.RagService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,6 +37,7 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
     private final RagService ragService;
     private final LlmClient llmClient;
     private final ObjectMapper objectMapper;
+    private final MessageService messageService;
     @Qualifier("aiTaskExecutor")
     private final Executor aiTaskExecutor;
 
@@ -110,6 +112,15 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
             backfill.setKnowledgePointId(record.getKnowledgePointId());
             backfill.setDifficulty(json.hasNonNull("difficulty") ? json.get("difficulty").asInt() : null);
             questionMapper.updateById(backfill);
+            // 6. 解析完成消息通知（论文 3.4 业务流程）
+            String kpName = null;
+            if (record.getKnowledgePointId() != null) {
+                KnowledgePoint kp = knowledgePointMapper.selectById(record.getKnowledgePointId());
+                kpName = kp == null ? null : kp.getName();
+            }
+            messageService.send(question.getUserId(), "system", "错题解析完成",
+                    "你录入的错题已完成 AI 解析" + (kpName == null ? "。" : "，归类知识点为「" + kpName + "」，难度 "
+                            + (backfill.getDifficulty() == null ? "未知" : backfill.getDifficulty()) + "，前往错题详情页查看。"));
         } catch (Exception e) {
             log.error("AI 解析失败，questionId={}", questionId, e);
             record.setStatus(2);
