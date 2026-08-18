@@ -1,0 +1,104 @@
+/* 「静谧书房」主题：纸白底、深青主色、琥珀强调，克制学术感 */
+:root {
+  --wb-primary: #0f766e;
+  --wb-primary-dark: #115e59;
+  --wb-accent: #d97706;
+  --wb-bg: #f6f7f9;
+  --wb-paper: #ffffff;
+  --wb-ink: #1f2937;
+  --wb-ink-secondary: #6b7280;
+  --wb-border: #e5e7eb;
+  --wb-mastery-low: #dc2626;
+  --wb-mastery-mid: #d97706;
+  --wb-mastery-high: #16a34a;
+
+  /* Element Plus 主题变量覆盖 */
+  --el-color-primary: var(--wb-primary);
+  --el-color-primary-light-3: #2dd4bf;
+  --el-color-primary-light-5: #5eead4;
+  --el-color-primary-light-7: #99f6e4;
+  --el-color-primary-light-8: #ccfbf1;
+  --el-color-primary-light-9: #f0fdfa;
+  --el-color-primary-dark-2: var(--wb-primary-dark);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  color: var(--wb-ink);
+  background: var(--wb-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 数字与统计值使用等宽感字体，强化数据仪表感 */
+.num,
+.stat-num {
+  font-family: 'IBM Plex Sans', 'SF Mono', 'Consolas', 'PingFang SC', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 页面卡片：纸面质感 */
+.paper-card {
+  background: var(--wb-paper);
+  border: 1px solid var(--wb-border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.paper-card.hoverable:hover {
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 页面标题层级 */
+.page-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--wb-ink-secondary);
+  margin: 0 0 20px;
+}
+
+/* 页面进入动效（克制：一次淡入上移） */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.35s ease both;
+}
+
+/* 掌握度配色 */
+.mastery-low {
+  color: var(--wb-mastery-low);
+}
+.mastery-mid {
+  color: var(--wb-mastery-mid);
+}
+.mastery-high {
+  color: var(--wb-mastery-high);
+}
