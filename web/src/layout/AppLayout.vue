@@ -1,215 +1,176 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { ElMessageBox } from 'element-plus'
-import {
-  ArrowDown,
-  Bell,
-  Collection,
-  DataAnalysis,
-  Document,
-  EditPen,
-  Files,
-  HomeFilled,
-  List,
-  Notebook,
-  Reading,
-  User,
-  UserFilled,
-} from '@element-plus/icons-vue'
-import { useUserStore } from '@/store/user'
+import { nextTick, onBeforeUnmount, onMounted, provide, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { messageApi } from '@/api'
+import AppSidebar from '@/components/AppSidebar.vue'
+import AppTopbar from '@/components/AppTopbar.vue'
+import MobileNav from '@/components/MobileNav.vue'
 
 const route = useRoute()
-const router = useRouter()
-const store = useUserStore()
 const unread = ref(0)
-
-interface MenuItem {
-  path: string
-  title: string
-  icon: unknown
-  roles?: string[]
-}
-
-const menus: MenuItem[] = [
-  { path: '/', title: '首页', icon: HomeFilled },
-  { path: '/question/create', title: '错题录入', icon: EditPen, roles: ['student'] },
-  { path: '/question/list', title: '错题本', icon: Notebook, roles: ['student'] },
-  { path: '/review', title: '复习计划', icon: Reading, roles: ['student'] },
-  { path: '/report', title: '学情报告', icon: DataAnalysis, roles: ['student', 'teacher'] },
-  { path: '/message', title: '消息中心', icon: Bell },
-  { path: '/announcement', title: '公告', icon: Document },
-  { path: '/admin/user', title: '用户管理', icon: User, roles: ['admin'] },
-  { path: '/admin/subject', title: '科目管理', icon: Collection, roles: ['admin'] },
-  { path: '/admin/knowledge', title: '知识点管理', icon: List, roles: ['admin'] },
-  { path: '/profile', title: '个人中心', icon: UserFilled },
-]
-
-const visibleMenus = computed(() => menus.filter((m) => !m.roles || m.roles.includes(store.role)))
-const activePath = computed(() => (route.path.startsWith('/question/') && route.path !== '/question/create' ? '/question/list' : route.path))
+const mainRef = ref<HTMLElement>()
+const collapsed = ref(localStorage.getItem('ui.sidebar-collapsed') === '1')
 
 async function loadUnread() {
   try {
     unread.value = await messageApi.unreadCount()
   } catch {
-    /* 忽略角标加载失败 */
+    // 未读角标属于辅助信息，失败时不阻塞页面主体。
   }
 }
 
-async function handleLogout() {
-  await ElMessageBox.confirm('确定退出登录吗？', '提示', { type: 'warning' })
-  store.logout()
-  router.push('/login')
+function toggleSidebar() {
+  collapsed.value = !collapsed.value
+  localStorage.setItem('ui.sidebar-collapsed', collapsed.value ? '1' : '0')
 }
 
-onMounted(loadUnread)
+function handleUnreadChange() {
+  void loadUnread()
+}
+
+provide('refreshUnreadCount', loadUnread)
+
+watch(
+  () => route.fullPath,
+  async () => {
+    await nextTick()
+    mainRef.value?.scrollTo({ top: 0, behavior: 'auto' })
+  },
+)
+
+onMounted(() => {
+  void loadUnread()
+  window.addEventListener('message-unread-changed', handleUnreadChange)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('message-unread-changed', handleUnreadChange)
+})
 </script>
 
 <template>
-  <el-container class="layout">
-    <el-aside width="216px" class="aside">
-      <div class="brand">
-        <el-icon :size="22" color="#0f766e"><Files /></el-icon>
-        <div class="brand-text">
-          <span class="brand-name">AI 错题本</span>
-          <span class="brand-sub">学习推荐系统</span>
-        </div>
-      </div>
-      <el-menu :default-active="activePath" router class="menu">
-        <el-menu-item v-for="m in visibleMenus" :key="m.path" :index="m.path">
-          <el-icon><component :is="m.icon" /></el-icon>
-          <span>{{ m.title }}</span>
-          <el-badge v-if="m.path === '/message' && unread > 0" :value="unread" :max="99" class="menu-badge" />
-        </el-menu-item>
-      </el-menu>
-    </el-aside>
-    <el-container>
-      <el-header class="header" height="56px">
-        <span class="header-title">{{ route.meta.title }}</span>
-        <div class="header-right">
-          <el-tag size="small" effect="plain" class="role-tag">
-            {{ { student: '学生', teacher: '教师', admin: '管理员' }[store.role] || store.role }}
-          </el-tag>
-          <el-dropdown trigger="click">
-            <span class="user-entry">
-              {{ store.nickname }}
-              <el-icon><ArrowDown /></el-icon>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item @click="router.push('/profile')">个人中心</el-dropdown-item>
-                <el-dropdown-item divided @click="handleLogout">退出登录</el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </div>
-      </el-header>
-      <el-main class="main">
+  <div class="app-layout" :class="{ 'has-collapsed-sidebar': collapsed }">
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <AppSidebar :collapsed="collapsed" :unread="unread" @toggle="toggleSidebar" />
+
+    <div class="app-workspace">
+      <AppTopbar :unread="unread" />
+      <main id="main-content" ref="mainRef" class="app-main" tabindex="-1">
         <router-view v-slot="{ Component }">
-          <component :is="Component" class="fade-up" />
+          <component :is="Component" :key="route.fullPath" class="route-page" />
         </router-view>
-      </el-main>
-    </el-container>
-  </el-container>
+      </main>
+    </div>
+
+    <MobileNav :unread="unread" />
+  </div>
 </template>
 
 <style scoped>
-.layout {
-  height: 100vh;
-}
-
-.aside {
-  background: var(--wb-paper);
-  border-right: 1px solid var(--wb-border);
+.app-layout {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--paper);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 18px 20px 14px;
-  border-bottom: 1px solid var(--wb-border);
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-}
-
-.brand-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--wb-primary);
-  letter-spacing: 0.5px;
-}
-
-.brand-sub {
-  font-size: 11px;
-  color: var(--wb-ink-secondary);
-}
-
-.menu {
-  border-right: none;
+.app-workspace {
+  width: calc(100% - 244px);
+  min-width: 0;
+  min-height: 100vh;
   flex: 1;
-  padding: 8px;
 }
 
-.menu :deep(.el-menu-item) {
-  border-radius: 8px;
-  margin-bottom: 2px;
-  height: 44px;
+.has-collapsed-sidebar .app-workspace {
+  width: calc(100% - 84px);
 }
 
-.menu :deep(.el-menu-item.is-active) {
-  background: var(--el-color-primary-light-9);
-  font-weight: 600;
-}
-
-.menu-badge {
-  margin-left: auto;
-}
-
-.header {
-  background: var(--wb-paper);
-  border-bottom: 1px solid var(--wb-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-}
-
-.header-title {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.role-tag {
-  color: var(--wb-primary);
-  border-color: var(--el-color-primary-light-7);
-}
-
-.user-entry {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: var(--wb-ink);
-}
-
-.main {
-  background: var(--wb-bg);
-  padding: 24px;
+.app-main {
+  position: relative;
+  height: calc(100vh - 70px);
+  padding: 30px clamp(22px, 3vw, 46px) 48px;
+  overflow-x: hidden;
   overflow-y: auto;
+  background:
+    linear-gradient(rgba(24, 52, 74, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 52, 74, 0.025) 1px, transparent 1px),
+    var(--paper);
+  background-size: 24px 24px;
+  scroll-behavior: smooth;
+}
+
+.app-main::before {
+  position: fixed;
+  z-index: 0;
+  top: 70px;
+  bottom: 0;
+  left: calc(244px + clamp(22px, 3vw, 46px) + 16px);
+  width: 2px;
+  background: rgba(183, 67, 50, 0.1);
+  content: '';
+  pointer-events: none;
+}
+
+.has-collapsed-sidebar .app-main::before {
+  left: calc(84px + clamp(22px, 3vw, 46px) + 16px);
+}
+
+.route-page {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  animation: route-enter 360ms cubic-bezier(0.22, 0.72, 0.24, 1) both;
+}
+
+@keyframes route-enter {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1180px) {
+  .app-workspace,
+  .has-collapsed-sidebar .app-workspace {
+    width: calc(100% - 84px);
+  }
+
+  .app-main::before,
+  .has-collapsed-sidebar .app-main::before {
+    left: calc(84px + clamp(22px, 3vw, 46px) + 16px);
+  }
+}
+
+@media (max-width: 700px) {
+  .app-workspace,
+  .has-collapsed-sidebar .app-workspace {
+    width: 100%;
+  }
+
+  .app-main {
+    height: calc(100vh - 62px);
+    padding: 22px 14px calc(104px + env(safe-area-inset-bottom));
+  }
+
+  .app-main::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-main {
+    scroll-behavior: auto;
+  }
+
+  .route-page {
+    animation: none;
+  }
 }
 </style>
