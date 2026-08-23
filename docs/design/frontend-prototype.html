@@ -1,0 +1,2177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="知错——AI 错题分析与学习推荐系统单文件交互设计原型">
+  <title>知错 · 前端设计原型</title>
+  <style>
+    :root {
+      --paper: #f7f1e7;
+      --paper-deep: #eee3d3;
+      --paper-bright: #fffdf8;
+      --ink: #1d2b38;
+      --ink-soft: #52616d;
+      --ink-faint: #7b858b;
+      --navy: #18344a;
+      --navy-2: #254e66;
+      --cinnabar: #b74332;
+      --cinnabar-dark: #8d3026;
+      --cinnabar-pale: #f5ded8;
+      --jade: #168172;
+      --jade-dark: #0d665b;
+      --jade-pale: #dceee8;
+      --amber: #b87723;
+      --amber-pale: #f5e7ca;
+      --line: rgba(37, 78, 102, .16);
+      --line-strong: rgba(37, 78, 102, .28);
+      --shadow: 0 16px 38px rgba(41, 48, 49, .10), 0 2px 5px rgba(41, 48, 49, .08);
+      --shadow-soft: 0 8px 22px rgba(41, 48, 49, .08);
+      --radius: 18px;
+      --radius-sm: 11px;
+      --sidebar: 244px;
+      --font-display: "FZKai-Z03", "STKaiti", "KaiTi", serif;
+      --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+      --font-body: "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --font-mono: "Cascadia Mono", "JetBrains Mono", "Consolas", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    html {
+      min-width: 320px;
+      background: var(--paper);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: var(--font-body);
+      background:
+        linear-gradient(rgba(24, 52, 74, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(24, 52, 74, .025) 1px, transparent 1px),
+        var(--paper);
+      background-size: 24px 24px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+
+    button, [role="button"], input, select, textarea {
+      outline: none;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(22, 129, 114, .42);
+      outline-offset: 3px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .icon {
+      width: 1.25em;
+      height: 1.25em;
+      flex: 0 0 auto;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: -0.18em;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 1000;
+      left: 16px;
+      top: -60px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: var(--navy);
+      color: #fff;
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .prototype-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 28px;
+      padding: 5px 10px;
+      border: 1px solid rgba(183, 67, 50, .28);
+      border-radius: 999px;
+      background: rgba(255, 253, 248, .82);
+      color: var(--cinnabar-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .prototype-note::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cinnabar);
+      box-shadow: 0 0 0 3px rgba(183, 67, 50, .12);
+    }
+
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--cinnabar-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .screen { display: none; }
+    .screen.is-active { display: block; animation: page-in .42s cubic-bezier(.22,.72,.24,1) both; }
+
+    @keyframes page-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(22, 129, 114, .20); }
+      50% { box-shadow: 0 0 0 9px rgba(22, 129, 114, 0); }
+    }
+
+    /* 登录 / 注册 */
+    .auth-screen {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 14%, rgba(22, 129, 114, .11), transparent 27%),
+        radial-gradient(circle at 86% 80%, rgba(183, 67, 50, .10), transparent 24%),
+        var(--paper);
+    }
+
+    .auth-screen::before,
+    .auth-screen::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .auth-screen::before {
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 78, 102, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 78, 102, .035) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(to right, #000, transparent 70%);
+    }
+
+    .auth-screen::after {
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(183, 67, 50, .16);
+      border-radius: 50%;
+      left: -280px;
+      bottom: -310px;
+      box-shadow: 0 0 0 80px rgba(183, 67, 50, .025), 0 0 0 160px rgba(183, 67, 50, .018);
+    }
+
+    .auth-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(420px, .85fr);
+      min-height: 100vh;
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 42px clamp(32px, 5vw, 86px);
+      gap: clamp(50px, 7vw, 120px);
+      align-items: center;
+    }
+
+    .auth-story {
+      position: relative;
+      max-width: 710px;
+      padding: 42px 0 70px;
+    }
+
+    .auth-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: clamp(54px, 9vh, 110px);
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      color: var(--navy);
+    }
+
+    .brand-mark svg { width: 46px; height: 46px; }
+
+    .brand-mark::after {
+      content: "✓";
+      position: absolute;
+      right: -2px;
+      top: -5px;
+      color: var(--cinnabar);
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 900;
+      transform: rotate(-10deg);
+    }
+
+    .brand-word {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .brand-subword {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-soft);
+      font-size: 11px;
+      letter-spacing: .09em;
+    }
+
+    .auth-story h1 {
+      max-width: 660px;
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: clamp(48px, 5.5vw, 82px);
+      line-height: 1.12;
+      letter-spacing: -.055em;
+      color: var(--navy);
+    }
+
+    .auth-story h1 .mark-word {
+      position: relative;
+      color: var(--cinnabar-dark);
+      white-space: nowrap;
+    }
+
+    .auth-story h1 .mark-word::after {
+      content: "";
+      position: absolute;
+      left: 1%;
+      right: -2%;
+      bottom: -7px;
+      height: 8px;
+      border-top: 3px solid var(--cinnabar);
+      border-radius: 50%;
+      transform: rotate(-1.5deg);
+    }
+
+    .auth-lead {
+      max-width: 620px;
+      margin: 28px 0 38px;
+      color: var(--ink-soft);
+      font-size: 17px;
+      line-height: 1.9;
+    }
+
+    .learning-loop {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      max-width: 650px;
+      padding: 18px 18px 16px;
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
+      background: rgba(255, 253, 248, .48);
+    }
+
+    .loop-step {
+      position: relative;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 12px;
+    }
+
+    .loop-step strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-family: var(--font-serif);
+      font-size: 17px;
+    }
+
+    .loop-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      top: 5px;
+      right: -7px;
+      color: var(--cinnabar);
+      font-size: 15px;
+    }
+
+    .thesis-name {
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      max-width: 640px;
+      color: var(--ink-faint);
+      font-family: var(--font-serif);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    .auth-card-wrap {
+      position: relative;
+      width: min(100%, 490px);
+      justify-self: end;
+    }
+
+    .auth-card-wrap::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 70%;
+      height: 96%;
+      right: -18px;
+      top: 22px;
+      border: 1px solid rgba(37, 78, 102, .14);
+      border-radius: 8px 22px 22px 8px;
+      background: #e9dece;
+      transform: rotate(2deg);
+    }
+
+    .auth-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 4vw, 52px);
+      border: 1px solid rgba(37, 78, 102, .20);
+      border-radius: 7px 22px 22px 7px;
+      background:
+        linear-gradient(90deg, transparent 0 49px, rgba(183, 67, 50, .18) 49px 51px, transparent 51px),
+        repeating-linear-gradient(to bottom, rgba(37, 78, 102, .052) 0 1px, transparent 1px 34px),
+        var(--paper-bright);
+      box-shadow: var(--shadow);
+    }
+
+    .auth-card::before {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background: repeating-linear-gradient(to bottom, transparent 0 14px, rgba(24, 52, 74, .34) 14px 16px, transparent 16px 28px);
+      opacity: .5;
+    }
+
+    .auth-heading {
+      margin: 0 0 4px;
+      font-family: var(--font-serif);
+      color: var(--navy);
+      font-size: 30px;
+    }
+
+    .auth-helper {
+      margin: 0 0 27px;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 26px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .auth-tab {
+      position: relative;
+      padding: 11px 8px;
+      border: 0;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .auth-tab.is-active { color: var(--navy); }
+    .auth-tab.is-active::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: -2px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--cinnabar);
+      transform: rotate(-1deg);
+    }
+
+    .auth-form { display: none; }
+    .auth-form.is-active { display: block; }
+
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field label span {
+      color: var(--ink-faint);
+      font-weight: 400;
+    }
+
+    .input-wrap { position: relative; }
+    .field input,
+    .field select,
+    .field textarea,
+    .toolbar-search input {
+      width: 100%;
+      min-height: 47px;
+      padding: 11px 14px;
+      border: 1px solid rgba(37, 78, 102, .28);
+      border-radius: 9px;
+      background: rgba(255,255,255,.74);
+      color: var(--ink);
+      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .field textarea { min-height: 120px; resize: vertical; }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus,
+    .toolbar-search input:focus {
+      border-color: var(--jade);
+      box-shadow: 0 0 0 4px rgba(22, 129, 114, .10);
+      background: #fff;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 8px;
+      top: 7px;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .ghost-btn,
+    .danger-btn,
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .ghost-btn:hover,
+    .danger-btn:hover,
+    .mini-btn:hover { transform: translateY(-1px); }
+
+    .primary-btn {
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(24, 52, 74, .16);
+    }
+
+    .primary-btn:hover { background: #102c40; box-shadow: 0 10px 20px rgba(24, 52, 74, .22); }
+    .primary-btn.cinnabar { background: var(--cinnabar); box-shadow: 0 8px 16px rgba(183, 67, 50, .18); }
+    .primary-btn.cinnabar:hover { background: var(--cinnabar-dark); }
+    .secondary-btn { border-color: rgba(22, 129, 114, .34); background: var(--jade-pale); color: var(--jade-dark); }
+    .secondary-btn:hover { background: #cde7df; }
+    .ghost-btn { border-color: var(--line-strong); background: rgba(255, 253, 248, .62); color: var(--navy); }
+    .ghost-btn:hover { background: #fff; border-color: rgba(37,78,102,.44); }
+    .danger-btn { border-color: rgba(183,67,50,.30); background: var(--cinnabar-pale); color: var(--cinnabar-dark); }
+    .danger-btn:hover { background: #f0cec6; }
+    .mini-btn { min-height: 32px; padding: 6px 10px; border-color: var(--line); background: #fffdf8; color: var(--navy); font-size: 12px; }
+    .wide-btn { width: 100%; min-height: 50px; }
+
+    .auth-status-preview {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--line-strong);
+    }
+
+    .auth-status-preview > span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink-faint);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+
+    .status-links { display: flex; flex-wrap: wrap; gap: 7px; }
+    .status-link {
+      padding: 4px 0;
+      border: 0;
+      border-bottom: 1px dashed rgba(183, 67, 50, .44);
+      background: transparent;
+      color: var(--cinnabar-dark);
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* 应用框架 */
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .app-shell[hidden] { display: none; }
+
+    .sidebar {
+      position: fixed;
+      z-index: 30;
+      inset: 0 auto 0 0;
+      width: var(--sidebar);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 16px 18px;
+      border-right: 1px solid rgba(37, 78, 102, .17);
+      background:
+        linear-gradient(90deg, transparent 0 40px, rgba(183, 67, 50, .14) 40px 42px, transparent 42px),
+        repeating-linear-gradient(to bottom, transparent 0 31px, rgba(37,78,102,.035) 31px 32px),
+        #f4ebdf;
+      box-shadow: 6px 0 22px rgba(49, 48, 43, .06);
+    }
+
+    .sidebar-collapse {
+      position: absolute;
+      z-index: 2;
+      right: -15px;
+      top: 82px;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: var(--paper-bright);
+      color: var(--navy);
+      box-shadow: 0 5px 12px rgba(49,48,43,.10);
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+
+    .app-shell.is-collapsed { --sidebar: 84px; }
+    .app-shell.is-collapsed .sidebar { padding-inline: 10px; }
+    .app-shell.is-collapsed .sidebar .brand-lockup { justify-content: center; padding: 2px 0 20px; }
+    .app-shell.is-collapsed .sidebar .brand-copy,
+    .app-shell.is-collapsed .nav-caption,
+    .app-shell.is-collapsed .nav-item span,
+    .app-shell.is-collapsed .sidebar-foot { display: none; }
+    .app-shell.is-collapsed .nav-item { justify-content: center; min-height: 52px; padding: 10px; border-radius: 10px; }
+    .app-shell.is-collapsed .nav-item.is-active::before { left: -10px; }
+    .app-shell.is-collapsed .nav-item .icon { font-size: 21px; }
+    .app-shell.is-collapsed .sidebar-collapse { transform: rotate(180deg); }
+
+    .sidebar .brand-lockup {
+      padding: 2px 10px 22px 25px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sidebar .brand-mark { width: 42px; height: 42px; }
+    .sidebar .brand-mark svg { width: 41px; height: 41px; }
+    .sidebar .brand-word { font-size: 24px; }
+
+    .nav-caption {
+      margin: 24px 8px 9px 28px;
+      color: var(--ink-faint);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+    }
+
+    .side-nav { display: grid; gap: 5px; }
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 15px 10px 29px;
+      border: 0;
+      border-radius: 6px 12px 12px 6px;
+      background: transparent;
+      color: var(--ink-soft);
+      text-align: left;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .nav-item:hover { background: rgba(255,253,248,.76); color: var(--navy); }
+    .nav-item.is-active {
+      background: var(--paper-bright);
+      color: var(--navy);
+      box-shadow: 0 4px 12px rgba(49,48,43,.07);
+    }
+
+    .nav-item.is-active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      bottom: 7px;
+      width: 7px;
+      border-radius: 0 5px 5px 0;
+      background: var(--cinnabar);
+      box-shadow: 2px 0 0 rgba(183,67,50,.16);
+    }
+
+    .nav-item .icon { color: var(--navy-2); font-size: 18px; }
+    .nav-item[data-roles]:not(.is-role-visible) { display: none; }
+
+    .sidebar-foot {
+      margin-top: auto;
+      padding: 18px 10px 0 27px;
+      border-top: 1px dashed var(--line-strong);
+    }
+
+    .daily-streak {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink-soft);
+      font-size: 11px;
+    }
+
+    .streak-seal {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 2px solid var(--cinnabar);
+      border-radius: 50%;
+      color: var(--cinnabar-dark);
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-weight: 900;
+      transform: rotate(-7deg);
+    }
+
+    .workspace {
+      grid-column: 2;
+      min-width: 0;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      min-height: 76px;
+      padding: 13px clamp(24px, 3vw, 46px);
+      border-bottom: 1px solid rgba(37,78,102,.13);
+      background: rgba(247,241,231,.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .page-identity { min-width: 170px; }
+    .page-identity strong {
+      display: block;
+      font-family: var(--font-serif);
+      color: var(--navy);
+      font-size: 18px;
+    }
+    .page-identity span { display: block; margin-top: 2px; color: var(--ink-faint); font-size: 11px; }
+
+    .toolbar-search {
+      position: relative;
+      flex: 1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .toolbar-search input {
+      min-height: 42px;
+      padding-left: 42px;
+      border-radius: 999px;
+      background: rgba(255,253,248,.70);
+    }
+    .toolbar-search .icon { position: absolute; left: 15px; top: 11px; color: var(--ink-faint); }
+
+    .top-actions { display: flex; align-items: center; gap: 9px; }
+    .icon-btn {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255,253,248,.72);
+      color: var(--navy);
+      cursor: pointer;
+    }
+    .icon-btn:hover { background: #fff; border-color: var(--line-strong); }
+    .notification-dot {
+      position: absolute;
+      right: 7px;
+      top: 7px;
+      width: 8px;
+      height: 8px;
+      border: 2px solid var(--paper-bright);
+      border-radius: 50%;
+      background: var(--cinnabar);
+    }
+
+    .profile-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 5px 11px 5px 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,253,248,.72);
+      cursor: pointer;
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-serif);
+      font-weight: 800;
+    }
+    .profile-copy { text-align: left; }
+    .profile-copy strong { display: block; font-size: 12px; }
+    .profile-copy span { display: block; color: var(--ink-faint); font-size: 10px; }
+
+    .content {
+      position: relative;
+      width: min(100%, 1510px);
+      margin: 0 auto;
+      padding: clamp(24px, 3.1vw, 48px);
+      padding-bottom: 96px;
+    }
+
+    .content::before {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      left: calc(var(--sidebar) + 42px);
+      top: 76px;
+      bottom: 0;
+      width: 1px;
+      background: rgba(183,67,50,.09);
+    }
+
+    .page-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .page-head h1 {
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 2.5vw, 40px);
+      line-height: 1.2;
+      letter-spacing: -.03em;
+    }
+
+    .page-head p {
+      max-width: 750px;
+      margin: 8px 0 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .page-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .paper-panel {
+      position: relative;
+      border: 1px solid rgba(37,78,102,.16);
+      border-radius: var(--radius-sm);
+      background: var(--paper-bright);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .ruled-paper {
+      background:
+        linear-gradient(90deg, transparent 0 45px, rgba(183,67,50,.14) 45px 47px, transparent 47px),
+        repeating-linear-gradient(to bottom, transparent 0 33px, rgba(37,78,102,.055) 33px 34px),
+        var(--paper-bright);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .section-title .icon { color: var(--cinnabar); }
+
+    .link-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 0;
+      background: transparent;
+      color: var(--jade-dark);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 25px;
+      padding: 3px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .tag.jade { border-color: rgba(22,129,114,.24); background: var(--jade-pale); color: var(--jade-dark); }
+    .tag.red { border-color: rgba(183,67,50,.24); background: var(--cinnabar-pale); color: var(--cinnabar-dark); }
+    .tag.amber { border-color: rgba(184,119,35,.24); background: var(--amber-pale); color: #865315; }
+    .tag.navy { border-color: rgba(24,52,74,.20); background: #e4ebee; color: var(--navy); }
+
+    .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+    /* 三角色首页 */
+    .role-panel { display: none; }
+    .role-panel.is-active { display: block; }
+
+    .home-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(310px, .75fr);
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .today-board {
+      position: relative;
+      min-height: 276px;
+      overflow: hidden;
+      padding: 30px 32px;
+      border-radius: 12px 28px 12px 12px;
+      background:
+        linear-gradient(105deg, rgba(255,253,248,.98), rgba(248,241,230,.92)),
+        var(--paper-bright);
+    }
+
+    .today-board::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -70px;
+      bottom: -78px;
+      border: 22px solid rgba(22,129,114,.06);
+      border-radius: 50%;
+      box-shadow: 0 0 0 22px rgba(183,67,50,.035);
+    }
+
+    .today-board h2 {
+      max-width: 580px;
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--font-serif);
+      font-size: clamp(27px, 2.6vw, 42px);
+      line-height: 1.25;
+    }
+
+    .today-board h2 em {
+      color: var(--cinnabar-dark);
+      font-style: normal;
+    }
+
+    .today-board > p {
+      max-width: 610px;
+      margin: 12px 0 22px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .date-stamp {
+      position: absolute;
+      right: 26px;
+      top: 22px;
+      display: grid;
+      place-items: center;
+      width: 74px;
+      height: 74px;
+      border: 2px solid var(--cinnabar);
+      border-radius: 50%;
+      color: var(--cinnabar-dark);
+      font-family: var(--font-serif);
+      text-align: center;
+      transform: rotate(5deg);
+      opacity: .84;
+    }
+    .date-stamp strong { display: block; font-size: 18px; }
+    .date-stamp span { display: block; font-size: 10px; }
+
+    .mastery-note {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 276px;
+      padding: 25px;
+      overflow: hidden;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 28px 12px 12px 12px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .mastery-note::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to bottom, #000, transparent);
+    }
+
+    .mastery-note > * { position: relative; }
+    .mastery-note .small-label { color: rgba(255,255,255,.68); font-size: 12px; letter-spacing: .08em; }
+    .mastery-value { display: flex; align-items: baseline; gap: 7px; margin: 9px 0; }
+    .mastery-value strong { font-family: var(--font-mono); font-size: 58px; line-height: 1; }
+    .mastery-value span { color: #a9ddd3; font-size: 16px; }
+    .mastery-bar { height: 8px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.15); }
+    .mastery-bar i { display: block; width: 68%; height: 100%; border-radius: inherit; background: #72cab9; }
+    .mastery-note p { margin: 14px 0 0; color: rgba(255,255,255,.74); font-size: 12px; line-height: 1.6; }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
+      gap: 20px;
+    }
+
+    .task-sheet { padding: 24px 24px 19px 70px; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 17px; }
+    .task-list { display: grid; gap: 2px; }
+
+    .task-row {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      min-height: 67px;
+      padding: 10px 4px;
+      border-bottom: 1px dashed var(--line-strong);
+    }
+    .task-row:last-child { border-bottom: 0; }
+    .task-index {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(183,67,50,.35);
+      border-radius: 50%;
+      color: var(--cinnabar-dark);
+      font-family: var(--font-serif);
+      font-weight: 900;
+    }
+    .task-copy strong { display: block; margin-bottom: 5px; color: var(--navy); font-size: 13px; }
+    .task-copy span { display: block; color: var(--ink-soft); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .task-meta { text-align: right; }
+    .task-meta strong { display: block; color: var(--cinnabar-dark); font-family: var(--font-mono); font-size: 12px; }
+    .task-meta span { display: block; margin-top: 3px; color: var(--ink-faint); font-size: 10px; }
+
+    .home-side { display: grid; gap: 20px; }
+    .mini-chart-panel { padding: 22px; }
+    .trend-chart { width: 100%; height: 130px; margin-top: 13px; overflow: visible; }
+    .trend-chart .grid-line { stroke: rgba(37,78,102,.12); stroke-width: 1; }
+    .trend-chart .area { fill: url(#trendArea); }
+    .trend-chart .line { fill: none; stroke: var(--jade); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .trend-chart .point { fill: var(--paper-bright); stroke: var(--jade); stroke-width: 2; }
+
+    .annotation-card {
+      position: relative;
+      padding: 23px 25px 22px 29px;
+      border: 1px solid rgba(183,67,50,.22);
+      border-radius: 3px 13px 13px 3px;
+      background: #f7e5df;
+      box-shadow: var(--shadow-soft);
+      transform: rotate(.35deg);
+    }
+    .annotation-card::before {
+      content: "批";
+      position: absolute;
+      left: -14px;
+      top: 18px;
+      display: grid;
+      place-items: center;
+      width: 31px;
+      height: 31px;
+      border: 2px solid var(--cinnabar);
+      border-radius: 50%;
+      color: var(--cinnabar-dark);
+      font-family: var(--font-serif);
+      font-weight: 900;
+      background: var(--paper);
+      transform: rotate(-9deg);
+    }
+    .annotation-card strong { display: block; color: var(--cinnabar-dark); font-family: var(--font-serif); font-size: 16px; }
+    .annotation-card p { margin: 8px 0 0; color: #70473f; font-size: 12px; line-height: 1.7; }
+
+    .recent-sheet {
+      margin-top: 20px;
+      padding: 23px 24px 19px 70px;
+    }
+    .recent-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; margin-top: 15px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--line); }
+    .recent-item { min-width: 0; padding: 17px; border: 0; background: rgba(255,253,248,.92); text-align: left; cursor: pointer; }
+    .recent-item:hover { background: #fff; }
+    .recent-item-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .recent-item h3 { margin: 12px 0 8px; color: var(--navy); font-family: var(--font-serif); font-size: 14px; line-height: 1.55; }
+    .recent-item p { margin: 0; color: var(--ink-faint); font-size: 10px; }
+
+    .overview-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+    .overview-item { padding: 22px; background: var(--paper-bright); }
+    .overview-item span { display: block; color: var(--ink-faint); font-size: 11px; }
+    .overview-item strong { display: inline-block; margin-top: 8px; color: var(--navy); font-family: var(--font-mono); font-size: 29px; }
+    .overview-item em { margin-left: 5px; color: var(--ink-soft); font-size: 11px; font-style: normal; }
+
+    .teacher-grid,
+    .admin-home-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: 20px; }
+    .aggregate-panel, .weak-board, .admin-entry-board { padding: 25px; }
+    .subject-row { display: grid; grid-template-columns: 70px minmax(0,1fr) 54px; align-items: center; gap: 13px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+    .subject-row:last-child { border: 0; }
+    .subject-row span { font-size: 12px; font-weight: 700; }
+    .bar-track { height: 9px; border-radius: 99px; background: #e8e6df; overflow: hidden; }
+    .bar-track i { display: block; height: 100%; border-radius: inherit; background: var(--jade); }
+    .subject-row strong { text-align: right; color: var(--navy); font-family: var(--font-mono); font-size: 12px; }
+    .weak-list { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: weak; }
+    .weak-list li { counter-increment: weak; display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: center; padding: 11px 0; border-bottom: 1px dashed var(--line); font-size: 12px; }
+    .weak-list li::before { content: counter(weak); display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--cinnabar-pale); color: var(--cinnabar-dark); font-family: var(--font-mono); font-weight: 800; }
+    .weak-list li span { color: var(--ink-soft); }
+    .weak-list li strong { color: var(--cinnabar-dark); font-family: var(--font-mono); }
+
+    .management-entries { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 18px; }
+    .management-entry { min-height: 112px; padding: 17px; border: 1px solid var(--line); border-radius: 12px; background: #fffdf8; cursor: pointer; text-align: left; }
+    .management-entry:hover { border-color: rgba(22,129,114,.38); box-shadow: var(--shadow-soft); }
+    .management-entry .icon { color: var(--jade-dark); font-size: 22px; }
+    .management-entry strong { display: block; margin: 13px 0 4px; color: var(--navy); font-family: var(--font-serif); font-size: 15px; }
+    .management-entry span { color: var(--ink-faint); font-size: 11px; }
+
+    /* 错题详情 */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--ink-faint); font-size: 11px; }
+    .detail-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(290px, .55fr); gap: 20px; align-items: start; }
+    .question-sheet { padding: 28px 30px 30px 72px; }
+    .question-number { position: absolute; left: 15px; top: 22px; display: grid; place-items: center; width: 39px; height: 39px; border: 2px solid var(--cinnabar); border-radius: 50%; color: var(--cinnabar-dark); font-family: var(--font-serif); font-weight: 900; transform: rotate(-8deg); }
+    .question-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 17px; }
+    .question-stem { margin: 0; color: var(--ink); font-family: var(--font-serif); font-size: clamp(17px, 1.45vw, 22px); line-height: 1.9; }
+    .question-meta { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; color: var(--ink-faint); font-size: 11px; }
+    .answer-reveal { margin-top: 24px; padding-top: 17px; border-top: 1px dashed var(--line-strong); }
+    .answer-content { display: none; margin: 14px 0 0; padding: 14px 16px; border-left: 3px solid var(--jade); background: var(--jade-pale); color: var(--jade-dark); font-size: 13px; line-height: 1.8; }
+    .answer-content.is-visible { display: block; }
+
+    .mastery-side { padding: 23px; position: sticky; top: 96px; }
+    .mastery-ring {
+      --value: 62%;
+      display: grid;
+      place-items: center;
+      width: 146px;
+      height: 146px;
+      margin: 19px auto;
+      border-radius: 50%;
+      background: conic-gradient(var(--jade) var(--value), #e8e3d9 0);
+      position: relative;
+    }
+    .mastery-ring::after { content: ""; position: absolute; inset: 12px; border-radius: 50%; background: var(--paper-bright); }
+    .mastery-ring strong { position: relative; z-index: 1; color: var(--navy); font-family: var(--font-mono); font-size: 34px; }
+    .mastery-ring span { position: relative; z-index: 1; margin-left: 2px; color: var(--ink-faint); font-size: 11px; }
+    .side-facts { display: grid; gap: 0; margin-top: 14px; }
+    .side-fact { display: flex; justify-content: space-between; gap: 14px; padding: 11px 0; border-top: 1px dashed var(--line); font-size: 12px; }
+    .side-fact span { color: var(--ink-faint); }
+    .side-fact strong { color: var(--navy); }
+
+    .analysis-workbench { margin-top: 20px; overflow: hidden; }
+    .analysis-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 19px 22px; border-bottom: 1px solid var(--line); background: #f4eee4; }
+    .analysis-tabs { display: flex; gap: 4px; overflow-x: auto; padding: 0 4px 3px; }
+    .analysis-tab { flex: 0 0 auto; min-height: 37px; padding: 8px 12px; border: 0; border-radius: 8px; background: transparent; color: var(--ink-soft); cursor: pointer; font-size: 12px; font-weight: 800; }
+    .analysis-tab.is-active { background: var(--paper-bright); color: var(--navy); box-shadow: 0 3px 8px rgba(49,48,43,.08); }
+    .model-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-soft); font-size: 11px; white-space: nowrap; }
+    .model-badge strong { color: var(--cinnabar-dark); font-family: var(--font-mono); }
+    .analysis-body { padding: 26px 28px 29px; }
+    .analysis-pane { display: none; }
+    .analysis-pane.is-active { display: block; }
+    .ai-state-switcher { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; padding-bottom: 17px; border-bottom: 1px dashed var(--line); }
+    .ai-state-switcher > span { margin-right: 5px; color: var(--ink-faint); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .state-chip { min-height: 29px; padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink-soft); cursor: pointer; font-size: 10px; font-weight: 700; }
+    .state-chip.is-active { border-color: rgba(22,129,114,.32); background: var(--jade-pale); color: var(--jade-dark); }
+    .ai-state-panel { display: none; }
+    .ai-state-panel.is-active { display: block; }
+    .analysis-section { display: grid; grid-template-columns: 120px minmax(0,1fr); gap: 22px; padding: 18px 0; border-bottom: 1px dashed var(--line); }
+    .analysis-section:last-child { border-bottom: 0; }
+    .analysis-label { color: var(--jade-dark); font-family: var(--font-serif); font-size: 14px; font-weight: 900; }
+    .analysis-copy { margin: 0; color: var(--ink); font-size: 13px; line-height: 1.9; }
+    .analysis-steps { margin: 0; padding-left: 20px; color: var(--ink); font-size: 13px; line-height: 2; }
+    .rag-note { margin-top: 18px; padding: 13px 16px; border-left: 3px solid var(--amber); background: var(--amber-pale); color: #735022; font-size: 11px; line-height: 1.7; }
+
+    .state-illustration { display: grid; place-items: center; min-height: 260px; text-align: center; }
+    .state-illustration .state-symbol { display: grid; place-items: center; width: 72px; height: 72px; margin: 0 auto 18px; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--jade-dark); background: var(--jade-pale); font-family: var(--font-serif); font-size: 30px; font-weight: 900; }
+    .state-illustration.is-loading .state-symbol { animation: pulse-ring 1.5s ease-in-out infinite; }
+    .state-illustration.is-error .state-symbol { color: var(--cinnabar-dark); background: var(--cinnabar-pale); border-color: rgba(183,67,50,.3); }
+    .state-illustration h3 { margin: 0; color: var(--navy); font-family: var(--font-serif); font-size: 20px; }
+    .state-illustration p { max-width: 530px; margin: 9px auto 18px; color: var(--ink-soft); font-size: 12px; line-height: 1.7; }
+
+    .reference-list, .variant-list { display: grid; gap: 12px; }
+    .reference-item, .variant-item { padding: 17px 18px; border: 1px solid var(--line); border-radius: 10px; background: #fffdf8; }
+    .reference-top, .variant-top { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 9px; }
+    .reference-item h3, .variant-item h3 { margin: 0; color: var(--navy); font-family: var(--font-serif); font-size: 14px; }
+    .reference-item p, .variant-item p { margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.75; }
+    .reference-foot, .variant-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); color: var(--ink-faint); font-size: 10px; }
+
+    /* 复习工作台 */
+    .review-banner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 20px 23px;
+      border: 1px solid rgba(184,119,35,.25);
+      border-radius: 12px;
+      background: var(--amber-pale);
+    }
+    .review-banner .seal { display: grid; place-items: center; width: 48px; height: 48px; border: 2px solid var(--amber); border-radius: 50%; color: #855617; font-family: var(--font-serif); font-weight: 900; transform: rotate(-5deg); }
+    .review-banner strong { display: block; color: #684617; font-family: var(--font-serif); font-size: 15px; }
+    .review-banner p { margin: 4px 0 0; color: #785a32; font-size: 11px; line-height: 1.6; }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .filter-chip { min-height: 34px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-bright); color: var(--ink-soft); cursor: pointer; font-size: 11px; font-weight: 700; }
+    .filter-chip.is-active { border-color: var(--cinnabar); background: var(--cinnabar-pale); color: var(--cinnabar-dark); }
+
+    .review-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(300px, .55fr); gap: 20px; align-items: start; }
+    .timeline-panel { padding: 26px 26px 28px; }
+    .timeline { position: relative; display: grid; gap: 14px; margin-top: 21px; padding-left: 26px; }
+    .timeline::before { content: ""; position: absolute; left: 9px; top: 13px; bottom: 18px; width: 2px; background: linear-gradient(var(--cinnabar), var(--jade)); }
+    .review-item { position: relative; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 18px; padding: 18px 18px 18px 21px; border: 1px solid var(--line); border-radius: 12px; background: #fffdf8; }
+    .review-item::before { content: ""; position: absolute; left: -24px; top: 26px; width: 12px; height: 12px; border: 3px solid var(--paper); border-radius: 50%; background: var(--jade); box-shadow: 0 0 0 1px var(--jade); }
+    .review-item[data-review-state="overdue"]::before { background: var(--cinnabar); box-shadow: 0 0 0 1px var(--cinnabar); }
+    .review-item.is-done { opacity: .58; }
+    .review-item.is-done::after { content: "已完成"; position: absolute; right: 14px; top: 12px; color: var(--jade-dark); font-family: var(--font-serif); font-size: 19px; font-weight: 900; transform: rotate(-6deg); }
+    .review-copy h3 { margin: 8px 0 5px; color: var(--navy); font-family: var(--font-serif); font-size: 15px; }
+    .review-copy p { margin: 0; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+    .review-actions { align-self: center; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .review-summary { position: sticky; top: 96px; padding: 24px; }
+    .review-progress { margin: 22px 0; }
+    .review-progress strong { display: block; margin-bottom: 9px; color: var(--navy); font-family: var(--font-mono); font-size: 30px; }
+    .review-progress strong span { color: var(--ink-faint); font-size: 13px; }
+    .stage-ladder { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; margin-top: 17px; }
+    .stage-ladder i { height: 7px; border-radius: 99px; background: #dfdcd5; }
+    .stage-ladder i.done { background: var(--jade); }
+    .stage-labels { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; margin-top: 6px; color: var(--ink-faint); font-family: var(--font-mono); font-size: 9px; text-align: center; }
+
+    /* 学情报告 */
+    .report-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+    .report-kpis { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--line); box-shadow: var(--shadow-soft); }
+    .report-kpi { position: relative; padding: 23px 22px; background: var(--paper-bright); }
+    .report-kpi::after { content: ""; position: absolute; left: 22px; bottom: 15px; width: 28px; height: 2px; background: var(--cinnabar); transform: rotate(-3deg); }
+    .report-kpi span { color: var(--ink-faint); font-size: 11px; }
+    .report-kpi strong { display: block; margin: 9px 0 17px; color: var(--navy); font-family: var(--font-mono); font-size: 30px; }
+    .report-kpi strong small { margin-left: 4px; color: var(--ink-soft); font-family: var(--font-body); font-size: 11px; font-weight: 400; }
+    .chart-panel { padding: 23px; min-height: 330px; }
+    .chart-panel.large { grid-column: span 7; }
+    .chart-panel.medium { grid-column: span 5; }
+    .chart-panel.half { grid-column: span 6; }
+    .chart-sub { margin: 5px 0 0; color: var(--ink-faint); font-size: 10px; }
+    .bar-chart { display: grid; grid-template-columns: repeat(7,1fr); gap: 12px; align-items: end; height: 210px; margin-top: 23px; padding: 14px 10px 27px; border-bottom: 1px solid var(--line-strong); background: repeating-linear-gradient(to top, transparent 0 47px, rgba(37,78,102,.09) 47px 48px); }
+    .bar-column { position: relative; display: flex; align-items: flex-end; justify-content: center; height: 100%; }
+    .bar-column i { width: min(34px, 72%); min-height: 3px; border-radius: 7px 7px 2px 2px; background: var(--jade); }
+    .bar-column span { position: absolute; bottom: -22px; color: var(--ink-faint); font-family: var(--font-mono); font-size: 9px; }
+    .line-report { width: 100%; height: 220px; margin-top: 22px; }
+    .line-report .axis { stroke: rgba(37,78,102,.16); stroke-width: 1; }
+    .line-report .path { fill: none; stroke: var(--cinnabar); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .line-report .area { fill: url(#reportArea); }
+    .line-report circle { fill: var(--paper-bright); stroke: var(--cinnabar); stroke-width: 2; }
+    .knowledge-bars { display: grid; gap: 16px; margin-top: 25px; }
+    .knowledge-bar { display: grid; grid-template-columns: 88px minmax(0,1fr) 42px; gap: 12px; align-items: center; }
+    .knowledge-bar span { color: var(--ink-soft); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .knowledge-bar i { height: 10px; overflow: hidden; border-radius: 99px; background: #e8e3d9; }
+    .knowledge-bar i::after { content: ""; display: block; width: var(--score); height: 100%; border-radius: inherit; background: var(--bar-color, var(--jade)); }
+    .knowledge-bar strong { text-align: right; color: var(--navy); font-family: var(--font-mono); font-size: 11px; }
+    .insight-note { grid-column: span 6; display: flex; flex-direction: column; justify-content: center; min-height: 260px; padding: 31px 35px; border-radius: 3px 18px 18px 3px; background: var(--navy); color: #fff; box-shadow: var(--shadow-soft); }
+    .insight-note .eyebrow { color: #f4b4a8; }
+    .insight-note h2 { margin: 0; font-family: var(--font-serif); font-size: 26px; line-height: 1.5; }
+    .insight-note p { margin: 13px 0 0; color: rgba(255,255,255,.72); font-size: 12px; line-height: 1.8; }
+
+    /* 管理员数据页 */
+    .admin-switcher { display: flex; gap: 6px; margin-bottom: 18px; overflow-x: auto; padding: 3px; border-bottom: 1px solid var(--line-strong); }
+    .admin-tab { flex: 0 0 auto; position: relative; min-height: 42px; padding: 8px 15px; border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; font-size: 12px; font-weight: 800; }
+    .admin-tab.is-active { color: var(--navy); }
+    .admin-tab.is-active::after { content: ""; position: absolute; left: 15px; right: 15px; bottom: -2px; height: 3px; border-radius: 99px; background: var(--cinnabar); }
+    .admin-pane { display: none; }
+    .admin-pane.is-active { display: block; }
+    .data-panel { padding: 22px; }
+    .data-toolbar { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-bottom: 18px; }
+    .compact-input, .compact-select { min-height: 39px; padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: 9px; background: #fff; color: var(--ink); }
+    .compact-input { width: min(270px, 100%); }
+    .compact-select { width: 130px; }
+    .data-toolbar .spacer { flex: 1; }
+    .table-wrap { width: 100%; overflow-x: auto; }
+    .data-table { width: 100%; min-width: 780px; border-collapse: collapse; font-size: 12px; }
+    .data-table th { padding: 12px 13px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line-strong); background: #f5efe5; color: var(--ink-soft); text-align: left; font-size: 10px; letter-spacing: .08em; }
+    .data-table td { padding: 14px 13px; border-bottom: 1px dashed var(--line); color: var(--ink-soft); vertical-align: middle; }
+    .data-table tbody tr:hover { background: rgba(22,129,114,.035); }
+    .data-table td strong { color: var(--navy); }
+    .table-note { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 15px; color: var(--ink-faint); font-size: 10px; }
+    .subject-catalog { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .subject-card { padding: 19px; border: 1px solid var(--line); border-radius: 11px; background: #fffdf8; }
+    .subject-card .subject-code { color: var(--ink-faint); font-family: var(--font-mono); font-size: 10px; }
+    .subject-card h3 { margin: 9px 0 5px; color: var(--navy); font-family: var(--font-serif); font-size: 17px; }
+    .subject-card p { margin: 0 0 13px; color: var(--ink-soft); font-size: 11px; }
+    .subject-card-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px dashed var(--line); }
+    .knowledge-tree { display: grid; gap: 12px; }
+    .knowledge-chapter { border: 1px solid var(--line); border-radius: 11px; background: #fffdf8; overflow: hidden; }
+    .knowledge-chapter-head { display: flex; justify-content: space-between; align-items: center; gap: 13px; padding: 15px 17px; background: #f5efe5; }
+    .knowledge-chapter-head strong { color: var(--navy); font-family: var(--font-serif); }
+    .knowledge-leaves { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px; }
+    .knowledge-leaf { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border: 1px solid rgba(22,129,114,.22); border-radius: 999px; background: var(--jade-pale); color: var(--jade-dark); font-size: 11px; }
+    .leaf-delete { display: grid; place-items: center; width: 18px; height: 18px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--cinnabar-dark); cursor: pointer; }
+    .announcement-list { display: grid; gap: 11px; }
+    .announcement-row { display: grid; grid-template-columns: 52px minmax(0,1fr) auto; gap: 13px; align-items: center; padding: 16px; border: 1px solid var(--line); border-radius: 11px; background: #fffdf8; }
+    .announcement-date { text-align: center; color: var(--cinnabar-dark); font-family: var(--font-mono); }
+    .announcement-date strong { display: block; font-size: 18px; }
+    .announcement-date span { display: block; font-size: 9px; }
+    .announcement-copy strong { display: block; color: var(--navy); font-family: var(--font-serif); font-size: 14px; }
+    .announcement-copy p { margin: 5px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+
+    /* 原型控制器 */
+    .prototype-dock {
+      position: fixed;
+      z-index: 80;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 9px;
+    }
+
+    .dock-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid rgba(24,52,74,.22);
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(24,52,74,.22);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .dock-panel {
+      display: none;
+      width: min(360px, calc(100vw - 36px));
+      padding: 16px;
+      border: 1px solid rgba(24,52,74,.20);
+      border-radius: 15px;
+      background: rgba(255,253,248,.96);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .prototype-dock.is-open .dock-panel { display: block; }
+    .dock-label { display: block; margin-bottom: 7px; color: var(--ink-faint); font-size: 9px; font-weight: 900; letter-spacing: .13em; }
+    .dock-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+    .dock-screen { min-height: 34px; padding: 6px 5px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink-soft); cursor: pointer; font-size: 10px; font-weight: 700; }
+    .dock-screen.is-active { border-color: rgba(183,67,50,.34); background: var(--cinnabar-pale); color: var(--cinnabar-dark); }
+    .dock-role-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-top: 13px; }
+    .dock-role { min-height: 31px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink-soft); cursor: pointer; font-size: 10px; }
+    .dock-role.is-active { border-color: rgba(22,129,114,.32); background: var(--jade-pale); color: var(--jade-dark); font-weight: 800; }
+
+    /* Toast / Modal */
+    .toast-region {
+      position: fixed;
+      z-index: 120;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: grid;
+      gap: 8px;
+      width: min(430px, calc(100vw - 28px));
+      pointer-events: none;
+    }
+    .toast {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 11px;
+      align-items: start;
+      padding: 13px 15px;
+      border: 1px solid rgba(24,52,74,.18);
+      border-radius: 11px;
+      background: rgba(255,253,248,.97);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      animation: page-in .24s ease both;
+      pointer-events: auto;
+    }
+    .toast .toast-symbol { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--jade-pale); color: var(--jade-dark); font-weight: 900; }
+    .toast.is-error .toast-symbol { background: var(--cinnabar-pale); color: var(--cinnabar-dark); }
+    .toast strong { display: block; margin-bottom: 3px; color: var(--navy); font-size: 12px; }
+    .toast span { color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
+
+    .modal-backdrop {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(24, 37, 47, .46);
+      backdrop-filter: blur(5px);
+    }
+    .modal-backdrop.is-open { display: grid; }
+    .modal {
+      width: min(520px, 100%);
+      max-height: min(760px, calc(100vh - 40px));
+      overflow-y: auto;
+      padding: 25px;
+      border: 1px solid rgba(37,78,102,.20);
+      border-radius: 8px 22px 22px 8px;
+      background:
+        linear-gradient(90deg, transparent 0 35px, rgba(183,67,50,.13) 35px 37px, transparent 37px),
+        var(--paper-bright);
+      box-shadow: var(--shadow);
+    }
+    .modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; padding-left: 22px; }
+    .modal-head h2 { margin: 0; color: var(--navy); font-family: var(--font-serif); font-size: 22px; }
+    .modal-head p { margin: 5px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.6; }
+    .modal-close { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink-soft); cursor: pointer; }
+    .modal-body { padding-left: 22px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 23px; }
+
+    .mobile-nav { display: none; }
+
+    /* 平板 */
+    @media (max-width: 1180px) {
+      :root { --sidebar: 84px; }
+      .auth-layout { grid-template-columns: minmax(0,1fr) minmax(400px,.9fr); gap: 42px; padding-inline: 34px; }
+      .auth-story h1 { font-size: 53px; }
+      .learning-loop { grid-template-columns: repeat(5,1fr); padding-inline: 8px; }
+      .loop-step strong { font-size: 14px; }
+      .sidebar { padding-inline: 10px; }
+      .sidebar .brand-lockup { justify-content: center; padding: 2px 0 20px; }
+      .sidebar .brand-copy, .nav-caption, .nav-item span, .sidebar-foot { display: none; }
+      .sidebar-collapse { display: none; }
+      .nav-item { justify-content: center; min-height: 52px; padding: 10px; border-radius: 10px; }
+      .nav-item.is-active::before { left: -10px; }
+      .nav-item .icon { font-size: 21px; }
+      .page-identity { min-width: 140px; }
+      .topbar { gap: 13px; }
+      .profile-copy { display: none; }
+      .profile-chip { padding-right: 6px; }
+      .content::before { left: calc(var(--sidebar) + 24px); }
+      .home-hero { grid-template-columns: 1fr 300px; }
+      .home-grid, .teacher-grid, .admin-home-grid { grid-template-columns: 1fr; }
+      .home-side { grid-template-columns: 1fr 1fr; }
+      .detail-grid { grid-template-columns: 1fr 260px; }
+      .review-layout { grid-template-columns: 1fr 270px; }
+      .report-grid { gap: 14px; }
+      .chart-panel.large, .chart-panel.medium { grid-column: span 6; }
+      .subject-catalog { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .auth-layout { grid-template-columns: 1fr; align-content: center; padding-block: 30px 46px; }
+      .auth-story { max-width: 690px; padding-bottom: 35px; }
+      .auth-topline { margin-bottom: 46px; }
+      .auth-story h1 { font-size: clamp(42px, 8vw, 65px); }
+      .auth-lead { margin-block: 21px 28px; }
+      .thesis-name { display: none; }
+      .auth-card-wrap { width: min(100%, 600px); justify-self: stretch; }
+      .home-hero { grid-template-columns: 1fr; }
+      .mastery-note { min-height: 220px; }
+      .detail-grid, .review-layout { grid-template-columns: 1fr; }
+      .mastery-side, .review-summary { position: static; }
+      .mastery-side { display: grid; grid-template-columns: 190px 1fr; align-items: center; }
+      .report-kpis { grid-template-columns: repeat(2,1fr); }
+      .chart-panel.large, .chart-panel.medium, .chart-panel.half, .insight-note { grid-column: 1 / -1; }
+      .teacher-grid, .admin-home-grid { grid-template-columns: 1fr; }
+      .data-table { min-width: 0; table-layout: fixed; }
+      .data-table th:nth-child(4), .data-table td:nth-child(4),
+      .data-table th:nth-child(5), .data-table td:nth-child(5) { display: none; }
+      .data-table th:nth-child(1) { width: 31%; }
+      .data-table th:nth-child(2) { width: 18%; }
+      .data-table th:nth-child(3) { width: 33%; }
+      .data-table th:nth-child(6) { width: 18%; }
+    }
+
+    /* 手机 */
+    @media (max-width: 700px) {
+      :root { --sidebar: 0px; }
+      body { background-size: 20px 20px; }
+      .auth-layout { display: block; padding: 22px 17px 54px; }
+      .auth-story { padding: 0; }
+      .auth-topline { margin-bottom: 36px; }
+      .auth-story .prototype-note { display: none; }
+      .auth-story h1 { font-size: 39px; line-height: 1.18; }
+      .auth-lead { font-size: 14px; line-height: 1.75; }
+      .learning-loop { grid-template-columns: repeat(5, minmax(58px,1fr)); overflow-x: auto; }
+      .loop-step { font-size: 10px; }
+      .loop-step strong { font-size: 12px; }
+      .auth-card-wrap { margin-top: 34px; }
+      .auth-card { padding: 29px 24px 30px 38px; }
+      .auth-card::before { left: 10px; }
+      .auth-card { background: linear-gradient(90deg, transparent 0 30px, rgba(183,67,50,.15) 30px 32px, transparent 32px), var(--paper-bright); }
+      .auth-card-wrap::before { right: -4px; }
+      .sidebar { display: none; }
+      .app-shell { display: block; }
+      .workspace { min-height: 100vh; }
+      .topbar { min-height: 62px; padding: 9px 14px; gap: 8px; }
+      .page-identity { min-width: 0; flex: 1; }
+      .page-identity strong { font-size: 15px; }
+      .page-identity span, .toolbar-search, .prototype-note.top-note { display: none; }
+      .icon-btn { width: 38px; height: 38px; }
+      .profile-chip { min-height: 38px; }
+      .avatar { width: 28px; height: 28px; }
+      .content { padding: 22px 14px 106px; }
+      .content::before { display: none; }
+      .page-head { display: block; margin-bottom: 20px; }
+      .page-head h1 { font-size: 27px; }
+      .page-head p { font-size: 12px; }
+      .page-actions { justify-content: flex-start; margin-top: 15px; }
+      .today-board { min-height: 305px; padding: 24px 20px; }
+      .today-board h2 { padding-right: 55px; font-size: 29px; }
+      .date-stamp { right: 14px; top: 17px; width: 58px; height: 58px; }
+      .date-stamp strong { font-size: 14px; }
+      .hero-actions .primary-btn, .hero-actions .secondary-btn { flex: 1 1 150px; }
+      .home-side { grid-template-columns: 1fr; }
+      .task-sheet { padding: 20px 16px 17px 48px; }
+      .task-row { grid-template-columns: 35px minmax(0,1fr); }
+      .task-meta { grid-column: 2; text-align: left; display: flex; gap: 8px; }
+      .overview-strip { grid-template-columns: repeat(2,1fr); }
+      .overview-item { padding: 18px; }
+      .overview-item strong { font-size: 24px; }
+      .management-entries { grid-template-columns: 1fr 1fr; }
+      .recent-grid { grid-template-columns: 1fr; }
+      .recent-sheet { padding: 20px 14px 17px 48px; }
+      .question-sheet { padding: 67px 18px 24px 38px; }
+      .question-number { left: 8px; top: 18px; }
+      .question-tags { position: absolute; left: 54px; top: 20px; right: 10px; overflow-x: auto; flex-wrap: nowrap; }
+      .mastery-side { display: block; }
+      .analysis-toolbar { display: block; padding: 14px; }
+      .model-badge { margin-top: 10px; padding-left: 5px; }
+      .analysis-body { padding: 20px 16px; }
+      .analysis-section { grid-template-columns: 1fr; gap: 8px; }
+      .reference-top, .variant-top, .reference-foot, .variant-foot { align-items: flex-start; }
+      .review-banner { grid-template-columns: auto 1fr; }
+      .review-banner .filter-chips { grid-column: 1 / -1; }
+      .timeline-panel { padding: 21px 14px 24px; }
+      .timeline { padding-left: 21px; }
+      .review-item { grid-template-columns: 1fr; padding: 16px; }
+      .review-actions { justify-content: flex-start; }
+      .report-kpis { grid-template-columns: 1fr 1fr; }
+      .report-kpi { padding: 17px 14px; }
+      .report-kpi strong { font-size: 23px; }
+      .chart-panel { padding: 18px 14px; min-height: 300px; }
+      .bar-chart { gap: 4px; }
+      .knowledge-bar { grid-template-columns: 75px minmax(0,1fr) 34px; gap: 8px; }
+      .insight-note { min-height: 230px; padding: 26px 22px; }
+      .subject-catalog { grid-template-columns: 1fr; }
+      .announcement-row { grid-template-columns: 44px minmax(0,1fr); }
+      .announcement-row .tag { grid-column: 2; justify-self: start; }
+      .data-toolbar .spacer { display: none; }
+      .data-toolbar .primary-btn { width: 100%; }
+      .compact-input { width: 100%; }
+      .data-table th:nth-child(3), .data-table td:nth-child(3) { display: none; }
+      .data-table th:nth-child(1) { width: 46%; }
+      .data-table th:nth-child(2) { width: 25%; }
+      .data-table th:nth-child(6) { width: 29%; }
+      .data-table th, .data-table td { padding-inline: 10px; }
+      .mobile-nav {
+        position: fixed;
+        z-index: 40;
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+        min-height: 64px;
+        padding: 7px;
+        border: 1px solid rgba(24,52,74,.18);
+        border-radius: 18px;
+        background: rgba(255,253,248,.95);
+        box-shadow: 0 12px 30px rgba(24,52,74,.20);
+        backdrop-filter: blur(15px);
+      }
+      .mobile-nav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 0; border-radius: 11px; background: transparent; color: var(--ink-faint); cursor: pointer; font-size: 9px; }
+      .mobile-nav button .icon { font-size: 17px; }
+      .mobile-nav button.is-active { background: var(--jade-pale); color: var(--jade-dark); font-weight: 800; }
+      .mobile-nav button[data-roles]:not(.is-role-visible) { display: none; }
+      .prototype-dock { right: 12px; bottom: 83px; }
+      .dock-toggle { width: 42px; padding: 0; justify-content: center; }
+      .dock-toggle span { display: none; }
+      .modal { padding: 20px 15px 21px; }
+      .modal-head, .modal-body { padding-left: 18px; }
+    }
+
+    @media (max-width: 390px) {
+      .auth-story h1 { font-size: 35px; }
+      .brand-word { font-size: 23px; }
+      .auth-card { padding-right: 18px; }
+      .overview-item { padding: 15px 12px; }
+      .management-entry { min-height: 104px; padding: 14px; }
+      .report-kpis { grid-template-columns: 1fr; }
+      .dock-grid { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    html[data-capture="true"] .prototype-dock { display: none; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <svg class="sr-only" aria-hidden="true" focusable="false">
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.2A3.2 3.2 0 0 1 7.2 2H20v17H7.2A3.2 3.2 0 0 0 4 22V5.2Z"/><path d="M4 19V5.2A3.2 3.2 0 0 0 .8 2H0v17h.8A3.2 3.2 0 0 1 4 22" transform="translate(4)"/><path d="M8 6h8M8 10h6"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v18M11 8h6M11 12h6M11 16h4"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7M2 20h22"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Z"/><path d="m19 15 .9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16M7 12h10M10 19h4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 15-6v14L3 13v-2Z"/><path d="M7 14v5h4l1-3"/></symbol>
+  </svg>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <section class="screen auth-screen is-active" data-screen="auth" aria-labelledby="auth-title">
+    <div class="auth-layout">
+      <div class="auth-story">
+        <div class="auth-topline">
+          <div class="brand-lockup" aria-label="知错">
+            <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+            <span class="brand-copy"><span class="brand-word">知错</span><span class="brand-subword">AI 错题分析与学习推荐</span></span>
+          </div>
+          <span class="prototype-note">原型模拟数据</span>
+        </div>
+        <p class="eyebrow">DIGITAL WRONG-QUESTION NOTEBOOK</p>
+        <h1 id="auth-title">把每一道错题，变成<span class="mark-word">会生长</span>的学习线索。</h1>
+        <p class="auth-lead">从录入、AI 智能解析到复习反馈，知错把零散的错误重新装订成清晰、可执行的个人学习路径。</p>
+        <div class="learning-loop" aria-label="学习闭环">
+          <div class="loop-step"><strong>录入</strong>留住问题</div>
+          <div class="loop-step"><strong>解析</strong>定位错因</div>
+          <div class="loop-step"><strong>推荐</strong>举一反三</div>
+          <div class="loop-step"><strong>复习</strong>按时巩固</div>
+          <div class="loop-step"><strong>反馈</strong>看见进步</div>
+        </div>
+        <p class="thesis-name">基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现 · 本页仅用于设计评审</p>
+      </div>
+
+      <div class="auth-card-wrap">
+        <div class="auth-card">
+          <h2 class="auth-heading">回到学习桌</h2>
+          <p class="auth-helper">登录后继续今天的错题整理与复习。</p>
+          <div class="auth-tabs" role="tablist" aria-label="登录与注册">
+            <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-auth-tab="login">登录</button>
+            <button class="auth-tab" type="button" role="tab" aria-selected="false" aria-controls="register-form" data-auth-tab="register">注册</button>
+          </div>
+          <form class="auth-form is-active" id="login-form" data-auth-form="login">
+            <div class="field">
+              <label for="login-username">用户名</label>
+              <input id="login-username" name="username" autocomplete="username" placeholder="请输入用户名" required>
+            </div>
+            <div class="field">
+              <label for="login-password">密码 <span>6–32 位</span></label>
+              <div class="input-wrap">
+                <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="请输入密码" required minlength="6">
+                <button class="password-toggle" type="button" data-password-toggle="login-password" aria-label="显示密码"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button>
+              </div>
+            </div>
+            <button class="primary-btn wide-btn" type="submit">进入知错工作台 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </form>
+          <form class="auth-form" id="register-form" data-auth-form="register" hidden>
+            <div class="field"><label for="register-username">用户名 <span>4–32 位</span></label><input id="register-username" autocomplete="username" placeholder="设置用户名" minlength="4" required></div>
+            <div class="field"><label for="register-nickname">昵称 <span>选填</span></label><input id="register-nickname" autocomplete="nickname" placeholder="怎么称呼你"></div>
+            <div class="field"><label for="register-password">密码 <span>6–32 位</span></label><input id="register-password" type="password" autocomplete="new-password" placeholder="设置密码" minlength="6" required></div>
+            <button class="primary-btn wide-btn" type="submit">创建学生账号</button>
+          </form>
+          <div class="auth-status-preview">
+            <p style="margin:0 0 12px;color:var(--ink-soft);font-size:11px;line-height:1.6">本原型不连接后端，也不会提交账号信息。</p>
+            <span>交互状态预览 · 不展示测试账号</span>
+            <div class="status-links">
+              <button class="status-link" type="button" data-toast="error-login">登录失败</button>
+              <button class="status-link" type="button" data-toast="disabled-account">账号停用</button>
+              <button class="status-link" type="button" data-toast="expired-token">令牌过期</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand-lockup">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+        <span class="brand-copy"><span class="brand-word">知错</span><span class="brand-subword">学习工作台</span></span>
+      </div>
+      <button class="sidebar-collapse" id="sidebar-collapse" type="button" aria-label="折叠侧边导航" aria-expanded="true"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <div class="nav-caption">学习目录</div>
+      <nav class="side-nav">
+        <button class="nav-item is-active is-role-visible" type="button" data-nav="home" data-roles="student,teacher,admin"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>今日工作台</span></button>
+        <button class="nav-item is-role-visible" type="button" data-nav="detail" data-roles="student"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg><span>错题与解析</span></button>
+        <button class="nav-item is-role-visible" type="button" data-nav="review" data-roles="student"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>复习计划</span></button>
+        <button class="nav-item is-role-visible" type="button" data-nav="report" data-roles="student,teacher"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><span>学情报告</span></button>
+        <button class="nav-item" type="button" data-nav="admin" data-roles="admin"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>数据管理</span></button>
+      </nav>
+      <div class="sidebar-foot"><div class="daily-streak"><span class="streak-seal">原型</span><span>匿名模拟数据<br>非真实模型证据</span></div></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="page-identity"><strong id="top-page-title">今日工作台</strong><span id="top-page-subtitle">把今天要做的事收在一页</span></div>
+        <label class="toolbar-search"><span class="sr-only">搜索页面与功能</span><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="global-search" placeholder="搜索页面与功能" autocomplete="off"></label>
+        <span class="prototype-note top-note">原型模拟数据</span>
+        <div class="top-actions">
+          <button class="icon-btn" type="button" aria-label="查看消息" data-toast="messages"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span class="notification-dot"></span></button>
+          <button class="profile-chip" type="button" data-toast="profile"><span class="avatar" id="profile-avatar">林</span><span class="profile-copy"><strong id="profile-name">林同学</strong><span id="profile-role">学生</span></span></button>
+        </div>
+      </header>
+
+      <main class="content" id="main-content" tabindex="-1">
+        <section class="screen" data-screen="home" aria-labelledby="home-title">
+          <div class="role-panel is-active" data-role-panel="student">
+            <div class="page-head">
+              <div><p class="eyebrow">SUNDAY · 23 AUG</p><h1 id="home-title">林同学，先把今天的两件事做好。</h1><p>录入一道刚做错的题，完成四道到期复习。剩下的趋势与反馈，交给知错整理。</p></div>
+              <div class="page-actions"><span class="prototype-note">学生首页 · 原型模拟</span></div>
+            </div>
+            <div class="home-hero">
+              <article class="paper-panel today-board">
+                <div class="date-stamp"><div><strong>08·23</strong><span>星期日</span></div></div>
+                <p class="eyebrow">今日学习焦点</p>
+                <h2>把“二次函数”这道错题，<em>彻底弄懂</em>。</h2>
+                <p>你有 1 道逾期任务和 3 道今日到期题。建议先重做，再根据自评更新掌握度。</p>
+                <div class="hero-actions">
+                  <button class="primary-btn cinnabar" type="button" data-toast="record-question"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>录入错题</button>
+                  <button class="secondary-btn" type="button" data-nav="review"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>今日复习 · 4</button>
+                </div>
+              </article>
+              <aside class="mastery-note">
+                <div><span class="small-label">本周平均掌握度</span><div class="mastery-value"><strong>68</strong><span>%</span></div><div class="mastery-bar"><i></i></div></div>
+                <p>较上周模拟值提升 6 个百分点。函数与力学仍是优先复习方向。</p>
+              </aside>
+            </div>
+            <div class="home-grid">
+              <section class="paper-panel ruled-paper task-sheet">
+                <div class="panel-head"><h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>今日复习清单</h2><button class="link-button" type="button" data-nav="review">查看全部 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+                <div class="task-list">
+                  <div class="task-row"><span class="task-index">1</span><div class="task-copy"><strong>二次函数的图像与性质</strong><span>已知抛物线顶点与一点，求解析式</span></div><div class="task-meta"><strong>逾期 1 天</strong><span>第 2 / 5 轮</span></div></div>
+                  <div class="task-row"><span class="task-index">2</span><div class="task-copy"><strong>牛顿第二定律</strong><span>斜面上物体的受力与加速度</span></div><div class="task-meta"><strong style="color:var(--jade-dark)">今天</strong><span>第 1 / 5 轮</span></div></div>
+                  <div class="task-row"><span class="task-index">3</span><div class="task-copy"><strong>定语从句</strong><span>关系代词 that 与 which 的选择</span></div><div class="task-meta"><strong style="color:var(--jade-dark)">今天</strong><span>第 3 / 5 轮</span></div></div>
+                </div>
+              </section>
+              <div class="home-side">
+                <section class="paper-panel mini-chart-panel">
+                  <div class="panel-head"><h2 class="section-title">近 7 日学习</h2><span class="tag jade">练习 19 次</span></div>
+                  <svg class="trend-chart" viewBox="0 0 360 130" role="img" aria-label="近七日练习次数总体上升">
+                    <defs><linearGradient id="trendArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#168172" stop-opacity=".25"/><stop offset="1" stop-color="#168172" stop-opacity="0"/></linearGradient></defs>
+                    <path class="grid-line" d="M10 30H350M10 72H350M10 114H350"/><path class="area" d="M14 100 67 83 120 91 173 56 226 67 279 36 346 25V116H14Z"/><path class="line" d="M14 100 67 83 120 91 173 56 226 67 279 36 346 25"/><g><circle class="point" cx="14" cy="100" r="4"/><circle class="point" cx="67" cy="83" r="4"/><circle class="point" cx="120" cy="91" r="4"/><circle class="point" cx="173" cy="56" r="4"/><circle class="point" cx="226" cy="67" r="4"/><circle class="point" cx="279" cy="36" r="4"/><circle class="point" cx="346" cy="25" r="4"/></g>
+                  </svg>
+                </section>
+                <aside class="annotation-card"><strong>老师式批注</strong><p>先完成逾期的二次函数，再录入今天的新错题。任务不必多，但要形成“重做—自评—反馈”的闭环。</p></aside>
+              </div>
+            </div>
+            <section class="paper-panel ruled-paper recent-sheet">
+              <div class="panel-head"><h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg>近期错题</h2><button class="link-button" type="button" data-toast="question-list">打开错题本 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+              <div class="recent-grid">
+                <button class="recent-item" type="button" data-nav="detail"><div class="recent-item-top"><span class="tag navy">数学 · 二次函数</span><strong class="num" style="color:var(--cinnabar-dark)">62%</strong></div><h3>求抛物线的顶点、对称轴与零点</h3><p>单元测验 · 2 天前</p></button>
+                <button class="recent-item" type="button" data-toast="open-question"><div class="recent-item-top"><span class="tag jade">物理 · 力学</span><strong class="num" style="color:var(--amber)">45%</strong></div><h3>斜面上物体的受力与加速度</h3><p>周末作业 · 3 天前</p></button>
+                <button class="recent-item" type="button" data-toast="open-question"><div class="recent-item-top"><span class="tag amber">英语 · 语法</span><strong class="num" style="color:var(--jade-dark)">74%</strong></div><h3>关系代词 that 与 which 的选择</h3><p>随堂练习 · 4 天前</p></button>
+              </div>
+            </section>
+          </div>
+
+          <div class="role-panel" data-role-panel="teacher">
+            <div class="page-head"><div><p class="eyebrow">AGGREGATE LEARNING VIEW</p><h1>王老师，查看全站聚合学情。</h1><p>当前后端没有教师—班级或授课科目关系；以下仅展示全站聚合指标，不提供班级选择与学生钻取。</p></div><div class="page-actions"><span class="prototype-note">教师视角 · 全站聚合</span></div></div>
+            <div class="overview-strip"><div class="overview-item"><span>本周新增错题</span><strong>42</strong><em>道</em></div><div class="overview-item"><span>有效错题总量</span><strong>286</strong><em>道</em></div><div class="overview-item"><span>复习完成</span><strong>76</strong><em>%</em></div><div class="overview-item"><span>平均掌握度</span><strong>64</strong><em>%</em></div></div>
+            <div class="teacher-grid">
+              <section class="paper-panel aggregate-panel"><div class="panel-head"><h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg>各科目聚合掌握度</h2><button class="link-button" type="button" data-nav="report">打开完整报告</button></div><div class="subject-row"><span>数学</span><div class="bar-track"><i style="width:61%"></i></div><strong>61%</strong></div><div class="subject-row"><span>物理</span><div class="bar-track"><i style="width:66%"></i></div><strong>66%</strong></div><div class="subject-row"><span>英语</span><div class="bar-track"><i style="width:72%"></i></div><strong>72%</strong></div><p class="rag-note">这些数值是原型模拟数据；最终页面只使用周报接口返回的全站聚合字段。</p></section>
+              <aside class="paper-panel weak-board"><div class="panel-head"><h2 class="section-title">薄弱知识点</h2><span class="tag red">Top 5</span></div><ol class="weak-list"><li><span>二次函数</span><strong>47%</strong></li><li><span>摩擦力</span><strong>52%</strong></li><li><span>定语从句</span><strong>58%</strong></li><li><span>圆的性质</span><strong>61%</strong></li><li><span>动词时态</span><strong>65%</strong></li></ol></aside>
+            </div>
+          </div>
+
+          <div class="role-panel" data-role-panel="admin">
+            <div class="page-head"><div><p class="eyebrow">SYSTEM DATA DESK</p><h1>系统管理员，维护当前有效数据。</h1><p>概览只反映后端可查询的有效用户、科目、知识点与公告，不虚构模型费用、任务队列或历史趋势。</p></div><div class="page-actions"><button class="primary-btn" type="button" data-nav="admin">进入数据管理</button></div></div>
+            <div class="overview-strip"><div class="overview-item"><span>有效用户</span><strong>128</strong><em>人</em></div><div class="overview-item"><span>启用科目</span><strong>3</strong><em>门</em></div><div class="overview-item"><span>知识点</span><strong>14</strong><em>个</em></div><div class="overview-item"><span>有效公告</span><strong>5</strong><em>条</em></div></div>
+            <div class="admin-home-grid">
+              <section class="paper-panel admin-entry-board"><div class="panel-head"><h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>管理入口</h2><span class="tag navy">当前数据</span></div><div class="management-entries"><button class="management-entry" type="button" data-admin-shortcut="users"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><strong>用户管理</strong><span>查询与逻辑注销</span></button><button class="management-entry" type="button" data-admin-shortcut="subjects"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><strong>科目管理</strong><span>新增与编辑</span></button><button class="management-entry" type="button" data-admin-shortcut="knowledge"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg><strong>知识点管理</strong><span>两级结构增删</span></button><button class="management-entry" type="button" data-admin-shortcut="announcements"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg><strong>公告管理</strong><span>查看与发布</span></button></div></section>
+              <aside class="annotation-card"><strong>权限边界提示</strong><p>管理员原型不展示角色分配、账号恢复、科目删除、公告编辑或下线，因为当前后端没有这些接口。</p></aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="detail" aria-labelledby="detail-title">
+          <div class="breadcrumb"><span>错题本</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><span>数学</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><strong>二次函数</strong></div>
+          <div class="page-head"><div><p class="eyebrow">QUESTION · 024</p><h1 id="detail-title">错题详情与 AI 智能解析</h1><p>模型名称来自解析响应；下方默认内容明确标注为 Mock / 原型模拟数据。</p></div><div class="page-actions"><button class="ghost-btn" type="button" data-open-modal="edit-question"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg>编辑错题</button><button class="danger-btn" type="button" data-toast="delete-question"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>删除</button></div></div>
+          <div class="detail-grid">
+            <article class="paper-panel ruled-paper question-sheet"><span class="question-number">错</span><div class="question-tags"><span class="tag navy">数学</span><span class="tag jade">二次函数</span><span class="tag amber">难度 3 / 5</span></div><p class="question-stem">已知二次函数 <span class="num">y = x² − 4x + 3</span>，求它的顶点坐标、对称轴，并说明图像与 <span class="num">x</span> 轴的交点情况。</p><div class="question-meta"><span>来源：单元测验</span><span>录入：2026-08-21 20:14</span><span>最近练习：2 天前</span></div><div class="answer-reveal"><button class="link-button" type="button" id="answer-toggle" aria-expanded="false" aria-controls="answer-content"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>查看正确答案</button><div class="answer-content" id="answer-content">顶点坐标为（2，−1），对称轴为 <span class="num">x = 2</span>；图像与 <span class="num">x</span> 轴交于（1，0）和（3，0）。</div></div></article>
+            <aside class="paper-panel mastery-side"><h2 class="section-title">掌握度笔记</h2><div class="mastery-ring" style="--value:62%"><div><strong>62</strong><span>%</span></div></div><div class="side-facts"><div class="side-fact"><span>复习阶段</span><strong>第 2 / 5 轮</strong></div><div class="side-fact"><span>连续答对</span><strong>1 次</strong></div><div class="side-fact"><span>下次动作</span><strong>今日重做</strong></div></div><button class="secondary-btn wide-btn" type="button" data-open-modal="practice">开始重做</button></aside>
+          </div>
+          <section class="paper-panel analysis-workbench">
+            <div class="analysis-toolbar"><div class="analysis-tabs" role="tablist" aria-label="错题解析内容"><button class="analysis-tab is-active" type="button" role="tab" aria-selected="true" data-analysis-tab="analysis">AI 智能解析</button><button class="analysis-tab" type="button" role="tab" aria-selected="false" data-analysis-tab="references">RAG 参考</button><button class="analysis-tab" type="button" role="tab" aria-selected="false" data-analysis-tab="variants">AI 变式题</button><button class="analysis-tab" type="button" role="tab" aria-selected="false" data-analysis-tab="practice">练习反馈</button></div><span class="model-badge">分析模型：<strong id="model-label">mock-llm</strong><span class="tag red">原型模拟</span></span></div>
+            <div class="analysis-body">
+              <div class="analysis-pane is-active" data-analysis-pane="analysis">
+                <div class="ai-state-switcher"><span>状态预览</span><button class="state-chip" type="button" data-ai-state="idle">等待</button><button class="state-chip" type="button" data-ai-state="loading">处理中</button><button class="state-chip is-active" type="button" data-ai-state="success">成功</button><button class="state-chip" type="button" data-ai-state="error">失败</button><button class="state-chip" type="button" data-ai-state="timeout">超时</button><button class="state-chip" type="button" data-ai-state="partial">部分结果</button></div>
+                <div class="ai-state-panel" data-ai-panel="idle"><div class="state-illustration"><div><span class="state-symbol">待</span><h3>还没有解析记录</h3><p>触发后系统会创建解析任务。模型标识只有在响应真实提供时才显示。</p><button class="primary-btn" type="button" data-ai-state-trigger="loading">开始 AI 智能解析</button></div></div></div>
+                <div class="ai-state-panel" data-ai-panel="loading"><div class="state-illustration is-loading"><div><span class="state-symbol">析</span><h3>正在梳理题目与本地参考</h3><p>你可以先离开此页，稍后回来查看；页面不会承诺固定完成时间。</p></div></div></div>
+                <div class="ai-state-panel is-active" data-ai-panel="success"><div class="analysis-section"><div class="analysis-label">知识点归类</div><p class="analysis-copy"><span class="tag jade">二次函数</span> <span class="tag">图像与性质</span></p></div><div class="analysis-section"><div class="analysis-label">错因分析</div><p class="analysis-copy">容易在配方时遗漏常数项，或只写出对称轴而没有给出顶点纵坐标。建议把一般式先化为顶点式，再检查与坐标轴的关系。</p></div><div class="analysis-section"><div class="analysis-label">解题路径</div><ol class="analysis-steps"><li>配方：<span class="num">y = (x − 2)² − 1</span>，读出顶点与对称轴。</li><li>令 <span class="num">y = 0</span>，得到 <span class="num">(x − 1)(x − 3) = 0</span>。</li><li>回代并用图像开口方向检查结果。</li></ol></div><div class="rag-note">本段为 Mock / 原型模拟内容，只用于验证信息层级；不代表智谱 GLM 已完成真实业务调用。</div></div>
+                <div class="ai-state-panel" data-ai-panel="error"><div class="state-illustration is-error"><div><span class="state-symbol">!</span><h3>这次解析没有完成</h3><p>已保留原题，不影响查看与编辑。可稍后重试；错误摘要不会暴露密钥或服务端内部信息。</p><button class="danger-btn" type="button" data-ai-state-trigger="loading">重新解析</button></div></div></div>
+                <div class="ai-state-panel" data-ai-panel="timeout"><div class="state-illustration is-error"><div><span class="state-symbol">时</span><h3>等待时间超过预期</h3><p>任务可能仍在服务端继续处理。请刷新状态，避免重复创建相同任务。</p><button class="ghost-btn" type="button" data-ai-state-trigger="loading">刷新状态</button></div></div></div>
+                <div class="ai-state-panel" data-ai-panel="partial"><div class="analysis-section"><div class="analysis-label">已返回内容</div><p class="analysis-copy"><span class="tag jade">二次函数</span> 已完成知识点归类与错因分析。</p></div><div class="analysis-section"><div class="analysis-label">仍然缺失</div><p class="analysis-copy">解析正文或模型标识未返回。页面保留已得到的内容，并明确提示结果不完整。</p></div><div class="rag-note">部分结果由前端根据字段缺失派生，后端当前没有独立“部分成功”状态。</div></div>
+              </div>
+              <div class="analysis-pane" data-analysis-pane="references"><div class="reference-list"><article class="reference-item"><div class="reference-top"><h3>本地参考题 #018</h3><span class="tag amber">原型关联</span></div><p>已知抛物线 <span class="num">y = x² − 6x + 5</span>，求顶点坐标及与坐标轴的交点。</p><div class="reference-foot"><span>同知识点 · 难度 3 / 5</span><span>后端真实响应仅提供内部 ID</span></div></article><article class="reference-item"><div class="reference-top"><h3>本地参考题 #011</h3><span class="tag amber">原型关联</span></div><p>将二次函数一般式化为顶点式，并判断图像的开口方向与最值。</p><div class="reference-foot"><span>同知识点 · 难度 2 / 5</span><span>不展示虚构相似度</span></div></article></div><div class="rag-note">当前后端只返回参考题 ID 字符串，没有相似度、引用片段或来源名称；这里的可读卡片仅用于讨论未来呈现方式。</div></div>
+              <div class="analysis-pane" data-analysis-pane="variants"><div class="variant-list"><article class="variant-item"><div class="variant-top"><h3>变式 1 · 基础巩固</h3><span class="tag jade">难度 2 / 5</span></div><p>已知 <span class="num">y = x² − 2x − 3</span>，求顶点坐标与对称轴。</p><div class="variant-foot"><span>原型模拟数据</span><button class="mini-btn" type="button" data-open-modal="practice">开始作答</button></div></article><article class="variant-item"><div class="variant-top"><h3>变式 2 · 条件变化</h3><span class="tag amber">难度 3 / 5</span></div><p>已知抛物线经过三点，求解析式并判断与 <span class="num">x</span> 轴的交点情况。</p><div class="variant-foot"><span>原型模拟数据</span><button class="mini-btn" type="button" data-open-modal="practice">开始作答</button></div></article><article class="variant-item"><div class="variant-top"><h3>变式 3 · 综合应用</h3><span class="tag red">难度 4 / 5</span></div><p>结合矩形面积情境建立二次函数模型，求最大值及对应自变量。</p><div class="variant-foot"><span>原型模拟数据</span><button class="mini-btn" type="button" data-open-modal="practice">开始作答</button></div></article></div><div class="rag-note">变式题生成接口当前是同步返回；本原型不伪装为异步轮询任务。</div></div>
+              <div class="analysis-pane" data-analysis-pane="practice"><div class="state-illustration"><div><span class="state-symbol">练</span><h3>重做后由你进行结果自评</h3><p>后端记录作答内容、用时与“答对 / 答错”自评，并据此更新错题掌握度；它不是自动判题。</p><button class="primary-btn" type="button" data-open-modal="practice">开始本题练习</button></div></div></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="screen" data-screen="review" aria-labelledby="review-title">
+          <div class="page-head"><div><p class="eyebrow">DUE & OVERDUE</p><h1 id="review-title">到期与逾期复习工作台</h1><p>当前接口只返回计划日期不晚于今天且未完成的任务，因此不展示不可查询的未来日历。</p></div><div class="page-actions"><span class="prototype-note">复习任务 · 原型模拟</span></div></div>
+          <div class="review-banner"><span class="seal">今日</span><div><strong>先完成 1 道逾期题，再处理 3 道今日任务。</strong><p>完成复习只表示任务状态变更；建议先进入错题重做并提交自评。</p></div><div class="filter-chips" role="group" aria-label="筛选复习任务"><button class="filter-chip is-active" type="button" data-review-filter="all">全部 4</button><button class="filter-chip" type="button" data-review-filter="overdue">已逾期 1</button><button class="filter-chip" type="button" data-review-filter="today">今日 3</button></div></div>
+          <div class="review-layout">
+            <section class="paper-panel timeline-panel"><div class="panel-head"><h2 class="section-title"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>今日清单</h2><span class="tag amber">建议顺序</span></div><div class="timeline">
+              <article class="review-item" data-review-state="overdue"><div class="review-copy"><div><span class="tag red">逾期 1 天</span> <span class="tag">第 2 / 5 轮</span></div><h3>二次函数的图像与性质</h3><p>单元测验 · 当前掌握度 62%</p></div><div class="review-actions"><button class="mini-btn" type="button" data-nav="detail">去重做</button><button class="secondary-btn" type="button" data-complete-review>完成复习</button></div></article>
+              <article class="review-item" data-review-state="today"><div class="review-copy"><div><span class="tag jade">今天</span> <span class="tag">第 1 / 5 轮</span></div><h3>斜面上物体的受力分析</h3><p>周末作业 · 当前掌握度 45%</p></div><div class="review-actions"><button class="mini-btn" type="button" data-toast="open-question">去重做</button><button class="secondary-btn" type="button" data-complete-review>完成复习</button></div></article>
+              <article class="review-item" data-review-state="today"><div class="review-copy"><div><span class="tag jade">今天</span> <span class="tag">第 3 / 5 轮</span></div><h3>关系代词 that 与 which</h3><p>随堂练习 · 当前掌握度 74%</p></div><div class="review-actions"><button class="mini-btn" type="button" data-toast="open-question">去重做</button><button class="secondary-btn" type="button" data-complete-review>完成复习</button></div></article>
+              <article class="review-item" data-review-state="today"><div class="review-copy"><div><span class="tag jade">今天</span> <span class="tag">第 2 / 5 轮</span></div><h3>圆周角与圆心角</h3><p>章节测验 · 当前掌握度 58%</p></div><div class="review-actions"><button class="mini-btn" type="button" data-toast="open-question">去重做</button><button class="secondary-btn" type="button" data-complete-review>完成复习</button></div></article>
+            </div></section>
+            <aside class="paper-panel review-summary"><h2 class="section-title">五轮复习进度</h2><div class="review-progress"><strong>2 <span>/ 5 轮</span></strong><div class="mastery-bar"><i style="width:40%"></i></div></div><p style="margin:0;color:var(--ink-soft);font-size:12px;line-height:1.7">当前错题已完成前两轮复习。系统节点为录入后的第 1、2、4、7、15 天。</p><div class="stage-ladder" aria-hidden="true"><i class="done"></i><i class="done"></i><i></i><i></i><i></i></div><div class="stage-labels"><span>+1</span><span>+2</span><span>+4</span><span>+7</span><span>+15</span></div><div class="annotation-card" style="margin-top:25px"><strong>不要只点“完成”</strong><p>先重做、再自评，掌握度才会更新。完成复习接口本身不会自动判题。</p></div></aside>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="report" aria-labelledby="report-title">
+          <div class="page-head"><div><p class="eyebrow">WEEKLY LEARNING REPORT</p><h1 id="report-title">本周学情报告</h1><p><span id="report-scope">个人学习数据</span> · 2026-08-17 至 2026-08-23。数值为原型模拟，字段与真实周报响应保持一致。</p></div><div class="page-actions"><button class="ghost-btn" type="button" data-toast="generate-report"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>生成本周周报</button><span class="prototype-note" id="report-role-note">学生视角</span></div></div>
+          <div class="report-grid">
+            <section class="report-kpis" aria-label="本周关键指标"><div class="report-kpi"><span>本周新增错题</span><strong>7<small>道</small></strong></div><div class="report-kpi"><span>错题总数</span><strong>28<small>道</small></strong></div><div class="report-kpi"><span>复习完成</span><strong>8<small>/ 10 次</small></strong></div><div class="report-kpi"><span>平均掌握度</span><strong>68<small>%</small></strong></div></section>
+            <section class="paper-panel chart-panel large"><h2 class="section-title">每日新增错题</h2><p class="chart-sub">对应 dailyNewQuestions 字段</p><div class="bar-chart" role="img" aria-label="本周每日新增错题分别为 1、0、2、1、0、1、2 道"><div class="bar-column"><i style="height:42%"></i><span>08/17</span></div><div class="bar-column"><i style="height:4%"></i><span>08/18</span></div><div class="bar-column"><i style="height:82%"></i><span>08/19</span></div><div class="bar-column"><i style="height:42%"></i><span>08/20</span></div><div class="bar-column"><i style="height:4%"></i><span>08/21</span></div><div class="bar-column"><i style="height:42%"></i><span>08/22</span></div><div class="bar-column"><i style="height:82%"></i><span>08/23</span></div></div></section>
+            <section class="paper-panel chart-panel medium"><h2 class="section-title">知识点掌握度</h2><p class="chart-sub">单个知识点时也以条形列表表达，不使用退化雷达图</p><div class="knowledge-bars"><div class="knowledge-bar"><span>二次函数</span><i style="--score:47%;--bar-color:var(--cinnabar)"></i><strong>47%</strong></div><div class="knowledge-bar"><span>摩擦力</span><i style="--score:55%;--bar-color:var(--amber)"></i><strong>55%</strong></div><div class="knowledge-bar"><span>圆的性质</span><i style="--score:63%"></i><strong>63%</strong></div><div class="knowledge-bar"><span>动词时态</span><i style="--score:76%"></i><strong>76%</strong></div><div class="knowledge-bar"><span>定语从句</span><i style="--score:81%"></i><strong>81%</strong></div></div></section>
+            <section class="paper-panel chart-panel half"><h2 class="section-title">每日练习量趋势</h2><p class="chart-sub">对应 dailyPractices 字段</p><svg class="line-report" viewBox="0 0 560 220" role="img" aria-label="本周练习量整体上升"><defs><linearGradient id="reportArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b74332" stop-opacity=".18"/><stop offset="1" stop-color="#b74332" stop-opacity="0"/></linearGradient></defs><path class="axis" d="M25 30H540M25 90H540M25 150H540M25 203H540"/><path class="area" d="M32 174 110 140 188 154 266 110 344 125 422 71 532 50V203H32Z"/><path class="path" d="M32 174 110 140 188 154 266 110 344 125 422 71 532 50"/><g><circle cx="32" cy="174" r="4"/><circle cx="110" cy="140" r="4"/><circle cx="188" cy="154" r="4"/><circle cx="266" cy="110" r="4"/><circle cx="344" cy="125" r="4"/><circle cx="422" cy="71" r="4"/><circle cx="532" cy="50" r="4"/></g></svg></section>
+            <aside class="insight-note"><p class="eyebrow">本周批注</p><h2>错题数量不是目标。<br>能否在下一轮复习中答对，才是。</h2><p>本周二次函数新增较多，但练习量同步上升。建议下周优先完成第 3 轮复习，再继续增加新题。</p></aside>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="admin" aria-labelledby="admin-title">
+          <div class="page-head"><div><p class="eyebrow">ADMIN DATA CATALOG</p><h1 id="admin-title">管理员数据管理</h1><p>在一个代表界面中验证用户、科目、知识点与公告的真实管理边界。</p></div><div class="page-actions"><span class="prototype-note">管理员视角 · 原型模拟</span></div></div>
+          <div class="admin-switcher" role="tablist" aria-label="管理员数据模块"><button class="admin-tab is-active" type="button" role="tab" aria-selected="true" data-admin-tab="users">用户</button><button class="admin-tab" type="button" role="tab" aria-selected="false" data-admin-tab="subjects">科目</button><button class="admin-tab" type="button" role="tab" aria-selected="false" data-admin-tab="knowledge">知识点</button><button class="admin-tab" type="button" role="tab" aria-selected="false" data-admin-tab="announcements">公告</button></div>
+          <section class="paper-panel data-panel admin-pane is-active" data-admin-pane="users"><div class="data-toolbar"><select class="compact-select" aria-label="按角色筛选" id="user-role-filter"><option value="all">全部角色</option><option value="student">学生</option><option value="teacher">教师</option><option value="admin">管理员</option></select><input class="compact-input" id="user-search" placeholder="搜索用户名或昵称" aria-label="搜索用户名或昵称"><button class="mini-btn" type="button" id="user-search-button"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>查询</button><span class="spacer"></span><span class="tag navy">有效用户 128</span></div><div class="table-wrap"><table class="data-table"><caption class="sr-only">有效用户列表</caption><thead><tr><th>用户</th><th>角色</th><th>班级</th><th>邮箱</th><th>注册时间</th><th>操作</th></tr></thead><tbody id="user-table-body"><tr data-role="admin" data-search="system 系统管理员"><td><strong>system</strong><br>系统管理员</td><td><span class="tag amber">管理员</span></td><td>—</td><td>admin@example.edu.cn</td><td class="num">2026-08-01</td><td><span class="tag">当前账号</span></td></tr><tr data-role="teacher" data-search="teacher 王老师"><td><strong>teacher</strong><br>王老师</td><td><span class="tag jade">教师</span></td><td>—</td><td>teacher@example.edu.cn</td><td class="num">2026-08-05</td><td><button class="mini-btn" type="button" data-toast="deactivate-user">注销</button></td></tr><tr data-role="student" data-search="student_01 林同学"><td><strong>student_01</strong><br>林同学</td><td><span class="tag navy">学生</span></td><td>2023级软件工程1班</td><td>lin@example.edu.cn</td><td class="num">2026-08-12</td><td><button class="mini-btn" type="button" data-toast="deactivate-user">注销</button></td></tr><tr data-role="student" data-search="student_02 陈同学"><td><strong>student_02</strong><br>陈同学</td><td><span class="tag navy">学生</span></td><td>2023级软件工程1班</td><td>chen@example.edu.cn</td><td class="num">2026-08-15</td><td><button class="mini-btn" type="button" data-toast="deactivate-user">注销</button></td></tr></tbody></table></div><div class="table-note"><span>仅查询有效用户；注销为逻辑删除，当前后端不支持恢复或改角色。</span><span class="num">1 / 32 页</span></div></section>
+          <section class="paper-panel data-panel admin-pane" data-admin-pane="subjects"><div class="data-toolbar"><span class="tag navy">启用科目 3</span><span class="spacer"></span><button class="primary-btn" type="button" data-open-modal="add-subject"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>新增科目</button></div><div class="subject-catalog"><article class="subject-card"><span class="subject-code">MATH · SORT 01</span><h3>数学</h3><p>函数、几何等 6 个知识点</p><div class="subject-card-foot"><span class="tag jade">启用</span><button class="mini-btn" type="button" data-open-modal="edit-subject">编辑</button></div></article><article class="subject-card"><span class="subject-code">PHYSICS · SORT 02</span><h3>物理</h3><p>力学、电学等 5 个知识点</p><div class="subject-card-foot"><span class="tag jade">启用</span><button class="mini-btn" type="button" data-open-modal="edit-subject">编辑</button></div></article><article class="subject-card"><span class="subject-code">ENGLISH · SORT 03</span><h3>英语</h3><p>语法等 3 个知识点</p><div class="subject-card-foot"><span class="tag jade">启用</span><button class="mini-btn" type="button" data-open-modal="edit-subject">编辑</button></div></article></div><div class="rag-note">当前后端支持科目新增与编辑，不提供删除接口；原型不展示“删除科目”。</div></section>
+          <section class="paper-panel data-panel admin-pane" data-admin-pane="knowledge"><div class="data-toolbar"><select class="compact-select" aria-label="选择科目"><option>数学</option><option>物理</option><option>英语</option></select><span class="tag navy">两级知识点</span><span class="spacer"></span><button class="primary-btn" type="button" data-open-modal="add-chapter"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>新增章节</button></div><div class="knowledge-tree"><article class="knowledge-chapter"><div class="knowledge-chapter-head"><strong>函数</strong><button class="mini-btn" type="button" data-open-modal="add-knowledge">添加考点</button></div><div class="knowledge-leaves"><span class="knowledge-leaf">一次函数 <button class="leaf-delete" type="button" aria-label="删除一次函数" data-toast="delete-leaf">×</button></span><span class="knowledge-leaf">二次函数 <button class="leaf-delete" type="button" aria-label="删除二次函数" data-toast="delete-leaf">×</button></span></div></article><article class="knowledge-chapter"><div class="knowledge-chapter-head"><strong>几何</strong><button class="mini-btn" type="button" data-open-modal="add-knowledge">添加考点</button></div><div class="knowledge-leaves"><span class="knowledge-leaf">三角形全等 <button class="leaf-delete" type="button" aria-label="删除三角形全等" data-toast="delete-leaf">×</button></span><span class="knowledge-leaf">圆的性质 <button class="leaf-delete" type="button" aria-label="删除圆的性质" data-toast="delete-leaf">×</button></span></div></article></div><div class="rag-note">章节含子节点时不能删除；当前后端没有知识点编辑接口，只提供新增与叶节点删除。</div></section>
+          <section class="paper-panel data-panel admin-pane" data-admin-pane="announcements"><div class="data-toolbar"><span class="tag navy">有效公告 5</span><span class="spacer"></span><button class="primary-btn" type="button" data-open-modal="publish-announcement"><svg class="icon" aria-hidden="true"><use href="#i-megaphone"/></svg>发布公告</button></div><div class="announcement-list"><article class="announcement-row"><div class="announcement-date"><strong>23</strong><span>AUG</span></div><div class="announcement-copy"><strong>本周错题复习提醒</strong><p>请及时完成到期错题复习，学情周报将在周日晚生成。</p></div><span class="tag jade">有效</span></article><article class="announcement-row"><div class="announcement-date"><strong>18</strong><span>AUG</span></div><div class="announcement-copy"><strong>系统使用说明更新</strong><p>错题详情页新增 RAG 参考关系说明，请注意原型与真实模型证据边界。</p></div><span class="tag jade">有效</span></article></div><div class="rag-note">当前后端只支持公告查看与发布，不提供编辑、下线或删除；原型因此不放置对应按钮。</div></section>
+        </section>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="移动端核心导航"><button class="is-active is-role-visible" type="button" data-nav="home" data-roles="student,teacher,admin"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>首页</span></button><button class="is-role-visible" type="button" data-nav="detail" data-roles="student"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg><span>错题</span></button><button class="is-role-visible" type="button" data-nav="review" data-roles="student"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>复习</span></button><button class="is-role-visible" type="button" data-nav="report" data-roles="student,teacher"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><span>报告</span></button><button type="button" data-nav="admin" data-roles="admin"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>管理</span></button><button class="is-role-visible" type="button" data-roles="student,teacher,admin" data-toast="more-menu"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>更多</span></button></nav>
+  </div>
+
+  <div class="prototype-dock" id="prototype-dock">
+    <div class="dock-panel" id="dock-panel" aria-label="原型导航">
+      <span class="dock-label">六个代表界面</span>
+      <div class="dock-grid"><button class="dock-screen is-active" type="button" data-dock-screen="auth">登录 / 注册</button><button class="dock-screen" type="button" data-dock-screen="home">角色首页</button><button class="dock-screen" type="button" data-dock-screen="detail">错题详情</button><button class="dock-screen" type="button" data-dock-screen="review">复习计划</button><button class="dock-screen" type="button" data-dock-screen="report">学情报告</button><button class="dock-screen" type="button" data-dock-screen="admin">数据管理</button></div>
+      <div class="dock-role-row" aria-label="角色预览"><button class="dock-role is-active" type="button" data-role="student">学生</button><button class="dock-role" type="button" data-role="teacher">教师</button><button class="dock-role" type="button" data-role="admin">管理员</button></div>
+      <p style="margin:9px 2px 0;color:var(--ink-faint);font-size:9px;line-height:1.5">角色预览仅切换原型界面，不执行真实登录。</p>
+    </div>
+    <button class="dock-toggle" type="button" aria-expanded="false" aria-controls="dock-panel"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>原型导航</span></button>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" role="presentation">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <div class="modal-head"><div><h2 id="modal-title">编辑内容</h2><p id="modal-description">这是原型交互，不会连接后端或保存真实数据。</p></div><button class="modal-close" type="button" aria-label="关闭弹窗"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+      <div class="modal-body" id="modal-body"></div>
+    </section>
+  </div>
+
+  <script>
+    (() => {
+      const screenMeta = {
+        auth: ['登录 / 注册', '回到学习桌'],
+        home: ['今日工作台', '把今天要做的事收在一页'],
+        detail: ['错题与解析', '查看题目、AI 解析与练习'],
+        review: ['复习计划', '处理到期与逾期任务'],
+        report: ['学情报告', '查看本周学习反馈'],
+        admin: ['数据管理', '维护有效业务数据']
+      };
+      const roleMeta = {
+        student: { name: '林同学', label: '学生', avatar: '林' },
+        teacher: { name: '王老师', label: '教师', avatar: '王' },
+        admin: { name: '系统管理员', label: '管理员', avatar: '管' }
+      };
+      const modalCopy = {
+        'edit-question': { title: '编辑错题', desc: '补齐后端已有的错题修改能力。', body: `<div class="field"><label for="modal-subject">科目</label><select id="modal-subject"><option>数学</option><option>物理</option><option>英语</option></select></div><div class="field"><label for="modal-stem">题干</label><textarea id="modal-stem">已知二次函数 y = x² − 4x + 3，求顶点坐标、对称轴及与 x 轴的交点。</textarea></div><div class="field"><label for="modal-answer">正确答案 <span>选填</span></label><textarea id="modal-answer">顶点（2，−1），对称轴 x = 2，与 x 轴交于（1，0）、（3，0）。</textarea></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="错题修改已在原型中保存">保存修改</button></div>` },
+        practice: { title: '本题重做与自评', desc: '后端记录答案、用时和学生自评，不进行自动判题。', body: `<div class="field"><label for="practice-answer">我的作答</label><textarea id="practice-answer" placeholder="写下你的解题过程与答案"></textarea></div><div class="field"><label for="practice-result">结果自评</label><select id="practice-result"><option>答对了</option><option>答错了</option></select></div><div class="field"><label for="practice-duration">用时（秒） <span>选填</span></label><input id="practice-duration" type="number" min="0" max="7200" value="180"></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="练习记录已提交（原型模拟）">提交自评</button></div>` },
+        'add-subject': { title: '新增科目', desc: '当前后端支持新增科目。', body: `<div class="field"><label for="subject-name">科目名称</label><input id="subject-name" placeholder="例如：化学"></div><div class="field"><label for="subject-code">科目编码 <span>选填</span></label><input id="subject-code" placeholder="例如：CHEMISTRY"></div><div class="field"><label for="subject-sort">排序号</label><input id="subject-sort" type="number" min="0" value="4"></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="科目已新增（原型模拟）">保存</button></div>` },
+        'edit-subject': { title: '编辑科目', desc: '只修改名称、编码与排序；当前后端不支持删除。', body: `<div class="field"><label for="subject-edit-name">科目名称</label><input id="subject-edit-name" value="数学"></div><div class="field"><label for="subject-edit-code">科目编码</label><input id="subject-edit-code" value="MATH"></div><div class="field"><label for="subject-edit-sort">排序号</label><input id="subject-edit-sort" type="number" value="1"></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="科目已更新（原型模拟）">保存修改</button></div>` },
+        'add-chapter': { title: '新增知识章节', desc: 'parentId 为 0，表示一级章节。', body: `<div class="field"><label for="chapter-name">章节名称</label><input id="chapter-name" placeholder="例如：统计与概率"></div><div class="field"><label for="chapter-sort">排序号</label><input id="chapter-sort" type="number" value="3"></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="章节已新增（原型模拟）">保存</button></div>` },
+        'add-knowledge': { title: '添加二级考点', desc: '当前后端只支持新增与叶节点删除。', body: `<div class="field"><label for="knowledge-name">考点名称</label><input id="knowledge-name" placeholder="例如：函数单调性"></div><div class="field"><label for="knowledge-sort">排序号</label><input id="knowledge-sort" type="number" value="3"></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="考点已新增（原型模拟）">保存</button></div>` },
+        'publish-announcement': { title: '发布公告', desc: '当前后端支持发布，不提供编辑、下线或删除。', body: `<div class="field"><label for="announcement-title">公告标题</label><input id="announcement-title" placeholder="请输入标题" maxlength="128"></div><div class="field"><label for="announcement-content">公告内容 <span>选填</span></label><textarea id="announcement-content" placeholder="请输入公告正文"></textarea></div><div class="modal-actions"><button class="ghost-btn" type="button" data-modal-cancel>取消</button><button class="primary-btn" type="button" data-modal-save="公告已发布（原型模拟）">发布</button></div>` }
+      };
+
+      let currentScreen = 'auth';
+      let currentRole = 'student';
+      let lastFocused = null;
+      const appShell = document.getElementById('app-shell');
+      const main = document.getElementById('main-content');
+      const dock = document.getElementById('prototype-dock');
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      const modal = modalBackdrop.querySelector('.modal');
+
+      function toast(type, title, message) {
+        const region = document.getElementById('toast-region');
+        const item = document.createElement('div');
+        item.className = `toast${type === 'error' ? ' is-error' : ''}`;
+        item.innerHTML = `<span class="toast-symbol">${type === 'error' ? '!' : '✓'}</span><div><strong>${title}</strong><span>${message}</span></div>`;
+        region.appendChild(item);
+        window.setTimeout(() => item.remove(), 4200);
+      }
+
+      const toastMap = {
+        'error-login': ['error', '登录失败', '用户名或密码不正确，请检查后重试。'],
+        'disabled-account': ['error', '账号已停用', '该账号暂时无法登录，请联系管理员处理。'],
+        'expired-token': ['error', '登录已过期', '为保护账号安全，请重新登录后继续。'],
+        messages: ['success', '消息中心', '你有 3 条未读消息，其中 1 条为复习提醒。'],
+        profile: ['success', '个人入口', '正式页面将在这里提供个人资料与退出登录。'],
+        'record-question': ['success', '错题录入入口', '本阶段只验证设计，不连接后端或保存数据。'],
+        'question-list': ['success', '错题本入口', '本轮原型用近期错题验证信息层级，完整列表将在设计确认后重构。'],
+        'delete-question': ['error', '删除确认', '正式实现会先二次确认；当前原型不会删除任何数据。'],
+        'open-question': ['success', '打开错题', '这是另一道任务的原型入口。'],
+        'generate-report': ['success', '周报已生成', '原型模拟：消息中心将收到“学情周报已生成”。'],
+        'deactivate-user': ['error', '注销用户', '正式实现会二次确认并执行逻辑注销，不能恢复或修改角色。'],
+        'delete-leaf': ['error', '删除知识点', '仅叶节点可删除；原型不会修改真实数据。'],
+        'more-menu': ['success', '更多功能', '消息、公告、个人中心与次要入口将在这里展开。']
+      };
+
+      function roleAllows(screen) {
+        if (screen === 'detail' || screen === 'review') return currentRole === 'student';
+        if (screen === 'report') return currentRole === 'student' || currentRole === 'teacher';
+        if (screen === 'admin') return currentRole === 'admin';
+        return true;
+      }
+
+      function showScreen(name, options = {}) {
+        if (!screenMeta[name]) name = 'auth';
+        if (name !== 'auth' && !roleAllows(name)) {
+          name = 'home';
+          toast('error', '已切换到角色首页', '该代表界面不属于当前角色的可见菜单。');
+        }
+        currentScreen = name;
+        document.querySelectorAll('[data-screen]').forEach(section => section.classList.toggle('is-active', section.dataset.screen === name));
+        appShell.hidden = name === 'auth';
+        document.querySelectorAll('[data-nav]').forEach(button => {
+          const active = button.dataset.nav === name;
+          button.classList.toggle('is-active', active);
+          if (active) button.setAttribute('aria-current', 'page'); else button.removeAttribute('aria-current');
+        });
+        document.querySelectorAll('[data-dock-screen]').forEach(button => button.classList.toggle('is-active', button.dataset.dockScreen === name));
+        if (name !== 'auth') {
+          document.getElementById('top-page-title').textContent = screenMeta[name][0];
+          document.getElementById('top-page-subtitle').textContent = screenMeta[name][1];
+        }
+        document.title = `${screenMeta[name][0]} · 知错设计原型`;
+        if (!options.fromHash) history.replaceState(null, '', `${location.pathname}${location.search}#${name}:${currentRole}`);
+        if (!options.keepScroll) window.scrollTo(0, 0);
+        if (name !== 'auth' && !options.noFocus) requestAnimationFrame(() => main.focus({ preventScroll: true }));
+      }
+
+      function setRole(role, options = {}) {
+        if (!roleMeta[role]) role = 'student';
+        currentRole = role;
+        document.body.dataset.role = role;
+        document.querySelectorAll('[data-role-panel]').forEach(panel => panel.classList.toggle('is-active', panel.dataset.rolePanel === role));
+        document.querySelectorAll('[data-role]').forEach(button => button.classList.toggle('is-active', button.dataset.role === role));
+        document.querySelectorAll('[data-roles]').forEach(item => {
+          const allowed = item.dataset.roles.split(',').includes(role);
+          item.classList.toggle('is-role-visible', allowed);
+        });
+        const meta = roleMeta[role];
+        document.getElementById('profile-name').textContent = meta.name;
+        document.getElementById('profile-role').textContent = meta.label;
+        document.getElementById('profile-avatar').textContent = meta.avatar;
+        document.getElementById('report-scope').textContent = role === 'teacher' ? '全站聚合学习数据（无班级绑定）' : '个人学习数据';
+        document.getElementById('report-role-note').textContent = role === 'teacher' ? '教师视角 · 全站聚合' : '学生视角';
+        if (!options.fromHash && !roleAllows(currentScreen) && currentScreen !== 'auth') showScreen('home');
+        else if (!options.fromHash) history.replaceState(null, '', `${location.pathname}${location.search}#${currentScreen}:${role}`);
+      }
+
+      function selectAuthTab(name) {
+        document.querySelectorAll('[data-auth-tab]').forEach(tab => {
+          const active = tab.dataset.authTab === name;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', String(active));
+        });
+        document.querySelectorAll('[data-auth-form]').forEach(form => {
+          const active = form.dataset.authForm === name;
+          form.classList.toggle('is-active', active);
+          form.hidden = !active;
+        });
+        document.querySelector('.auth-heading').textContent = name === 'login' ? '回到学习桌' : '装订第一道错题';
+        document.querySelector('.auth-helper').textContent = name === 'login' ? '登录后继续今天的错题整理与复习。' : '注册只创建学生账号，教师与管理员角色由系统维护。';
+      }
+
+      function selectAnalysisTab(name) {
+        document.querySelectorAll('[data-analysis-tab]').forEach(tab => {
+          const active = tab.dataset.analysisTab === name;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', String(active));
+        });
+        document.querySelectorAll('[data-analysis-pane]').forEach(pane => pane.classList.toggle('is-active', pane.dataset.analysisPane === name));
+      }
+
+      function selectAiState(name) {
+        document.querySelectorAll('[data-ai-state]').forEach(chip => chip.classList.toggle('is-active', chip.dataset.aiState === name));
+        document.querySelectorAll('[data-ai-panel]').forEach(panel => panel.classList.toggle('is-active', panel.dataset.aiPanel === name));
+        const model = document.getElementById('model-label');
+        model.textContent = ['success', 'partial'].includes(name) ? 'mock-llm' : '未提供';
+      }
+
+      function selectAdminPane(name) {
+        document.querySelectorAll('[data-admin-tab]').forEach(tab => {
+          const active = tab.dataset.adminTab === name;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', String(active));
+        });
+        document.querySelectorAll('[data-admin-pane]').forEach(pane => pane.classList.toggle('is-active', pane.dataset.adminPane === name));
+      }
+
+      function openModal(name) {
+        const copy = modalCopy[name];
+        if (!copy) return;
+        lastFocused = document.activeElement;
+        document.getElementById('modal-title').textContent = copy.title;
+        document.getElementById('modal-description').textContent = copy.desc;
+        document.getElementById('modal-body').innerHTML = copy.body;
+        modalBackdrop.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => modal.focus());
+      }
+
+      function closeModal() {
+        modalBackdrop.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+      }
+
+      function applyUserFilter() {
+        const role = document.getElementById('user-role-filter').value;
+        const query = document.getElementById('user-search').value.trim().toLowerCase();
+        let visible = 0;
+        document.querySelectorAll('#user-table-body tr').forEach(row => {
+          const matchesRole = role === 'all' || row.dataset.role === role;
+          const matchesQuery = !query || row.dataset.search.toLowerCase().includes(query);
+          row.hidden = !(matchesRole && matchesQuery);
+          if (!row.hidden) visible++;
+        });
+        toast('success', '筛选已更新', `当前显示 ${visible} 条原型记录。`);
+      }
+
+      document.addEventListener('click', event => {
+        const target = event.target.closest('button');
+        if (!target) return;
+        if (target.dataset.nav) showScreen(target.dataset.nav);
+        if (target.dataset.dockScreen) showScreen(target.dataset.dockScreen);
+        if (target.dataset.role) setRole(target.dataset.role);
+        if (target.dataset.authTab) selectAuthTab(target.dataset.authTab);
+        if (target.dataset.analysisTab) selectAnalysisTab(target.dataset.analysisTab);
+        if (target.dataset.aiState) selectAiState(target.dataset.aiState);
+        if (target.dataset.aiStateTrigger) selectAiState(target.dataset.aiStateTrigger);
+        if (target.dataset.adminTab) selectAdminPane(target.dataset.adminTab);
+        if (target.dataset.adminShortcut) { setRole('admin'); showScreen('admin'); selectAdminPane(target.dataset.adminShortcut); }
+        if (target.dataset.openModal) openModal(target.dataset.openModal);
+        if (target.dataset.toast && toastMap[target.dataset.toast]) toast(...toastMap[target.dataset.toast]);
+        if (target.matches('.dock-toggle')) {
+          dock.classList.toggle('is-open');
+          target.setAttribute('aria-expanded', String(dock.classList.contains('is-open')));
+        }
+        if (target.matches('.modal-close') || target.dataset.modalCancel !== undefined) closeModal();
+        if (target.dataset.modalSave) { closeModal(); toast('success', '操作完成', target.dataset.modalSave); }
+        if (target.dataset.passwordToggle) {
+          const input = document.getElementById(target.dataset.passwordToggle);
+          input.type = input.type === 'password' ? 'text' : 'password';
+          target.setAttribute('aria-label', input.type === 'password' ? '显示密码' : '隐藏密码');
+        }
+        if (target.id === 'answer-toggle') {
+          const answer = document.getElementById('answer-content');
+          answer.classList.toggle('is-visible');
+          target.setAttribute('aria-expanded', String(answer.classList.contains('is-visible')));
+          target.lastChild.textContent = answer.classList.contains('is-visible') ? ' 收起正确答案' : ' 查看正确答案';
+        }
+        if (target.dataset.reviewFilter) {
+          document.querySelectorAll('[data-review-filter]').forEach(chip => chip.classList.toggle('is-active', chip === target));
+          document.querySelectorAll('.review-item').forEach(item => item.hidden = target.dataset.reviewFilter !== 'all' && item.dataset.reviewState !== target.dataset.reviewFilter);
+        }
+        if (target.dataset.completeReview !== undefined) {
+          const item = target.closest('.review-item');
+          item.classList.add('is-done');
+          target.disabled = true;
+          target.textContent = '已完成';
+          toast('success', '复习任务已完成', '原型模拟：任务状态已更新，建议继续提交练习自评。');
+        }
+        if (target.id === 'user-search-button') applyUserFilter();
+      });
+
+      document.querySelectorAll('[data-auth-form]').forEach(form => form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (form.dataset.authForm === 'register') {
+          toast('success', '注册成功', '学生账号已创建（原型模拟），请返回登录。');
+          selectAuthTab('login');
+        } else {
+          toast('success', '欢迎回来', '正在进入学生学习工作台。');
+          setRole('student');
+          showScreen('home');
+        }
+      }));
+
+      document.getElementById('global-search').addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          const value = event.currentTarget.value.trim();
+          toast('success', '页面与功能搜索', value ? `正在查找“${value}”（原型交互）。` : '请输入页面或功能名称。');
+        }
+      });
+      document.getElementById('user-search').addEventListener('keydown', event => { if (event.key === 'Enter') applyUserFilter(); });
+      document.getElementById('user-role-filter').addEventListener('change', applyUserFilter);
+      document.getElementById('sidebar-collapse').addEventListener('click', event => {
+        const collapsed = appShell.classList.toggle('is-collapsed');
+        event.currentTarget.setAttribute('aria-expanded', String(!collapsed));
+        event.currentTarget.setAttribute('aria-label', collapsed ? '展开侧边导航' : '折叠侧边导航');
+      });
+
+      modalBackdrop.addEventListener('click', event => { if (event.target === modalBackdrop) closeModal(); });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          if (modalBackdrop.classList.contains('is-open')) closeModal();
+          else if (dock.classList.contains('is-open')) { dock.classList.remove('is-open'); dock.querySelector('.dock-toggle').setAttribute('aria-expanded', 'false'); }
+        }
+      });
+
+      function loadFromHash() {
+        const value = location.hash.replace('#', '');
+        const [screen, role] = value.split(':');
+        if (roleMeta[role]) setRole(role, { fromHash: true });
+        showScreen(screenMeta[screen] ? screen : 'auth', { fromHash: true, noFocus: true });
+      }
+      window.addEventListener('hashchange', loadFromHash);
+      const params = new URLSearchParams(location.search);
+      if (params.get('capture') === '1') document.documentElement.dataset.capture = 'true';
+      setRole('student', { fromHash: true });
+      loadFromHash();
+    })();
+  </script>
+</body>
+</html>
