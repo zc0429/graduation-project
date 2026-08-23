@@ -1,6 +1,8 @@
 # 毕业设计
 
-**题目**：基于 Spring Boot+Vue 的 AI 错题分析与学习推荐系统设计与实现
+**题目**：基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现
+
+**英文题目**：Design and Implementation of an AI-Powered Wrong-Question Analysis and Learning Recommendation System Based on the Zhipu GLM Model
 
 **指导教师**：胡韬（人工智能学院，2027 届）
 
