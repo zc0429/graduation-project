@@ -1,396 +1,377 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { MagicStick, Refresh } from '@element-plus/icons-vue'
+import { Delete, EditPen, MagicStick, Refresh, Timer, View } from '@element-plus/icons-vue'
 import {
-  aiApi,
   kpApi,
   practiceApi,
   questionApi,
   recommendApi,
   subjectApi,
   variantApi,
-  type AiAnalysis,
   type KpNode,
+  type PracticeTarget,
   type Question,
+  type QuestionPayload,
   type Subject,
   type VariantQuestion,
 } from '@/api'
+import AsyncState from '@/components/AsyncState.vue'
+import MasteryIndicator from '@/components/MasteryIndicator.vue'
+import PageHeader from '@/components/PageHeader.vue'
+import PaperPanel from '@/components/PaperPanel.vue'
+import { useAiAnalysisPolling } from '@/composables/useAiAnalysisPolling'
 
 const route = useRoute()
 const router = useRouter()
-const questionId = Number(route.params.id)
-
+const questionId = computed(() => Number(route.params.id))
 const question = ref<Question>()
-const analysis = ref<AiAnalysis | null>(null)
-const similarQuestions = ref<Question[]>([])
-const variants = ref<VariantQuestion[]>([])
 const subjects = ref<Subject[]>([])
-const allKpTree = ref<KpNode[]>([])
-const analyzing = ref(false)
+const knowledgeTree = ref<KpNode[]>([])
+const variants = ref<VariantQuestion[]>([])
+const similarQuestions = ref<Question[]>([])
+const pageLoading = ref(true)
+const pageError = ref('')
+const similarLoading = ref(false)
+const similarError = ref('')
+const variantLoading = ref(false)
+const variantError = ref('')
 const generating = ref(false)
-const loadingSimilar = ref(false)
+const deleting = ref(false)
+const activeTab = ref('analysis')
+const answerVisible = ref(false)
 
-let pollTimer: ReturnType<typeof setInterval> | undefined
+const editVisible = ref(false)
+const editSaving = ref(false)
+const editError = ref('')
+const editForm = reactive({ subjectId: undefined as number | undefined, stem: '', answer: '', source: '' })
 
-/* 作答对话框 */
 const practiceVisible = ref(false)
-const practiceForm = ref({ target: {} as { questionId?: number; variantId?: number }, userAnswer: '', isCorrect: 1, duration: undefined as number | undefined })
+const practiceSaving = ref(false)
+const practiceError = ref('')
 const practiceTitle = ref('')
+const practiceForm = reactive({ target: undefined as PracticeTarget | undefined, userAnswer: '', isCorrect: 1, duration: undefined as number | undefined })
 
-const analysisStatus = computed(() => analysis.value?.status)
+const polling = useAiAnalysisPolling(questionId, {
+  onSuccess: async () => {
+    ElMessage.success('AI 智能解析已完成')
+    await Promise.allSettled([loadQuestion(), loadSimilar()])
+  },
+})
 
-function subjectName(id?: number) {
-  return subjects.value.find((s) => s.id === id)?.name || '-'
-}
-
-function kpName(id?: number) {
-  if (!id) return '未归类'
-  for (const root of allKpTree.value) {
-    if (root.id === id) return root.name
-    for (const c of root.children) if (c.id === id) return c.name
-  }
-  return '未归类'
-}
-
-function referenceIds(): number[] {
+const referenceIds = computed<number[]>(() => {
   try {
-    return JSON.parse(analysis.value?.referenceIds || '[]')
+    const parsed = JSON.parse(polling.analysis.value?.referenceIds || '[]')
+    return Array.isArray(parsed) ? parsed.map(Number).filter((id) => Number.isSafeInteger(id) && id > 0) : []
   } catch {
     return []
   }
+})
+
+const analysisPartial = computed(() => polling.state.value === 'success' && (
+  !polling.analysis.value?.analysis || !polling.analysis.value?.errorCause || !polling.analysis.value?.llmModel
+))
+
+function subjectName(id?: number) {
+  return subjects.value.find((item) => item.id === id)?.name || '科目未识别'
 }
 
-async function loadAll() {
-  const [q, a] = await Promise.all([
-    questionApi.detail(questionId),
-    aiApi.analysis(questionId).catch(() => null),
-  ])
-  question.value = q
-  analysis.value = a
-  if (a?.status === 0) startPolling()
-  loadSimilar()
-  loadVariants()
+function knowledgeName(id?: number) {
+  if (!id) return '尚未归类'
+  const queue = [...knowledgeTree.value]
+  while (queue.length) {
+    const node = queue.shift()!
+    if (node.id === id) return node.name
+    queue.push(...(node.children || []))
+  }
+  return '知识点未识别'
+}
+
+function difficultyText(value?: number) {
+  return value ? `${value} / 5` : '待评估'
+}
+
+async function loadQuestion() {
+  question.value = await questionApi.detail(questionId.value)
 }
 
 async function loadSimilar() {
-  loadingSimilar.value = true
+  similarLoading.value = true
+  similarError.value = ''
   try {
-    similarQuestions.value = await recommendApi.similar(questionId)
+    similarQuestions.value = await recommendApi.similar(questionId.value)
+  } catch (error) {
+    similarError.value = error instanceof Error ? error.message : '相似题暂时无法加载。'
+    similarQuestions.value = []
   } finally {
-    loadingSimilar.value = false
+    similarLoading.value = false
   }
 }
 
 async function loadVariants() {
-  variants.value = await variantApi.list(questionId)
+  variantLoading.value = true
+  variantError.value = ''
+  try {
+    variants.value = await variantApi.list(questionId.value)
+  } catch (error) {
+    variantError.value = error instanceof Error ? error.message : '变式题暂时无法加载。'
+  } finally {
+    variantLoading.value = false
+  }
 }
 
-function startPolling() {
-  stopPolling()
-  analyzing.value = true
-  pollTimer = setInterval(async () => {
-    const a = await aiApi.analysis(questionId)
-    analysis.value = a
-    if (a && a.status !== 0) {
-      stopPolling()
-      if (a.status === 1) {
-        ElMessage.success('AI 解析完成')
-        question.value = await questionApi.detail(questionId)
-        loadSimilar()
-      } else {
-        ElMessage.error('解析失败，可重新触发')
-      }
+async function loadPage() {
+  if (!Number.isSafeInteger(questionId.value) || questionId.value <= 0) {
+    pageLoading.value = false
+    pageError.value = '错题编号无效。'
+    return
+  }
+  pageLoading.value = true
+  pageError.value = ''
+  answerVisible.value = false
+  similarQuestions.value = []
+  variants.value = []
+  polling.stop()
+  try {
+    if (!subjects.value.length) {
+      const [subjectData, knowledgeData] = await Promise.all([subjectApi.list(), kpApi.tree()])
+      subjects.value = subjectData
+      knowledgeTree.value = knowledgeData
     }
-  }, 2000)
+    await loadQuestion()
+    const results = await Promise.allSettled([polling.sync(), loadVariants()])
+    if (results[0].status === 'fulfilled' && polling.state.value === 'success') await loadSimilar()
+  } catch (error) {
+    pageError.value = error instanceof Error ? error.message : '错题详情暂时无法加载。'
+  } finally {
+    pageLoading.value = false
+  }
 }
 
-function stopPolling() {
-  analyzing.value = false
-  if (pollTimer) clearInterval(pollTimer)
-  pollTimer = undefined
-}
-
-async function triggerAnalyze() {
-  await aiApi.analyze(questionId)
-  analysis.value = { ...(analysis.value || {}), status: 0 } as AiAnalysis
-  startPolling()
+async function triggerAnalysis() {
+  try {
+    await polling.trigger()
+  } catch {
+    // The composable exposes the normalized error for the inline state.
+  }
 }
 
 async function generateVariants() {
+  if (generating.value) return
   generating.value = true
+  variantError.value = ''
   try {
-    const list = await variantApi.generate(questionId)
-    ElMessage.success(`已生成 ${list.length} 道变式题`)
+    const generated = await variantApi.generate(questionId.value)
+    ElMessage.success(`已生成 ${generated.length} 道变式题`)
     await loadVariants()
+  } catch (error) {
+    variantError.value = error instanceof Error ? error.message : '变式题生成失败，请稍后重试。'
   } finally {
     generating.value = false
   }
 }
 
-async function handleDelete() {
-  await ElMessageBox.confirm('删除后将级联清理解析、变式题与复习计划，确认删除？', '删除错题', { type: 'warning' })
-  await questionApi.remove(questionId)
-  ElMessage.success('已删除')
-  router.push('/question/list')
+function openEdit() {
+  if (!question.value) return
+  editForm.subjectId = question.value.subjectId
+  editForm.stem = question.value.stem
+  editForm.answer = question.value.answer || ''
+  editForm.source = question.value.source || ''
+  editError.value = ''
+  editVisible.value = true
 }
 
-function openPractice(target: { questionId?: number; variantId?: number }, title: string) {
-  practiceForm.value = { target, userAnswer: '', isCorrect: 1, duration: undefined }
+async function saveEdit() {
+  if (!editForm.subjectId || !editForm.stem.trim()) {
+    editError.value = '科目和题干不能为空。'
+    return
+  }
+  editSaving.value = true
+  editError.value = ''
+  const payload: QuestionPayload = {
+    subjectId: editForm.subjectId,
+    stem: editForm.stem.trim(),
+    answer: editForm.answer.trim() || undefined,
+    source: editForm.source.trim() || undefined,
+  }
+  try {
+    await questionApi.update(questionId.value, payload)
+    editVisible.value = false
+    await loadQuestion()
+    ElMessage.success('错题内容已更新')
+  } catch (error) {
+    editError.value = error instanceof Error ? error.message : '错题保存失败。'
+  } finally {
+    editSaving.value = false
+  }
+}
+
+async function removeQuestion() {
+  try {
+    await ElMessageBox.confirm('删除后，相关 AI 解析、变式题与复习计划也会被清理。确认继续吗？', '删除错题', {
+      confirmButtonText: '确认删除', cancelButtonText: '保留错题', type: 'warning',
+    })
+  } catch {
+    return
+  }
+  deleting.value = true
+  try {
+    await questionApi.remove(questionId.value)
+    ElMessage.success('错题已删除')
+    await router.replace('/question/list')
+  } finally {
+    deleting.value = false
+  }
+}
+
+function openPractice(target: PracticeTarget, title: string) {
+  practiceForm.target = target
+  practiceForm.userAnswer = ''
+  practiceForm.isCorrect = 1
+  practiceForm.duration = undefined
+  practiceError.value = ''
   practiceTitle.value = title
   practiceVisible.value = true
 }
 
 async function submitPractice() {
-  await practiceApi.submit({
-    ...practiceForm.value.target,
-    userAnswer: practiceForm.value.userAnswer || undefined,
-    isCorrect: practiceForm.value.isCorrect,
-    duration: practiceForm.value.duration,
-  })
-  ElMessage.success('作答已记录，掌握度已更新')
-  practiceVisible.value = false
-  question.value = await questionApi.detail(questionId)
+  if (!practiceForm.target) return
+  practiceSaving.value = true
+  practiceError.value = ''
+  try {
+    await practiceApi.submit({
+      ...practiceForm.target,
+      userAnswer: practiceForm.userAnswer.trim() || undefined,
+      isCorrect: practiceForm.isCorrect,
+      duration: practiceForm.duration,
+    })
+    practiceVisible.value = false
+    await loadQuestion()
+    ElMessage.success('练习结果已记录，掌握度已更新')
+  } catch (error) {
+    practiceError.value = error instanceof Error ? error.message : '练习记录提交失败。'
+  } finally {
+    practiceSaving.value = false
+  }
 }
 
-onMounted(async () => {
-  subjects.value = await subjectApi.list()
-  allKpTree.value = await kpApi.tree()
-  await loadAll()
-})
-
-onBeforeUnmount(stopPolling)
+watch(questionId, loadPage)
+onMounted(loadPage)
 </script>
 
 <template>
-  <div v-if="question">
-    <div class="head-row">
-      <div>
-        <h2 class="page-title">错题详情</h2>
-        <p class="page-subtitle">
-          <el-tag size="small">{{ subjectName(question.subjectId) }}</el-tag>
-          <el-tag size="small" type="success" effect="plain" style="margin-left: 6px">
-            {{ kpName(question.knowledgePointId) }}
-          </el-tag>
-          <span class="num meta-text">掌握度 {{ question.mastery }} · 难度 {{ question.difficulty ? '★'.repeat(question.difficulty) : '待评估' }}</span>
-        </p>
-      </div>
-      <div>
-        <el-button @click="openPractice({ questionId: question.id }, '重做错题')">重做本题</el-button>
-        <el-button type="danger" plain @click="handleDelete">删除</el-button>
-      </div>
-    </div>
+  <div class="question-detail-page">
+    <AsyncState v-if="pageLoading" status="loading" title="正在打开错题详情" />
+    <AsyncState v-else-if="pageError || !question" status="error" title="错题详情加载失败" :description="pageError" @retry="loadPage" />
 
-    <div class="paper-card">
-      <div class="block-title">题目</div>
-      <div class="stem">{{ question.stem }}</div>
-      <el-image v-if="question.imageUrl" :src="question.imageUrl" fit="contain" class="q-image" :preview-src-list="[question.imageUrl]" />
-      <el-divider />
-      <div class="block-title">答案</div>
-      <div class="answer">{{ question.answer || '未填写' }}</div>
-      <div class="meta-text" style="margin-top: 10px">来源：{{ question.source || '未标注' }} · 录入于 {{ question.createTime }}</div>
-    </div>
+    <template v-else>
+      <PageHeader eyebrow="错题详情与 AI 智能解析" :title="`错题 #${question.id}`" description="查看原题、修订内容，并沿着解析—变式—练习完成一次学习闭环。">
+        <template #actions>
+          <el-button :icon="EditPen" @click="openEdit">编辑错题</el-button>
+          <el-button type="danger" plain :icon="Delete" :loading="deleting" @click="removeQuestion">删除</el-button>
+        </template>
+      </PageHeader>
 
-    <div class="paper-card">
-      <div class="block-head">
-        <span class="block-title">AI 解析</span>
-        <el-button
-          v-if="analysisStatus !== 0"
-          size="small"
-          type="primary"
-          plain
-          :icon="Refresh"
-          @click="triggerAnalyze"
-        >
-          {{ analysisStatus === 1 ? '重新解析' : '触发解析' }}
-        </el-button>
-      </div>
-      <div v-if="analysisStatus === 0 || analyzing" class="analyzing">
-        <el-icon class="is-loading" color="#0f766e"><MagicStick /></el-icon>
-        AI 正在解析中，请稍候（通常 2 秒内完成）…
-      </div>
-      <template v-else-if="analysis && analysis.status === 1">
-        <el-descriptions :column="2" border size="small" class="analysis-desc">
-          <el-descriptions-item label="归类知识点">{{ kpName(analysis.knowledgePointId) }}</el-descriptions-item>
-          <el-descriptions-item label="分析模型">
-            <el-tag size="small" effect="plain" type="warning">{{ analysis.llmModel }}</el-tag>
-          </el-descriptions-item>
-        </el-descriptions>
-        <div class="sub-title">错因分析</div>
-        <p class="block-text">{{ analysis.errorCause }}</p>
-        <div class="sub-title">解析内容</div>
-        <p class="block-text" style="white-space: pre-line">{{ analysis.analysis }}</p>
-        <div v-if="referenceIds().length > 0" class="ref-tip">
-          本解析参考了本地题库中 {{ referenceIds().length }} 道相似题（ID：{{ referenceIds().join('、') }}）
-        </div>
-      </template>
-      <el-result v-else-if="analysis && analysis.status === 2" icon="error" title="解析失败" sub-title="可点击右上角按钮重新触发解析" />
-      <el-empty v-else description="尚未解析，点击右上角「触发解析」" :image-size="80" />
-    </div>
+      <section class="question-overview">
+        <PaperPanel variant="lined" class="question-sheet">
+          <div class="question-tags"><span>{{ subjectName(question.subjectId) }}</span><span class="jade">{{ knowledgeName(question.knowledgePointId) }}</span><span class="amber">难度 {{ difficultyText(question.difficulty) }}</span></div>
+          <span class="correction-mark" aria-hidden="true">错</span>
+          <p class="stem">{{ question.stem }}</p>
+          <el-image v-if="question.imageUrl" :src="question.imageUrl" fit="contain" class="question-image" :preview-src-list="[question.imageUrl]" />
+          <p class="question-meta">来源：{{ question.source || '未标注' }}　·　录入：{{ question.createTime }}　·　最近更新：{{ question.updateTime }}</p>
+          <button class="answer-toggle" type="button" :aria-expanded="answerVisible" @click="answerVisible = !answerVisible"><el-icon><View /></el-icon>{{ answerVisible ? '收起正确答案' : '查看正确答案' }}</button>
+          <p v-if="answerVisible" class="answer-block">{{ question.answer || '这道题尚未填写答案。' }}</p>
+        </PaperPanel>
 
-    <div class="paper-card" v-loading="loadingSimilar">
-      <div class="block-title">相似题推荐（同知识点 · 相近难度 Top 5）</div>
-      <el-empty v-if="similarQuestions.length === 0" description="暂无相似题" :image-size="72" />
-      <div v-for="sq in similarQuestions" :key="sq.id" class="similar-item" @click="router.push(`/question/${sq.id}`)">
-        <span class="similar-stem">{{ sq.stem }}</span>
-        <span class="num meta-text">难度 {{ sq.difficulty ? '★'.repeat(sq.difficulty) : '-' }}</span>
-      </div>
-    </div>
+        <PaperPanel class="mastery-side">
+          <h2>掌握度笔记</h2>
+          <MasteryIndicator :value="question.mastery" />
+          <dl><div><dt>当前难度</dt><dd>{{ difficultyText(question.difficulty) }}</dd></div><div><dt>下一动作</dt><dd>重做并自评</dd></div></dl>
+          <el-button class="jade-action" @click="openPractice({ questionId: question.id }, '重做这道错题')">开始重做</el-button>
+          <el-button text :icon="Timer" @click="router.push('/practice/history')">查看练习历史</el-button>
+        </PaperPanel>
+      </section>
 
-    <div class="paper-card">
-      <div class="block-head">
-        <span class="block-title">变式题（{{ variants.length }}）</span>
-        <el-button size="small" type="primary" :loading="generating" :icon="MagicStick" @click="generateVariants">
-          生成变式题
-        </el-button>
-      </div>
-      <el-empty v-if="variants.length === 0" description="暂无变式题，点击右上角生成" :image-size="72" />
-      <el-collapse v-else accordion>
-        <el-collapse-item v-for="(v, i) in variants" :key="v.id" :name="v.id">
-          <template #title>
-            <span class="variant-title">变式 {{ i + 1 }} · 难度 {{ v.difficulty ? '★'.repeat(v.difficulty) : '-' }}</span>
-          </template>
-          <p class="block-text">{{ v.stem }}</p>
-          <p class="block-text answer-text">答案：{{ v.answer || '未提供' }}</p>
-          <el-button size="small" @click="openPractice({ variantId: v.id }, `作答变式 ${i + 1}`)">作答并记录</el-button>
-        </el-collapse-item>
-      </el-collapse>
-    </div>
+      <PaperPanel :padded="false" class="analysis-workbench">
+        <el-tabs v-model="activeTab" class="analysis-tabs">
+          <el-tab-pane label="AI 智能解析" name="analysis">
+            <div class="tab-content" :aria-busy="polling.isPolling.value">
+              <div class="analysis-topline"><div><span>解析状态</span><strong>{{ polling.state.value === 'success' ? '已完成' : polling.isPolling.value ? '处理中' : polling.state.value === 'failed' ? '失败' : polling.state.value === 'timeout' ? '等待超时' : polling.state.value === 'error' ? '查询异常' : '尚未解析' }}</strong></div><div><span>模型标识</span><strong>{{ polling.analysis.value?.llmModel || '后端未返回' }}</strong></div><el-button v-if="!polling.isPolling.value" type="primary" plain :icon="Refresh" @click="triggerAnalysis">{{ polling.state.value === 'success' ? '重新解析' : '触发解析' }}</el-button></div>
+              <AsyncState v-if="polling.isPolling.value" status="loading" compact title="AI 正在分析这道错题" description="系统会定期查询处理状态；90 秒仍未完成时会停止等待，你可以稍后重试。" />
+              <AsyncState v-else-if="polling.state.value === 'failed'" status="error" compact title="AI 解析失败" description="后端只返回失败状态，没有更具体原因。可以重新触发解析。" @retry="triggerAnalysis" />
+              <AsyncState v-else-if="polling.state.value === 'timeout'" status="error" compact title="等待解析超时" description="这只表示前端停止等待，不代表后端任务一定失败。可稍后重新查询或触发解析。" @retry="polling.sync" />
+              <AsyncState v-else-if="polling.state.value === 'error'" status="error" compact title="解析状态查询失败" :description="polling.error.value?.message" @retry="polling.sync" />
+              <template v-else-if="polling.state.value === 'success' && polling.analysis.value">
+                <p v-if="analysisPartial" class="partial-result">后端返回了部分结果；缺失字段会明确显示，不会由前端补写。</p>
+                <div class="analysis-section"><strong>知识点归类</strong><p>{{ knowledgeName(polling.analysis.value.knowledgePointId) }}</p></div>
+                <div class="analysis-section"><strong>错因分析</strong><p>{{ polling.analysis.value.errorCause || '后端未返回错因分析。' }}</p></div>
+                <div class="analysis-section"><strong>解析思路</strong><p class="pre-line">{{ polling.analysis.value.analysis || '后端未返回解析内容。' }}</p></div>
+              </template>
+              <AsyncState v-else status="empty" compact title="尚未生成 AI 解析" description="点击“触发解析”后，系统将异步归类知识点并生成错因与解析。">
+                <template #action><el-button type="primary" :icon="MagicStick" @click="triggerAnalysis">触发 AI 智能解析</el-button></template>
+              </AsyncState>
+            </div>
+          </el-tab-pane>
 
-    <el-dialog v-model="practiceVisible" :title="practiceTitle" width="520px">
-      <el-form label-position="top">
-        <el-form-item label="我的作答">
-          <el-input v-model="practiceForm.userAnswer" type="textarea" :rows="3" placeholder="填写你的答案" />
-        </el-form-item>
-        <el-form-item label="作答结果（自评）">
-          <el-radio-group v-model="practiceForm.isCorrect">
-            <el-radio :value="1">答对了</el-radio>
-            <el-radio :value="0">答错了</el-radio>
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="用时（秒，选填）">
-          <el-input-number v-model="practiceForm.duration" :min="0" :max="7200" />
-        </el-form-item>
-      </el-form>
-      <template #footer>
-        <el-button @click="practiceVisible = false">取消</el-button>
-        <el-button type="primary" @click="submitPractice">提交记录</el-button>
-      </template>
-    </el-dialog>
+          <el-tab-pane label="RAG 参考" name="references">
+            <div class="tab-content">
+              <div class="truth-note"><strong>证据边界</strong><p>后端当前只返回参考题 ID 字符串，没有可核验的参考正文或文献接口。因此这里只显示真实 ID，不补写模拟内容。</p></div>
+              <AsyncState v-if="referenceIds.length === 0" status="empty" compact title="本次没有返回参考 ID" description="可能尚未解析，也可能检索没有命中。" />
+              <div v-else class="reference-list"><span v-for="id in referenceIds" :key="id">参考题 ID {{ id }}</span></div>
+            </div>
+          </el-tab-pane>
+
+          <el-tab-pane label="相似题" name="similar">
+            <div class="tab-content">
+              <p class="risk-note">当前后端相似题候选集仍有用户隔离缺陷，属于待修后端问题；以下功能保留用于本地受控演示，不应作为正式数据权限证据。</p>
+              <AsyncState v-if="similarLoading" status="loading" compact title="正在查找相似题" />
+              <AsyncState v-else-if="similarError" status="error" compact title="相似题加载失败" :description="similarError" @retry="loadSimilar" />
+              <AsyncState v-else-if="similarQuestions.length === 0" status="empty" compact title="暂无相似题" description="当前知识点或难度附近没有可推荐记录。" />
+              <div v-else class="similar-list"><button v-for="item in similarQuestions" :key="item.id" type="button" @click="router.push(`/question/${item.id}`)"><span>错题 #{{ item.id }} · 难度 {{ difficultyText(item.difficulty) }}</span><strong>{{ item.stem }}</strong></button></div>
+            </div>
+          </el-tab-pane>
+
+          <el-tab-pane :label="`AI 变式题 · ${variants.length}`" name="variants">
+            <div class="tab-content">
+              <div class="variant-head"><p>变式题生成是同步模型调用，可能需要较长时间；请不要重复点击。</p><el-button type="primary" :icon="MagicStick" :loading="generating" @click="generateVariants">生成变式题</el-button></div>
+              <AsyncState v-if="variantLoading" status="loading" compact title="正在读取变式题" />
+              <AsyncState v-else-if="variantError" status="error" compact title="变式题操作失败" :description="variantError" @retry="loadVariants" />
+              <AsyncState v-else-if="variants.length === 0" status="empty" compact title="还没有变式题" description="生成后可逐题作答并提交自评。" />
+              <div v-else class="variant-list"><article v-for="(item, index) in variants" :key="item.id"><div><span>变式 {{ index + 1 }}</span><em>难度 {{ difficultyText(item.difficulty) }}</em></div><p>{{ item.stem }}</p><details><summary>查看参考答案</summary><p>{{ item.answer || '后端未返回答案。' }}</p></details><el-button @click="openPractice({ variantId: item.id }, `作答变式 ${index + 1}`)">作答并记录</el-button></article></div>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </PaperPanel>
+
+      <el-dialog v-model="editVisible" title="编辑错题" width="min(620px, calc(100vw - 28px))" destroy-on-close>
+        <el-form label-position="top" @submit.prevent="saveEdit">
+          <el-form-item label="科目" required><el-select v-model="editForm.subjectId" style="width:100%"><el-option v-for="item in subjects" :key="item.id" :label="item.name" :value="item.id" /></el-select></el-form-item>
+          <el-form-item label="题干" required><el-input v-model="editForm.stem" type="textarea" :rows="5" maxlength="2000" show-word-limit /></el-form-item>
+          <el-form-item label="答案"><el-input v-model="editForm.answer" type="textarea" :rows="3" maxlength="2000" /></el-form-item>
+          <el-form-item label="来源"><el-input v-model="editForm.source" maxlength="255" /></el-form-item>
+          <p v-if="question.imageUrl" class="dialog-note">当前后端没有“移除已有图片”接口；不上传新图时，原图片会保留。</p>
+          <p class="dialog-error" aria-live="polite">{{ editError }}</p>
+        </el-form>
+        <template #footer><el-button @click="editVisible=false">取消</el-button><el-button type="primary" :loading="editSaving" @click="saveEdit">保存修改</el-button></template>
+      </el-dialog>
+
+      <el-dialog v-model="practiceVisible" :title="practiceTitle" width="min(560px, calc(100vw - 28px))" destroy-on-close>
+        <p class="dialog-note">请先独立作答，再根据实际结果自评。自评会改变掌握度。</p>
+        <el-form label-position="top" @submit.prevent="submitPractice">
+          <el-form-item label="我的作答"><el-input v-model="practiceForm.userAnswer" type="textarea" :rows="4" maxlength="2000" /></el-form-item>
+          <el-form-item label="结果自评" required><el-radio-group v-model="practiceForm.isCorrect"><el-radio-button :value="1">答对了</el-radio-button><el-radio-button :value="0">仍然答错</el-radio-button></el-radio-group></el-form-item>
+          <el-form-item label="用时（秒，可选）"><el-input-number v-model="practiceForm.duration" :min="0" :max="7200" /></el-form-item>
+          <p class="dialog-error" aria-live="polite">{{ practiceError }}</p>
+        </el-form>
+        <template #footer><el-button @click="practiceVisible=false">取消</el-button><el-button type="primary" :loading="practiceSaving" @click="submitPractice">提交练习记录</el-button></template>
+      </el-dialog>
+    </template>
   </div>
 </template>
 
 <style scoped>
-.head-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.paper-card {
-  margin-bottom: 16px;
-}
-
-.block-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.block-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.sub-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--wb-primary);
-  margin: 12px 0 6px;
-}
-
-.stem {
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.answer,
-.block-text {
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--wb-ink);
-  margin: 0;
-}
-
-.q-image {
-  max-width: 360px;
-  max-height: 220px;
-  margin-top: 12px;
-  border: 1px solid var(--wb-border);
-  border-radius: 8px;
-}
-
-.meta-text {
-  font-size: 12px;
-  color: var(--wb-ink-secondary);
-  margin-left: 8px;
-}
-
-.analyzing {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--wb-primary);
-  font-size: 14px;
-  padding: 12px 0;
-}
-
-.analysis-desc {
-  margin-bottom: 6px;
-}
-
-.ref-tip {
-  margin-top: 12px;
-  font-size: 12px;
-  color: var(--wb-accent);
-  background: #fffbeb;
-  border: 1px solid #fde68a;
-  border-radius: 6px;
-  padding: 8px 12px;
-}
-
-.similar-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.similar-item:hover {
-  background: var(--el-color-primary-light-9);
-}
-
-.similar-stem {
-  font-size: 13px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.variant-title {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.answer-text {
-  color: var(--wb-ink-secondary);
-  margin: 8px 0;
-}
+.question-detail-page{display:grid;gap:20px}.question-overview{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,.7fr);gap:20px}.question-sheet{position:relative;padding-left:72px!important}.correction-mark{position:absolute;left:22px;top:25px;display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--cinnabar);border-radius:50%;color:var(--cinnabar);font:800 17px var(--font-display);transform:rotate(-7deg)}.question-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:23px}.question-tags span{padding:5px 9px;border:1px solid var(--line-strong);border-radius:999px;background:#edf2f4;color:var(--navy);font-size:10px;font-weight:700}.question-tags .jade{border-color:var(--jade-light);background:var(--jade-pale);color:var(--jade-dark)}.question-tags .amber{border-color:var(--amber-light);background:var(--amber-pale);color:#795017}.stem{margin:0;color:var(--navy);font:500 18px/2 var(--font-serif);white-space:pre-line}.question-image{width:min(100%,520px);max-height:300px;margin-top:17px;border:1px solid var(--line);border-radius:10px;background:#fff}.question-meta{margin:24px 0 0;padding-top:13px;border-top:1px dashed var(--line);color:var(--ink-faint);font:9px var(--font-mono)}.answer-toggle{display:flex;align-items:center;gap:7px;margin-top:17px;border:0;background:transparent;color:var(--jade-dark);font-size:11px;font-weight:800;cursor:pointer}.answer-block{margin:13px 0 0;padding:14px;border-left:3px solid var(--jade);background:var(--jade-pale);color:var(--navy);font-size:13px;line-height:1.8;white-space:pre-line}.mastery-side{display:flex;flex-direction:column;gap:20px}.mastery-side h2{margin:0;color:var(--navy);font:800 20px var(--font-display)}.mastery-side dl{margin:0}.mastery-side dl>div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed var(--line);font-size:11px}.mastery-side dt{color:var(--ink-faint)}.mastery-side dd{margin:0;color:var(--navy);font-weight:800}.jade-action{border-color:var(--jade-light)!important;background:var(--jade-pale)!important;color:var(--jade-dark)!important}.analysis-workbench{overflow:hidden}.analysis-tabs :deep(.el-tabs__header){margin:0;padding:15px 25px 0;background:var(--paper-deep)}.analysis-tabs :deep(.el-tabs__nav-wrap::after){height:1px;background:var(--line)}.analysis-tabs :deep(.el-tabs__item){height:46px;font-size:12px;font-weight:800}.tab-content{padding:24px 27px 30px}.analysis-topline{display:flex;align-items:center;gap:25px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed var(--line)}.analysis-topline>div{display:grid;gap:4px}.analysis-topline span{color:var(--ink-faint);font-size:9px}.analysis-topline strong{color:var(--navy);font-size:11px}.analysis-topline :deep(.el-button){margin-left:auto}.analysis-section{display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px dashed var(--line)}.analysis-section strong{color:var(--jade-dark);font:800 14px var(--font-display)}.analysis-section p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.85}.pre-line{white-space:pre-line}.partial-result,.risk-note{margin:0 0 12px;padding:10px 13px;border-left:3px solid var(--amber);background:var(--amber-pale);color:#73501c;font-size:11px;line-height:1.65}.risk-note{border-left-color:var(--cinnabar);background:var(--cinnabar-pale);color:var(--cinnabar-dark)}.truth-note{padding:18px;border:1px solid var(--amber-light);border-radius:11px;background:var(--amber-pale)}.truth-note strong{color:#795017;font:800 15px var(--font-display)}.truth-note p{margin:7px 0 0;color:#73501c;font-size:11px;line-height:1.7}.reference-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.reference-list span{padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:var(--paper-bright);color:var(--navy);font:10px var(--font-mono)}.similar-list{display:grid;gap:9px}.similar-list button{display:grid;gap:6px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--paper-bright);text-align:left;cursor:pointer}.similar-list button:hover{border-color:var(--jade)}.similar-list span{color:var(--ink-faint);font-size:9px}.similar-list strong{overflow:hidden;color:var(--navy);font-size:12px;text-overflow:ellipsis;white-space:nowrap}.variant-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.variant-head p{margin:0;color:var(--ink-soft);font-size:11px}.variant-list{display:grid;gap:12px}.variant-list article{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--paper-bright)}.variant-list article>div{display:flex;justify-content:space-between}.variant-list span{color:var(--cinnabar);font:800 14px var(--font-display)}.variant-list em{color:var(--ink-faint);font-size:10px;font-style:normal}.variant-list article>p,.variant-list details p{color:var(--navy);font-size:13px;line-height:1.8}.variant-list summary{color:var(--jade-dark);font-size:11px;cursor:pointer}.variant-list :deep(.el-button){margin-top:12px}.dialog-note{margin:0 0 14px;padding:10px 12px;border-left:3px solid var(--amber);background:var(--amber-pale);color:#73501c;font-size:11px;line-height:1.6}.dialog-error{min-height:18px;margin:0;color:var(--cinnabar);font-size:11px}
+@media(max-width:900px){.question-overview{grid-template-columns:1fr}.mastery-side{display:grid;grid-template-columns:1fr 1fr;align-items:center}.mastery-side h2{grid-column:1/-1}.analysis-section{grid-template-columns:1fr}.variant-head{align-items:flex-start}}
+@media(max-width:600px){.question-sheet{padding:70px 18px 24px 40px!important}.correction-mark{left:8px;top:21px}.question-tags{position:absolute;left:55px;right:10px;top:23px;flex-wrap:nowrap;overflow-x:auto}.stem{font-size:16px}.mastery-side{display:flex}.analysis-tabs :deep(.el-tabs__header){padding-inline:13px}.analysis-tabs :deep(.el-tabs__nav-scroll){overflow-x:auto}.tab-content{padding:20px 15px 24px}.analysis-topline{display:grid;grid-template-columns:1fr 1fr}.analysis-topline :deep(.el-button){grid-column:1/-1;width:100%;margin-left:0}.variant-head{display:grid}.variant-head :deep(.el-button){width:100%}.similar-list strong{white-space:normal}.question-meta{line-height:1.7}}
 </style>
