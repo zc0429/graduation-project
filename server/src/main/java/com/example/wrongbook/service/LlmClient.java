@@ -4,9 +4,7 @@ import java.util.List;
 
 /**
  * 大模型网关（论文 5.3 类设计 (3)）：封装文本生成与 Embedding 两类接口，屏蔽模型提供方差异。
- * 当前为 Mock 实现；接入真实大模型时新增实现类并将 app.llm.provider 改为对应标识即可：
- * - OpenAiLlmClient（havingValue="openai"，兼容 DeepSeek 等 OpenAI 协议 API）
- * - DashScopeClient（havingValue="dashscope"，通义千问）
+ * 可通过 app.llm.provider 在 Mock、智谱 GLM 与 DeepSeek（OpenAI 兼容协议）之间切换。
  */
 public interface LlmClient {
 

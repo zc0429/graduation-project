@@ -29,9 +29,15 @@ mybatis-plus:
 
 # 业务配置
 app:
-  # 大模型提供方：mock（默认，占位）/ openai / dashscope（预留，接入时新增对应 LlmClient 实现）
+  # 大模型提供方：mock（默认、离线）/ glm / deepseek
   llm:
-    provider: mock
+    provider: ${LLM_PROVIDER:mock}
+    # 真实提供方的密钥与模型配置仅通过环境变量或未入库的 .env 注入
+    base-url: ${LLM_BASE_URL:}
+    api-key: ${LLM_API_KEY:}
+    chat-model: ${LLM_CHAT_MODEL:}
+    embedding-model: ${LLM_EMBEDDING_MODEL:}
+    embedding-dimensions: ${LLM_EMBEDDING_DIMENSIONS:1024}
   jwt:
     # 开发占位默认值，生产环境必须通过 JWT_SECRET 环境变量覆盖
     secret: ${JWT_SECRET:wrongbook-dev-secret-do-not-use-in-prod}
