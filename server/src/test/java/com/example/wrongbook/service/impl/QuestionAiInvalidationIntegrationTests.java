@@ -3,7 +3,9 @@ package com.example.wrongbook.service.impl;
 import com.example.wrongbook.common.LoginUser;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.dto.QuestionRequest;
+import com.example.wrongbook.entity.KnowledgePoint;
 import com.example.wrongbook.entity.Question;
+import com.example.wrongbook.mapper.KnowledgePointMapper;
 import com.example.wrongbook.mapper.VariantQuestionMapper;
 import com.example.wrongbook.service.AiAnalysisService;
 import com.example.wrongbook.service.EmbeddingService;
@@ -14,6 +16,8 @@ import com.example.wrongbook.service.RagService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -76,6 +80,9 @@ class QuestionAiInvalidationIntegrationTests {
 
     @MockitoBean
     private LlmClient llmClient;
+
+    @MockitoBean
+    private KnowledgePointMapper knowledgePointMapper;
 
     @MockitoBean
     private MessageService messageService;
@@ -213,12 +220,52 @@ class QuestionAiInvalidationIntegrationTests {
         verify(messageService).send(eq(USER_ID), eq("system"), eq("错题解析完成"), anyString());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "{\"text\":\"wrong schema\"}",
+            "{\"knowledgePointId\":93001,\"errorCause\":\"测试错因\",\"analysis\":\"测试解析\",\"difficulty\":3,\"extra\":\"not allowed\"}"
+    })
+    void invalidStructuredResponseCannotBePersistedAsSuccess(String response) {
+        when(embeddingService.embed(STEM_A)).thenReturn(List.of(1.0, 0.0));
+        when(ragService.retrieveSimilar(any(Question.class), eq(3))).thenReturn(List.of());
+        stubKnowledgePointCandidates();
+        when(llmClient.chat(anyString())).thenReturn(response);
+        when(llmClient.model()).thenReturn("test-model");
+
+        aiAnalysisService.trigger(questionId);
+        captureSubmittedTask().run();
+
+        QuestionState state = loadQuestion();
+        AnalysisState analysis = loadAnalysis();
+        assertThat(state.embedding()).isEqualTo(EMBEDDING_A);
+        assertThat(state.knowledgePointId()).isEqualTo(KNOWLEDGE_POINT_A);
+        assertThat(state.difficulty()).isEqualTo(4);
+        assertThat(analysis.status()).isEqualTo(2);
+        verify(messageService, never()).send(any(), anyString(), anyString(), anyString());
+    }
+
     private void stubSuccessfulAiResponse() {
         when(ragService.retrieveSimilar(any(Question.class), eq(3))).thenReturn(List.of());
+        stubKnowledgePointCandidates();
         when(llmClient.chat(anyString())).thenReturn("""
                 {"knowledgePointId":93002,"errorCause":"测试错因","analysis":"测试解析","difficulty":5}
                 """);
         when(llmClient.model()).thenReturn("test-model");
+    }
+
+    private void stubKnowledgePointCandidates() {
+        when(knowledgePointMapper.selectList(any())).thenReturn(List.of(
+                knowledgePoint(KNOWLEDGE_POINT_A, "测试知识点 A"),
+                knowledgePoint(KNOWLEDGE_POINT_B, "测试知识点 B")));
+    }
+
+    private KnowledgePoint knowledgePoint(long id, String name) {
+        KnowledgePoint knowledgePoint = new KnowledgePoint();
+        knowledgePoint.setId(id);
+        knowledgePoint.setSubjectId(SUBJECT_A);
+        knowledgePoint.setParentId(1L);
+        knowledgePoint.setName(name);
+        return knowledgePoint;
     }
 
     private Runnable captureSubmittedTask() {

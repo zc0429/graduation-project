@@ -8,14 +8,23 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
+import java.net.ConnectException;
+import java.net.UnknownHostException;
+import java.net.http.HttpConnectTimeoutException;
+import java.net.http.HttpTimeoutException;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /** 智谱 GLM 与 DeepSeek 共用的 OpenAI-compatible HTTP 客户端。 */
 @Slf4j
@@ -31,8 +40,14 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
     static final String LOCAL_EMBEDDING_MODEL = "local-char-ngram-256-v1";
 
     private static final int LOCAL_EMBEDDING_DIMENSIONS = 256;
+    private static final int CHAT_MAX_TOKENS = 4096;
     private static final int FNV_OFFSET_BASIS = 0x811c9dc5;
     private static final int FNV_PRIME = 0x01000193;
+    private static final int MAX_HTTP_ATTEMPTS = 3;
+    private static final long TRANSIENT_RETRY_DELAY_MILLIS = 500;
+    private static final long RATE_LIMIT_RETRY_DELAY_MILLIS = 15000;
+    private static final Pattern PLATFORM_OVERLOAD_CODE = Pattern.compile(
+            "\\\"code\\\"\\s*:\\s*(?:\\\"1305\\\"|1305)(?!\\d)");
 
     private final RestClient restClient;
     private final String provider;
@@ -72,9 +87,11 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
         body.put("thinking", Map.of("type", "disabled"));
         body.put("response_format", Map.of("type", "json_object"));
         body.put("temperature", 0.2);
+        body.put("max_tokens", CHAT_MAX_TOKENS);
         body.put("stream", false);
 
         JsonNode response = post("/chat/completions", body);
+        requireResponseModel(response, chatModel, "Chat");
         JsonNode content = response.path("choices").path(0).path("message").path("content");
         if (!content.isTextual() || !StringUtils.hasText(content.asText())) {
             throw new IllegalStateException("大模型响应缺少 choices[0].message.content");
@@ -94,6 +111,7 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
             body.put("dimensions", embeddingDimensions);
         }
         JsonNode response = post("/embeddings", body);
+        requireResponseModel(response, embeddingModel, "Embedding");
         JsonNode embedding = response.path("data").path(0).path("embedding");
         if (!embedding.isArray() || embedding.isEmpty()) {
             throw new IllegalStateException("Embedding 响应缺少 data[0].embedding");
@@ -103,8 +121,16 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
             if (!value.isNumber()) {
                 throw new IllegalStateException("Embedding 响应包含非数值元素");
             }
-            vector.add(value.asDouble());
+            double number = value.asDouble();
+            if (!Double.isFinite(number)) {
+                throw new IllegalStateException("Embedding 响应包含 NaN 或 Infinity");
+            }
+            vector.add(number);
         });
+        if (vector.size() != embeddingDimensions) {
+            throw new IllegalStateException("Embedding 响应维度不符：expected="
+                    + embeddingDimensions + "，actual=" + vector.size());
+        }
         return vector;
     }
 
@@ -118,16 +144,85 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
     }
 
     private JsonNode post(String path, Map<String, Object> body) {
-        JsonNode response = restClient.post()
-                .uri(baseUrl + path)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(body)
-                .retrieve()
-                .body(JsonNode.class);
-        if (response == null) {
-            throw new IllegalStateException("大模型接口返回空响应");
+        for (int attempt = 1; attempt <= MAX_HTTP_ATTEMPTS; attempt++) {
+            try {
+                JsonNode response = restClient.post()
+                        .uri(baseUrl + path)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(body)
+                        .retrieve()
+                        .body(JsonNode.class);
+                if (response == null) {
+                    throw new IllegalStateException("大模型接口返回空响应");
+                }
+                return response;
+            } catch (RestClientException e) {
+                if (attempt == MAX_HTTP_ATTEMPTS || !isTransient(e)) {
+                    throw e;
+                }
+                long retryDelay = retryDelayMillis(e, attempt);
+                log.warn("大模型请求第 {} 次失败，将在 {}ms 后重试，path={}，errorType={}",
+                        attempt, retryDelay, path, e.getClass().getSimpleName());
+                waitBeforeRetry(retryDelay);
+            }
         }
-        return response;
+        throw new IllegalStateException("大模型请求未执行");
+    }
+
+    private boolean isTransient(RestClientException exception) {
+        if (exception instanceof ResourceAccessException) {
+            return isConnectionFailure(exception);
+        }
+        if (exception instanceof HttpClientErrorException.TooManyRequests rateLimit) {
+            return PLATFORM_OVERLOAD_CODE.matcher(rateLimit.getResponseBodyAsString()).find();
+        }
+        return exception instanceof HttpServerErrorException;
+    }
+
+    private boolean isConnectionFailure(Throwable failure) {
+        Throwable current = failure;
+        while (current != null) {
+            if (current instanceof HttpConnectTimeoutException
+                    || current instanceof ConnectException
+                    || current instanceof UnknownHostException) {
+                return true;
+            }
+            if (current instanceof HttpTimeoutException) {
+                return false;
+            }
+            if (current.getCause() == current) {
+                break;
+            }
+            current = current.getCause();
+        }
+        return false;
+    }
+
+    private long retryDelayMillis(RestClientException exception, int failedAttempt) {
+        long baseDelay = exception instanceof HttpClientErrorException.TooManyRequests
+                ? RATE_LIMIT_RETRY_DELAY_MILLIS
+                : TRANSIENT_RETRY_DELAY_MILLIS;
+        return baseDelay * failedAttempt;
+    }
+
+    private void waitBeforeRetry(long retryDelayMillis) {
+        try {
+            Thread.sleep(retryDelayMillis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("大模型请求重试等待被中断", e);
+        }
+    }
+
+    private void requireResponseModel(JsonNode response, String expectedModel, String responseType) {
+        JsonNode model = response.path("model");
+        if (!model.isTextual() || !StringUtils.hasText(model.asText())) {
+            throw new IllegalStateException(responseType + " 响应缺少 model");
+        }
+        if (!expectedModel.equalsIgnoreCase(model.asText().trim())) {
+            throw new IllegalStateException(responseType + " 响应模型不符：expected="
+                    + expectedModel + "，actual=" + model.asText().trim());
+        }
     }
 
     /** DeepSeek 无官方 Embedding API 时使用的确定性本地字符 unigram/bigram 特征哈希。 */

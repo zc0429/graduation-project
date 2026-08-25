@@ -22,8 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.util.StringUtils;
+import org.springframework.web.client.RestClientResponseException;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
@@ -105,20 +108,18 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
             String prompt = buildPrompt(question, candidates, references);
             String content = llmClient.chat(prompt);
             // 4. 解析结构化 JSON 结果
-            JsonNode json = objectMapper.readTree(stripMarkdownFence(content));
-            Long knowledgePointId = json.hasNonNull("knowledgePointId")
-                    ? json.get("knowledgePointId").asLong() : null;
-            Integer difficulty = json.hasNonNull("difficulty") ? json.get("difficulty").asInt() : null;
-            String errorCause = json.path("errorCause").asText(null);
-            String analysis = json.path("analysis").asText(null);
+            StructuredAnalysis structured = parseStructuredAnalysis(content, candidates);
+            Long knowledgePointId = structured.knowledgePointId();
+            Integer difficulty = structured.difficulty();
+            String errorCause = structured.errorCause();
+            String analysis = structured.analysis();
             String referenceIds = objectMapper.writeValueAsString(
                     references.stream().map(Question::getId).collect(Collectors.toList()));
             String llmModel = llmClient.model();
-            String kpName = null;
-            if (knowledgePointId != null) {
-                KnowledgePoint kp = knowledgePointMapper.selectById(knowledgePointId);
-                kpName = kp == null ? null : kp.getName();
-            }
+            String kpName = candidates.stream()
+                    .filter(candidate -> knowledgePointId.equals(candidate.getId()))
+                    .map(KnowledgePoint::getName)
+                    .findFirst().orElse(null);
             String finalKpName = kpName;
             boolean completed = Boolean.TRUE.equals(transactionTemplate.execute(status -> {
                 int questionRows = questionMapper.update(null, matchingInput(question)
@@ -153,7 +154,7 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
                 log.info("AI 解析任务输入已过期，放弃回写，questionId={}", questionId);
             }
         } catch (Exception e) {
-            log.error("AI 解析失败，questionId={}", questionId, e);
+            logAiFailure(questionId, e);
             aiAnalysisMapper.update(null, new LambdaUpdateWrapper<AiAnalysis>()
                     .eq(AiAnalysis::getId, record.getId())
                     .eq(AiAnalysis::getQuestionId, questionId)
@@ -198,17 +199,91 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
             String stem = ref.getStem();
             sb.append("- ").append(stem.length() > 50 ? stem.substring(0, 50) + "…" : stem).append("\n");
         }
-        sb.append("要求：输出 JSON，含 knowledgePointId/errorCause/analysis/difficulty(1-5)");
+        sb.append("输出要求（必须全部满足）：\n");
+        sb.append("1. 只输出一个 JSON 对象，不得输出解释、Markdown 或嵌套包装；\n");
+        sb.append("2. 必须且仅使用 knowledgePointId、errorCause、analysis、difficulty 四个字段；\n");
+        sb.append("3. knowledgePointId 必须是候选知识点中的数字 ID，不得写名称或字符串；\n");
+        sb.append("4. errorCause 与 analysis 必须是非空中文字符串；\n");
+        sb.append("5. difficulty 必须是 1-5 的数字整数，不得写中文或字符串；\n");
+        sb.append("严格按此结构输出：")
+                .append("{\"knowledgePointId\":候选数字ID,\"errorCause\":\"错因\",\"analysis\":\"解析\",\"difficulty\":3}");
         return sb.toString();
+    }
+
+    private StructuredAnalysis parseStructuredAnalysis(
+            String content, List<KnowledgePoint> candidates) throws Exception {
+        JsonNode json = objectMapper.readTree(stripMarkdownFence(content));
+        if (!json.isObject()) {
+            throw new IllegalArgumentException("AI 解析响应根节点必须是 JSON 对象");
+        }
+        if (json.size() != 4
+                || !json.has("knowledgePointId")
+                || !json.has("errorCause")
+                || !json.has("analysis")
+                || !json.has("difficulty")) {
+            throw new IllegalArgumentException("AI 解析响应字段必须与约定结构完全一致");
+        }
+        JsonNode knowledgePoint = json.get("knowledgePointId");
+        JsonNode difficulty = json.get("difficulty");
+        JsonNode errorCause = json.get("errorCause");
+        JsonNode analysis = json.get("analysis");
+        Set<Long> candidateIds = candidates.stream().map(KnowledgePoint::getId).collect(Collectors.toSet());
+        if (knowledgePoint == null || !knowledgePoint.isIntegralNumber()
+                || !knowledgePoint.canConvertToLong()
+                || !candidateIds.contains(knowledgePoint.asLong())) {
+            throw new IllegalArgumentException("AI 解析知识点必须属于当前候选集合");
+        }
+        if (difficulty == null || !difficulty.isIntegralNumber()
+                || !difficulty.canConvertToInt()
+                || difficulty.asInt() < 1 || difficulty.asInt() > 5) {
+            throw new IllegalArgumentException("AI 解析难度必须是 1-5 的整数");
+        }
+        if (errorCause == null || !errorCause.isTextual() || !StringUtils.hasText(errorCause.asText())
+                || !containsHanText(errorCause.asText())) {
+            throw new IllegalArgumentException("AI 解析错因不能为空");
+        }
+        if (analysis == null || !analysis.isTextual() || !StringUtils.hasText(analysis.asText())
+                || !containsHanText(analysis.asText())) {
+            throw new IllegalArgumentException("AI 解析内容不能为空");
+        }
+        return new StructuredAnalysis(
+                knowledgePoint.asLong(), errorCause.asText().trim(), analysis.asText().trim(), difficulty.asInt());
+    }
+
+    private boolean containsHanText(String value) {
+        return value.codePoints().anyMatch(codePoint ->
+                Character.UnicodeScript.of(codePoint) == Character.UnicodeScript.HAN);
     }
 
     /** 兼容真实大模型可能输出的 ```json 包裹 */
     private String stripMarkdownFence(String content) {
         String s = content.trim();
         if (s.startsWith("```")) {
-            s = s.replaceFirst("^```(json)?\\s*", "").replaceFirst("\\s*```$", "");
+            log.warn("AI 解析响应包含 Markdown 代码块，已进行兼容清理");
+            s = s.replaceFirst("(?i)^```\\s*(?:json)?\\s*", "")
+                    .replaceFirst("\\s*```$", "");
         }
         return s;
+    }
+
+    private void logAiFailure(Long questionId, Exception failure) {
+        if (failure instanceof RestClientResponseException responseException) {
+            log.error("AI 解析请求失败，questionId={}，httpStatus={}，errorType={}",
+                    questionId, responseException.getStatusCode().value(),
+                    failure.getClass().getSimpleName());
+            return;
+        }
+        if (failure instanceof IllegalArgumentException) {
+            log.error("AI 解析结构校验失败，questionId={}，errorType={}",
+                    questionId, failure.getClass().getSimpleName());
+            return;
+        }
+        log.error("AI 解析失败，questionId={}，errorType={}",
+                questionId, failure.getClass().getSimpleName());
+    }
+
+    private record StructuredAnalysis(
+            Long knowledgePointId, String errorCause, String analysis, Integer difficulty) {
     }
 
     private AiAnalysis findByQuestionId(Long questionId) {

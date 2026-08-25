@@ -6,6 +6,11 @@ spring:
     name: wrongbook-server
   profiles:
     active: dev
+  http:
+    client:
+      # 真实模型调用必须有明确边界，避免网络异常时无限等待
+      connect-timeout: ${LLM_CONNECT_TIMEOUT:10s}
+      read-timeout: ${LLM_READ_TIMEOUT:90s}
   # 从工作目录 .env 读取敏感配置（.env 不入库，见 .env.example）
   config:
     import: optional:file:./.env[.properties]
