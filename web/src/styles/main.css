@@ -8,17 +8,21 @@
   --paper-bright: #fffdf8;
   --ink: #1d2b38;
   --ink-soft: #52616d;
-  --ink-faint: #7b858b;
+  --ink-faint: #59666f;
   --navy: #18344a;
   --navy-2: #254e66;
   --cinnabar: #b74332;
   --cinnabar-dark: #8d3026;
+  --cinnabar-light: rgba(183, 67, 50, 0.38);
   --cinnabar-pale: #f5ded8;
   --jade: #168172;
   --jade-dark: #0d665b;
+  --jade-light: rgba(22, 129, 114, 0.38);
   --jade-pale: #dceee8;
   --amber: #b87723;
+  --amber-light: rgba(184, 119, 35, 0.4);
   --amber-pale: #f5e7ca;
+  --focus-ring: #168c7b;
   --line: rgba(37, 78, 102, 0.16);
   --line-strong: rgba(37, 78, 102, 0.28);
   --shadow: 0 16px 38px rgba(41, 48, 49, 0.1), 0 2px 5px rgba(41, 48, 49, 0.08);
@@ -127,7 +131,7 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(22, 129, 114, 0.42);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
@@ -135,7 +139,7 @@ a {
 .el-input__wrapper:has(input:focus-visible),
 .el-textarea__inner:focus-visible,
 .el-select__wrapper:has(input:focus-visible) {
-  outline: 3px solid rgba(22, 129, 114, 0.42);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -420,6 +424,17 @@ a {
 }
 
 @media (max-width: 700px) {
+  .el-button,
+  .el-button--small {
+    min-height: 44px;
+  }
+
+  .app-topbar .topbar-icon-link,
+  .app-topbar .profile-trigger {
+    min-width: 44px;
+    min-height: 44px !important;
+  }
+
   .paper-card {
     padding: 19px 16px;
   }

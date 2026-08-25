@@ -49,7 +49,7 @@ const liveRole = computed(() => (props.status === 'error' || props.status === 'f
         <path v-else d="M16 4 29 27H3L16 4Zm0 8v7m0 4h.01" />
       </svg>
     </span>
-    <h2>{{ visibleTitle }}</h2>
+    <component :is="compact ? 'strong' : 'h2'" class="state-title">{{ visibleTitle }}</component>
     <p>{{ visibleDescription }}</p>
     <div v-if="status === 'error' || $slots.action" class="state-actions">
       <slot name="action">
@@ -114,7 +114,8 @@ const liveRole = computed(() => (props.status === 'error' || props.status === 'f
   }
 }
 
-h2 {
+.state-title {
+  display: block;
   margin: 0;
   color: var(--navy);
   font-family: var(--font-serif);
@@ -133,7 +134,7 @@ p {
 }
 
 .state-actions button {
-  min-height: 38px;
+  min-height: 44px;
   padding: 8px 16px;
   border: 1px solid var(--navy);
   border-radius: 9px;

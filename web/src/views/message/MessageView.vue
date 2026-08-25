@@ -12,6 +12,7 @@ const error = ref('')
 const markingId = ref<number>()
 const pageNum = ref(1)
 const filter = ref<'all' | 'unread' | 'read'>('all')
+let requestVersion = 0
 
 const typeMap: Record<string, { label: string; tone: string }> = {
   review_remind: { label: '复习提醒', tone: 'amber' },
@@ -20,18 +21,20 @@ const typeMap: Record<string, { label: string; tone: string }> = {
 }
 
 async function load() {
+  const version = ++requestVersion
   loading.value = true
   error.value = ''
   try {
-    page.value = await messageApi.page({
+    const data = await messageApi.page({
       pageNum: pageNum.value,
       pageSize: 10,
       isRead: filter.value === 'all' ? undefined : filter.value === 'read' ? 1 : 0,
     })
+    if (version === requestVersion) page.value = data
   } catch (cause) {
-    error.value = cause instanceof Error ? cause.message : '消息暂时无法加载。'
+    if (version === requestVersion) error.value = cause instanceof Error ? cause.message : '消息暂时无法加载。'
   } finally {
-    loading.value = false
+    if (version === requestVersion) loading.value = false
   }
 }
 
@@ -64,9 +67,9 @@ onMounted(load)
 
     <PaperPanel>
       <div class="message-toolbar" role="group" aria-label="消息状态筛选">
-        <button type="button" :class="{ active: filter === 'all' }" @click="changeFilter('all')">全部</button>
-        <button type="button" :class="{ active: filter === 'unread' }" @click="changeFilter('unread')">未读</button>
-        <button type="button" :class="{ active: filter === 'read' }" @click="changeFilter('read')">已读</button>
+        <button type="button" :aria-pressed="filter === 'all'" :class="{ active: filter === 'all' }" @click="changeFilter('all')">全部</button>
+        <button type="button" :aria-pressed="filter === 'unread'" :class="{ active: filter === 'unread' }" @click="changeFilter('unread')">未读</button>
+        <button type="button" :aria-pressed="filter === 'read'" :class="{ active: filter === 'read' }" @click="changeFilter('read')">已读</button>
         <span>共 {{ page.total }} 条</span>
       </div>
 
@@ -88,6 +91,6 @@ onMounted(load)
 </template>
 
 <style scoped>
-.message-page{display:grid;gap:20px}.message-toolbar{display:flex;align-items:center;gap:7px;margin-bottom:16px;padding-bottom:15px;border-bottom:1px solid var(--line)}.message-toolbar button{min-height:36px;padding:0 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper-bright);color:var(--ink-soft);cursor:pointer}.message-toolbar button.active{border-color:var(--cinnabar);background:var(--cinnabar-pale);color:var(--cinnabar-dark);font-weight:800}.message-toolbar span{margin-left:auto;color:var(--ink-faint);font-size:10px}.message-list{display:grid}.message-item{display:grid;grid-template-columns:90px minmax(0,1fr) auto;align-items:start;gap:16px;padding:18px 4px;border-bottom:1px dashed var(--line);opacity:.72}.message-item:last-child{border-bottom:0}.message-item.unread{opacity:1}.message-type{justify-self:start;padding:5px 9px;border:1px solid var(--line);border-radius:999px;font-size:9px;font-weight:800}.message-type.amber{border-color:var(--amber-light);background:var(--amber-pale);color:#795017}.message-type.jade{border-color:var(--jade-light);background:var(--jade-pale);color:var(--jade-dark)}.message-type.navy{background:#edf2f4;color:var(--navy)}.message-copy h2{display:flex;align-items:center;gap:7px;margin:0;color:var(--navy);font-size:14px}.message-copy h2 i{width:7px;height:7px;border-radius:50%;background:var(--cinnabar)}.message-copy p{margin:7px 0;color:var(--ink-soft);font-size:12px;line-height:1.7}.message-copy time{color:var(--ink-faint);font:9px var(--font-mono)}.read-mark{padding:8px;color:var(--ink-faint);font-size:10px}.message-pagination{justify-content:flex-end;margin-top:20px}
+.message-page{display:grid;gap:20px}.message-toolbar{display:flex;align-items:center;gap:7px;margin-bottom:16px;padding-bottom:15px;border-bottom:1px solid var(--line)}.message-toolbar button{min-height:44px;padding:0 15px;border:1px solid var(--line);border-radius:999px;background:var(--paper-bright);color:var(--ink-soft);cursor:pointer}.message-toolbar button.active{border-color:var(--cinnabar);background:var(--cinnabar-pale);color:var(--cinnabar-dark);font-weight:800}.message-toolbar span{margin-left:auto;color:var(--ink-faint);font-size:10px}.message-list{display:grid}.message-item{display:grid;grid-template-columns:90px minmax(0,1fr) auto;align-items:start;gap:16px;padding:18px 4px;border-bottom:1px dashed var(--line);opacity:.72}.message-item:last-child{border-bottom:0}.message-item.unread{opacity:1}.message-type{justify-self:start;padding:5px 9px;border:1px solid var(--line);border-radius:999px;font-size:9px;font-weight:800}.message-type.amber{border-color:var(--amber-light);background:var(--amber-pale);color:#795017}.message-type.jade{border-color:var(--jade-light);background:var(--jade-pale);color:var(--jade-dark)}.message-type.navy{background:#edf2f4;color:var(--navy)}.message-copy h2{display:flex;align-items:center;gap:7px;margin:0;color:var(--navy);font-size:14px}.message-copy h2 i{width:7px;height:7px;border-radius:50%;background:var(--cinnabar)}.message-copy p{margin:7px 0;color:var(--ink-soft);font-size:12px;line-height:1.7}.message-copy time{color:var(--ink-faint);font:9px var(--font-mono)}.read-mark{padding:8px;color:var(--ink-faint);font-size:10px}.message-pagination{justify-content:flex-end;margin-top:20px}
 @media(max-width:650px){.message-toolbar{flex-wrap:wrap}.message-toolbar span{width:100%;margin-left:0}.message-item{grid-template-columns:1fr}.message-type{grid-row:1}.message-copy{grid-row:2}.message-item :deep(.el-button),.read-mark{grid-row:3;justify-self:start}}
 </style>

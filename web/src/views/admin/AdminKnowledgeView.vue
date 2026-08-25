@@ -19,6 +19,7 @@ const saving = ref(false)
 const deletingId = ref<number>()
 const formError = ref('')
 const form = reactive({ parentId: 0, name: '', sort: 0 })
+let treeRequestVersion = 0
 
 const currentSubjectName = computed(() => subjects.value.find((subject) => subject.id === currentSubjectId.value)?.name || '')
 const pointCount = computed(() => tree.value.reduce((total, chapter) => total + chapter.children.length, 0))
@@ -31,11 +32,14 @@ async function loadSubjects() {
 }
 
 async function loadTree() {
-  if (!currentSubjectId.value) {
+  const version = ++treeRequestVersion
+  const requestedSubject = currentSubjectId.value
+  if (!requestedSubject) {
     tree.value = []
     return
   }
-  tree.value = await kpApi.tree(currentSubjectId.value)
+  const data = await kpApi.tree(requestedSubject)
+  if (version === treeRequestVersion && requestedSubject === currentSubjectId.value) tree.value = data
 }
 
 async function load() {

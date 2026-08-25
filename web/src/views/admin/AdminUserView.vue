@@ -18,6 +18,7 @@ const pageNum = ref(1)
 const role = ref<string>()
 const keyword = ref('')
 const deactivatingId = ref<number>()
+let requestVersion = 0
 
 const roleText: Record<string, string> = {
   student: '学生',
@@ -32,19 +33,21 @@ const roleTagType: Record<string, 'primary' | 'success' | 'warning'> = {
 }
 
 async function load() {
+  const version = ++requestVersion
   loading.value = true
   errorMessage.value = ''
   try {
-    page.value = await userApi.page({
+    const data = await userApi.page({
       pageNum: pageNum.value,
       pageSize: 10,
       role: role.value,
       keyword: keyword.value.trim() || undefined,
     })
+    if (version === requestVersion) page.value = data
   } catch (error) {
-    errorMessage.value = toApiError(error, '用户列表加载失败').message
+    if (version === requestVersion) errorMessage.value = toApiError(error, '用户列表加载失败').message
   } finally {
-    loading.value = false
+    if (version === requestVersion) loading.value = false
   }
 }
 
@@ -62,7 +65,7 @@ function clearFilters() {
 
 async function deactivate(row: UserRecord) {
   const confirmed = await ElMessageBox.confirm(
-    `确认注销用户“${row.nickname || row.username}”吗？注销后该账号将无法登录。`,
+    `确认注销用户“${row.nickname || row.username}”吗？注销后该账号无法重新登录；已经签发的令牌仍受后端会话校验限制。`,
     '注销用户',
     {
       confirmButtonText: '确认注销',

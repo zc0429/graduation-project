@@ -48,9 +48,9 @@ async function save() {
   saveError.value = ''
   try {
     await userApi.updateProfile({
-      nickname: form.nickname.trim() || undefined,
-      email: form.email.trim() || undefined,
-      className: form.className.trim() || undefined,
+      nickname: form.nickname.trim(),
+      email: form.email.trim(),
+      className: form.className.trim(),
     })
     const profile = await userApi.profile()
     store.setUser(profile)

@@ -18,7 +18,11 @@ export const questionApi = {
   remove: (id: number) => request.delete<unknown, void>(`/question/${id}`),
   exportUrl: buildExportUrl,
   download: async (subjectId?: number, knowledgePointId?: number) => {
-    const file = await requestAuthenticatedFile(buildExportUrl(subjectId, knowledgePointId), '错题本.xlsx')
+    const file = await requestAuthenticatedFile(
+      buildExportUrl(subjectId, knowledgePointId),
+      '错题本.xlsx',
+      { timeoutMs: 60_000 },
+    )
     saveDownloadedFile(file)
     return file.fileName
   },

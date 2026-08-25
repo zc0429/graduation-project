@@ -5,8 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "typecheck": "vue-tsc -b --pretty false",
+    "test:unit": "vitest run --config vitest.config.ts",
+    "test:unit:watch": "vitest --config vitest.config.ts",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
+    "e2e:prototype": "playwright test e2e/frontend-prototype.spec.ts --config=playwright.config.ts --project=chromium --workers=1",
+    "e2e:smoke": "playwright test --config=playwright.ui.config.ts --project=chromium-desktop --project=chromium-laptop --project=chromium-tablet --project=chromium-mobile",
+    "e2e:browsers": "playwright test --config=playwright.ui.config.ts --project=chrome-stable --project=edge-stable --project=firefox-smoke",
+    "e2e:a11y": "playwright test e2e/smoke/accessibility.spec.ts --config=playwright.ui.config.ts --project=chromium-desktop",
+    "e2e:integration": "playwright test --config=playwright.integration.config.ts",
+    "audit:lighthouse:auth": "node scripts/run-authenticated-lighthouse.mjs",
+    "verify": "npm run typecheck && npm run test:unit && npm run build && npm run e2e:smoke",
     "e2e:screenshots": "playwright test e2e/walkthrough.spec.ts --project=chromium --workers=1"
   },
   "dependencies": {
@@ -19,12 +29,17 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.62.1",
     "@types/node": "^24.13.3",
     "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.9.1",
+    "jsdom": "^29.1.1",
+    "lighthouse": "^13.4.1",
     "typescript": "~6.0.2",
     "vite": "^8.2.0",
+    "vitest": "^4.1.11",
     "vue-tsc": "^3.3.8"
   }
 }

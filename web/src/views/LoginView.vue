@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { ArrowRight, Hide, View } from '@element-plus/icons-vue'
 import { authApi } from '@/api'
 import AppBrand from '@/components/AppBrand.vue'
@@ -61,7 +61,7 @@ async function submit() {
       mode.value = 'login'
       form.password = ''
       form.confirmPassword = ''
-      formError.value = '注册成功，请使用新账号登录。'
+      ElMessage.success('注册成功，请使用新账号登录')
       return
     }
     const data = await authApi.login({ username: form.username.trim(), password: form.password })
@@ -81,7 +81,7 @@ async function submit() {
     <section class="auth-story" aria-labelledby="auth-story-title">
       <div class="auth-topline">
         <AppBrand subtitle="AI 错题分析与学习推荐" />
-        <span class="system-proof"><i />正式系统</span>
+        <span class="system-proof"><i />毕业设计系统</span>
       </div>
       <p class="auth-kicker">数字错题本 · 个性化学习工作台</p>
       <h1 id="auth-story-title">把每一道错题，<br>变成<span>会生长</span>的学习线索。</h1>
@@ -99,9 +99,9 @@ async function submit() {
     <section class="auth-card-wrap" aria-labelledby="auth-form-title">
       <div class="auth-card">
         <header><p>继续你的学习记录</p><h2 id="auth-form-title">{{ mode === 'login' ? '回到学习桌' : '建立学习档案' }}</h2></header>
-        <div class="auth-tabs" role="tablist" aria-label="账号操作">
-          <button type="button" role="tab" :aria-selected="mode === 'login'" :class="{ active: mode === 'login' }" @click="mode = 'login'">登录</button>
-          <button type="button" role="tab" :aria-selected="mode === 'register'" :class="{ active: mode === 'register' }" @click="mode = 'register'">注册</button>
+        <div class="auth-tabs" role="group" aria-label="账号操作">
+          <button type="button" :aria-pressed="mode === 'login'" :class="{ active: mode === 'login' }" @click="mode = 'login'">登录</button>
+          <button type="button" :aria-pressed="mode === 'register'" :class="{ active: mode === 'register' }" @click="mode = 'register'">注册</button>
         </div>
         <p v-if="statusNotice" class="status-notice" role="status">{{ statusNotice }}</p>
         <el-form ref="formRef" :model="form" :rules="rules" label-position="top" size="large" @submit.prevent="submit">
@@ -122,7 +122,7 @@ async function submit() {
           <p class="form-feedback" :class="{ success: formError.startsWith('注册成功') }" aria-live="polite">{{ formError }}</p>
           <button class="auth-submit" type="submit" :disabled="loading"><span>{{ loading ? '请稍候…' : mode === 'login' ? '进入知错工作台' : '创建学生账号' }}</span><el-icon v-if="!loading"><ArrowRight /></el-icon></button>
         </el-form>
-        <p class="privacy-note">正式页面不展示测试账号或密码。登录失败、账号停用及令牌过期会在此明确提示。</p>
+        <p class="privacy-note">正式页面不展示测试账号或密码。登录失败与令牌过期会明确提示；账号停用目前由后端统一返回登录失败。</p>
       </div>
     </section>
   </main>

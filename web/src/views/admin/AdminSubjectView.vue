@@ -49,7 +49,7 @@ async function save() {
   formError.value = ''
   saving.value = true
   try {
-    const payload = { name, code: code || undefined, sort: form.sort }
+    const payload = { name, code: editingId.value !== undefined ? code : code || undefined, sort: form.sort }
     if (editingId.value !== undefined) {
       await subjectApi.update(editingId.value, payload)
       ElMessage.success('科目信息已更新')

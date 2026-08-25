@@ -7,7 +7,7 @@ withDefaults(
     padded?: boolean
   }>(),
   {
-    as: 'section',
+    as: 'div',
     variant: 'default',
     hoverable: false,
     padded: true,

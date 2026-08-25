@@ -28,18 +28,23 @@ function handleUnreadChange() {
   void loadUnread()
 }
 
+async function focusMainContent() {
+  await nextTick()
+  const main = mainRef.value
+  main?.scrollTo({ top: 0, behavior: 'auto' })
+  main?.focus({ preventScroll: true })
+}
+
 provide('refreshUnreadCount', loadUnread)
 
 watch(
   () => route.fullPath,
-  async () => {
-    await nextTick()
-    mainRef.value?.scrollTo({ top: 0, behavior: 'auto' })
-  },
+  () => void focusMainContent(),
 )
 
 onMounted(() => {
   void loadUnread()
+  void focusMainContent()
   window.addEventListener('message-unread-changed', handleUnreadChange)
 })
 
@@ -62,7 +67,7 @@ onBeforeUnmount(() => {
       </main>
     </div>
 
-    <MobileNav :unread="unread" />
+    <MobileNav :unread="unread" @navigated="focusMainContent" />
   </div>
 </template>
 
@@ -72,6 +77,7 @@ onBeforeUnmount(() => {
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--paper);
 }
 
@@ -79,6 +85,7 @@ onBeforeUnmount(() => {
   width: calc(100% - 244px);
   min-width: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   flex: 1;
 }
 
@@ -89,6 +96,7 @@ onBeforeUnmount(() => {
 .app-main {
   position: relative;
   height: calc(100vh - 70px);
+  height: calc(100dvh - 70px);
   padding: 30px clamp(22px, 3vw, 46px) 48px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -156,6 +164,7 @@ onBeforeUnmount(() => {
 
   .app-main {
     height: calc(100vh - 62px);
+    height: calc(100dvh - 62px);
     padding: 22px 14px calc(104px + env(safe-area-inset-bottom));
   }
 

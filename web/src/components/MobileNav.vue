@@ -13,6 +13,7 @@ import {
   MoreFilled,
   Notebook,
   Reading,
+  Timer,
   User,
   UserFilled,
 } from '@element-plus/icons-vue'
@@ -34,10 +35,15 @@ withDefaults(
   },
 )
 
+const emit = defineEmits<{
+  navigated: []
+}>()
+
 const route = useRoute()
 const router = useRouter()
 const store = useUserStore()
 const drawerOpen = ref(false)
+const navigationPending = ref(false)
 
 const home: MobileItem = { path: '/', title: '首页', icon: HomeFilled }
 const message: MobileItem = { path: '/message', title: '消息', icon: Bell }
@@ -61,7 +67,13 @@ const primaryItems = computed<MobileItem[]>(() => {
 
 const moreItems = computed<MobileItem[]>(() => {
   if (store.role === 'student') {
-    return [{ path: '/report', title: '学情报告', icon: DataAnalysis }, message, announcement, profile]
+    return [
+      { path: '/practice/history', title: '练习历史', icon: Timer },
+      { path: '/report', title: '学情报告', icon: DataAnalysis },
+      message,
+      announcement,
+      profile,
+    ]
   }
   if (store.role === 'teacher') return [profile]
   return [
@@ -82,7 +94,14 @@ function isActive(path: string) {
 const moreActive = computed(() => moreItems.value.some((item) => isActive(item.path)))
 
 function closeDrawer() {
+  navigationPending.value = true
   drawerOpen.value = false
+}
+
+function handleDrawerClosed() {
+  if (!navigationPending.value) return
+  navigationPending.value = false
+  emit('navigated')
 }
 
 async function handleLogout() {
@@ -122,6 +141,7 @@ async function handleLogout() {
       :class="{ 'is-active': moreActive }"
       type="button"
       aria-haspopup="dialog"
+      :aria-label="moreActive ? '更多功能，当前页面在此菜单中' : '更多功能'"
       :aria-expanded="drawerOpen"
       @click="drawerOpen = true"
     >
@@ -137,6 +157,7 @@ async function handleLogout() {
     size="min(72vh, 540px)"
     append-to-body
     class="mobile-more-drawer"
+    @closed="handleDrawerClosed"
   >
     <div class="drawer-intro">
       <span class="drawer-seal" aria-hidden="true"><el-icon><Grid /></el-icon></span>

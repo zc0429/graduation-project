@@ -41,7 +41,11 @@ const exportError = ref('')
 let pageRequestVersion = 0
 let treeRequestVersion = 0
 
-const treeProps = { label: 'name', children: 'children' }
+const treeProps = {
+  label: 'name',
+  children: 'children',
+  disabled: (node: KpNode) => Boolean(node.children?.length),
+}
 const hasFilters = computed(() => filterSubjectId.value !== undefined || filterKpId.value !== undefined)
 const subjectNames = computed(() => new Map(subjects.value.map((subject) => [subject.id, subject.name])))
 const knowledgeNames = computed(() => {
@@ -131,6 +135,10 @@ async function onSubjectChange() {
 }
 
 async function onNodeClick(node: KpNode) {
+  if (node.children?.length) {
+    ElMessage.info('章节只用于展开目录，请选择具体考点进行筛选')
+    return
+  }
   filterKpId.value = node.id
   pageNum.value = 1
   await loadPage()
@@ -250,7 +258,7 @@ onMounted(() => void loadInitial())
           </div>
 
           <div class="knowledge-heading">
-            <span>知识点</span>
+            <span>知识点 <small>（仅具体考点可筛选）</small></span>
             <button v-if="filterKpId !== undefined" type="button" @click="clearKnowledgeFilter">清除知识点</button>
           </div>
 

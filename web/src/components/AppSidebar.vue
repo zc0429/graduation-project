@@ -12,6 +12,7 @@ import {
   List,
   Notebook,
   Reading,
+  Timer,
   User,
   UserFilled,
 } from '@element-plus/icons-vue'
@@ -56,6 +57,7 @@ const primaryItems: NavItem[] = [
 ]
 
 const utilityItems: NavItem[] = [
+  { path: '/practice/history', title: '练习历史', icon: Timer, roles: ['student'] },
   { path: '/message', title: '消息中心', icon: Bell },
   { path: '/announcement', title: '系统公告', icon: Document },
   { path: '/profile', title: '个人中心', icon: UserFilled },
@@ -108,7 +110,7 @@ function accessibleLabel(item: NavItem) {
           :class="{ 'is-active': isActive(item.path), 'is-accent': item.accent }"
           :aria-current="isActive(item.path) ? 'page' : undefined"
           :aria-label="accessibleLabel(item)"
-          :title="collapsed ? item.title : undefined"
+          :title="item.title"
         >
           <el-icon class="nav-icon"><component :is="item.icon" /></el-icon>
           <span class="nav-text">{{ item.title }}</span>
@@ -125,7 +127,7 @@ function accessibleLabel(item: NavItem) {
           :class="{ 'is-active': isActive(item.path) }"
           :aria-current="isActive(item.path) ? 'page' : undefined"
           :aria-label="accessibleLabel(item)"
-          :title="collapsed ? item.title : undefined"
+          :title="item.title"
         >
           <el-icon class="nav-icon"><component :is="item.icon" /></el-icon>
           <span class="nav-text">{{ item.title }}</span>

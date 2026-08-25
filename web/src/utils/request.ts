@@ -20,6 +20,10 @@ export interface DownloadedFile {
   fileName: string
 }
 
+export interface AuthenticatedFileRequestOptions {
+  timeoutMs?: number
+}
+
 type UnauthorizedHandler = (error: ApiError) => void
 
 export interface UnauthorizedEventDetail {
@@ -112,48 +116,67 @@ function parseContentDispositionFilename(header: string | null, fallback: string
   return candidate.split(/[\\/]/).pop()?.replace(/[\u0000-\u001f\u007f]/g, '') || fallback
 }
 
-async function parseJsonError(response: Response): Promise<ApiError> {
+async function parseJsonError(data: unknown, httpStatus: number): Promise<ApiError> {
   let payload: Partial<RestResponse<unknown>> | undefined
   try {
-    payload = await response.json() as Partial<RestResponse<unknown>>
+    let decoded: unknown = data
+    if (typeof Blob !== 'undefined' && data instanceof Blob) decoded = await data.text()
+    if (typeof decoded === 'string') decoded = JSON.parse(decoded)
+    if (typeof decoded === 'object' && decoded !== null) {
+      payload = decoded as Partial<RestResponse<unknown>>
+    }
   } catch {
     // A malformed JSON error should still become a stable ApiError.
   }
   const message = payload?.code === 0
     ? '服务器未返回可下载的文件'
-    : payload?.message || `下载失败（${response.status}）`
+    : payload?.message || `下载失败（${httpStatus}）`
   return new ApiError(message, {
-    code: payload?.code === 0 ? -1 : typeof payload?.code === 'number' ? payload.code : response.status,
-    httpStatus: response.status,
+    code: payload?.code === 0 ? -1 : typeof payload?.code === 'number' ? payload.code : httpStatus,
+    httpStatus,
     details: payload,
   })
 }
 
-/** Fetch an authenticated binary response without passing it through the JSON interceptor. */
-export async function requestAuthenticatedFile(url: string, fallbackFileName: string): Promise<DownloadedFile> {
-  const headers = new Headers()
+/** Download an authenticated binary response with Axios while preserving JSON business errors. */
+export async function requestAuthenticatedFile(
+  url: string,
+  fallbackFileName: string,
+  options: AuthenticatedFileRequestOptions = {},
+): Promise<DownloadedFile> {
+  const headers: Record<string, string> = {}
   const token = localStorage.getItem('token')
-  if (token) headers.set('Authorization', `Bearer ${token}`)
+  if (token) headers.Authorization = `Bearer ${token}`
 
-  let response: Response
+  let response: AxiosResponse<Blob>
   try {
-    response = await fetch(url, { headers })
+    response = await axios.get<Blob, AxiosResponse<Blob>>(url, {
+      headers,
+      responseType: 'blob',
+      timeout: Math.max(1_000, options.timeoutMs ?? 60_000),
+      validateStatus: () => true,
+    })
   } catch (cause) {
-    const error = toApiError(cause, '下载失败，请检查网络连接')
+    const error = axios.isAxiosError(cause) && cause.code === 'ECONNABORTED'
+      ? new ApiError('下载超时，请稍后重试', { code: -1, cause })
+      : toApiError(cause, '下载失败，请检查网络连接')
     handleError(error)
     throw error
   }
 
-  const contentType = response.headers.get('Content-Type')?.toLowerCase() || ''
-  if (!response.ok || contentType.includes('json')) {
-    const error = await parseJsonError(response)
+  const contentType = String(response.headers['content-type'] || response.data.type || '').toLowerCase()
+  if (response.status < 200 || response.status >= 300 || contentType.includes('json')) {
+    const error = await parseJsonError(response.data, response.status)
     handleError(error)
     throw error
   }
 
   return {
-    blob: await response.blob(),
-    fileName: parseContentDispositionFilename(response.headers.get('Content-Disposition'), fallbackFileName),
+    blob: response.data,
+    fileName: parseContentDispositionFilename(
+      typeof response.headers['content-disposition'] === 'string' ? response.headers['content-disposition'] : null,
+      fallbackFileName,
+    ),
   }
 }
 
