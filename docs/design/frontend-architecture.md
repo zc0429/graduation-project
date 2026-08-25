@@ -191,7 +191,7 @@ axe-core 自动化是基线检查，不能替代键盘顺序、读屏语义和 2
 - 图表使用 `ResizeObserver` 响应容器，页面卸载时断开观察并 `dispose()` 实例。
 - AI 轮询不重叠，定时器在作用域销毁时清理；题目和变式请求以版本号丢弃迟到响应。
 - 图片在提交前限制类型与 10 MB 大小，预览读取使用版本号避免竞态。
-- 构建体积和 Lighthouse 分数必须以当次 `npm run build` 与报告为准，文档不保存会过期的旧分数。
+- 架构正文不把单次构建体积或 Lighthouse 分数视为永久保证；带日期的验收快照记录在 `web/README.md`，代码变化后必须重跑。
 
 当前 Element Plus 仍采用全局安装，构建时若继续出现主包体积警告，应在不破坏现有表单/弹窗行为的前提下评估按需导入；不能为了分数删除真实业务能力。
 
@@ -202,7 +202,7 @@ axe-core 自动化是基线检查，不能替代键盘顺序、读屏语义和 2
 | TypeScript | 组件、路由和 API 类型 | `npm run typecheck` |
 | Vitest | 错误归一化、认证下载、AI 轮询、Store、路由守卫、共享组件 | `npm run test:unit` |
 | Mock UI | 登录、三角色页面、错题/练习/复习/报告/消息、异常与响应式 | `npm run e2e:smoke` |
-| 浏览器 | Chrome Stable、Edge Stable、Firefox | `npm run e2e:browsers` |
+| 浏览器 | Chrome Stable、Edge Stable 完整桌面套件；Firefox 关键流程烟测 | `npm run e2e:browsers` |
 | 无障碍 | axe-core 自动扫描 | `npm run e2e:a11y` |
 | 真实联调 | `wrongbook_e2e` + Mock AI + Spring Boot + MySQL | `npm run e2e:integration` |
 | 性能 | 生产构建与本地 Lighthouse | 见 `web/README.md` |

@@ -1,6 +1,6 @@
-# 基于智谱 GLM 模型的 AI 错题分析与学习推荐系统
+# 基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现
 
-本科毕业设计项目，围绕“错题录入 → AI 知识点归类与解析（RAG）→ 变式题练习 → 遗忘曲线复习 → 学情反馈”形成完整学习闭环。前端为 Vue 3 单页应用，后端为 Spring Boot 3.5.16 REST 服务；离线开发和自动化验收默认使用 Mock AI，智谱 GLM 仅在显式配置密钥后启用。
+本科毕业设计项目，围绕“错题录入 → AI 知识点归类与解析（RAG）→ 变式题练习 → 遗忘曲线复习 → 学情反馈”形成完整学习闭环。前端为 Vue 3 单页应用，后端为 Spring Boot 3.5.16 REST 服务；离线开发和自动化验收默认使用 Mock AI，智谱 GLM 仅在显式设置 `LLM_PROVIDER=glm` 并通过环境变量配置密钥与模型后启用。
 
 - **英文题目**：Design and Implementation of an AI-Powered Wrong-Question Analysis and Learning Recommendation System Based on the Zhipu GLM Model
 - **指导教师**：胡韬（云南工商学院人工智能学院，2027 届）
@@ -59,7 +59,7 @@ npm run build
 npm run e2e:smoke
 ```
 
-跨浏览器、无障碍、Lighthouse 与真实后端 `wrongbook_e2e` 隔离验收的完整步骤见 [web/README.md](web/README.md)。README 不固化可能随代码变化而过期的通过数量；最终结果由当次验收填写并以命令输出为准。
+2026-08-25 当前分支验收：类型检查和生产构建通过，Vitest 23/23、四档 Mock UI 37/37、axe-core 3/3、Chrome/Edge/Firefox 59/59、`wrongbook_e2e + Mock AI` 真实后端联调 3/3；登录页与学生首页 Lighthouse 均为 Performance 99、Accessibility 100。完整命令、范围与非永久性验收快照见 [web/README.md](web/README.md)。
 
 ## 已知安全与数据边界
 

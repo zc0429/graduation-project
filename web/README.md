@@ -1,6 +1,6 @@
 # 知错前端
 
-“知错”是 AI 错题分析与学习推荐系统的 Vue 3 前端。界面采用纸张、批注与校勘符号组成的学习工作台视觉语言，所有业务数据来自现有 Spring Boot API；测试中的模拟数据只存在于 Playwright 路由拦截，不进入正式页面。
+“知错”是 AI 错题分析与学习推荐系统的 Vue 3 前端。界面采用纸张、批注与校勘符号组成的学习工作台视觉语言，正式运行不内置演示业务数据；Mock API 业务数据仅用于 `e2e/smoke` 与设计证据截图，单元测试替身也只存在于测试运行时。
 
 ## 技术栈与目录
 
@@ -24,6 +24,7 @@ src/
 tests/               # Vitest 组件与单元测试
 e2e/smoke/           # 路由级 Mock API 的 UI、响应式、浏览器与无障碍测试
 e2e/integration/     # 连接 wrongbook_e2e 真实后端的关键流程测试
+e2e/evidence/        # 明确标注 Mock 的桌面、平板和手机设计截图
 ```
 
 完整组件、设计变量、路由和后端边界见 [前端架构说明](../docs/design/frontend-architecture.md)。
@@ -66,10 +67,16 @@ npm run verify           # typecheck + unit + build + e2e:smoke
 npx playwright install chromium firefox
 ```
 
-Chrome Stable 与 Microsoft Edge Stable 使用本机已安装渠道，Firefox 使用 Playwright 管理的浏览器：
+Chrome Stable 与 Microsoft Edge Stable 使用本机已安装渠道并运行完整桌面套件；Firefox 使用 Playwright 管理的浏览器并运行关键流程烟测：
 
 ```powershell
 npm run e2e:browsers
+```
+
+生成与论文证据分离、带 Mock 标识的多端设计截图：
+
+```powershell
+npm run e2e:screenshots
 ```
 
 单独执行 axe-core 无障碍检查：
@@ -97,14 +104,14 @@ npm run e2e:a11y
 $e2eDatabase = 'wrongbook_e2e'
 if ($e2eDatabase -cne 'wrongbook_e2e') { throw '拒绝操作：数据库名必须精确为 wrongbook_e2e' }
 $mysqlUser = Read-Host 'MySQL 测试账号'
-mysql "--user=$mysqlUser" --password --execute='DROP DATABASE IF EXISTS `wrongbook_e2e`; CREATE DATABASE `wrongbook_e2e` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+mysql --protocol=TCP --host=127.0.0.1 --port=3306 "--user=$mysqlUser" --password --execute='DROP DATABASE IF EXISTS `wrongbook_e2e`; CREATE DATABASE `wrongbook_e2e` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 ```
 
 MySQL 客户端会交互式询问密码，密码不应写入命令、文档或仓库。
 
 ### 2. 用 Mock AI 启动后端
 
-Windows 当前要求 `JAVA_HOME` 指向 JDK 21。下面通过当前终端环境变量提供测试库凭据，不读取或依赖 `.env`：
+Windows 当前要求 `JAVA_HOME` 指向 JDK 21。下面通过当前终端环境变量覆盖全部验收配置，无需查看、修改或依赖 `.env`；启动前仍须保留数据库名与 Mock 提供方的显式校验：
 
 ```powershell
 Set-Location 'D:\Documents\GitHub\graduation-project\server'
@@ -153,16 +160,27 @@ npm run e2e:integration
 
 ```powershell
 npm run build
-npm run preview -- --host 127.0.0.1 --port 4173 --strictPort
+npm run preview -- --host 127.0.0.1 --port 4176 --strictPort
 ```
 
 再执行本地 Lighthouse（默认审计未登录的登录页）：
 
 ```powershell
-npx lighthouse http://127.0.0.1:4173/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless=new" --output=html --output-path=./test-results/lighthouse.html
+npx lighthouse http://127.0.0.1:4176/login --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless=new" --output=html --output-path=./test-results/lighthouse-login.html
 ```
 
-认证后页面应使用专用测试账号和临时测试令牌复测，不得把真实用户令牌写入脚本或报告。路由按页懒加载，ECharts 仅进入报告页后动态载入；仍应以当次构建和 Lighthouse 报告判断性能，不把旧分数当作当前结论。
+认证后的学生首页使用临时测试凭据复测，不把密码、令牌写入脚本或报告：
+
+```powershell
+$lighthouseCredential = Get-Credential -Message '输入本地 Lighthouse 测试账号'
+$env:LIGHTHOUSE_USERNAME = $lighthouseCredential.UserName
+$env:LIGHTHOUSE_PASSWORD = $lighthouseCredential.GetNetworkCredential().Password
+$env:LIGHTHOUSE_BASE_URL = 'http://127.0.0.1:4176'
+npm run audit:lighthouse:auth
+Remove-Item Env:LIGHTHOUSE_USERNAME, Env:LIGHTHOUSE_PASSWORD, Env:LIGHTHOUSE_BASE_URL
+```
+
+路由按页懒加载，ECharts 仅进入报告页后动态载入；仍应以当次构建和 Lighthouse 报告判断性能，不把旧分数当作永久结论。
 
 ## 状态与安全说明
 
@@ -175,13 +193,14 @@ npx lighthouse http://127.0.0.1:4173/ --only-categories=performance,accessibilit
 
 ## 验收记录
 
-不要在文档中预填未执行的通过数量。最终验收时按下表记录当次命令输出或报告路径：
+以下为 2026-08-25 当前分支在 Windows 本机的验收快照；分数和数量不是永久保证，代码变化后必须重跑：
 
 | 项目 | 当次结果 |
 |---|---|
-| `npm run typecheck` / `test:unit` / `build` | 由最终验收填写 |
-| 四档响应式 Mock UI | 由最终验收填写 |
-| Chrome / Edge / Firefox | 由最终验收填写 |
-| axe-core | 由最终验收填写 |
-| `wrongbook_e2e` 真实联调 | 由最终验收填写 |
-| Lighthouse | 由最终验收填写 |
+| `npm run typecheck` / `test:unit` / `build` | 类型检查与生产构建通过；Vitest 8 文件、23/23。Vite 仍提示主入口压缩后超过 500 kB |
+| 四档响应式 Mock UI | 37/37；覆盖 1600×1200、1280×800、820×1180、390×844 |
+| Chrome / Edge / Firefox | 59/59；Chrome 29、Edge 29 为完整桌面套件，Firefox 1 为关键烟测 |
+| axe-core | 独立套件 3/3；登录、学生核心页、教师与管理员核心页无 serious/critical WCAG A/AA 问题 |
+| `wrongbook_e2e` 真实联调 | 3/3；Spring Boot + MySQL + `LLM_PROVIDER=mock`，含 JWT Axios Blob 真实下载 |
+| 设计证据截图 | 10/10；桌面 5、平板 2、手机 3，全部带 Mock 标识并存于 `docs/design/vue-rebuild-screenshots/` |
+| Lighthouse | 登录页 Performance 99 / Accessibility 100（FCP 693 ms，LCP 769 ms）；学生首页 99 / 100（FCP 744 ms，LCP 926 ms）；两页 TBT 0、CLS 0 |
