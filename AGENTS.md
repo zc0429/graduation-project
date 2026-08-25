@@ -75,8 +75,8 @@
 - **已完成（2026-07-26）**：任务书复核修正；参考文献 24 篇双轨入库（近 3 年 17、外文 14，全部联机核验真实条目，6 篇 OA PDF 在 `pdfs/`）；开题报告定稿（`docs/thesis/开题报告.md`）；毕业论文一稿+二稿源稿（`docs/thesis/毕业论文.md`：摘要+绪论+文献综述+系统分析+概要设计+详细设计，总字数 13338，自检 8 项全过）
 - **已完成（2026-08-19）**：AI 错题分析与学习推荐系统可运行雏形完成（后端 server/ + 前端 web/，10 表，8 大功能模块，三角色 13 页面 Playwright 走查全绿，论文接口表 33 接口全对齐）；`docs/thesis/screenshots/` 拟存演示截图
 - **已完成（2026-08-23）**：正式题目改为“基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现”；新增可切换的 GLM/DeepSeek OpenAI-compatible 客户端，GLM 路径支持 `embedding-3`，DeepSeek 最小联网 JSON 调用成功；后端测试 4/4 通过。14 张截图与 E2E 已重新生成但尚未提交，截图仍是 Mock 演示证据。
-- **已完成（2026-08-25）**：`codex/frontend-rebuild` 已按祖先关系 fast-forward 合并到本地 `dev`（`0d876c4`），前端 typecheck、Vitest 23/23、生产构建和四档 Playwright smoke 37/37 通过；`RagServiceImpl` 与 `RecommendServiceImpl` 已按原题 `userId` 修复跨用户候选泄露，并增加查询层限制、二次 ownership guard 与 6 个隔离测试，全量后端测试 10/10 通过。前端相似题入口本轮仍保持停用，等待后续独立复查后再恢复。
-- **待办**：①完成 `dev` 与 `codex/backend-data-isolation-p0` 的远端同步（本轮 HTTPS 推送仍遇连接重置）②取得智谱密钥，实测 `glm-4.7-flash + embedding-3`，重建历史向量并重跑 E2E/截图③处理账号停用后旧令牌、学生接口角色限制、正确 HTTP 状态、事务及错题编辑后的分析/向量/变式失效④裁定当前 10 表与导师 7–8 表口径并同步论文、第 6/7 章、UML/甘特图⑤补文献页码与近 3 年文献⑥任务书导出 DOCX/PDF 发导师
+- **已完成（2026-08-25）**：`codex/frontend-rebuild` 已按祖先关系 fast-forward 合并并推送到 `dev`（`0d876c4`），前端 typecheck、Vitest 23/23、生产构建和四档 Playwright smoke 37/37 通过；`RagServiceImpl` 与 `RecommendServiceImpl` 已按原题 `userId` 修复跨用户候选泄露，并增加查询层限制、二次 ownership guard 与 6 个隔离测试，全量后端测试 10/10 通过。P0 提交 `b8cfa0c` 已推送到 `origin/codex/backend-data-isolation-p0`；前端相似题入口本轮仍保持停用，等待后续独立复查后再恢复。
+- **待办**：①由下一阶段独立复查 `codex/backend-data-isolation-p0`，本轮不继续扩大修改范围②取得智谱密钥，实测 `glm-4.7-flash + embedding-3`，重建历史向量并重跑 E2E/截图③处理账号停用后旧令牌、学生接口角色限制、正确 HTTP 状态、事务及错题编辑后的分析/向量/变式失效④裁定当前 10 表与导师 7–8 表口径并同步论文、第 6/7 章、UML/甘特图⑤补文献页码与近 3 年文献⑥任务书导出 DOCX/PDF 发导师
 
 ## GitHub 同步
 
