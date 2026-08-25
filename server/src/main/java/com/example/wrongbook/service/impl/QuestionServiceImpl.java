@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wrongbook.common.BizException;
 import com.example.wrongbook.common.UserContext;
@@ -34,6 +35,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -83,16 +85,33 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void update(Long id, QuestionRequest request) {
         Question question = getOwnQuestion(id);
-        question.setSubjectId(request.getSubjectId());
-        question.setStem(request.getStem());
-        question.setAnswer(request.getAnswer());
-        question.setSource(request.getSource());
+        boolean aiInputChanged = !Objects.equals(question.getSubjectId(), request.getSubjectId())
+                || !Objects.equals(question.getStem(), request.getStem())
+                || !Objects.equals(question.getAnswer(), request.getAnswer());
+        LambdaUpdateWrapper<Question> update = new LambdaUpdateWrapper<Question>()
+                .eq(Question::getId, id)
+                .set(Question::getSubjectId, request.getSubjectId())
+                .set(Question::getStem, request.getStem())
+                .set(Question::getAnswer, request.getAnswer())
+                .set(Question::getSource, request.getSource());
         if (StringUtils.hasText(request.getImageBase64())) {
-            question.setImageUrl(fileStorageUtil.saveBase64Image(request.getImageBase64()));
+            update.set(Question::getImageUrl, fileStorageUtil.saveBase64Image(request.getImageBase64()));
         }
-        questionMapper.updateById(question);
+        if (aiInputChanged) {
+            update.set(Question::getEmbedding, null)
+                    .set(Question::getKnowledgePointId, null)
+                    .set(Question::getDifficulty, null);
+        }
+        questionMapper.update(null, update);
+        if (aiInputChanged) {
+            aiAnalysisMapper.delete(new LambdaQueryWrapper<AiAnalysis>()
+                    .eq(AiAnalysis::getQuestionId, id));
+            variantQuestionMapper.delete(new LambdaQueryWrapper<VariantQuestion>()
+                    .eq(VariantQuestion::getQuestionId, id));
+        }
     }
 
     @Override

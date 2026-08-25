@@ -1,6 +1,7 @@
 package com.example.wrongbook.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.example.wrongbook.common.BizException;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.entity.AiAnalysis;
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -38,6 +40,7 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
     private final LlmClient llmClient;
     private final ObjectMapper objectMapper;
     private final MessageService messageService;
+    private final TransactionTemplate transactionTemplate;
     @Qualifier("aiTaskExecutor")
     private final Executor aiTaskExecutor;
 
@@ -77,16 +80,21 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
      */
     private void doAnalyze(Long questionId) {
         AiAnalysis record = findByQuestionId(questionId);
+        if (record == null) {
+            log.info("AI 解析任务已失效，忽略执行，questionId={}", questionId);
+            return;
+        }
         try {
             Thread.sleep(1500);
             Question question = questionMapper.selectById(questionId);
-            // 1. 计算题干向量并写回 question 表
+            if (question == null || !isActiveRecord(record)) {
+                log.info("AI 解析任务已失效，忽略执行，questionId={}", questionId);
+                return;
+            }
+            // 1. 计算题干向量；完成前只保存在当前输入快照中
             List<Double> vector = embeddingService.embed(question.getStem());
-            Question update = new Question();
-            update.setId(question.getId());
-            update.setEmbedding(objectMapper.writeValueAsString(vector));
-            questionMapper.updateById(update);
-            question.setEmbedding(update.getEmbedding());
+            String embedding = objectMapper.writeValueAsString(vector);
+            question.setEmbedding(embedding);
             // 2. RAG 检索同科目相似参考题
             List<Question> references = ragService.retrieveSimilar(question, 3);
             // 3. 组装提示词（含该科目二级考点候选）并调用大模型
@@ -98,35 +106,80 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
             String content = llmClient.chat(prompt);
             // 4. 解析结构化 JSON 结果
             JsonNode json = objectMapper.readTree(stripMarkdownFence(content));
-            record.setKnowledgePointId(json.hasNonNull("knowledgePointId") ? json.get("knowledgePointId").asLong() : null);
-            record.setErrorCause(json.path("errorCause").asText(null));
-            record.setAnalysis(json.path("analysis").asText(null));
-            record.setReferenceIds(objectMapper.writeValueAsString(
-                    references.stream().map(Question::getId).collect(Collectors.toList())));
-            record.setLlmModel(llmClient.model());
-            record.setStatus(1);
-            aiAnalysisMapper.updateById(record);
-            // 5. 回填错题的知识点与难度
-            Question backfill = new Question();
-            backfill.setId(question.getId());
-            backfill.setKnowledgePointId(record.getKnowledgePointId());
-            backfill.setDifficulty(json.hasNonNull("difficulty") ? json.get("difficulty").asInt() : null);
-            questionMapper.updateById(backfill);
-            // 6. 解析完成消息通知（论文 3.4 业务流程）
+            Long knowledgePointId = json.hasNonNull("knowledgePointId")
+                    ? json.get("knowledgePointId").asLong() : null;
+            Integer difficulty = json.hasNonNull("difficulty") ? json.get("difficulty").asInt() : null;
+            String errorCause = json.path("errorCause").asText(null);
+            String analysis = json.path("analysis").asText(null);
+            String referenceIds = objectMapper.writeValueAsString(
+                    references.stream().map(Question::getId).collect(Collectors.toList()));
+            String llmModel = llmClient.model();
             String kpName = null;
-            if (record.getKnowledgePointId() != null) {
-                KnowledgePoint kp = knowledgePointMapper.selectById(record.getKnowledgePointId());
+            if (knowledgePointId != null) {
+                KnowledgePoint kp = knowledgePointMapper.selectById(knowledgePointId);
                 kpName = kp == null ? null : kp.getName();
             }
-            messageService.send(question.getUserId(), "system", "错题解析完成",
-                    "你录入的错题已完成 AI 解析" + (kpName == null ? "。" : "，归类知识点为「" + kpName + "」，难度 "
-                            + (backfill.getDifficulty() == null ? "未知" : backfill.getDifficulty()) + "，前往错题详情页查看。"));
+            String finalKpName = kpName;
+            boolean completed = Boolean.TRUE.equals(transactionTemplate.execute(status -> {
+                int questionRows = questionMapper.update(null, matchingInput(question)
+                        .set(Question::getEmbedding, embedding)
+                        .set(Question::getKnowledgePointId, knowledgePointId)
+                        .set(Question::getDifficulty, difficulty));
+                if (questionRows != 1) {
+                    status.setRollbackOnly();
+                    return false;
+                }
+                int analysisRows = aiAnalysisMapper.update(null, new LambdaUpdateWrapper<AiAnalysis>()
+                        .eq(AiAnalysis::getId, record.getId())
+                        .eq(AiAnalysis::getQuestionId, questionId)
+                        .eq(AiAnalysis::getStatus, 0)
+                        .set(AiAnalysis::getKnowledgePointId, knowledgePointId)
+                        .set(AiAnalysis::getErrorCause, errorCause)
+                        .set(AiAnalysis::getAnalysis, analysis)
+                        .set(AiAnalysis::getReferenceIds, referenceIds)
+                        .set(AiAnalysis::getLlmModel, llmModel)
+                        .set(AiAnalysis::getStatus, 1));
+                if (analysisRows != 1) {
+                    status.setRollbackOnly();
+                    return false;
+                }
+                messageService.send(question.getUserId(), "system", "错题解析完成",
+                        "你录入的错题已完成 AI 解析"
+                                + (finalKpName == null ? "。" : "，归类知识点为「" + finalKpName + "」，难度 "
+                                + (difficulty == null ? "未知" : difficulty) + "，前往错题详情页查看。"));
+                return true;
+            }));
+            if (!completed) {
+                log.info("AI 解析任务输入已过期，放弃回写，questionId={}", questionId);
+            }
         } catch (Exception e) {
             log.error("AI 解析失败，questionId={}", questionId, e);
-            record.setStatus(2);
-            record.setLlmModel(llmClient.model());
-            aiAnalysisMapper.updateById(record);
+            aiAnalysisMapper.update(null, new LambdaUpdateWrapper<AiAnalysis>()
+                    .eq(AiAnalysis::getId, record.getId())
+                    .eq(AiAnalysis::getQuestionId, questionId)
+                    .eq(AiAnalysis::getStatus, 0)
+                    .set(AiAnalysis::getStatus, 2)
+                    .set(AiAnalysis::getLlmModel, llmClient.model()));
         }
+    }
+
+    private boolean isActiveRecord(AiAnalysis record) {
+        AiAnalysis current = aiAnalysisMapper.selectById(record.getId());
+        return current != null && current.getStatus() == 0
+                && current.getQuestionId().equals(record.getQuestionId());
+    }
+
+    private LambdaUpdateWrapper<Question> matchingInput(Question question) {
+        LambdaUpdateWrapper<Question> wrapper = new LambdaUpdateWrapper<Question>()
+                .eq(Question::getId, question.getId())
+                .eq(Question::getSubjectId, question.getSubjectId())
+                .eq(Question::getStem, question.getStem());
+        if (question.getAnswer() == null) {
+            wrapper.isNull(Question::getAnswer);
+        } else {
+            wrapper.eq(Question::getAnswer, question.getAnswer());
+        }
+        return wrapper;
     }
 
     private String buildPrompt(Question question, List<KnowledgePoint> candidates, List<Question> references) {
