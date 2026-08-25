@@ -1,44 +1,26 @@
-# Windows Playwright 截图走查
+# 前端自动化验收
 
-## 前置条件
+自动化分为三层，避免把固定测试数据、真实后端联调和论文截图混为一谈。
 
-1. MySQL 8 已启动，`wrongbook` 数据库已执行 `server/src/main/resources/db/schema.sql`。
-2. `server/.env` 的数据库地址、账号和密码与本机 MySQL 一致。
-3. 后端在独立 PowerShell 终端运行：
+## 1. 路由 Mock 界面测试
 
-   ```powershell
-   Set-Location 'D:\Documents\GitHub\graduation-project\server'
-   .\mvnw.cmd spring-boot:run
-   ```
+`npm run e2e:smoke` 使用固定 API 夹具覆盖三角色业务流程与四档响应式视口，
+不连接数据库，也不调用真实模型。
 
-4. 前端在独立 PowerShell 终端运行：
+`npm run e2e:browsers` 在 Chrome Stable 与 Edge Stable 执行完整桌面套件，
+并在 Firefox 执行关键流程烟测。
 
-   ```powershell
-   Set-Location 'D:\Documents\GitHub\graduation-project\web'
-   npm install
-   npm run dev
-   ```
+## 2. 独立数据库联调
 
-## 首次安装 Playwright
+`npm run e2e:integration` 只允许连接数据库名精确为 `wrongbook_e2e`、且
+`LLM_PROVIDER=mock` 的后端。启动、数据重建和安全检查步骤见 `web/README.md`。
+该流程验证真实 API、JWT Axios Blob 导出及三角色边界，不调用真实 GLM。
 
-在 `web` 目录执行：
+## 3. 设计证据截图
 
-```powershell
-npm install --save-dev @playwright/test
-npx playwright install chromium
-npx playwright --version
-```
+`npm run e2e:screenshots` 使用 Mock API 生成桌面、平板和手机截图，输出到
+`docs/design/vue-rebuild-screenshots/`。每张图片都会显示
+“Mock 演示数据 · 非真实 GLM 证据”，且不会写入 `docs/thesis/screenshots/`。
 
-浏览器默认下载到 `%USERPROFILE%\AppData\Local\ms-playwright`。若更新了 Playwright 版本，应再次执行 `npx playwright install chromium`。
-
-## 生成截图
-
-保持前后端运行，在 `web` 目录执行：
-
-```powershell
-npm run e2e:screenshots
-```
-
-脚本使用 `admin/123456`、`teacher/123456`、`student/123456` 依次走查 14 个页面，并将 PNG 直接写入 `docs/thesis/screenshots/`，不使用系统临时目录。
-
-为使空数据库也能展示 AI 解析、RAG 参考和相似题推荐，脚本先走查并截图真实错题录入页，再在学生登录会话中通过系统自身的 REST API 准备两条带有“自动化测试数据”前缀的演示错题。变式题和周报消息也只在缺失时生成，因此重复执行不会持续追加同名错题或重复变式题。复习计划按业务规则从录入次日开始，脚本不会篡改计划日期；首次当天截图出现空状态是正常、真实的结果。
+论文最终截图必须在后续真实 GLM 验证完成后单独生成，不得复用本目录的
+Mock 设计证据。

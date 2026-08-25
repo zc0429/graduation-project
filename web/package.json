@@ -17,7 +17,7 @@
     "e2e:integration": "playwright test --config=playwright.integration.config.ts",
     "audit:lighthouse:auth": "node scripts/run-authenticated-lighthouse.mjs",
     "verify": "npm run typecheck && npm run test:unit && npm run build && npm run e2e:smoke",
-    "e2e:screenshots": "playwright test e2e/walkthrough.spec.ts --project=chromium --workers=1"
+    "e2e:screenshots": "playwright test --config=playwright.evidence.config.ts"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
