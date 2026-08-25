@@ -24,7 +24,7 @@ const success: AiAnalysis = {
   status: 1,
   analysis: '解析完成',
   errorCause: '遗漏约束',
-  llmModel: 'glm-test',
+      llmModel: 'mock-model',
 }
 
 let scope: EffectScope | undefined

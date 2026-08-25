@@ -137,7 +137,7 @@ function defaultState(): MockApiState {
         errorCause: '忽略了区间端点与导数符号的共同约束。',
         analysis: '先求导，再把单调递增转化为导数在目标区间内非负。',
         referenceIds: '[202]',
-        llmModel: 'glm-4.7-flash',
+        llmModel: 'mock-model',
         status: 1,
         createTime: '2026-08-20 10:01:00',
       },
@@ -538,7 +538,7 @@ async function handleApiRoute(route: Route, state: MockApiState) {
         errorCause: '重新检查后发现关键约束遗漏。',
         analysis: '按约束逐项验证并回代检查。',
         referenceIds: '[202]',
-        llmModel: 'glm-4.7-flash',
+        llmModel: 'mock-model',
       }
     }
     await json(route, state.analyses[id] ?? null)

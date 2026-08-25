@@ -12,7 +12,7 @@ test('AI 解析展示成功证据并可从空状态重新触发', async ({ page,
   await page.getByRole('button', { name: '触发 AI 智能解析' }).click()
   await expect(page.getByText('AI 正在分析这道错题', { exact: true })).toBeVisible()
   await expect(page.getByText('重新检查后发现关键约束遗漏。', { exact: true })).toBeVisible()
-  await expect(page.getByText('glm-4.7-flash', { exact: true })).toBeVisible()
+  await expect(page.getByText('mock-model', { exact: true })).toBeVisible()
 })
 
 test('AI 失败状态明确提供重试动作', async ({ page, mockApi }) => {
