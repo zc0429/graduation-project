@@ -41,7 +41,7 @@
 5. `server/`（Spring Boot **3.5.16**）与 `web/`（Vue 3 + Vite）骨架**已创建并完成全部功能模块**（2026-08-19，详见进度记录）；后端已配 Maven Wrapper（`mvnw`）以便 Windows 端免装 Maven 直接构建
 6. 分支策略：`main` 稳定 + `dev` 日常开发
 7. **Spring Boot 版本已定：3.5.16**（2026-08-19 决策，start.spring.io 已无 3.x 需手动降 parent）。论文相关技术章节表述 "Spring Boot 3.x" 与实现一致，无需改版本表述。关键依赖版本（均经实测）：MyBatis-Plus 3.5.17（starter+jsqlparser）、jjwt 0.12.6、EasyExcel 4.0.3、spring-security-crypto（BOM 管理，仅用 BCrypt 不引 Security 全家桶）；前端 vue 3.5 / element-plus 2.14 / pinia / vue-router / axios / echarts。
-8. **模型与题目口径（2026-08-23，2026-08-25 补充确认）**：正式题目及论文目标模型统一为智谱 GLM；当前题目长度已由用户与导师确认，不再复议。开发联调阶段可临时使用 DeepSeek API 验证兼容调用链路，但不得据此把 DeepSeek 写入正式题目。模型接入与效果只按实际代码和测试证据表述；API 密钥仅通过环境变量注入，不写入仓库、日志、论文或截图。
+8. **模型与题目口径（2026-08-23，2026-08-25 补充确认）**：正式题目及论文目标模型统一为智谱 GLM；当前题目长度已由用户与导师确认，不再复议。开发联调阶段可临时使用 DeepSeek API 验证兼容调用链路，但不得据此把 DeepSeek 写入正式题目。模型接入与效果只按实际代码和测试证据表述；API 密钥仅通过环境变量注入，不写入仓库、日志、论文或截图。2026-08-25 已以真实 `glm-4.7-flash + embedding-3` 完成正式验证，本轮未使用 DeepSeek 联网能力，证据见 `docs/validation/live-glm-validation.md`。
 
 ## 开发工具链（Linux 端，2026-08-16 配置完成）
 
@@ -62,6 +62,7 @@
 | `docs/thesis/` | 毕业论文与提交文档：Markdown 源稿（按需单独导出 DOCX/PDF） |
 | `docs/notes/` | 开题报告、周报、**进度记录.md** |
 | `docs/references/` | 参考文献双轨管理（见其 README） |
+| `docs/validation/` | 真实模型、业务链与回归验证记录 |
 
 ## Git 规范
 
@@ -77,7 +78,8 @@
 - **已完成（2026-08-23）**：正式题目改为“基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现”；新增可切换的 GLM/DeepSeek OpenAI-compatible 客户端，GLM 路径支持 `embedding-3`，DeepSeek 最小联网 JSON 调用成功；后端测试 4/4 通过。14 张截图与 E2E 已重新生成但尚未提交，截图仍是 Mock 演示证据。
 - **已完成（2026-08-25）**：`codex/frontend-rebuild` 已按祖先关系 fast-forward 合并并推送到 `dev`（`0d876c4`），前端 typecheck、Vitest 23/23、生产构建和四档 Playwright smoke 37/37 通过；`RagServiceImpl` 与 `RecommendServiceImpl` 已按原题 `userId` 修复跨用户候选泄露，并增加查询层限制、二次 ownership guard 与 6 个隔离测试，全量后端测试 10/10 通过。跨用户 P0 经独立复查后已 fast-forward 到本地 `dev@87c17f7`；前端相似题入口仍保持停用，等待单独安排恢复。
 - **已完成（2026-08-25）**：错题的科目、题干或答案变化时，后端在同一事务中清空 `embedding`、知识点和难度，并删除对应 AI 分析与变式题；仅来源变化时保留这些数据，掌握度、复习计划和练习记录不受影响。异步 AI 回写增加题目输入快照和原分析记录状态校验，过期任务不能回写旧结果或发送完成通知；新增 7 个真实 MySQL 集成测试，全量后端测试 17/17 通过。
-- **待办**：①由下一阶段独立复查 `codex/question-edit-ai-invalidation-p0`，本轮不继续扩大修改范围②取得智谱密钥，实测 `glm-4.7-flash + embedding-3`，重建历史向量并重跑 E2E/截图③分别处理账号停用后旧令牌、学生接口角色限制、正确 HTTP 状态及其余事务边界④裁定当前 10 表与导师 7–8 表口径并同步论文、第 6/7 章、UML/甘特图⑤补文献页码与近 3 年文献⑥任务书导出 DOCX/PDF 发导师
+- **已完成（2026-08-25）**：在 `codex/live-glm-validation` 以真实智谱 `glm-4.7-flash + embedding-3` 完成正式验证：最小 Chat、1024 维 Embedding、真实向量 RAG、5 个固定结构化错题分析样本及 Variant 3/3 在同一最终轮全部通过；补齐精确结构校验、模型/向量校验、有限重试、显式超时、失败留痕、Variant 短事务与并发编辑快照防护。后端 36 项中 35 通过、live 项默认跳过 1，前端 typecheck、Vitest 23/23、生产构建通过；真实 Key 未进入 Git/日志/文档并已从 `server/.env` 清理。详见 `docs/validation/live-glm-validation.md`。
+- **待办**：①由下一阶段独立复查 `codex/question-edit-ai-invalidation-p0`，本轮不继续扩大修改范围②使用真实 `embedding-3` 重建历史题目向量，并重跑业务 E2E/论文证据截图③分别处理账号停用后旧令牌、学生接口角色限制、正确 HTTP 状态及其余事务边界④裁定当前 10 表与导师 7–8 表口径并同步论文、第 6/7 章、UML/甘特图⑤补文献页码与近 3 年文献⑥任务书导出 DOCX/PDF 发导师
 
 ## GitHub 同步
 
