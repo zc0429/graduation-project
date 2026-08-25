@@ -28,22 +28,28 @@ public class RecommendServiceImpl implements RecommendService {
     @Override
     public List<Question> similar(Long questionId) {
         Question question = checkOwnQuestion(questionId);
+        Long ownerId = question.getUserId();
         // Mock 策略：同知识点 + 相近难度优先；不足时用语义向量检索补足
         // 预留：接入真实 Embedding 模型后可改为纯向量余弦相似度排序
         Map<Long, Question> result = new LinkedHashMap<>();
         if (question.getKnowledgePointId() != null) {
             List<Question> sameKp = questionMapper.selectList(new LambdaQueryWrapper<Question>()
+                    .eq(Question::getUserId, ownerId)
                     .eq(Question::getKnowledgePointId, question.getKnowledgePointId())
                     .ne(Question::getId, questionId));
             int difficulty = question.getDifficulty() == null ? 3 : question.getDifficulty();
             sameKp.stream()
+                    .filter(q -> ownerId.equals(q.getUserId()))
                     .sorted(Comparator.comparingInt(q -> Math.abs(
                             (q.getDifficulty() == null ? 3 : q.getDifficulty()) - difficulty)))
                     .limit(TOP_N)
                     .forEach(q -> result.put(q.getId(), q));
         }
         if (result.size() < TOP_N) {
-            ragService.retrieveSimilar(question, TOP_N).forEach(q -> result.putIfAbsent(q.getId(), q));
+            ragService.retrieveSimilar(question, TOP_N).stream()
+                    .filter(q -> ownerId.equals(q.getUserId()))
+                    .filter(q -> !questionId.equals(q.getId()))
+                    .forEach(q -> result.putIfAbsent(q.getId(), q));
         }
         return new ArrayList<>(result.values()).stream().limit(TOP_N).toList();
     }

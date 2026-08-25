@@ -29,12 +29,15 @@ public class RagServiceImpl implements RagService {
         if (target == null) {
             return List.of();
         }
+        Long ownerId = question.getUserId();
         List<Question> pool = questionMapper.selectList(new LambdaQueryWrapper<Question>()
+                .eq(Question::getUserId, ownerId)
                 .eq(Question::getSubjectId, question.getSubjectId())
                 .ne(Question::getId, question.getId())
                 .isNotNull(Question::getEmbedding));
         // 应用内内存余弦相似度计算（论文 4.1 数据层约定），万级题库规模下可满足性能
         return pool.stream()
+                .filter(q -> ownerId.equals(q.getUserId()))
                 .map(q -> Map.entry(q, cosine(target, parseVector(q.getEmbedding()))))
                 .filter(e -> e.getValue() > 0)
                 .sorted(Map.Entry.<Question, Double>comparingByValue().reversed())
