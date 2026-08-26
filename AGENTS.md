@@ -79,7 +79,8 @@
 - **已完成（2026-08-25）**：`codex/frontend-rebuild` 已按祖先关系 fast-forward 合并并推送到 `dev`（`0d876c4`），前端 typecheck、Vitest 23/23、生产构建和四档 Playwright smoke 37/37 通过；`RagServiceImpl` 与 `RecommendServiceImpl` 已按原题 `userId` 修复跨用户候选泄露，并增加查询层限制、二次 ownership guard 与 6 个隔离测试，全量后端测试 10/10 通过。跨用户 P0 经独立复查后已 fast-forward 到本地 `dev@87c17f7`；前端相似题入口仍保持停用，等待单独安排恢复。
 - **已完成（2026-08-25）**：错题的科目、题干或答案变化时，后端在同一事务中清空 `embedding`、知识点和难度，并删除对应 AI 分析与变式题；仅来源变化时保留这些数据，掌握度、复习计划和练习记录不受影响。异步 AI 回写增加题目输入快照和原分析记录状态校验，过期任务不能回写旧结果或发送完成通知；新增 7 个真实 MySQL 集成测试，全量后端测试 17/17 通过。
 - **已完成（2026-08-25）**：在 `codex/live-glm-validation` 以真实智谱 `glm-4.7-flash + embedding-3` 完成正式验证：最小 Chat、1024 维 Embedding、真实向量 RAG、5 个固定结构化错题分析样本及 Variant 3/3 在同一最终轮全部通过；补齐精确结构校验、模型/向量校验、有限重试、显式超时、失败留痕、Variant 短事务与并发编辑快照防护。后端 36 项中 35 通过、live 项默认跳过 1，前端 typecheck、Vitest 23/23、生产构建通过；真实 Key 未进入 Git/日志/文档并已从 `server/.env` 清理。详见 `docs/validation/live-glm-validation.md`。
-- **待办**：①由下一阶段独立复查 `codex/question-edit-ai-invalidation-p0`，本轮不继续扩大修改范围②使用真实 `embedding-3` 重建历史题目向量，并重跑业务 E2E/论文证据截图③分别处理账号停用后旧令牌、学生接口角色限制、正确 HTTP 状态及其余事务边界④裁定当前 10 表与导师 7–8 表口径并同步论文、第 6/7 章、UML/甘特图⑤补文献页码与近 3 年文献⑥任务书导出 DOCX/PDF 发导师
+- **已完成（2026-08-26）**：在 `codex/embedding-rebuild` 审计全部 3 条有效历史错题，确认旧向量均为 8 维；新增默认关闭的维护入口、1024 维与有限数校验、逐题失败隔离及题干二进制快照条件回写，使用真实智谱 `embedding-3` 将 3/3 全部重建成功，failed/stale/skipped 均为 0。重建后 null、非法 JSON、非有限和非 1024 维均为 0；RAG 以二次函数题目 1 检索题目 2，余弦相似度 0.855025，同用户、同科目、同知识点、源题排除与降序检查通过。后端默认测试 42 项中 40 通过、2 个真实入口默认跳过，前端 typecheck、Vitest 23/23、生产构建通过；临时 Key 值已从未跟踪的 `server/.env` 清理。详见 `docs/validation/embedding-rebuild.md`。
+- **待办**：①基于已统一的真实向量重跑业务 E2E 并更新论文证据截图②分别处理账号停用后旧令牌、学生接口角色限制、正确 HTTP 状态及其余事务边界③裁定当前 10 表与导师 7–8 表口径并同步论文、第 6/7 章、UML/甘特图④补文献页码与近 3 年文献⑤任务书导出 DOCX/PDF 发导师
 
 ## GitHub 同步
 
