@@ -29,6 +29,16 @@ test('AI 失败状态明确提供重试动作', async ({ page, mockApi }) => {
   await expect(page.getByRole('button', { name: '重新加载' })).toBeVisible()
 })
 
+test('相似题只在打开页签后请求并展示当前账号候选', async ({ page, mockApi }) => {
+  await page.goto('/question/201')
+
+  expect(mockApi.requests.some((item) => item.pathname === '/api/recommend/similar')).toBe(false)
+  await page.getByRole('tab', { name: /相似题/ }).click()
+
+  await expect(page.getByText('阅读短文并判断作者的主要观点。', { exact: true })).toBeVisible()
+  expect(mockApi.requests.filter((item) => item.pathname === '/api/recommend/similar')).toHaveLength(1)
+})
+
 test('生成变式题并提交一次变式练习自评', async ({ page, mockApi }) => {
   await page.goto('/question/201')
   await page.getByRole('tab', { name: /AI 变式题/ }).click()

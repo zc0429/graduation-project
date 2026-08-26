@@ -7,6 +7,7 @@ import {
   kpApi,
   practiceApi,
   questionApi,
+  recommendApi,
   subjectApi,
   variantApi,
   type KpNode,
@@ -32,10 +33,14 @@ const question = ref<Question>()
 const subjects = ref<Subject[]>([])
 const knowledgeTree = ref<KpNode[]>([])
 const variants = ref<VariantQuestion[]>([])
+const similarQuestions = ref<Question[]>([])
 const pageLoading = ref(true)
 const pageError = ref('')
 const variantLoading = ref(false)
 const variantError = ref('')
+const similarLoading = ref(false)
+const similarError = ref('')
+const similarLoaded = ref(false)
 const generating = ref(false)
 const deleting = ref(false)
 const activeTab = ref('analysis')
@@ -55,6 +60,7 @@ const analysisStale = ref(false)
 const variantsStale = ref(false)
 let editImageReadVersion = 0
 let variantRequestVersion = 0
+let similarRequestVersion = 0
 
 const practiceVisible = ref(false)
 const practiceSaving = ref(false)
@@ -70,8 +76,11 @@ const practiceForm = reactive({
 const polling = useAiAnalysisPolling(questionId, {
   onSuccess: async () => {
     analysisStale.value = false
+    similarQuestions.value = []
+    similarLoaded.value = false
     ElMessage.success('AI 智能解析已完成')
     await loadQuestion()
+    if (activeTab.value === 'similar') await loadSimilar()
   },
 })
 
@@ -134,6 +143,24 @@ async function loadVariants() {
   }
 }
 
+async function loadSimilar() {
+  if (analysisStale.value) return
+  const requestVersion = ++similarRequestVersion
+  similarLoading.value = true
+  similarError.value = ''
+  try {
+    const result = await recommendApi.similar(questionId.value)
+    if (requestVersion !== similarRequestVersion) return
+    similarQuestions.value = result
+    similarLoaded.value = true
+  } catch (error) {
+    if (requestVersion !== similarRequestVersion) return
+    similarError.value = error instanceof Error ? error.message : '相似题暂时无法加载。'
+  } finally {
+    if (requestVersion === similarRequestVersion) similarLoading.value = false
+  }
+}
+
 async function loadPage() {
   if (!Number.isSafeInteger(questionId.value) || questionId.value <= 0) {
     pageLoading.value = false
@@ -144,6 +171,11 @@ async function loadPage() {
   pageError.value = ''
   answerVisible.value = false
   variants.value = []
+  similarRequestVersion += 1
+  similarQuestions.value = []
+  similarLoading.value = false
+  similarLoaded.value = false
+  similarError.value = ''
   analysisStale.value = false
   variantsStale.value = false
   polling.stop()
@@ -155,6 +187,7 @@ async function loadPage() {
     }
     await loadQuestion()
     await Promise.allSettled([polling.sync(), loadVariants()])
+    if (activeTab.value === 'similar' && !analysisStale.value) await loadSimilar()
   } catch (error) {
     pageError.value = error instanceof Error ? error.message : '错题详情暂时无法加载。'
   } finally {
@@ -286,6 +319,11 @@ async function saveEdit() {
     variantsStale.value = hadExistingVariants
     variants.value = []
     variantError.value = ''
+    similarRequestVersion += 1
+    similarQuestions.value = []
+    similarLoading.value = false
+    similarLoaded.value = false
+    similarError.value = ''
     editVisible.value = false
     try {
       await loadQuestion()
@@ -355,6 +393,9 @@ async function submitPractice() {
 }
 
 watch(questionId, loadPage)
+watch(activeTab, (tab) => {
+  if (tab === 'similar' && !analysisStale.value && !similarLoaded.value && !similarLoading.value) void loadSimilar()
+})
 onMounted(loadPage)
 </script>
 
@@ -431,9 +472,19 @@ onMounted(loadPage)
             </div>
           </el-tab-pane>
 
-          <el-tab-pane label="相似题 · 暂停" name="similar">
+          <el-tab-pane :label="`相似题 · ${similarQuestions.length}`" name="similar">
             <div class="tab-content">
-              <div class="truth-note privacy-stop"><strong>相似题暂不可用</strong><p>后端候选集的用户隔离仍待修复。为避免把其他账号的题目传到当前页面，前端已停止请求和展示；隔离修复并验证后再恢复入口。</p></div>
+              <div class="truth-note"><strong>推荐边界</strong><p>相似题只从当前学生自己的错题中检索，优先匹配同知识点与相近难度，并用语义向量补足。</p></div>
+              <AsyncState v-if="analysisStale" status="empty" compact title="旧相似题已隐藏" description="重新解析当前题目后，系统才会重新检索相似题。" />
+              <AsyncState v-else-if="similarLoading" status="loading" compact title="正在检索相似题" />
+              <AsyncState v-else-if="similarError" status="error" compact title="相似题加载失败" :description="similarError" @retry="loadSimilar" />
+              <AsyncState v-else-if="similarLoaded && similarQuestions.length === 0" status="empty" compact title="暂未找到相似题" description="当前账号的题目数量或知识点数据可能不足。" />
+              <div v-else-if="similarQuestions.length" class="similar-list">
+                <button v-for="item in similarQuestions" :key="item.id" type="button" @click="router.push(`/question/${item.id}`)">
+                  <span>{{ subjectName(item.subjectId) }} · {{ knowledgeName(item.knowledgePointId) }} · 难度 {{ difficultyText(item.difficulty) }}</span>
+                  <strong>{{ item.stem }}</strong>
+                </button>
+              </div>
             </div>
           </el-tab-pane>
 
@@ -505,7 +556,7 @@ onMounted(loadPage)
 
 <style scoped>
 .question-detail-page{display:grid;gap:20px}.question-overview{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,.7fr);gap:20px}.question-sheet{position:relative;padding-left:72px!important}.correction-mark{position:absolute;left:22px;top:25px;display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--cinnabar);border-radius:50%;color:var(--cinnabar);font:800 17px var(--font-display);transform:rotate(-7deg)}.question-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:23px}.question-tags span{padding:5px 9px;border:1px solid var(--line-strong);border-radius:999px;background:#edf2f4;color:var(--navy);font-size:10px;font-weight:700}.question-tags .jade{border-color:var(--jade-light);background:var(--jade-pale);color:var(--jade-dark)}.question-tags .amber{border-color:var(--amber-light);background:var(--amber-pale);color:#795017}.stem{margin:0;color:var(--navy);font:500 18px/2 var(--font-serif);white-space:pre-line}.question-image{width:min(100%,520px);max-height:300px;margin-top:17px;border:1px solid var(--line);border-radius:10px;background:#fff}.question-meta{margin:24px 0 0;padding-top:13px;border-top:1px dashed var(--line);color:var(--ink-faint);font:9px var(--font-mono)}.answer-toggle{display:flex;align-items:center;gap:7px;margin-top:17px;border:0;background:transparent;color:var(--jade-dark);font-size:11px;font-weight:800;cursor:pointer}.answer-block{margin:13px 0 0;padding:14px;border-left:3px solid var(--jade);background:var(--jade-pale);color:var(--navy);font-size:13px;line-height:1.8;white-space:pre-line}.mastery-side{display:flex;flex-direction:column;gap:20px}.mastery-side h2{margin:0;color:var(--navy);font:800 20px var(--font-display)}.mastery-side dl{margin:0}.mastery-side dl>div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed var(--line);font-size:11px}.mastery-side dt{color:var(--ink-faint)}.mastery-side dd{margin:0;color:var(--navy);font-weight:800}.jade-action{border-color:var(--jade-light)!important;background:var(--jade-pale)!important;color:var(--jade-dark)!important}.analysis-workbench{overflow:hidden}.analysis-tabs :deep(.el-tabs__header){margin:0;padding:15px 25px 0;background:var(--paper-deep)}.analysis-tabs :deep(.el-tabs__nav-wrap::after){height:1px;background:var(--line)}.analysis-tabs :deep(.el-tabs__item){height:46px;font-size:12px;font-weight:800}.tab-content{padding:24px 27px 30px}.analysis-topline{display:flex;align-items:center;gap:25px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed var(--line)}.analysis-topline>div{display:grid;gap:4px}.analysis-topline span{color:var(--ink-faint);font-size:9px}.analysis-topline strong{color:var(--navy);font-size:11px}.analysis-topline :deep(.el-button){margin-left:auto}.analysis-section{display:grid;grid-template-columns:130px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px dashed var(--line)}.analysis-section strong{color:var(--jade-dark);font:800 14px var(--font-display)}.analysis-section p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.85}.pre-line{white-space:pre-line}.partial-result,.risk-note{margin:0 0 12px;padding:10px 13px;border-left:3px solid var(--amber);background:var(--amber-pale);color:#73501c;font-size:11px;line-height:1.65}.risk-note{border-left-color:var(--cinnabar);background:var(--cinnabar-pale);color:var(--cinnabar-dark)}.truth-note{padding:18px;border:1px solid var(--amber-light);border-radius:11px;background:var(--amber-pale)}.truth-note strong{color:#795017;font:800 15px var(--font-display)}.truth-note p{margin:7px 0 0;color:#73501c;font-size:11px;line-height:1.7}.reference-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.reference-list span{padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:var(--paper-bright);color:var(--navy);font:10px var(--font-mono)}.similar-list{display:grid;gap:9px}.similar-list button{display:grid;gap:6px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--paper-bright);text-align:left;cursor:pointer}.similar-list button:hover{border-color:var(--jade)}.similar-list span{color:var(--ink-faint);font-size:9px}.similar-list strong{overflow:hidden;color:var(--navy);font-size:12px;text-overflow:ellipsis;white-space:nowrap}.variant-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.variant-head p{margin:0;color:var(--ink-soft);font-size:11px}.variant-list{display:grid;gap:12px}.variant-list article{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--paper-bright)}.variant-list article>div{display:flex;justify-content:space-between}.variant-list span{color:var(--cinnabar);font:800 14px var(--font-display)}.variant-list em{color:var(--ink-faint);font-size:10px;font-style:normal}.variant-list article>p,.variant-list details p{color:var(--navy);font-size:13px;line-height:1.8}.variant-list summary{color:var(--jade-dark);font-size:11px;cursor:pointer}.variant-list :deep(.el-button){margin-top:12px}.dialog-note{margin:0 0 14px;padding:10px 12px;border-left:3px solid var(--amber);background:var(--amber-pale);color:#73501c;font-size:11px;line-height:1.6}.dialog-error{min-height:18px;margin:0;color:var(--cinnabar);font-size:11px}
-.derived-stale-note{display:flex;align-items:flex-start;gap:12px;padding:14px 25px;border-bottom:1px solid var(--amber-light);background:var(--amber-pale);color:#73501c}.derived-stale-note>span{display:grid;flex:0 0 28px;width:28px;height:28px;place-items:center;border:2px solid var(--amber);border-radius:50%;font:900 13px var(--font-display)}.derived-stale-note strong{display:block;color:#795017;font:800 14px var(--font-display)}.derived-stale-note p{margin:4px 0 0;font-size:11px;line-height:1.65}.privacy-stop{border-color:var(--cinnabar-light);background:var(--cinnabar-pale)}.privacy-stop strong,.privacy-stop p{color:var(--cinnabar-dark)}.stale-variants{margin-top:4px}.edit-image-field{display:grid;width:100%;gap:10px}.current-image-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:11px;background:var(--paper-bright)}.current-image-thumb{width:92px;height:66px;border:1px solid var(--line);border-radius:8px;background:var(--paper-deep)}.current-image-row p{display:grid;gap:4px;margin:0}.current-image-row strong{color:var(--navy);font-size:12px}.current-image-row span{color:var(--ink-faint);font-size:10px;line-height:1.55}.edit-uploader,.edit-uploader :deep(.el-upload),.edit-uploader :deep(.el-upload-dragger){width:100%}.edit-uploader :deep(.el-upload-dragger){display:grid;min-height:112px;padding:18px;place-items:center;align-content:center;border:1px dashed var(--line-strong);background:repeating-linear-gradient(180deg,transparent 0 28px,rgba(37,78,102,.05) 28px 29px),rgba(255,253,248,.8)}.edit-uploader :deep(.el-upload-dragger:hover){border-color:var(--jade)}.edit-uploader :deep(.el-icon){margin-bottom:6px;color:var(--jade-dark)}.edit-uploader strong{color:var(--navy);font-size:12px}.edit-uploader span{margin-top:3px;color:var(--ink-faint);font-size:10px}.edit-image-preview{display:grid;grid-template-columns:minmax(180px,260px) minmax(0,1fr);gap:14px;align-items:center;padding:11px;border:1px solid var(--jade-light);border-radius:12px;background:var(--jade-pale)}.edit-image-preview :deep(.el-image){width:100%;height:145px;border:1px solid var(--line);border-radius:9px;background:var(--paper-bright)}.edit-image-preview>div{display:grid;gap:7px;justify-items:start;min-width:0}.edit-image-preview strong{max-width:100%;overflow:hidden;color:var(--navy);font-size:12px;text-overflow:ellipsis;white-space:nowrap}.edit-image-preview span{color:var(--ink-faint);font-size:10px}.image-error{margin:0;color:var(--cinnabar-dark);font-size:11px}
+.derived-stale-note{display:flex;align-items:flex-start;gap:12px;padding:14px 25px;border-bottom:1px solid var(--amber-light);background:var(--amber-pale);color:#73501c}.derived-stale-note>span{display:grid;flex:0 0 28px;width:28px;height:28px;place-items:center;border:2px solid var(--amber);border-radius:50%;font:900 13px var(--font-display)}.derived-stale-note strong{display:block;color:#795017;font:800 14px var(--font-display)}.derived-stale-note p{margin:4px 0 0;font-size:11px;line-height:1.65}.stale-variants{margin-top:4px}.edit-image-field{display:grid;width:100%;gap:10px}.current-image-row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:11px;background:var(--paper-bright)}.current-image-thumb{width:92px;height:66px;border:1px solid var(--line);border-radius:8px;background:var(--paper-deep)}.current-image-row p{display:grid;gap:4px;margin:0}.current-image-row strong{color:var(--navy);font-size:12px}.current-image-row span{color:var(--ink-faint);font-size:10px;line-height:1.55}.edit-uploader,.edit-uploader :deep(.el-upload),.edit-uploader :deep(.el-upload-dragger){width:100%}.edit-uploader :deep(.el-upload-dragger){display:grid;min-height:112px;padding:18px;place-items:center;align-content:center;border:1px dashed var(--line-strong);background:repeating-linear-gradient(180deg,transparent 0 28px,rgba(37,78,102,.05) 28px 29px),rgba(255,253,248,.8)}.edit-uploader :deep(.el-upload-dragger:hover){border-color:var(--jade)}.edit-uploader :deep(.el-icon){margin-bottom:6px;color:var(--jade-dark)}.edit-uploader strong{color:var(--navy);font-size:12px}.edit-uploader span{margin-top:3px;color:var(--ink-faint);font-size:10px}.edit-image-preview{display:grid;grid-template-columns:minmax(180px,260px) minmax(0,1fr);gap:14px;align-items:center;padding:11px;border:1px solid var(--jade-light);border-radius:12px;background:var(--jade-pale)}.edit-image-preview :deep(.el-image){width:100%;height:145px;border:1px solid var(--line);border-radius:9px;background:var(--paper-bright)}.edit-image-preview>div{display:grid;gap:7px;justify-items:start;min-width:0}.edit-image-preview strong{max-width:100%;overflow:hidden;color:var(--navy);font-size:12px;text-overflow:ellipsis;white-space:nowrap}.edit-image-preview span{color:var(--ink-faint);font-size:10px}.image-error{margin:0;color:var(--cinnabar-dark);font-size:11px}
 @media(max-width:900px){.question-overview{grid-template-columns:1fr}.mastery-side{display:grid;grid-template-columns:1fr 1fr;align-items:center}.mastery-side h2{grid-column:1/-1}.analysis-section{grid-template-columns:1fr}.variant-head{align-items:flex-start}}
 @media(max-width:600px){.question-sheet{padding:70px 18px 24px 40px!important}.correction-mark{left:8px;top:21px}.question-tags{position:absolute;left:55px;right:10px;top:23px;flex-wrap:nowrap;overflow-x:auto}.stem{font-size:16px}.mastery-side{display:flex;align-items:stretch}.derived-stale-note{padding:13px 15px}.analysis-tabs :deep(.el-tabs__header){padding-inline:13px}.analysis-tabs :deep(.el-tabs__nav-scroll){overflow-x:auto}.tab-content{padding:20px 15px 24px}.analysis-topline{display:grid;grid-template-columns:1fr 1fr}.analysis-topline :deep(.el-button){grid-column:1/-1;width:100%;margin-left:0}.variant-head{display:grid}.variant-head :deep(.el-button){width:100%}.edit-image-preview{grid-template-columns:1fr}.current-image-row{grid-template-columns:74px minmax(0,1fr)}.current-image-thumb{width:74px;height:58px}.question-meta{line-height:1.7}}
 </style>

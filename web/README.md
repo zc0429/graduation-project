@@ -33,7 +33,7 @@ e2e/evidence/        # 明确标注 Mock 的桌面、平板和手机设计截图
 
 | 角色 | 当前真实能力 | 不展示的能力 |
 |---|---|---|
-| 学生 | 错题增删改查、图片、JWT Excel 导出、AI 解析、变式练习、到期/逾期复习、练习历史、个人周报 | 未来复习日历；未完成用户隔离的相似题内容 |
+| 学生 | 错题增删改查、图片、JWT Excel 导出、AI 解析、同账号相似题、变式练习、到期/逾期复习、练习历史、个人周报 | 未来复习日历 |
 | 教师 | 全站聚合周报、通用消息/公告/资料 | 班级/课程筛选、学生名单与学生钻取 |
 | 管理员 | 用户查询与逻辑注销、科目新增/编辑、两级知识点增删、公告查看/发布 | 角色分配、账号恢复、科目删除、公告编辑/下线 |
 
@@ -58,6 +58,7 @@ npm run typecheck        # vue-tsc 类型检查
 npm run test:unit        # Vitest 单元与共享组件测试
 npm run build            # 类型检查后生成 dist/
 npm run e2e:smoke        # Chromium，1600/1280/820/390 四档视口，API 路由模拟
+npm run e2e:real-ai      # 默认跳过；仅显式开关后调用真实 GLM 并生成论文证据
 npm run verify           # typecheck + unit + build + e2e:smoke
 ```
 
@@ -86,6 +87,10 @@ npm run e2e:a11y
 ```
 
 失败时的 trace 和截图写入 `test-results/`。上述 UI 测试会拦截 `/api`，验证的是前端交互与状态，不可作为真实数据库或服务端权限已通过的证据。
+
+真实 GLM 浏览器证据与上述 Mock 测试严格分离。启动真实 GLM 后端、注入临时密码、
+显式 opt-in 以及证据数据保留规则见 [E2E 验收说明](e2e/README.md)，本轮结果见
+[真实 GLM 浏览器业务 E2E 记录](../docs/validation/real-ai-e2e.md)。
 
 ## `wrongbook_e2e` 真实后端验收
 
@@ -187,7 +192,7 @@ Remove-Item Env:LIGHTHOUSE_USERNAME, Env:LIGHTHOUSE_PASSWORD, Env:LIGHTHOUSE_BAS
 - REST 响应统一解包 `{ code, message, data }`；HTTP/业务 401 会清理本地会话并返回登录页，网络失败不会误当成空数据。
 - Excel 导出使用带 `Authorization: Bearer …` 的 Blob 请求，能识别 JSON 错误响应、清理文件名并及时释放临时 URL。
 - AI 解析以非重叠轮询查询，默认最长 90 秒，并区分等待、成功、失败、超时和网络错误。
-- 后端相似题候选尚未按用户隔离，正式前端已禁用相似题请求和展示；RAG 只显示参考 ID，不展开其他题目内容。
+- 相似题与 RAG 候选已在查询层绑定原题所属学生，并保留结果层归属校验；正式前端按需请求同账号相似题。RAG 仍只显示参考 ID，不展开其他题目内容。
 - 教师报告只有全站聚合范围，报告没有历史归档；练习历史接口也不返回完整题干。
 - 管理员停用用户后，已签发 JWT 仍可能在过期前有效；前端退出和路由限制不能替代后端撤销机制。
 
