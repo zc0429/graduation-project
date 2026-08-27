@@ -1,0 +1,1778 @@
+{
+  "experiment" : "Gate5 20-50题小规模AI/RAG实验",
+  "generatedAt" : "2026-08-27T04:06:25.049756600Z",
+  "gitCommit" : "e80b6e3e4b1118effe75b40503f3d1d5b4efde6b",
+  "datasetSha256" : "4e4ed8ac58d87e0385d0dc2035d4f1ed8d4e1cef3eb5c608cb59f52e33a0330a",
+  "chatModel" : "glm-4.7-flash",
+  "embeddingModel" : "embedding-3",
+  "embeddingDimensions" : 1024,
+  "embeddingSuccess" : 27,
+  "embeddingFailure" : 0,
+  "cases" : [ {
+    "dataset" : {
+      "caseId" : "MATH-LINEAR-001",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 2,
+      "expectedKnowledgePointName" : "一次函数",
+      "stem" : "已知一次函数 y=-3x+2。学生作答：图像随 x 增大而上升。判断并说明理由。",
+      "wrongAnswer" : "图像随 x 增大而上升",
+      "correctAnswer" : "斜率 k=-3<0，图像随 x 增大而下降。",
+      "errorConceptGroups" : [ [ "斜率", "k" ], [ "负数", "小于0", "<0" ], [ "下降", "减小" ] ],
+      "relevanceGroup" : "KP-2",
+      "ragAblation" : true
+    },
+    "questionId" : 403,
+    "rag" : {
+      "caseIds" : [ "MATH-LINEAR-003", "MATH-QUAD-003", "MATH-CONG-003" ],
+      "questionIds" : [ 405, 408, 411 ],
+      "groups" : [ "KP-2", "KP-3", "KP-5" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 0.5,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 1
+    },
+    "analysis" : {
+      "caseId" : "MATH-LINEAR-001",
+      "questionId" : 403,
+      "predictedKnowledgePointId" : 2,
+      "predictedKnowledgePointName" : "一次函数",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生混淆了一次函数图像的增减性，未正确理解斜率 k 的正负对图像变化趋势的影响",
+      "analysis" : "一次函数 y = kx + b 的图像是一条直线。当斜率 k > 0 时，图像随 x 增大而上升；当斜率 k < 0 时，图像随 x 增大而下降。本题中 k = -3 < 0，因此图像应随 x 增大而下降，而非上升。",
+      "referenceCaseIds" : [ "MATH-LINEAR-003", "MATH-QUAD-003", "MATH-CONG-003" ],
+      "durationMs" : 3795,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-LINEAR-003", "MATH-LINEAR-002", "MATH-QUAD-003", "MATH-CONG-003", "MATH-CONG-001" ],
+      "questionIds" : [ 405, 404, 408, 411, 409 ],
+      "groups" : [ "KP-2", "KP-2", "KP-3", "KP-5", "KP-5" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-LINEAR-002",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 2,
+      "expectedKnowledgePointName" : "一次函数",
+      "stem" : "求直线 y=2x-4 与 x 轴的交点横坐标。学生作答：令 x=0，得到横坐标为 -4。",
+      "wrongAnswer" : "横坐标为 -4",
+      "correctAnswer" : "与 x 轴相交时 y=0，解 2x-4=0，得 x=2。",
+      "errorConceptGroups" : [ [ "y=0", "纵坐标为0" ], [ "2x-4=0", "令函数值为0" ], [ "x=2", "横坐标是2" ] ],
+      "relevanceGroup" : "KP-2",
+      "ragAblation" : false
+    },
+    "questionId" : 404,
+    "rag" : {
+      "caseIds" : [ "MATH-QUAD-003", "MATH-QUAD-001", "MATH-LINEAR-003" ],
+      "questionIds" : [ 408, 406, 405 ],
+      "groups" : [ "KP-3", "KP-3", "KP-2" ],
+      "firstRelevantRank" : 3,
+      "hitAt3" : 1.0,
+      "recallAt3" : 0.5,
+      "mrrAt3" : 0.3333333333333333,
+      "relevantCount" : 1
+    },
+    "analysis" : {
+      "caseId" : "MATH-LINEAR-002",
+      "questionId" : 404,
+      "predictedKnowledgePointId" : 2,
+      "predictedKnowledgePointName" : "一次函数",
+      "exactMatch" : true,
+      "difficulty" : 1,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生未理解直线与坐标轴相交的定义，错误地令 y=0，导致计算错误",
+      "analysis" : "直线与 x 轴的交点即直线上的点满足 y=0。将 y=0 代入直线方程 2x-4=0，解得 x=2。因此，交点的横坐标为 2。",
+      "referenceCaseIds" : [ "MATH-QUAD-003", "MATH-QUAD-001", "MATH-LINEAR-003" ],
+      "durationMs" : 49331,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-LINEAR-001", "MATH-LINEAR-003", "MATH-QUAD-003", "MATH-QUAD-001", "MATH-CIRCLE-001" ],
+      "questionIds" : [ 403, 405, 408, 406, 412 ],
+      "groups" : [ "KP-2", "KP-2", "KP-3", "KP-3", "KP-6" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-LINEAR-003",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 2,
+      "expectedKnowledgePointName" : "一次函数",
+      "stem" : "一次函数经过点 (1,3) 和 (2,5)。学生作答：斜率 k=(5+3)/(2+1)=8/3。",
+      "wrongAnswer" : "k=8/3",
+      "correctAnswer" : "斜率应为纵坐标之差除以横坐标之差，k=(5-3)/(2-1)=2。",
+      "errorConceptGroups" : [ [ "差", "变化量" ], [ "纵坐标之差", "y2-y1" ], [ "横坐标之差", "x2-x1" ], [ "k=2", "斜率为2" ] ],
+      "relevanceGroup" : "KP-2",
+      "ragAblation" : false
+    },
+    "questionId" : 405,
+    "rag" : {
+      "caseIds" : [ "MATH-LINEAR-001", "MATH-QUAD-003", "MATH-QUAD-001" ],
+      "questionIds" : [ 403, 408, 406 ],
+      "groups" : [ "KP-2", "KP-3", "KP-3" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 0.5,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 1
+    },
+    "analysis" : {
+      "caseId" : "MATH-LINEAR-003",
+      "questionId" : 405,
+      "predictedKnowledgePointId" : 2,
+      "predictedKnowledgePointName" : "一次函数",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生混淆了纵坐标之差与纵坐标之和，错误地使用了加法计算斜率",
+      "analysis" : "一次函数的斜率公式为 k=(y2-y1)/(x2-x1)，即纵坐标之差除以横坐标之差。题目中两点坐标为 (1,3) 和 (2,5)，正确计算应为 k=(5-3)/(2-1)=2/1=2。学生错误地使用了 y1+y2 进行计算，导致结果错误。",
+      "referenceCaseIds" : [ "MATH-LINEAR-001", "MATH-QUAD-003", "MATH-QUAD-001" ],
+      "durationMs" : 52444,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 0.75
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-LINEAR-001", "MATH-LINEAR-002", "MATH-QUAD-003", "MATH-QUAD-001", "MATH-QUAD-002" ],
+      "questionIds" : [ 403, 404, 408, 406, 407 ],
+      "groups" : [ "KP-2", "KP-2", "KP-3", "KP-3", "KP-3" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-QUAD-001",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 3,
+      "expectedKnowledgePointName" : "二次函数",
+      "stem" : "解方程 x²-4x+5=0。学生作答：方程有两个实数根 1 和 3。",
+      "wrongAnswer" : "实数根为 1 和 3",
+      "correctAnswer" : "判别式 Δ=(-4)²-4×1×5=-4<0，方程无实数根。",
+      "errorConceptGroups" : [ [ "判别式", "Δ" ], [ "小于0", "<0", "负数" ], [ "无实数根", "没有实数根" ] ],
+      "relevanceGroup" : "KP-3",
+      "ragAblation" : true
+    },
+    "questionId" : 406,
+    "rag" : {
+      "caseIds" : [ "MATH-QUAD-002", "MATH-QUAD-003", "MATH-LINEAR-002" ],
+      "questionIds" : [ 407, 408, 404 ],
+      "groups" : [ "KP-3", "KP-3", "KP-2" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-QUAD-001",
+      "questionId" : 406,
+      "predictedKnowledgePointId" : 3,
+      "predictedKnowledgePointName" : "二次函数",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生未掌握一元二次方程根的判别式判定方法，错误地认为判别式大于0时方程有两个实数根",
+      "analysis" : "对于一元二次方程ax²+bx+c=0，其根的情况由判别式Δ=b²-4ac决定。当Δ<0时，方程无实数根。本题中Δ=(-4)²-4×1×5=-4<0，故方程无实数根。学生作答中给出的根1和3是错误的，可能是混淆了方程的解与函数图像与x轴交点坐标，或者直接猜测了结果。",
+      "referenceCaseIds" : [ "MATH-QUAD-002", "MATH-QUAD-003", "MATH-LINEAR-002" ],
+      "durationMs" : 12955,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-QUAD-002", "MATH-QUAD-003", "MATH-LINEAR-002", "MATH-LINEAR-003", "MATH-CIRCLE-003" ],
+      "questionIds" : [ 407, 408, 404, 405, 414 ],
+      "groups" : [ "KP-3", "KP-3", "KP-2", "KP-2", "KP-6" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-QUAD-002",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 3,
+      "expectedKnowledgePointName" : "二次函数",
+      "stem" : "将 y=x²+6x+5 配方。学生作答：y=(x+3)²+4。",
+      "wrongAnswer" : "y=(x+3)²+4",
+      "correctAnswer" : "x²+6x+5=(x+3)²-9+5=(x+3)²-4。",
+      "errorConceptGroups" : [ [ "一半", "除以2", "3" ], [ "平方", "9" ], [ "减4", "-4" ] ],
+      "relevanceGroup" : "KP-3",
+      "ragAblation" : false
+    },
+    "questionId" : 407,
+    "rag" : {
+      "caseIds" : [ "MATH-QUAD-001", "MATH-QUAD-003", "MATH-LINEAR-003" ],
+      "questionIds" : [ 406, 408, 405 ],
+      "groups" : [ "KP-3", "KP-3", "KP-2" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-QUAD-002",
+      "questionId" : 407,
+      "predictedKnowledgePointId" : 3,
+      "predictedKnowledgePointName" : "二次函数",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "配方时符号处理错误，将 -9+5 误算为 +4",
+      "analysis" : "配方步骤如下：x²+6x+5=(x²+6x+9)-9+5=(x+3)²-4。学生错误地将常数项 -9+5 计算为 4，正确的计算应为 -4。",
+      "referenceCaseIds" : [ "MATH-QUAD-001", "MATH-QUAD-003", "MATH-LINEAR-003" ],
+      "durationMs" : 40306,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-QUAD-003", "MATH-QUAD-001", "MATH-LINEAR-003", "MATH-LINEAR-002", "MATH-LINEAR-001" ],
+      "questionIds" : [ 408, 406, 405, 404, 403 ],
+      "groups" : [ "KP-3", "KP-3", "KP-2", "KP-2", "KP-2" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-QUAD-003",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 3,
+      "expectedKnowledgePointName" : "二次函数",
+      "stem" : "二次函数 y=-2(x-1)²+3。学生作答：函数的最小值是 3。",
+      "wrongAnswer" : "最小值是 3",
+      "correctAnswer" : "二次项系数为负，抛物线开口向下，函数最大值为 3。",
+      "errorConceptGroups" : [ [ "系数为负", "a<0", "-2" ], [ "开口向下" ], [ "最大值", "最大" ], [ "3" ] ],
+      "relevanceGroup" : "KP-3",
+      "ragAblation" : false
+    },
+    "questionId" : 408,
+    "rag" : {
+      "caseIds" : [ "MATH-LINEAR-003", "MATH-QUAD-002", "MATH-QUAD-001" ],
+      "questionIds" : [ 405, 407, 406 ],
+      "groups" : [ "KP-2", "KP-3", "KP-3" ],
+      "firstRelevantRank" : 2,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 0.5,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-QUAD-003",
+      "questionId" : 408,
+      "predictedKnowledgePointId" : 3,
+      "predictedKnowledgePointName" : "二次函数",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生未正确识别二次函数的开口方向，误将开口向下的抛物线的最大值当作最小值。",
+      "analysis" : "二次函数的一般形式为y=a(x-h)²+k。当a<0时，抛物线开口向下，函数有最大值，最大值为k；当a>0时，抛物线开口向上，函数有最小值，最小值为k。本题中a=-2<0，开口向下，函数的最大值为3，而不是最小值。",
+      "referenceCaseIds" : [ "MATH-LINEAR-003", "MATH-QUAD-002", "MATH-QUAD-001" ],
+      "durationMs" : 3822,
+      "failureReason" : null,
+      "conceptHit" : 4,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-QUAD-002", "MATH-QUAD-001", "MATH-LINEAR-003", "MATH-LINEAR-002", "MATH-LINEAR-001" ],
+      "questionIds" : [ 407, 406, 405, 404, 403 ],
+      "groups" : [ "KP-3", "KP-3", "KP-2", "KP-2", "KP-2" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-CONG-001",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 5,
+      "expectedKnowledgePointName" : "三角形全等",
+      "stem" : "两个三角形的三组对应角分别相等。学生作答：由 AAA 可判定两个三角形全等。",
+      "wrongAnswer" : "AAA 可判定全等",
+      "correctAnswer" : "AAA 只能判定两个三角形相似，不能判定全等。",
+      "errorConceptGroups" : [ [ "AAA", "三角相等", "三个角" ], [ "相似" ], [ "不能判定全等", "不足以全等" ] ],
+      "relevanceGroup" : "KP-5",
+      "ragAblation" : false
+    },
+    "questionId" : 409,
+    "rag" : {
+      "caseIds" : [ "MATH-CONG-003", "MATH-CONG-002", "MATH-CIRCLE-002" ],
+      "questionIds" : [ 411, 410, 413 ],
+      "groups" : [ "KP-5", "KP-5", "KP-6" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-CONG-001",
+      "questionId" : 409,
+      "predictedKnowledgePointId" : 5,
+      "predictedKnowledgePointName" : "三角形全等",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "混淆了相似与全等的判定条件",
+      "analysis" : "AAA（角角角）判定的是两个三角形相似，而不是全等。相似三角形对应边成比例，但不一定相等。要判定全等，需要满足边边角（SAS）、边边边（SSS）等条件。",
+      "referenceCaseIds" : [ "MATH-CONG-003", "MATH-CONG-002", "MATH-CIRCLE-002" ],
+      "durationMs" : 62215,
+      "failureReason" : null,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-CONG-002", "MATH-CONG-003", "MATH-CIRCLE-002", "MATH-CIRCLE-003", "MATH-LINEAR-003" ],
+      "questionIds" : [ 410, 411, 413, 414, 405 ],
+      "groups" : [ "KP-5", "KP-5", "KP-6", "KP-6", "KP-2" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-CONG-002",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 5,
+      "expectedKnowledgePointName" : "三角形全等",
+      "stem" : "在 △ABC 与 △DEF 中，AB=DE、AC=DF、∠B=∠E。学生作答：由 SAS 判定两三角形全等。",
+      "wrongAnswer" : "由 SAS 判定全等",
+      "correctAnswer" : "已知角不是两条已知边的夹角，不能使用 SAS，现有条件不足以判定全等。",
+      "errorConceptGroups" : [ [ "夹角" ], [ "SAS", "边角边" ], [ "不能", "不足" ] ],
+      "relevanceGroup" : "KP-5",
+      "ragAblation" : false
+    },
+    "questionId" : 410,
+    "rag" : {
+      "caseIds" : [ "MATH-CONG-001", "MATH-CONG-003", "MATH-CIRCLE-003" ],
+      "questionIds" : [ 409, 411, 414 ],
+      "groups" : [ "KP-5", "KP-5", "KP-6" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-CONG-002",
+      "questionId" : 410,
+      "predictedKnowledgePointId" : 5,
+      "predictedKnowledgePointName" : "三角形全等",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "已知角不是两条已知边的夹角",
+      "analysis" : "在SAS（边角边）判定全等时，已知角必须是两条已知边的夹角。题目中已知角∠B与边AB、BC（或AC）的关系不明确，且已知角∠E与边DE、EF（或DF）的关系不明确，因此不能直接应用SAS判定。现有条件不足以判定两个三角形全等。",
+      "referenceCaseIds" : [ "MATH-CONG-001", "MATH-CONG-003", "MATH-CIRCLE-003" ],
+      "durationMs" : 21194,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-CONG-001", "MATH-CONG-003", "MATH-CIRCLE-003", "MATH-CIRCLE-002", "MATH-CIRCLE-001" ],
+      "questionIds" : [ 409, 411, 414, 413, 412 ],
+      "groups" : [ "KP-5", "KP-5", "KP-6", "KP-6", "KP-6" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-CONG-003",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 5,
+      "expectedKnowledgePointName" : "三角形全等",
+      "stem" : "两个直角三角形的斜边和一条对应直角边分别相等。学生作答：还缺一个锐角相等，无法判定全等。",
+      "wrongAnswer" : "无法判定全等",
+      "correctAnswer" : "可直接用斜边、直角边定理（HL）判定两个直角三角形全等。",
+      "errorConceptGroups" : [ [ "直角三角形" ], [ "斜边" ], [ "直角边" ], [ "HL", "斜边、直角边", "斜边直角边" ] ],
+      "relevanceGroup" : "KP-5",
+      "ragAblation" : false
+    },
+    "questionId" : 411,
+    "rag" : {
+      "caseIds" : [ "MATH-CONG-001", "MATH-CONG-002", "MATH-CIRCLE-002" ],
+      "questionIds" : [ 409, 410, 413 ],
+      "groups" : [ "KP-5", "KP-5", "KP-6" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-CONG-003",
+      "questionId" : 411,
+      "predictedKnowledgePointId" : 5,
+      "predictedKnowledgePointName" : "三角形全等",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生混淆了判定三角形全等的一般条件与直角三角形特有的判定条件，忽略了直角三角形斜边和一条直角边对应相等的特殊性质。",
+      "analysis" : "根据直角三角形的斜边、直角边定理（HL），如果两个直角三角形的斜边和一条直角边分别相等，那么这两个直角三角形全等。因此，仅凭斜边和一条直角边相等即可判定全等，无需再寻找另一个锐角相等的条件。",
+      "referenceCaseIds" : [ "MATH-CONG-001", "MATH-CONG-002", "MATH-CIRCLE-002" ],
+      "durationMs" : 31205,
+      "failureReason" : null,
+      "conceptHit" : 4,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-CONG-001", "MATH-CONG-002", "MATH-CIRCLE-002", "MATH-CIRCLE-003", "MATH-LINEAR-003" ],
+      "questionIds" : [ 409, 410, 413, 414, 405 ],
+      "groups" : [ "KP-5", "KP-5", "KP-6", "KP-6", "KP-2" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-CIRCLE-001",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 6,
+      "expectedKnowledgePointName" : "圆的性质",
+      "stem" : "直线 l 与圆 O 相切于 A。学生作答：经过切点 A 的半径 OA 与切线 l 平行。",
+      "wrongAnswer" : "OA 与 l 平行",
+      "correctAnswer" : "经过切点的半径 OA 垂直于切线 l。",
+      "errorConceptGroups" : [ [ "切点", "切线" ], [ "半径", "OA" ], [ "垂直" ] ],
+      "relevanceGroup" : "KP-6",
+      "ragAblation" : false
+    },
+    "questionId" : 412,
+    "rag" : {
+      "caseIds" : [ "MATH-CIRCLE-003", "MATH-CIRCLE-002", "MATH-LINEAR-002" ],
+      "questionIds" : [ 414, 413, 404 ],
+      "groups" : [ "KP-6", "KP-6", "KP-2" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-CIRCLE-001",
+      "questionId" : 412,
+      "predictedKnowledgePointId" : 6,
+      "predictedKnowledgePointName" : "圆的性质",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "混淆了切线的性质，误认为半径与切线平行，实际上经过切点的半径与切线垂直。",
+      "analysis" : "根据圆的切线性质定理，圆的切线垂直于经过切点的半径。因此，直线 l 与圆 O 相切于 A，半径 OA 必须垂直于切线 l，而不是平行。",
+      "referenceCaseIds" : [ "MATH-CIRCLE-003", "MATH-CIRCLE-002", "MATH-LINEAR-002" ],
+      "durationMs" : 29733,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-CIRCLE-002", "MATH-CIRCLE-003", "MATH-LINEAR-002", "MATH-CONG-001", "MATH-CONG-002" ],
+      "questionIds" : [ 413, 414, 404, 409, 410 ],
+      "groups" : [ "KP-6", "KP-6", "KP-2", "KP-5", "KP-5" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-CIRCLE-002",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 6,
+      "expectedKnowledgePointName" : "圆的性质",
+      "stem" : "圆中一条弧所对的圆心角为 80°。学生作答：同弧所对的圆周角也是 80°。",
+      "wrongAnswer" : "圆周角为 80°",
+      "correctAnswer" : "同弧所对圆周角等于圆心角的一半，因此为 40°。",
+      "errorConceptGroups" : [ [ "圆周角" ], [ "一半", "二分之一" ], [ "40°", "40度" ] ],
+      "relevanceGroup" : "KP-6",
+      "ragAblation" : false
+    },
+    "questionId" : 413,
+    "rag" : {
+      "caseIds" : [ "MATH-CIRCLE-003", "MATH-CONG-003", "MATH-CONG-001" ],
+      "questionIds" : [ 414, 411, 409 ],
+      "groups" : [ "KP-6", "KP-5", "KP-5" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 0.5,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 1
+    },
+    "analysis" : {
+      "caseId" : "MATH-CIRCLE-002",
+      "questionId" : 413,
+      "predictedKnowledgePointId" : 6,
+      "predictedKnowledgePointName" : "圆的性质",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生混淆了圆心角与圆周角的度数关系，错误地认为同弧所对的圆周角等于圆心角",
+      "analysis" : "圆周角定理指出，同弧所对的圆周角等于圆心角的一半。题目中圆心角为80°，因此同弧所对的圆周角应为80°÷2=40°。",
+      "referenceCaseIds" : [ "MATH-CIRCLE-003", "MATH-CONG-003", "MATH-CONG-001" ],
+      "durationMs" : 18938,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-CIRCLE-001", "MATH-CIRCLE-003", "MATH-CONG-003", "MATH-CONG-001", "MATH-CONG-002" ],
+      "questionIds" : [ 412, 414, 411, 409, 410 ],
+      "groups" : [ "KP-6", "KP-6", "KP-5", "KP-5", "KP-5" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "MATH-CIRCLE-003",
+      "subjectId" : 1,
+      "subjectName" : "数学",
+      "expectedKnowledgePointId" : 6,
+      "expectedKnowledgePointName" : "圆的性质",
+      "stem" : "AB 是圆 O 的直径，点 C 在圆上。学生作答：∠ACB 是 45° 的锐角。",
+      "wrongAnswer" : "∠ACB=45°",
+      "correctAnswer" : "直径所对的圆周角是直角，所以 ∠ACB=90°。",
+      "errorConceptGroups" : [ [ "直径" ], [ "圆周角" ], [ "直角", "90°", "90度" ] ],
+      "relevanceGroup" : "KP-6",
+      "ragAblation" : false
+    },
+    "questionId" : 414,
+    "rag" : {
+      "caseIds" : [ "MATH-CONG-002", "MATH-CIRCLE-001", "MATH-CIRCLE-002" ],
+      "questionIds" : [ 410, 412, 413 ],
+      "groups" : [ "KP-5", "KP-6", "KP-6" ],
+      "firstRelevantRank" : 2,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 0.5,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "MATH-CIRCLE-003",
+      "questionId" : 414,
+      "predictedKnowledgePointId" : 6,
+      "predictedKnowledgePointName" : "圆的性质",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生错误地认为直径所对的圆周角是锐角，忽略了圆周角定理中直径所对的角是直角这一关键性质。",
+      "analysis" : "根据圆周角定理，直径所对的圆周角是直角。因此，在圆O中，AB是直径，点C在圆上，则∠ACB=90°。",
+      "referenceCaseIds" : [ "MATH-CONG-002", "MATH-CIRCLE-001", "MATH-CIRCLE-002" ],
+      "durationMs" : 19015,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "MATH-CIRCLE-001", "MATH-CIRCLE-002", "MATH-CONG-002", "MATH-CONG-003", "MATH-CONG-001" ],
+      "questionIds" : [ 412, 413, 410, 411, 409 ],
+      "groups" : [ "KP-6", "KP-6", "KP-5", "KP-5", "KP-5" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-N2-001",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 8,
+      "expectedKnowledgePointName" : "牛顿第二定律",
+      "stem" : "质量为 2 kg 的物体产生 3 m/s² 的加速度。学生作答：合力 F=m/a=2/3 N。",
+      "wrongAnswer" : "F=2/3 N",
+      "correctAnswer" : "由 F=ma，合力 F=2×3=6 N。",
+      "errorConceptGroups" : [ [ "F=ma", "牛顿第二定律" ], [ "相乘", "乘法" ], [ "6N", "6 N" ] ],
+      "relevanceGroup" : "KP-8",
+      "ragAblation" : true
+    },
+    "questionId" : 415,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-N2-003", "PHYSICS-FRIC-001", "PHYSICS-N2-002" ],
+      "questionIds" : [ 417, 418, 416 ],
+      "groups" : [ "KP-8", "KP-9", "KP-8" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-N2-001",
+      "questionId" : 415,
+      "predictedKnowledgePointId" : 8,
+      "predictedKnowledgePointName" : "牛顿第二定律",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "混淆了牛顿第二定律公式中加速度与力的位置，将公式误写为 F=m/a",
+      "analysis" : "根据牛顿第二定律 F=ma，力等于质量乘以加速度。题目中质量 m=2 kg，加速度 a=3 m/s²，因此合力 F=2×3=6 N。学生错误地使用了 F=m/a，导致计算结果错误。",
+      "referenceCaseIds" : [ "PHYSICS-N2-003", "PHYSICS-FRIC-001", "PHYSICS-N2-002" ],
+      "durationMs" : 60809,
+      "failureReason" : null,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-N2-002", "PHYSICS-N2-003", "PHYSICS-FRIC-001", "PHYSICS-FRIC-003", "PHYSICS-FRIC-002" ],
+      "questionIds" : [ 416, 417, 418, 420, 419 ],
+      "groups" : [ "KP-8", "KP-8", "KP-9", "KP-9", "KP-9" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-N2-002",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 8,
+      "expectedKnowledgePointName" : "牛顿第二定律",
+      "stem" : "两物体受到相同合力，第二个物体质量是第一个的 2 倍。学生作答：第二个物体加速度也是第一个的 2 倍。",
+      "wrongAnswer" : "加速度变为 2 倍",
+      "correctAnswer" : "由 a=F/m，在合力相同时加速度与质量成反比，第二个物体加速度为第一个的一半。",
+      "errorConceptGroups" : [ [ "a=F/m", "F除以m" ], [ "反比" ], [ "一半", "1/2" ] ],
+      "relevanceGroup" : "KP-8",
+      "ragAblation" : false
+    },
+    "questionId" : 416,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-N2-001", "PHYSICS-N2-003", "PHYSICS-FRIC-001" ],
+      "questionIds" : [ 415, 417, 418 ],
+      "groups" : [ "KP-8", "KP-8", "KP-9" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-N2-002",
+      "questionId" : 416,
+      "predictedKnowledgePointId" : 8,
+      "predictedKnowledgePointName" : "牛顿第二定律",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "混淆了加速度与质量的关系，错误地认为加速度与质量成正比",
+      "analysis" : "根据牛顿第二定律 a=F/m，在合力相同的情况下，加速度与质量成反比。第二个物体质量是第一个的2倍，因此其加速度应为第一个的一半。",
+      "referenceCaseIds" : [ "PHYSICS-N2-001", "PHYSICS-N2-003", "PHYSICS-FRIC-001" ],
+      "durationMs" : 82914,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-N2-001", "PHYSICS-N2-003", "PHYSICS-FRIC-001", "PHYSICS-FRIC-003", "PHYSICS-FRIC-002" ],
+      "questionIds" : [ 415, 417, 418, 420, 419 ],
+      "groups" : [ "KP-8", "KP-8", "KP-9", "KP-9", "KP-9" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-N2-003",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 8,
+      "expectedKnowledgePointName" : "牛顿第二定律",
+      "stem" : "质量 3 kg 的物体受水平向右 10 N、向左 4 N 的力。学生作答：合力为 14 N，加速度为 14/3 m/s²，方向向右。",
+      "wrongAnswer" : "a=14/3 m/s²，向右",
+      "correctAnswer" : "相反方向的力相减，合力为 6 N 向右，加速度为 2 m/s² 向右。",
+      "errorConceptGroups" : [ [ "相减", "合力" ], [ "6N", "6 N" ], [ "2m/s²", "2 m/s²" ], [ "向右" ] ],
+      "relevanceGroup" : "KP-8",
+      "ragAblation" : false
+    },
+    "questionId" : 417,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-N2-001", "PHYSICS-FRIC-001", "PHYSICS-N2-002" ],
+      "questionIds" : [ 415, 418, 416 ],
+      "groups" : [ "KP-8", "KP-9", "KP-8" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-N2-003",
+      "questionId" : 417,
+      "predictedKnowledgePointId" : 8,
+      "predictedKnowledgePointName" : "牛顿第二定律",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "错误地将两个同向力相加，忽略了相反方向力的抵消作用",
+      "analysis" : "根据牛顿第二定律，合力应为同向力的和减去反向力的差。水平向右的力为10N，向左的力为4N，两者方向相反，因此合力应为10N - 4N = 6N，方向向右。根据F=ma，加速度a=F/m=6N/3kg=2m/s²，方向向右。",
+      "referenceCaseIds" : [ "PHYSICS-N2-001", "PHYSICS-FRIC-001", "PHYSICS-N2-002" ],
+      "durationMs" : 106318,
+      "failureReason" : null,
+      "conceptHit" : 4,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-N2-001", "PHYSICS-N2-002", "PHYSICS-FRIC-001", "PHYSICS-FRIC-003", "PHYSICS-FRIC-002" ],
+      "questionIds" : [ 415, 416, 418, 420, 419 ],
+      "groups" : [ "KP-8", "KP-8", "KP-9", "KP-9", "KP-9" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-FRIC-001",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 9,
+      "expectedKnowledgePointName" : "摩擦力",
+      "stem" : "质量 3 kg 的物体在水平面上受 20 N 向右拉力和 5 N 向左滑动摩擦力。学生作答：a=20/3 m/s²。",
+      "wrongAnswer" : "a=20/3 m/s²",
+      "correctAnswer" : "摩擦力与运动方向相反，合力为 15 N，加速度为 5 m/s²。",
+      "errorConceptGroups" : [ [ "摩擦力", "阻力" ], [ "相反", "向左" ], [ "合力为15", "15N", "15 N" ], [ "5m/s²", "5 m/s²" ] ],
+      "relevanceGroup" : "KP-9",
+      "ragAblation" : false
+    },
+    "questionId" : 418,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-FRIC-003", "PHYSICS-N2-003", "PHYSICS-N2-001" ],
+      "questionIds" : [ 420, 417, 415 ],
+      "groups" : [ "KP-9", "KP-8", "KP-8" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 0.5,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 1
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-FRIC-001",
+      "questionId" : 418,
+      "predictedKnowledgePointId" : 8,
+      "predictedKnowledgePointName" : "牛顿第二定律",
+      "exactMatch" : false,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "未考虑摩擦力方向与运动方向相反，导致合力计算错误",
+      "analysis" : "物体受到向右的拉力20N，向左的滑动摩擦力5N。根据牛顿第二定律，合力F合=20N-5N=15N。根据F合=ma，加速度a=F合/m=15N/3kg=5m/s²。学生错误地将摩擦力与拉力相加，忽略了摩擦力与运动方向相反的性质。",
+      "referenceCaseIds" : [ "PHYSICS-FRIC-003", "PHYSICS-N2-003", "PHYSICS-N2-001" ],
+      "durationMs" : 109260,
+      "failureReason" : null,
+      "conceptHit" : 4,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-N2-001", "PHYSICS-N2-002", "PHYSICS-N2-003", "PHYSICS-FRIC-003", "PHYSICS-FRIC-002" ],
+      "questionIds" : [ 415, 416, 417, 420, 419 ],
+      "groups" : [ "KP-8", "KP-8", "KP-8", "KP-9", "KP-9" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-FRIC-002",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 9,
+      "expectedKnowledgePointName" : "摩擦力",
+      "stem" : "静止物体受 4 N 水平推力仍未运动，最大静摩擦力为 10 N。学生作答：物体所受静摩擦力就是 10 N。",
+      "wrongAnswer" : "静摩擦力为 10 N",
+      "correctAnswer" : "静摩擦力会在最大值内随外力调整，此时大小为 4 N，方向与推力相反。",
+      "errorConceptGroups" : [ [ "静摩擦力" ], [ "调整", "变化", "随外力" ], [ "4N", "4 N" ], [ "相反" ] ],
+      "relevanceGroup" : "KP-9",
+      "ragAblation" : false
+    },
+    "questionId" : 419,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-FRIC-003", "PHYSICS-FRIC-001", "PHYSICS-N2-003" ],
+      "questionIds" : [ 420, 418, 417 ],
+      "groups" : [ "KP-9", "KP-9", "KP-8" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-FRIC-002",
+      "questionId" : 419,
+      "predictedKnowledgePointId" : 9,
+      "predictedKnowledgePointName" : "摩擦力",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生错误地认为静摩擦力始终等于最大静摩擦力，忽略了静摩擦力具有“随外力调整”的特性",
+      "analysis" : "静摩擦力的大小并不固定，而是随着外力的变化而变化。当物体静止时，静摩擦力的大小等于物体所受的沿接触面方向的合外力，方向与相对运动趋势相反。题目中物体受到 4 N 的水平推力仍未运动，说明此时静摩擦力的大小为 4 N，方向与推力相反，而不是 10 N。只有当外力增大到超过最大静摩擦力时，物体才会开始运动。",
+      "referenceCaseIds" : [ "PHYSICS-FRIC-003", "PHYSICS-FRIC-001", "PHYSICS-N2-003" ],
+      "durationMs" : 72837,
+      "failureReason" : null,
+      "conceptHit" : 4,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-FRIC-003", "PHYSICS-FRIC-001", "PHYSICS-N2-003", "PHYSICS-N2-001", "PHYSICS-N2-002" ],
+      "questionIds" : [ 420, 418, 417, 415, 416 ],
+      "groups" : [ "KP-9", "KP-9", "KP-8", "KP-8", "KP-8" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-FRIC-003",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 9,
+      "expectedKnowledgePointName" : "摩擦力",
+      "stem" : "质量 5 kg 的物体在水平面滑动，动摩擦因数 μ=0.2，取 g=10 m/s²。学生作答：滑动摩擦力 f=μm=1 N。",
+      "wrongAnswer" : "f=1 N",
+      "correctAnswer" : "水平面支持力 N=mg=50 N，f=μN=10 N。",
+      "errorConceptGroups" : [ [ "支持力", "N=mg", "50N", "50 N" ], [ "f=μN", "摩擦因数乘支持力" ], [ "10N", "10 N" ] ],
+      "relevanceGroup" : "KP-9",
+      "ragAblation" : false
+    },
+    "questionId" : 420,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-FRIC-001", "PHYSICS-FRIC-002", "PHYSICS-N2-001" ],
+      "questionIds" : [ 418, 419, 415 ],
+      "groups" : [ "KP-9", "KP-9", "KP-8" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-FRIC-003",
+      "questionId" : 420,
+      "predictedKnowledgePointId" : 9,
+      "predictedKnowledgePointName" : "摩擦力",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生错误地将滑动摩擦力公式 f=μN 中的支持力 N 误写为质量 m，导致计算结果错误",
+      "analysis" : "物体在水平面上滑动时，滑动摩擦力的大小 f=μN，其中 N 为物体对水平面的压力，在水平面上 N=mg。因此 f=μmg=0.2×5×10=10 N。学生未正确识别 N 与 m 的区别，直接用 m 代替 N 进行计算。",
+      "referenceCaseIds" : [ "PHYSICS-FRIC-001", "PHYSICS-FRIC-002", "PHYSICS-N2-001" ],
+      "durationMs" : 52414,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-FRIC-002", "PHYSICS-FRIC-001", "PHYSICS-N2-001", "PHYSICS-N2-003", "PHYSICS-N2-002" ],
+      "questionIds" : [ 419, 418, 415, 417, 416 ],
+      "groups" : [ "KP-9", "KP-9", "KP-8", "KP-8", "KP-8" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-OHM-001",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 11,
+      "expectedKnowledgePointName" : "欧姆定律",
+      "stem" : "某电阻两端电压为 12 V，电阻为 4 Ω。学生作答：I=UR=48 A。",
+      "wrongAnswer" : "I=48 A",
+      "correctAnswer" : "由 I=U/R，电流 I=12/4=3 A。",
+      "errorConceptGroups" : [ [ "I=U/R", "欧姆定律" ], [ "相除", "除法" ], [ "3A", "3 A" ] ],
+      "relevanceGroup" : "KP-11",
+      "ragAblation" : true
+    },
+    "questionId" : 421,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-OHM-003", "PHYSICS-OHM-002", "PHYSICS-FRIC-003" ],
+      "questionIds" : [ 423, 422, 420 ],
+      "groups" : [ "KP-11", "KP-11", "KP-9" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-OHM-001",
+      "questionId" : 421,
+      "predictedKnowledgePointId" : 11,
+      "predictedKnowledgePointName" : "欧姆定律",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "公式混淆，将欧姆定律公式 I=U/R 错误地写成了 I=U×R",
+      "analysis" : "根据欧姆定律 I=U/R，电流等于电压除以电阻。题目中电压 U=12 V，电阻 R=4 Ω，所以电流 I=12/4=3 A。学生计算时误将除法当作乘法，导致结果错误。",
+      "referenceCaseIds" : [ "PHYSICS-OHM-003", "PHYSICS-OHM-002", "PHYSICS-FRIC-003" ],
+      "durationMs" : 38699,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-OHM-002", "PHYSICS-OHM-003", "PHYSICS-FRIC-003", "PHYSICS-FRIC-002", "PHYSICS-FRIC-001" ],
+      "questionIds" : [ 422, 423, 420, 419, 418 ],
+      "groups" : [ "KP-11", "KP-11", "KP-9", "KP-9", "KP-9" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-OHM-002",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 11,
+      "expectedKnowledgePointName" : "欧姆定律",
+      "stem" : "2 Ω 与 3 Ω 电阻串联接在 10 V 电源上。学生作答：两个电阻的电流分别为 5 A 和 10/3 A。",
+      "wrongAnswer" : "电流分别为 5 A 和 10/3 A",
+      "correctAnswer" : "串联总电阻为 5 Ω，串联电路电流处处相同，I=10/5=2 A。",
+      "errorConceptGroups" : [ [ "串联", "总电阻" ], [ "5Ω", "5 Ω" ], [ "电流相同", "电流处处相等" ], [ "2A", "2 A" ] ],
+      "relevanceGroup" : "KP-11",
+      "ragAblation" : false
+    },
+    "questionId" : 422,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-OHM-003", "PHYSICS-OHM-001", "PHYSICS-FRIC-001" ],
+      "questionIds" : [ 423, 421, 418 ],
+      "groups" : [ "KP-11", "KP-11", "KP-9" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-OHM-002",
+      "questionId" : 422,
+      "predictedKnowledgePointId" : 11,
+      "predictedKnowledgePointName" : "欧姆定律",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生错误地认为串联电路中各电阻的电流不同，混淆了串联与并联电路的特点。",
+      "analysis" : "在串联电路中，电流处处相等。根据欧姆定律 I=U/R，串联总电阻 R总=R1+R2=2Ω+3Ω=5Ω。电源电压 U=10V，因此电路中的电流 I=U/R总=10V/5Ω=2A。两个电阻两端的电压分别为 U1=I×R1=2A×2Ω=4V，U2=I×R2=2A×3Ω=6V。",
+      "referenceCaseIds" : [ "PHYSICS-OHM-003", "PHYSICS-OHM-001", "PHYSICS-FRIC-001" ],
+      "durationMs" : 12964,
+      "failureReason" : null,
+      "conceptHit" : 4,
+      "conceptTotal" : 4,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-OHM-001", "PHYSICS-OHM-003", "PHYSICS-FRIC-001", "PHYSICS-N2-002", "PHYSICS-N2-001" ],
+      "questionIds" : [ 421, 423, 418, 416, 415 ],
+      "groups" : [ "KP-11", "KP-11", "KP-9", "KP-8", "KP-8" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "PHYSICS-OHM-003",
+      "subjectId" : 2,
+      "subjectName" : "物理",
+      "expectedKnowledgePointId" : 11,
+      "expectedKnowledgePointName" : "欧姆定律",
+      "stem" : "通过电阻的电流为 0.5 A，电阻为 8 Ω。学生作答：U=I/R=0.0625 V。",
+      "wrongAnswer" : "U=0.0625 V",
+      "correctAnswer" : "由 U=IR，电压 U=0.5×8=4 V。",
+      "errorConceptGroups" : [ [ "U=IR", "欧姆定律" ], [ "相乘", "乘法" ], [ "4V", "4 V" ] ],
+      "relevanceGroup" : "KP-11",
+      "ragAblation" : false
+    },
+    "questionId" : 423,
+    "rag" : {
+      "caseIds" : [ "PHYSICS-OHM-001", "PHYSICS-OHM-002", "PHYSICS-FRIC-003" ],
+      "questionIds" : [ 421, 422, 420 ],
+      "groups" : [ "KP-11", "KP-11", "KP-9" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "PHYSICS-OHM-003",
+      "questionId" : 423,
+      "predictedKnowledgePointId" : 11,
+      "predictedKnowledgePointName" : "欧姆定律",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "混淆了欧姆定律的公式，将电压公式 U=IR 错误地写成了 U=I/R",
+      "analysis" : "根据欧姆定律 U=IR，已知电流 I=0.5 A，电阻 R=8 Ω，则电压 U=0.5×8=4 V。学生作答时将电阻和电流的位置颠倒，导致计算结果错误。",
+      "referenceCaseIds" : [ "PHYSICS-OHM-001", "PHYSICS-OHM-002", "PHYSICS-FRIC-003" ],
+      "durationMs" : 37279,
+      "failureReason" : null,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666
+    },
+    "recommend" : {
+      "caseIds" : [ "PHYSICS-OHM-001", "PHYSICS-OHM-002", "PHYSICS-FRIC-003", "PHYSICS-FRIC-001", "PHYSICS-N2-001" ],
+      "questionIds" : [ 421, 422, 420, 418, 415 ],
+      "groups" : [ "KP-11", "KP-11", "KP-9", "KP-9", "KP-8" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "ENGLISH-REL-001",
+      "subjectId" : 3,
+      "subjectName" : "英语",
+      "expectedKnowledgePointId" : 13,
+      "expectedKnowledgePointName" : "定语从句",
+      "stem" : "改正句子：The book who is on the desk is mine. 学生作答：原句正确。",
+      "wrongAnswer" : "The book who is on the desk is mine.",
+      "correctAnswer" : "The book which/that is on the desk is mine.",
+      "errorConceptGroups" : [ [ "book", "物" ], [ "which", "that" ], [ "who", "人" ] ],
+      "relevanceGroup" : "KP-13",
+      "ragAblation" : true
+    },
+    "questionId" : 424,
+    "rag" : {
+      "caseIds" : [ "ENGLISH-REL-003", "ENGLISH-TENSE-001", "ENGLISH-REL-002" ],
+      "questionIds" : [ 426, 427, 425 ],
+      "groups" : [ "KP-13", "KP-14", "KP-13" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "ENGLISH-REL-001",
+      "questionId" : 424,
+      "predictedKnowledgePointId" : 13,
+      "predictedKnowledgePointName" : "定语从句",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "关系代词使用错误",
+      "analysis" : "先行词是物，指代在从句中作主语，应使用关系代词which或that，不能用who。",
+      "referenceCaseIds" : [ "ENGLISH-REL-003", "ENGLISH-TENSE-001", "ENGLISH-REL-002" ],
+      "durationMs" : 9887,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "ENGLISH-REL-002", "ENGLISH-REL-003", "ENGLISH-TENSE-001", "ENGLISH-TENSE-003", "ENGLISH-TENSE-002" ],
+      "questionIds" : [ 425, 426, 427, 429, 428 ],
+      "groups" : [ "KP-13", "KP-13", "KP-14", "KP-14", "KP-14" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "ENGLISH-REL-002",
+      "subjectId" : 3,
+      "subjectName" : "英语",
+      "expectedKnowledgePointId" : 13,
+      "expectedKnowledgePointName" : "定语从句",
+      "stem" : "改正句子：This is the school which I studied last year. 学生认为 which 可直接作地点状语。",
+      "wrongAnswer" : "This is the school which I studied last year.",
+      "correctAnswer" : "This is the school where I studied last year，或 in which I studied last year.",
+      "errorConceptGroups" : [ [ "school", "地点" ], [ "where", "in which" ], [ "地点状语", "介词" ] ],
+      "relevanceGroup" : "KP-13",
+      "ragAblation" : false
+    },
+    "questionId" : 425,
+    "rag" : {
+      "caseIds" : [ "ENGLISH-TENSE-001", "ENGLISH-REL-003", "ENGLISH-REL-001" ],
+      "questionIds" : [ 427, 426, 424 ],
+      "groups" : [ "KP-14", "KP-13", "KP-13" ],
+      "firstRelevantRank" : 2,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 0.5,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "ENGLISH-REL-002",
+      "questionId" : 425,
+      "predictedKnowledgePointId" : 13,
+      "predictedKnowledgePointName" : "定语从句",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "混淆关系代词与关系副词的用法",
+      "analysis" : "关系副词where在定语从句中作地点状语，相当于介词+which；关系代词which在定语从句中作宾语，不能作地点状语。原句中studied是及物动词，需要接宾语，因此不能使用which作状语，应使用where或in which。",
+      "referenceCaseIds" : [ "ENGLISH-TENSE-001", "ENGLISH-REL-003", "ENGLISH-REL-001" ],
+      "durationMs" : 59856,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "ENGLISH-REL-003", "ENGLISH-REL-001", "ENGLISH-TENSE-001", "ENGLISH-TENSE-002", "ENGLISH-TENSE-003" ],
+      "questionIds" : [ 426, 424, 427, 428, 429 ],
+      "groups" : [ "KP-13", "KP-13", "KP-14", "KP-14", "KP-14" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "ENGLISH-REL-003",
+      "subjectId" : 3,
+      "subjectName" : "英语",
+      "expectedKnowledgePointId" : 13,
+      "expectedKnowledgePointName" : "定语从句",
+      "stem" : "改正句子：The man which helped me was kind. 学生作答：which 指代先行词 man。",
+      "wrongAnswer" : "The man which helped me was kind.",
+      "correctAnswer" : "The man who/that helped me was kind.",
+      "errorConceptGroups" : [ [ "man", "人" ], [ "who", "that" ], [ "which", "物" ] ],
+      "relevanceGroup" : "KP-13",
+      "ragAblation" : false
+    },
+    "questionId" : 426,
+    "rag" : {
+      "caseIds" : [ "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-TENSE-001" ],
+      "questionIds" : [ 425, 424, 427 ],
+      "groups" : [ "KP-13", "KP-13", "KP-14" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "ENGLISH-REL-003",
+      "questionId" : 426,
+      "predictedKnowledgePointId" : 13,
+      "predictedKnowledgePointName" : "定语从句",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "关系代词which指代先行词时，不能指代人",
+      "analysis" : "在定语从句中，关系代词which用于指代事物或动物，而指代人时必须使用who或that。原句中先行词是man（人），所以不能使用which，应改为who或that。",
+      "referenceCaseIds" : [ "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-TENSE-001" ],
+      "durationMs" : 57661,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-TENSE-001", "ENGLISH-TENSE-003", "ENGLISH-TENSE-002" ],
+      "questionIds" : [ 425, 424, 427, 429, 428 ],
+      "groups" : [ "KP-13", "KP-13", "KP-14", "KP-14", "KP-14" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "ENGLISH-TENSE-001",
+      "subjectId" : 3,
+      "subjectName" : "英语",
+      "expectedKnowledgePointId" : 14,
+      "expectedKnowledgePointName" : "动词时态",
+      "stem" : "改正句子：Yesterday I go to the library. 学生作答：go 使用原形即可。",
+      "wrongAnswer" : "Yesterday I go to the library.",
+      "correctAnswer" : "Yesterday I went to the library.",
+      "errorConceptGroups" : [ [ "yesterday", "昨天" ], [ "一般过去时", "过去时" ], [ "went" ] ],
+      "relevanceGroup" : "KP-14",
+      "ragAblation" : true
+    },
+    "questionId" : 427,
+    "rag" : {
+      "caseIds" : [ "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-REL-003" ],
+      "questionIds" : [ 425, 424, 426 ],
+      "groups" : [ "KP-13", "KP-13", "KP-13" ],
+      "firstRelevantRank" : 0,
+      "hitAt3" : 0.0,
+      "recallAt3" : 0.0,
+      "mrrAt3" : 0.0,
+      "relevantCount" : 0
+    },
+    "analysis" : {
+      "caseId" : "ENGLISH-TENSE-001",
+      "questionId" : 427,
+      "predictedKnowledgePointId" : 14,
+      "predictedKnowledgePointName" : "动词时态",
+      "exactMatch" : true,
+      "difficulty" : 2,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "主语为第三人称单数，谓语动词应用过去式went",
+      "analysis" : "句子主语是I，谓语动词go表示“去”，在一般过去时中，第三人称单数主语后动词需加-ed，变为went。",
+      "referenceCaseIds" : [ "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-REL-003" ],
+      "durationMs" : 7598,
+      "failureReason" : null,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666
+    },
+    "recommend" : {
+      "caseIds" : [ "ENGLISH-TENSE-002", "ENGLISH-TENSE-003", "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-REL-003" ],
+      "questionIds" : [ 428, 429, 425, 424, 426 ],
+      "groups" : [ "KP-14", "KP-14", "KP-13", "KP-13", "KP-13" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "ENGLISH-TENSE-002",
+      "subjectId" : 3,
+      "subjectName" : "英语",
+      "expectedKnowledgePointId" : 14,
+      "expectedKnowledgePointName" : "动词时态",
+      "stem" : "改正句子：She lived here since 2020. 学生使用一般过去时 lived。",
+      "wrongAnswer" : "She lived here since 2020.",
+      "correctAnswer" : "She has lived here since 2020.",
+      "errorConceptGroups" : [ [ "since", "自从" ], [ "现在完成时", "完成时" ], [ "has lived" ] ],
+      "relevanceGroup" : "KP-14",
+      "ragAblation" : false
+    },
+    "questionId" : 428,
+    "rag" : {
+      "caseIds" : [ "ENGLISH-REL-002", "ENGLISH-TENSE-001", "ENGLISH-TENSE-003" ],
+      "questionIds" : [ 425, 427, 429 ],
+      "groups" : [ "KP-13", "KP-14", "KP-14" ],
+      "firstRelevantRank" : 2,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 0.5,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "ENGLISH-TENSE-002",
+      "questionId" : 428,
+      "predictedKnowledgePointId" : 14,
+      "predictedKnowledgePointName" : "动词时态",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生混淆了表示持续状态的句型，误用一般过去时表示从过去开始一直持续到现在的动作",
+      "analysis" : "句子中since 2020表示动作从过去开始一直持续到现在，强调的是现在的影响或结果，因此必须使用现在完成时has lived。一般过去时只表示动作发生在过去，与现在没有联系。",
+      "referenceCaseIds" : [ "ENGLISH-REL-002", "ENGLISH-TENSE-001", "ENGLISH-TENSE-003" ],
+      "durationMs" : 33372,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "ENGLISH-TENSE-003", "ENGLISH-TENSE-001", "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-REL-003" ],
+      "questionIds" : [ 429, 427, 425, 424, 426 ],
+      "groups" : [ "KP-14", "KP-14", "KP-13", "KP-13", "KP-13" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  }, {
+    "dataset" : {
+      "caseId" : "ENGLISH-TENSE-003",
+      "subjectId" : 3,
+      "subjectName" : "英语",
+      "expectedKnowledgePointId" : 14,
+      "expectedKnowledgePointName" : "动词时态",
+      "stem" : "改正句子：By the time we arrived, the train leaves. 学生使用一般现在时 leaves。",
+      "wrongAnswer" : "By the time we arrived, the train leaves.",
+      "correctAnswer" : "By the time we arrived, the train had left.",
+      "errorConceptGroups" : [ [ "by the time", "到……时" ], [ "过去完成时" ], [ "had left" ] ],
+      "relevanceGroup" : "KP-14",
+      "ragAblation" : false
+    },
+    "questionId" : 429,
+    "rag" : {
+      "caseIds" : [ "ENGLISH-TENSE-001", "ENGLISH-REL-002", "ENGLISH-TENSE-002" ],
+      "questionIds" : [ 427, 425, 428 ],
+      "groups" : [ "KP-14", "KP-13", "KP-14" ],
+      "firstRelevantRank" : 1,
+      "hitAt3" : 1.0,
+      "recallAt3" : 1.0,
+      "mrrAt3" : 1.0,
+      "relevantCount" : 2
+    },
+    "analysis" : {
+      "caseId" : "ENGLISH-TENSE-003",
+      "questionId" : 429,
+      "predictedKnowledgePointId" : 14,
+      "predictedKnowledgePointName" : "动词时态",
+      "exactMatch" : true,
+      "difficulty" : 3,
+      "status" : 1,
+      "llmModel" : "glm-4.7-flash",
+      "errorCause" : "学生混淆了时间状语从句和主句的时态关系，误以为主句使用一般现在时即可",
+      "analysis" : "By the time引导的时间状语从句中，如果从句使用一般过去时，主句必须使用过去完成时had done来表示动作发生在从句动作之前。原句中从句arrived是一般过去时，主句应使用过去完成时had left，而不是一般现在时leaves。",
+      "referenceCaseIds" : [ "ENGLISH-TENSE-001", "ENGLISH-REL-002", "ENGLISH-TENSE-002" ],
+      "durationMs" : 52392,
+      "failureReason" : null,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0
+    },
+    "recommend" : {
+      "caseIds" : [ "ENGLISH-TENSE-002", "ENGLISH-TENSE-001", "ENGLISH-REL-002", "ENGLISH-REL-001", "ENGLISH-REL-003" ],
+      "questionIds" : [ 428, 427, 425, 424, 426 ],
+      "groups" : [ "KP-14", "KP-14", "KP-13", "KP-13", "KP-13" ],
+      "actualK" : 5,
+      "hitAt5" : 1.0,
+      "recallAt5" : 1.0,
+      "relevantCount" : 2
+    }
+  } ],
+  "ablations" : [ {
+    "caseId" : "MATH-LINEAR-001",
+    "ragOff" : {
+      "condition" : "OFF",
+      "schemaSuccess" : true,
+      "errorCause" : "学生未掌握一次函数图像的性质，误认为斜率为负时图像仍上升",
+      "analysis" : "一次函数y=kx+b的图像是一条直线，其上升或下降取决于斜率k的符号。当k>0时，图像随x增大而上升；当k<0时，图像随x增大而下降。本题中k=-3<0，故图像应随x增大而下降。",
+      "responseLength" : 117,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 7346,
+      "failureReason" : null
+    },
+    "ragOn" : {
+      "condition" : "ON",
+      "schemaSuccess" : true,
+      "errorCause" : "学生未掌握一次函数图像随自变量变化而升降的规律，误认为斜率小于0时图像仍上升。",
+      "analysis" : "一次函数y=kx+b的图像是一条直线，其升降趋势取决于斜率k的符号。当k>0时，图像随x增大而上升；当k<0时，图像随x增大而下降。本题中k=-3<0，故图像随x增大而下降。",
+      "responseLength" : 126,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 71968,
+      "failureReason" : null
+    }
+  }, {
+    "caseId" : "MATH-QUAD-001",
+    "ragOff" : {
+      "condition" : "OFF",
+      "schemaSuccess" : true,
+      "errorCause" : "学生未正确计算判别式，误认为方程有实数根",
+      "analysis" : "根据求根公式，判别式Δ=b²-4ac=(-4)²-4×1×5=16-20=-4。由于Δ<0，说明方程无实数根。学生错误地认为根为1和3，说明其计算过程存在严重错误。",
+      "responseLength" : 102,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 47152,
+      "failureReason" : null
+    },
+    "ragOn" : {
+      "condition" : "ON",
+      "schemaSuccess" : true,
+      "errorCause" : "学生未正确计算判别式，误认为方程有实数根",
+      "analysis" : "根据求根公式，一元二次方程ax²+bx+c=0的根的判别式Δ=b²-4ac。本题中Δ=(-4)²-4×1×5=16-20=-4<0，说明方程无实数根。学生错误地认为根为1和3，可能是混淆了方程的解或凭空猜测。",
+      "responseLength" : 124,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 61590,
+      "failureReason" : null
+    }
+  }, {
+    "caseId" : "PHYSICS-N2-001",
+    "ragOff" : {
+      "condition" : "OFF",
+      "schemaSuccess" : true,
+      "errorCause" : "公式混淆，将牛顿第二定律公式 F=ma 误记为 F=m/a",
+      "analysis" : "根据牛顿第二定律 F=ma，力等于质量乘以加速度。题目中质量 m=2kg，加速度 a=3m/s²，因此合力 F=2×3=6N。学生错误地使用了除法运算。",
+      "responseLength" : 105,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666,
+      "durationMs" : 27172,
+      "failureReason" : null
+    },
+    "ragOn" : {
+      "condition" : "ON",
+      "schemaSuccess" : true,
+      "errorCause" : "混淆了牛顿第二定律公式中加速度与质量的位置，错误地将公式记为 F=m/a。",
+      "analysis" : "根据牛顿第二定律 F=ma，力等于质量乘以加速度。题目中质量 m=2kg，加速度 a=3m/s²，因此合力 F=2×3=6N。学生错误地使用了 F=m/a，导致结果错误。",
+      "responseLength" : 122,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666,
+      "durationMs" : 36234,
+      "failureReason" : null
+    }
+  }, {
+    "caseId" : "PHYSICS-OHM-001",
+    "ragOff" : {
+      "condition" : "OFF",
+      "schemaSuccess" : true,
+      "errorCause" : "公式混淆，将欧姆定律公式 I=U/R 错误地记为 I=UR",
+      "analysis" : "根据欧姆定律 I=U/R，电流等于电压除以电阻。题目中电压 U=12V，电阻 R=4Ω，因此电流 I=12/4=3A。学生错误地将分子和分母相乘，导致结果错误。",
+      "responseLength" : 109,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666,
+      "durationMs" : 64896,
+      "failureReason" : null
+    },
+    "ragOn" : {
+      "condition" : "ON",
+      "schemaSuccess" : true,
+      "errorCause" : "混淆了欧姆定律公式，将电流与电压、电阻的关系弄反，错误地使用了 I=UR 而非 I=U/R。",
+      "analysis" : "根据欧姆定律 I=U/R，已知电压 U=12 V，电阻 R=4 Ω，则电流 I=12/4=3 A。学生计算出的 48 A 是将电压与电阻直接相乘的结果，属于公式记忆错误。",
+      "responseLength" : 131,
+      "conceptHit" : 2,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 0.6666666666666666,
+      "durationMs" : 19629,
+      "failureReason" : null
+    }
+  }, {
+    "caseId" : "ENGLISH-REL-001",
+    "ragOff" : {
+      "condition" : "OFF",
+      "schemaSuccess" : true,
+      "errorCause" : "关系代词使用错误",
+      "analysis" : "先行词 'The book' 是物，在定语从句中作主语，因此应该使用关系代词 'which' 或 'that'，而不能使用指代人的关系代词 'who'。",
+      "responseLength" : 84,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 24967,
+      "failureReason" : null
+    },
+    "ragOn" : {
+      "condition" : "ON",
+      "schemaSuccess" : true,
+      "errorCause" : "混淆关系代词 who 和 which的用法",
+      "analysis" : "在定语从句中，先行词是人时，关系代词应用 who 或 that；先行词是物时，才使用 which 或 that。原句中先行词是 book（物），学生错误地使用了 who。",
+      "responseLength" : 106,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 66375,
+      "failureReason" : null
+    }
+  }, {
+    "caseId" : "ENGLISH-TENSE-001",
+    "ragOff" : {
+      "condition" : "OFF",
+      "schemaSuccess" : true,
+      "errorCause" : "学生未掌握一般过去时的用法，误将动词原形 go 当作谓语。",
+      "analysis" : "句子中的时间状语 Yesterday 表示动作发生在过去，因此谓语动词必须使用过去式 went，而不是原形 go。",
+      "responseLength" : 86,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 77545,
+      "failureReason" : null
+    },
+    "ragOn" : {
+      "condition" : "ON",
+      "schemaSuccess" : true,
+      "errorCause" : "学生混淆了一般现在时与一般过去时的用法，未根据时间状语 yesterday 判断出时态变化。",
+      "analysis" : "句子中包含时间状语 'Yesterday'，表明动作发生在过去，因此谓语动词必须使用一般过去时 'went'，而不能使用原形 'go'。",
+      "responseLength" : 114,
+      "conceptHit" : 3,
+      "conceptTotal" : 3,
+      "conceptCoverage" : 1.0,
+      "durationMs" : 16971,
+      "failureReason" : null
+    }
+  } ],
+  "failureHistory" : [ {
+    "phase" : "analysis",
+    "caseId" : "MATH-LINEAR-001",
+    "condition" : null,
+    "timestamp" : "2026-08-27T02:48:35.542079Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-LINEAR-003",
+    "condition" : null,
+    "timestamp" : "2026-08-27T02:51:56.477584Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-QUAD-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T02:56:29.123218100Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-CONG-001",
+    "condition" : null,
+    "timestamp" : "2026-08-27T02:58:46.065575800Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-CONG-003",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:01:42.212050700Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-CONG-003",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:02:44.326218400Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-CIRCLE-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:04:31.866612400Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-CIRCLE-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:05:33.975124100Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "MATH-CIRCLE-003",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:06:36.068705400Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "PHYSICS-N2-001",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:08:12.769514500Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "PHYSICS-FRIC-001",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:14:54.636120700Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "PHYSICS-FRIC-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:18:01.744833100Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "PHYSICS-OHM-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:22:32.790411700Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "ENGLISH-TENSE-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:28:10.212091100Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "analysis",
+    "caseId" : "ENGLISH-TENSE-002",
+    "condition" : null,
+    "timestamp" : "2026-08-27T03:29:12.965939Z",
+    "reason" : "AnalysisStatus2"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-LINEAR-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:31:20.731602300Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-LINEAR-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:32:21.132091900Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:34:48.484345600Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:37:55.775629700Z",
+    "reason" : "SchemaValidationFailure"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:38:56.202545400Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "PHYSICS-N2-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:40:32.943939700Z",
+    "reason" : "SchemaValidationFailure"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "PHYSICS-N2-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:41:33.345608700Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "PHYSICS-N2-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:42:33.794370Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "PHYSICS-OHM-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:44:25.425711300Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "ENGLISH-REL-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:47:20.346378900Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "ENGLISH-REL-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:48:20.704038400Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "ENGLISH-TENSE-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:52:15.044574800Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "ENGLISH-TENSE-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:53:15.383640400Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:56:44.624510900Z",
+    "reason" : "SchemaValidationFailure"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T03:57:51.825251600Z",
+    "reason" : "SchemaValidationFailure"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "ENGLISH-REL-001",
+    "condition" : "OFF",
+    "timestamp" : "2026-08-27T03:59:34.399534300Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T04:02:10.413658800Z",
+    "reason" : "SchemaValidationFailure"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T04:03:10.863539100Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  }, {
+    "phase" : "ablation",
+    "caseId" : "MATH-QUAD-001",
+    "condition" : "ON",
+    "timestamp" : "2026-08-27T04:05:08.452685900Z",
+    "reason" : "TooManyRequests-HTTP-429"
+  } ]
+}

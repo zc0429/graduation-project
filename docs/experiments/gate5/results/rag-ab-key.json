@@ -1,0 +1,26 @@
+{
+  "MATH-LINEAR-001" : {
+    "B" : "RAG_ON",
+    "A" : "RAG_OFF"
+  },
+  "MATH-QUAD-001" : {
+    "B" : "RAG_OFF",
+    "A" : "RAG_ON"
+  },
+  "PHYSICS-N2-001" : {
+    "B" : "RAG_ON",
+    "A" : "RAG_OFF"
+  },
+  "PHYSICS-OHM-001" : {
+    "B" : "RAG_ON",
+    "A" : "RAG_OFF"
+  },
+  "ENGLISH-REL-001" : {
+    "B" : "RAG_OFF",
+    "A" : "RAG_ON"
+  },
+  "ENGLISH-TENSE-001" : {
+    "B" : "RAG_ON",
+    "A" : "RAG_OFF"
+  }
+}

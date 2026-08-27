@@ -1,0 +1,9 @@
+{
+  "model" : "embedding-3",
+  "requiredDimensions" : 1024,
+  "total" : 27,
+  "success" : 27,
+  "failure" : 0,
+  "allFinite" : true,
+  "failures" : { }
+}
