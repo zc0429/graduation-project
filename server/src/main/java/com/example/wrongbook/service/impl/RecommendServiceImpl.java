@@ -29,8 +29,7 @@ public class RecommendServiceImpl implements RecommendService {
     public List<Question> similar(Long questionId) {
         Question question = checkOwnQuestion(questionId);
         Long ownerId = question.getUserId();
-        // Mock 策略：同知识点 + 相近难度优先；不足时用语义向量检索补足
-        // 预留：接入真实 Embedding 模型后可改为纯向量余弦相似度排序
+        // 同用户候选中，同知识点、相近难度优先，语义向量结果补足，最终返回 top-5
         Map<Long, Question> result = new LinkedHashMap<>();
         if (question.getKnowledgePointId() != null) {
             List<Question> sameKp = questionMapper.selectList(new LambdaQueryWrapper<Question>()

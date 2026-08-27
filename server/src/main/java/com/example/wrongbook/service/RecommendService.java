@@ -5,7 +5,7 @@ import com.example.wrongbook.entity.Question;
 import java.util.List;
 
 /**
- * 相似题推荐服务：推荐同知识点、相近难度的题目（top-5）
+ * 相似题推荐服务：同用户候选中，同知识点、相近难度优先，语义向量结果补足，最终返回 top-5
  */
 public interface RecommendService {
 
