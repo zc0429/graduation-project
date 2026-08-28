@@ -34,6 +34,14 @@ mybatis-plus:
 
 # 业务配置
 app:
+  # 图片识别仅是 Question 创建前的可选旁路，默认关闭，不写业务数据
+  image-recognition:
+    enabled: ${IMAGE_RECOGNITION_ENABLED:false}
+    base-url: ${IMAGE_RECOGNITION_BASE_URL:https://open.bigmodel.cn/api/paas/v4}
+    # 可复用同一个智谱 Key，但 Client 与模型配置保持隔离
+    api-key: ${IMAGE_RECOGNITION_API_KEY:${LLM_API_KEY:}}
+    model: ${IMAGE_RECOGNITION_MODEL:glm-5.3-flash}
+    max-image-bytes: ${IMAGE_RECOGNITION_MAX_BYTES:5242880}
   # 大模型提供方：mock（默认、离线）/ glm / deepseek
   llm:
     provider: ${LLM_PROVIDER:mock}
