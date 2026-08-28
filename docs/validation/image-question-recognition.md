@@ -1,8 +1,9 @@
 # 图片错题识别录入验证记录
 
 > 验证日期：2026-08-28
-> 分支：`codex/image-question-recognition`
+> 原始验证分支：`codex/image-question-recognition`
 > 基线：`origin/dev@5d1180933a9d8f665bc056ba097b0c22022300ee`
+> 合并状态：已通过 `af89ef306daa6c1f5983f65680c60eac6920d27d` 合并到 `dev`
 
 ## 1. 范围与结论
 
@@ -13,7 +14,8 @@
 
 本轮没有修改数据库结构，没有新增 `student_answer`，没有修改现有
 `LlmClient`、`OpenAiCompatibleLlmClient`、`glm-4.7-flash`、`embedding-3`、
-RAG、Variant、ReviewPlan、Practice、Mastery 或 Gate4/Gate5 文件。
+RAG、Variant、ReviewPlan、Practice、Mastery 或现有 Gate5 文件。冻结审计未在仓库或
+Git 历史中定位到独立 Gate4 工件，因此不能把“Gate4 未修改”表述为已核验资产。
 
 ## 2. 真实 API Spike
 
@@ -130,10 +132,11 @@ message，因此不能武断归因为 429、瞬时平台拒绝或结构波动。
 
 ## 7. 已知风险与后续人工验收
 
-1. 合成样本不能代表真实拍照中的透视、阴影、反光、复杂手写和公式排版；独立 Review
-   前建议由用户补 3–5 张不含隐私的真实单题照片复测。
+1. 合成样本不能代表真实拍照中的透视、阴影、反光、复杂手写和公式排版；后续仍可由
+   用户补 3–5 张不含隐私的真实单题照片扩充验收，但不再作为合并前置条件。
 2. 首轮 8 图 QA 有 1 次未分类的瞬时失败，不能宣称接口 100% 稳定；产品行为已保证
    失败可见且手工录入不受影响。
 3. 第一阶段不持久化学生原作答；如后续确需 `student_answer`，应作为另一个独立决策，
    不能接入现有分析 Prompt、Embedding、RAG 或 Gate5。
-4. 本分支等待独立 Review，不自行合并 `dev`。
+4. 本分支已合并到 `dev@af89ef3`；2026-08-28 冻结审计再次确认其未侵入文本 AI、
+   Embedding、RAG、Variant 或 Recommend 主链。

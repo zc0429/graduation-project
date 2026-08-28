@@ -3,6 +3,7 @@ package com.example.wrongbook.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.dto.ProfileUpdateRequest;
 import com.example.wrongbook.entity.User;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     public User getProfile() {
         User user = userMapper.selectById(UserContext.getUserId());
         if (user == null) {
-            throw new BizException("用户不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "用户不存在");
         }
         return user;
     }
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
         }
         User user = userMapper.selectById(id);
         if (user == null) {
-            throw new BizException("用户不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "用户不存在");
         }
         userMapper.deleteById(id);
     }

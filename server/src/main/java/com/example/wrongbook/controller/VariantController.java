@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.entity.VariantQuestion;
 import com.example.wrongbook.service.VariantService;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/variant")
 @RequiredArgsConstructor
+@RequireRole("student")
 public class VariantController {
 
     private final VariantService variantService;

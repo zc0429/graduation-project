@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.entity.KnowledgePoint;
 import com.example.wrongbook.entity.Question;
@@ -176,10 +177,10 @@ public class VariantServiceImpl implements VariantService {
     private Question checkOwnQuestion(Long questionId) {
         Question question = questionMapper.selectById(questionId);
         if (question == null) {
-            throw new BizException("错题不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "错题不存在");
         }
         if (!"admin".equals(UserContext.getRole()) && !question.getUserId().equals(UserContext.getUserId())) {
-            throw new BizException("无权访问该错题");
+            throw new BizException(ResultCode.FORBIDDEN.getCode(), "无权访问该错题");
         }
         return question;
     }

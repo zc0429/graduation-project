@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.entity.AiAnalysis;
 import com.example.wrongbook.service.AiAnalysisService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/ai")
 @RequiredArgsConstructor
+@RequireRole("student")
 public class AiController {
 
     private final AiAnalysisService aiAnalysisService;

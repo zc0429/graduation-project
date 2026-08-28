@@ -3,6 +3,7 @@ package com.example.wrongbook.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.entity.Message;
 import com.example.wrongbook.mapper.MessageMapper;
@@ -39,10 +40,10 @@ public class MessageServiceImpl implements MessageService {
     public void markRead(Long id) {
         Message message = messageMapper.selectById(id);
         if (message == null) {
-            throw new BizException("消息不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "消息不存在");
         }
         if (!message.getUserId().equals(UserContext.getUserId())) {
-            throw new BizException("无权操作该消息");
+            throw new BizException(ResultCode.FORBIDDEN.getCode(), "无权操作该消息");
         }
         message.setIsRead(1);
         messageMapper.updateById(message);

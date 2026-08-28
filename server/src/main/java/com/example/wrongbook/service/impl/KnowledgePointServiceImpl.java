@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.dto.KnowledgePointRequest;
 import com.example.wrongbook.entity.KnowledgePoint;
 import com.example.wrongbook.entity.Subject;
@@ -74,7 +75,7 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
     public void remove(Long id) {
         KnowledgePoint kp = knowledgePointMapper.selectById(id);
         if (kp == null) {
-            throw new BizException("知识点不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "知识点不存在");
         }
         Long children = knowledgePointMapper.selectCount(
                 new LambdaQueryWrapper<KnowledgePoint>().eq(KnowledgePoint::getParentId, id));

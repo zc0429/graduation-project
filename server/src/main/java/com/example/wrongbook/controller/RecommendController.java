@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.entity.Question;
 import com.example.wrongbook.service.RecommendService;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/recommend")
 @RequiredArgsConstructor
+@RequireRole("student")
 public class RecommendController {
 
     private final RecommendService recommendService;

@@ -49,7 +49,7 @@ npm ci
 npm run dev
 ```
 
-前端默认运行在 `http://localhost:5173`，`/api` 和 `/uploads` 代理到 `http://localhost:8080`。除真实后端联调外，前端静态构建和 Mock UI 测试不需要启动 MySQL 或 Spring Boot。
+前端默认运行在 `http://localhost:5173`，仅将 `/api` 代理到 `http://localhost:8080`。错题图片不提供匿名静态目录，已认证的题目详情接口会将本人图片转换为 Data URI 返回。除真实后端联调外，前端静态构建和 Mock UI 测试不需要启动 MySQL 或 Spring Boot。
 
 ## 构建与自动化检查
 
@@ -157,7 +157,7 @@ Set-Location 'D:\Documents\GitHub\graduation-project\web'
 npm run e2e:integration
 ```
 
-关键断言包括学生错题创建/编辑/练习/删除、Excel 下载请求携带 `Bearer` JWT、教师路由边界和管理员真实管理入口。该测试不证明“停用账号的旧 JWT 已即时失效”，因为后端目前尚未实现令牌撤销。
+关键断言包括学生错题创建/编辑/练习/删除、Excel 下载请求携带 `Bearer` JWT、教师接口角色边界、私有图片访问边界和管理员真实管理入口。停用账号旧 JWT 的即时失效由后端自动化测试覆盖。
 
 ## Lighthouse 性能与可访问性复测
 
@@ -194,18 +194,19 @@ Remove-Item Env:LIGHTHOUSE_USERNAME, Env:LIGHTHOUSE_PASSWORD, Env:LIGHTHOUSE_BAS
 - AI 解析以非重叠轮询查询，默认最长 90 秒，并区分等待、成功、失败、超时和网络错误。
 - 相似题与 RAG 候选已在查询层绑定原题所属学生，并保留结果层归属校验；正式前端按需请求同账号相似题。RAG 仍只显示参考 ID，不展开其他题目内容。
 - 教师报告只有全站聚合范围，报告没有历史归档；练习历史接口也不返回完整题干。
-- 管理员停用用户后，已签发 JWT 仍可能在过期前有效；前端退出和路由限制不能替代后端撤销机制。
+- 服务端在每次认证请求中复核账号状态和数据库当前角色；账号停用后旧 JWT 即时失效，旧令牌中的角色声明不能覆盖数据库角色。
+- 错题图片不暴露匿名静态地址；详情接口仅为题目所属学生返回内联 Data URI，替换和删除题目时会清理旧文件。
 
 ## 验收记录
 
-以下为 2026-08-25 当前分支在 Windows 本机的验收快照；分数和数量不是永久保证，代码变化后必须重跑：
+以下为 2026-08-28 当前 `dev` 在 Windows 本机的验收快照；分数和数量不是永久保证，代码变化后必须重跑。浏览器兼容、axe-core、设计截图和 Lighthouse 行沿用 2026-08-25 的专项验收结果，未在本轮重复执行：
 
 | 项目 | 当次结果 |
 |---|---|
 | `npm run typecheck` / `test:unit` / `build` | 类型检查与生产构建通过；Vitest 8 文件、23/23。Vite 仍提示主入口压缩后超过 500 kB |
-| 四档响应式 Mock UI | 37/37；覆盖 1600×1200、1280×800、820×1180、390×844 |
+| 四档响应式 Mock UI | 44/44；覆盖 1600×1200、1280×800、820×1180、390×844 |
 | Chrome / Edge / Firefox | 59/59；Chrome 29、Edge 29 为完整桌面套件，Firefox 1 为关键烟测 |
 | axe-core | 独立套件 3/3；登录、学生核心页、教师与管理员核心页无 serious/critical WCAG A/AA 问题 |
-| `wrongbook_e2e` 真实联调 | 3/3；Spring Boot + MySQL + `LLM_PROVIDER=mock`，含 JWT Axios Blob 真实下载 |
+| `wrongbook_e2e` 真实联调 | 4/4；Spring Boot + MySQL + `LLM_PROVIDER=mock`，含 JWT Axios Blob 下载、教师直调 403 与私有图片边界 |
 | 设计证据截图 | 10/10；桌面 5、平板 2、手机 3，全部带 Mock 标识并存于 `docs/design/vue-rebuild-screenshots/` |
 | Lighthouse | 登录页 Performance 99 / Accessibility 100（FCP 693 ms，LCP 769 ms）；学生首页 99 / 100（FCP 744 ms，LCP 926 ms）；两页 TBT 0、CLS 0 |

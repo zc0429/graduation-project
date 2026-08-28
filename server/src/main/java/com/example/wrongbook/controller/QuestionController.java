@@ -1,6 +1,7 @@
 package com.example.wrongbook.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.dto.QuestionRequest;
 import com.example.wrongbook.entity.Question;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/question")
 @RequiredArgsConstructor
+@RequireRole("student")
 public class QuestionController {
 
     private final QuestionService questionService;

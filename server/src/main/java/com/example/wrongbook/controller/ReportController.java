@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.service.ReportService;
 import com.example.wrongbook.vo.WeeklyReportVO;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/report")
 @RequiredArgsConstructor
+@RequireRole({"student", "teacher"})
 public class ReportController {
 
     private final ReportService reportService;

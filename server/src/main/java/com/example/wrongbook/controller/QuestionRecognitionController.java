@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.dto.QuestionRecognitionRequest;
 import com.example.wrongbook.service.QuestionRecognitionService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/question-recognition")
 @RequiredArgsConstructor
+@RequireRole("student")
 public class QuestionRecognitionController {
 
     private final QuestionRecognitionService questionRecognitionService;

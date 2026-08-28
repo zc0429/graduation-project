@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.dto.SubjectRequest;
 import com.example.wrongbook.entity.Subject;
 import com.example.wrongbook.mapper.SubjectMapper;
@@ -41,7 +42,7 @@ public class SubjectServiceImpl implements SubjectService {
     public void update(Long id, SubjectRequest request) {
         Subject exist = subjectMapper.selectById(id);
         if (exist == null) {
-            throw new BizException("科目不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "科目不存在");
         }
         Subject subject = new Subject();
         subject.setId(id);

@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.entity.Question;
 import com.example.wrongbook.entity.ReviewPlan;
@@ -78,10 +79,10 @@ public class ReviewPlanServiceImpl implements ReviewPlanService {
     public void finish(Long id) {
         ReviewPlan plan = reviewPlanMapper.selectById(id);
         if (plan == null) {
-            throw new BizException("复习任务不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "复习任务不存在");
         }
         if (!plan.getUserId().equals(UserContext.getUserId())) {
-            throw new BizException("无权操作该复习任务");
+            throw new BizException(ResultCode.FORBIDDEN.getCode(), "无权操作该复习任务");
         }
         if (plan.getStatus() == 1) {
             throw new BizException("该复习任务已完成");

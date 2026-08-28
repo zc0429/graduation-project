@@ -4,6 +4,8 @@ import com.example.wrongbook.common.LoginUser;
 import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
+import com.example.wrongbook.entity.User;
+import com.example.wrongbook.mapper.UserMapper;
 import com.example.wrongbook.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +29,7 @@ import java.util.Map;
 public class AuthInterceptor implements HandlerInterceptor {
 
     private final JwtUtil jwtUtil;
+    private final UserMapper userMapper;
     private final ObjectMapper objectMapper;
 
     @Override
@@ -35,14 +38,20 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
         String header = request.getHeader("Authorization");
-        LoginUser user = null;
+        LoginUser tokenUser = null;
         if (header != null && header.startsWith("Bearer ")) {
-            user = jwtUtil.parse(header.substring(7));
+            tokenUser = jwtUtil.parse(header.substring(7));
         }
-        if (user == null) {
+        if (tokenUser == null) {
             writeError(response, ResultCode.UNAUTHORIZED);
             return false;
         }
+        User currentUser = userMapper.selectById(tokenUser.getId());
+        if (currentUser == null || !Integer.valueOf(1).equals(currentUser.getStatus())) {
+            writeError(response, ResultCode.UNAUTHORIZED);
+            return false;
+        }
+        LoginUser user = new LoginUser(currentUser.getId(), currentUser.getRole());
         // 角色校验：方法注解优先于类注解
         RequireRole requireRole = handlerMethod.getMethodAnnotation(RequireRole.class);
         if (requireRole == null) {
@@ -62,6 +71,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     }
 
     private void writeError(HttpServletResponse response, ResultCode resultCode) throws IOException {
+        response.setStatus(resultCode.getCode());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         response.getWriter().write(objectMapper.writeValueAsString(

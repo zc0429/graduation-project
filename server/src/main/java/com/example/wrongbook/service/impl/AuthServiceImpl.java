@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.dto.LoginRequest;
 import com.example.wrongbook.dto.RegisterRequest;
 import com.example.wrongbook.entity.User;
@@ -45,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
         User user = userMapper.selectOne(
                 new LambdaQueryWrapper<User>().eq(User::getUsername, request.getUsername()));
         if (user == null || !ENCODER.matches(request.getPassword(), user.getPassword())) {
-            throw new BizException("用户名或密码错误");
+            throw new BizException(ResultCode.UNAUTHORIZED.getCode(), "用户名或密码错误");
         }
         return new LoginResponse(jwtUtil.createToken(user.getId(), user.getRole()), user);
     }

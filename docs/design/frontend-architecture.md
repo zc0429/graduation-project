@@ -23,7 +23,7 @@ Vue 页面 / 共享组件
               Axios 请求层
         JWT 注入 / REST 解包 / 错误归一化
                     │
-            Vite /api、/uploads 代理
+               Vite /api 代理
                     │
            Spring Boot REST 服务
 ```
@@ -34,7 +34,7 @@ Vue 页面 / 共享组件
 
 | 路径 | 职责 |
 |---|---|
-| `web/src/api/` | `auth`、`user`、`catalog`、`question`、`ai`、`learning`、`communication` 七个领域接口；`index.ts` 只做兼容导出 |
+| `web/src/api/` | `auth`、`user`、`catalog`、`question`、`question-recognition`、`ai`、`learning`、`communication` 八个领域接口；`index.ts` 只做兼容导出 |
 | `web/src/components/` | 无业务路由依赖或仅依赖当前角色的共享 UI |
 | `web/src/composables/` | 可复用的异步业务状态，目前包含 AI 解析轮询 |
 | `web/src/layout/` | 桌面侧栏、顶部栏、主内容焦点和移动端底栏 |

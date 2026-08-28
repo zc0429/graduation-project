@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.wrongbook.common.BizException;
+import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
 import com.example.wrongbook.dto.QuestionRequest;
 import com.example.wrongbook.entity.AiAnalysis;
@@ -53,6 +54,7 @@ public class QuestionServiceImpl implements QuestionService {
     private final FileStorageUtil fileStorageUtil;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Long create(QuestionRequest request) {
         Question question = new Question();
         question.setUserId(UserContext.getUserId());
@@ -60,13 +62,20 @@ public class QuestionServiceImpl implements QuestionService {
         question.setStem(request.getStem());
         question.setAnswer(request.getAnswer());
         question.setSource(request.getSource());
-        if (StringUtils.hasText(request.getImageBase64())) {
-            question.setImageUrl(fileStorageUtil.saveBase64Image(request.getImageBase64()));
+        String savedImageUrl = null;
+        try {
+            if (StringUtils.hasText(request.getImageBase64())) {
+                savedImageUrl = fileStorageUtil.saveBase64Image(request.getImageBase64());
+                question.setImageUrl(savedImageUrl);
+            }
+            questionMapper.insert(question);
+            // 录入成功即按艾宾浩斯遗忘曲线生成 5 阶段复习计划（论文 5.3 类设计 (6)）
+            reviewPlanService.createPlans(question);
+            return question.getId();
+        } catch (RuntimeException e) {
+            fileStorageUtil.deleteIfExists(savedImageUrl);
+            throw e;
         }
-        questionMapper.insert(question);
-        // 录入成功即按艾宾浩斯遗忘曲线生成 5 阶段复习计划（论文 5.3 类设计 (6)）
-        reviewPlanService.createPlans(question);
-        return question.getId();
     }
 
     @Override
@@ -81,7 +90,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question detail(Long id) {
-        return getOwnQuestion(id);
+        Question question = getOwnQuestion(id);
+        if (fileStorageUtil.isUploadPath(question.getImageUrl())) {
+            question.setImageUrl(fileStorageUtil.readAsDataUrl(question.getImageUrl()));
+        }
+        return question;
     }
 
     @Override
@@ -97,20 +110,30 @@ public class QuestionServiceImpl implements QuestionService {
                 .set(Question::getStem, request.getStem())
                 .set(Question::getAnswer, request.getAnswer())
                 .set(Question::getSource, request.getSource());
+        String replacementImageUrl = null;
         if (StringUtils.hasText(request.getImageBase64())) {
-            update.set(Question::getImageUrl, fileStorageUtil.saveBase64Image(request.getImageBase64()));
+            replacementImageUrl = fileStorageUtil.saveBase64Image(request.getImageBase64());
+            update.set(Question::getImageUrl, replacementImageUrl);
         }
         if (aiInputChanged) {
             update.set(Question::getEmbedding, null)
                     .set(Question::getKnowledgePointId, null)
                     .set(Question::getDifficulty, null);
         }
-        questionMapper.update(null, update);
-        if (aiInputChanged) {
-            aiAnalysisMapper.delete(new LambdaQueryWrapper<AiAnalysis>()
-                    .eq(AiAnalysis::getQuestionId, id));
-            variantQuestionMapper.delete(new LambdaQueryWrapper<VariantQuestion>()
-                    .eq(VariantQuestion::getQuestionId, id));
+        try {
+            questionMapper.update(null, update);
+            if (aiInputChanged) {
+                aiAnalysisMapper.delete(new LambdaQueryWrapper<AiAnalysis>()
+                        .eq(AiAnalysis::getQuestionId, id));
+                variantQuestionMapper.delete(new LambdaQueryWrapper<VariantQuestion>()
+                        .eq(VariantQuestion::getQuestionId, id));
+            }
+        } catch (RuntimeException e) {
+            fileStorageUtil.deleteIfExists(replacementImageUrl);
+            throw e;
+        }
+        if (replacementImageUrl != null && !replacementImageUrl.equals(question.getImageUrl())) {
+            fileStorageUtil.deleteIfExists(question.getImageUrl());
         }
     }
 
@@ -126,16 +149,17 @@ public class QuestionServiceImpl implements QuestionService {
         reviewPlanMapper.delete(new LambdaQueryWrapper<ReviewPlan>()
                 .eq(ReviewPlan::getQuestionId, id));
         questionMapper.deleteById(question.getId());
+        fileStorageUtil.deleteIfExists(question.getImageUrl());
     }
 
-    /** 查询本人错题，不存在或非本人则抛异常（管理员不受限） */
+    /** 查询本人错题；管理员内部调用可处理学生数据，HTTP 学生接口另有角色限制。 */
     private Question getOwnQuestion(Long id) {
         Question question = questionMapper.selectById(id);
         if (question == null) {
-            throw new BizException("错题不存在");
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "错题不存在");
         }
         if (!"admin".equals(UserContext.getRole()) && !question.getUserId().equals(UserContext.getUserId())) {
-            throw new BizException("无权访问该错题");
+            throw new BizException(ResultCode.FORBIDDEN.getCode(), "无权访问该错题");
         }
         return question;
     }

@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.service.ReviewPlanService;
 import com.example.wrongbook.vo.ReviewPlanVO;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/review-plan")
 @RequiredArgsConstructor
+@RequireRole("student")
 public class ReviewPlanController {
 
     private final ReviewPlanService reviewPlanService;
