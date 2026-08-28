@@ -25,6 +25,17 @@ test('学生错题目录在当前视口无页面级横向溢出', async ({ page 
   expect(errors).toEqual([])
 })
 
+test('图片识别录入区在当前视口无页面级横向溢出', async ({ page }) => {
+  const errors = collectBrowserErrors(page)
+  await installMockSession(page, 'student')
+  await page.goto('/question/create')
+
+  await expect(page.getByRole('heading', { name: '录入一道值得重做的题' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'AI 识别题目' })).toBeVisible()
+  await expectDocumentWithinViewport(page)
+  expect(errors).toEqual([])
+})
+
 test('周报密集布局在当前视口无页面级横向溢出', async ({ page }) => {
   const errors = collectBrowserErrors(page)
   await installMockSession(page, 'student')

@@ -17,6 +17,8 @@ export interface MockApiState {
   expiredRoles: MockRole[]
   loginError: string
   failNext: Record<string, string>
+  recognitionDelayMs: number
+  recognitionResult: JsonRecord
   users: JsonRecord[]
   subjects: JsonRecord[]
   knowledgeTree: JsonRecord[]
@@ -67,6 +69,14 @@ function defaultState(): MockApiState {
     expiredRoles: [],
     loginError: '',
     failNext: {},
+    recognitionDelayMs: 0,
+    recognitionResult: {
+      subjectId: 11,
+      subjectName: '数学',
+      stem: '已知函数 f(x) = x² - 5x + 6，求方程 f(x) = 0 的解。',
+      studentAnswer: 'x = 3',
+      source: '高一数学课堂练习',
+    },
     users: [
       { ...sessionUsers.admin, createTime: '2026-08-01 09:00:00' },
       { ...sessionUsers.teacher, createTime: '2026-08-02 09:00:00' },
@@ -385,6 +395,14 @@ async function handleApiRoute(route: Route, state: MockApiState) {
 
   if (pathname === '/api/subject/list' && method === 'GET') {
     await json(route, state.subjects)
+    return
+  }
+
+  if (pathname === '/api/question-recognition/recognize' && method === 'POST') {
+    if (state.recognitionDelayMs > 0) {
+      await new Promise((resolve) => setTimeout(resolve, state.recognitionDelayMs))
+    }
+    await json(route, state.recognitionResult)
     return
   }
 

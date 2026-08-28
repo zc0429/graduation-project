@@ -185,6 +185,14 @@ export interface QuestionPayload {
   imageBase64?: string
 }
 
+export interface QuestionRecognitionResult {
+  subjectId?: number | null
+  subjectName?: string | null
+  stem: string
+  studentAnswer?: string | null
+  source?: string | null
+}
+
 export type PracticeTarget =
   | { questionId: number; variantId?: never }
   | { questionId?: never; variantId: number }
