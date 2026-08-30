@@ -58,7 +58,7 @@
 - **练习记录管理功能**：记录错题或变式题作答，按答对加 15、答错减 20 更新原题掌握度；该分值不等同于概率知识追踪。
 - **学情报告管理功能**：请求时聚合当前学情周报，展示薄弱知识点、当前平均掌握度及最近一周新增错题和练习次数；定时任务只发送周报查看提示。
 - **错题本导出管理功能**：支持按科目、知识点筛选导出 XLSX 错题本。
-- **消息通知管理功能**：用于系统向学生发送复习提醒、报告生成等通知消息。
+- **消息通知管理功能**：用于系统向学生发送复习提醒、周报查看提示等通知消息。
 - **公告管理功能**：用于管理员创建公告信息，确保用户及时获取重要通知。
 
 ### 二、研究内容
@@ -86,11 +86,21 @@
 
 （导出时按 GB/T 7714-2015 顺序编码制，中文条目用全角标点，外文作者前加国籍（用国别代码全角括号），作者 >3 位用"等"。）
 
-1. 张海藩，牟永敏．软件工程导论［M］．6 版．北京：清华大学出版社，2013．
-2. (美)Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1995，4(4)：253-278．
-3. (美)Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems．2015：505-513．
-4. (印)Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems．2017：5998-6008．
-5. (加)Lewis P，Perez E，Piktus A，等．Retrieval-augmented generation for knowledge-intensive NLP tasks［C］//Advances in Neural Information Processing Systems．2020：9459-9474．
+[1] 赵雅娟，孟繁军，徐行健．在线教育学习者知识追踪综述［J］．计算机应用，2024，44（6）：1683-1698．
+[2] 董永峰，王雅琮，董瑶，等．在线学习资源推荐综述［J］．计算机应用，2023，43（6）：1655-1663．
+[3] （印）Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems 30．2017：5998-6008．
+[4] 余胜泉，熊莎莎．基于大模型增强的通用人工智能教师架构［J］．开放教育研究，2024，30（1）：33-43．
+[5] （德）Kasneci E，Sessler K，Küchemann S，等．ChatGPT for good? On opportunities and challenges of large language models for education［J］．Learning and Individual Differences，2023，103：102274．
+[6] （中）Zhao P，Zhang H，Yu Q，等．Retrieval-augmented generation for AI-generated content：A survey［J］．Data Science and Engineering，2026，11（1）：1-29．
+[7] 梅忆寒，王琳琳，王鹏飞，等．基于多模态与检索增强生成的数据库知识问答系统［J］．计算机教育，2024（12）：236-241．
+[8] （美）Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1995，4（4）：253-278．
+[9] （美）Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems 28．2015：505-513．
+[10] 索晋贤，张丽萍，闫盛，等．可解释的深度知识追踪方法综述［J］．计算机应用，2025，45（7）：2043-2055．
+[11] （德）Ebbinghaus H．Über das Gedächtnis：Untersuchungen zur experimentellen Psychologie［M］．Leipzig：Duncker & Humblot，1885．
+[12] 马华，李京泽，唐文胜，等．个性化在线学习资源推荐研究热点与趋势——基于2011—2021年CNKI和WoS文献的可视化分析［J］．软件导刊，2023，22（1）：29-37．
+[13] 郑雅倩，李新，李艳燕，等．人工智能视域下个性化学习路径推荐：机理、演进、价值与趋势［J］．现代远距离教育，2023（3）：39-47．
+[14] 韩姣，付瑞，孙昊，等．基于联邦学习的个性化学习资源推荐系统研究［J］．教育学刊，2025，3（12）：74-81．
+[15] 朱敏．基于大语言模型的个性化资源推荐方法研究［J］．兰州文理学院学报（自然科学版），2024，38（5）：59-64．
 
 ### 六、质量与格式要求
 

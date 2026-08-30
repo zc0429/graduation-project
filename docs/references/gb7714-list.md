@@ -1,67 +1,62 @@
 # 参考文献清单（GB/T 7714-2015）
 
-按「顺序编码制」编号，论文正文中以 `[1]`、`[2]` 形式标注，文末按此清单排列。
-本批 24 条均为 2026-07-26 经 OpenAlex / CrossRef / arXiv 联机核验的真实文献（DOI 见 `references.bib`）。
+本清单按顺序编码制冻结，毕业论文正文以 `[1]`、`[2]` 形式标注，文末按相同编号排列。题录于 2026-08-30 通过期刊官网、出版社页面、DOI/Crossref、arXiv 或出版商 PDF 核验。
 
-## 著录要点（学校红线）
+## 著录与计数口径
 
-- 中文条目用**全角标点**（，．：（））；作者超过 3 位时，中文写「等」，英文写「et al.」
-- **外文文献作者名前须加国籍**（全角括号国别，如 (美)、(印)、(加)、(德)、(澳)、(日)、(瑞士)、(中)）
-- 英文文献作者：姓在前全称，名缩写（如 `Vaswani A`）
-- 电子资源需标注「发布或更新日期[引用日期]」与获取网址，类型标识 `[EB/OL]`
-- 文献类型标识：期刊 `[J]`、专著 `[M]`、学位论文 `[D]`、会议 `[C]`、报纸 `[N]`、标准 `[S]`、电子资源 `[EB/OL]`
+- 学校正式规范要求毕业论文参考文献一般不少于 20 篇，其中近三年不少于 15 篇、外文不少于 2 篇。
+- 本清单共 24 篇：中文文献 18 篇、外文文献 6 篇；2024—2026 年文献 16 篇。
+- 外文作者按学校规则加全角国籍前缀；中国作者以外文形式发表时标注“（中）”。
+- 作者超过 3 位时以“等”省略。期刊条目均保留卷期和页码或文章号；电子资源保留发布日期、引用日期和网址。
+- Spring Boot、Vue.js、MyBatis-Plus 官方文档作为实现资料使用，不计入 24 篇学术参考文献，也不占学校数量指标。
+- 原清单中刘畅（2025）和郑伊彬、叶新东（2025）因公开来源仍无法核实页码而移出主清单；贾洪愿等（2025）已按出版商 PDF 修正作者顺序并补齐 198-201 页。最终核验同时修正了 Sessler 姓名拼写，以及刘邦奇等（2024）的作者、90-100 页和 DOI 尾号 `.009`。
 
-> 备注（著录完整性）：[15][17][21] 三条中文期刊文献的卷期已核实，但页码未被 OpenAlex/CrossRef
-> 收录，暂时缺页码；待获知网访问渠道后补全页码（对应 `references.bib` 中 `note = {页码待补}`）。
+## 冻结后的参考文献
 
----
+[1] 赵雅娟，孟繁军，徐行健．在线教育学习者知识追踪综述［J］．计算机应用，2024，44（6）：1683-1698．
 
-## 我的参考文献
+[2] 董永峰，王雅琮，董瑶，等．在线学习资源推荐综述［J］．计算机应用，2023，43（6）：1655-1663．
 
-[1] (印)Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems 30．2017：5998-6008．
+[3] （印）Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems 30．2017：5998-6008．
 
-[2] (德)Kasneci E，Seßler K，Küchemann S，等．ChatGPT for good? On opportunities and challenges of large language models for education［J］．Learning and Individual Differences，2023，103：102274．
+[4] 余胜泉，熊莎莎．基于大模型增强的通用人工智能教师架构［J］．开放教育研究，2024，30（1）：33-43．
 
-[3] (加)Lewis P，Perez E，Piktus A，等．Retrieval-augmented generation for knowledge-intensive NLP tasks［C］//Advances in Neural Information Processing Systems 33．2020：9459-9474．
+[5] （德）Kasneci E，Sessler K，Küchemann S，等．ChatGPT for good? On opportunities and challenges of large language models for education［J］．Learning and Individual Differences，2023，103：102274．
 
-[4] (美)Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1995，4(4)：253-278．
+[6] （中）Zhao P，Zhang H，Yu Q，等．Retrieval-augmented generation for AI-generated content：A survey［J］．Data Science and Engineering，2026，11（1）：1-29．
 
-[5] (美)Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems 28．2015：505-513．
+[7] 梅忆寒，王琳琳，王鹏飞，等．基于多模态与检索增强生成的数据库知识问答系统［J］．计算机教育，2024（12）：236-241．
 
-[6] (中)Shen S，Liu Q，Huang Z，等．A survey of knowledge tracing：Models，variants，and applications［J］．IEEE Transactions on Learning Technologies，2024，17：1858-1879．
+[8] （美）Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1995，4（4）：253-278．
 
-[7] (美)Settles B，Meeder B．A trainable spaced repetition model for language learning［C］//Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics．2016：1848-1858．
+[9] （美）Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems 28．2015：505-513．
 
-[8] (日)Nagatani K，Zhang Q，Sato M，等．Augmenting knowledge tracing by considering forgetting behavior［C］//Proceedings of the 2019 World Wide Web Conference．2019：3101-3107．
+[10] 索晋贤，张丽萍，闫盛，等．可解释的深度知识追踪方法综述［J］．计算机应用，2025，45（7）：2043-2055．
 
-[9] (中)Wang F，Liu Q，Chen E，等．Neural cognitive diagnosis for intelligent education systems［C］//Proceedings of the AAAI Conference on Artificial Intelligence．2020，34(4)：6153-6161．
+[11] （德）Ebbinghaus H．Über das Gedächtnis：Untersuchungen zur experimentellen Psychologie［M］．Leipzig：Duncker & Humblot，1885．
 
-[10] (中)Wu S，Wang J，Zhang W．Contrastive personalized exercise recommendation with reinforcement learning［J］．IEEE Transactions on Learning Technologies，2023，17：691-703．
+[12] 马华，李京泽，唐文胜，等．个性化在线学习资源推荐研究热点与趋势——基于2011—2021年CNKI和WoS文献的可视化分析［J］．软件导刊，2023，22（1）：29-37．
 
-[11] (澳)Yan L，Sha L，Zhao L，等．Practical and ethical challenges of large language models in education：A systematic scoping review［J］．British Journal of Educational Technology，2024，55(1)：90-112．
+[13] 郑雅倩，李新，李艳燕，等．人工智能视域下个性化学习路径推荐：机理、演进、价值与趋势［J］．现代远距离教育，2023（3）：39-47．
 
-[12] (瑞士)Chowdhury S P，Zouhar V，Sachan M．AutoTutor meets large language models：A language model tutor with rich pedagogy and guardrails［C］//Proceedings of the 11th ACM Conference on Learning @ Scale．2024：5-15．
+[14] 韩姣，付瑞，孙昊，等．基于联邦学习的个性化学习资源推荐系统研究［J］．教育学刊，2025，3（12）：74-81．
 
-[13] (中)Gao Y，Xiong Y，Gao X，等．Retrieval-augmented generation for large language models：A survey［EB/OL］．(2023-12-18)［2026-07-26］．https://arxiv.org/abs/2312.10997．
+[15] 朱敏．基于大语言模型的个性化资源推荐方法研究［J］．兰州文理学院学报（自然科学版），2024，38（5）：59-64．
 
-[14] 孙辉．高中物理错题资源的整合［J］．现代教育探索，2024，5(2)：131-133．
+[16] 孙辉．高中物理错题资源的整合［J］．现代教育探索，2024，5（2）：131-133．
 
-[15] 刘畅．初中数学错题资源有效利用的实践［J］．素质教育，2025，1(1)．
+[17] 徐刚，刘志鹏，冯骐，等．大语言模型在教育信息化中的实践：规范、框架与应用［J］．通信学报，2024，45（Z2）：229-241．
 
-[16] 韩姣，付瑞，孙昊，等．基于联邦学习的个性化学习资源推荐系统研究［J］．教育学刊，2025，3(12)：74-81．
+[18] 刘邦奇，喻彦珺，王涛，等．人工智能教育大模型：体系架构与关键技术策略［J］．开放教育研究，2024，30（5）：90-100．
 
-[17] 郑伊彬，叶新东．中学生对基于大语言模型的英语写作平台的接受度模型［J］．教育学刊，2025，3(2)．
+[19] 罗恒，廖小芳，茹琦琦，等．生成式人工智能支持的教师评语研究：基于初中数学课堂的实践探索［J］．电化教育研究，2024，45（5）：58-66．
 
-[18] 唐颖川．大语言模型赋能探究型高职教育——以Python语言课程为例［J］．现代教育探索，2025，6(6)：44-46．
+[20] 吴砥，吴河江．通用大模型教育应用的潜在风险及其规避——基于技术伦理的视角［J］．华东师范大学学报（教育科学版），2024，42（8）：64-75．
 
-[19] 王丹颖．大语言模型垂直化训练技术与应用［J］．现代教育探索，2025，6(6)：56-58．
+[21] 吴永和，姜元昊，陈圆圆，等．大语言模型支持的多智能体：技术路径、教育应用与未来展望［J］．开放教育研究，2024，30（5）：63-75．
 
-[20] 张鲁燕，巩清波．大语言模型赋能高职教育“双师课堂”的路径探索［J］．教育学刊，2026，4(1)：136-141．
+[22] 贾洪愿，居发礼，余晓平．基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建［J］．智慧教育，2025，2（2）：198-201．
 
-[21] 居发礼，余晓平，贾洪愿．基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建［J］．智慧教育，2025，2(2)．
+[23] 唐颖川．大语言模型赋能探究型高职教育——以Python语言课程为例［J］．现代教育探索，2025，6（6）：44-46．
 
-[22] (美)Spring．Spring Boot Reference Documentation［EB/OL］．［2026-07-26］．https://docs.spring.io/spring-boot/index.html．
-
-[23] Vue.js 团队．Vue.js 官方文档［EB/OL］．［2026-07-26］．https://cn.vuejs.org/．
-
-[24] MyBatis-Plus 团队．MyBatis-Plus 官方文档［EB/OL］．［2026-07-26］．https://baomidou.com/．
+[24] 张鲁燕，巩清波．大语言模型赋能高职教育“双师课堂”的路径探索［J］．教育学刊，2026，4（1）：136-141．
