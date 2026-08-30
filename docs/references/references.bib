@@ -1,261 +1,361 @@
-% ============================================================
-% 参考文献 BibTeX 库（真实条目，均经 OpenAlex / CrossRef / arXiv 联机核验，2026-07-26）
-% 追加方式：知网「导出与分析 → 导出文献 → BibTeX」，或 Google Scholar「引用 → BibTeX」
-% 编号对应 gb7714-list.md 的顺序编码 [1]–[24]
-% ============================================================
+% 参考文献 BibTeX 主库
+% 2026-08-30 完成元数据核验与编号冻结；编号对应 gb7714-list.md 的 [1]-[26]。
+% nationality 为项目格式审计字段，不写入标准 author 字段；langid 单独记录文献语言。
 
-% ---------- [1] Transformer（国外·基础） ----------
+% [1]
 @inproceedings{vaswani2017attention,
-  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia},
-  title     = {Attention Is All You Need},
-  booktitle = {Advances in Neural Information Processing Systems 30 (NeurIPS)},
-  year      = {2017},
-  pages     = {5998--6008},
-  note      = {arXiv:1706.03762},
+  author            = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia},
+  title             = {Attention Is All You Need},
+  booktitle         = {Advances in Neural Information Processing Systems 30},
+  year              = {2017},
+  pages             = {5998--6008},
+  url               = {https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html},
+  langid            = {english},
+  nationality       = {IN},
+  nationalitysource = {https://www.indemb-oman.gov.in/section/speeches-and-interviews/the-india-that-is-in-our-dna-address-by-ambassador-amit-narang-for-independence-day-celebration-at-indian-school-al-ghubra-15-august-2023/}
 }
 
-% ---------- [2] LLM 教育应用（德） ----------
-@article{kasneci2023chatgpt,
-  author  = {Kasneci, Enkelejda and Se{\ss}ler, Kathrin and K{\"u}chemann, Stefan and Bannert, Maria and others},
-  title   = {{ChatGPT} for Good? On Opportunities and Challenges of Large Language Models for Education},
-  journal = {Learning and Individual Differences},
-  year    = {2023},
-  volume  = {103},
-  pages   = {102274},
-  doi     = {10.1016/j.lindif.2023.102274},
+% [2]
+@article{luckin2019designing,
+  author            = {Luckin, Rosemary and Cukurova, Mutlu},
+  title             = {Designing Educational Technologies in the Age of {AI}: A Learning Sciences-Driven Approach},
+  journal           = {British Journal of Educational Technology},
+  year              = {2019},
+  volume            = {50},
+  number            = {6},
+  pages             = {2824--2838},
+  doi               = {10.1111/bjet.12861},
+  langid            = {english},
+  nationality       = {GB},
+  nationalitysource = {https://find-and-update.company-information.service.gov.uk/officers/Yl8Ck0xFo8ZS8g7LZAGbgDsq7vw/appointments}
 }
 
-% ---------- [3] BKT 知识追踪奠基（美） ----------
-@article{corbett1995knowledge,
-  author  = {Corbett, Albert T. and Anderson, John R.},
-  title   = {Knowledge Tracing: Modeling the Acquisition of Procedural Knowledge},
-  journal = {User Modeling and User-Adapted Interaction},
-  year    = {1995},
-  volume  = {4},
-  number  = {4},
-  pages   = {253--278},
-  doi     = {10.1007/BF01099821},
+% [3]
+@article{turing1950computing,
+  author            = {Turing, Alan M.},
+  title             = {Computing Machinery and Intelligence},
+  journal           = {Mind},
+  year              = {1950},
+  volume            = {59},
+  number            = {236},
+  pages             = {433--460},
+  doi               = {10.1093/mind/LIX.236.433},
+  langid            = {english},
+  nationality       = {GB},
+  nationalitysource = {https://www.turing.ac.uk/about-us/who-was-alan-turing}
 }
 
-% ---------- [4] DKT 深度知识追踪（美） ----------
-@inproceedings{piech2015deep,
-  author    = {Piech, Chris and Bassen, Jonathan and Huang, Jonathan and Ganguli, Surya and Sahami, Mehran and Guibas, Leonidas and Sohl-Dickstein, Jascha},
-  title     = {Deep Knowledge Tracing},
-  booktitle = {Advances in Neural Information Processing Systems 28 (NeurIPS)},
-  year      = {2015},
-  pages     = {505--513},
-  note      = {arXiv:1506.05908},
-}
-
-% ---------- [5] 知识追踪综述 2024（中） ----------
+% [4]
 @article{shen2024survey,
-  author  = {Shen, Shuanghong and Liu, Qi and Huang, Zhenya and Zheng, Yonghe and others},
-  title   = {A Survey of Knowledge Tracing: Models, Variants, and Applications},
-  journal = {IEEE Transactions on Learning Technologies},
-  year    = {2024},
-  volume  = {17},
-  pages   = {1858--1879},
-  doi     = {10.1109/TLT.2024.3383325},
+  author      = {Shen, Shuanghong and Liu, Qi and Huang, Zhenya and Zheng, Yonghe and Yin, Ming and Wang, Minjuan and Chen, Enhong and Xiong, Hui},
+  title       = {A Survey of Knowledge Tracing: Models, Variants, and Applications},
+  journal     = {IEEE Transactions on Learning Technologies},
+  year        = {2024},
+  volume      = {17},
+  pages       = {1858--1879},
+  doi         = {10.1109/TLT.2024.3383325},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [6] 知识追踪+遗忘（日） ----------
-@inproceedings{nagatani2019augmenting,
-  author    = {Nagatani, Koki and Zhang, Qian and Sato, Masahiro and Chen, Yanying and others},
-  title     = {Augmenting Knowledge Tracing by Considering Forgetting Behavior},
-  booktitle = {Proceedings of the 2019 World Wide Web Conference (WWW)},
-  year      = {2019},
-  pages     = {3101--3107},
-  doi       = {10.1145/3308558.3313565},
+% [5]
+@article{liu2025review,
+  author      = {Liu, Zitao and Guo, Teng and Liang, Qianru and Hou, Mingliang and Zhan, Bojun and Tang, Jiliang and Luo, Weiqi and Weng, Jian},
+  title       = {Deep Learning Based Knowledge Tracing: A Review, a Tool and Empirical Studies},
+  journal     = {IEEE Transactions on Knowledge and Data Engineering},
+  year        = {2025},
+  volume      = {37},
+  number      = {8},
+  pages       = {4512--4536},
+  doi         = {10.1109/TKDE.2025.3552759},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [7] 间隔重复模型（美） ----------
-@inproceedings{settles2016trainable,
-  author    = {Settles, Burr and Meeder, Brendan},
-  title     = {A Trainable Spaced Repetition Model for Language Learning},
-  booktitle = {Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (ACL)},
-  year      = {2016},
-  pages     = {1848--1858},
-  doi       = {10.18653/v1/P16-1174},
+% [6]
+@book{ebbinghaus1885gedachtnis,
+  author            = {Ebbinghaus, Hermann},
+  title             = {Über das Gedächtnis: Untersuchungen zur experimentellen Psychologie},
+  address           = {Leipzig},
+  publisher         = {Duncker \& Humblot},
+  year              = {1885},
+  url               = {https://www.loc.gov/item/e11000616/},
+  langid            = {german},
+  nationality       = {DE},
+  nationalitysource = {https://www.deutsche-biographie.de/sfz12194.html}
 }
 
-% ---------- [8] 神经认知诊断（中） ----------
+% [7]
 @inproceedings{wang2020neural,
-  author    = {Wang, Fei and Liu, Qi and Chen, Enhong and Huang, Zhenya and others},
-  title     = {Neural Cognitive Diagnosis for Intelligent Education Systems},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  year      = {2020},
-  volume    = {34},
-  number    = {4},
-  pages     = {6153--6161},
-  doi       = {10.1609/aaai.v34i04.6080},
+  author      = {Wang, Fei and Liu, Qi and Chen, Enhong and Huang, Zhenya and Chen, Yuying and Yin, Yu and Huang, Zai and Wang, Shijin},
+  title       = {Neural Cognitive Diagnosis for Intelligent Education Systems},
+  booktitle   = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year        = {2020},
+  volume      = {34},
+  number      = {4},
+  pages       = {6153--6161},
+  doi         = {10.1609/aaai.v34i04.6080},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [9] 习题推荐（中） ----------
-@article{wu2023contrastive,
-  author  = {Wu, Siyu and Wang, Jun and Zhang, Wei},
-  title   = {Contrastive Personalized Exercise Recommendation With Reinforcement Learning},
-  journal = {IEEE Transactions on Learning Technologies},
-  year    = {2023},
-  volume  = {17},
-  pages   = {691--703},
-  doi     = {10.1109/TLT.2023.3326449},
+% [8]
+@article{wu2024contrastive,
+  author      = {Wu, Siyu and Wang, Jun and Zhang, Wei},
+  title       = {Contrastive Personalized Exercise Recommendation With Reinforcement Learning},
+  journal     = {IEEE Transactions on Learning Technologies},
+  year        = {2024},
+  volume      = {17},
+  pages       = {691--703},
+  doi         = {10.1109/TLT.2023.3326449},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [10] LLM 教育伦理综述（澳） ----------
-@article{yan2024practical,
-  author  = {Yan, Lixiang and Sha, Lele and Zhao, Linxuan and Li, Yuheng and others},
-  title   = {Practical and Ethical Challenges of Large Language Models in Education: A Systematic Scoping Review},
-  journal = {British Journal of Educational Technology},
-  year    = {2024},
-  volume  = {55},
-  number  = {1},
-  pages   = {90--112},
-  doi     = {10.1111/bjet.13370},
+% [9]
+@article{gao2024portraits,
+  author      = {Gao, Wei-Wei and Ma, Hui-Fang and Zhao, Yan and Wang, Jing and Tian, Quan-Hong},
+  title       = {Enhancing Personalized Exercise Recommendation with Student and Exercise Portraits},
+  journal     = {Journal of Electronic Science and Technology},
+  year        = {2024},
+  volume      = {22},
+  number      = {2},
+  pages       = {100262},
+  doi         = {10.1016/j.jnlest.2024.100262},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [11] LLM 导师系统（瑞士） ----------
-@inproceedings{chowdhury2024autotutor,
-  author    = {Chowdhury, Sankalan Pal and Zouhar, Vil{\'e}m and Sachan, Mrinmaya},
-  title     = {{AutoTutor} Meets Large Language Models: A Language Model Tutor With Rich Pedagogy and Guardrails},
-  booktitle = {Proceedings of the 11th ACM Conference on Learning @ Scale},
-  year      = {2024},
-  pages     = {5--15},
-  doi       = {10.1145/3657604.3662041},
+% [10]
+@misc{wang2024llmeducation,
+  author       = {Wang, Shen and Xu, Tianlong and Li, Hang and Zhang, Chaoli and Liang, Joleen and Tang, Jiliang and Yu, Philip S. and Wen, Qingsong},
+  title        = {Large Language Models for Education: A Survey and Outlook},
+  year         = {2024},
+  eprint       = {2403.18105},
+  archiveprefix = {arXiv},
+  primaryclass = {cs.CL},
+  url          = {https://arxiv.org/abs/2403.18105},
+  urldate      = {2026-08-30},
+  langid       = {english},
+  nationality  = {CN}
 }
 
-% ---------- [12] RAG 奠基（加） ----------
-@inproceedings{lewis2020retrieval,
-  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and others},
-  title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
-  booktitle = {Advances in Neural Information Processing Systems 33 (NeurIPS)},
-  year      = {2020},
-  pages     = {9459--9474},
-  note      = {arXiv:2005.11401},
+% [11]
+@article{xing2024mllm,
+  author      = {Xing, Weicheng and Zhu, Tianqing and Wang, Jenny and Liu, Bo},
+  title       = {A Survey on {MLLMs} in Education: Application and Future Directions},
+  journal     = {Future Internet},
+  year        = {2024},
+  volume      = {16},
+  number      = {12},
+  pages       = {467},
+  doi         = {10.3390/fi16120467},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [13] RAG 综述（中，arXiv 预印本） ----------
-@misc{gao2023retrieval,
-  author       = {Gao, Yunfan and Xiong, Yun and Gao, Xinyu and Jia, Kangxiang and Pan, Jinliu and Bi, Yuxi and Dai, Yi and Sun, Jiawei and others},
-  title        = {Retrieval-Augmented Generation for Large Language Models: A Survey},
-  year         = {2023},
-  howpublished = {arXiv preprint arXiv:2312.10997},
-  note         = {[2026-07-26]. https://arxiv.org/abs/2312.10997},
+% [12]
+@article{han2024feedback,
+  author      = {Han, Jining and Li, Mimi},
+  title       = {Exploring {ChatGPT}-Supported Teacher Feedback in the {EFL} Context},
+  journal     = {System},
+  year        = {2024},
+  volume      = {126},
+  pages       = {103502},
+  doi         = {10.1016/j.system.2024.103502},
+  langid      = {english},
+  nationality = {CN}
 }
 
-% ---------- [14] 错题资源整合（中文期刊） ----------
+% [13]
+@article{xie2025cellms,
+  author      = {Xie, Tao and Zhou, Yingli and Yu, Jiazhen},
+  title       = {{Ce-LLMs}: Status and Trends of Education-Specific Large Language Models Developed in China},
+  journal     = {Future in Educational Research},
+  year        = {2025},
+  volume      = {3},
+  number      = {3},
+  pages       = {505--525},
+  doi         = {10.1002/fer3.70008},
+  langid      = {english},
+  nationality = {CN}
+}
+
+% [14]
+@article{bloom1984sigma,
+  author            = {Bloom, Benjamin S.},
+  title             = {The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring},
+  journal           = {Educational Researcher},
+  year              = {1984},
+  volume            = {13},
+  number            = {6},
+  pages             = {4--16},
+  doi               = {10.3102/0013189X013006004},
+  langid            = {english},
+  nationality       = {US},
+  nationalitysource = {https://www.britannica.com/biography/Benjamin-Bloom}
+}
+
+% [15]
+@article{zhao2026ragsurvey,
+  author      = {Zhao, Penghao and Zhang, Hailin and Yu, Qinhan and Wang, Zhengren and Geng, Yunteng and Fu, Fangcheng and Yang, Ling and Zhang, Wentao and Jiang, Jie and Cui, Bin},
+  title       = {Retrieval-Augmented Generation for {AI}-Generated Content: A Survey},
+  journal     = {Data Science and Engineering},
+  year        = {2026},
+  volume      = {11},
+  number      = {1},
+  pages       = {1--29},
+  doi         = {10.1007/s41019-025-00335-5},
+  langid      = {english},
+  nationality = {CN}
+}
+
+% [16]
+@misc{teamglm2024chatglm,
+  author       = {{Team GLM} and Zeng, Aohan and Xu, Bin and Wang, Bowen and Zhang, Chenhui and others},
+  title        = {{ChatGLM}: A Family of Large Language Models from {GLM-130B} to {GLM-4} All Tools},
+  year         = {2024},
+  eprint       = {2406.12793},
+  archiveprefix = {arXiv},
+  primaryclass = {cs.CL},
+  url          = {https://arxiv.org/abs/2406.12793},
+  urldate      = {2026-08-30},
+  langid       = {english},
+  nationality  = {N/A},
+  authortype   = {group}
+}
+
+% [17]
 @article{sun2024cuoti,
-  author  = {孙辉},
-  title   = {高中物理错题资源的整合},
-  journal = {现代教育探索},
-  year    = {2024},
-  volume  = {5},
-  number  = {2},
-  pages   = {131--133},
-  doi     = {10.37155/2717-5561-0502-43},
+  author      = {孙辉},
+  title       = {高中物理错题资源的整合},
+  journal     = {现代教育探索},
+  year        = {2024},
+  volume      = {5},
+  number      = {2},
+  pages       = {131--133},
+  doi         = {10.37155/2717-5561-0502-43},
+  langid      = {chinese},
+  nationality = {CN}
 }
 
-% ---------- [15] 错题资源利用（中文期刊，页码待补） ----------
-@article{liu2025cuoti,
-  author  = {刘畅},
-  title   = {初中数学错题资源有效利用的实践},
-  journal = {素质教育},
-  year    = {2025},
-  volume  = {1},
-  number  = {1},
-  note    = {页码待补（知网核验）},
-  doi     = {10.61654/zzszjy0327},
+% [18]
+@article{dong2023recommendation,
+  author      = {董永峰 and 王雅琮 and 董瑶 and 邓亚晗},
+  title       = {在线学习资源推荐综述},
+  journal     = {计算机应用},
+  year        = {2023},
+  volume      = {43},
+  number      = {6},
+  pages       = {1655--1663},
+  doi         = {10.11772/j.issn.1001-9081.2022091335},
+  url         = {https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2022091335},
+  langid      = {chinese},
+  nationality = {CN}
 }
 
-% ---------- [16] RAG 课程知识库（中文期刊，页码待补） ----------
-@article{ju2025rag,
-  author  = {居发礼 and 余晓平 and 贾洪愿},
-  title   = {基于检索增强生成（{RAG}）的《建环专业计算机应用》课程智能知识库构建},
-  journal = {智慧教育},
-  year    = {2025},
-  volume  = {2},
-  number  = {2},
-  note    = {页码待补（知网核验）},
-  doi     = {10.69979/3029-2735.25.2.062},
-}
-
-% ---------- [17] 个性化学习资源推荐（中文期刊） ----------
+% [19]
 @article{han2025federated,
-  author  = {韩姣 and 付瑞 and 孙昊 and 李碧锦 and 张玉涛},
-  title   = {基于联邦学习的个性化学习资源推荐系统研究},
-  journal = {教育学刊},
-  year    = {2025},
-  volume  = {3},
-  number  = {12},
-  pages   = {74--81},
-  doi     = {10.62836/jer.v3n12.0912},
+  author      = {韩姣 and 付瑞 and 孙昊 and 李碧锦 and 张玉涛},
+  title       = {基于联邦学习的个性化学习资源推荐系统研究},
+  journal     = {教育学刊},
+  year        = {2025},
+  volume      = {3},
+  number      = {12},
+  pages       = {74--81},
+  doi         = {10.62836/jer.v3n12.0912},
+  langid      = {chinese},
+  nationality = {CN}
 }
 
-% ---------- [18] 大模型写作平台接受度（中文期刊，页码待补） ----------
-@article{zheng2025acceptance,
-  author  = {郑伊彬 and 叶新东},
-  title   = {中学生对基于大语言模型的英语写作平台的接受度模型},
-  journal = {教育学刊},
-  year    = {2025},
-  volume  = {3},
-  number  = {2},
-  note    = {页码待补（知网核验）},
-  doi     = {10.62836/jer.v3n2.0219},
-}
-
-% ---------- [19] 大模型高职教育（中文期刊） ----------
+% [20]
 @article{tang2025llm,
-  author  = {唐颖川},
-  title   = {大语言模型赋能探究型高职教育——以{Python}语言课程为例},
-  journal = {现代教育探索},
-  year    = {2025},
-  volume  = {6},
-  number  = {6},
-  pages   = {44--46},
-  doi     = {10.37155/2717-5561-0606-14},
+  author      = {唐颖川},
+  title       = {大语言模型赋能探究型高职教育——以{Python}语言课程为例},
+  journal     = {现代教育探索},
+  year        = {2025},
+  volume      = {6},
+  number      = {6},
+  pages       = {44--46},
+  doi         = {10.37155/2717-5561-0606-14},
+  langid      = {chinese},
+  nationality = {CN}
 }
 
-% ---------- [20] 大模型垂直化（中文期刊） ----------
+% [21]
 @article{wang2025vertical,
-  author  = {王丹颖},
-  title   = {大语言模型垂直化训练技术与应用},
-  journal = {现代教育探索},
-  year    = {2025},
-  volume  = {6},
-  number  = {6},
-  pages   = {56--58},
-  doi     = {10.37155/2717-5561-0606-18},
+  author      = {王丹颖},
+  title       = {大语言模型垂直化训练技术与应用},
+  journal     = {现代教育探索},
+  year        = {2025},
+  volume      = {6},
+  number      = {6},
+  pages       = {56--58},
+  doi         = {10.37155/2717-5561-0606-18},
+  langid      = {chinese},
+  nationality = {CN}
 }
 
-% ---------- [21] 大模型双师课堂（中文期刊） ----------
+% [22]
 @article{zhang2026double,
-  author  = {张鲁燕 and 巩清波},
-  title   = {大语言模型赋能高职教育“双师课堂”的路径探索},
-  journal = {教育学刊},
-  year    = {2026},
-  volume  = {4},
-  number  = {1},
-  pages   = {136--141},
-  doi     = {10.62836/jer.v4n1.0992},
+  author      = {张鲁燕 and 巩清波},
+  title       = {大语言模型赋能高职教育“双师课堂”的路径探索},
+  journal     = {教育学刊},
+  year        = {2026},
+  volume      = {4},
+  number      = {1},
+  pages       = {136--141},
+  doi         = {10.62836/jer.v4n1.0992},
+  langid      = {chinese},
+  nationality = {CN}
 }
 
-% ---------- [22]–[24] 官方文档 [EB/OL] ----------
+% [23]
+@article{jia2025rag,
+  author      = {贾洪愿 and 居发礼 and 余晓平},
+  title       = {基于检索增强生成（{RAG}）的《建环专业计算机应用》课程智能知识库构建},
+  journal     = {智慧教育},
+  year        = {2025},
+  volume      = {2},
+  number      = {2},
+  pages       = {198--201},
+  doi         = {10.69979/3029-2735.25.2.062},
+  langid      = {chinese},
+  nationality = {CN}
+}
+
+% [24]
 @misc{springbootdocs,
   author       = {{Spring}},
   title        = {Spring Boot Reference Documentation},
-  howpublished = {\url{https://docs.spring.io/spring-boot/index.html}},
-  note         = {[EB/OL]. [2026-07-26]},
+  howpublished = {https://docs.spring.io/spring-boot/index.html},
+  url          = {https://docs.spring.io/spring-boot/index.html},
+  urldate      = {2026-08-30},
+  langid       = {english},
+  nationality  = {N/A},
+  authortype   = {organization}
 }
 
+% [25]
 @misc{vuedocs,
   author       = {{Vue.js 团队}},
   title        = {Vue.js 官方文档},
-  howpublished = {\url{https://cn.vuejs.org/}},
-  note         = {[EB/OL]. [2026-07-26]},
+  howpublished = {https://cn.vuejs.org/},
+  url          = {https://cn.vuejs.org/},
+  urldate      = {2026-08-30},
+  langid       = {chinese},
+  nationality  = {N/A},
+  authortype   = {organization}
 }
 
+% [26]
 @misc{mybatisplusdocs,
   author       = {{MyBatis-Plus 团队}},
   title        = {MyBatis-Plus 官方文档},
-  howpublished = {\url{https://baomidou.com/}},
-  note         = {[EB/OL]. [2026-07-26]},
+  howpublished = {https://baomidou.com/},
+  url          = {https://baomidou.com/},
+  urldate      = {2026-08-30},
+  langid       = {chinese},
+  nationality  = {N/A},
+  authortype   = {organization}
 }

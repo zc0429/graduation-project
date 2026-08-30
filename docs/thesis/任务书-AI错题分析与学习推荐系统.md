@@ -87,10 +87,10 @@
 （导出时按 GB/T 7714-2015 顺序编码制，中文条目用全角标点，外文作者前加国籍（用国别代码全角括号），作者 >3 位用"等"。）
 
 1. 张海藩，牟永敏．软件工程导论［M］．6 版．北京：清华大学出版社，2013．
-2. (美)Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1995，4(4)：253-278．
-3. (美)Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems．2015：505-513．
-4. (印)Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems．2017：5998-6008．
-5. (加)Lewis P，Perez E，Piktus A，等．Retrieval-augmented generation for knowledge-intensive NLP tasks［C］//Advances in Neural Information Processing Systems．2020：9459-9474．
+2. （美）Bloom B S．The 2 sigma problem：The search for methods of group instruction as effective as one-to-one tutoring［J］．Educational Researcher，1984，13(6)：4-16．
+3. Shen S，Liu Q，Huang Z，等．A survey of knowledge tracing：Models，variants，and applications［J］．IEEE Transactions on Learning Technologies，2024，17：1858-1879．
+4. （印）Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems 30．2017：5998-6008．
+5. Zhao P，Zhang H，Yu Q，等．Retrieval-augmented generation for AI-generated content：A survey［J］．Data Science and Engineering，2026，11(1)：1-29．
 
 ### 六、质量与格式要求
 
