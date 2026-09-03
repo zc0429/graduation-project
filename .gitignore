@@ -27,6 +27,9 @@ dist/
 *.log
 *.tmp
 *.bak
+__pycache__/
+*.py[cod]
+/tmp/
 .~lock.*#
 .~*
 
