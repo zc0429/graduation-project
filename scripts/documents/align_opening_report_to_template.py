@@ -1,28 +1,31 @@
 #!/usr/bin/env python3
-"""Rebuild the current opening-report DOCX with the reference PDF's page frames."""
+"""Rebuild the opening-report DOCX with the official 2027 template's page frames."""
 
 from __future__ import annotations
 
+import argparse
 import re
 from pathlib import Path
 
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_ROW_HEIGHT_RULE, WD_TABLE_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_LINE_SPACING
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = (
+DEFAULT_SOURCE = ROOT / "tmp" / "opening-report-build" / "base.docx"
+DEFAULT_OUTPUT = ROOT / "output" / "docx" / "云南工商学院毕业设计开题报告-赵灿.docx"
+OFFICIAL_TEMPLATE = (
     ROOT
-    / "output"
-    / "backup"
-    / "2026-09-03-before-template-align"
-    / "云南工商学院毕业设计开题报告-赵灿-修改前.docx"
+    / "docs"
+    / "materials"
+    / "27届毕业设计学校通知和模板"
+    / "附件3：毕业论文（设计）相关模板（2027）"
+    / "附件3：毕业论文（设计）内容资料.docx"
 )
-OUTPUT = ROOT / "output" / "docx" / "云南工商学院毕业设计开题报告-赵灿.docx"
 
 PAGE_WIDTH_CM = 21.0
 PAGE_HEIGHT_CM = 29.7
@@ -215,9 +218,12 @@ def add_page_break(document: Document) -> None:
     paragraph.paragraph_format.space_after = Pt(0)
     paragraph.paragraph_format.line_spacing_rule = WD_LINE_SPACING.EXACTLY
     paragraph.paragraph_format.line_spacing = Pt(1)
-    run = paragraph.add_run()
+    # A break run can be pushed to the next page when the preceding frame uses
+    # the full page, creating an accidental blank page. Page-break-before keeps
+    # the following frame on the next page without that extra sheet.
+    paragraph.paragraph_format.page_break_before = True
+    run = paragraph.add_run(" ")
     run.font.size = Pt(1)
-    run.add_break(WD_BREAK.PAGE)
 
 
 def style_all_cells(table) -> None:
@@ -274,10 +280,24 @@ def extract_unique_row_text(table, row_index: int) -> str:
     return texts[-1] if len(texts) == 1 else " | ".join(texts)
 
 
-def build() -> None:
-    if not SOURCE.exists():
-        raise FileNotFoundError(SOURCE)
-    source_doc = Document(SOURCE)
+def _validate_official_template() -> None:
+    if not OFFICIAL_TEMPLATE.exists():
+        raise FileNotFoundError(OFFICIAL_TEMPLATE)
+    template = Document(OFFICIAL_TEMPLATE)
+    if len(template.tables) != 4 or len(template.tables[2].rows) != 11:
+        raise ValueError("Unexpected 2027 opening-report template structure")
+    opening_text = "\n".join(cell.text for row in template.tables[2].rows for cell in row.cells)
+    required = ("一、选题背景和意义", "六、主要参考文献", "指导教师意见", "系意见")
+    missing = [token for token in required if token not in opening_text]
+    if missing:
+        raise ValueError(f"2027 opening-report template fields missing: {missing}")
+
+
+def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT) -> None:
+    _validate_official_template()
+    if not source_path.exists():
+        raise FileNotFoundError(source_path)
+    source_doc = Document(source_path)
     source_top = source_doc.tables[0]
     source_main = source_doc.tables[1]
     row_text = {idx: extract_unique_row_text(source_main, idx) for idx in range(len(source_main.rows))}
@@ -396,9 +416,12 @@ def build() -> None:
     page5_refs = [(row_text[60], "main")]
     page5_refs.extend((transformed_reference(row_text[idx]), "reference") for idx in range(61, 68))
     page5 = add_single_column_page(document, [page5_methods, page5_plan, page5_refs])
-    set_row_height(page5.rows[0], 6.50)
-    set_row_height(page5.rows[1], 3.00)
-    set_row_height(page5.rows[2], 13.62)
+    # Keep the expanded official schedule and the first reference block on the
+    # same framed page.  These are minimum heights, so Word/LibreOffice can
+    # still grow a row when a line wraps.
+    set_row_height(page5.rows[0], 4.80)
+    set_row_height(page5.rows[1], 5.50)
+    set_row_height(page5.rows[2], 11.80)
 
     add_page_break(document)
     page6 = document.add_table(rows=3, cols=2)
@@ -436,10 +459,14 @@ def build() -> None:
     document.core_properties.subject = "赵灿毕业设计开题报告"
     document.core_properties.author = "赵灿"
     document.core_properties.keywords = "开题报告；错题分析；个性化推荐；检索增强生成；知识追踪"
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    document.save(OUTPUT)
-    print(OUTPUT)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    document.save(output_path)
+    print(output_path)
 
 
 if __name__ == "__main__":
-    build()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    args = parser.parse_args()
+    build(args.source.resolve(), args.output.resolve())

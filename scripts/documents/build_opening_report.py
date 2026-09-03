@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Build the formal opening-report DOCX and PDF from the canonical Markdown source."""
+"""Build the 2027-template-aligned opening-report DOCX/PDF from Markdown."""
 
 from __future__ import annotations
 
 import argparse
 import html
 import re
+import shutil
+import subprocess
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -660,8 +663,46 @@ def main() -> None:
     parser.add_argument("--pdf", type=Path, default=DEFAULT_PDF)
     args = parser.parse_args()
     source = parse_source(args.source.resolve())
-    build_docx(source, args.docx.resolve())
-    build_pdf(source, args.pdf.resolve())
+    final_docx = args.docx.resolve()
+    final_pdf = args.pdf.resolve()
+    draft_dir = ROOT / "tmp" / "opening-report-build"
+    draft_dir.mkdir(parents=True, exist_ok=True)
+    draft_docx = draft_dir / "base.docx"
+    build_docx(source, draft_docx)
+
+    from align_opening_report_to_template import build as align_to_2027_template
+
+    align_to_2027_template(draft_docx, final_docx)
+
+    soffice = shutil.which("soffice")
+    if soffice is None:
+        common = Path(r"C:\Program Files\LibreOffice\program\soffice.exe")
+        if common.exists():
+            soffice = str(common)
+    if soffice is None:
+        raise FileNotFoundError("LibreOffice soffice is required to export the template-aligned PDF")
+
+    final_pdf.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="opening-report-pdf-") as temp_name:
+        temp_dir = Path(temp_name)
+        profile_dir = temp_dir / "profile"
+        profile_dir.mkdir()
+        command = [
+            soffice,
+            f"-env:UserInstallation={profile_dir.resolve().as_uri()}",
+            "--headless",
+            "--norestore",
+            "--convert-to",
+            "pdf",
+            "--outdir",
+            str(temp_dir),
+            str(final_docx),
+        ]
+        subprocess.run(command, check=True, capture_output=True)
+        generated_pdf = temp_dir / f"{final_docx.stem}.pdf"
+        if not generated_pdf.exists():
+            raise FileNotFoundError(generated_pdf)
+        shutil.copy2(generated_pdf, final_pdf)
     print(f"DOCX: {args.docx.resolve()}")
     print(f"PDF:  {args.pdf.resolve()}")
 

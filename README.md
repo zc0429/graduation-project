@@ -75,6 +75,7 @@ npm run e2e:smoke
 ## 文档与 Git 约定
 
 - 论文、任务书和开题内容先以纯语义 Markdown 写入 `docs/thesis/`，最终导出时再统一套用学校格式。
+- 学校格式、进度与提交要求优先读取 `docs/materials/27届毕业设计学校通知和模板/`；旧附件和导师范例仅在新材料未覆盖时补充参考。
 - `main` 保存稳定成果，`dev` 用于日常开发；功能分支默认使用 `codex/` 前缀。
 - 提交信息使用 `类型: 简述`，常用类型为 `docs`、`feat`、`fix`、`chore`、`ref`。
 - 远程仓库：`git@github.com:zc0429/graduation-project.git`（Private）。
