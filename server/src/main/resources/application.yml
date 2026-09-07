@@ -34,6 +34,9 @@ mybatis-plus:
 
 # 业务配置
 app:
+  cors:
+    # 携带凭据时只允许明确来源；测试部署必须通过 profile 显式覆盖
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173,http://localhost:4175,http://127.0.0.1:4175}
   # 图片识别仅是 Question 创建前的可选旁路，默认关闭，不写业务数据
   image-recognition:
     enabled: ${IMAGE_RECOGNITION_ENABLED:false}

@@ -1,0 +1,32 @@
+server:
+  address: 127.0.0.1
+  port: ${DEPLOY_TEST_PORT:8081}
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DEPLOY_TEST_DB_URL}
+    username: ${DEPLOY_TEST_DB_USERNAME}
+    password: ${DEPLOY_TEST_DB_PASSWORD}
+  sql:
+    init:
+      mode: never
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+app:
+  cors:
+    allowed-origins: ${DEPLOY_TEST_CORS_ORIGINS}
+  image-recognition:
+    enabled: false
+  llm:
+    provider: mock
+    base-url: ""
+    api-key: ""
+    chat-model: ""
+    embedding-model: ""
+  jwt:
+    secret: ${DEPLOY_TEST_JWT_SECRET}
+  upload-dir: ${DEPLOY_TEST_UPLOAD_DIR}
