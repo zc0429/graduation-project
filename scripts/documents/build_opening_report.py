@@ -50,6 +50,8 @@ FONT_TIMES_BOLD = FONT_DIR / "timesbd.ttf"
 
 INLINE_TOKEN_RE = re.compile(r"(\*\*.*?\*\*|`.*?`|\[\d+\])")
 REF_RE = re.compile(r"^\[\d+\]")
+CITATION_RE = re.compile(r"\[(\d+)(?:\s*[-—]\s*(\d+))?\]")
+REFERENCE_NUMBER_RE = re.compile(r"^\[(\d+)\]\s", re.MULTILINE)
 
 
 @dataclass
@@ -71,6 +73,34 @@ class ReportSource:
 
 def _strip_markdown(text: str) -> str:
     return text.replace("**", "").replace("`", "").strip()
+
+
+def _validate_reference_order(raw: str) -> None:
+    body, separator, references = raw.partition("## 六、主要参考文献")
+    if not separator:
+        raise ValueError("Opening report reference section is missing")
+
+    first_appearance: list[int] = []
+    for match in CITATION_RE.finditer(body):
+        start = int(match.group(1))
+        end = int(match.group(2) or start)
+        if end < start:
+            raise ValueError(f"Invalid descending citation range: {match.group(0)}")
+        for number in range(start, end + 1):
+            if number not in first_appearance:
+                first_appearance.append(number)
+
+    reference_numbers = [int(number) for number in REFERENCE_NUMBER_RE.findall(references)]
+    expected = list(range(1, len(reference_numbers) + 1))
+    if reference_numbers != expected:
+        raise ValueError(
+            f"Reference list must be numbered continuously: {reference_numbers}"
+        )
+    if first_appearance != expected:
+        raise ValueError(
+            "Citations must follow first-appearance order; "
+            f"found {first_appearance}, expected {expected}"
+        )
 
 
 def parse_source(path: Path) -> ReportSource:
@@ -140,6 +170,7 @@ def parse_source(path: Path) -> ReportSource:
 
     if len([b for b in blocks if b.kind == "reference"]) < 15:
         raise ValueError("Opening report must contain at least 15 references")
+    _validate_reference_order(raw)
     if "10 张物理表" not in raw:
         raise ValueError("Opening report must retain the proposed 10-table design scope")
     forbidden = ("【待写】", "120 份", "112 份", "104 份", "5 名学生", "3 名教师")
