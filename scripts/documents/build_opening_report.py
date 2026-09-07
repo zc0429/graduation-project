@@ -141,11 +141,30 @@ def parse_source(path: Path) -> ReportSource:
     if len([b for b in blocks if b.kind == "reference"]) < 15:
         raise ValueError("Opening report must contain at least 15 references")
     if "10 张物理表" not in raw:
-        raise ValueError("Opening report must retain the verified 10-table scope")
+        raise ValueError("Opening report must retain the proposed 10-table design scope")
     forbidden = ("【待写】", "120 份", "112 份", "104 份", "5 名学生", "3 名教师")
     found = [token for token in forbidden if token in raw]
     if found:
         raise ValueError(f"Unverified placeholders or survey claims remain: {found}")
+    timeline_forbidden = (
+        "冻结代码",
+        "冻结实现",
+        "现有代码",
+        "当前代码",
+        "当前实现",
+        "当前数据库",
+        "当前仓库",
+        "已有验证记录",
+        "验证记录为准",
+        "真实接口验证",
+        "已通过智谱",
+        "Gate5",
+        "Merge Ready",
+        "Codex",
+    )
+    timeline_found = [token for token in timeline_forbidden if token in raw]
+    if timeline_found:
+        raise ValueError(f"Post-implementation wording remains in opening report: {timeline_found}")
 
     return ReportSource(
         college=metadata["二级学院"],

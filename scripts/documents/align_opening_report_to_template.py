@@ -43,6 +43,59 @@ FIRST_LINE_PT = 21.0
 BORDER_SIZE = "4"  # OOXML eighths of a point: 0.5 pt
 
 
+def reorder_ooxml_properties(document: Document) -> None:
+    table_order = {
+        "tblStyle": 0,
+        "tblpPr": 1,
+        "tblOverlap": 2,
+        "bidiVisual": 3,
+        "tblStyleRowBandSize": 4,
+        "tblStyleColBandSize": 5,
+        "tblW": 6,
+        "jc": 7,
+        "tblCellSpacing": 8,
+        "tblInd": 9,
+        "tblBorders": 10,
+        "shd": 11,
+        "tblLayout": 12,
+        "tblCellMar": 13,
+        "tblLook": 14,
+        "tblCaption": 15,
+        "tblDescription": 16,
+        "tblPrChange": 17,
+    }
+    cell_order = {
+        "cnfStyle": 0,
+        "tcW": 1,
+        "gridSpan": 2,
+        "hMerge": 3,
+        "vMerge": 4,
+        "tcBorders": 5,
+        "shd": 6,
+        "noWrap": 7,
+        "tcMar": 8,
+        "textDirection": 9,
+        "tcFitText": 10,
+        "vAlign": 11,
+        "hideMark": 12,
+        "cellIns": 13,
+        "cellDel": 14,
+        "cellMerge": 15,
+    }
+
+    def reorder(parent, order):
+        children = sorted(list(parent), key=lambda child: order.get(child.tag.rsplit("}", 1)[-1], 100))
+        for child in list(parent):
+            parent.remove(child)
+        for child in children:
+            parent.append(child)
+
+    for table_properties in document._element.iter(qn("w:tblPr")):
+        reorder(table_properties, table_order)
+    for cell_properties in document._element.iter(qn("w:tcPr")):
+        reorder(cell_properties, cell_order)
+
+
 def set_table_layout(table, widths_cm: list[float]) -> None:
     table.alignment = WD_TABLE_ALIGNMENT.LEFT
     table.autofit = False
@@ -191,18 +244,27 @@ def add_paragraph(cell, text: str, *, role: str = "body", align=None) -> None:
     paragraph = next_paragraph(cell)
     if role == "field":
         set_paragraph_common(paragraph, align=align or WD_ALIGN_PARAGRAPH.CENTER, line_pt=16)
+        font_size = BODY_SIZE
+    elif role == "top_field":
+        set_paragraph_common(paragraph, align=align or WD_ALIGN_PARAGRAPH.CENTER, line_pt=18)
+        font_size = 12
     elif role == "reference":
-        set_paragraph_common(paragraph, align=WD_ALIGN_PARAGRAPH.LEFT, first_line_pt=FIRST_LINE_PT)
+        set_paragraph_common(paragraph, align=WD_ALIGN_PARAGRAPH.LEFT)
+        font_size = BODY_SIZE
     elif role == "signature":
         set_paragraph_common(paragraph, align=align or WD_ALIGN_PARAGRAPH.LEFT)
+        font_size = BODY_SIZE
     elif role == "body":
         set_paragraph_common(paragraph, align=align or WD_ALIGN_PARAGRAPH.JUSTIFY, first_line_pt=FIRST_LINE_PT)
+        font_size = BODY_SIZE
     elif role == "sub":
         set_paragraph_common(paragraph, align=WD_ALIGN_PARAGRAPH.JUSTIFY, first_line_pt=FIRST_LINE_PT)
+        font_size = BODY_SIZE
     else:
         set_paragraph_common(paragraph, align=WD_ALIGN_PARAGRAPH.JUSTIFY)
+        font_size = BODY_SIZE
     run = paragraph.add_run(text)
-    set_run_font(run, size=BODY_SIZE, bold=False)
+    set_run_font(run, size=font_size, bold=False)
 
 
 def add_empty_line(cell) -> None:
@@ -301,7 +363,7 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     source_top = source_doc.tables[0]
     source_main = source_doc.tables[1]
     row_text = {idx: extract_unique_row_text(source_main, idx) for idx in range(len(source_main.rows))}
-    if len(source_main.rows) != 83:
+    if len(source_main.rows) != 82:
         raise ValueError(f"Unexpected source table shape: {len(source_main.rows)} rows")
     top_values = [cell.text for cell in source_top.rows[0].cells]
     identity_values = [cell.text for cell in source_main.rows[0].cells]
@@ -331,12 +393,13 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
 
     school = document.add_paragraph()
     set_paragraph_common(school, align=WD_ALIGN_PARAGRAPH.CENTER, line_pt=18)
-    school.paragraph_format.space_after = Pt(10)
+    school.paragraph_format.space_before = Pt(8)
+    school.paragraph_format.space_after = Pt(14)
     run = school.add_run(source_doc.paragraphs[0].text)
-    set_run_font(run, east_asia="宋体", latin="宋体", size=12, bold=True)
+    set_run_font(run, east_asia="黑体", latin="黑体", size=16, bold=True)
     report_title = document.add_paragraph()
     set_paragraph_common(report_title, align=WD_ALIGN_PARAGRAPH.CENTER, line_pt=20)
-    report_title.paragraph_format.space_after = Pt(12)
+    report_title.paragraph_format.space_after = Pt(14)
     run = report_title.add_run(source_doc.paragraphs[1].text)
     set_run_font(run, east_asia="黑体", latin="黑体", size=16, bold=True)
 
@@ -347,10 +410,10 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     for index, cell in enumerate(top_table.rows[0].cells):
         clear_cell(cell)
         set_cell_margins(cell, top=0, bottom=0, start=0, end=0)
-        add_paragraph(cell, top_values[index], role="field", align=WD_ALIGN_PARAGRAPH.LEFT if index in {0, 2} else WD_ALIGN_PARAGRAPH.CENTER)
+        add_paragraph(cell, top_values[index], role="top_field", align=WD_ALIGN_PARAGRAPH.LEFT if index in {0, 2} else WD_ALIGN_PARAGRAPH.CENTER)
     set_row_height(top_table.rows[0], 0.65)
     spacer = document.add_paragraph()
-    set_paragraph_common(spacer, align=WD_ALIGN_PARAGRAPH.LEFT, line_pt=22)
+    set_paragraph_common(spacer, align=WD_ALIGN_PARAGRAPH.LEFT, line_pt=0)
 
     page1 = document.add_table(rows=4, cols=6)
     page1_widths = [2.52, 2.88, 2.05, 3.31, 1.95, 3.94]
@@ -360,7 +423,7 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     for cell, text in zip(page1.rows[0].cells, identity_values):
         clear_cell(cell)
         add_paragraph(cell, text, role="field")
-    set_row_height(page1.rows[0], 0.78)
+    set_row_height(page1.rows[0], 0.68)
     title_label = page1.rows[1].cells[0]
     title_content = page1.rows[1].cells[1].merge(page1.rows[1].cells[-1])
     clear_cell(title_label)
@@ -369,7 +432,7 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     add_paragraph(title_content, title_values[1], role="field")
     set_cell_width(title_label, page1_widths[0])
     set_cell_width(title_content, sum(page1_widths[1:]))
-    set_row_height(page1.rows[1], 1.10)
+    set_row_height(page1.rows[1], 1.24)
     section1 = page1.rows[2].cells[0].merge(page1.rows[2].cells[-1])
     clear_cell(section1)
     section1.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
@@ -380,7 +443,7 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     literature_intro.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
     for idx, role in ((10, "main"), (11, "sub"), (12, "body")):
         add_paragraph(literature_intro, row_text[idx], role=role)
-    set_row_height(page1.rows[3], 5.45)
+    set_row_height(page1.rows[3], 5.00)
 
     add_page_break(document)
     page2_group = [(row_text[idx], "sub" if idx in {13, 17} else "body") for idx in range(13, 21)]
@@ -390,7 +453,7 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     add_page_break(document)
     page3_summary = [(row_text[21], "sub"), (row_text[22], "body")]
     page3_research = [(row_text[23], "main")]
-    for idx in range(24, 37):
+    for idx in range(24, 42):
         text = transformed_function(row_text[idx]) if idx >= 31 else row_text[idx]
         page3_research.append((text, "sub" if idx in {24, 29} else "body"))
     page3 = add_single_column_page(document, [page3_summary, page3_research])
@@ -399,66 +462,80 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
 
     add_page_break(document)
     page4_research = []
-    for idx in range(37, 47):
+    for idx in range(42, 47):
         text = transformed_function(row_text[idx]) if idx <= 43 else row_text[idx]
         page4_research.append((text, "sub" if idx == 44 else "body"))
     page4_methods = [(row_text[47], "main")]
-    for idx in range(48, 52):
-        page4_methods.append((row_text[idx], "sub" if idx in {48, 50} else "body"))
+    for idx in range(48, 54):
+        page4_methods.append((row_text[idx], "sub" if idx in {48, 50, 52} else "body"))
     page4 = add_single_column_page(document, [page4_research, page4_methods])
-    set_row_height(page4.rows[0], 13.50)
-    set_row_height(page4.rows[1], 10.60)
+    set_row_height(page4.rows[0], 7.60)
+    set_row_height(page4.rows[1], 16.50)
 
     add_page_break(document)
-    page5_methods = [(row_text[52], "sub"), (row_text[53], "body")]
     page5_plan = [(row_text[54], "main")]
-    page5_plan.extend((transformed_progress(row_text[idx]), "body") for idx in range(55, 60))
-    page5_refs = [(row_text[60], "main")]
-    page5_refs.extend((transformed_reference(row_text[idx]), "reference") for idx in range(61, 68))
-    page5 = add_single_column_page(document, [page5_methods, page5_plan, page5_refs])
-    # Keep the expanded official schedule and the first reference block on the
-    # same framed page.  These are minimum heights, so Word/LibreOffice can
-    # still grow a row when a line wraps.
-    set_row_height(page5.rows[0], 4.80)
-    set_row_height(page5.rows[1], 5.50)
-    set_row_height(page5.rows[2], 11.80)
+    page5_plan.extend((transformed_progress(row_text[idx]), "body") for idx in range(55, 59))
+    page5_refs = [(row_text[59], "main")]
+    page5_refs.extend((transformed_reference(row_text[idx]), "reference") for idx in range(60, 68))
+    page5 = add_single_column_page(document, [page5_plan, page5_refs])
+    # The four-item schedule needs more room than the template's placeholder,
+    # but should not consume the large blank block used by the prior build.
+    set_row_height(page5.rows[0], 3.60)
+    set_row_height(page5.rows[1], 20.50)
 
     add_page_break(document)
-    page6 = document.add_table(rows=3, cols=2)
-    page6_widths = [1.0, 15.65]
-    set_table_layout(page6, page6_widths)
-    set_table_borders(page6, enabled=True)
-    style_all_cells(page6)
-    refs_cell = page6.rows[0].cells[0].merge(page6.rows[0].cells[1])
-    clear_cell(refs_cell)
-    refs_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
-    for idx in range(68, 81):
-        add_paragraph(refs_cell, transformed_reference(row_text[idx]), role="reference")
-    for row_index, source_row_index, label in ((1, 81, "指\n导\n教\n师\n意\n见"), (2, 82, "系\n意\n见")):
-        label_cell, content_cell = page6.rows[row_index].cells
+    page6_refs = [(transformed_reference(row_text[idx]), "reference") for idx in range(68, 80)]
+    page6 = add_single_column_page(document, [page6_refs])
+    set_row_height(page6.rows[0], 24.10)
+
+    add_page_break(document)
+    page7 = document.add_table(rows=2, cols=2)
+    review_widths = [0.97, 15.68]
+    set_table_layout(page7, review_widths)
+    set_table_borders(page7, enabled=True)
+    style_all_cells(page7)
+    for row_index, source_row_index, label, empty_lines in (
+        (0, 80, "指\n导\n教\n师\n意\n见", 4),
+        (1, 81, "系\n意\n见", 5),
+    ):
+        label_cell, content_cell = page7.rows[row_index].cells
         clear_cell(label_cell)
         clear_cell(content_cell)
         label_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
-        content_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        content_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
         set_cell_margins(label_cell, start=0, end=0)
         p = label_cell.paragraphs[0]
-        set_paragraph_common(p, align=WD_ALIGN_PARAGRAPH.CENTER)
+        set_paragraph_common(p, align=WD_ALIGN_PARAGRAPH.CENTER, line_pt=12.5)
         run = p.add_run(label)
         set_run_font(run)
         source_content = source_main.rows[source_row_index].cells[-1]
         review_text = source_content.paragraphs[0].text.split("\n", 1)[0]
         signature_text = source_content.paragraphs[-1].text
+        signature_label, _, date_text = signature_text.partition("年")
         add_paragraph(content_cell, review_text, role="signature")
-        add_empty_line(content_cell)
-        add_empty_line(content_cell)
-        add_paragraph(content_cell, signature_text, role="signature")
-    set_row_height(page6.rows[1], 3.75, exact=True)
-    set_row_height(page6.rows[2], 3.15, exact=True)
+        for _ in range(empty_lines):
+            add_empty_line(content_cell)
+        add_paragraph(content_cell, signature_label.rstrip(), role="signature")
+        add_paragraph(
+            content_cell,
+            f"年{date_text}" if date_text else "年　　月　　日",
+            role="signature",
+            align=WD_ALIGN_PARAGRAPH.CENTER,
+        )
+    set_row_height(page7.rows[0], 5.35, exact=True)
+    set_row_height(page7.rows[1], 5.60, exact=True)
 
     document.core_properties.title = "云南工商学院毕业设计开题报告"
     document.core_properties.subject = "赵灿毕业设计开题报告"
     document.core_properties.author = "赵灿"
     document.core_properties.keywords = "开题报告；错题分析；个性化推荐；检索增强生成；知识追踪"
+    settings = document.settings._element
+    zoom = settings.find(qn("w:zoom"))
+    if zoom is None:
+        zoom = OxmlElement("w:zoom")
+        settings.insert(0, zoom)
+    zoom.set(qn("w:percent"), "100")
+    reorder_ooxml_properties(document)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     document.save(output_path)
     print(output_path)
