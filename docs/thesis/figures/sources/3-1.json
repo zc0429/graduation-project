@@ -1,0 +1,222 @@
+{
+  "id": "3-1",
+  "caption": "图 3.1　角色与功能权限",
+  "height": 370,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/config/AuthInterceptor.java",
+    "server/src/main/java/com/example/wrongbook/controller",
+    "web/src/router/index.ts"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 25,
+      "w": 68,
+      "h": 47,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 42.0,
+      "y": 51.5,
+      "text": "学生",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 108,
+      "y": 10,
+      "w": 328,
+      "h": 82
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 40.0,
+      "text": "错题录入、编辑、删除、筛选与导出",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 54.0,
+      "text": "AI 解析、参考题、相似题、变式题",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 68.0,
+      "text": "练习记录、复习任务、个人学情报告",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          76,
+          48
+        ],
+        [
+          108,
+          48
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 137,
+      "w": 68,
+      "h": 47,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 42.0,
+      "y": 163.5,
+      "text": "教师",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 108,
+      "y": 122,
+      "w": 328,
+      "h": 65
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 150.5,
+      "text": "系统范围的聚合学情报告",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 164.5,
+      "text": "无班级绑定、无学生明细下钻",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          76,
+          160
+        ],
+        [
+          108,
+          160
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 228,
+      "w": 68,
+      "h": 47,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 42.0,
+      "y": 254.5,
+      "text": "管理员",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 108,
+      "y": 213,
+      "w": 328,
+      "h": 65
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 241.5,
+      "text": "用户查询与停用",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 272.0,
+      "y": 255.5,
+      "text": "科目、知识点维护；公告发布",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          76,
+          251
+        ],
+        [
+          108,
+          251
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 303,
+      "w": 428,
+      "h": 52,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 222.0,
+      "y": 325.0,
+      "text": "共同入口：登录、工作台、个人资料、本人消息、公告查看",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 222.0,
+      "y": 339.0,
+      "text": "注册只创建学生账号；服务端按数据库角色和数据归属鉴权",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ]
+}

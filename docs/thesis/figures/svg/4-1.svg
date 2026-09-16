@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="168.6278mm" viewBox="0 0 446.4567 478">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="18" y="6" width="410" height="43" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="23.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">浏览器：Vue 3 / Element Plus / Pinia / Vue Router</text>
+<text x="223.0" y="37.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">页面、图表、Axios 请求与轮询</text>
+<rect x="18" y="79" width="410" height="43" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="96.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">Spring Boot 接口层：Controller + AuthInterceptor</text>
+<text x="223.0" y="110.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">JWT 校验、数据库角色与账号状态、参数校验</text>
+<polyline points="223,49 223,79" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,79 220.12344676837478,73.73450462865776 225.87655323162522,73.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="266" y="68" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">HTTP / JSON</text>
+<rect x="18" y="155" width="410" height="50" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="176.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">业务服务层</text>
+<text x="223.0" y="190.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">错题、AI 编排、RAG、推荐、练习、复习、报告、消息</text>
+<polyline points="223,122 223,155" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,155 220.12344676837478,149.73450462865776 225.87655323162522,149.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="18" y="244" width="187" height="52" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="111.5" y="259.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">MyBatis-Plus / Mapper</text>
+<text x="111.5" y="273.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">MySQL 8：10 张物理表</text>
+<text x="111.5" y="287.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">题干向量为 TEXT 中的 JSON</text>
+<rect x="241" y="244" width="187" height="52" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="334.5" y="259.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">本地文件存储</text>
+<text x="334.5" y="273.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">题图只经所属学生详情返回</text>
+<text x="334.5" y="287.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">数据库保存相对路径</text>
+<polyline points="108,205 108,244" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="108,244 105.12344676837478,238.73450462865776 110.87655323162522,238.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<polyline points="335,205 335,244" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="335,244 332.1234467683748,238.73450462865776 337.8765532316252,238.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="18" y="341" width="187" height="65" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="111.5" y="355.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">LlmClient 模型网关</text>
+<text x="111.5" y="369.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">智谱 glm-4.7-flash 文本生成</text>
+<text x="111.5" y="383.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">embedding-3：1024 维</text>
+<text x="111.5" y="397.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">Mock 用于离线与常规回归</text>
+<rect x="241" y="341" width="187" height="65" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="334.5" y="355.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">独立图片识别客户端</text>
+<text x="334.5" y="369.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">glm-5.3-flash（默认关闭）</text>
+<text x="334.5" y="383.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">单图识别只返回候选值</text>
+<text x="334.5" y="397.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">识别阶段不写业务表</text>
+<polyline points="18,179 5,179 5,326 110,326 110,341" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="110,341 107.12344676837478,335.73450462865776 112.87655323162522,335.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<polyline points="428,179 441,179 441,326 335,326 335,341" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="335,341 332.1234467683748,335.73450462865776 337.8765532316252,335.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="223" y="436" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">外部模型通过 HTTPS 调用；密钥只在服务端配置。</text>
+<text x="223" y="456" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">本地执行器处理异步解析；定时任务处理提醒，报告按请求聚合。</text>
+</svg>

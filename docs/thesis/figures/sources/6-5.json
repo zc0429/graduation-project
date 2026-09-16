@@ -1,0 +1,54 @@
+{
+  "id": "6-5",
+  "caption": "图 6.5　学生报告的统计与练习反馈局部",
+  "height": 460,
+  "evidence": [
+    "docs/validation/real-ai-e2e.md",
+    "web/e2e/real-ai/real-glm-evidence.spec.ts"
+  ],
+  "ops": [
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 17,
+      "text": "本周新增与累计错题（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/10-student-report.png",
+      "x": 8.228350000000006,
+      "y": 30,
+      "w": 430,
+      "crop": [
+        291,
+        278,
+        624,
+        153
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 162.43269230769232,
+      "text": "每日练习次数与日期轴（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/10-student-report.png",
+      "x": 8.228350000000006,
+      "y": 175.43269230769232,
+      "w": 430,
+      "crop": [
+        941,
+        708,
+        596,
+        369
+      ]
+    }
+  ],
+  "note": "来源：2026-08-26 真实浏览器验证；2 道错题、1 次练习。\n该曲线是每日练习次数，不是掌握度历史趋势或学习效果证据。"
+}

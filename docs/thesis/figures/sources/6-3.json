@@ -1,0 +1,33 @@
+{
+  "id": "6-3",
+  "caption": "图 6.3　RAG 参考题标识局部",
+  "height": 201,
+  "evidence": [
+    "docs/validation/real-ai-e2e.md",
+    "web/e2e/real-ai/real-glm-evidence.spec.ts"
+  ],
+  "ops": [
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 17,
+      "text": "参考页签与实际参考题 ID（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/06-rag-references.png",
+      "x": 8.228350000000006,
+      "y": 30,
+      "w": 430,
+      "crop": [
+        300,
+        614,
+        605,
+        215
+      ]
+    }
+  ],
+  "note": "来源：2026-08-26 真实浏览器验证；参考题 ID 为 223。\n界面只显示 ID，不提供核验后的参考正文；向量证据另见验证记录。"
+}

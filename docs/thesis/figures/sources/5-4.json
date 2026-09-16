@@ -1,0 +1,278 @@
+{
+  "id": "5-4",
+  "caption": "图 5.4　练习提交与掌握度更新时序",
+  "height": 407,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
+    "web/src/views/question/QuestionDetailView.vue"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 15,
+      "y": 5,
+      "w": 90,
+      "h": 36,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 60.0,
+      "y": 26.0,
+      "text": "学生页面",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          60,
+          41
+        ],
+        [
+          60,
+          351
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "rect",
+      "x": 179,
+      "y": 5,
+      "w": 90,
+      "h": 36,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 224.0,
+      "y": 26.0,
+      "text": "PracticeService",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          224,
+          41
+        ],
+        [
+          224,
+          351
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "rect",
+      "x": 343,
+      "y": 5,
+      "w": 90,
+      "h": 36,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 388.0,
+      "y": 26.0,
+      "text": "Mapper / MySQL",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          388,
+          41
+        ],
+        [
+          388,
+          351
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          60,
+          79
+        ],
+        [
+          224,
+          79
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 142.0,
+      "y": 72,
+      "text": "作答与结果自评",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 147,
+      "y": 97,
+      "w": 154,
+      "h": 56
+    },
+    {
+      "kind": "text",
+      "x": 224.0,
+      "y": 114.0,
+      "text": "校验 isCorrect 为 0 或 1",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 224.0,
+      "y": 128.0,
+      "text": "questionId / variantId 二选一",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 224.0,
+      "y": 142.0,
+      "text": "变式题回溯原题并检查归属",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 132,
+      "y": 173,
+      "w": 308,
+      "h": 139
+    },
+    {
+      "kind": "text",
+      "x": 286,
+      "y": 188,
+      "text": "同一事务的两步写操作（失败均回滚）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          224,
+          220
+        ],
+        [
+          388,
+          220
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 306.0,
+      "y": 213,
+      "text": "插入练习记录",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          224,
+          257
+        ],
+        [
+          388,
+          257
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 306.0,
+      "y": 250,
+      "text": "原子更新原题 mastery",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 286,
+      "y": 294,
+      "text": "答对 +15，答错 -20，限制在 0-100",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          224,
+          345
+        ],
+        [
+          60,
+          345
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "text",
+      "x": 142.0,
+      "y": 338,
+      "text": "提交成功并刷新题目",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 380,
+      "text": "结果由学生自评提交，服务不执行自动判分。",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 398,
+      "text": "此操作不自动完成复习计划，也不触发相似题重排。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ]
+}

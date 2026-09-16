@@ -1,0 +1,54 @@
+{
+  "id": "6-2",
+  "caption": "图 6.2　真实 GLM 解析界面局部",
+  "height": 399,
+  "evidence": [
+    "docs/validation/real-ai-e2e.md",
+    "web/e2e/real-ai/real-glm-evidence.spec.ts"
+  ],
+  "ops": [
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 17,
+      "text": "解析状态、模型标识与归类（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+      "x": 8.228350000000006,
+      "y": 30,
+      "w": 430,
+      "crop": [
+        306,
+        678,
+        575,
+        205
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 210.30434782608697,
+      "text": "原题掌握度与重做入口（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+      "x": 103.22835,
+      "y": 223.30434782608697,
+      "w": 240,
+      "crop": [
+        1247,
+        303,
+        290,
+        191
+      ]
+    }
+  ],
+  "note": "来源：2026-08-26 真实浏览器验证；局部展示模型标识与业务状态。\n完整生成内容保留在原图，本图不代表所有解析均正确。"
+}

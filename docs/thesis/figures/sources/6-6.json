@@ -1,0 +1,54 @@
+{
+  "id": "6-6",
+  "caption": "图 6.6　教师聚合报告的数据范围局部",
+  "height": 208,
+  "evidence": [
+    "docs/validation/real-ai-e2e.md",
+    "web/e2e/real-ai/real-glm-evidence.spec.ts"
+  ],
+  "ops": [
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 17,
+      "text": "报告标题与系统聚合范围说明（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/11-teacher-report.png",
+      "x": 8.228350000000006,
+      "y": 30,
+      "w": 430,
+      "crop": [
+        282,
+        94,
+        616,
+        108
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 132.3896103896104,
+      "text": "教师数据范围提示（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/11-teacher-report.png",
+      "x": 8.228350000000006,
+      "y": 145.3896103896104,
+      "w": 430,
+      "crop": [
+        294,
+        283,
+        622,
+        64
+      ]
+    }
+  ],
+  "note": "来源：2026-08-26 真实浏览器验证；已避开账号昵称区域。\n教师查看系统聚合数据，不能据此认定存在班级绑定或学生明细管理。"
+}

@@ -1,0 +1,366 @@
+{
+  "id": "4-1",
+  "caption": "图 4.1　系统分层架构与外部依赖",
+  "height": 478,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/config/WebConfig.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/QuestionRecognitionServiceImpl.java",
+    "server/src/main/resources/db/schema.sql",
+    "web/src/main.ts"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 18,
+      "y": 6,
+      "w": 410,
+      "h": 43
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 23.5,
+      "text": "浏览器：Vue 3 / Element Plus / Pinia / Vue Router",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 37.5,
+      "text": "页面、图表、Axios 请求与轮询",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 18,
+      "y": 79,
+      "w": 410,
+      "h": 43
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 96.5,
+      "text": "Spring Boot 接口层：Controller + AuthInterceptor",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 110.5,
+      "text": "JWT 校验、数据库角色与账号状态、参数校验",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          49
+        ],
+        [
+          223,
+          79
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 266,
+      "y": 68,
+      "text": "HTTP / JSON",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 18,
+      "y": 155,
+      "w": 410,
+      "h": 50,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 176.0,
+      "text": "业务服务层",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 190.0,
+      "text": "错题、AI 编排、RAG、推荐、练习、复习、报告、消息",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          122
+        ],
+        [
+          223,
+          155
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 18,
+      "y": 244,
+      "w": 187,
+      "h": 52
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 259.0,
+      "text": "MyBatis-Plus / Mapper",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 273.0,
+      "text": "MySQL 8：10 张物理表",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 287.0,
+      "text": "题干向量为 TEXT 中的 JSON",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 241,
+      "y": 244,
+      "w": 187,
+      "h": 52
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 259.0,
+      "text": "本地文件存储",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 273.0,
+      "text": "题图只经所属学生详情返回",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 287.0,
+      "text": "数据库保存相对路径",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          108,
+          205
+        ],
+        [
+          108,
+          244
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          335,
+          205
+        ],
+        [
+          335,
+          244
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 18,
+      "y": 341,
+      "w": 187,
+      "h": 65
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 355.5,
+      "text": "LlmClient 模型网关",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 369.5,
+      "text": "智谱 glm-4.7-flash 文本生成",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 383.5,
+      "text": "embedding-3：1024 维",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 111.5,
+      "y": 397.5,
+      "text": "Mock 用于离线与常规回归",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 241,
+      "y": 341,
+      "w": 187,
+      "h": 65
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 355.5,
+      "text": "独立图片识别客户端",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 369.5,
+      "text": "glm-5.3-flash（默认关闭）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 383.5,
+      "text": "单图识别只返回候选值",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 334.5,
+      "y": 397.5,
+      "text": "识别阶段不写业务表",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          18,
+          179
+        ],
+        [
+          5,
+          179
+        ],
+        [
+          5,
+          326
+        ],
+        [
+          110,
+          326
+        ],
+        [
+          110,
+          341
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          428,
+          179
+        ],
+        [
+          441,
+          179
+        ],
+        [
+          441,
+          326
+        ],
+        [
+          335,
+          326
+        ],
+        [
+          335,
+          341
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 436,
+      "text": "外部模型通过 HTTPS 调用；密钥只在服务端配置。",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 456,
+      "text": "本地执行器处理异步解析；定时任务处理提醒，报告按请求聚合。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ]
+}

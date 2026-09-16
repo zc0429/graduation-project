@@ -1,0 +1,204 @@
+{
+  "id": "4-4",
+  "caption": "图 4.4　消息与公告关系",
+  "height": 222,
+  "evidence": [
+    "server/src/main/resources/db/schema.sql",
+    "server/src/main/java/com/example/wrongbook/service/impl/MessageServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/AnnouncementServiceImpl.java"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 135,
+      "y": 8,
+      "w": 176,
+      "h": 42
+    },
+    {
+      "kind": "rect",
+      "x": 135,
+      "y": 8,
+      "w": 176,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 23,
+      "text": "用户 user",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 142,
+      "y": 45,
+      "text": "PK id / role",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 120,
+      "w": 190,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 120,
+      "w": 190,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 105.0,
+      "y": 135,
+      "text": "消息 message",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 157,
+      "text": "PK id / user_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 172,
+      "text": "type / title / is_read",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 246,
+      "y": 120,
+      "w": 190,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 246,
+      "y": 120,
+      "w": 190,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 341.0,
+      "y": 135,
+      "text": "公告 announcement",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 253,
+      "y": 157,
+      "text": "PK id / publisher_id 可空",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 253,
+      "y": 172,
+      "text": "title / status",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          50
+        ],
+        [
+          165,
+          82
+        ],
+        [
+          105,
+          82
+        ],
+        [
+          105,
+          120
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 97,
+      "y": 73,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          280,
+          50
+        ],
+        [
+          280,
+          82
+        ],
+        [
+          341,
+          82
+        ],
+        [
+          341,
+          120
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 355,
+      "y": 73,
+      "text": "0..1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 210,
+      "text": "消息面向接收用户；公告由管理员发布，登录用户可查看。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ],
+  "note": "本图补齐第 9、10 张表；报告为请求时聚合结果，不建立 report 表。"
+}

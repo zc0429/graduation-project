@@ -1,0 +1,950 @@
+{
+  "audit_date": "2026-09-16",
+  "head": "d58eabd9c1e0fc7be799c4ccad4884213b22b7de",
+  "scope": "当前工作区，不等同于 HEAD；未连接运行中数据库，未重跑历史业务测试。",
+  "tables": [
+    {
+      "name": "user",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "用户 ID"
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR(32)",
+          "constraint": "NOT NULL UNIQUE",
+          "comment": "登录用户名"
+        },
+        {
+          "name": "password",
+          "type": "VARCHAR(128)",
+          "constraint": "NOT NULL",
+          "comment": "密码（加密存储）"
+        },
+        {
+          "name": "nickname",
+          "type": "VARCHAR(32)",
+          "constraint": "DEFAULT NULL",
+          "comment": "昵称"
+        },
+        {
+          "name": "role",
+          "type": "VARCHAR(16)",
+          "constraint": "NOT NULL DEFAULT 'student'",
+          "comment": "角色：student/teacher/admin"
+        },
+        {
+          "name": "class_name",
+          "type": "VARCHAR(64)",
+          "constraint": "DEFAULT NULL",
+          "comment": "班级名称"
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(64)",
+          "constraint": "DEFAULT NULL",
+          "comment": "邮箱"
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 1",
+          "comment": "状态：1 正常，0 停用"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        },
+        {
+          "name": "update_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "comment": "更新时间"
+        }
+      ],
+      "line": 11,
+      "indexes": [
+        "UNIQUE KEY uk_username (username)"
+      ]
+    },
+    {
+      "name": "subject",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "科目 ID"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(32)",
+          "constraint": "NOT NULL UNIQUE",
+          "comment": "科目名称（如数学、物理）"
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR(32)",
+          "constraint": "DEFAULT NULL",
+          "comment": "科目编码"
+        },
+        {
+          "name": "sort",
+          "type": "INT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "排序号"
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 1",
+          "comment": "状态：1 启用，0 停用"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 27,
+      "indexes": [
+        "UNIQUE KEY uk_name (name)"
+      ]
+    },
+    {
+      "name": "knowledge_point",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "知识点 ID"
+        },
+        {
+          "name": "subject_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "所属科目，逻辑外键 → subject(id)"
+        },
+        {
+          "name": "parent_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "父级 ID：0 表示一级章节"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(64)",
+          "constraint": "NOT NULL",
+          "comment": "知识点名称"
+        },
+        {
+          "name": "sort",
+          "type": "INT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "排序号"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 39,
+      "indexes": []
+    },
+    {
+      "name": "question",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "错题 ID"
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "所属学生，逻辑外键 → user(id)"
+        },
+        {
+          "name": "subject_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "所属科目，逻辑外键 → subject(id)"
+        },
+        {
+          "name": "knowledge_point_id",
+          "type": "BIGINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "知识点（AI 归类后回填），逻辑外键 → knowledge_point(id)"
+        },
+        {
+          "name": "stem",
+          "type": "TEXT",
+          "constraint": "NOT NULL",
+          "comment": "题干"
+        },
+        {
+          "name": "answer",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "答案"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(128)",
+          "constraint": "DEFAULT NULL",
+          "comment": "题目来源（如作业、试卷）"
+        },
+        {
+          "name": "image_url",
+          "type": "VARCHAR(255)",
+          "constraint": "DEFAULT NULL",
+          "comment": "题目图片地址"
+        },
+        {
+          "name": "difficulty",
+          "type": "TINYINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "难度（1-5，AI 评估）"
+        },
+        {
+          "name": "mastery",
+          "type": "INT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "掌握度（0-100）"
+        },
+        {
+          "name": "embedding",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "题干语义向量（JSON 数组）"
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 1",
+          "comment": "状态：1 正常，0 删除"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        },
+        {
+          "name": "update_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "comment": "更新时间"
+        }
+      ],
+      "line": 50,
+      "indexes": [
+        "KEY idx_user_subject (user_id, subject_id)"
+      ]
+    },
+    {
+      "name": "ai_analysis",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "解析记录 ID"
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL UNIQUE",
+          "comment": "对应错题，逻辑外键 → question(id)"
+        },
+        {
+          "name": "knowledge_point_id",
+          "type": "BIGINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "AI 归类知识点，逻辑外键 → knowledge_point(id)"
+        },
+        {
+          "name": "error_cause",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "错因分析"
+        },
+        {
+          "name": "analysis",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "解析内容"
+        },
+        {
+          "name": "reference_ids",
+          "type": "VARCHAR(255)",
+          "constraint": "DEFAULT NULL",
+          "comment": "参考的本地题目 ID（JSON）"
+        },
+        {
+          "name": "llm_model",
+          "type": "VARCHAR(64)",
+          "constraint": "DEFAULT NULL",
+          "comment": "所用大模型标识"
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "状态：0 生成中，1 成功，2 失败"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 70,
+      "indexes": [
+        "UNIQUE KEY uk_question (question_id)"
+      ]
+    },
+    {
+      "name": "variant_question",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "变式题 ID"
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "原题 ID，逻辑外键 → question(id)"
+        },
+        {
+          "name": "stem",
+          "type": "TEXT",
+          "constraint": "NOT NULL",
+          "comment": "变式题题干"
+        },
+        {
+          "name": "answer",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "变式题答案"
+        },
+        {
+          "name": "difficulty",
+          "type": "TINYINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "难度（1-5）"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 85,
+      "indexes": []
+    },
+    {
+      "name": "review_plan",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "复习计划 ID"
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "所属学生，逻辑外键 → user(id)"
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "待复习错题，逻辑外键 → question(id)"
+        },
+        {
+          "name": "review_stage",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 1",
+          "comment": "复习阶段（第 1-5 次）"
+        },
+        {
+          "name": "plan_date",
+          "type": "DATE",
+          "constraint": "NOT NULL",
+          "comment": "计划复习日期"
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "状态：0 待复习，1 已完成，2 已过期"
+        },
+        {
+          "name": "finish_time",
+          "type": "DATETIME",
+          "constraint": "DEFAULT NULL",
+          "comment": "完成时间"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 96,
+      "indexes": [
+        "KEY idx_user_date (user_id, plan_date)"
+      ]
+    },
+    {
+      "name": "practice_record",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "练习记录 ID"
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "作答学生，逻辑外键 → user(id)"
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "重做的错题，逻辑外键 → question(id)"
+        },
+        {
+          "name": "variant_id",
+          "type": "BIGINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "作答的变式题，逻辑外键 → variant_question(id)"
+        },
+        {
+          "name": "user_answer",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "学生作答内容"
+        },
+        {
+          "name": "is_correct",
+          "type": "TINYINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "是否正确：1 正确，0 错误"
+        },
+        {
+          "name": "duration",
+          "type": "INT",
+          "constraint": "DEFAULT NULL",
+          "comment": "作答用时（秒）"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 110,
+      "indexes": [
+        "KEY idx_user_time (user_id, create_time)"
+      ]
+    },
+    {
+      "name": "message",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "消息 ID"
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "constraint": "NOT NULL",
+          "comment": "接收用户，逻辑外键 → user(id)"
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR(32)",
+          "constraint": "NOT NULL DEFAULT 'system'",
+          "comment": "消息类型：review_remind 复习提醒/report 报告/system 系统"
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(128)",
+          "constraint": "NOT NULL",
+          "comment": "消息标题"
+        },
+        {
+          "name": "content",
+          "type": "VARCHAR(512)",
+          "constraint": "DEFAULT NULL",
+          "comment": "消息内容"
+        },
+        {
+          "name": "is_read",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 0",
+          "comment": "是否已读：1 已读，0 未读"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 124,
+      "indexes": [
+        "KEY idx_user_time (user_id, create_time)"
+      ]
+    },
+    {
+      "name": "announcement",
+      "fields": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "constraint": "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+          "comment": "公告 ID"
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(128)",
+          "constraint": "NOT NULL",
+          "comment": "公告标题"
+        },
+        {
+          "name": "content",
+          "type": "TEXT",
+          "constraint": "DEFAULT NULL",
+          "comment": "公告内容"
+        },
+        {
+          "name": "publisher_id",
+          "type": "BIGINT",
+          "constraint": "DEFAULT NULL",
+          "comment": "发布人，逻辑外键 → user(id)"
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "constraint": "NOT NULL DEFAULT 1",
+          "comment": "状态：1 正常，0 下线"
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "constraint": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "comment": "创建时间"
+        }
+      ],
+      "line": 137,
+      "indexes": []
+    }
+  ],
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/ai/analyze/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AiController.java",
+      "line": 23
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai/analysis/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AiController.java",
+      "line": 30
+    },
+    {
+      "method": "GET",
+      "path": "/api/announcement/list",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AnnouncementController.java",
+      "line": 25
+    },
+    {
+      "method": "POST",
+      "path": "/api/announcement",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AnnouncementController.java",
+      "line": 30
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/register",
+      "roles": [
+        "public"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AuthController.java",
+      "line": 22
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "roles": [
+        "public"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AuthController.java",
+      "line": 27
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "roles": [
+        "public"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/HealthController.java",
+      "line": 14
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge-point/tree",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java",
+      "line": 28
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge-point",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java",
+      "line": 33
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/knowledge-point/{id}",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java",
+      "line": 39
+    },
+    {
+      "method": "GET",
+      "path": "/api/message/page",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/MessageController.java",
+      "line": 22
+    },
+    {
+      "method": "PUT",
+      "path": "/api/message/{id}/read",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/MessageController.java",
+      "line": 29
+    },
+    {
+      "method": "GET",
+      "path": "/api/message/unread-count",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/MessageController.java",
+      "line": 35
+    },
+    {
+      "method": "POST",
+      "path": "/api/practice",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/PracticeController.java",
+      "line": 26
+    },
+    {
+      "method": "GET",
+      "path": "/api/practice/page",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/PracticeController.java",
+      "line": 31
+    },
+    {
+      "method": "POST",
+      "path": "/api/question",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 30
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/page",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 35
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/{id}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 43
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/export",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 49
+    },
+    {
+      "method": "PUT",
+      "path": "/api/question/{id}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 56
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/question/{id}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 62
+    },
+    {
+      "method": "POST",
+      "path": "/api/question-recognition/recognize",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionRecognitionController.java",
+      "line": 23
+    },
+    {
+      "method": "GET",
+      "path": "/api/recommend/similar",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/RecommendController.java",
+      "line": 23
+    },
+    {
+      "method": "GET",
+      "path": "/api/report/weekly",
+      "roles": [
+        "student",
+        "teacher"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReportController.java",
+      "line": 21
+    },
+    {
+      "method": "POST",
+      "path": "/api/report/generate",
+      "roles": [
+        "student",
+        "teacher"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReportController.java",
+      "line": 26
+    },
+    {
+      "method": "GET",
+      "path": "/api/review-plan/today",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReviewPlanController.java",
+      "line": 24
+    },
+    {
+      "method": "PUT",
+      "path": "/api/review-plan/{id}/finish",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReviewPlanController.java",
+      "line": 29
+    },
+    {
+      "method": "GET",
+      "path": "/api/subject/list",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/SubjectController.java",
+      "line": 27
+    },
+    {
+      "method": "POST",
+      "path": "/api/subject",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/SubjectController.java",
+      "line": 32
+    },
+    {
+      "method": "PUT",
+      "path": "/api/subject/{id}",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/SubjectController.java",
+      "line": 38
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/profile",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 27
+    },
+    {
+      "method": "PUT",
+      "path": "/api/user/profile",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 32
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/page",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 38
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/user/{id}",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 47
+    },
+    {
+      "method": "POST",
+      "path": "/api/variant/generate/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/VariantController.java",
+      "line": 25
+    },
+    {
+      "method": "GET",
+      "path": "/api/variant/list",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/VariantController.java",
+      "line": 30
+    }
+  ],
+  "views": [
+    "web/src/views/HomeView.vue",
+    "web/src/views/LoginView.vue",
+    "web/src/views/admin/AdminKnowledgeView.vue",
+    "web/src/views/admin/AdminSubjectView.vue",
+    "web/src/views/admin/AdminUserView.vue",
+    "web/src/views/announcement/AnnouncementView.vue",
+    "web/src/views/message/MessageView.vue",
+    "web/src/views/practice/PracticeHistoryView.vue",
+    "web/src/views/profile/ProfileView.vue",
+    "web/src/views/question/QuestionCreateView.vue",
+    "web/src/views/question/QuestionDetailView.vue",
+    "web/src/views/question/QuestionListView.vue",
+    "web/src/views/report/ReportView.vue",
+    "web/src/views/review/ReviewPlanView.vue",
+    "web/src/views/system/NotFoundView.vue"
+  ],
+  "gate5_manual": {
+    "count": 27,
+    "total": 46,
+    "mean": 1.7037037037037037,
+    "distribution": {
+      "2": 20,
+      "1": 6,
+      "0": 1
+    },
+    "ab_count": 6,
+    "preferences": {
+      "RAG_OFF": 4,
+      "RAG_ON": 2
+    }
+  },
+  "source_sha256": {
+    "server/src/main/resources/db/schema.sql": "43aa1d5f708cac4a12eba4ea27e4c616aae288bf04e3eedef77d43b1a916bf93",
+    "web/src/router/index.ts": "b46af7df6711ad49a442f2776344fb73e1b0afe82f0a5b9c2d0b5238270ce04d",
+    "server/src/main/java/com/example/wrongbook/controller/AiController.java": "0e4cb64546b37e555aeb4513c61c41fbd9ba31867a11527eb15825bfbfc38b6d",
+    "server/src/main/java/com/example/wrongbook/controller/AnnouncementController.java": "168357de425a20a18b80fd89cb6f95d0039962909924de3d2036d43e3d40d6b4",
+    "server/src/main/java/com/example/wrongbook/controller/AuthController.java": "6cd4f4c8a8a06a8ee0767ec9294f577c17558a14fb129aa96d92ade999210740",
+    "server/src/main/java/com/example/wrongbook/controller/HealthController.java": "9c5288e67b1784bc39318f1dbd3430bb67a2da6b578f9e8668f2259040b4a8cd",
+    "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java": "d1b6dd6fdbf634d884cdc1b6cdb90340709ef442839e564a61879a06e9be51f0",
+    "server/src/main/java/com/example/wrongbook/controller/MessageController.java": "359eaf2f2c2c81900c1efd8e059fd21284f6f7e404cdd953049d7f8290ba3961",
+    "server/src/main/java/com/example/wrongbook/controller/PracticeController.java": "b525069ab00793d05b8abe00276544288699ec0b250b4ded5bda934f7325c637",
+    "server/src/main/java/com/example/wrongbook/controller/QuestionController.java": "9f7829b7103213eee41fc670d889e3b012403e0c521b488d9b35cdcca11ed848",
+    "server/src/main/java/com/example/wrongbook/controller/QuestionRecognitionController.java": "8bd3c15443fe95971239a3c31e6ec13c908a260e00ba24d4fa7bb9aa79408089",
+    "server/src/main/java/com/example/wrongbook/controller/RecommendController.java": "b19047284b50f4e6f73ad99aedfac22518327fcb29d8f2bb5a6e947d8ec00302",
+    "server/src/main/java/com/example/wrongbook/controller/ReportController.java": "15e233d0f8627ab4ffb4ed39053d8cc3b27bec429c45a32f29a903cd7d9b8731",
+    "server/src/main/java/com/example/wrongbook/controller/ReviewPlanController.java": "2b88ed0fd36067bbd0f77a688710a05db689552aef0d640ccabac0317a380b21",
+    "server/src/main/java/com/example/wrongbook/controller/SubjectController.java": "c32f1c75f897a8b3fb2964995ce232fcac97188348eb4a612b4892723919dacc",
+    "server/src/main/java/com/example/wrongbook/controller/UserController.java": "af71b2d229ef63e0525734da75827cd0de54f526f9221f03d36535ecb42c7baa",
+    "server/src/main/java/com/example/wrongbook/controller/VariantController.java": "0c35126845f380becdd4668ca9fbda18a386a31f52ac618c75bbe78d43559f5f"
+  }
+}

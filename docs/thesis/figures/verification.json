@@ -1,0 +1,18 @@
+{
+  "tables": 16,
+  "figures": 17,
+  "physical_tables": 10,
+  "endpoints": 36,
+  "public": 3,
+  "authenticated": 33,
+  "normal_views": 14,
+  "fallback_views": 1,
+  "schema_fields": 80,
+  "original_screenshot_hashes": "unchanged",
+  "figure_numbering": "continuous",
+  "svg": "well-formed; no foreignObject",
+  "business_tests": "not rerun",
+  "a4_proof_pages": 34,
+  "out_of_bounds_text": 0,
+  "visio": "actual SVG import and VSDX validation TODO"
+}

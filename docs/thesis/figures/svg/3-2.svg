@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="180.6222mm" viewBox="0 0 446.4567 512">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="99" y="5" width="248" height="43" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="22.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">文本录入或单图识别候选值</text>
+<text x="223.0" y="36.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">用户确认表单</text>
+<rect x="75" y="75" width="296" height="50" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="96.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">一个事务：保存错题 + 建立 5 条复习计划</text>
+<text x="223.0" y="110.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">录入日后第 1、2、4、7、15 天</text>
+<polyline points="223,48 223,75" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,75 220.12344676837478,69.73450462865776 225.87655323162522,69.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<polyline points="223,125 223,143 106,143 106,163" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="106,163 103.12344676837478,157.73450462865776 108.87655323162522,157.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<polyline points="223,143 340,143 340,163" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="340,163 337.1234467683748,157.73450462865776 342.8765532316252,157.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="8" y="163" width="196" height="53" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="106.0" y="185.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">前端另行触发异步 AI 解析</text>
+<text x="106.0" y="199.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">检索参考题并生成结构化结果</text>
+<rect x="242" y="163" width="196" height="53" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="340.0" y="185.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">到期与逾期任务</text>
+<text x="340.0" y="199.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">每日提醒、用户标记完成</text>
+<rect x="8" y="247" width="196" height="53" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="106.0" y="269.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">相似题：规则优先、向量补足</text>
+<text x="106.0" y="283.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">变式题：同步生成，每次 3 道</text>
+<polyline points="106,216 106,247" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="106,247 103.12344676837478,241.73450462865776 108.87655323162522,241.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="99" y="331" width="248" height="52" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="353.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">学生选择原题或变式题练习并自评</text>
+<text x="223.0" y="367.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">事务保存作答 + 原题掌握度更新</text>
+<polyline points="106,300 106,318 223,318 223,331" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,331 220.12344676837478,325.73450462865776 225.87655323162522,325.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<polyline points="340,216 340,318 223,318" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,318 228.26549537134224,315.1234467683748 228.26549537134224,320.8765532316252" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="99" y="413" width="248" height="45" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="431.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">请求时聚合个人学情报告</text>
+<text x="223.0" y="445.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">学生据此安排后续学习</text>
+<polyline points="223,383 223,413" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,413 220.12344676837478,407.73450462865776 225.87655323162522,407.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<polyline points="99,436 28,436 28,357 99,357" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="99,357 93.73450462865776,359.8765532316252 93.73450462865776,354.1234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="42" y="474" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="start" fill="black">虚线表示学生再次练习；报告不自动改写推荐或复习日期。</text>
+<text x="223" y="497" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">复习完成与练习提交是两个独立操作。</text>
+</svg>

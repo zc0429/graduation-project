@@ -1,0 +1,348 @@
+[
+  {
+    "id": "3-1",
+    "caption": "图 3.1　角色与功能权限",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/config/AuthInterceptor.java",
+      "server/src/main/java/com/example/wrongbook/controller",
+      "web/src/router/index.ts"
+    ],
+    "height_pt": 370,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "3-2",
+    "caption": "图 3.2　错题学习业务闭环",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java",
+      "web/src/views/question/QuestionCreateView.vue"
+    ],
+    "height_pt": 512,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "4-1",
+    "caption": "图 4.1　系统分层架构与外部依赖",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/config/WebConfig.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/QuestionRecognitionServiceImpl.java",
+      "server/src/main/resources/db/schema.sql",
+      "web/src/main.ts"
+    ],
+    "height_pt": 478,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "4-2",
+    "caption": "图 4.2　错题归属、知识归类与解析关系",
+    "evidence": [
+      "server/src/main/resources/db/schema.sql",
+      "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java"
+    ],
+    "height_pt": 430,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "4-3",
+    "caption": "图 4.3　复习计划与练习记录关系",
+    "evidence": [
+      "server/src/main/resources/db/schema.sql",
+      "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java"
+    ],
+    "height_pt": 470,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "4-4",
+    "caption": "图 4.4　消息与公告关系",
+    "evidence": [
+      "server/src/main/resources/db/schema.sql",
+      "server/src/main/java/com/example/wrongbook/service/impl/MessageServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/AnnouncementServiceImpl.java"
+    ],
+    "height_pt": 222,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "5-1",
+    "caption": "图 5.1　模型网关的核心类关系",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/service/LlmClient.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/EmbeddingServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/VariantServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/MockLlmClient.java"
+    ],
+    "height_pt": 360,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "5-2",
+    "caption": "图 5.2　AI 解析中的 RAG 与结构校验",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/RagServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java"
+    ],
+    "height_pt": 575,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "5-3",
+    "caption": "图 5.3　错题保存与异步解析时序",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
+      "web/src/composables/useAiAnalysisPolling.ts",
+      "web/src/views/question/QuestionCreateView.vue"
+    ],
+    "height_pt": 565,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "5-4",
+    "caption": "图 5.4　练习提交与掌握度更新时序",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
+      "web/src/views/question/QuestionDetailView.vue"
+    ],
+    "height_pt": 407,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "5-5",
+    "caption": "图 5.5　复习计划状态转换",
+    "evidence": [
+      "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java",
+      "server/src/main/java/com/example/wrongbook/service/ScheduleTask.java"
+    ],
+    "height_pt": 312,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "6-1",
+    "caption": "图 6.1　错题录入表单局部",
+    "evidence": [
+      "docs/validation/real-ai-e2e.md",
+      "web/e2e/real-ai/real-glm-evidence.spec.ts"
+    ],
+    "height_pt": 459,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": [
+      {
+        "path": "docs/thesis/screenshots/real-glm/03-question-create.png",
+        "crop": [
+          337,
+          321,
+          620,
+          439
+        ],
+        "sha256": "853a4190f5ac5e55b9f57c378ac854a05927a36183cae1f6a57fc5c2ef410b76"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/03-question-create.png",
+        "crop": [
+          997,
+          964,
+          218,
+          69
+        ],
+        "sha256": "853a4190f5ac5e55b9f57c378ac854a05927a36183cae1f6a57fc5c2ef410b76"
+      }
+    ]
+  },
+  {
+    "id": "6-2",
+    "caption": "图 6.2　真实 GLM 解析界面局部",
+    "evidence": [
+      "docs/validation/real-ai-e2e.md",
+      "web/e2e/real-ai/real-glm-evidence.spec.ts"
+    ],
+    "height_pt": 399,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": [
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "crop": [
+          306,
+          678,
+          575,
+          205
+        ],
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "crop": [
+          1247,
+          303,
+          290,
+          191
+        ],
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      }
+    ]
+  },
+  {
+    "id": "6-3",
+    "caption": "图 6.3　RAG 参考题标识局部",
+    "evidence": [
+      "docs/validation/real-ai-e2e.md",
+      "web/e2e/real-ai/real-glm-evidence.spec.ts"
+    ],
+    "height_pt": 201,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": [
+      {
+        "path": "docs/thesis/screenshots/real-glm/06-rag-references.png",
+        "crop": [
+          300,
+          614,
+          605,
+          215
+        ],
+        "sha256": "5a80581517630c8c4b32d4812aa90f7a9bda9bb7a0ed8712fd53b3d233e27e31"
+      }
+    ]
+  },
+  {
+    "id": "6-4",
+    "caption": "图 6.4　变式题数量与作答入口局部",
+    "evidence": [
+      "docs/validation/real-ai-e2e.md",
+      "web/e2e/real-ai/real-glm-evidence.spec.ts"
+    ],
+    "height_pt": 377,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": [
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "crop": [
+          303,
+          614,
+          598,
+          115
+        ],
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "crop": [
+          326,
+          750,
+          598,
+          145
+        ],
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "crop": [
+          326,
+          1107,
+          598,
+          86
+        ],
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      }
+    ]
+  },
+  {
+    "id": "6-5",
+    "caption": "图 6.5　学生报告的统计与练习反馈局部",
+    "evidence": [
+      "docs/validation/real-ai-e2e.md",
+      "web/e2e/real-ai/real-glm-evidence.spec.ts"
+    ],
+    "height_pt": 460,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": [
+      {
+        "path": "docs/thesis/screenshots/real-glm/10-student-report.png",
+        "crop": [
+          291,
+          278,
+          624,
+          153
+        ],
+        "sha256": "74b6716abd6a0d560132842137ba25cabf19664d3a6d09972ef0647c8ae46fce"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/10-student-report.png",
+        "crop": [
+          941,
+          708,
+          596,
+          369
+        ],
+        "sha256": "74b6716abd6a0d560132842137ba25cabf19664d3a6d09972ef0647c8ae46fce"
+      }
+    ]
+  },
+  {
+    "id": "6-6",
+    "caption": "图 6.6　教师聚合报告的数据范围局部",
+    "evidence": [
+      "docs/validation/real-ai-e2e.md",
+      "web/e2e/real-ai/real-glm-evidence.spec.ts"
+    ],
+    "height_pt": 208,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": [
+      {
+        "path": "docs/thesis/screenshots/real-glm/11-teacher-report.png",
+        "crop": [
+          282,
+          94,
+          616,
+          108
+        ],
+        "sha256": "a5e5a67ed8d6254d8cc42383d3dfbf7663d4d22423f3723a0ee4bea271c36415"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/11-teacher-report.png",
+        "crop": [
+          294,
+          283,
+          622,
+          64
+        ],
+        "sha256": "a5e5a67ed8d6254d8cc42383d3dfbf7663d4d22423f3723a0ee4bea271c36415"
+      }
+    ]
+  }
+]
