@@ -363,8 +363,68 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     source_top = source_doc.tables[0]
     source_main = source_doc.tables[1]
     row_text = {idx: extract_unique_row_text(source_main, idx) for idx in range(len(source_main.rows))}
-    if len(source_main.rows) != 82:
-        raise ValueError(f"Unexpected source table shape: {len(source_main.rows)} rows")
+
+    def find_row(prefix: str, start: int = 0) -> int:
+        for idx in range(start, len(source_main.rows)):
+            if row_text[idx].startswith(prefix):
+                return idx
+        raise ValueError(f"Required source row not found: {prefix}")
+
+    section_rows = {
+        "one": find_row("一、选题背景和意义"),
+        "two": find_row("二、文献综述"),
+        "three": find_row("三、研究内容"),
+        "four": find_row("四、研究方法、研究思路"),
+        "five": find_row("五、研究工作进展计划"),
+        "six": find_row("六、主要参考文献"),
+    }
+    ordered_sections = list(section_rows.values())
+    if ordered_sections != sorted(ordered_sections):
+        raise ValueError(f"Opening-report sections are out of order: {ordered_sections}")
+    review_start = len(source_main.rows) - 2
+    if section_rows["six"] >= review_start:
+        raise ValueError("Opening-report review rows overlap the reference section")
+
+    subheadings = {
+        "选题的依据和意义",
+        "选题背景",
+        "选题意义",
+        "拟达到的目的",
+        "前言",
+        "国外研究现状",
+        "国内研究现状",
+        "总结",
+        "1、通过本系统，我将研究以下问题的解决和实现",
+        "2、研究系统以下功能的实现",
+        "3、拟定数据库方案（10 张物理表）",
+        "研究方法",
+        "研究步骤",
+        "所需条件",
+    }
+
+    def role_for(idx: int) -> str:
+        text = row_text[idx]
+        if idx in section_rows.values():
+            return "main"
+        if text in subheadings:
+            return "sub"
+        if idx > section_rows["six"]:
+            return "reference"
+        return "body"
+
+    def items(start: int, end: int, *, strip_function_numbers: bool = False,
+              transform_plan_numbers: bool = False) -> list[tuple[str, str]]:
+        result: list[tuple[str, str]] = []
+        for idx in range(start, end):
+            text = row_text[idx]
+            if strip_function_numbers and re.match(r"^\d+\.\s*", text):
+                text = transformed_function(text)
+            if transform_plan_numbers and re.match(r"^\d+\.\s*", text):
+                text = transformed_progress(text)
+            if idx > section_rows["six"]:
+                text = transformed_reference(text)
+            result.append((text, role_for(idx)))
+        return result
     top_values = [cell.text for cell in source_top.rows[0].cells]
     identity_values = [cell.text for cell in source_main.rows[0].cells]
     title_values = []
@@ -415,7 +475,7 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     spacer = document.add_paragraph()
     set_paragraph_common(spacer, align=WD_ALIGN_PARAGRAPH.LEFT, line_pt=0)
 
-    page1 = document.add_table(rows=4, cols=6)
+    page1 = document.add_table(rows=3, cols=6)
     page1_widths = [2.52, 2.88, 2.05, 3.31, 1.95, 3.94]
     set_table_layout(page1, page1_widths)
     set_table_borders(page1, enabled=True)
@@ -436,69 +496,93 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
     section1 = page1.rows[2].cells[0].merge(page1.rows[2].cells[-1])
     clear_cell(section1)
     section1.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
-    for idx, role in ((2, "main"), (4, "sub"), (5, "body"), (6, "sub"), (7, "body"), (9, "body")):
-        add_paragraph(section1, row_text[idx], role=role)
-    literature_intro = page1.rows[3].cells[0].merge(page1.rows[3].cells[-1])
-    clear_cell(literature_intro)
-    literature_intro.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
-    for idx, role in ((10, "main"), (11, "sub"), (12, "body")):
-        add_paragraph(literature_intro, row_text[idx], role=role)
-    set_row_height(page1.rows[3], 5.00)
+    for text, role in items(section_rows["one"], section_rows["two"]):
+        # The source keeps the official semantic grouping, while the approved
+        # template rendering shows only “选题背景” and “选题意义”.
+        if text in {"选题的依据和意义", "拟达到的目的"}:
+            continue
+        add_paragraph(section1, text, role=role)
+    domestic_start = find_row("国内研究现状", section_rows["two"])
+    foreign_start = find_row("国外研究现状", domestic_start)
+    summary_start = find_row("总结", foreign_start)
 
     add_page_break(document)
-    page2_group = [(row_text[idx], "sub" if idx in {13, 17} else "body") for idx in range(13, 21)]
+    domestic_split = min(domestic_start + 7, foreign_start)
+    literature_intro = items(section_rows["two"], domestic_start)
+    page2_group = literature_intro + items(domestic_start, domestic_split)
     page2 = add_single_column_page(document, [page2_group])
-    set_row_height(page2.rows[0], 24.10)
+    set_row_height(page2.rows[0], 23.90)
 
     add_page_break(document)
-    page3_summary = [(row_text[21], "sub"), (row_text[22], "body")]
-    page3_research = [(row_text[23], "main")]
-    for idx in range(24, 42):
-        text = transformed_function(row_text[idx]) if idx >= 31 else row_text[idx]
-        page3_research.append((text, "sub" if idx in {24, 29} else "body"))
-    page3 = add_single_column_page(document, [page3_summary, page3_research])
-    set_row_height(page3.rows[0], 4.30)
-    set_row_height(page3.rows[1], 19.80)
+    page3_group = items(domestic_split, foreign_start)
+    page3 = add_single_column_page(document, [page3_group])
+    set_row_height(page3.rows[0], 23.90)
 
     add_page_break(document)
-    page4_research = []
-    for idx in range(42, 47):
-        text = transformed_function(row_text[idx]) if idx <= 43 else row_text[idx]
-        page4_research.append((text, "sub" if idx == 44 else "body"))
-    page4_methods = [(row_text[47], "main")]
-    for idx in range(48, 54):
-        page4_methods.append((row_text[idx], "sub" if idx in {48, 50, 52} else "body"))
-    page4 = add_single_column_page(document, [page4_research, page4_methods])
-    set_row_height(page4.rows[0], 7.60)
-    set_row_height(page4.rows[1], 16.50)
+    page4_literature = items(foreign_start, section_rows["three"])
+    page4 = add_single_column_page(document, [page4_literature])
+    set_row_height(page4.rows[0], 23.90)
 
     add_page_break(document)
-    page5_plan = [(row_text[54], "main")]
-    page5_plan.extend((transformed_progress(row_text[idx]), "body") for idx in range(55, 59))
-    page5_refs = [(row_text[59], "main")]
-    page5_refs.extend((transformed_reference(row_text[idx]), "reference") for idx in range(60, 68))
-    page5 = add_single_column_page(document, [page5_plan, page5_refs])
-    # The four-item schedule needs more room than the template's placeholder,
-    # but should not consume the large blank block used by the prior build.
-    set_row_height(page5.rows[0], 3.60)
-    set_row_height(page5.rows[1], 20.50)
+    function_twelve = find_row("12.", section_rows["three"])
+    page5_research = items(
+        section_rows["three"], function_twelve, strip_function_numbers=True
+    )
+    page5 = add_single_column_page(document, [page5_research])
+    set_row_height(page5.rows[0], 23.90)
 
     add_page_break(document)
-    page6_refs = [(transformed_reference(row_text[idx]), "reference") for idx in range(68, 80)]
-    page6 = add_single_column_page(document, [page6_refs])
-    set_row_height(page6.rows[0], 24.10)
+    steps_start = find_row("研究步骤", section_rows["four"])
+    page6_research = items(
+        function_twelve, section_rows["four"], strip_function_numbers=True
+    )
+    page6_methods = items(section_rows["four"], steps_start)
+    page6 = add_single_column_page(document, [page6_research, page6_methods])
+    set_row_height(page6.rows[0], 8.00)
+    set_row_height(page6.rows[1], 16.10)
 
     add_page_break(document)
-    page7 = document.add_table(rows=2, cols=2)
+    page7_methods = items(steps_start, section_rows["five"])
+    page7_plan = items(
+        section_rows["five"], section_rows["six"], transform_plan_numbers=True
+    )
+    page7 = add_single_column_page(document, [page7_methods, page7_plan])
+    set_row_height(page7.rows[0], 18.30)
+    set_row_height(page7.rows[1], 5.60)
+
+    reference_rows = list(range(section_rows["six"] + 1, review_start))
+    if len(reference_rows) < 15:
+        raise ValueError(f"Expected at least 15 references, found {len(reference_rows)}")
+    reference_split = (len(reference_rows) + 1) // 2
+
+    add_page_break(document)
+    page8_refs = [(row_text[section_rows["six"]], "main")]
+    page8_refs.extend(
+        (transformed_reference(row_text[idx]), "reference")
+        for idx in reference_rows[:reference_split]
+    )
+    page8 = add_single_column_page(document, [page8_refs])
+    set_row_height(page8.rows[0], 23.90)
+
+    add_page_break(document)
+    page9_refs = [
+        (transformed_reference(row_text[idx]), "reference")
+        for idx in reference_rows[reference_split:]
+    ]
+    page9 = add_single_column_page(document, [page9_refs])
+    set_row_height(page9.rows[0], 23.90)
+
+    add_page_break(document)
+    page10 = document.add_table(rows=2, cols=2)
     review_widths = [0.97, 15.68]
-    set_table_layout(page7, review_widths)
-    set_table_borders(page7, enabled=True)
-    style_all_cells(page7)
+    set_table_layout(page10, review_widths)
+    set_table_borders(page10, enabled=True)
+    style_all_cells(page10)
     for row_index, source_row_index, label, empty_lines in (
-        (0, 80, "指\n导\n教\n师\n意\n见", 4),
-        (1, 81, "系\n意\n见", 5),
+        (0, review_start, "指\n导\n教\n师\n意\n见", 4),
+        (1, review_start + 1, "系\n意\n见", 5),
     ):
-        label_cell, content_cell = page7.rows[row_index].cells
+        label_cell, content_cell = page10.rows[row_index].cells
         clear_cell(label_cell)
         clear_cell(content_cell)
         label_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
@@ -522,13 +606,26 @@ def build(source_path: Path = DEFAULT_SOURCE, output_path: Path = DEFAULT_OUTPUT
             role="signature",
             align=WD_ALIGN_PARAGRAPH.CENTER,
         )
-    set_row_height(page7.rows[0], 5.35, exact=True)
-    set_row_height(page7.rows[1], 5.60, exact=True)
+    set_row_height(page10.rows[0], 5.35, exact=True)
+    set_row_height(page10.rows[1], 5.60, exact=True)
 
     document.core_properties.title = "云南工商学院毕业设计开题报告"
     document.core_properties.subject = "赵灿毕业设计开题报告"
     document.core_properties.author = "赵灿"
     document.core_properties.keywords = "开题报告；错题分析；个性化推荐；检索增强生成；知识追踪"
+    rendered_text = "\n".join(
+        cell.text for table in document.tables for row in table.rows for cell in row.cells
+    )
+    unexpected_headings = [
+        heading
+        for heading in ("选题的依据和意义", "拟达到的目的")
+        if heading in rendered_text
+    ]
+    if unexpected_headings:
+        raise ValueError(
+            "Opening-report export must preserve the approved two-heading layout; "
+            f"unexpected headings: {unexpected_headings}"
+        )
     settings = document.settings._element
     zoom = settings.find(qn("w:zoom"))
     if zoom is None:

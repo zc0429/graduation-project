@@ -52,6 +52,12 @@ INLINE_TOKEN_RE = re.compile(r"(\*\*.*?\*\*|`.*?`|\[\d+\])")
 REF_RE = re.compile(r"^\[\d+\]")
 CITATION_RE = re.compile(r"\[(\d+)(?:\s*[-—]\s*(\d+))?\]")
 REFERENCE_NUMBER_RE = re.compile(r"^\[(\d+)\]\s", re.MULTILINE)
+EXPECTED_SCHEDULE = (
+    "1. 开题报告：2026 年 09 月 16 日至 2026 年 09 月 24 日",
+    "2. 完成初稿：2026 年 09 月 25 日至 2026 年 11 月 15 日",
+    "3. 完成终稿：2026 年 11 月 16 日至 2026 年 12 月 20 日",
+    "4. 答辩：2027 年 03 月 17 日至 2027 年 03 月 31 日",
+)
 
 
 @dataclass
@@ -100,6 +106,57 @@ def _validate_reference_order(raw: str) -> None:
         raise ValueError(
             "Citations must follow first-appearance order; "
             f"found {first_appearance}, expected {expected}"
+        )
+
+
+def _validate_literature_review(raw: str) -> None:
+    _, marker, tail = raw.partition("## 二、文献综述")
+    if not marker:
+        raise ValueError("Opening report literature-review section is missing")
+    review, marker, _ = tail.partition("## 三、研究内容")
+    if not marker:
+        raise ValueError("Opening report research-content section is missing")
+
+    _, marker, domestic_tail = review.partition("**国内研究现状**")
+    if not marker:
+        raise ValueError("Domestic-research subsection is missing")
+    domestic, marker, foreign_tail = domestic_tail.partition("**国外研究现状**")
+    if not marker:
+        raise ValueError("Foreign-research subsection must follow domestic research")
+    foreign, marker, _ = foreign_tail.partition("**总结**")
+    if not marker:
+        raise ValueError("Literature-review summary is missing")
+
+    def cited_paragraph_count(text: str) -> int:
+        return sum(
+            1
+            for line in text.splitlines()
+            if line.strip() and CITATION_RE.search(line)
+        )
+
+    foreign_count = cited_paragraph_count(foreign)
+    domestic_count = cited_paragraph_count(domestic)
+    if foreign_count < 3 or domestic_count < 10:
+        raise ValueError(
+            "Literature review must contain individually cited summaries for "
+            f"at least 3 foreign and 10 Chinese sources; found {foreign_count} and {domestic_count}"
+        )
+
+
+def _validate_schedule(raw: str) -> None:
+    _, marker, tail = raw.partition("## 五、研究工作进展计划")
+    if not marker:
+        raise ValueError("Opening report schedule section is missing")
+    schedule, marker, _ = tail.partition("## 六、主要参考文献")
+    if not marker:
+        raise ValueError("Opening report reference section is missing")
+    schedule_lines = tuple(
+        line.strip() for line in schedule.splitlines() if re.match(r"^\d+\.\s", line.strip())
+    )
+    if schedule_lines != EXPECTED_SCHEDULE:
+        raise ValueError(
+            "Opening-report schedule is not the latest approved four-item schedule: "
+            f"{schedule_lines}"
         )
 
 
@@ -171,6 +228,8 @@ def parse_source(path: Path) -> ReportSource:
     if len([b for b in blocks if b.kind == "reference"]) < 15:
         raise ValueError("Opening report must contain at least 15 references")
     _validate_reference_order(raw)
+    _validate_literature_review(raw)
+    _validate_schedule(raw)
     if "10 张物理表" not in raw:
         raise ValueError("Opening report must retain the proposed 10-table design scope")
     forbidden = ("【待写】", "120 份", "112 份", "104 份", "5 名学生", "3 名教师")
@@ -196,6 +255,19 @@ def parse_source(path: Path) -> ReportSource:
     timeline_found = [token for token in timeline_forbidden if token in raw]
     if timeline_found:
         raise ValueError(f"Post-implementation wording remains in opening report: {timeline_found}")
+    revision_commentary_forbidden = (
+        "为避免只罗列作者与题名",
+        "逐项核对研究内容是否",
+        "使研究内容能够在论文",
+    )
+    revision_commentary_found = [
+        token for token in revision_commentary_forbidden if token in raw
+    ]
+    if revision_commentary_found:
+        raise ValueError(
+            "Reviewer-response wording remains in opening report: "
+            f"{revision_commentary_found}"
+        )
 
     return ReportSource(
         college=metadata["二级学院"],
