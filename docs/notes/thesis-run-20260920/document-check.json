@@ -1,0 +1,68 @@
+{
+  "date": "2026-09-21 Asia/Shanghai",
+  "docx_sha256": "1c7e2ddcc01c23b0f2f98608957a009834dd0668edc45ede5d6ce80a6b828e96",
+  "pdf_sha256": "c6f7e0f006fd7fc3c2bb6976f4b910fd5cf29447d399f0e7bc2a0c277e083ca3",
+  "docx": {
+    "seq": 33,
+    "ref": 33,
+    "pageref": 52,
+    "reference_links": 43,
+    "bookmarks": 109,
+    "physical_tables": 20,
+    "semantic_tables": 16,
+    "sections": 4,
+    "template_header_unchanged": true,
+    "template_core_metadata_unchanged": true
+  },
+  "pdf_pages": 61,
+  "a4": true,
+  "glyph_outliers": [],
+  "invalid_internal_links": [],
+  "citation_destinations_verified": 43,
+  "toc_pages_checked": 52,
+  "protected_baseline_paths_unchanged": [
+    "server",
+    "web",
+    "docs/materials",
+    "docs/references",
+    "docs/experiments",
+    "docs/validation",
+    "docs/thesis/开题报告.md",
+    "docs/thesis/开题报告-系统填报版.md",
+    "docs/thesis/figures"
+  ],
+  "word_counts": {
+    "1": {
+      "chinese": 1220,
+      "nonspace": 1431
+    },
+    "2": {
+      "chinese": 2633,
+      "nonspace": 2978
+    },
+    "3": {
+      "chinese": 3140,
+      "nonspace": 3801
+    },
+    "4": {
+      "chinese": 1609,
+      "nonspace": 2512
+    },
+    "5": {
+      "chinese": 3931,
+      "nonspace": 10017
+    },
+    "6": {
+      "chinese": 5729,
+      "nonspace": 8443
+    },
+    "7": {
+      "chinese": 692,
+      "nonspace": 905
+    },
+    "total_chinese": 18954,
+    "body_3_to_6_chinese": 14409
+  },
+  "native_word_update": "not performed",
+  "visual_review": "separate manual record in DOCUMENT-QA.md"
+}

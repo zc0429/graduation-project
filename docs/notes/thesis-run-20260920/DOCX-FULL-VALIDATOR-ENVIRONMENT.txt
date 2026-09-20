@@ -1,0 +1,6 @@
+
+FAILED - Found NEW validation errors:
+  docProps\core.xml: 1 new error(s)
+    - Element '{http://www.w3.org/2001/XMLSchema}import': Failed to parse the XML resource 'http://dublincore.org/schemas/xmls/qdc/2003/04/02/dcterms.xsd'., line 10
+
+Paragraphs: 267 → 1085 (+818)

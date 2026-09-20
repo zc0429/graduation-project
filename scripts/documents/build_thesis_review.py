@@ -1,0 +1,293 @@
+"""Build the editable review from the retained 2027 school template.
+
+Preserves untouched package parts byte-for-byte. Field cache can be rebuilt from
+an independently checked page-map.json; never round-trips the DOCX through LO.
+"""
+from pathlib import Path
+from copy import deepcopy
+from io import BytesIO
+from zipfile import ZipFile, ZIP_DEFLATED
+import re,json,hashlib
+from lxml import etree
+from docx import Document
+from docx.shared import Pt,Cm,RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH,WD_BREAK,WD_TAB_ALIGNMENT,WD_TAB_LEADER
+from docx.enum.table import WD_TABLE_ALIGNMENT,WD_CELL_VERTICAL_ALIGNMENT
+from docx.enum.style import WD_STYLE_TYPE
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from PIL import Image
+
+ROOT=Path(__file__).resolve().parents[2]
+RUN=ROOT/'docs/notes/thesis-run-20260920'
+OUT=ROOT/'output/docx/论文审阅版.docx'
+TPL=next((ROOT/'docs/materials/27届毕业设计学校通知和模板').rglob('*正文模板.docx'))
+BOOKMARK_ID=100
+
+# OOXML property containers are ordered sequences, not unordered attributes.
+PROPERTY_ORDER={
+ 'tblBorders':'top start left bottom end right insideH insideV',
+ 'tcBorders':'top start left bottom end right insideH insideV tl2br tr2bl',
+ 'tcMar':'top start left bottom end right',
+ 'pPr':'pStyle keepNext keepLines pageBreakBefore framePr widowControl numPr suppressLineNumbers pBdr shd tabs suppressAutoHyphens kinsoku wordWrap overflowPunct topLinePunct autoSpaceDE autoSpaceDN bidi adjustRightInd snapToGrid spacing ind contextualSpacing mirrorIndents suppressOverlap jc textDirection textAlignment textboxTightWrap outlineLvl divId cnfStyle rPr sectPr pPrChange',
+ 'tblPr':'tblStyle tblpPr tblOverlap bidiVisual tblStyleRowBandSize tblStyleColBandSize tblW jc tblCellSpacing tblInd tblBorders shd tblLayout tblCellMar tblLook tblCaption tblDescription tblPrChange',
+ 'tcPr':'cnfStyle tcW gridSpan hMerge vMerge tcBorders shd noWrap tcMar textDirection tcFitText vAlign hideMark headers cellIns cellDel cellMerge tcPrChange',
+ 'sectPr':'headerReference footerReference footnotePr endnotePr type pgSz pgMar paperSrc pgBorders lnNumType pgNumType cols formProt vAlign noEndnote titlePg textDirection bidi rtlGutter docGrid printerSettings sectPrChange',
+}
+
+def normalize_properties(tree):
+    for container in tree.iter():
+        name=etree.QName(container).localname
+        if name not in PROPERTY_ORDER:continue
+        order=PROPERTY_ORDER[name].split();rank={v:i for i,v in enumerate(order)}
+        children=list(container)
+        # Reapplying paragraph formatting must update, not duplicate, properties.
+        for child in children:
+            if any(other.tag==child.tag for other in children[children.index(child)+1:]) and name!='sectPr':
+                container.remove(child)
+        container[:]=sorted(list(container),key=lambda x:rank.get(etree.QName(x).localname,999))
+def el(tag,**attrs):
+    x=OxmlElement('w:'+tag)
+    for k,v in attrs.items():x.set(qn('w:'+k),str(v))
+    return x
+def font(r,size=12,east='宋体',bold=False):
+    r.font.name='Times New Roman'; r.font.size=Pt(size); r.font.bold=bold; r.font.color.rgb=RGBColor(0,0,0)
+    f=r._r.get_or_add_rPr().get_or_add_rFonts();f.set(qn('w:eastAsia'),east)
+    return r
+def field(p,instruction,cached,size=12):
+    p.add_run()._r.append(el('fldChar',fldCharType='begin'))
+    x=el('instrText');x.set(qn('xml:space'),'preserve');x.text=' '+instruction+' ';p.add_run()._r.append(x)
+    p.add_run()._r.append(el('fldChar',fldCharType='separate'))
+    font(p.add_run(str(cached)),size)
+    p.add_run()._r.append(el('fldChar',fldCharType='end'))
+def bookmark_start(p,name):
+    global BOOKMARK_ID
+    BOOKMARK_ID+=1;p._p.append(el('bookmarkStart',id=BOOKMARK_ID,name=name));return BOOKMARK_ID
+def bookmark_end(p,n):p._p.append(el('bookmarkEnd',id=n))
+def plain(s):return re.sub(r'\[([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
+def inline(p,s,size=12,refs=True):
+    s=plain(s)
+    pattern=r'(\[\d+\]|[图表]\s*\d+\.\d+)'
+    for part in re.split(pattern,s):
+        if re.fullmatch(r'\[\d+\]',part) and refs:
+            link=el('hyperlink',anchor='ref'+part[1:-1],history=1)
+            r=font(p.add_run(part),size);r.font.superscript=True;link.append(r._r);p._p.append(link)
+        elif re.fullmatch(r'[图表]\s*\d+\.\d+',part):
+            kind=part[0];n=re.search(r'\d+\.\d+',part)[0];key=('fig' if kind=='图' else 'tab')+n.replace('.','_')
+            field(p,f'REF {key} \\h',f'{kind} {n}',size)
+        elif part:font(p.add_run(part),size)
+def fmt(p,size=12,indent=24,align=WD_ALIGN_PARAGRAPH.JUSTIFY,line=20,before=0,after=0,keep=False):
+    f=p.paragraph_format;f.first_line_indent=Pt(indent);f.left_indent=Pt(0);f.right_indent=Pt(0)
+    f.line_spacing=Pt(line);f.space_before=Pt(before);f.space_after=Pt(after);f.keep_with_next=keep;f.widow_control=True
+    p.alignment=align
+    p._p.get_or_add_pPr().append(el('snapToGrid',val=0))
+    return p
+def section_end(doc,base,header=None,footer=None,number=None):
+    s=deepcopy(base)
+    for tag in ['headerReference','footerReference','pgNumType','type','titlePg']:
+        for x in s.findall(qn('w:'+tag)):s.remove(x)
+    if header:
+        x=el('headerReference',type='default');x.set(qn('r:id'),header);s.insert(0,x)
+    if footer:
+        x=el('footerReference',type='default');x.set(qn('r:id'),footer);s.insert(1 if header else 0,x)
+    s.insert(2 if header and footer else 0,el('type',val='nextPage'))
+    s.find(qn('w:pgMar')).set(qn('w:footer'),'851')
+    if number:s.append(el('pgNumType',fmt=number,start=1))
+    return s
+def append_sect(doc,s):
+    p=doc.add_paragraph();fmt(p,indent=0,line=1);p._p.get_or_add_pPr().append(s)
+def heading(doc,text,level=1,key=None,pagebreak=False):
+    p=doc.add_paragraph(style=f'Heading {min(level,3)}')
+    fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if level==1 else WD_ALIGN_PARAGRAPH.LEFT,
+        line=20,before=24 if level<=2 else 12,after=18 if level==1 else 6,keep=True)
+    p.paragraph_format.page_break_before=pagebreak
+    if key:k=bookmark_start(p,key)
+    font(p.add_run(text),16 if level==1 else 14 if level==2 else 12,'黑体')
+    if key:bookmark_end(p,k)
+    return p
+def caption(doc,text,continued=False):
+    m=re.match(r'([图表])\s*(\d+)\.(\d+)\s*(.*)',text);kind,ch,n,title=m.groups()
+    p=doc.add_paragraph(style='Caption');fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=13,
+        before=12 if kind=='表' else 6,after=6 if kind=='表' else 12,keep=kind=='表')
+    name=('fig' if kind=='图' else 'tab')+ch+'_'+n
+    if not continued:k=bookmark_start(p,name)
+    font(p.add_run(('续' if continued else '')+kind+' '+ch+'.'),10.5)
+    if continued:font(p.add_run(n),10.5)
+    else:field(p,f'SEQ {"Figure" if kind=="图" else "Table"}{ch} \\* ARABIC'+(' \\r 1' if n=='1' else ''),n,10.5)
+    if not continued:bookmark_end(p,k)
+    font(p.add_run('　'+title),10.5)
+    return p
+def table(doc,rows,cap):
+    n=len(rows[0]);widths=([3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else
+        [2.2,6.2,7.35] if n==3 and '接口' in cap else
+        [3,4.0,5.0,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n)
+    if '5.11' in cap:widths=[2.3,1.8,5.4,6.25] if n==4 else [1.7,6.3,7.75]
+    if '3.1' in cap:widths=[1.0,3.4,8.0,3.35]
+    t=doc.add_table(rows=1,cols=n);t.alignment=WD_TABLE_ALIGNMENT.CENTER;t.autofit=False
+    for c,w in zip(t.columns,widths):c.width=Cm(w)
+    pr=t._tbl.tblPr
+    for old in list(pr):
+        if old.tag in [qn('w:tblBorders'),qn('w:tblStyle')]:pr.remove(old)
+    borders=el('tblBorders')
+    for side in ['top','bottom','left','right','insideH','insideV']:
+        borders.append(el(side,val='single' if side in ['top','bottom'] else 'nil',sz=12 if side in ['top','bottom'] else 0,color='000000'))
+    pr.append(borders)
+    for ri,data in enumerate(rows):
+        row=t.rows[0] if ri==0 else t.add_row(); row._tr.get_or_add_trPr().append(el('cantSplit'))
+        if ri==0:row._tr.get_or_add_trPr().append(el('tblHeader'))
+        for ci,(c,value) in enumerate(zip(row.cells,data)):
+            c.width=Cm(widths[ci]);c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
+            cp=c._tc.get_or_add_tcPr(); margins=el('tcMar')
+            for side,v in [('top',35),('bottom',35),('left',60),('right',60)]:margins.append(el(side,w=v,type='dxa'))
+            cp.append(margins)
+            if ri==0:
+                cb=el('tcBorders');cb.append(el('bottom',val='single',sz=8,color='000000'));cp.append(cb)
+            p=c.paragraphs[0];fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=ri<len(rows)-1)
+            # Allow very long identifier runs to wrap while retaining their exact visible text.
+            p._p.get_or_add_pPr().append(el('wordWrap',val=0));inline(p,value,10.5,refs=False)
+    return t
+def main():
+    assert hashlib.sha256(TPL.read_bytes()).hexdigest()=='79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e'
+    assert (RUN/'artifact.md').exists()
+    md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
+    md=re.sub(r'<!--.*?-->','',md,flags=re.S)
+    pages=json.loads((RUN/'page-map.json').read_text(encoding='utf-8')) if (RUN/'page-map.json').exists() else {}
+    d=Document(TPL);base=[deepcopy(s._sectPr) for s in d.sections]
+    cover=[deepcopy(p._p) for p in d.paragraphs[:8]]
+    body=d._element.body
+    for x in list(body):body.remove(x)
+    for x in cover:body.append(x)
+    for x in list(body.iter()):
+        if x.tag in {qn('w:commentRangeStart'),qn('w:commentRangeEnd'),qn('w:commentReference'),qn('w:bookmarkStart'),qn('w:bookmarkEnd')}:
+            x.getparent().remove(x)
+    p=d.paragraphs[6];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=24)
+    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),16,'黑体',True)
+    p=d.paragraphs[7];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=19,after=20)
+    font(p.add_run(re.search(r'> \*\*英文题目\*\*：(.*)',md)[1].strip()),12,'宋体',True)
+    for text in ['人工智能学院　软件工程','2023级【本科】软件工程1班','赵灿　23612801026　指导教师：胡韬']:
+        p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=20);inline(p,text)
+    append_sect(d,section_end(d,base[0]))
+    # Explicitly formatted semantic styles; all untouched style definitions are retained later.
+    edited_styles=[]
+    for name in ['Normal','Heading 1','Heading 2','Heading 3','Caption','Title']:
+        if name not in d.styles:d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH)
+        st=d.styles[name];st.font.name='Times New Roman';st.font.size=Pt(12);st.font.color.rgb=RGBColor(0,0,0)
+        st.font.bold=False;st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'宋体' if name=='Normal' else '黑体')
+        st.paragraph_format.first_line_indent=Pt(0);edited_styles.append(st.style_id)
+    hp=heading(d,'目　录');hp.style='Normal'
+    entries=[('摘　要','abstract_cn',1),('Abstract','abstract_en',1)]
+    for line in md.splitlines():
+        m=re.match(r'^(#{2,4}) (\d+(?:\.\d+)* .+|参考文献|致　谢.*)$',line)
+        if m:entries.append((m[2].replace('（预留）',''),'h'+str(len(entries)),len(m[1])-1))
+    key_by_title={t:k for t,k,l in entries}
+    for i,(t,key,lev) in enumerate(entries):
+        p=d.add_paragraph();fmt(p,indent=0,line=20,align=WD_ALIGN_PARAGRAPH.LEFT)
+        p.paragraph_format.left_indent=Cm((lev-1)*.5)
+        p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
+        if i==0:
+            p.add_run()._r.append(el('fldChar',fldCharType='begin'));x=el('instrText');x.text=' TOC \\o "1-3" \\h \\z \\u ';p.add_run()._r.append(x);p.add_run()._r.append(el('fldChar',fldCharType='separate'))
+        link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(t),12);link.append(r._r);p._p.append(link)
+        font(p.add_run('\t'));field(p,f'PAGEREF {key} \\h',pages.get(key,'1'))
+        if i==len(entries)-1:p.add_run()._r.append(el('fldChar',fldCharType='end'))
+    append_sect(d,section_end(d,base[1],header='rId6',footer='rId7'))
+    for title,key in [('摘　要','abstract_cn'),('Abstract','abstract_en')]:
+        p=heading(d,title,key=key,pagebreak=key=='abstract_en')
+        for r in p.runs:font(r,14,'黑体',key=='abstract_en')
+        p.paragraph_format.line_spacing=1
+        p.style='Normal';p._p.get_or_add_pPr().append(el('outlineLvl',val=0))
+        section=md.split('## '+title+'\n')[1].split('\n## ')[0]
+        for line in section.splitlines():
+            if not line.strip() or line=='---':continue
+            p=d.add_paragraph();fmt(p,indent=0 if line.startswith('**') else 24)
+            if line.startswith('**'):
+                parts=plain(line).split('：',1) if '：' in line else plain(line).split(':',1)
+                font(p.add_run(('关键词：' if key=='abstract_cn' else 'Keywords: ')),14,'黑体',key=='abstract_en')
+                inline(p,parts[-1].strip())
+            else:inline(p,line)
+    append_sect(d,section_end(d,base[2],header='rId6',footer='rId8',number='upperRoman'))
+    lines=md[md.index('## 1 '):].splitlines();i=0;pending_caption=None;in_refs=False
+    while i<len(lines):
+        line=lines[i].strip();i+=1
+        if not line or line=='---' or line.startswith('>'):continue
+        if line.startswith('#'):
+            n=len(line)-len(line.lstrip('#'));title=line[n:].strip().replace('（预留）','')
+            in_refs=title=='参考文献' or (in_refs and title!='致　谢')
+            heading(d,title,n-1,key_by_title.get(title),pagebreak=n==2 and not title.startswith('1 '));continue
+        if line.startswith('```'):
+            code=[]
+            while i<len(lines) and not lines[i].startswith('```'):code.append(lines[i]);i+=1
+            i+=1
+            for text in code:
+                p=d.add_paragraph();fmt(p,indent=0,line=14);font(p.add_run(text),10.5)
+            continue
+        if line.startswith('!['):
+            target=re.search(r'\]\(([^)]+)\)',line)[1];path=ROOT/'docs/thesis'/target
+            w,h=Image.open(path).size;width=min(15.75,20*w/h)
+            p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=14,keep=True,before=6)
+            p.paragraph_format.line_spacing=1
+            p.add_run().add_picture(str(path),width=Cm(width));continue
+        if line.startswith('**图 '):
+            p=caption(d,plain(line))
+            following=next((x.strip() for x in lines[i:] if x.strip()),'')
+            p.paragraph_format.keep_with_next=following.startswith('资料来源')
+            continue
+        if line.startswith('**表 '):pending_caption=plain(line);continue
+        if line.startswith('|'):
+            rows=[line]
+            while i<len(lines) and lines[i].strip().startswith('|'):rows.append(lines[i].strip());i+=1
+            rows=[[x.strip() for x in r.strip('|').split('|')] for r in rows if not re.match(r'^\|\s*:?-',r)]
+            if pending_caption and '5.11' in pending_caption:
+                for ci,start in enumerate(range(1,len(rows),8)):
+                    cap=caption(d,pending_caption,continued=ci>0)
+                    cap.paragraph_format.page_break_before=True
+                    table(d,[rows[0]]+rows[start:start+8],pending_caption)
+            else:
+                if pending_caption:caption(d,pending_caption)
+                table(d,rows,pending_caption or '')
+            pending_caption=None;continue
+        p=d.add_paragraph();fmt(p)
+        if in_refs and re.match(r'^\[\d+\]',line):
+            num=re.match(r'^\[(\d+)\]',line)[1];k=bookmark_start(p,'ref'+num)
+            p.paragraph_format.left_indent=Pt(24);p.paragraph_format.first_line_indent=Pt(-24)
+            inline(p,line,refs=False);bookmark_end(p,k)
+        elif line.startswith('资料来源'):
+            fmt(p,indent=0,line=13,before=6,after=12);inline(p,line,10.5,refs=False)
+        else:inline(p,line)
+    body.append(section_end(d,base[3],header='rId6',footer='rId9',number='decimal'))
+    # Refresh is deferred to Word; cached fields are deterministic and separately QAed.
+    settings=d.settings.element
+    for x in settings.findall(qn('w:updateFields')):settings.remove(x)
+    settings.insert_element_before(el('updateFields',val='true'),'w:hdrShapeDefaults','w:footnotePr','w:endnotePr','w:compat','w:docVars','w:rsids','w:mathPr','w:attachedSchema','w:themeFontLang','w:clrSchemeMapping','w:doNotIncludeSubdocsInStats','w:doNotAutoCompressPictures','w:forceUpgrade','w:captions','w:readModeInkLockDown','w:smartTagType','w:schemaLibrary','w:shapeDefaults','w:doNotEmbedSmartTags','w:decimalSymbol','w:listSeparator')
+    normalize_properties(d._element)
+    buf=BytesIO();d.save(buf);buf.seek(0)
+    OUT.parent.mkdir(parents=True,exist_ok=True)
+    with ZipFile(TPL) as orig,ZipFile(buf) as generated,ZipFile(OUT,'w',ZIP_DEFLATED) as out:
+        editable={'word/document.xml','word/settings.xml','word/_rels/document.xml.rels','[Content_Types].xml'}
+        styles=etree.fromstring(orig.read('word/styles.xml'));newstyles=etree.fromstring(generated.read('word/styles.xml'))
+        for sid in edited_styles:
+            for x in list(styles):
+                if x.get(qn('w:styleId'))==sid:styles.remove(x)
+            for x in newstyles:
+                if x.get(qn('w:styleId'))==sid:styles.append(deepcopy(x))
+        for name in orig.namelist():
+            data=generated.read(name) if name in editable else orig.read(name)
+            if name=='word/styles.xml':data=etree.tostring(styles,xml_declaration=True,encoding='UTF-8',standalone=True)
+            if re.match(r'word/footer\d+.xml',name):
+                tree=etree.fromstring(data)
+                for pp in tree.iter(qn('w:pPr')):
+                    for x in list(pp):
+                        if x.tag in [qn('w:jc'),qn('w:ind')]:pp.remove(x)
+                    pp.append(el('jc',val='center'))
+                normalize_properties(tree)
+                data=etree.tostring(tree,xml_declaration=True,encoding='UTF-8',standalone=True)
+            if name.startswith('word/comments') or name in ['word/footnotes.xml','word/endnotes.xml']:
+                tree=etree.fromstring(data)
+                for x in list(tree):
+                    if x.get(qn('w:id')) not in ['-1','0']:tree.remove(x)
+                data=etree.tostring(tree,xml_declaration=True,encoding='UTF-8',standalone=True)
+            out.writestr(name,data)
+        for name in generated.namelist():
+            if name not in orig.namelist():out.writestr(name,generated.read(name))
+    (RUN/'heading-keys.json').write_text(json.dumps(entries,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(OUT)
+if __name__=='__main__':main()
