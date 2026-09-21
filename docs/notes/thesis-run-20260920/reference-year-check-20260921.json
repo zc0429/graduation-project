@@ -1,0 +1,128 @@
+{
+  "date": "2026-09-21",
+  "entries": [
+    {
+      "number": 1,
+      "key": "zhao2024knowledge",
+      "year": 2024
+    },
+    {
+      "number": 2,
+      "key": "dong2023recommendation",
+      "year": 2023
+    },
+    {
+      "number": 3,
+      "key": "vaswani2017attention",
+      "year": 2017
+    },
+    {
+      "number": 4,
+      "key": "yu2024teacher",
+      "year": 2024
+    },
+    {
+      "number": 5,
+      "key": "kasneci2023chatgpt",
+      "year": 2023
+    },
+    {
+      "number": 6,
+      "key": "zhao2026rag",
+      "year": 2026
+    },
+    {
+      "number": 7,
+      "key": "mei2024ragqa",
+      "year": 2024
+    },
+    {
+      "number": 8,
+      "key": "suo2025interpretable",
+      "year": 2025
+    },
+    {
+      "number": 9,
+      "key": "ma2023hotspots",
+      "year": 2023
+    },
+    {
+      "number": 10,
+      "key": "zheng2023path",
+      "year": 2023
+    },
+    {
+      "number": 11,
+      "key": "han2025federated",
+      "year": 2025
+    },
+    {
+      "number": 12,
+      "key": "zhu2024llmrecommendation",
+      "year": 2024
+    },
+    {
+      "number": 13,
+      "key": "sun2024cuoti",
+      "year": 2024
+    },
+    {
+      "number": 14,
+      "key": "xu2024education",
+      "year": 2024
+    },
+    {
+      "number": 15,
+      "key": "liu2024educationmodel",
+      "year": 2024
+    },
+    {
+      "number": 16,
+      "key": "luo2024feedback",
+      "year": 2024
+    },
+    {
+      "number": 17,
+      "key": "wu2024risk",
+      "year": 2024
+    },
+    {
+      "number": 18,
+      "key": "wu2024multiagent",
+      "year": 2024
+    },
+    {
+      "number": 19,
+      "key": "jia2025rag",
+      "year": 2025
+    },
+    {
+      "number": 20,
+      "key": "tang2025llm",
+      "year": 2025
+    },
+    {
+      "number": 21,
+      "key": "zhang2026double",
+      "year": 2026
+    },
+    {
+      "number": 22,
+      "key": "corbett1995knowledge",
+      "year": 1995
+    },
+    {
+      "number": 23,
+      "key": "piech2015deep",
+      "year": 2015
+    },
+    {
+      "number": 24,
+      "key": "ebbinghaus1885memory",
+      "year": 1885
+    }
+  ],
+  "2024-2026": 16,
+  "2025-2027": 6,
+  "note": "Counts from the existing verified reference identity map; publication metadata not reverified online this turn."
+}

@@ -1,4 +1,6 @@
 # 本轮验收
+
+2026-09-21 优先级修复：目录三级样式已补齐，LibreOffice刷新后保持61页；学校封面与诚信声明已生成2页待签署件；致谢已依据导师指导记录补写。最新证据见 [PRIORITY-FIXES-20260921](PRIORITY-FIXES-20260921.md)，完整待办见 [毕设待完成事项](../毕设待完成事项.md)。作者确认、Word原生验收、文献计年、真人体验及学校查重/归档仍待；下方旧过程记录按原时间保留。
 2026-09-21，Asia/Shanghai；由当前Codex执行，无独立agent或导师验收。
 
 |层次|实际结论|证据|
@@ -7,7 +9,7 @@
 |内容修订|开题国内14、国外6为核心；额外4篇明确补充；24条首引映射正确|CHAPTER2-BEFORE/AFTER、REFERENCE-MAP、diff|
 |实现/图表|10表80字段、36接口3公开33鉴权；17图16表保留|current-baseline、current-figure-check|
 |实验|27题46/54，20/6/1；6组ON2/OFF4|EXPERIMENT-RECALC；原CSV未改|
-|Word生成|全七章、双摘要、目录、24题录、空白致谢页；可编辑|实际DOCX及结构检查|
+|Word生成|全七章、双摘要、目录、24题录、依据既有导师记录补写的致谢；可编辑|实际DOCX及结构检查|
 |引用/分页|43角标落点、52项目录页码、33SEQ/33REF、61页A4无越页字形|document-check.json|
 |视觉|论文61页、幻灯片12页实际逐页查看；变化页重查|DOCUMENT-QA、DEFENSE-QA|
 |PPT可编辑|5个原生表格、1个原生图表附数据工作簿，备注12页|presentation-validation.json|

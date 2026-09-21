@@ -46,6 +46,16 @@ def main():
         assert toc_title[0].xpath('w:pPr/w:spacing/@w:line',namespaces=ns)==['240']
         assert toc_title[0].xpath('w:pPr/w:spacing/@w:lineRule',namespaces=ns)==['auto']
         assert toc_title[0].xpath('w:r/w:rPr/w:sz/@w:val',namespaces=ns)==['28']
+        styles=etree.fromstring(z.read('word/styles.xml'))
+        for level in range(1,4):
+            style=styles.xpath(f'w:style[@w:styleId="TOC{level}"]',namespaces=ns)
+            assert len(style)==1
+            assert style[0].xpath('w:rPr/w:sz/@w:val',namespaces=ns)==['24']
+            assert style[0].xpath('w:rPr/w:rFonts/@w:eastAsia',namespaces=ns)==['宋体']
+            assert style[0].xpath('w:pPr/w:spacing/@w:line',namespaces=ns)==['400']
+            assert style[0].xpath('w:pPr/w:outlineLvl/@w:val',namespaces=ns)==['9']
+            assert style[0].xpath('w:pPr/w:tabs/w:tab[@w:val="right"]/@w:leader',namespaces=ns)==['dot']
+        assert len(tree.xpath('//w:pPr/w:pStyle[starts-with(@w:val,"TOC")]',namespaces=ns))==52
         bookmarks=tree.xpath('//w:bookmarkStart/@w:name',namespaces=ns)
         assert len(bookmarks)==len(set(bookmarks))
         anchors=tree.xpath('//w:hyperlink/@w:anchor',namespaces=ns)

@@ -1,4 +1,6 @@
 # 本轮交付索引
+
+本轮新增：`output/docx/毕业设计封面与诚信声明-待签署.docx` 及同名PDF（2页）；源稿 `docs/thesis/毕业设计封面与诚信声明.md`，构建器 `scripts/documents/build_thesis_frontmatter.py`；当前完整待办 `docs/notes/毕设待完成事项.md`。已纳入更新后的交接包。
 2026-09-21，Asia/Shanghai。工作树 D:/Documents/GitHub/graduation-project-thesis-20260920。
 **可移交审阅版，论文终稿partial。** 本地分支完成后未推送/合并；最终提交与干净状态见 [本机Git快照](../../../output/handoff/LOCAL-STATUS.json)。该快照在本地提交后生成，不入Git，包含在ZIP中。
 

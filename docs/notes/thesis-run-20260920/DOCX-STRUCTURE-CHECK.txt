@@ -18,4 +18,4 @@ PASSED - All relationship ID references are valid
 PASSED - All paraId/durableId values within constraints
 PASSED - All comment markers properly paired
 
-Paragraphs: 1085
+Paragraphs: 1086

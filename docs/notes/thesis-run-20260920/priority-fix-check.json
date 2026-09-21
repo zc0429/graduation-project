@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-21",
+  "thesis_pages": 61,
+  "final_changed_text_pages_vs_original": [
+    61
+  ],
+  "final_changed_pixel_pages_vs_original_95dpi": [
+    61
+  ],
+  "frontmatter_pages": 2,
+  "frontmatter_package_and_xsd_valid": true,
+  "frontmatter_parts_changed_from_school_template": [
+    "word/document.xml",
+    "word/styles.xml"
+  ],
+  "frontmatter_blank_fields": [
+    "授予学位",
+    "完成年月",
+    "作者签名",
+    "签署日期"
+  ],
+  "pptx_structure_validation": "All validations PASSED; pptx unchanged",
+  "native_word_powerpoint_visio_registered": false,
+  "kwps_registered": true,
+  "business_tests": "Not rerun; existing 2026-09-21 isolated Mock result retained",
+  "acknowledgment_basis": "Existing Hu Tao feedback recorded 2026-09-10, 2026-09-14 and 2026-09-16; author review pending",
+  "artifacts": {
+    "output/docx/论文审阅版.docx": "e4d548ac117865fd9c5e55a3599114c59be6f52ea1d45fb6fee5cef328f135f8",
+    "output/pdf/论文审阅版.pdf": "cb2a347cf8adb66496c314e1bf52178dd02da808fae9ad9fd2d3b92ae580bc0e",
+    "output/docx/毕业设计封面与诚信声明-待签署.docx": "5f248d3f3dd9d70d281e8024d2de22cd048d6c9d842f8ec8a30b9aff6cf4d89f",
+    "output/pdf/毕业设计封面与诚信声明-待签署.pdf": "56fa45926ce46ee9892b74f7c26cf435cea78bc2d5a64652d670a7716ee673fb",
+    "output/pptx/答辩审阅版.pptx": "f4d4943811e351778b24aa6d07b8212e1d2df74a6c52abea07d85e8484cad70a"
+  },
+  "libreoffice_index_refresh": {
+    "before_pages": 62,
+    "after_pages": 61,
+    "headings": 52,
+    "changed_pages_vs_final_cached_pdf": [
+      2,
+      3
+    ],
+    "microsoft_word_validation": false
+  }
+}

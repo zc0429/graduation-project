@@ -174,6 +174,21 @@ def main():
         st=d.styles[name];st.font.name='Times New Roman';st.font.size=Pt(12);st.font.color.rgb=RGBColor(0,0,0)
         st.font.bold=False;st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'宋体' if name=='Normal' else '黑体')
         st.paragraph_format.first_line_indent=Pt(0);edited_styles.append(st.style_id)
+    # Word rebuilds a TOC using TOC1/2/3, discarding cached direct formatting.
+    # Define these styles explicitly so an update retains the checked layout.
+    for level in range(1,4):
+        name=f'TOC {level}'
+        if name not in d.styles:d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH)
+        st=d.styles[name];st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
+        st.font.name='Times New Roman';st.font.size=Pt(12);st.font.bold=False
+        st.font.color.rgb=RGBColor(0,0,0)
+        st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'宋体')
+        f=st.paragraph_format;f.first_line_indent=Pt(0);f.left_indent=Cm((level-1)*.5)
+        f.right_indent=Pt(0);f.line_spacing=Pt(20);f.space_before=Pt(0);f.space_after=Pt(0)
+        f.keep_with_next=False;f.page_break_before=False;f.alignment=WD_ALIGN_PARAGRAPH.LEFT
+        f.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
+        st.element.get_or_add_pPr().append(el('outlineLvl',val=9))
+        edited_styles.append(st.style_id)
     hp=heading(d,'目　录');hp.style='Normal'
     for r in hp.runs:font(r,14,'黑体')
     hp.paragraph_format.line_spacing=1
@@ -183,7 +198,7 @@ def main():
         if m:entries.append((m[2].replace('（预留）',''),'h'+str(len(entries)),len(m[1])-1))
     key_by_title={t:k for t,k,l in entries}
     for i,(t,key,lev) in enumerate(entries):
-        p=d.add_paragraph();fmt(p,indent=0,line=20,align=WD_ALIGN_PARAGRAPH.LEFT)
+        p=d.add_paragraph(style=f'TOC {lev}');fmt(p,indent=0,line=20,align=WD_ALIGN_PARAGRAPH.LEFT)
         p.paragraph_format.left_indent=Cm((lev-1)*.5)
         p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
         if i==0:
