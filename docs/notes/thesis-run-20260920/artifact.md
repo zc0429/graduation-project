@@ -1,5 +1,7 @@
 # 正文模板执行契约
 
+2026-09-21补充：目录标题不复用章标题字号，按学校“目录”条款采用黑体14pt、单倍行距、段前24pt、段后18pt。
+
 参考：docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件4：毕业论文（设计）正文模板.docx。
 SHA256 79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e。
 LibreOffice经技能render_docx渲染19页，已查看全部19页。模板有重复空白页、示例文字、批注和公式；这些属于替换区域。结构证据见TEMPLATE-STRUCTURE.json，全文规范见SCHOOL-REQUIREMENTS-TEXT.txt。

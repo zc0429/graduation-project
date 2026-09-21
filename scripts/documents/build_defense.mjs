@@ -3,8 +3,14 @@ import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {Presentation,PresentationFile} from '@oai/artifact-tool';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const skill='C:/Users/can/.codex/plugins/cache/openai-primary-runtime/presentations/26.909.12148/skills/presentations';
-const runtime='C:/Users/can/.cache/codex-runtimes/codex-primary-runtime/dependencies';
+function configuredPath(name){
+ if(!process.env[name]?.trim())throw new Error(`Set ${name} to the local dependency path; see REPRODUCE.md.`);
+ return path.resolve(process.env[name]);
+}
+const skill=configuredPath('PRESENTATIONS_SKILL_DIR');
+const python=configuredPath('RUNTIME_PYTHON');
+await fs.access(path.join(skill,'container_tools/artifact_tool_utils.mjs'));
+await fs.access(python);
 const build=path.join(root,'tmp/defense-build',new Date().toISOString().replace(/[:.]/g,'-'));
 const out=path.resolve(root,process.env.DEFENSE_OUTPUT || 'output/pptx/答辩审阅版.pptx');
 await fs.mkdir(build,{recursive:true});await fs.mkdir(path.dirname(out),{recursive:true});
@@ -133,7 +139,7 @@ function table(s,values,widths=[310,770],y=170,height=390){
 const candidate=path.join(build,'candidate.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidate);
 const result=await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath:out,
- pythonExecutable:path.join(runtime,'python/python.exe'),
+ pythonExecutable:python,
  integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),
  layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),
  layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-bullet-geometry','--validate-heading-fit',...[3,5,6,8,10].flatMap(x=>['--require-native-table-slide',String(x)])],

@@ -1,7 +1,7 @@
 """Read-only content/package checks; writes audit records, never claims visual/native QA."""
 from pathlib import Path
 from zipfile import ZipFile
-import json,re,sys,tempfile,hashlib,difflib,subprocess,contextlib,io
+import json,re,sys,tempfile,hashlib,difflib,subprocess,contextlib,io,os
 from lxml import etree
 import fitz
 
@@ -14,6 +14,9 @@ def write(name,value):
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 def main():
+    validator_dir=Path(os.environ.get('DOCX_VALIDATOR_DIR') or Path.home()/'.agents/skills/docx/scripts/office').expanduser().resolve()
+    if not (validator_dir/'validators/__init__.py').is_file():
+        raise SystemExit(f'DOCX validator not found at {validator_dir}; set DOCX_VALIDATOR_DIR (see REPRODUCE.md).')
     md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
     old=subprocess.check_output(['git','show','3b7fc4768e4a2588583f109133d378a050da8733:docs/thesis/毕业论文.md'],cwd=ROOT).decode('utf-8')
     write('CHAPTER2-AFTER.md',md[md.index('## 2 文献综述'):md.index('## 3 系统分析')])
@@ -38,6 +41,11 @@ def main():
     with ZipFile(docx) as z,ZipFile(template) as orig:
         assert z.testzip() is None
         tree=etree.fromstring(z.read('word/document.xml'))
+        toc_title=tree.xpath('//w:p[w:r/w:t="目　录"]',namespaces=ns)
+        assert len(toc_title)==1
+        assert toc_title[0].xpath('w:pPr/w:spacing/@w:line',namespaces=ns)==['240']
+        assert toc_title[0].xpath('w:pPr/w:spacing/@w:lineRule',namespaces=ns)==['auto']
+        assert toc_title[0].xpath('w:r/w:rPr/w:sz/@w:val',namespaces=ns)==['28']
         bookmarks=tree.xpath('//w:bookmarkStart/@w:name',namespaces=ns)
         assert len(bookmarks)==len(set(bookmarks))
         anchors=tree.xpath('//w:hyperlink/@w:anchor',namespaces=ns)
@@ -59,7 +67,6 @@ def main():
         # The bundled validator's sole environment failure was a remote Dublin Core
         # XSD import for byte-identical template metadata. Exclude that one part
         # explicitly, retain all other package/reference/schema checks.
-        validator_dir=Path('C:/Users/can/.agents/skills/docx/scripts/office')
         sys.path.insert(0,str(validator_dir))
         from validators import DOCXSchemaValidator
         with tempfile.TemporaryDirectory() as tmp:

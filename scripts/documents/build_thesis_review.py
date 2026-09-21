@@ -175,6 +175,8 @@ def main():
         st.font.bold=False;st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'宋体' if name=='Normal' else '黑体')
         st.paragraph_format.first_line_indent=Pt(0);edited_styles.append(st.style_id)
     hp=heading(d,'目　录');hp.style='Normal'
+    for r in hp.runs:font(r,14,'黑体')
+    hp.paragraph_format.line_spacing=1
     entries=[('摘　要','abstract_cn',1),('Abstract','abstract_en',1)]
     for line in md.splitlines():
         m=re.match(r'^(#{2,4}) (\d+(?:\.\d+)* .+|参考文献|致　谢.*)$',line)
