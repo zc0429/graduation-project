@@ -1,24 +1,29 @@
 # 演示流程与现场验收
-状态：准备完成，现场启动未执行。不能把本手册或历史截图写成今天演示成功。
+状态：2026-09-21 已完成本机隔离 Mock 浏览器流程验证，见 [实际结果](CONTINUATION-20260921.md)。本人计时演练与 PowerPoint 原生实开仍待；自动验证不代替本人现场演练。
 
 ## 前提
-只使用隔离的本机演示库与专用账号。现场负责人提供MySQL 8地址及凭据，通过当前终端的 DB_URL、DB_USERNAME、DB_PASSWORD 注入，不复制真实账号或密码到本文件。JDK21、Maven Wrapper、Node22及npm为业务运行前提；本轮文档用Node24不代表业务兼容性重测。
-先确认8080/5173未被其他项目占用；已有服务不擅自终止。使用数据库前确认不是历史证据库，不重置或覆盖原Gate5数据。
+只使用隔离的本机演示库与专用账号。使用既有 deploy-test 配置，通过当前终端注入 DEPLOY_TEST_DB_URL、DEPLOY_TEST_DB_USERNAME、DEPLOY_TEST_DB_PASSWORD、DEPLOY_TEST_JWT_SECRET、DEPLOY_TEST_UPLOAD_DIR、DEPLOY_TEST_CORS_ORIGINS；不把实际凭据写入本文件。JDK21、Maven Wrapper、Node22及npm为业务运行前提。
+先确认8081/4175未被其他项目占用；已有服务不擅自终止。仅在专用库手工导入 schema.sql，并建立数学科目、函数一级章节和其下二次函数二级知识点；解析候选只取二级考点，仅建一级分类会解析失败。注册专用学生，不导入 data.sql 中的固定密码账号，不重置或覆盖原Gate5数据。
 
-以下为**建议现场执行，非本轮已执行**的PowerShell命令，在本轮工作树：
+以下为后续本人演练的启动方式。本轮实际采用打包JAR与独立MySQL实例，具体进程、脚本与结果见续办记录。先完成上述环境变量与数据库准备；本轮临时库随机凭据未保留，不直接复用：
 ```powershell
 Set-Location 'D:/Documents/GitHub/graduation-project-thesis-20260920/server'
 $env:LLM_PROVIDER='mock'
 $env:IMAGE_RECOGNITION_ENABLED='false'
+$env:SPRING_PROFILES_ACTIVE='deploy-test'
+$env:SPRING_CONFIG_IMPORT=''
+$env:DEPLOY_TEST_PORT='8081'
+$env:DEPLOY_TEST_CORS_ORIGINS='http://127.0.0.1:4175'
 .\mvnw.cmd spring-boot:run
 ```
 另一个终端：
 ```powershell
 Set-Location 'D:/Documents/GitHub/graduation-project-thesis-20260920/web'
 npm ci
-npm run dev -- --host 127.0.0.1
+$env:VITE_BACKEND_PROXY_TARGET='http://127.0.0.1:8081'
+npm run dev -- --host 127.0.0.1 --port 4175 --strictPort
 ```
-启动将按现有项目配置初始化指定数据库；仅对专用演示库操作。先读根README和web/README，检查DB配置以及浏览器实际显示的端口。历史源码中的种子账号不作为公开演示凭据。
+deploy-test 不自动初始化数据库，必须先对专用库执行上述准备。先读根README和web/README，检查DB配置以及浏览器实际显示的端口。历史源码中的种子账号不作为公开演示凭据。
 
 ## 三分钟流程
 |时间|操作|预期观察|证据界限|
@@ -41,6 +46,6 @@ npm run dev -- --host 127.0.0.1
 - 变式长时间等待：不要重复点击，说明同步调用边界，切换已有截图。
 - 退出只在自己启动的两个终端按Ctrl+C；不结束不明Java/Node/MySQL进程。演示后清理方案需以专用库为范围，不删除历史证据。
 
-## 现场记录留空
-日期/执行者、环境版本、专用库确认、启动结果、各步实际结果、截图路径、问题与退出状态：待现场填写。
+## 执行记录
+2026-09-21 Codex 自动操作实际浏览器通过，JDK21.0.11/MySQL8.0.40/Node22.23.1；数据库与进程隔离、8项流程观察和退出状态见 CONTINUATION-20260921 及 mock-demo-20260921 中的JSON。本人现场演练日期、5—8分钟计时、PowerPoint版本与实开检查仍待本人填写。
 真实用户体验另按 docs/validation/user-experience-test-plan.md 执行；本演示不代替真人评价。

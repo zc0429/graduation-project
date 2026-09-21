@@ -64,18 +64,16 @@ def main():
             m=s.find('w:pgMar',ns)
             assert [int(m.get('{'+W+'}'+x)) for x in ['left','right','top','bottom','header','footer']]==[1559,1417,1417,1417,851,851]
         docx_stats={'seq':len(seq),'ref':sum(f.strip().startswith('REF ') for f in fields),'pageref':sum(f.strip().startswith('PAGEREF ') for f in fields),'reference_links':sum(a.startswith('ref') for a in anchors),'bookmarks':len(bookmarks),'physical_tables':20,'semantic_tables':16,'sections':4,'template_header_unchanged':True,'template_core_metadata_unchanged':True}
-        # The bundled validator's sole environment failure was a remote Dublin Core
-        # XSD import for byte-identical template metadata. Exclude that one part
-        # explicitly, retain all other package/reference/schema checks.
+        # Validate all package parts with pinned local Dublin Core dependencies.
         sys.path.insert(0,str(validator_dir))
-        from validators import DOCXSchemaValidator
+        from verify_docx_offline import install_offline_schemas,make_validator
+        install_offline_schemas()
         with tempfile.TemporaryDirectory() as tmp:
             z.extractall(tmp)
-            v=DOCXSchemaValidator(Path(tmp),template,verbose=True)
-            v.xml_files=[p for p in v.xml_files if p.relative_to(Path(tmp)).as_posix()!='docProps/core.xml']
+            v=make_validator(tmp)
             log=io.StringIO()
             with contextlib.redirect_stdout(log):ok=v.validate()
-            write('DOCX-STRUCTURE-CHECK.txt','Scope: all package checks except byte-identical docProps/core.xml (remote Dublin Core schema unavailable).\n'+log.getvalue())
+            write('DOCX-STRUCTURE-CHECK.txt','Scope: all 26 parts retained; 25 standard XSD checks; WPS private customXml/item1.xml has package checks only. No baseline or error allowlist.\n'+log.getvalue())
             assert ok,log.getvalue()
     p=fitz.open(pdf);assert len(p)==61
     outliers=[];badlinks=[];citation_links=0

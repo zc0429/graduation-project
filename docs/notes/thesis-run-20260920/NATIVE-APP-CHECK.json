@@ -1,0 +1,22 @@
+[
+  {
+    "prog_id": "Word.Application",
+    "registered": false,
+    "native_open_performed": false
+  },
+  {
+    "prog_id": "PowerPoint.Application",
+    "registered": false,
+    "native_open_performed": false
+  },
+  {
+    "prog_id": "Visio.Application",
+    "registered": false,
+    "native_open_performed": false
+  },
+  {
+    "prog_id": "KWPS.Application",
+    "registered": true,
+    "native_open_performed": false
+  }
+]

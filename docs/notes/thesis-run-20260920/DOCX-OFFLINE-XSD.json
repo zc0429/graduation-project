@@ -1,0 +1,169 @@
+{
+  "date": "2026-09-21",
+  "docx_sha256": "7589d50eab08b16ccb181c1a1c465dcbc1988ab082daa52261b2168a5e086e11",
+  "package_valid": true,
+  "schema_sources": [
+    {
+      "file": "dc.xsd",
+      "url": "https://www.dublincore.org/schemas/xmls/qdc/2003/04/02/dc.xsd",
+      "sha256": "bc1d454db1bb20dfb1867a3fe0cf007775fc4afa33a5df425c12d854f049f1f6",
+      "retrieved": "2026-09-21"
+    },
+    {
+      "file": "dcterms.xsd",
+      "url": "https://www.dublincore.org/schemas/xmls/qdc/2003/04/02/dcterms.xsd",
+      "sha256": "6328c8b574c166f8ebc28d07231e6ee47121e9791689b70c3afa665f22099fed",
+      "retrieved": "2026-09-21"
+    },
+    {
+      "file": "dcmitype.xsd",
+      "url": "https://www.dublincore.org/schemas/xmls/qdc/2003/04/02/dcmitype.xsd",
+      "sha256": "4980845d0bedcf45e707fa64eb47492ae4f95ac4ae42f5c3c68b58c0bc9e8e49",
+      "retrieved": "2026-09-21"
+    },
+    {
+      "file": "xml.xsd",
+      "url": "https://www.w3.org/2001/03/xml.xsd",
+      "sha256": "0ed94db44402526e7a683424d0bd4b65e5bc50e65d9b9a762b11b30bae06d0c8",
+      "retrieved": "2026-09-21"
+    }
+  ],
+  "parts": [
+    {
+      "part": "[Content_Types].xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "customXml/item1.xml",
+      "xsd_valid": null,
+      "errors": []
+    },
+    {
+      "part": "customXml/itemProps1.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "docProps/app.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "docProps/core.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "docProps/custom.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/comments.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/commentsExtended.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/document.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/fontTable.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/footer1.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/footer2.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/footer3.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/footnotes.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/header1.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/people.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/settings.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/styles.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/charts/chart1.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/theme/theme1.xml",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "_rels/.rels",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "customXml/_rels/item1.xml.rels",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/_rels/document.xml.rels",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/_rels/fontTable.xml.rels",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/_rels/header1.xml.rels",
+      "xsd_valid": true,
+      "errors": []
+    },
+    {
+      "part": "word/charts/_rels/chart1.xml.rels",
+      "xsd_valid": true,
+      "errors": []
+    }
+  ],
+  "xsd_passed": 25,
+  "xsd_unmapped": [
+    "customXml/item1.xml"
+  ],
+  "xsd_failed": [],
+  "scope": "All package parts retained; no baseline or error allowlist. Bundled MC preprocessing with chart Fallback and extension-payload preservation. Unmapped WPS private data receives package checks only."
+}

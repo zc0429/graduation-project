@@ -1,0 +1,13 @@
+{
+  "provider": "mock",
+  "human_experience_test": false,
+  "steps": [],
+  "page_errors": [],
+  "failed_api": [],
+  "screenshots": [
+    "failure.png"
+  ],
+  "passed": false,
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 200\nReceived: 0",
+  "elapsed_ms": 936
+}

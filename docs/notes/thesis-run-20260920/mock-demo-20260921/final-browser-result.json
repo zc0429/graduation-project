@@ -1,0 +1,244 @@
+{
+  "provider": "mock",
+  "human_experience_test": false,
+  "steps": [
+    {
+      "name": "register_and_browser_login",
+      "detail": "新建专用学生，无固定种子账号",
+      "elapsed_ms": 1556
+    },
+    {
+      "name": "create_and_mock_analysis",
+      "detail": {
+        "id": 1,
+        "status": 1
+      },
+      "elapsed_ms": 4888
+    },
+    {
+      "name": "rag_empty_state",
+      "detail": "隔离新账号无历史参考题，显示空态，不伪造命中",
+      "elapsed_ms": 4998
+    },
+    {
+      "name": "similar_empty_state",
+      "detail": "账号仅有一道题，相似题列表为空",
+      "elapsed_ms": 5084
+    },
+    {
+      "name": "mock_variants",
+      "detail": 3,
+      "elapsed_ms": 5287
+    },
+    {
+      "name": "practice_updates_mastery",
+      "detail": {
+        "before": 0,
+        "after": 15
+      },
+      "elapsed_ms": 6891
+    },
+    {
+      "name": "review_page",
+      "detail": "首个节点明天到期，今日0项；未改日期",
+      "elapsed_ms": 7096
+    },
+    {
+      "name": "report_page",
+      "detail": {
+        "weekStart": "2026-09-21",
+        "newQuestionCount": 1,
+        "totalQuestionCount": 1,
+        "reviewFinishedCount": 0,
+        "reviewTotalCount": 3,
+        "masteryAvg": 15,
+        "knowledgeMastery": [
+          {
+            "knowledgePointId": 2,
+            "name": "二次函数",
+            "mastery": 15,
+            "questionCount": 1
+          }
+        ],
+        "weakPoints": [
+          {
+            "knowledgePointId": 2,
+            "name": "二次函数",
+            "mastery": 15,
+            "questionCount": 1
+          }
+        ],
+        "dailyNewQuestions": [
+          {
+            "date": "2026-09-21",
+            "count": 1
+          },
+          {
+            "date": "2026-09-22",
+            "count": 0
+          },
+          {
+            "date": "2026-09-23",
+            "count": 0
+          },
+          {
+            "date": "2026-09-24",
+            "count": 0
+          },
+          {
+            "date": "2026-09-25",
+            "count": 0
+          },
+          {
+            "date": "2026-09-26",
+            "count": 0
+          },
+          {
+            "date": "2026-09-27",
+            "count": 0
+          }
+        ],
+        "dailyPractices": [
+          {
+            "date": "2026-09-21",
+            "count": 1
+          },
+          {
+            "date": "2026-09-22",
+            "count": 0
+          },
+          {
+            "date": "2026-09-23",
+            "count": 0
+          },
+          {
+            "date": "2026-09-24",
+            "count": 0
+          },
+          {
+            "date": "2026-09-25",
+            "count": 0
+          },
+          {
+            "date": "2026-09-26",
+            "count": 0
+          },
+          {
+            "date": "2026-09-27",
+            "count": 0
+          }
+        ]
+      },
+      "elapsed_ms": 7593
+    }
+  ],
+  "page_errors": [],
+  "failed_api": [],
+  "screenshots": [
+    "01-mock-analysis.png",
+    "02-mock-variants.png",
+    "03-practice-recorded.png",
+    "04-review.png",
+    "05-report.png"
+  ],
+  "question_id": 1,
+  "analysis": {
+    "id": 1,
+    "questionId": 1,
+    "knowledgePointId": 2,
+    "errorCause": "（Mock 生成）本题考查「二次函数」。常见错因：对二次函数的基本概念理解不牢，已知条件与所求目标之间的转化思路不清晰，或计算过程中出现符号、代入错误。",
+    "analysis": "（Mock 生成，接入真实大模型后此处为结合本地参考题的 RAG 解析）\n1. 知识点定位：本题属于「二次函数」。\n2. 解题思路：先梳理题干已知条件，明确所求目标，再调用「二次函数」的相关性质与公式逐步推导。\n3. 易错提醒：注意条件适用范围与计算细节，完成后代回验证。",
+    "referenceIds": "[]",
+    "llmModel": "mock-llm",
+    "status": 1,
+    "createTime": "2026-09-21 11:30:33"
+  },
+  "mastery": 15,
+  "today_review": [],
+  "weekly_report": {
+    "weekStart": "2026-09-21",
+    "newQuestionCount": 1,
+    "totalQuestionCount": 1,
+    "reviewFinishedCount": 0,
+    "reviewTotalCount": 3,
+    "masteryAvg": 15,
+    "knowledgeMastery": [
+      {
+        "knowledgePointId": 2,
+        "name": "二次函数",
+        "mastery": 15,
+        "questionCount": 1
+      }
+    ],
+    "weakPoints": [
+      {
+        "knowledgePointId": 2,
+        "name": "二次函数",
+        "mastery": 15,
+        "questionCount": 1
+      }
+    ],
+    "dailyNewQuestions": [
+      {
+        "date": "2026-09-21",
+        "count": 1
+      },
+      {
+        "date": "2026-09-22",
+        "count": 0
+      },
+      {
+        "date": "2026-09-23",
+        "count": 0
+      },
+      {
+        "date": "2026-09-24",
+        "count": 0
+      },
+      {
+        "date": "2026-09-25",
+        "count": 0
+      },
+      {
+        "date": "2026-09-26",
+        "count": 0
+      },
+      {
+        "date": "2026-09-27",
+        "count": 0
+      }
+    ],
+    "dailyPractices": [
+      {
+        "date": "2026-09-21",
+        "count": 1
+      },
+      {
+        "date": "2026-09-22",
+        "count": 0
+      },
+      {
+        "date": "2026-09-23",
+        "count": 0
+      },
+      {
+        "date": "2026-09-24",
+        "count": 0
+      },
+      {
+        "date": "2026-09-25",
+        "count": 0
+      },
+      {
+        "date": "2026-09-26",
+        "count": 0
+      },
+      {
+        "date": "2026-09-27",
+        "count": 0
+      }
+    ]
+  },
+  "passed": true,
+  "elapsed_ms": 7683
+}

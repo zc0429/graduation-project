@@ -1,0 +1,20 @@
+{
+  "provider": "mock",
+  "human_experience_test": false,
+  "steps": [
+    {
+      "name": "register_and_browser_login",
+      "detail": "新建专用学生，无固定种子账号",
+      "elapsed_ms": 4617
+    }
+  ],
+  "page_errors": [],
+  "failed_api": [],
+  "screenshots": [
+    "failure.png"
+  ],
+  "question_id": 1,
+  "passed": false,
+  "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"success\"\nReceived: 2\n\nCall Log:\n- Timeout 45000ms exceeded while waiting on the predicate",
+  "elapsed_ms": 50824
+}

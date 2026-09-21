@@ -1,4 +1,6 @@
 # 本轮状态
+
+2026-09-21 续办：标准 XML 依赖恢复并验证通过，61页版面逐页像素不变；本机隔离 Mock 浏览器流程通过并已停服；“镜像”为“继续”的笔误，移除待办。详 CONTINUATION-20260921。以下既有阶段日志保留其历史边界。
 THESIS-20260920-V3；更新2026-09-21，Asia/Shanghai。
 工作树 D:/Documents/GitHub/graduation-project-thesis-20260920；分支 codex/thesis-finalization-20260920。
 起点及本轮核实的origin/dev为3b7fc4768e4a2588583f109133d378a050da8733。
@@ -12,7 +14,7 @@ THESIS-20260920-V3；更新2026-09-21，Asia/Shanghai。
 |P04|done|current-figure-check、FIGURE-TABLE-AUDIT；17图16表及正文上下文检查|
 |P05|done|EXPERIMENT-RECALC、TEST-EVIDENCE-INDEX；未重跑业务实验|
 |P06|partial|61页DOCX/PDF结构/文本/逐页视觉检查；Word原生域、个人事实待补|
-|P07|done|12页可编辑PPTX、约6分40秒讲稿、15问答和演示手册；现场执行另待|
+|P07|done|12页可编辑PPTX、约6分40秒讲稿、15问答和演示手册；本机Mock通过，作者计时/PowerPoint实开另待|
 |P08|done|DELIVERY、ACCEPTANCE、BLOCKERS、进度记录及本地交付包|
 |P11|done|HANDOFF、NEXT-AGENT-PROMPT、HANDOFF-CHECK；当前Codex交接自检|
 

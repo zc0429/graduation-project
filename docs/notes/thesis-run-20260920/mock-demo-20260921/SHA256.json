@@ -1,0 +1,50 @@
+[
+  {
+    "file": "01-mock-analysis.png",
+    "sha256": "d65d5f875a011cf348633c379d72e793c9ac83e53d9013f8811241a2c8fabfc4"
+  },
+  {
+    "file": "02-mock-variants.png",
+    "sha256": "4067e0362a37509efaa09b911360b64f128b71fee7c38ef2bdae37459e94813f"
+  },
+  {
+    "file": "03-practice-recorded.png",
+    "sha256": "06e1fb8b185618fc84336a976a3c677e88fb6c6b9ed51ba5c2e915bdc27e4e42"
+  },
+  {
+    "file": "05-report.png",
+    "sha256": "cb79632975fcef960e192dc682f50044d5024bdb03a18aa480abeed95050db48"
+  },
+  {
+    "file": "attempt1-browser-result.json",
+    "sha256": "ba208efc243955e949e0d3a0ebe2ac98df1915666037ff3c126846274d0e5f97"
+  },
+  {
+    "file": "attempt1-environment-result.json",
+    "sha256": "4dc005fcf73303a97bd919ff6a68721f85a309b005352a3507e5e3f1064eb77d"
+  },
+  {
+    "file": "attempt2-browser-result.json",
+    "sha256": "23c0f8d5a0d37d5db255a7fc68d17d481fba82bdaa7c288bb3acef7952dc3dea"
+  },
+  {
+    "file": "attempt2-environment-result.json",
+    "sha256": "c189a6b9fce3e36943ce1800459f5e1994ee8cdcd00f0d46c73ebc9a33ad2316"
+  },
+  {
+    "file": "demo-browser.mjs",
+    "sha256": "579a44c9ce5c440099d601597e74bc8b059bf0b09a964746099d728c2d18e050"
+  },
+  {
+    "file": "final-browser-result.json",
+    "sha256": "a18af1cd451db0550385729d67474787d443d73048c0bfa46af231547b4e4b8e"
+  },
+  {
+    "file": "final-environment-result.json",
+    "sha256": "525346adf1ceae21249968242462ab3983065102dedb245ef11cf156662976f4"
+  },
+  {
+    "file": "run-demo.py",
+    "sha256": "b2a3a260ad0b6fdd7a397ba4a1e09e9b22cb0e0002c452711402c6b6d2d55d96"
+  }
+]

@@ -271,6 +271,13 @@ def main():
                 if x.get(qn('w:styleId'))==sid:styles.remove(x)
             for x in newstyles:
                 if x.get(qn('w:styleId'))==sid:styles.append(deepcopy(x))
+        # The retained template places uiPriority after qFormat in some styles.
+        # Normalize CT_Style order in the output only; preserve all values and
+        # repeated tblStylePr children (unlike singleton property containers).
+        style_order='name aliases basedOn next link autoRedefine hidden uiPriority semiHidden unhideWhenUsed qFormat locked personal personalCompose personalReply rsid pPr rPr tblPr trPr tcPr tblStylePr'.split()
+        style_rank={name:i for i,name in enumerate(style_order)}
+        for style in styles.findall(qn('w:style')):
+            style[:]=sorted(style,key=lambda x:style_rank.get(etree.QName(x).localname,999))
         for name in orig.namelist():
             data=generated.read(name) if name in editable else orig.read(name)
             if name=='word/styles.xml':data=etree.tostring(styles,xml_declaration=True,encoding='UTF-8',standalone=True)

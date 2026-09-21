@@ -1,0 +1,26 @@
+[
+  {
+    "file": "dc.xsd",
+    "url": "https://www.dublincore.org/schemas/xmls/qdc/2003/04/02/dc.xsd",
+    "sha256": "bc1d454db1bb20dfb1867a3fe0cf007775fc4afa33a5df425c12d854f049f1f6",
+    "retrieved": "2026-09-21"
+  },
+  {
+    "file": "dcterms.xsd",
+    "url": "https://www.dublincore.org/schemas/xmls/qdc/2003/04/02/dcterms.xsd",
+    "sha256": "6328c8b574c166f8ebc28d07231e6ee47121e9791689b70c3afa665f22099fed",
+    "retrieved": "2026-09-21"
+  },
+  {
+    "file": "dcmitype.xsd",
+    "url": "https://www.dublincore.org/schemas/xmls/qdc/2003/04/02/dcmitype.xsd",
+    "sha256": "4980845d0bedcf45e707fa64eb47492ae4f95ac4ae42f5c3c68b58c0bc9e8e49",
+    "retrieved": "2026-09-21"
+  },
+  {
+    "file": "xml.xsd",
+    "url": "https://www.w3.org/2001/03/xml.xsd",
+    "sha256": "0ed94db44402526e7a683424d0bd4b65e5bc50e65d9b9a762b11b30bae06d0c8",
+    "retrieved": "2026-09-21"
+  }
+]

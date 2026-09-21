@@ -20,7 +20,7 @@ AGENTS.md → 本入口 → [STATE](thesis-run-20260920/STATE.md) → [NEXT](the
 
 ## 成果与验证
 - [论文语义源](../thesis/毕业论文.md)、[DOCX](../../output/docx/论文审阅版.docx)、[61页PDF](../../output/pdf/论文审阅版.pdf)：已生成，文本/字段/跳转核对和全页视觉检查；不是终稿认证。详[DOCUMENT-QA](thesis-run-20260920/DOCUMENT-QA.md)。
-- [12页PPTX](../../output/pptx/答辩审阅版.pptx)、[逐页讲稿](../thesis/答辩逐页讲稿.md)、[15问答](../thesis/答辩追问要点.md)、[演示流程](thesis-run-20260920/DEMO-RUNBOOK.md)：已制作/逐页检查，真人计时和现场动态验证未执行。
+- [12页PPTX](../../output/pptx/答辩审阅版.pptx)、[逐页讲稿](../thesis/答辩逐页讲稿.md)、[15问答](../thesis/答辩追问要点.md)、[演示流程](thesis-run-20260920/DEMO-RUNBOOK.md)：已制作/逐页检查，本机隔离 Mock 动态流程已通过，真人计时和 PowerPoint 原生实开仍待。
 - 图源在docs/thesis/figures；构建脚本和证据完整索引见DELIVERY；文献身份对应见[REFERENCE-MAP](thesis-run-20260920/REFERENCE-MAP.md)。
 - 环境与命令见[REPRODUCE](thesis-run-20260920/REPRODUCE.md)。实测Windows/Python3.12.14/Node24.19.0/LibreOffice26.8.0.3，无需模型密钥。
 
@@ -31,7 +31,7 @@ mastery为题目级规则分值，正确+15、错误−20、有界0—100，推�
 ## 下一步和最少人工事项
 前三步均在NEXT中写明输入、动作和验收：①具备Word时更新域并导出复核；②根据作者事实/明确计年口径补封面致谢及文献；③作者演练和隔离本机Mock现场验证。单项缺条件不阻塞独立项。
 需补事实：正式封面/完成日期、真实致谢；若线上稿曾改动，提供最终稿；确认“近三年”基点。需真人/环境：Word、现场演练、真实用户体验、Visio。所有尝试与解除条件见BLOCKERS。
-追加“镜像”请求仍待具体含义，不据此修改远程或部署环境。
+用户已明确“镜像”是“继续”的笔误，无镜像待办。2026-09-21 续办完成离线标准 XSD 校验及本机 Mock 流程，详 [续办结果](thesis-run-20260920/CONTINUATION-20260921.md)。
 
 ## 运行所有权与可获取性
 本轮运行所有者为当前Codex；最终回复后不再写入。已启动的文档构建/渲染均应在移交快照前结束，实际检查见[RUN-OWNERSHIP](thesis-run-20260920/RUN-OWNERSHIP.md)。不要假定当前任务结束等于所有宿主任务停止，接手前再次核对。

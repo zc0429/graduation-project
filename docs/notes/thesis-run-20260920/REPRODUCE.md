@@ -20,7 +20,7 @@ $env:PATH="C:/Program Files/LibreOffice/program;$runtime/bin/override;$runtime/b
 $env:DOCX_VALIDATOR_DIR=Join-Path $env:USERPROFILE '.agents/skills/docx/scripts/office'
 & $py scripts/documents/verify_thesis_review.py
 ```
-校验器默认查找当前用户的 `~/.agents/skills/docx/scripts/office`；如技能安装在别处，设置 `DOCX_VALIDATOR_DIR` 指向含 `validators/` 的目录。目录不存在时会在写入审计记录前报错。这不是Word原生域更新，后续步骤见DOCUMENT-QA。验证器故障边界在其报告开头显式标注。
+校验器默认查找当前用户的 `~/.agents/skills/docx/scripts/office`；如技能安装在别处，设置 `DOCX_VALIDATOR_DIR` 指向含 `validators/` 的目录。目录不存在时会在写入审计记录前报错。这不是Word原生域更新，后续步骤见DOCUMENT-QA。标准规范现由 verify_docx_offline.py 使用 scripts/documents/schemas/dublincore 固定的官方文件离线解析，25标准XSD通过；WPS私有数据仅作包检查。可另运行 `& $py scripts/documents/verify_docx_offline.py` 查看逐部件结果。
 PPT避免覆盖最终化文件，先生成到新路径：
 ```powershell
 $env:RUNTIME_NODE_MODULES="$runtime/node/node_modules"

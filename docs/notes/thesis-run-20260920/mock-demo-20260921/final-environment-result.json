@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-21",
+  "provider": "mock",
+  "database": "wrongbook_demo_20260921",
+  "ports": [
+    3311,
+    8081,
+    4175
+  ],
+  "human_timing": false,
+  "historical_database_used": false,
+  "physical_tables": 10,
+  "initial_users": 0,
+  "health": {
+    "code": 0,
+    "message": "success",
+    "data": {
+      "status": "ok"
+    }
+  },
+  "browser_exit": 0,
+  "database_counts": "users\t1\nquestions\t1\nanalysis\t1\nvariants\t3\npractice\t1\nreview_plans\t5",
+  "review_schedule": "1\t2026-09-22\t0\n2\t2026-09-23\t0\n3\t2026-09-25\t0\n4\t2026-09-28\t0\n5\t2026-10-06\t0",
+  "passed": true,
+  "owned_processes_stopped": true,
+  "ports_closed": {
+    "3311": true,
+    "8081": true,
+    "4175": true
+  }
+}

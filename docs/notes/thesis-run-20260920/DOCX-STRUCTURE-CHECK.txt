@@ -1,13 +1,13 @@
-Scope: all package checks except byte-identical docProps/core.xml (remote Dublin Core schema unavailable).
+Scope: all 26 parts retained; 25 standard XSD checks; WPS private customXml/item1.xml has package checks only. No baseline or error allowlist.
 PASSED - All XML files are well-formed
 PASSED - All namespace prefixes properly declared
 PASSED - All required IDs are unique
 Found 6 .rels files and 44 target files
 PASSED - All references are valid and all files are properly referenced
 PASSED - All content files are properly declared in [Content_Types].xml
-Validated 25 files:
-  - Valid: 21
-  - Skipped (no schema): 4
+Validated 26 files:
+  - Valid: 25
+  - Skipped (no schema): 1
   - With NEW errors: 0
 
 PASSED - No new XSD validation errors introduced
@@ -18,4 +18,4 @@ PASSED - All relationship ID references are valid
 PASSED - All paraId/durableId values within constraints
 PASSED - All comment markers properly paired
 
-Paragraphs: 267 → 1085 (+818)
+Paragraphs: 1085

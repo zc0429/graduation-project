@@ -18,7 +18,11 @@ def main():
     status['bundle_verify']=verified.stdout+verified.stderr
     (OUT/'LOCAL-STATUS.json').write_text(json.dumps(status,ensure_ascii=False,indent=2),encoding='utf-8')
     paths=[ROOT/'AGENTS.md',ROOT/'README.md',ROOT/'docs/notes/HANDOFF.md',ROOT/'docs/notes/进度记录.md',ROOT/'docs/thesis/毕业论文.md',ROOT/'docs/thesis/答辩逐页讲稿.md',ROOT/'docs/thesis/答辩追问要点.md',ROOT/'output/docx/论文审阅版.docx',ROOT/'output/pdf/论文审阅版.pdf',ROOT/'output/pptx/答辩审阅版.pptx',OUT/'LOCAL-STATUS.json',bundle]
+    paths+=[ROOT/'.gitattributes']
     paths+=list((ROOT/'docs/notes/thesis-run-20260920').glob('*'))
+    paths+=[p for p in (ROOT/'docs/notes/thesis-run-20260920/mock-demo-20260921').rglob('*') if p.is_file()]
+    paths+=[ROOT/'scripts/documents/verify_docx_offline.py']
+    paths+=[p for p in (ROOT/'scripts/documents/schemas/dublincore').rglob('*') if p.is_file()]
     paths+=[p for p in (ROOT/'docs/thesis/figures').rglob('*') if p.is_file()]
     paths+=[ROOT/'scripts/documents'/name for name in ['build_thesis_review.py','build_defense.mjs','verify_thesis_review.py','align_thesis_review.py','inspect_thesis_materials.py','record_thesis_audit.py','package_thesis_handoff.py']]
     paths=sorted(set(p for p in paths if p.is_file()))

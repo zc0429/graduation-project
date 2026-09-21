@@ -10,7 +10,7 @@
 |output/pptx/答辩审阅版.pptx|12页可编辑答辩稿|全12页查看、包及图表检查|
 |docs/thesis/答辩逐页讲稿.md|约6分40秒建议配时|与12页备注一致，待真人计时|
 |docs/thesis/答辩追问要点.md|15个追问|依据真实实现和小样本边界|
-|docs/notes/thesis-run-20260920/DEMO-RUNBOOK.md|现场Mock流程和历史GLM证据分开|准备完成、现场未执行|
+|docs/notes/thesis-run-20260920/DEMO-RUNBOOK.md|现场Mock流程和历史GLM证据分开|本机Mock已验证；作者计时与PowerPoint实开待办|
 |docs/notes/HANDOFF.md|后续agent入口|HANDOFF-CHECK交接自检|
 
 ## 可复用来源

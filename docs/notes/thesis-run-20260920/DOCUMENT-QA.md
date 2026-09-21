@@ -45,4 +45,4 @@
 ## 原生域与校验限制
 本机未取得可用Word/KWPS自动化实例。本轮生成原生TOC/SEQ/REF/PAGEREF域并将目录缓存按实际PDF页码回填；这不等于在Microsoft Word内按F9重新计算。
 作者最少步骤：复制审阅版→Word打开→Ctrl+A、F9→目录选择“更新整个目录”→保存副本→导出PDF→核对目录、17图/16表编号、上标跳转和受影响分页。补致谢/封面后再做一次。无需改原始模板。
-通用OOXML命令的唯一剩余失败为 docProps/core.xml 的远程Dublin Core XSD无法获取。已证明该包部件与模板字节相同；独立验证明确排除此部件，其他25个XML/关系部件检查通过（21个有XSD，4个无对应schema），无新增结构错误。原始失败日志保留在本轮记录中。不能把它写成“全部规范零例外通过”。
+2026-09-21 续办已解除远程 Dublin Core 依赖，并在输出副本中规范模板继承的样式属性顺序；全部26部件包检查通过，25标准XSD通过，失败0，不再排除core.xml或抵扣模板旧错误。WPS私有customXml/item1.xml无标准XSD，仅做包检查；详DOCX-OFFLINE-XSD。新旧61页PDF逐页文字和95dpi像素完全一致，正式PDF保留原文件，本轮再目检2/27/43/61页，详OFFLINE-XSD-RENDER-COMPARE。

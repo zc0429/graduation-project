@@ -1,0 +1,3 @@
+# Preserve upstream XSD bytes and recorded evidence hashes across platforms.
+scripts/documents/schemas/dublincore/*.xsd -text -whitespace
+docs/notes/thesis-run-20260920/mock-demo-20260921/* -text whitespace=cr-at-eol
