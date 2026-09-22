@@ -4,6 +4,8 @@ import json,hashlib,re
 ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'docs/notes/thesis-run-20260920'
 def put(n,s):(OUT/n).write_text(s.strip()+'\n',encoding='utf-8')
 def main():
+    if (OUT/'opening-reference-check.json').exists():
+        raise SystemExit('Historical snapshot generator: do not overwrite the 2026-09-22 opening-reference alignment.')
     coverage=(ROOT/'docs/notes/开题研究内容与论文章节对应核对.md').read_text(encoding='utf-8').split('## 本轮处理')[0]
     put('OPENING-TO-THESIS.md','# 2026-09-20 开题与论文覆盖复核\n\n以当前完整七章逐项复核，下表沿用2026-09-16映射，17个检查项仍有对应内容。第二章本轮按国内14篇、国外6篇核心逐篇对齐。学校系统完成来自用户反馈，线上最终稿没有导出件，未直接核对。\n\n'+coverage)
     put('REQUIRED-INPUTS.md','''# 作者与外部条件

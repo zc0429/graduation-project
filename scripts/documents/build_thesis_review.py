@@ -150,6 +150,9 @@ def main():
     assert hashlib.sha256(TPL.read_bytes()).hexdigest()=='79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e'
     assert (RUN/'artifact.md').exists()
     md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
+    opening=(ROOT/'docs/thesis/开题报告.md').read_text(encoding='utf-8')
+    references=re.findall(r'^\[(\d+)\]\s*(.+)$',md,re.M)
+    assert len(references)==20 and references==re.findall(r'^\[(\d+)\]\s*(.+)$',opening,re.M), 'Thesis references must match the opening report.'
     md=re.sub(r'<!--.*?-->','',md,flags=re.S)
     pages=json.loads((RUN/'page-map.json').read_text(encoding='utf-8')) if (RUN/'page-map.json').exists() else {}
     d=Document(TPL);base=[deepcopy(s._sectPr) for s in d.sections]

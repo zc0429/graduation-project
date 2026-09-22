@@ -4,12 +4,12 @@
     "nonspace": 1431
   },
   "2": {
-    "chinese": 2633,
-    "nonspace": 2978
+    "chinese": 2440,
+    "nonspace": 2756
   },
   "3": {
     "chinese": 3140,
-    "nonspace": 3801
+    "nonspace": 3799
   },
   "4": {
     "chinese": 1609,
@@ -27,6 +27,6 @@
     "chinese": 692,
     "nonspace": 905
   },
-  "total_chinese": 18954,
+  "total_chinese": 18761,
   "body_3_to_6_chinese": 14409
 }

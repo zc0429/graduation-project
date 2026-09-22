@@ -105,7 +105,7 @@ def main():
             parts.append({'part': file.relative_to(temp).as_posix(),
                           'xsd_valid': valid, 'errors': sorted(errors or [])})
     assert hashlib.sha256(docx.read_bytes()).hexdigest() == before
-    report = {'date': '2026-09-21', 'docx_sha256': before, 'package_valid': package_ok,
+    report = {'date': '2026-09-22', 'docx_sha256': before, 'package_valid': package_ok,
               'schema_sources': sources, 'parts': parts,
               'xsd_passed': sum(p['xsd_valid'] is True for p in parts),
               'xsd_unmapped': [p['part'] for p in parts if p['xsd_valid'] is None],

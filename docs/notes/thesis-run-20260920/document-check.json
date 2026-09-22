@@ -1,24 +1,26 @@
 {
-  "date": "2026-09-21 Asia/Shanghai",
-  "docx_sha256": "e4d548ac117865fd9c5e55a3599114c59be6f52ea1d45fb6fee5cef328f135f8",
-  "pdf_sha256": "cb2a347cf8adb66496c314e1bf52178dd02da808fae9ad9fd2d3b92ae580bc0e",
+  "date": "2026-09-22 Asia/Shanghai",
+  "reference_count": 20,
+  "reference_order": "identical to opening report",
+  "docx_sha256": "c89643e3cd82494710b05aadf4d391bd8783cea4c5caca99b75da1516db36d3e",
+  "pdf_sha256": "cb19af95637ead9f2657344b25685bc03ca566a360101cfae0911c662853c58a",
   "docx": {
     "seq": 33,
     "ref": 33,
     "pageref": 52,
-    "reference_links": 43,
-    "bookmarks": 109,
+    "reference_links": 38,
+    "bookmarks": 105,
     "physical_tables": 20,
     "semantic_tables": 16,
     "sections": 4,
     "template_header_unchanged": true,
     "template_core_metadata_unchanged": true
   },
-  "pdf_pages": 61,
+  "pdf_pages": 60,
   "a4": true,
   "glyph_outliers": [],
   "invalid_internal_links": [],
-  "citation_destinations_verified": 43,
+  "citation_destinations_verified": 38,
   "toc_pages_checked": 52,
   "protected_baseline_paths_unchanged": [
     "server",
@@ -37,12 +39,12 @@
       "nonspace": 1431
     },
     "2": {
-      "chinese": 2633,
-      "nonspace": 2978
+      "chinese": 2440,
+      "nonspace": 2756
     },
     "3": {
       "chinese": 3140,
-      "nonspace": 3801
+      "nonspace": 3799
     },
     "4": {
       "chinese": 1609,
@@ -60,7 +62,7 @@
       "chinese": 692,
       "nonspace": 905
     },
-    "total_chinese": 18954,
+    "total_chinese": 18761,
     "body_3_to_6_chinese": 14409
   },
   "native_word_update": "not performed",

@@ -7,7 +7,7 @@
 ## 最先打开
 |文件（相对仓库根）|用途|验收|
 |---|---|---|
-|output/pdf/论文审阅版.pdf|61页，直接审阅|全文逐页查看，机器检查见DOCUMENT-QA|
+|output/pdf/论文审阅版.pdf|60页，开题20篇原顺序，直接审阅|全文逐页查看，机器检查见DOCUMENT-QA|
 |output/docx/论文审阅版.docx|同内容可编辑件|原生域/书签齐；Word F9仍待|
 |output/pptx/答辩审阅版.pptx|12页可编辑答辩稿|全12页查看、包及图表检查|
 |docs/thesis/答辩逐页讲稿.md|约6分40秒建议配时|与12页备注一致，待真人计时|
@@ -16,7 +16,7 @@
 |docs/notes/HANDOFF.md|后续agent入口|HANDOFF-CHECK交接自检|
 
 ## 可复用来源
-- docs/thesis/毕业论文.md：语义源；此次改动第二章核心对齐、4篇补充收敛和全文引用编号。
+- docs/thesis/毕业论文.md：语义源；当前仅开题20篇，删除4篇补充并统一全部引用编号；条目顺序与开题一致。
 - docs/thesis/figures/：保留17图sources JSON、SVG/PNG与说明，未重画。
 - scripts/documents/build_thesis_review.py：独立正文模板生成器；verify_thesis_review.py：内容/字段/分页/引用校验。
 - scripts/documents/build_defense.mjs：可编辑幻灯片生成及最终化。

@@ -1,4 +1,6 @@
 # 最少复现
+
+2026-09-22：当前论文为60页、开题20篇原编号。引用维护入口 `scripts/documents/align_thesis_references_to_opening.py` 可重复执行，文献范围与顺序不能回退；旧 align_thesis_review.py / record_thesis_audit.py 是历史生成器，不再用于当前稿。
 已实测Windows、Python3.12.14、Node24.19.0、LibreOffice26.8.0.3。本轮是文档工作；业务运行要求仍以根README的JDK21/MySQL8/Node22为准。
 工作目录：D:/Documents/GitHub/graduation-project-thesis-20260920。
 Python和Node来自Codex bundled runtime；Python额外安装pymupdf、defusedxml到被忽略的.tools/python。其他所用库python-docx/lxml/Pillow由bundle提供；PPT使用bundle的@oai/artifact-tool。项目根node_modules是本机runtime的junction，不打包。

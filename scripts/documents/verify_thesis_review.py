@@ -34,8 +34,14 @@ def main():
     a=(RUN/'REFERENCE-AUDIT.md').read_text(encoding='utf-8')
     a=re.sub(r'综述汉字数\d+，去空白字符数\d+',f"综述汉字数{stats['2']['chinese']}，去空白字符数{stats['2']['nonspace']}",a)
     write('REFERENCE-AUDIT.md',a)
-    seen=list(dict.fromkeys(re.findall(r'\[(\d+)\]',md.split('## 参考文献')[0])))
-    assert seen==[str(i) for i in range(1,25)]
+    opening=(ROOT/'docs/thesis/开题报告.md').read_text(encoding='utf-8')
+    references=re.findall(r'^\[(\d+)\]\s*(.+)$',md,re.M)
+    assert references==re.findall(r'^\[(\d+)\]\s*(.+)$',opening,re.M)
+    assert [n for n,_ in references]==[str(i) for i in range(1,21)]
+    seen=set(re.findall(r'\[(\d+)\]',md.split('## 参考文献')[0]))
+    assert seen=={n for n,_ in references}
+    chapter2=md.split('## 2 文献综述')[1].split('## 3 系统分析')[0]
+    assert re.findall(r'\[(\d+)\]',chapter2)==[n for n,_ in references]
     docx=ROOT/'output/docx/论文审阅版.docx';pdf=ROOT/'output/pdf/论文审阅版.pdf'
     template=next((ROOT/'docs/materials/27届毕业设计学校通知和模板').rglob('*正文模板.docx'))
     with ZipFile(docx) as z,ZipFile(template) as orig:
@@ -65,7 +71,9 @@ def main():
             if re.match(r'\s*(PAGE)?REF ',f):assert f.strip().split()[1] in bookmarks
         seq=[f for f in fields if f.strip().startswith('SEQ ')]
         assert len(seq)==33
-        assert all('ref'+str(i) in bookmarks for i in range(1,25))
+        assert {b for b in bookmarks if re.fullmatch(r'ref\d+',b)}=={'ref'+n for n,_ in references}
+        bibliography=tree.xpath('//w:p[w:bookmarkStart[starts-with(@w:name,"ref")]]',namespaces=ns)
+        assert [''.join(p.xpath('.//w:t/text()',namespaces=ns)) for p in bibliography]==[f'[{n}] {v}' for n,v in references]
         assert len(tree.xpath('//w:tbl',namespaces=ns))==20
         assert z.read('word/header1.xml')==orig.read('word/header1.xml')
         assert z.read('docProps/core.xml')==orig.read('docProps/core.xml')
@@ -85,7 +93,10 @@ def main():
             with contextlib.redirect_stdout(log):ok=v.validate()
             write('DOCX-STRUCTURE-CHECK.txt','Scope: all 26 parts retained; 25 standard XSD checks; WPS private customXml/item1.xml has package checks only. No baseline or error allowlist.\n'+log.getvalue())
             assert ok,log.getvalue()
-    p=fitz.open(pdf);assert len(p)==61
+    p=fitz.open(pdf)
+    reference_start=next(row[2]-1 for row in p.get_toc() if row[1]=='参考文献')
+    acknowledgment_start=next(row[2]-1 for row in p.get_toc() if re.sub(r'\s','',row[1])=='致谢')
+    assert len(p)==acknowledgment_start+1
     outliers=[];badlinks=[];citation_links=0
     for n,page in enumerate(p,1):
         assert abs(page.rect.width-595.276)<1 and abs(page.rect.height-841.89)<1
@@ -98,7 +109,8 @@ def main():
                 if not 0<=link['page']<len(p):badlinks.append(n)
                 source=page.get_textbox(link['from']+(-1,-2,1,2)).strip()
                 matched=re.search(r'\[\d+\]',source)
-                if matched and n>3 and link['page'] in (58,59):
+                if matched and n>3:
+                    assert reference_start<=link['page']<acknowledgment_start
                     source=matched[0]
                     target=p[link['page']];to=link['to']
                     around=target.get_textbox(fitz.Rect(0,max(0,to.y-3),target.rect.width,min(target.rect.height,to.y+27)))
@@ -116,6 +128,6 @@ def main():
     assert citation_links==docx_stats['reference_links']
     protected=['server','web','docs/materials','docs/references','docs/experiments','docs/validation','docs/thesis/开题报告.md','docs/thesis/开题报告-系统填报版.md','docs/thesis/figures']
     assert not subprocess.check_output(['git','diff','3b7fc4768e4a2588583f109133d378a050da8733','--',*protected],cwd=ROOT)
-    report={'date':'2026-09-21 Asia/Shanghai','docx_sha256':sha(docx),'pdf_sha256':sha(pdf),'docx':docx_stats,'pdf_pages':len(p),'a4':True,'glyph_outliers':outliers,'invalid_internal_links':badlinks,'citation_destinations_verified':citation_links,'toc_pages_checked':len(actual),'protected_baseline_paths_unchanged':protected,'word_counts':stats,'native_word_update':'not performed','visual_review':'separate manual record in DOCUMENT-QA.md'}
+    report={'date':'2026-09-22 Asia/Shanghai','reference_count':len(references),'reference_order':'identical to opening report','docx_sha256':sha(docx),'pdf_sha256':sha(pdf),'docx':docx_stats,'pdf_pages':len(p),'a4':True,'glyph_outliers':outliers,'invalid_internal_links':badlinks,'citation_destinations_verified':citation_links,'toc_pages_checked':len(actual),'protected_baseline_paths_unchanged':protected,'word_counts':stats,'native_word_update':'not performed','visual_review':'separate manual record in DOCUMENT-QA.md'}
     write('document-check.json',report);print(json.dumps(report,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

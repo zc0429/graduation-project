@@ -19,6 +19,7 @@ def main():
     (OUT/'LOCAL-STATUS.json').write_text(json.dumps(status,ensure_ascii=False,indent=2),encoding='utf-8')
     paths=[ROOT/'AGENTS.md',ROOT/'README.md',ROOT/'docs/notes/HANDOFF.md',ROOT/'docs/notes/进度记录.md',ROOT/'docs/thesis/毕业论文.md',ROOT/'docs/thesis/答辩逐页讲稿.md',ROOT/'docs/thesis/答辩追问要点.md',ROOT/'output/docx/论文审阅版.docx',ROOT/'output/pdf/论文审阅版.pdf',ROOT/'output/pptx/答辩审阅版.pptx',OUT/'LOCAL-STATUS.json',bundle]
     paths+=[ROOT/'.gitattributes']
+    paths+=[ROOT/'scripts/documents/align_thesis_references_to_opening.py']
     paths+=[ROOT/'docs/thesis/毕业设计封面与诚信声明.md',ROOT/'output/docx/毕业设计封面与诚信声明-待签署.docx',ROOT/'output/pdf/毕业设计封面与诚信声明-待签署.pdf',ROOT/'docs/notes/毕设待完成事项.md',ROOT/'scripts/documents/build_thesis_frontmatter.py']
     paths+=list((ROOT/'docs/notes/thesis-run-20260920').glob('*'))
     paths+=[p for p in (ROOT/'docs/notes/thesis-run-20260920/mock-demo-20260921').rglob('*') if p.is_file()]
