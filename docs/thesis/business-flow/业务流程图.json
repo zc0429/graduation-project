@@ -1,0 +1,1570 @@
+[
+  {
+    "slug": "01-错题分析与巩固学习",
+    "title": "错题分析与巩固学习业务流程图",
+    "width": 1100,
+    "height": 2310,
+    "lanes": [
+      "学生",
+      "学习平台"
+    ],
+    "note": "前提：学生已登录。分析失败不删除错题或复习计划；按期复习流程见图 02。",
+    "nodes": [
+      {
+        "id": "start",
+        "lane": 0,
+        "x": 170.0,
+        "y": 145,
+        "w": 250,
+        "h": 52,
+        "text": "开始：整理一道错题",
+        "kind": "terminal"
+      },
+      {
+        "id": "input",
+        "lane": 0,
+        "x": 155.0,
+        "y": 245,
+        "w": 280,
+        "h": 72,
+        "text": "填写科目、题干和答案\n确认并提交错题",
+        "kind": "process"
+      },
+      {
+        "id": "check",
+        "lane": 1,
+        "x": 665.0,
+        "y": 245,
+        "w": 280,
+        "h": 72,
+        "text": "检查录入信息",
+        "kind": "process"
+      },
+      {
+        "id": "valid",
+        "lane": 1,
+        "x": 670.0,
+        "y": 365,
+        "w": 270,
+        "h": 110,
+        "text": "信息是否符合要求？",
+        "kind": "decision"
+      },
+      {
+        "id": "fix",
+        "lane": 0,
+        "x": 155.0,
+        "y": 384,
+        "w": 280,
+        "h": 72,
+        "text": "根据提示补充或修改",
+        "kind": "process"
+      },
+      {
+        "id": "save",
+        "lane": 1,
+        "x": 665.0,
+        "y": 525,
+        "w": 280,
+        "h": 72,
+        "text": "保存错题\n同时安排五个节点的复习",
+        "kind": "process"
+      },
+      {
+        "id": "request",
+        "lane": 0,
+        "x": 155.0,
+        "y": 650,
+        "w": 280,
+        "h": 72,
+        "text": "查看已保存的错题\n查看或重新请求分析",
+        "kind": "process"
+      },
+      {
+        "id": "analyze",
+        "lane": 1,
+        "x": 665.0,
+        "y": 650,
+        "w": 280,
+        "h": 72,
+        "text": "参考本人同科目的相关题\n分析错题并提供解析",
+        "kind": "process"
+      },
+      {
+        "id": "success",
+        "lane": 1,
+        "x": 680.0,
+        "y": 790,
+        "w": 250,
+        "h": 110,
+        "text": "分析是否成功？",
+        "kind": "decision"
+      },
+      {
+        "id": "failure",
+        "lane": 0,
+        "x": 155.0,
+        "y": 809,
+        "w": 280,
+        "h": 72,
+        "text": "查看分析失败提示",
+        "kind": "process"
+      },
+      {
+        "id": "retry",
+        "lane": 0,
+        "x": 170.0,
+        "y": 960,
+        "w": 250,
+        "h": 110,
+        "text": "是否重新分析？",
+        "kind": "decision"
+      },
+      {
+        "id": "show",
+        "lane": 1,
+        "x": 665.0,
+        "y": 980,
+        "w": 280,
+        "h": 72,
+        "text": "展示知识点、辅助错因\n及解题解析",
+        "kind": "process"
+      },
+      {
+        "id": "extend",
+        "lane": 0,
+        "x": 160.0,
+        "y": 1190,
+        "w": 270,
+        "h": 110,
+        "text": "是否需要拓展练习？",
+        "kind": "decision"
+      },
+      {
+        "id": "resources",
+        "lane": 1,
+        "x": 665.0,
+        "y": 1209,
+        "w": 280,
+        "h": 72,
+        "text": "按学生选择提供相似题\n或生成三道变式题",
+        "kind": "process"
+      },
+      {
+        "id": "available",
+        "lane": 1,
+        "x": 680.0,
+        "y": 1335,
+        "w": 250,
+        "h": 110,
+        "text": "是否取得\n可用练习题？",
+        "kind": "decision"
+      },
+      {
+        "id": "original",
+        "lane": 0,
+        "x": 155.0,
+        "y": 1354,
+        "w": 280,
+        "h": 72,
+        "text": "选择原题练习",
+        "kind": "process"
+      },
+      {
+        "id": "practice",
+        "lane": 0,
+        "x": 155.0,
+        "y": 1505,
+        "w": 280,
+        "h": 72,
+        "text": "作答并对照答案\n自评对错、提交练习结果",
+        "kind": "process"
+      },
+      {
+        "id": "correct",
+        "lane": 0,
+        "x": 160.0,
+        "y": 1640,
+        "w": 270,
+        "h": 110,
+        "text": "学生自评是否正确？",
+        "kind": "decision"
+      },
+      {
+        "id": "up",
+        "lane": 1,
+        "x": 665.0,
+        "y": 1659,
+        "w": 280,
+        "h": 72,
+        "text": "原题掌握度增加 15\n最高为 100",
+        "kind": "process"
+      },
+      {
+        "id": "down",
+        "lane": 1,
+        "x": 665.0,
+        "y": 1820,
+        "w": 280,
+        "h": 72,
+        "text": "原题掌握度减少 20\n最低为 0",
+        "kind": "process"
+      },
+      {
+        "id": "record",
+        "lane": 1,
+        "x": 665.0,
+        "y": 2010,
+        "w": 280,
+        "h": 72,
+        "text": "保存练习记录\n和掌握度变化",
+        "kind": "process"
+      },
+      {
+        "id": "view",
+        "lane": 0,
+        "x": 155.0,
+        "y": 2010,
+        "w": 280,
+        "h": 72,
+        "text": "查看练习记录\n按需查看个人学情",
+        "kind": "process"
+      },
+      {
+        "id": "end",
+        "lane": 0,
+        "x": 180.0,
+        "y": 2165,
+        "w": 230,
+        "h": 52,
+        "text": "本次学习结束",
+        "kind": "terminal"
+      }
+    ],
+    "edges": [
+      {
+        "source": "start",
+        "target": "input",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            197
+          ],
+          [
+            295.0,
+            245
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "input",
+        "target": "check",
+        "start": "r",
+        "end": "l",
+        "points": [
+          [
+            435.0,
+            281.0
+          ],
+          [
+            665.0,
+            281.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "check",
+        "target": "valid",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            317
+          ],
+          [
+            805.0,
+            365
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "valid",
+        "target": "fix",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            670.0,
+            420.0
+          ],
+          [
+            435.0,
+            420.0
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          550,
+          400
+        ]
+      },
+      {
+        "source": "fix",
+        "target": "input",
+        "start": "l",
+        "end": "l",
+        "points": [
+          [
+            155.0,
+            420.0
+          ],
+          [
+            100,
+            420
+          ],
+          [
+            100,
+            281
+          ],
+          [
+            155.0,
+            281.0
+          ]
+        ],
+        "label": "修改后重新提交",
+        "labelpos": [
+          203,
+          340
+        ]
+      },
+      {
+        "source": "valid",
+        "target": "save",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            475
+          ],
+          [
+            805.0,
+            525
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          830,
+          505
+        ]
+      },
+      {
+        "source": "save",
+        "target": "request",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            597
+          ],
+          [
+            805,
+            620
+          ],
+          [
+            295,
+            620
+          ],
+          [
+            295.0,
+            650
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "request",
+        "target": "analyze",
+        "start": "r",
+        "end": "l",
+        "points": [
+          [
+            435.0,
+            686.0
+          ],
+          [
+            665.0,
+            686.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "analyze",
+        "target": "success",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            722
+          ],
+          [
+            805.0,
+            790
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "success",
+        "target": "failure",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            680.0,
+            845.0
+          ],
+          [
+            435.0,
+            845.0
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          550,
+          825
+        ]
+      },
+      {
+        "source": "failure",
+        "target": "retry",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            881
+          ],
+          [
+            295.0,
+            960
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "retry",
+        "target": "request",
+        "start": "l",
+        "end": "l",
+        "points": [
+          [
+            170.0,
+            1015.0
+          ],
+          [
+            65,
+            1015
+          ],
+          [
+            65,
+            686
+          ],
+          [
+            155.0,
+            686.0
+          ]
+        ],
+        "label": "是：重新请求",
+        "labelpos": [
+          170,
+          745
+        ]
+      },
+      {
+        "source": "retry",
+        "target": "extend",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            1070
+          ],
+          [
+            295.0,
+            1190
+          ]
+        ],
+        "label": "否：继续学习",
+        "labelpos": [
+          405,
+          1100
+        ]
+      },
+      {
+        "source": "success",
+        "target": "show",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            900
+          ],
+          [
+            805.0,
+            980
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          830,
+          945
+        ]
+      },
+      {
+        "source": "show",
+        "target": "extend",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            1052
+          ],
+          [
+            805,
+            1135
+          ],
+          [
+            295,
+            1135
+          ],
+          [
+            295.0,
+            1190
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "extend",
+        "target": "resources",
+        "start": "r",
+        "end": "l",
+        "points": [
+          [
+            430.0,
+            1245.0
+          ],
+          [
+            665.0,
+            1245.0
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          550,
+          1220
+        ]
+      },
+      {
+        "source": "extend",
+        "target": "original",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            1300
+          ],
+          [
+            295.0,
+            1354
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          320,
+          1335
+        ]
+      },
+      {
+        "source": "original",
+        "target": "practice",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            1426
+          ],
+          [
+            295.0,
+            1505
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "resources",
+        "target": "available",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            1281
+          ],
+          [
+            805.0,
+            1335
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "available",
+        "target": "original",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            680.0,
+            1390.0
+          ],
+          [
+            435.0,
+            1390.0
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          550,
+          1365
+        ]
+      },
+      {
+        "source": "available",
+        "target": "practice",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            1445
+          ],
+          [
+            805,
+            1475
+          ],
+          [
+            295,
+            1475
+          ],
+          [
+            295.0,
+            1505
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          830,
+          1460
+        ]
+      },
+      {
+        "source": "practice",
+        "target": "correct",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            1577
+          ],
+          [
+            295.0,
+            1640
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "correct",
+        "target": "up",
+        "start": "r",
+        "end": "l",
+        "points": [
+          [
+            430.0,
+            1695.0
+          ],
+          [
+            665.0,
+            1695.0
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          550,
+          1670
+        ]
+      },
+      {
+        "source": "correct",
+        "target": "down",
+        "start": "b",
+        "end": "l",
+        "points": [
+          [
+            295.0,
+            1750
+          ],
+          [
+            295,
+            1856
+          ],
+          [
+            665.0,
+            1856.0
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          320,
+          1805
+        ]
+      },
+      {
+        "source": "up",
+        "target": "record",
+        "start": "r",
+        "end": "t",
+        "points": [
+          [
+            945.0,
+            1695.0
+          ],
+          [
+            1020,
+            1695
+          ],
+          [
+            1020,
+            1965
+          ],
+          [
+            805,
+            1965
+          ],
+          [
+            805.0,
+            2010
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "down",
+        "target": "record",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            1892
+          ],
+          [
+            805.0,
+            2010
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "record",
+        "target": "view",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            665.0,
+            2046.0
+          ],
+          [
+            435.0,
+            2046.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "view",
+        "target": "end",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            2082
+          ],
+          [
+            295.0,
+            2165
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      }
+    ]
+  },
+  {
+    "slug": "02-按期复习",
+    "title": "按期复习业务流程图",
+    "width": 1100,
+    "height": 1840,
+    "lanes": [
+      "学生",
+      "学习平台"
+    ],
+    "note": "练习提交与确认完成复习相互独立；作答对错不改变既定复习日期。",
+    "nodes": [
+      {
+        "id": "start",
+        "lane": 1,
+        "x": 655.0,
+        "y": 145,
+        "w": 300,
+        "h": 52,
+        "text": "错题保存后进入复习周期",
+        "kind": "terminal"
+      },
+      {
+        "id": "plan",
+        "lane": 1,
+        "x": 635.0,
+        "y": 250,
+        "w": 340,
+        "h": 72,
+        "text": "安排第 1、2、4、7、15 天\n的五条复习任务",
+        "kind": "process"
+      },
+      {
+        "id": "due",
+        "lane": 1,
+        "x": 660.0,
+        "y": 390,
+        "w": 290,
+        "h": 120,
+        "text": "是否有到期或逾期\n未完成任务？",
+        "kind": "decision"
+      },
+      {
+        "id": "wait",
+        "lane": 0,
+        "x": 155.0,
+        "y": 414,
+        "w": 280,
+        "h": 72,
+        "text": "暂无待复习任务\n之后再次查看",
+        "kind": "process"
+      },
+      {
+        "id": "tasks",
+        "lane": 1,
+        "x": 665.0,
+        "y": 585,
+        "w": 280,
+        "h": 92,
+        "text": "展示待复习任务\n针对当天到期任务\n发送站内提醒",
+        "kind": "process"
+      },
+      {
+        "id": "choose",
+        "lane": 0,
+        "x": 155.0,
+        "y": 595,
+        "w": 280,
+        "h": 72,
+        "text": "查看任务并选择错题",
+        "kind": "process"
+      },
+      {
+        "id": "review",
+        "lane": 0,
+        "x": 155.0,
+        "y": 745,
+        "w": 280,
+        "h": 72,
+        "text": "重看原题、答案与解析\n按需要进行练习",
+        "kind": "process"
+      },
+      {
+        "id": "confirm",
+        "lane": 0,
+        "x": 160.0,
+        "y": 900,
+        "w": 270,
+        "h": 120,
+        "text": "是否确认完成\n本次复习？",
+        "kind": "decision"
+      },
+      {
+        "id": "pending",
+        "lane": 1,
+        "x": 665.0,
+        "y": 924,
+        "w": 280,
+        "h": 72,
+        "text": "保留未完成状态\n逾期任务仍可继续处理",
+        "kind": "process"
+      },
+      {
+        "id": "finish",
+        "lane": 1,
+        "x": 665.0,
+        "y": 1130,
+        "w": 280,
+        "h": 72,
+        "text": "记录该条复习任务已完成",
+        "kind": "process"
+      },
+      {
+        "id": "more",
+        "lane": 0,
+        "x": 150.0,
+        "y": 1285,
+        "w": 290,
+        "h": 120,
+        "text": "是否继续处理\n其他待复习任务？",
+        "kind": "decision"
+      },
+      {
+        "id": "report",
+        "lane": 0,
+        "x": 155.0,
+        "y": 1510,
+        "w": 280,
+        "h": 72,
+        "text": "按需查看个人学情\n之后按计划继续复习",
+        "kind": "process"
+      },
+      {
+        "id": "end",
+        "lane": 0,
+        "x": 180.0,
+        "y": 1670,
+        "w": 230,
+        "h": 52,
+        "text": "本次复习结束",
+        "kind": "terminal"
+      }
+    ],
+    "edges": [
+      {
+        "source": "start",
+        "target": "plan",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            197
+          ],
+          [
+            805.0,
+            250
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "plan",
+        "target": "due",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            322
+          ],
+          [
+            805.0,
+            390
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "due",
+        "target": "wait",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            660.0,
+            450.0
+          ],
+          [
+            435.0,
+            450.0
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          550,
+          425
+        ]
+      },
+      {
+        "source": "wait",
+        "target": "end",
+        "start": "l",
+        "end": "l",
+        "points": [
+          [
+            155.0,
+            450.0
+          ],
+          [
+            65,
+            450
+          ],
+          [
+            65,
+            1696
+          ],
+          [
+            180.0,
+            1696.0
+          ]
+        ],
+        "label": "等待后续复习",
+        "labelpos": [
+          170,
+          1630
+        ]
+      },
+      {
+        "source": "due",
+        "target": "tasks",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            510
+          ],
+          [
+            805.0,
+            585
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          830,
+          555
+        ]
+      },
+      {
+        "source": "tasks",
+        "target": "choose",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            665.0,
+            631.0
+          ],
+          [
+            435.0,
+            631.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "choose",
+        "target": "review",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            667
+          ],
+          [
+            295.0,
+            745
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "review",
+        "target": "confirm",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            817
+          ],
+          [
+            295.0,
+            900
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "confirm",
+        "target": "pending",
+        "start": "r",
+        "end": "l",
+        "points": [
+          [
+            430.0,
+            960.0
+          ],
+          [
+            665.0,
+            960.0
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          550,
+          935
+        ]
+      },
+      {
+        "source": "confirm",
+        "target": "finish",
+        "start": "b",
+        "end": "l",
+        "points": [
+          [
+            295.0,
+            1020
+          ],
+          [
+            295,
+            1166
+          ],
+          [
+            665.0,
+            1166.0
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          320,
+          1090
+        ]
+      },
+      {
+        "source": "pending",
+        "target": "end",
+        "start": "r",
+        "end": "r",
+        "points": [
+          [
+            945.0,
+            960.0
+          ],
+          [
+            1020,
+            960
+          ],
+          [
+            1020,
+            1755
+          ],
+          [
+            480,
+            1755
+          ],
+          [
+            480,
+            1696
+          ],
+          [
+            410.0,
+            1696.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "finish",
+        "target": "more",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            805.0,
+            1202
+          ],
+          [
+            805,
+            1245
+          ],
+          [
+            295,
+            1245
+          ],
+          [
+            295.0,
+            1285
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "more",
+        "target": "choose",
+        "start": "l",
+        "end": "l",
+        "points": [
+          [
+            150.0,
+            1345.0
+          ],
+          [
+            105,
+            1345
+          ],
+          [
+            105,
+            631
+          ],
+          [
+            155.0,
+            631.0
+          ]
+        ],
+        "label": "是",
+        "labelpos": [
+          130,
+          1210
+        ]
+      },
+      {
+        "source": "more",
+        "target": "report",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            1405
+          ],
+          [
+            295.0,
+            1510
+          ]
+        ],
+        "label": "否",
+        "labelpos": [
+          320,
+          1460
+        ]
+      },
+      {
+        "source": "report",
+        "target": "end",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            295.0,
+            1582
+          ],
+          [
+            295.0,
+            1670
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      }
+    ]
+  },
+  {
+    "slug": "03-管理与学情查看",
+    "title": "基础管理与学情查看辅助业务流程图",
+    "width": 1100,
+    "height": 1220,
+    "lanes": [
+      "管理员",
+      "学习平台",
+      "教师"
+    ],
+    "note": "上下两段为独立业务，不要求每次学习都执行管理操作；教师查看系统范围汇总。",
+    "nodes": [
+      {
+        "id": "adminstart",
+        "lane": 0,
+        "x": 75.0,
+        "y": 160,
+        "w": 270,
+        "h": 52,
+        "text": "开始：维护基础资料",
+        "kind": "terminal"
+      },
+      {
+        "id": "manage",
+        "lane": 0,
+        "x": 65.0,
+        "y": 275,
+        "w": 290,
+        "h": 108,
+        "text": "维护科目、知识点\n查询或停用账号\n发布公告",
+        "kind": "process"
+      },
+      {
+        "id": "apply",
+        "lane": 1,
+        "x": 420.0,
+        "y": 285,
+        "w": 260,
+        "h": 88,
+        "text": "保存管理操作\n提供可用资料与公告",
+        "kind": "process"
+      },
+      {
+        "id": "adminend",
+        "lane": 0,
+        "x": 90.0,
+        "y": 455,
+        "w": 240,
+        "h": 52,
+        "text": "本次管理结束",
+        "kind": "terminal"
+      },
+      {
+        "id": "teacherstart",
+        "lane": 2,
+        "x": 755.0,
+        "y": 630,
+        "w": 270,
+        "h": 52,
+        "text": "开始：查看汇总学情",
+        "kind": "terminal"
+      },
+      {
+        "id": "request",
+        "lane": 2,
+        "x": 765.0,
+        "y": 758,
+        "w": 250,
+        "h": 72,
+        "text": "选择查看学情报告",
+        "kind": "process"
+      },
+      {
+        "id": "aggregate",
+        "lane": 1,
+        "x": 420.0,
+        "y": 750,
+        "w": 260,
+        "h": 88,
+        "text": "按访问时的现有记录\n汇总系统范围学情",
+        "kind": "process"
+      },
+      {
+        "id": "read",
+        "lane": 2,
+        "x": 750.0,
+        "y": 920,
+        "w": 280,
+        "h": 88,
+        "text": "查看错题、练习、复习\n及知识点掌握情况",
+        "kind": "process"
+      },
+      {
+        "id": "teacherend",
+        "lane": 2,
+        "x": 770.0,
+        "y": 1075,
+        "w": 240,
+        "h": 52,
+        "text": "本次查看结束",
+        "kind": "terminal"
+      }
+    ],
+    "edges": [
+      {
+        "source": "adminstart",
+        "target": "manage",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            210.0,
+            212
+          ],
+          [
+            210.0,
+            275
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "manage",
+        "target": "apply",
+        "start": "r",
+        "end": "l",
+        "points": [
+          [
+            355.0,
+            329.0
+          ],
+          [
+            420.0,
+            329.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "apply",
+        "target": "adminend",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            550.0,
+            373
+          ],
+          [
+            550,
+            415
+          ],
+          [
+            210,
+            415
+          ],
+          [
+            210.0,
+            455
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "teacherstart",
+        "target": "request",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            890.0,
+            682
+          ],
+          [
+            890.0,
+            758
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "request",
+        "target": "aggregate",
+        "start": "l",
+        "end": "r",
+        "points": [
+          [
+            765.0,
+            794.0
+          ],
+          [
+            680.0,
+            794.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "aggregate",
+        "target": "read",
+        "start": "b",
+        "end": "l",
+        "points": [
+          [
+            550.0,
+            838
+          ],
+          [
+            550,
+            964
+          ],
+          [
+            750.0,
+            964.0
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      },
+      {
+        "source": "read",
+        "target": "teacherend",
+        "start": "b",
+        "end": "t",
+        "points": [
+          [
+            890.0,
+            1008
+          ],
+          [
+            890.0,
+            1075
+          ]
+        ],
+        "label": "",
+        "labelpos": null
+      }
+    ]
+  }
+]
