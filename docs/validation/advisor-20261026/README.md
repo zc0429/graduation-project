@@ -48,7 +48,7 @@ JDK 21完整工具链、Maven Wrapper 3.9.16、Node 24.19.0、MySQL 8.4独立容
 
 ## 证据文件
 
-`test-summary.json`按Surefire实际报告汇总；`backend-tests.txt`、`frontend-verify.txt`、`integration.txt`保存本轮输出。`smoke-first-failure.txt`与`smoke-second-failure.txt`保留失败过程，两个targeted-recheck文件保留专项复查。文本日志只移除ANSI控制符，并防御性替换测试密码，不改写测试结果。
+`test-summary.json`按Surefire实际报告汇总；`backend-tests.txt`、`frontend-verify.txt`、`integration.txt`保存本轮输出。`smoke-first-failure.txt`与`smoke-second-failure.txt`保留失败过程，两个targeted-recheck文件保留专项复查。文本日志只移除ANSI控制符与行尾空格，并防御性替换测试密码，不改写测试结果。
 
 `runtime-check.json`保存两种运行模式的实际结果；`document-check.json`保存正文、图源和历史文件检查。截图位于 `docs/thesis/screenshots/advisor-20261026/`，顶部标注Mock；图导出及逐图目检见 `docs/thesis/business-flow/verification.json`。
 

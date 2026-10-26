@@ -1,32 +1,32 @@
 [INFO] Scanning for projects...
-[INFO] 
+[INFO]
 [INFO] --------------------< com.example:wrongbook-server >--------------------
 [INFO] Building wrongbook-server 0.0.1-SNAPSHOT
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
+[INFO]
 [INFO] --- resources:3.3.1:resources (default-resources) @ wrongbook-server ---
 [INFO] Copying 4 resources from src/main/resources to target/classes
 [INFO] Copying 4 resources from src/main/resources to target/classes
-[INFO] 
+[INFO]
 [INFO] --- compiler:3.14.1:compile (default-compile) @ wrongbook-server ---
 [INFO] Recompiling the module because of changed source code.
 [INFO] Compiling 106 source files with javac [debug parameters release 21] to target/classes
 [INFO] /workspace/graduation-project-advisor/server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java: Some input files use or override a deprecated API.
 [INFO] /workspace/graduation-project-advisor/server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java: Recompile with -Xlint:deprecation for details.
-[INFO] 
+[INFO]
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ wrongbook-server ---
 [INFO] skip non existing resourceDirectory /workspace/graduation-project-advisor/server/src/test/resources
-[INFO] 
+[INFO]
 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ wrongbook-server ---
 [INFO] Recompiling the module because of changed dependency.
 [INFO] Compiling 26 source files with javac [debug parameters release 21] to target/test-classes
 [INFO] /workspace/graduation-project-advisor/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java: /workspace/graduation-project-advisor/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java uses or overrides a deprecated API.
 [INFO] /workspace/graduation-project-advisor/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java: Recompile with -Xlint:deprecation for details.
-[INFO] 
+[INFO]
 [INFO] --- surefire:3.5.6:test (default-test) @ wrongbook-server ---
 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
-[INFO] 
+[INFO]
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
@@ -227,11 +227,11 @@ OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader clas
 2026-10-26T03:57:55.735Z  INFO 7969 --- [wrongbook-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.wrongbook.WrongbookServerApplicationTests]: WrongbookServerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
 2026-10-26T03:57:55.741Z  INFO 7969 --- [wrongbook-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.WrongbookServerApplicationTests
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.example.wrongbook.WrongbookServerApplicationTests
-[INFO] 
+[INFO]
 [INFO] Results:
-[INFO] 
+[INFO]
 [INFO] Tests run: 84, Failures: 0, Errors: 0, Skipped: 4
-[INFO] 
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
