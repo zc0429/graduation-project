@@ -1,0 +1,13 @@
+[WebServer] (node:6342) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 2 tests using 1 worker
+
+(node:6361) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/2] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:7:1 › 富文本录入、展示、编辑与练习回显保持格式并过滤旧数据脚本
+[2/2] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:38:1 › 图片识别候选可继续富文本修改，确认前无错题写入并生成本轮界面证据
+  2 passed (12.9s)

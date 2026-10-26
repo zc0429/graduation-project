@@ -1,0 +1,233 @@
+
+> web@0.0.0 e2e:smoke
+> playwright test --config=playwright.ui.config.ts --project=chromium-desktop --project=chromium-laptop --project=chromium-tablet --project=chromium-mobile
+
+[WebServer] (node:2559) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 44 tests using 1 worker
+
+(node:2581) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/44] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:29:1 › 登录页没有严重或关键 WCAG A/AA 问题
+[2/44] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:35:1 › 学生核心工作台没有严重或关键 WCAG A/AA 问题
+[3/44] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:45:1 › 教师与管理员核心页没有严重或关键 WCAG A/AA 问题
+[4/44] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:7:1 › AI 解析展示成功证据并可从空状态重新触发
+[5/44] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:18:1 › AI 失败状态明确提供重试动作
+[6/44] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:32:1 › 相似题只在打开页签后请求并展示当前账号候选
+[7/44] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:42:1 › 生成变式题并提交一次变式练习自评
+[8/44] [chromium-desktop] › e2e/smoke/auth.spec.ts:3:1 › 学生可以登录并进入工作台
+[9/44] [chromium-desktop] › e2e/smoke/auth.spec.ts:14:1 › 登录错误留在表单并显示服务端消息
+[10/44] [chromium-desktop] › e2e/smoke/auth.spec.ts:27:1 › 注册请求成功后回到登录模式
+[11/44] [chromium-desktop] › e2e/smoke/auth.spec.ts:45:1 › 恢复的令牌过期时重定向并保留原目标
+[12/44] [chromium-desktop] › e2e/smoke/report-message.spec.ts:7:1 › 周报展示指标、掌握度与可读趋势表，并可重新生成
+[13/44] [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读
+[14/44] [chromium-desktop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[15/44] [chromium-desktop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[16/44] [chromium-desktop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[17/44] [chromium-desktop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+[18/44] [chromium-desktop] › e2e/smoke/review.spec.ts:7:1 › 复习筛选区分逾期与今日任务
+[19/44] [chromium-desktop] › e2e/smoke/review.spec.ts:19:1 › 确认完成复习后从清单移除任务
+[20/44] [chromium-desktop] › e2e/smoke/routing.spec.ts:3:1 › 未登录访问受保护页面会带回跳地址进入登录页
+[21/44] [chromium-desktop] › e2e/smoke/routing.spec.ts:10:1 › 学生访问管理员页面会回到工作台并显示权限提示
+[22/44] [chromium-desktop] › e2e/smoke/routing.spec.ts:18:1 › 已登录用户访问未知地址会看到 404 并可返回工作台
+[23/44] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:7:1 › 错题列表支持筛选并以 JWT 导出文件
+[24/44] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析
+  1) [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析 ────────────────
+
+    Error: locator.fill: Error: strict mode violation: getByLabel('题干') resolved to 2 elements:
+        1) <div role="group" data-v-1e00e334="" aria-labelledby="el-id-1142-13" class="el-form-item is-required asterisk-left el-form-item--label-top">…</div> aka getByRole('group', { name: '*题干' })
+        2) <div tabindex="0" role="textbox" translate="no" aria-label="题干" aria-multiline="true" contenteditable="true" class="tiptap ProseMirror" data-testid="question-editor">…</div> aka getByTestId('question-editor')
+
+    Call log:
+      - waiting for getByLabel('题干')
+
+
+      29 |   await page.getByRole('option', { name: '数学' }).click()
+      30 |   await page.getByLabel('来源（选填）').fill('专项训练 · 第 6 题')
+    > 31 |   await page.getByLabel('题干').fill('求函数在指定区间内的最大值。')
+         |                               ^
+      32 |   await page.getByLabel('正确答案或订正（选填）').fill('先求导，再比较端点值。')
+      33 |   await page.getByRole('button', { name: '保存并启动解析' }).click()
+      34 |
+        at /workspace/graduation-project-advisor/web/e2e/smoke/student-questions.spec.ts:31:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-录入错题后进入详情并启动解析-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ui-smoke/student-questions-录入错题后进入详情并启动解析-chromium-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-录入错题后进入详情并启动解析-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-smoke/student-questions-录入错题后进入详情并启动解析-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:3329) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[25/44] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案
+  2) [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案 ───────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: getByLabel('题干')
+    Expected: "已知函数 f(x) = x² - 5x + 6，求方程 f(x) = 0 的解。"
+    Error: strict mode violation: getByLabel('题干') resolved to 2 elements:
+        1) <div role="group" data-v-1e00e334="" aria-labelledby="el-id-1744-13" class="el-form-item is-required asterisk-left el-form-item--label-top">…</div> aka getByRole('group', { name: '*题干' })
+        2) <div tabindex="0" role="textbox" translate="no" aria-label="题干" aria-multiline="true" contenteditable="true" class="tiptap ProseMirror" data-testid="question-editor">…</div> aka getByTestId('question-editor')
+
+    Call log:
+      - Expect "toHaveText" with timeout 10000ms
+      - waiting for getByLabel('题干')
+
+
+      61 |
+      62 |   await expect(page.locator('.el-select__selected-item').filter({ hasText: '数学' })).toBeVisible()
+    > 63 |   await expect(page.getByLabel('题干')).toHaveText('已知函数 f(x) = x² - 5x + 6，求方程 f(x) = 0 的解。')
+         |                                       ^
+      64 |   await expect(page.getByLabel('来源（选填）')).toHaveValue('高一数学课堂练习')
+      65 |   await expect(page.getByText('x = 3', { exact: true })).toBeVisible()
+      66 |   await expect(page.getByText('AI 识别结果仅供辅助，请核对后再保存。')).toBeVisible()
+        at /workspace/graduation-project-advisor/web/e2e/smoke/student-questions.spec.ts:63:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-图片识别回填普通表单但不自动保存或污染正确答案-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ui-smoke/student-questions-图片识别回填普通表单但不自动保存或污染正确答案-chromium-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-图片识别回填普通表单但不自动保存或污染正确答案-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-smoke/student-questions-图片识别回填普通表单但不自动保存或污染正确答案-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:3399) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[26/44] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存
+  3) [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存 ───────────
+
+    Error: locator.fill: Error: strict mode violation: getByLabel('题干') resolved to 2 elements:
+        1) <div role="group" data-v-1e00e334="" aria-labelledby="el-id-2359-13" class="el-form-item is-required asterisk-left el-form-item--label-top">…</div> aka getByRole('group', { name: '*题干' })
+        2) <div tabindex="0" role="textbox" translate="no" aria-label="题干" aria-multiline="true" contenteditable="true" class="tiptap ProseMirror" data-testid="question-editor">…</div> aka getByTestId('question-editor')
+
+    Call log:
+      - waiting for getByLabel('题干')
+
+
+      89 |   await page.getByLabel('科目').click()
+      90 |   await page.getByRole('option', { name: '数学' }).click()
+    > 91 |   await page.getByLabel('题干').fill('识别失败后手工填写的题目。')
+         |                               ^
+      92 |   await page.getByRole('button', { name: '保存并启动解析' }).click()
+      93 |
+      94 |   await expect(page).toHaveURL(/\/question\/203$/)
+        at /workspace/graduation-project-advisor/web/e2e/smoke/student-questions.spec.ts:91:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-图片识别失败后仍可手工填写并由用户保存-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ui-smoke/student-questions-图片识别失败后仍可手工填写并由用户保存-chromium-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-图片识别失败后仍可手工填写并由用户保存-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-smoke/student-questions-图片识别失败后仍可手工填写并由用户保存-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:3471) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[27/44] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除
+  4) [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除 ────────────────
+
+    Error: locator.fill: Error: strict mode violation: getByRole('dialog', { name: '编辑错题' }).getByLabel('题干') resolved to 2 elements:
+        1) <div role="group" data-v-3a0b48fa="" aria-labelledby="el-id-2361-16" class="el-form-item is-required asterisk-left el-form-item--label-top">…</div> aka getByRole('group', { name: '*题干' })
+        2) <div tabindex="0" role="textbox" translate="no" aria-label="题干" aria-multiline="true" contenteditable="true" class="tiptap ProseMirror" data-testid="question-editor">…</div> aka getByTestId('question-editor')
+
+    Call log:
+      - waiting for getByRole('dialog', { name: '编辑错题' }).getByLabel('题干')
+
+
+      101 |   await page.getByRole('button', { name: '编辑错题' }).click()
+      102 |   const editDialog = page.getByRole('dialog', { name: '编辑错题' })
+    > 103 |   await editDialog.getByLabel('题干').fill('已修订：讨论函数单调性与参数范围。')
+          |                                     ^
+      104 |   await editDialog.getByRole('button', { name: '保存修改' }).click()
+      105 |   await expect(page.getByText('已修订：讨论函数单调性与参数范围。', { exact: true })).toBeVisible()
+      106 |
+        at /workspace/graduation-project-advisor/web/e2e/smoke/student-questions.spec.ts:103:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:3543) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[28/44] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:3:1 › 教师周报只声明并展示全站聚合范围
+[29/44] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:13:1 › 管理员可筛选并逻辑注销其他用户
+[30/44] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:27:1 › 管理员可新增并编辑科目
+[31/44] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:48:1 › 管理员可新增章节、添加考点并删除叶节点
+[32/44] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:71:1 › 管理员可发布公告且公告立即进入列表
+(node:3847) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[33/44] [chromium-laptop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[34/44] [chromium-laptop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[35/44] [chromium-laptop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[36/44] [chromium-laptop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:4019) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[37/44] [chromium-tablet] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[38/44] [chromium-tablet] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[39/44] [chromium-tablet] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[40/44] [chromium-tablet] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:4129) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[41/44] [chromium-mobile] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[42/44] [chromium-mobile] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[43/44] [chromium-mobile] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[44/44] [chromium-mobile] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+  4 failed
+    [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析 ─────────────────
+    [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案 ────────
+    [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存 ────────────
+    [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除 ─────────────────
+  40 passed (2.1m)

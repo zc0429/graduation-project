@@ -1,0 +1,113 @@
+
+> web@0.0.0 e2e:smoke
+> playwright test --config=playwright.ui.config.ts --project=chromium-desktop --project=chromium-laptop --project=chromium-tablet --project=chromium-mobile
+
+[WebServer] (node:4482) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 46 tests using 1 worker
+
+(node:4667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/46] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:29:1 › 登录页没有严重或关键 WCAG A/AA 问题
+[2/46] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:35:1 › 学生核心工作台没有严重或关键 WCAG A/AA 问题
+[3/46] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:45:1 › 教师与管理员核心页没有严重或关键 WCAG A/AA 问题
+[4/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:7:1 › AI 解析展示成功证据并可从空状态重新触发
+[5/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:18:1 › AI 失败状态明确提供重试动作
+[6/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:32:1 › 相似题只在打开页签后请求并展示当前账号候选
+[7/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:42:1 › 生成变式题并提交一次变式练习自评
+[8/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:3:1 › 学生可以登录并进入工作台
+[9/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:14:1 › 登录错误留在表单并显示服务端消息
+[10/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:27:1 › 注册请求成功后回到登录模式
+[11/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:45:1 › 恢复的令牌过期时重定向并保留原目标
+[12/46] [chromium-desktop] › e2e/smoke/report-message.spec.ts:7:1 › 周报展示指标、掌握度与可读趋势表，并可重新生成
+[13/46] [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读
+[14/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[15/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[16/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[17/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+[18/46] [chromium-desktop] › e2e/smoke/review.spec.ts:7:1 › 复习筛选区分逾期与今日任务
+[19/46] [chromium-desktop] › e2e/smoke/review.spec.ts:19:1 › 确认完成复习后从清单移除任务
+[20/46] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:7:1 › 富文本录入、展示、编辑与练习回显保持格式并过滤旧数据脚本
+[21/46] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:38:1 › 图片识别候选可继续富文本修改，确认前无错题写入并生成本轮界面证据
+[22/46] [chromium-desktop] › e2e/smoke/routing.spec.ts:3:1 › 未登录访问受保护页面会带回跳地址进入登录页
+[23/46] [chromium-desktop] › e2e/smoke/routing.spec.ts:10:1 › 学生访问管理员页面会回到工作台并显示权限提示
+[24/46] [chromium-desktop] › e2e/smoke/routing.spec.ts:18:1 › 已登录用户访问未知地址会看到 404 并可返回工作台
+[25/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:7:1 › 错题列表支持筛选并以 JWT 导出文件
+[26/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析
+[27/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案
+[28/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存
+[29/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除
+  1) [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除 ────────────────
+
+    Error: locator.click: Error: strict mode violation: getByRole('button', { name: '删除' }) resolved to 2 elements:
+        1) <button type="button" data-v-3a0b48fa="" aria-disabled="false" class="el-button el-button--danger is-plain">…</button> aka getByRole('button', { name: '删除', exact: true })
+        2) <button disabled type="button" aria-label="删除线" data-v-497f7304="" aria-pressed="false">删除线</button> aka getByRole('button', { name: '删除线' })
+
+    Call log:
+      - waiting for getByRole('button', { name: '删除' })
+
+
+      105 |   await expect(page.getByText('已修订：讨论函数单调性与参数范围。', { exact: true })).toBeVisible()
+      106 |
+    > 107 |   await page.getByRole('button', { name: '删除' }).click()
+          |                                                  ^
+      108 |   const confirmDialog = page.getByRole('dialog', { name: '删除错题' })
+      109 |   await confirmDialog.getByRole('button', { name: '确认删除' }).click()
+      110 |
+        at /workspace/graduation-project-advisor/web/e2e/smoke/student-questions.spec.ts:107:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-smoke/student-questions-错题详情可编辑并在确认后删除-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:5315) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[30/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:3:1 › 教师周报只声明并展示全站聚合范围
+[31/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:13:1 › 管理员可筛选并逻辑注销其他用户
+[32/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:27:1 › 管理员可新增并编辑科目
+[33/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:48:1 › 管理员可新增章节、添加考点并删除叶节点
+[34/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:71:1 › 管理员可发布公告且公告立即进入列表
+(node:5438) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[35/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[36/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[37/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[38/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:5550) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[39/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[40/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[41/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[42/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:5662) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[43/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[44/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[45/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[46/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+  1 failed
+    [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除 ─────────────────
+  45 passed (2.1m)

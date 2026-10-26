@@ -2,7 +2,7 @@
 <rect width="100%" height="100%" fill="white"/>
 <rect x="18" y="6" width="410" height="43" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
 <text x="223.0" y="23.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">浏览器：Vue 3 / Element Plus / Pinia / Vue Router</text>
-<text x="223.0" y="37.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">页面、图表、Axios 请求与轮询</text>
+<text x="223.0" y="37.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">富文本编辑、图表、Axios 请求与轮询</text>
 <rect x="18" y="79" width="410" height="43" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
 <text x="223.0" y="96.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">Spring Boot 接口层：Controller + AuthInterceptor</text>
 <text x="223.0" y="110.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">JWT 校验、数据库角色与账号状态、参数校验</text>
@@ -28,12 +28,12 @@
 <polygon points="335,244 332.1234467683748,238.73450462865776 337.8765532316252,238.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
 <rect x="18" y="341" width="187" height="65" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
 <text x="111.5" y="355.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">LlmClient 模型网关</text>
-<text x="111.5" y="369.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">智谱 glm-4.7-flash 文本生成</text>
+<text x="111.5" y="369.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">智谱 GLM 大模型文本生成</text>
 <text x="111.5" y="383.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">embedding-3：1024 维</text>
 <text x="111.5" y="397.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">Mock 用于离线与常规回归</text>
 <rect x="241" y="341" width="187" height="65" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
 <text x="334.5" y="355.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">独立图片识别客户端</text>
-<text x="334.5" y="369.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">glm-5.3-flash（默认关闭）</text>
+<text x="334.5" y="369.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">GLM 多模态识别（默认开启）</text>
 <text x="334.5" y="383.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">单图识别只返回候选值</text>
 <text x="334.5" y="397.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">识别阶段不写业务表</text>
 <polyline points="18,179 5,179 5,326 110,326 110,341" fill="none" stroke="#292929" stroke-width=".7" />

@@ -16,13 +16,37 @@
     "id": "3-2",
     "caption": "图 3.2　错题学习业务闭环",
     "evidence": [
-      "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java",
-      "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java",
-      "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
-      "server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java",
-      "web/src/views/question/QuestionCreateView.vue"
+      "docs/thesis/business-flow/业务流程图.drawio",
+      "docs/thesis/business-flow/业务流程图.json",
+      "docs/notes/导师意见落实-20261026-审计与计划.md"
     ],
-    "height_pt": 512,
+    "height_pt": 612.8632881818181,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "3-3",
+    "caption": "图 3.3　按期复习业务泳道图",
+    "evidence": [
+      "docs/thesis/business-flow/业务流程图.drawio",
+      "docs/thesis/business-flow/业务流程图.json",
+      "docs/notes/导师意见落实-20261026-审计与计划.md"
+    ],
+    "height_pt": 450.5153972727273,
+    "width_mm": 157.5,
+    "png_dpi": 300,
+    "screenshots": []
+  },
+  {
+    "id": "3-4",
+    "caption": "图 3.4　管理与学情查看业务泳道图",
+    "evidence": [
+      "docs/thesis/business-flow/业务流程图.drawio",
+      "docs/thesis/business-flow/业务流程图.json",
+      "docs/notes/导师意见落实-20261026-审计与计划.md"
+    ],
+    "height_pt": 430.2219109090909,
     "width_mm": 157.5,
     "png_dpi": 300,
     "screenshots": []

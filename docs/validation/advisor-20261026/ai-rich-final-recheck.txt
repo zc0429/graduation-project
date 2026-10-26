@@ -1,0 +1,17 @@
+[WebServer] (node:8446) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 6 tests using 1 worker
+
+(node:8465) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/6] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:7:1 › AI 解析展示成功证据并可从空状态重新触发
+[2/6] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:18:1 › AI 失败状态明确提供重试动作
+[3/6] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:32:1 › 相似题只在打开页签后请求并展示当前账号候选
+[4/6] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:42:1 › 生成变式题并提交一次变式练习自评
+[5/6] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:7:1 › 富文本录入、展示、编辑与练习回显保持格式并过滤旧数据脚本
+[6/6] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:38:1 › 图片识别候选可继续富文本修改，确认前无错题写入并生成本轮界面证据
+  6 passed (24.5s)

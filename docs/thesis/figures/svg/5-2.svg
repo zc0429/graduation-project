@@ -2,7 +2,7 @@
 <rect width="100%" height="100%" fill="white"/>
 <rect x="30" y="8" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
 <text x="223.0" y="28.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">读取当前错题输入快照</text>
-<text x="223.0" y="42.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">题干、科目、可选答案</text>
+<text x="223.0" y="42.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">纯文本题干、科目、可选答案</text>
 <rect x="30" y="80" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
 <text x="223.0" y="100.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">embedding-3 生成题干向量</text>
 <text x="223.0" y="114.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">客户端检查 1024 维与有限数</text>
@@ -24,7 +24,7 @@
 <polyline points="223,275 223,299" fill="none" stroke="#292929" stroke-width=".7" />
 <polygon points="223,299 220.12344676837478,293.73450462865776 225.87655323162522,293.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
 <rect x="30" y="372" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
-<text x="223.0" y="392.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">调用 glm-4.7-flash</text>
+<text x="223.0" y="392.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">调用智谱 GLM 大模型</text>
 <text x="223.0" y="406.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">校验精确字段、候选 ID、难度 1-5 和中文文本</text>
 <polyline points="223,348 223,372" fill="none" stroke="#292929" stroke-width=".7" />
 <polygon points="223,372 220.12344676837478,366.73450462865776 225.87655323162522,366.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>

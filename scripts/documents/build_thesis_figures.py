@@ -63,6 +63,13 @@ def render(scene, c, dx=0, top=None):
     top = h if top is None else top
     c.saveState()
     c.translate(dx, top-h)
+    if scene.get('business_flow_slug'):
+        from build_business_swimlanes import SCENES, draw
+        business = next(item for item in SCENES if item['slug'] == scene['business_flow_slug'])
+        c.scale(WIDTH / business['width'], WIDTH / business['width'])
+        draw(business, c)
+        c.restoreState()
+        return
     c.setLineWidth(.7)
     for op in scene['ops']:
         k = op['kind']
@@ -100,6 +107,11 @@ def render(scene, c, dx=0, top=None):
 
 
 def svg(scene):
+    if scene.get('business_flow_slug'):
+        source = ROOT/'docs/thesis/business-flow'/(scene['business_flow_slug']+'.svg')
+        text = source.read_text(encoding='utf-8')
+        return re.sub(r'width="1100" height="[0-9]+"',
+                      f'width="157.5mm" height="{scene["height"]*25.4/72:.4f}mm"', text, count=1)
     out=[f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="{scene["height"]*25.4/72:.4f}mm" viewBox="0 0 {WIDTH} {scene["height"]}">',
          '<rect width="100%" height="100%" fill="white"/>']
     for i,o in enumerate(scene['ops']):

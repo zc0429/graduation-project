@@ -1,11 +1,12 @@
-"""Business-facing swimlanes: editable draw.io, SVG, PNG and a three-page A3 PDF.
+"""Business-facing swimlanes: editable draw.io, SVG, PNG and individual and combined A4 PDFs.
 
 Run: python -X utf8 scripts/documents/build_business_swimlanes.py
-Only creates standalone review diagrams; does not replace numbered thesis figures.
+Creates editable and publication exports from the same explicit node/edge data.
 """
 from pathlib import Path
 import json
 import math
+import os
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape
 
@@ -13,13 +14,21 @@ import pymupdf as fitz
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.lib.pagesizes import A3
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / 'docs/thesis/business-flow'
 PDF = ROOT / 'output/pdf/业务流程图-导师讲解版.pdf'
 FONT = 'BusinessSong'
-pdfmetrics.registerFont(TTFont(FONT, 'C:/Windows/Fonts/simsun.ttc', subfontIndex=0))
+font_candidates = [os.environ.get('BUSINESS_FLOW_FONT', ''), 'C:/Windows/Fonts/simsun.ttc',
+                   str(Path.home()/'.local/share/fonts/NotoSerifSC.ttf')]
+font_path = next((path for path in font_candidates if path and Path(path).is_file()), None)
+if font_path:
+    pdfmetrics.registerFont(TTFont(FONT, font_path, subfontIndex=0))
+else:
+    FONT = 'STSong-Light'
+    pdfmetrics.registerFont(UnicodeCIDFont(FONT))
 INK = '#25313a'
 ACCENT = '#355e76'
 SCENES = []
@@ -53,101 +62,108 @@ def edge(s, a, b, start='b', end='t', bends=(), label='', labelpos=None):
                            points=pts, label=label, labelpos=labelpos))
 
 
-s = scene('01-错题分析与巩固学习', '错题分析与巩固学习业务流程图', 2310,
-          ['学生', '学习平台'],
-          '前提：学生已登录。分析失败不删除错题或复习计划；按期复习流程见图 02。')
-a = node(s, 'start', 0, 145, '开始：整理一道错题', 'terminal', 250, 52)
-b = node(s, 'input', 0, 245, '填写科目、题干和答案\n确认并提交错题')
-c = node(s, 'check', 1, 245, '检查录入信息')
-d = node(s, 'valid', 1, 365, '信息是否符合要求？', 'decision', 270, 110)
-f = node(s, 'fix', 0, 384, '根据提示补充或修改')
-g = node(s, 'save', 1, 525, '保存错题\n同时安排五个节点的复习')
-h = node(s, 'request', 0, 650, '查看已保存的错题\n查看或重新请求分析')
-i = node(s, 'analyze', 1, 650, '参考本人同科目的相关题\n分析错题并提供解析')
-j = node(s, 'success', 1, 790, '分析是否成功？', 'decision', 250, 110)
-k = node(s, 'failure', 0, 809, '查看分析失败提示')
-l = node(s, 'retry', 0, 960, '是否重新分析？', 'decision', 250, 110)
-m = node(s, 'show', 1, 980, '展示知识点、辅助错因\n及解题解析')
-n = node(s, 'extend', 0, 1190, '是否需要拓展练习？', 'decision', 270, 110)
-o = node(s, 'resources', 1, 1209, '按学生选择提供相似题\n或生成三道变式题')
-o2 = node(s, 'available', 1, 1335, '是否取得\n可用练习题？', 'decision', 250, 110)
-p = node(s, 'original', 0, 1354, '选择原题练习')
-q = node(s, 'practice', 0, 1505, '作答并对照答案\n自评对错、提交练习结果')
-r = node(s, 'correct', 0, 1640, '学生自评是否正确？', 'decision', 270, 110)
-t = node(s, 'up', 1, 1659, '原题掌握度增加 15\n最高为 100')
-u = node(s, 'down', 1, 1820, '原题掌握度减少 20\n最低为 0')
-v = node(s, 'record', 1, 2010, '保存练习记录\n和掌握度变化')
-w = node(s, 'view', 0, 2010, '查看练习记录\n按需查看个人学情')
-z = node(s, 'end', 0, 2165, '本次学习结束', 'terminal', 230, 52)
-edge(s,a,b); edge(s,b,c,'r','l'); edge(s,c,d)
-edge(s,d,f,'l','r',label='否',labelpos=(550,400))
-edge(s,f,b,'l','l',[(100,420),(100,281)],label='修改后重新提交',labelpos=(203,340))
-edge(s,d,g,label='是',labelpos=(830,505))
-edge(s,g,h,'b','t',[(805,620),(295,620)])
-edge(s,h,i,'r','l'); edge(s,i,j)
-edge(s,j,k,'l','r',label='否',labelpos=(550,825))
-edge(s,k,l)
-edge(s,l,h,'l','l',[(65,1015),(65,686)],label='是：重新请求',labelpos=(170,745))
-edge(s,l,n,label='否：继续学习',labelpos=(405,1100))
-edge(s,j,m,label='是',labelpos=(830,945))
-edge(s,m,n,'b','t',[(805,1135),(295,1135)])
-edge(s,n,o,'r','l',label='是',labelpos=(550,1220))
-edge(s,n,p,label='否',labelpos=(320,1335))
-edge(s,p,q)
-edge(s,o,o2)
-edge(s,o2,p,'l','r',label='否',labelpos=(550,1365))
-edge(s,o2,q,'b','t',[(805,1475),(295,1475)],label='是',labelpos=(830,1460))
-edge(s,q,r)
-edge(s,r,t,'r','l',label='是',labelpos=(550,1670))
-edge(s,r,u,'b','l',[(295,1856)],label='否',labelpos=(320,1805))
-edge(s,t,v,'r','t',[(1020,1695),(1020,1965),(805,1965)])
-edge(s,u,v)
-edge(s,v,w,'l','r'); edge(s,w,z)
+# Layout is deliberately compact enough for a portrait A4 page.
+s = scene('01-错题分析与巩固学习', '错题分析与巩固学习业务流程图', 1510,
+          ['学生', '学习平台', 'AI 服务'],
+          '识别失败可手录；解析失败可重试，已存错题与计划保留。\n练习由学生自评，平台保存记录并更新掌握度。')
+a=node(s,'start',0,155,'开始','terminal',160,36)
+b=node(s,'image',0,215,'图片录入？','decision',220,66)
+c=node(s,'upload',0,315,'上传单题图片',w=240,h=54)
+d=node(s,'imagecheck',1,315,'校验图片\n请求识别',w=240,h=54)
+e=node(s,'recognize',2,315,'识别题干、科目\n作答与来源',w=240,h=54)
+f=node(s,'manual',0,410,'手工录入\n富文本编辑',w=240,h=54)
+g=node(s,'candidate',1,410,'回填候选内容\n或显示错误提示',w=240,h=54)
+h=node(s,'confirm',0,505,'核对并编辑\n确认提交',w=240,h=54)
+i=node(s,'save',1,505,'校验并保存\n错题与图片',w=240,h=54)
+j=node(s,'plans',1,595,'创建五条复习计划\n独立请求后台解析',w=260,h=54)
+k=node(s,'embed',2,595,'生成题干文本向量',w=240,h=54)
+l=node(s,'retrieve',1,685,'检索本人参考题\n组装分析输入',w=240,h=54)
+m=node(s,'analyze',2,685,'辅助归类、错因\n与解题解析',w=240,h=54)
+n=node(s,'status',1,775,'校验模型结果\n记录成功或失败',w=240,h=54)
+o=node(s,'read',0,775,'查看解析\n或失败提示',w=240,h=54)
+p=node(s,'extend',0,865,'拓展练习？','decision',220,66)
+q=node(s,'variantchoice',1,865,'请求变式？','decision',220,66)
+r=node(s,'variant',2,871,'生成三道变式题',w=240,h=54)
+t=node(s,'original',0,975,'选择原题练习',w=240,h=54)
+u=node(s,'similar',1,975,'检索本人\n相似题',w=150,h=54)
+u['x']=392
+sv=node(s,'savevariant',1,975,'校验结果\n保存变式题',w=150,h=54)
+sv['x']=558
+v=node(s,'available',1,1070,'有可用题？','decision',220,66)
+w=node(s,'exercise',0,1160,'选择题目作答\n对照答案自评',w=240,h=54)
+x=node(s,'record',1,1160,'保存练习记录\n更新原题掌握度',w=240,h=54)
+y=node(s,'feedback',0,1280,'查看学习反馈',w=240,h=54)
+z=node(s,'end',0,1390,'结束','terminal',160,36)
+edge(s,a,b)
+edge(s,b,c,label='是',labelpos=(238,301))
+edge(s,b,f,'l','l',[(65,248),(65,437)],label='否',labelpos=(86,388))
+edge(s,c,d,'r','l');edge(s,d,e,'r','l')
+edge(s,e,g,'b','t',[(890,389),(550,389)])
+edge(s,g,h,'b','t',[(550,485),(210,485)])
+edge(s,f,h)
+edge(s,h,i,'r','l')
+edge(s,i,g,'r','r',[(700,532),(700,437)],label='校验失败',labelpos=(780,486))
+edge(s,i,j,label='成功',labelpos=(584,581))
+edge(s,j,k,'r','l')
+edge(s,k,l,'b','t',[(890,671),(550,671)])
+edge(s,l,m,'r','l')
+edge(s,m,n,'b','t',[(890,756),(550,756)])
+edge(s,n,o,'l','r');edge(s,o,p)
+edge(s,p,q,'r','l',label='是',labelpos=(380,888))
+edge(s,p,t,label='否',labelpos=(235,958))
+edge(s,q,r,'r','l',label='是',labelpos=(720,888))
+edge(s,q,u,'b','t',[(550,948),(467,948)],label='否',labelpos=(520,956))
+edge(s,r,sv,'b','t',[(890,950),(633,950)])
+edge(s,u,v,'b','t',[(467,1050),(550,1050)])
+edge(s,sv,v,'b','t',[(633,1050),(550,1050)])
+edge(s,v,w,'b','t',[(550,1148),(210,1148)],label='是',labelpos=(576,1147))
+edge(s,v,t,'l','r',[(380,1103),(380,1002)],label='否',labelpos=(402,1065))
+edge(s,t,w)
+edge(s,w,x,'r','l')
+edge(s,x,y,'b','r',[(550,1307)])
+edge(s,y,z)
 
-s = scene('02-按期复习', '按期复习业务流程图', 1840,
+s = scene('02-按期复习', '按期复习业务流程图', 1110,
           ['学生', '学习平台'],
-          '练习提交与确认完成复习相互独立；作答对错不改变既定复习日期。')
-a=node(s,'start',1,145,'错题保存后进入复习周期','terminal',300,52)
-b=node(s,'plan',1,250,'安排第 1、2、4、7、15 天\n的五条复习任务',w=340)
-c=node(s,'due',1,390,'是否有到期或逾期\n未完成任务？','decision',290,120)
-d=node(s,'wait',0,414,'暂无待复习任务\n之后再次查看')
-e=node(s,'tasks',1,585,'展示待复习任务\n针对当天到期任务\n发送站内提醒',h=92)
-f=node(s,'choose',0,595,'查看任务并选择错题')
-g=node(s,'review',0,745,'重看原题、答案与解析\n按需要进行练习')
-h=node(s,'confirm',0,900,'是否确认完成\n本次复习？','decision',270,120)
-i=node(s,'pending',1,924,'保留未完成状态\n逾期任务仍可继续处理')
-j=node(s,'finish',1,1130,'记录该条复习任务已完成')
-k=node(s,'more',0,1285,'是否继续处理\n其他待复习任务？','decision',290,120)
-l=node(s,'report',0,1510,'按需查看个人学情\n之后按计划继续复习')
-m=node(s,'end',0,1670,'本次复习结束','terminal',230,52)
-edge(s,a,b);edge(s,b,c)
-edge(s,c,d,'l','r',label='否',labelpos=(550,425))
-edge(s,d,m,'l','l',[(65,450),(65,1696)],label='等待后续复习',labelpos=(170,1630))
-edge(s,c,e,label='是',labelpos=(830,555))
-edge(s,e,f,'l','r');edge(s,f,g);edge(s,g,h)
-edge(s,h,i,'r','l',label='否',labelpos=(550,935))
-edge(s,h,j,'b','l',[(295,1166)],label='是',labelpos=(320,1090))
-edge(s,i,m,'r','r',[(1020,960),(1020,1755),(480,1755),(480,1696)])
-edge(s,j,k,'b','t',[(805,1245),(295,1245)])
-edge(s,k,f,'l','l',[(105,1345),(105,631)],label='是',labelpos=(130,1210))
-edge(s,k,l,label='否',labelpos=(320,1460));edge(s,l,m)
+          '保存错题即建第1/2/4/7/15天计划；每日8点发送当日到期提醒。\n练习不自动完成复习任务，日期不因自评结果重排。')
+a=node(s,'start',0,155,'开始：查看复习任务','terminal',300,42)
+b=node(s,'open',0,245,'查看提醒或任务列表',w=320,h=60)
+c=node(s,'query',1,245,'查询到期、逾期\n未完成的任务',w=320,h=60)
+d=node(s,'due',1,350,'有待复习任务？','decision',300,86)
+e=node(s,'empty',0,363,'暂无任务\n之后再查看',w=280,h=60)
+f=node(s,'show',1,490,'展示待复习任务',w=300,h=60)
+g=node(s,'review',0,490,'选择错题并复习\n按需进行自评练习',w=320,h=60)
+h=node(s,'confirm',0,610,'确认完成？','decision',270,86)
+i=node(s,'pending',1,623,'保留未完成状态\n逾期仍可处理',w=300,h=60)
+j=node(s,'finish',1,770,'记录该条任务已完成',w=320,h=60)
+k=node(s,'feedback',0,770,'查看学习反馈',w=300,h=60)
+z=node(s,'end',0,960,'结束本次复习','terminal',260,42)
+edge(s,a,b);edge(s,b,c,'r','l');edge(s,c,d)
+edge(s,d,e,'l','r',label='否',labelpos=(550,383))
+edge(s,d,f,label='是',labelpos=(830,473))
+edge(s,f,g,'l','r');edge(s,g,h)
+edge(s,h,i,'r','l',label='否',labelpos=(550,643))
+edge(s,h,j,'b','t',[(295,735),(805,735)],label='是',labelpos=(320,721))
+edge(s,j,k,'l','r');edge(s,k,z)
+edge(s,e,z,'l','l',[(65,393),(65,981)])
+edge(s,i,z,'r','b',[(1040,653),(1040,1040),(295,1040)])
 
-s = scene('03-管理与学情查看', '基础管理与学情查看辅助业务流程图', 1220,
+s = scene('03-管理与学情查看', '管理与学情查看业务流程图', 1060,
           ['管理员', '学习平台', '教师'],
-          '上下两段为独立业务，不要求每次学习都执行管理操作；教师查看系统范围汇总。')
-a=node(s,'adminstart',0,160,'开始：维护基础资料','terminal',270,52)
-b=node(s,'manage',0,275,'维护科目、知识点\n查询或停用账号\n发布公告',w=290,h=108)
-c=node(s,'apply',1,285,'保存管理操作\n提供可用资料与公告',w=260,h=88)
-d=node(s,'adminend',0,455,'本次管理结束','terminal',240,52)
-e=node(s,'teacherstart',2,630,'开始：查看汇总学情','terminal',270,52)
-f=node(s,'request',2,758,'选择查看学情报告',w=250)
-g=node(s,'aggregate',1,750,'按访问时的现有记录\n汇总系统范围学情',w=260,h=88)
-h=node(s,'read',2,920,'查看错题、练习、复习\n及知识点掌握情况',w=280,h=88)
-i=node(s,'teacherend',2,1075,'本次查看结束','terminal',240,52)
+          '两段业务独立，管理操作按需选择。\n教师仅查看系统汇总，不含班级或学生个人钻取。')
+a=node(s,'adminstart',0,170,'开始：基础维护','terminal',250,44)
+b=node(s,'manage',0,285,'维护科目与知识点\n查询、停用账号\n按需发布公告',w=280,h=100)
+c=node(s,'apply',1,305,'校验并保存操作\n提供基础数据',w=250,h=60)
+d=node(s,'adminend',0,460,'管理结束','terminal',210,44)
+e=node(s,'teacherstart',2,600,'开始：查看学情','terminal',250,44)
+f=node(s,'request',2,705,'请求学情报告',w=250,h=60)
+g=node(s,'aggregate',1,705,'按当前记录\n聚合系统学情',w=250,h=60)
+h=node(s,'read',2,820,'查看错题、练习\n复习与掌握度汇总',w=280,h=60)
+i=node(s,'teacherend',2,940,'查看结束','terminal',210,44)
 edge(s,a,b);edge(s,b,c,'r','l')
-edge(s,c,d,'b','t',[(550,415),(210,415)])
+edge(s,c,d,'b','t',[(550,425),(210,425)])
 edge(s,e,f);edge(s,f,g,'l','r')
-edge(s,g,h,'b','l',[(550,964)])
+edge(s,g,h,'b','l',[(550,850)])
 edge(s,h,i)
 
 
@@ -197,7 +213,7 @@ def draw(s, c):
         for idx,line in enumerate(lines):
             baseline=first+idx*size*1.3+size*.35
             c.drawCentredString(x,H-baseline,line)
-            parts.append(f'<text x="{x}" y="{baseline}" text-anchor="middle" font-family="SimSun,宋体,serif" font-size="{size}" fill="{color}">{escape(line)}</text>')
+            parts.append(f'<text x="{x}" y="{baseline}" text-anchor="middle" font-family="Noto Serif SC,Noto Serif CJK SC,SimSun,宋体,serif" font-size="{size}" fill="{color}">{escape(line)}</text>')
     text(550,39,s['title'],31)
     count=len(s['lanes']);lw=1020/count
     for idx,lane in enumerate(s['lanes']):
@@ -223,17 +239,17 @@ def draw(s, c):
             for px,py in pts[1:]:path.lineTo(px,H-py)
             path.close();c.drawPath(path,stroke=1,fill=1)
             parts.append(f'<polygon points="{" ".join(f"{px},{py}" for px,py in pts)}" fill="#f7f2e7" stroke="{INK}" stroke-width="1.4"/>')
-            text(x+w/2,y+h/2,n['text'],21)
+            text(x+w/2,y+h/2,n['text'],23)
         else:
             rect(x,y,w,h,'#eef3f5' if n['kind']=='terminal' else '#ffffff',h/2 if n['kind']=='terminal' else 0)
             text(x+w/2,y+h/2,n['text'])
     for e in s['edges']:
         if e['label']:
-            x,y=e['labelpos']; width=pdfmetrics.stringWidth(e['label'],FONT,20)+10
+            x,y=e['labelpos']; width=pdfmetrics.stringWidth(e['label'],FONT,23)+10
             c.setFillColor('#ffffff');c.rect(x-width/2,H-y-11,width,25,stroke=0,fill=1)
             parts.append(f'<rect x="{x-width/2}" y="{y-14}" width="{width}" height="25" fill="white"/>')
-            text(x,y,e['label'],20)
-    text(550,H-30,s['note'],18)
+            text(x,y,e['label'],23)
+    text(550,H-30,s['note'],23)
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="{H}" viewBox="0 0 1100 {H}"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="{ACCENT}"/></marker></defs><rect width="1100" height="{H}" fill="white"/>'+''.join(parts)+'</svg>'
     (BASE/(s['slug']+'.svg')).write_text(svg,encoding='utf-8')
 
@@ -258,34 +274,41 @@ def drawio():
         for idx,e in enumerate(s['edges']):
             ports={'t':(.5,0),'b':(.5,1),'l':(0,.5),'r':(1,.5)}
             ex,ey=ports[e['start']];ix,iy=ports[e['end']]
-            style=f'edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeColor={ACCENT};fontFamily=SimSun;fontSize=20;labelBackgroundColor=#ffffff;exitX={ex};exitY={ey};entryX={ix};entryY={iy};'
+            style=f'edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;strokeColor={ACCENT};fontFamily=SimSun;fontSize=23;labelBackgroundColor=#ffffff;exitX={ex};exitY={ey};entryX={ix};entryY={iy};'
             el=ET.SubElement(graph,'mxCell',id='edge'+str(idx),value=e['label'],source=e['source'],target=e['target'],parent='1',edge='1',style=style)
             geo=ET.SubElement(el,'mxGeometry',relative='1',attrib={'as':'geometry'})
             if len(e['points'])>2:
                 arr=ET.SubElement(geo,'Array',attrib={'as':'points'})
                 for x,y in e['points'][1:-1]:ET.SubElement(arr,'mxPoint',x=str(x),y=str(y))
-        cell('note',s['note'],40,s['height']-55,1020,50,'text;html=0;fontFamily=SimSun;fontSize=18;align=center;')
+        cell('note',s['note'],40,s['height']-55,1020,50,'text;html=0;fontFamily=SimSun;fontSize=23;align=center;')
     ET.ElementTree(root).write(BASE/'业务流程图.drawio',encoding='utf-8',xml_declaration=True)
+    for diagram, scene_data in zip(root, SCENES):
+        single = ET.Element('mxfile', host='app.diagrams.net', type='device')
+        single.append(ET.fromstring(ET.tostring(diagram)))
+        ET.ElementTree(single).write(BASE/(scene_data['slug']+'.drawio'), encoding='utf-8', xml_declaration=True)
 
 
 def main():
     validate();BASE.mkdir(parents=True,exist_ok=True);PDF.parent.mkdir(parents=True,exist_ok=True)
     (BASE/'业务流程图.json').write_text(json.dumps(SCENES,ensure_ascii=False,indent=2),encoding='utf-8')
     drawio()
-    c=canvas.Canvas(str(PDF),pagesize=A3);c.setTitle('错题分析与学习推荐系统：业务泳道图')
+    c=canvas.Canvas(str(PDF),pagesize=A4);c.setTitle('错题分析与学习推荐系统：业务泳道图')
     for s in SCENES:
-        pw,ph=A3;scale=min((pw-38)/1100,(ph-38)/s['height'])
+        pw,ph=A4;scale=min((pw-38)/1100,(ph-38)/s['height'])
         c.saveState();c.translate((pw-1100*scale)/2,(ph-s['height']*scale)/2);c.scale(scale,scale)
         draw(s,c);c.restoreState();c.showPage()
     c.save()
     doc=fitz.open(PDF)
+    for idx,s in enumerate(SCENES):
+        single=fitz.open(); single.insert_pdf(doc,from_page=idx,to_page=idx)
+        single.save(BASE/(s['slug']+'.pdf'))
     assert len(doc)==3
     for page,s in zip(doc,SCENES):
         assert s['title'] in page.get_text().replace('\n','')
         assert '\ufffd' not in page.get_text()
-        pix=page.get_pixmap(matrix=fitz.Matrix(1.6,1.6),alpha=False)
+        pix=page.get_pixmap(dpi=300,alpha=False)
         pix.save(BASE/(s['slug']+'.png'))
-    report=dict(pages=3,format='A3 portrait',editable_pages=3,
+    report=dict(pages=3,format='A4 portrait',editable_pages=3,
                 nodes=[len(s['nodes']) for s in SCENES],edges=[len(s['edges']) for s in SCENES],
                 checks=['unique node ids','all nodes reachable from starts','both outcomes for each decision',
                         'orthogonal connectors','connectors avoid unrelated nodes','node label width','PDF title extraction','no replacement characters'],
