@@ -1,0 +1,14 @@
+[
+  {
+    "branch": "origin/codex/reference-freeze",
+    "head": "7a80cb9542d5c1f2caa2bf100579c30aae8e9966",
+    "unique_commits": 2,
+    "latest_thesis_commit": "9ac4770 2026-08-30T14:36:44+08:00 docs: 冻结参考文献与引用编号"
+  },
+  {
+    "branch": "origin/codex/thesis-finalization-20260920",
+    "head": "29ae335c98d9944a50360ed8ffa9a1b07f70cd15",
+    "unique_commits": 7,
+    "latest_thesis_commit": "29ae335 2026-09-22T10:32:02+08:00 fix: 论文参考文献统一为开题20篇及原顺序"
+  }
+]

@@ -35,6 +35,7 @@ public class GlmQuestionRecognitionClient implements QuestionRecognitionClient {
     private static final int MAX_SOURCE_LENGTH = 100;
 
     private final RestClient restClient;
+    private final boolean credentialConfigured;
     private final ObjectMapper objectMapper;
     private final String endpoint;
     private final String model;
@@ -46,9 +47,11 @@ public class GlmQuestionRecognitionClient implements QuestionRecognitionClient {
         this.model = requireText(properties.getModel(), "IMAGE_RECOGNITION_MODEL");
         this.endpoint = stripTrailingSlash(requireText(
                 properties.getBaseUrl(), "IMAGE_RECOGNITION_BASE_URL")) + "/chat/completions";
-        String apiKey = requireText(properties.getApiKey(), "IMAGE_RECOGNITION_API_KEY 或 LLM_API_KEY");
+        this.credentialConfigured = StringUtils.hasText(properties.getApiKey());
+        if (credentialConfigured) {
+            restClientBuilder.defaultHeader("Authorization", "Bearer " + properties.getApiKey().trim());
+        }
         this.restClient = restClientBuilder
-                .defaultHeader("Authorization", "Bearer " + apiKey)
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .build();
         log.info("图片识别客户端已启用，model={}", model);
@@ -56,6 +59,9 @@ public class GlmQuestionRecognitionClient implements QuestionRecognitionClient {
 
     @Override
     public Extraction recognize(String imageDataUrl, List<String> subjectNames) {
+        if (!credentialConfigured) {
+            throw new BizException("图片识别未配置 IMAGE_RECOGNITION_API_KEY 或 LLM_API_KEY，请手工录入或联系管理员配置");
+        }
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("model", model);
         body.put("messages", List.of(
@@ -83,6 +89,8 @@ public class GlmQuestionRecognitionClient implements QuestionRecognitionClient {
             throw e;
         } catch (ResourceAccessException e) {
             throw new BizException("图片识别请求超时或网络不可用，请稍后重试");
+        } catch (HttpClientErrorException.Unauthorized | HttpClientErrorException.Forbidden e) {
+            throw new BizException("图片识别服务鉴权失败，请联系管理员检查密钥与模型权限");
         } catch (HttpClientErrorException.TooManyRequests e) {
             throw new BizException("图片识别服务繁忙，请稍后重试");
         } catch (HttpServerErrorException e) {

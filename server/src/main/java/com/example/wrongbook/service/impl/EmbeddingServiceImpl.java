@@ -2,6 +2,7 @@ package com.example.wrongbook.service.impl;
 
 import com.example.wrongbook.service.EmbeddingService;
 import com.example.wrongbook.service.LlmClient;
+import com.example.wrongbook.util.QuestionContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,6 @@ public class EmbeddingServiceImpl implements EmbeddingService {
 
     @Override
     public List<Double> embed(String text) {
-        return llmClient.embed(text);
+        return llmClient.embed(QuestionContent.plainText(text));
     }
 }

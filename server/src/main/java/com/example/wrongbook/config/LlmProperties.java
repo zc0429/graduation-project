@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "app.llm")
 public class LlmProperties {
 
-    private String provider = "mock";
+    private String provider = "glm";
     private String baseUrl;
     private String apiKey;
     private String chatModel;

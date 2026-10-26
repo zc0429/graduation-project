@@ -1,15 +1,15 @@
 {
   "pages": 3,
-  "format": "A3 portrait",
+  "format": "A4 portrait",
   "editable_pages": 3,
   "nodes": [
-    23,
-    13,
+    26,
+    12,
     9
   ],
   "edges": [
-    28,
-    15,
+    30,
+    13,
     7
   ],
   "checks": [
@@ -22,28 +22,13 @@
     "PDF title extraction",
     "no replacement characters"
   ],
-  "visual_review": "passed: all 3 final PDF-rendered pages inspected",
-  "drawio_validation": "passed: 3 pages, unique cell IDs, all edge references resolve",
-  "svg_validation": "passed: all 3 XML documents parse",
-  "pdf_node_text": "passed: every node label present on its corresponding page",
-  "pdf_text_bounds": "passed: all text blocks within page",
-  "drawio_native_application_review": "not performed",
-  "requirements": {
-    "business_actor_lanes": "student/platform main and review; admin/platform/teacher auxiliary",
-    "decision_branches": "5 main + 3 review, each with yes/no outcomes",
-    "business_fidelity": "source services and views reviewed; fixed plans, self-evaluation and separate review completion preserved",
-    "editable_source": "3-page draw.io with individual shapes and connectors",
-    "visual_deliverables": "3 SVG + 3 PNG + 3-page A3 vector PDF"
-  },
+  "visual_review": "reviewed all three exported diagrams on 2026-10-26; no visible overflow, overlap or cropped page",
+  "drawio_application_open": "not performed; XML references validated",
+  "png_dpi": 300,
+  "minimum_font_pt_at_thesis_width": 9.34,
   "sha256": {
-    "output/pdf/业务流程图-导师讲解版.pdf": "6abcc51fd9ef6ba38135154c858ba0a8bae1d7c5def277045bdb5dc912e706e4",
-    "docs/thesis/business-flow/01-错题分析与巩固学习.png": "1929ee5e3f09260e4a69ba190eb5bc6e38ccf62d3777067400b1dc2bc8a2503d",
-    "docs/thesis/business-flow/02-按期复习.png": "660d36daa0216977368396d803720e967b669211c40d238c39c599eda6ea8b57",
-    "docs/thesis/business-flow/03-管理与学情查看.png": "48f00b2e2904ba2658f2e8fdbdceaa7826802d85d1897f461859878fd74713cb",
-    "docs/thesis/business-flow/01-错题分析与巩固学习.svg": "8a920782d508372e7b3e40e25c00c18acff9cc55765d3a4d54536a60631b2b65",
-    "docs/thesis/business-flow/02-按期复习.svg": "89475cd9d2ce8023b7e17a1fa45ae5533d1b201c332a9d4c93ccf9e2987a017f",
-    "docs/thesis/business-flow/03-管理与学情查看.svg": "b22099a91aa7a570ed0e78d02bcf5e687f7f4fb310e39bbc936ce0d11a98a89c",
-    "docs/thesis/business-flow/业务流程图.drawio": "ae58a6244d27ec4bbb07e04192ce8c78b8c678c0b6c910fe9d3f3b8275c21709",
-    "docs/thesis/business-flow/业务流程图.json": "901d721aaecea85b706ff544e98e183541fbb56bd29af1a15fcbf98c1caa5a62"
+    "03-管理与学情查看.png": "66184062b8ffaee4ff17374189f84f65f3a2233460de83ab11ac2f050dd11953",
+    "01-错题分析与巩固学习.png": "1715811a817f786e50b7788121c1838457b5e62a098817689cc1348dcdfd47c9",
+    "02-按期复习.png": "43bf1ba50df711fef50f67ac27bd8bd68dd99ab22c5fa5839863bdf9a9704759"
   }
 }

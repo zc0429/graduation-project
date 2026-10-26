@@ -1,13 +1,13 @@
 # 基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现
 
-本科毕业设计项目，围绕“错题录入 → AI 知识点归类与解析（RAG）→ 变式题练习 → 遗忘曲线复习 → 学情反馈”形成完整学习闭环。前端为 Vue 3 单页应用，后端为 Spring Boot 3.5.16 REST 服务；离线开发和自动化验收默认使用 Mock AI，智谱 GLM 仅在显式设置 `LLM_PROVIDER=glm` 并通过环境变量配置密钥与模型后启用。
+本科毕业设计项目，围绕“错题录入 → AI 知识点归类与解析（RAG）→ 变式题练习 → 遗忘曲线复习 → 学情反馈”形成完整学习闭环。前端为 Vue 3 单页应用，后端为 Spring Boot 3.5.16 REST 服务；正常运行默认使用真实智谱 GLM 服务与图片识题；离线开发显式选择 Mock，自动化测试使用隔离的 Mock 配置。缺少密钥时给出明确提示，仍可手工保存错题。
 
 - **英文题目**：Design and Implementation of an AI-Powered Wrong-Question Analysis and Learning Recommendation System Based on the Zhipu GLM Model
 - **指导教师**：胡韬（云南工商学院人工智能学院，2027 届）
 
 ## 当前实现
 
-- 学生：注册登录、手工错题录入与图片上传、可选的 GLM-5.3-Flash 单图识别回填、错题筛选/编辑/删除、带 JWT 的 Excel 导出、AI 解析状态轮询、变式题生成与自评练习、到期/逾期复习、练习历史、周报、消息与个人资料。图片识别默认关闭，识别成功后仍由用户确认并走普通错题创建链。
+- 学生：注册登录、富文本题干新增与编辑、图片上传及 GLM-5.3-Flash 单图识别候选回填、错题筛选/编辑/删除、带 JWT 的 Excel 导出、AI 解析状态轮询、变式题生成与自评练习、到期/逾期复习、练习历史、周报、消息与个人资料。图片识别默认开启，识别成功后仍由用户确认并走普通错题创建链。
 - 教师：查看后端现有的全站聚合周报。当前没有班级、课程、任课关系或学生钻取接口，因此界面不会模拟这些能力。
 - 管理员：查询与逻辑注销用户，新增/编辑科目，维护两级知识点，查看/发布公告。角色分配、账号恢复、科目删除、公告编辑或下线尚无后端接口。
 - 通用：按角色生成导航，恢复会话时校验 JWT，统一处理加载/空/错误/无权状态，支持桌面、平板和移动端布局。
@@ -33,12 +33,13 @@ graduation-project/
 
 建议环境：JDK 21、MySQL 8、Node.js 22。Windows 启动后端前应确认 `JAVA_HOME` 指向 JDK 21；Linux 使用已配置的 JDK 21 即可。
 
-数据库账号、密码和真实模型密钥只通过当前终端环境变量注入，不能提交到仓库、日志、论文或截图。`DB_URL` 应指向开发数据库；`LLM_PROVIDER` 不设置时默认为 `mock`。
+数据库账号、密码和真实模型密钥只通过当前终端环境变量注入，不能提交到仓库、日志、论文或截图。`DB_URL` 应指向开发数据库；`LLM_PROVIDER` 不设置时默认为 `glm`，文本默认 `glm-5.3-flash`，向量保持 `embedding-3 / 1024`。
 
 ```powershell
 # 终端 1：后端（先设置 DB_URL、DB_USERNAME、DB_PASSWORD）
 Set-Location 'D:\Documents\GitHub\graduation-project\server'
-$env:LLM_PROVIDER = 'mock'
+$env:LLM_PROVIDER = 'glm'
+# 真实密钥在当前终端或未跟踪 .env 中配置；离线时改为 mock 并设置 IMAGE_RECOGNITION_ENABLED=false
 .\mvnw.cmd spring-boot:run
 
 # 终端 2：前端
@@ -79,3 +80,7 @@ npm run e2e:smoke
 - `main` 保存稳定成果，`dev` 用于日常开发；功能分支默认使用 `codex/` 前缀。
 - 提交信息使用 `类型: 简述`，常用类型为 `docs`、`feat`、`fix`、`chore`、`ref`。
 - 远程仓库：`git@github.com:zc0429/graduation-project.git`（Private）。
+
+## 2026-10-26 导师意见落实
+
+本轮审计、实施与验证见 [交付报告](docs/notes/导师意见落实-20261026-交付报告.md)。[最新完整论文](docs/thesis/毕业论文.md)保留独立论文分支的20篇文献体系；[三张业务泳道图](docs/thesis/business-flow/README.md)已同步正文。真实模型本轮因无密钥未联网验证，历史真实证据保留。

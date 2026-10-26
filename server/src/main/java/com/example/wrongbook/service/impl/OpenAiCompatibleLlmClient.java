@@ -1,6 +1,7 @@
 package com.example.wrongbook.service.impl;
 
 import com.example.wrongbook.config.LlmProperties;
+import com.example.wrongbook.common.BizException;
 import com.example.wrongbook.service.LlmClient;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
@@ -29,11 +30,11 @@ import java.util.regex.Pattern;
 /** 智谱 GLM 与 DeepSeek 共用的 OpenAI-compatible HTTP 客户端。 */
 @Slf4j
 @Component
-@ConditionalOnExpression("'${app.llm.provider:mock}' == 'glm' or '${app.llm.provider:mock}' == 'deepseek'")
+@ConditionalOnExpression("'${app.llm.provider:glm}' == 'glm' or '${app.llm.provider:glm}' == 'deepseek'")
 public class OpenAiCompatibleLlmClient implements LlmClient {
 
     static final String GLM_DEFAULT_BASE_URL = "https://open.bigmodel.cn/api/paas/v4";
-    static final String GLM_DEFAULT_CHAT_MODEL = "glm-4.7-flash";
+    static final String GLM_DEFAULT_CHAT_MODEL = "glm-5.3-flash";
     static final String GLM_DEFAULT_EMBEDDING_MODEL = "embedding-3";
     static final String DEEPSEEK_DEFAULT_BASE_URL = "https://api.deepseek.com";
     static final String DEEPSEEK_DEFAULT_CHAT_MODEL = "deepseek-v4-flash";
@@ -50,6 +51,7 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
             "\\\"code\\\"\\s*:\\s*(?:\\\"1305\\\"|1305)(?!\\d)");
 
     private final RestClient restClient;
+    private final boolean credentialConfigured;
     private final String provider;
     private final String baseUrl;
     private final String chatModel;
@@ -68,9 +70,11 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
         this.embeddingDimensions = isGlm()
                 ? requireEmbeddingDimensions(properties.getEmbeddingDimensions())
                 : LOCAL_EMBEDDING_DIMENSIONS;
-        String apiKey = requireText(properties.getApiKey(), "LLM_API_KEY");
+        this.credentialConfigured = StringUtils.hasText(properties.getApiKey());
+        if (credentialConfigured) {
+            restClientBuilder.defaultHeader("Authorization", "Bearer " + properties.getApiKey().trim());
+        }
         this.restClient = restClientBuilder
-                .defaultHeader("Authorization", "Bearer " + apiKey)
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .build();
         log.info("LLM provider={}，chatModel={}，embeddingModel={}",
@@ -78,13 +82,27 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
     }
 
     @Override
+    public void verifyReady() {
+        if (!credentialConfigured) {
+            throw new BizException("未配置 LLM_API_KEY，真实 AI 服务不可用；可手工录入，或显式配置 Mock 离线模式");
+        }
+    }
+
+    @Override
     public String chat(String prompt) {
+        verifyReady();
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("model", chatModel);
         body.put("messages", List.of(
                 Map.of("role", "system", "content", "你是错题分析助手。严格按用户要求输出一个 JSON 对象，不要输出 Markdown。"),
                 Map.of("role", "user", "content", prompt)));
-        body.put("thinking", Map.of("type", "disabled"));
+        if (isGlm() && "glm-5.3-flash".equalsIgnoreCase(chatModel)) {
+            // Existing image Spike verified this model does not accept disabled thinking.
+            body.put("thinking", Map.of("type", "enabled"));
+            body.put("reasoning_effort", "low");
+        } else {
+            body.put("thinking", Map.of("type", "disabled"));
+        }
         body.put("response_format", Map.of("type", "json_object"));
         body.put("temperature", 0.2);
         body.put("max_tokens", CHAT_MAX_TOKENS);
@@ -101,6 +119,7 @@ public class OpenAiCompatibleLlmClient implements LlmClient {
 
     @Override
     public List<Double> embed(String text) {
+        verifyReady();
         if (!isGlm()) {
             return localEmbedding(text);
         }

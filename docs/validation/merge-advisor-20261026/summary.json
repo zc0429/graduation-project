@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-26",
+  "dev_before": "aae3784d0fb93bc7864878d80bcbd412b605ce5e",
+  "advisor_head": "f1baeb122f77c23179dd66cf7330837adaa726be",
+  "conflicts": 0,
+  "incoming_commits": 3,
+  "retained_delivered_files": 110,
+  "protected_original_files": 53,
+  "backend": {
+    "tests": 84,
+    "passed": 80,
+    "skipped": 4,
+    "failures": 0,
+    "errors": 0
+  },
+  "frontend": {
+    "typecheck": "passed",
+    "unit_passed": 29,
+    "production_build": "passed",
+    "browser_passed": 45,
+    "omitted_screenshot_recreation_case": 1,
+    "real_backend_mock_ai_passed": 4
+  },
+  "paid_live_tests": "disabled; not claimed",
+  "paper_drawings_and_figures": "retained unchanged from advisor branch; not regenerated",
+  "opening_report": "unchanged",
+  "still_divergent_branches": [
+    {
+      "name": "codex/thesis-finalization-20260920",
+      "unique_commits": 7,
+      "content": "historical DOCX/PDF/PPT and generation/handoff tools; thesis source corrections already selected into advisor branch"
+    },
+    {
+      "name": "codex/reference-freeze",
+      "unique_commits": 2,
+      "content": "historical reference freeze including opening edits and temporary Word lock file; not merged"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+A	docs/materials/~$2：云南工商学院本科毕业论文（设计）.docx
+M	docs/references/gb7714-list.md
+M	docs/references/references.bib
+M	docs/thesis/任务书-AI错题分析与学习推荐系统.md
+M	docs/thesis/开题报告-系统填报版.md
+M	docs/thesis/开题报告.md
+M	docs/thesis/毕业论文.md

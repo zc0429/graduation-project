@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-26",
+  "real_glm_network_test": "not run: no configured key",
+  "checks": [
+    {
+      "mode": "mock",
+      "rich_text_saved": true,
+      "analysis_success": true,
+      "model": "mock-llm",
+      "variant_count": 3,
+      "mastery_after_correct": 15,
+      "mastery_after_wrong": 0,
+      "weekly_report": true
+    },
+    {
+      "mode": "glm-without-key",
+      "rich_text_saved": true,
+      "manual_input_available": true,
+      "ai_missing_key_explicit": true,
+      "image_missing_key_explicit": true,
+      "variant_missing_key_explicit": true,
+      "no_mock_fallback": true,
+      "failed_request_keeps_question": true
+    }
+  ]
+}

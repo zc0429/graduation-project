@@ -10,6 +10,7 @@ import com.example.wrongbook.mapper.QuestionMapper;
 import com.example.wrongbook.mapper.ReviewPlanMapper;
 import com.example.wrongbook.service.ReviewPlanService;
 import com.example.wrongbook.vo.ReviewPlanVO;
+import com.example.wrongbook.util.QuestionContent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -68,7 +69,7 @@ public class ReviewPlanServiceImpl implements ReviewPlanService {
             if (q != null) {
                 vo.setSubjectId(q.getSubjectId());
                 vo.setMastery(q.getMastery());
-                String stem = q.getStem();
+                String stem = QuestionContent.plainText(q.getStem());
                 vo.setStemSummary(stem.length() > 60 ? stem.substring(0, 60) + "…" : stem);
             }
             return vo;

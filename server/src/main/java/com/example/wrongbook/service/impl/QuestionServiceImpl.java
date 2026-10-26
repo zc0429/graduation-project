@@ -24,6 +24,7 @@ import com.example.wrongbook.service.QuestionService;
 import com.example.wrongbook.service.ReviewPlanService;
 import com.example.wrongbook.util.FileStorageUtil;
 import com.example.wrongbook.vo.QuestionExportRow;
+import com.example.wrongbook.util.QuestionContent;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,7 @@ public class QuestionServiceImpl implements QuestionService {
         Question question = new Question();
         question.setUserId(UserContext.getUserId());
         question.setSubjectId(request.getSubjectId());
-        question.setStem(request.getStem());
+        question.setStem(QuestionContent.validatedStem(request.getStem()));
         question.setAnswer(request.getAnswer());
         question.setSource(request.getSource());
         String savedImageUrl = null;
@@ -101,13 +102,14 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(rollbackFor = Exception.class)
     public void update(Long id, QuestionRequest request) {
         Question question = getOwnQuestion(id);
+        String stem = QuestionContent.validatedStem(request.getStem());
         boolean aiInputChanged = !Objects.equals(question.getSubjectId(), request.getSubjectId())
-                || !Objects.equals(question.getStem(), request.getStem())
+                || !Objects.equals(question.getStem(), stem)
                 || !Objects.equals(question.getAnswer(), request.getAnswer());
         LambdaUpdateWrapper<Question> update = new LambdaUpdateWrapper<Question>()
                 .eq(Question::getId, id)
                 .set(Question::getSubjectId, request.getSubjectId())
-                .set(Question::getStem, request.getStem())
+                .set(Question::getStem, stem)
                 .set(Question::getAnswer, request.getAnswer())
                 .set(Question::getSource, request.getSource());
         String replacementImageUrl = null;
@@ -178,7 +180,7 @@ public class QuestionServiceImpl implements QuestionService {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         List<QuestionExportRow> rows = list.stream().map(q -> {
             QuestionExportRow row = new QuestionExportRow();
-            row.setStem(q.getStem());
+            row.setStem(QuestionContent.plainText(q.getStem()));
             row.setAnswer(q.getAnswer());
             Subject subject = subjectMap.get(q.getSubjectId());
             row.setSubjectName(subject == null ? "" : subject.getName());

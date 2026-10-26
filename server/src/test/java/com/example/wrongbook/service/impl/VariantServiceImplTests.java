@@ -89,6 +89,17 @@ class VariantServiceImplTests {
         UserContext.clear();
     }
 
+    @Test
+    void variantPromptReceivesNormalizedQuestionText() {
+        Question question = questionMapper.selectById(QUESTION_ID);
+        question.setStem("<p>求 x<sup>2</sup></p><p>第二行</p>");
+        when(llmClient.chat(anyString())).thenReturn(VALID_RESPONSE);
+        variantService.generate(QUESTION_ID);
+        org.mockito.ArgumentCaptor<String> prompt = org.mockito.ArgumentCaptor.forClass(String.class);
+        verify(llmClient).chat(prompt.capture());
+        assertThat(prompt.getValue()).contains("求 x^(2)\n第二行").doesNotContain("<p>", "<sup>");
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"```JSON\n%s\n```", "``` json\n%s\n```"})
     void validatesAllVariantsBeforeOpeningShortInsertTransaction(String fencedTemplate) {

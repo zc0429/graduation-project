@@ -118,7 +118,7 @@ test.describe('真实 GLM 浏览器业务闭环与论文证据', () => {
     await page.getByLabel('科目').click()
     await page.getByRole('option', { name: '数学' }).click()
     await page.getByLabel('来源（选填）').fill(targetInput.source)
-    await page.getByLabel('题干').fill(targetInput.stem)
+    await page.getByRole('textbox', { name: '题干', exact: true }).fill(targetInput.stem)
     await page.getByLabel('正确答案或订正（选填）').fill(targetInput.answer)
     await capture(page, '03-question-create.png')
 

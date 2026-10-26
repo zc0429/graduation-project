@@ -1,0 +1,177 @@
+
+> web@0.0.0 verify
+> npm run typecheck && npm run test:unit && npm run build && npm run e2e:smoke
+
+
+> web@0.0.0 typecheck
+> vue-tsc -b --pretty false
+
+
+> web@0.0.0 test:unit
+> vitest run --config vitest.config.ts
+
+
+ RUN  v4.1.11 /workspace/graduation-project-advisor/web
+
+
+ Test Files  10 passed (10)
+      Tests  29 passed (29)
+   Start at  03:43:44
+   Duration  8.67s (transform 627ms, setup 86ms, import 1.58s, tests 669ms, environment 5.22s)
+
+
+> web@0.0.0 build
+> vue-tsc -b && vite build
+
+vite v8.2.1 building client environment for production...
+
+transforming...✓ 2372 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           1.15 kB │ gzip:   0.51 kB
+dist/assets/QuestionContent-BPqWeNBj.css                  0.27 kB │ gzip:   0.16 kB
+dist/assets/NotFoundView-3GtmNc6V.css                     0.57 kB │ gzip:   0.30 kB
+dist/assets/AdminSectionTabs-DdFrXfkj.css                 1.03 kB │ gzip:   0.48 kB
+dist/assets/MasteryIndicator-D9BWrD7s.css                 1.05 kB │ gzip:   0.42 kB
+dist/assets/QuestionEditor-DFtw84PP.css                   1.26 kB │ gzip:   0.48 kB
+dist/assets/AppBrand-A5Uieq8x.css                         1.28 kB │ gzip:   0.57 kB
+dist/assets/PaperPanel-BsAV7Cba.css                       1.38 kB │ gzip:   0.53 kB
+dist/assets/PracticeHistoryView-B0GeQfXP.css              1.68 kB │ gzip:   0.60 kB
+dist/assets/ProfileView-BAcZAFTs.css                      2.25 kB │ gzip:   0.74 kB
+dist/assets/MessageView-DWyzglE1.css                      2.35 kB │ gzip:   0.72 kB
+dist/assets/AdminSubjectView-XRuQ9v1-.css                 2.59 kB │ gzip:   0.87 kB
+dist/assets/AnnouncementView-Dtu74hzH.css                 2.74 kB │ gzip:   0.80 kB
+dist/assets/PageHeader-DEEZwPDq.css                       2.76 kB │ gzip:   0.97 kB
+dist/assets/AdminUserView-EnhDSouo.css                    3.05 kB │ gzip:   0.91 kB
+dist/assets/AdminKnowledgeView-D7pJwuxw.css               3.50 kB │ gzip:   0.99 kB
+dist/assets/ReviewPlanView-DM5Q74dC.css                   4.47 kB │ gzip:   1.19 kB
+dist/assets/LoginView-CXDhmSWI.css                        5.66 kB │ gzip:   1.72 kB
+dist/assets/QuestionListView-DJpRfFde.css                 5.83 kB │ gzip:   1.58 kB
+dist/assets/QuestionCreateView-Wz4ekyg-.css               6.08 kB │ gzip:   1.47 kB
+dist/assets/ReportView-prsjMmW7.css                       7.25 kB │ gzip:   1.76 kB
+dist/assets/HomeView-C6VJvSNu.css                         8.47 kB │ gzip:   1.96 kB
+dist/assets/QuestionDetailView-CZTz9YMu.css              10.47 kB │ gzip:   2.18 kB
+dist/assets/AppLayout-lkXLwwaB.css                       12.66 kB │ gzip:   2.92 kB
+dist/assets/index-DFHnvmUw.css                          364.33 kB │ gzip:  49.97 kB
+dist/assets/QuestionContent-BBE1sRxK.js                   0.34 kB │ gzip:   0.25 kB
+dist/assets/PaperPanel-Cd_tlClu.js                        0.53 kB │ gzip:   0.36 kB
+dist/assets/rolldown-runtime-hePW80VL.js                  0.71 kB │ gzip:   0.42 kB
+dist/assets/useApi-CROJJdhE-DeKjrM8n.js                   0.83 kB │ gzip:   0.45 kB
+dist/assets/NotFoundView-BDCC__3Q.js                      0.86 kB │ gzip:   0.63 kB
+dist/assets/AppBrand-Cvy0bkcU.js                          0.87 kB │ gzip:   0.60 kB
+dist/assets/AdminSectionTabs-B5kNoyZk.js                  1.02 kB │ gzip:   0.65 kB
+dist/assets/MasteryIndicator-9TYBA_1U.js                  1.03 kB │ gzip:   0.62 kB
+dist/assets/preload-helper-Czpn1I53.js                    1.19 kB │ gzip:   0.67 kB
+dist/assets/api-BOz3yUpO.js                               1.85 kB │ gzip:   0.83 kB
+dist/assets/PageHeader-gyT-Ik5K.js                        2.61 kB │ gzip:   1.43 kB
+dist/assets/PracticeHistoryView-BJzjB0-7.js               2.94 kB │ gzip:   1.70 kB
+dist/assets/createSeriesData-MycorRRJ.js                  3.12 kB │ gzip:   1.28 kB
+dist/assets/MessageView-o2C-tcuc.js                       3.60 kB │ gzip:   1.83 kB
+dist/assets/ProfileView-CAuj1nQ5.js                       4.32 kB │ gzip:   2.19 kB
+dist/assets/AdminSubjectView-Bs-vbEjj.js                  4.56 kB │ gzip:   2.23 kB
+dist/assets/core-DIU9EWRV.js                              4.78 kB │ gzip:   2.22 kB
+dist/assets/AnnouncementView-DAX8adsd.js                  4.94 kB │ gzip:   2.38 kB
+dist/assets/ReviewPlanView-ewt1OdtO.js                    5.43 kB │ gzip:   2.84 kB
+dist/assets/LoginView-DxLIINxW.js                         6.63 kB │ gzip:   2.99 kB
+dist/assets/AdminUserView-BpbkH-id.js                     6.80 kB │ gzip:   2.98 kB
+dist/assets/AdminKnowledgeView-C5lyYx9C.js                7.09 kB │ gzip:   3.07 kB
+dist/assets/user-D-xqggMt.js                              7.18 kB │ gzip:   3.28 kB
+dist/assets/QuestionListView-uiECvPqO.js                  9.93 kB │ gzip:   4.14 kB
+dist/assets/QuestionCreateView-BiuiafyB.js               10.94 kB │ gzip:   4.87 kB
+dist/assets/HomeView-DLkAUAtz.js                         13.18 kB │ gzip:   5.06 kB
+dist/assets/AppLayout-BpFf2GFk.js                        13.49 kB │ gzip:   5.12 kB
+dist/assets/ReportView-CC0b00eM.js                       13.60 kB │ gzip:   5.17 kB
+dist/assets/vue-router-BtIFZ-B-.js                       22.30 kB │ gzip:   8.92 kB
+dist/assets/QuestionDetailView-BTaULf_C.js               23.78 kB │ gzip:   8.85 kB
+dist/assets/question-content-B84nnBug.js                 30.02 kB │ gzip:  11.86 kB
+dist/assets/renderers-DT3BCHrs.js                        33.69 kB │ gzip:  13.06 kB
+dist/assets/message-box-zpfkyr92.js                      60.31 kB │ gzip:  21.15 kB
+dist/assets/_plugin-vue_export-helper-Bhv8uZgw.js        95.15 kB │ gzip:  32.92 kB
+dist/assets/user-fNriYeM1.js                            113.56 kB │ gzip:  43.47 kB
+dist/assets/customGraphicKeyframeAnimation-CQKwnMkB.js  144.20 kB │ gzip:  49.54 kB
+dist/assets/graphic-ChK7NCHW.js                         149.06 kB │ gzip:  50.03 kB
+dist/assets/parseGeoJson-0udlN2yY.js                    244.71 kB │ gzip:  84.57 kB
+dist/assets/charts-LM7KEcWc.js                          258.94 kB │ gzip:  84.71 kB
+dist/assets/components-D3SNRGxY.js                      259.01 kB │ gzip:  82.97 kB
+dist/assets/QuestionEditor-BECr-CF8.js                  387.80 kB │ gzip: 122.51 kB
+dist/assets/index-DtOVtvFz.js                           773.70 kB │ gzip: 245.12 kB
+
+✓ built in 1.40s
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+> web@0.0.0 e2e:smoke
+> playwright test --config=playwright.ui.config.ts --project=chromium-desktop --project=chromium-laptop --project=chromium-tablet --project=chromium-mobile
+
+[WebServer] (node:6691) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 46 tests using 1 worker
+
+(node:6710) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/46] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:29:1 › 登录页没有严重或关键 WCAG A/AA 问题
+[2/46] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:35:1 › 学生核心工作台没有严重或关键 WCAG A/AA 问题
+[3/46] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:45:1 › 教师与管理员核心页没有严重或关键 WCAG A/AA 问题
+[4/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:7:1 › AI 解析展示成功证据并可从空状态重新触发
+[5/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:18:1 › AI 失败状态明确提供重试动作
+[6/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:32:1 › 相似题只在打开页签后请求并展示当前账号候选
+[7/46] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:42:1 › 生成变式题并提交一次变式练习自评
+[8/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:3:1 › 学生可以登录并进入工作台
+[9/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:14:1 › 登录错误留在表单并显示服务端消息
+[10/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:27:1 › 注册请求成功后回到登录模式
+[11/46] [chromium-desktop] › e2e/smoke/auth.spec.ts:45:1 › 恢复的令牌过期时重定向并保留原目标
+[12/46] [chromium-desktop] › e2e/smoke/report-message.spec.ts:7:1 › 周报展示指标、掌握度与可读趋势表，并可重新生成
+[13/46] [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读
+[14/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[15/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[16/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[17/46] [chromium-desktop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+[18/46] [chromium-desktop] › e2e/smoke/review.spec.ts:7:1 › 复习筛选区分逾期与今日任务
+[19/46] [chromium-desktop] › e2e/smoke/review.spec.ts:19:1 › 确认完成复习后从清单移除任务
+[20/46] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:7:1 › 富文本录入、展示、编辑与练习回显保持格式并过滤旧数据脚本
+[21/46] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:38:1 › 图片识别候选可继续富文本修改，确认前无错题写入并生成本轮界面证据
+[22/46] [chromium-desktop] › e2e/smoke/routing.spec.ts:3:1 › 未登录访问受保护页面会带回跳地址进入登录页
+[23/46] [chromium-desktop] › e2e/smoke/routing.spec.ts:10:1 › 学生访问管理员页面会回到工作台并显示权限提示
+[24/46] [chromium-desktop] › e2e/smoke/routing.spec.ts:18:1 › 已登录用户访问未知地址会看到 404 并可返回工作台
+[25/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:7:1 › 错题列表支持筛选并以 JWT 导出文件
+[26/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析
+[27/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案
+[28/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存
+[29/46] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除
+[30/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:3:1 › 教师周报只声明并展示全站聚合范围
+[31/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:13:1 › 管理员可筛选并逻辑注销其他用户
+[32/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:27:1 › 管理员可新增并编辑科目
+[33/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:48:1 › 管理员可新增章节、添加考点并删除叶节点
+[34/46] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:71:1 › 管理员可发布公告且公告立即进入列表
+(node:7302) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[35/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[36/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[37/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[38/46] [chromium-laptop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:7414) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[39/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[40/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[41/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[42/46] [chromium-tablet] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:7523) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[43/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[44/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[45/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[46/46] [chromium-mobile] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+  46 passed (1.8m)

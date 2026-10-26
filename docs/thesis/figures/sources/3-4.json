@@ -1,0 +1,12 @@
+{
+  "id": "3-4",
+  "caption": "图 3.4　管理与学情查看业务泳道图",
+  "height": 430.2219109090909,
+  "business_flow_slug": "03-管理与学情查看",
+  "ops": [],
+  "evidence": [
+    "docs/thesis/business-flow/业务流程图.drawio",
+    "docs/thesis/business-flow/业务流程图.json",
+    "docs/notes/导师意见落实-20261026-审计与计划.md"
+  ]
+}

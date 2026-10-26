@@ -1,0 +1,240 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< com.example:wrongbook-server >--------------------
+[INFO] Building wrongbook-server 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ wrongbook-server ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ wrongbook-server ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 106 source files with javac [debug parameters release 21] to target/classes
+[INFO] /workspace/graduation-project-advisor/server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java: Some input files use or override a deprecated API.
+[INFO] /workspace/graduation-project-advisor/server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ wrongbook-server ---
+[INFO] skip non existing resourceDirectory /workspace/graduation-project-advisor/server/src/test/resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ wrongbook-server ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 26 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] /workspace/graduation-project-advisor/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java: /workspace/graduation-project-advisor/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java uses or overrides a deprecated API.
+[INFO] /workspace/graduation-project-advisor/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java: Recompile with -Xlint:deprecation for details.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ wrongbook-server ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.wrongbook.service.impl.LiveGlmValidationTests
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.013 s -- in com.example.wrongbook.service.impl.LiveGlmValidationTests
+[INFO] Running com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests
+03:57:23.704 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests]: QuestionAiInvalidationIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+03:57:23.836 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-26T03:57:24.290Z  INFO 7969 --- [wrongbook-server] [           main] i.QuestionAiInvalidationIntegrationTests : Starting QuestionAiInvalidationIntegrationTests using Java 21.0.12.1 with PID 7969 (started by agent in /workspace/graduation-project-advisor/server)
+2026-10-26T03:57:24.291Z  INFO 7969 --- [wrongbook-server] [           main] i.QuestionAiInvalidationIntegrationTests : The following 1 profile is active: "test"
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/agent/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-10-26T03:57:26.712Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-26T03:57:26.892Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d9c8c3c
+2026-10-26T03:57:26.894Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-26T03:57:27.748Z  INFO 7969 --- [wrongbook-server] [           main] b.m.s.MybatisPlusApplicationContextAware : Register ApplicationContext instances org.springframework.web.context.support.GenericWebApplicationContext@723ed581
+2026-10-26T03:57:27.834Z  INFO 7969 --- [wrongbook-server] [           main] i.QuestionAiInvalidationIntegrationTests : Started QuestionAiInvalidationIntegrationTests in 3.891 seconds (process running for 4.997)
+2026-10-26T03:57:29.744Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.AiAnalysisServiceImpl       : AI 解析结构校验失败，questionId=96033，errorType=IllegalArgumentException
+2026-10-26T03:57:31.324Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.AiAnalysisServiceImpl       : AI 解析结构校验失败，questionId=96034，errorType=IllegalArgumentException
+2026-10-26T03:57:34.504Z  INFO 7969 --- [wrongbook-server] [       Thread-2] c.e.w.s.impl.AiAnalysisServiceImpl       : AI 解析任务输入已过期，放弃回写，questionId=96037
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.06 s -- in com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests
+[INFO] Running com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests
+2026-10-26T03:57:34.648Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.727Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别响应结构异常：stem 不能为空
+2026-10-26T03:57:34.732Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.739Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别响应结构异常：JSON 字段不完整或包含未知字段
+2026-10-26T03:57:34.743Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.780Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.788Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.794Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.800Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+2026-10-26T03:57:34.804Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别响应结构异常：响应不是合法 JSON
+2026-10-26T03:57:34.807Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.GlmQuestionRecognitionClient   : 图片识别客户端已启用，model=glm-5.3-flash
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.196 s -- in com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests
+[INFO] Running com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests
+2026-10-26T03:57:34.835Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:34.842Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : 大模型请求第 1 次失败，将在 500ms 后重试，path=/chat/completions，errorType=ServiceUnavailable
+2026-10-26T03:57:35.347Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:35.352Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:35.358Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:35.375Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:35.379Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : 大模型请求第 1 次失败，将在 15000ms 后重试，path=/chat/completions，errorType=TooManyRequests
+2026-10-26T03:57:50.383Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:50.388Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-5.3-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:50.392Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:50.397Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-5.3-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:50.399Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=deepseek，chatModel=deepseek-v4-flash，embeddingModel=local-char-ngram-256-v1
+2026-10-26T03:57:50.411Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+2026-10-26T03:57:50.414Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.impl.OpenAiCompatibleLlmClient   : LLM provider=glm，chatModel=glm-4.7-flash，embeddingModel=embedding-3-1024
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.59 s -- in com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests
+[INFO] Running com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.168 s -- in com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests
+[INFO] Running com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.094 s -- in com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests
+[INFO] Running com.example.wrongbook.service.impl.RichQuestionIntegrationTests
+2026-10-26T03:57:50.701Z  INFO 7969 --- [wrongbook-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.wrongbook.service.impl.RichQuestionIntegrationTests]: RichQuestionIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-26T03:57:50.703Z  INFO 7969 --- [wrongbook-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.service.impl.RichQuestionIntegrationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-26T03:57:50.734Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.RichQuestionIntegrationTests   : Starting RichQuestionIntegrationTests using Java 21.0.12.1 with PID 7969 (started by agent in /workspace/graduation-project-advisor/server)
+2026-10-26T03:57:50.734Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.RichQuestionIntegrationTests   : The following 1 profile is active: "test"
+2026-10-26T03:57:51.038Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-26T03:57:51.045Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62ad5f35
+2026-10-26T03:57:51.045Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-26T03:57:51.350Z  INFO 7969 --- [wrongbook-server] [           main] b.m.s.MybatisPlusApplicationContextAware : Register ApplicationContext instances org.springframework.web.context.support.GenericWebApplicationContext@285ac29
+2026-10-26T03:57:51.401Z  INFO 7969 --- [wrongbook-server] [           main] c.e.w.s.i.RichQuestionIntegrationTests   : Started RichQuestionIntegrationTests in 0.693 seconds (process running for 28.565)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.743 s -- in com.example.wrongbook.service.impl.RichQuestionIntegrationTests
+[INFO] Running com.example.wrongbook.service.impl.VariantServiceImplTests
+2026-10-26T03:57:52.567Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题响应包含 Markdown 代码块，已进行兼容清理
+2026-10-26T03:57:52.642Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题响应包含 Markdown 代码块，已进行兼容清理
+2026-10-26T03:57:52.650Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题生成失败，questionId=202，errorType=IllegalStateException
+2026-10-26T03:57:52.668Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题结构校验失败，questionId=202，errorType=IllegalArgumentException
+2026-10-26T03:57:52.673Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题结构校验失败，questionId=202，errorType=IllegalArgumentException
+2026-10-26T03:57:52.681Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题结构校验失败，questionId=202，errorType=IllegalArgumentException
+2026-10-26T03:57:52.685Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题结构校验失败，questionId=202，errorType=IllegalArgumentException
+2026-10-26T03:57:52.689Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题结构校验失败，questionId=202，errorType=IllegalArgumentException
+2026-10-26T03:57:52.693Z ERROR 7969 --- [wrongbook-server] [           main] c.e.w.service.impl.VariantServiceImpl    : 变式题结构校验失败，questionId=202，errorType=IllegalArgumentException
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.255 s -- in com.example.wrongbook.service.impl.VariantServiceImplTests
+[INFO] Running com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests
+2026-10-26T03:57:52.706Z  INFO 7969 --- [wrongbook-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests]: EmbeddingRebuildMaintenanceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-26T03:57:52.710Z  INFO 7969 --- [wrongbook-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-26T03:57:52.745Z  INFO 7969 --- [wrongbook-server] [           main] e.w.s.i.EmbeddingRebuildMaintenanceTests : Starting EmbeddingRebuildMaintenanceTests using Java 21.0.12.1 with PID 7969 (started by agent in /workspace/graduation-project-advisor/server)
+2026-10-26T03:57:52.745Z  INFO 7969 --- [wrongbook-server] [           main] e.w.s.i.EmbeddingRebuildMaintenanceTests : The following 1 profile is active: "test"
+2026-10-26T03:57:53.245Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-26T03:57:53.251Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2769d577
+2026-10-26T03:57:53.251Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-26T03:57:53.605Z  INFO 7969 --- [wrongbook-server] [           main] b.m.s.MybatisPlusApplicationContextAware : Register ApplicationContext instances org.springframework.web.context.support.GenericWebApplicationContext@208bde64
+2026-10-26T03:57:53.645Z  INFO 7969 --- [wrongbook-server] [           main] e.w.s.i.EmbeddingRebuildMaintenanceTests : Started EmbeddingRebuildMaintenanceTests in 0.932 seconds (process running for 30.809)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.154 s -- in com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests
+[INFO] Running com.example.wrongbook.service.impl.EmbeddingContentTests
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in com.example.wrongbook.service.impl.EmbeddingContentTests
+[INFO] Running com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.001 s -- in com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests
+[INFO] Running com.example.wrongbook.service.impl.LiveQuestionRecognitionTests
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in com.example.wrongbook.service.impl.LiveQuestionRecognitionTests
+[INFO] Running com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests
+2026-10-26T03:57:53.878Z  INFO 7969 --- [wrongbook-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests]: FinalDeliveryCoreIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-26T03:57:53.884Z  INFO 7969 --- [wrongbook-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-26T03:57:53.911Z  INFO 7969 --- [wrongbook-server] [           main] .w.s.i.FinalDeliveryCoreIntegrationTests : Starting FinalDeliveryCoreIntegrationTests using Java 21.0.12.1 with PID 7969 (started by agent in /workspace/graduation-project-advisor/server)
+2026-10-26T03:57:53.911Z  INFO 7969 --- [wrongbook-server] [           main] .w.s.i.FinalDeliveryCoreIntegrationTests : The following 1 profile is active: "test"
+2026-10-26T03:57:54.149Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-10-26T03:57:54.179Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e706fc2
+2026-10-26T03:57:54.180Z  INFO 7969 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-10-26T03:57:54.615Z  INFO 7969 --- [wrongbook-server] [           main] b.m.s.MybatisPlusApplicationContextAware : Register ApplicationContext instances org.springframework.web.context.support.GenericWebApplicationContext@6074f8f9
+2026-10-26T03:57:54.644Z  INFO 7969 --- [wrongbook-server] [           main] .w.s.i.FinalDeliveryCoreIntegrationTests : Started FinalDeliveryCoreIntegrationTests in 0.755 seconds (process running for 31.808)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.885 s -- in com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests
+[INFO] Running com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests
+[INFO] Running com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s -- in com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests
+[INFO] Running com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.001 s -- in com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests
+[INFO] Running com.example.wrongbook.util.QuestionContentTests
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in com.example.wrongbook.util.QuestionContentTests
+[INFO] Running com.example.wrongbook.util.FileStorageUtilTests
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.example.wrongbook.util.FileStorageUtilTests
+[INFO] Running com.example.wrongbook.config.WebConfigTests
+2026-10-26T03:57:54.916Z  INFO 7969 --- [wrongbook-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.wrongbook.config.WebConfigTests]: WebConfigTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-26T03:57:54.935Z  INFO 7969 --- [wrongbook-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.config.WebConfigTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-10-26T03:57:54.992Z  INFO 7969 --- [wrongbook-server] [           main] c.e.wrongbook.config.WebConfigTests      : Starting WebConfigTests using Java 21.0.12.1 with PID 7969 (started by agent in /workspace/graduation-project-advisor/server)
+2026-10-26T03:57:54.993Z  INFO 7969 --- [wrongbook-server] [           main] c.e.wrongbook.config.WebConfigTests      : The following 1 profile is active: "test"
+2026-10-26T03:57:55.219Z  INFO 7969 --- [wrongbook-server] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-26T03:57:55.220Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-26T03:57:55.220Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-26T03:57:55.228Z  INFO 7969 --- [wrongbook-server] [           main] c.e.wrongbook.config.WebConfigTests      : Started WebConfigTests in 0.287 seconds (process running for 32.392)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.364 s -- in com.example.wrongbook.config.WebConfigTests
+[INFO] Running com.example.wrongbook.controller.QuestionRecognitionControllerTests
+2026-10-26T03:57:55.577Z  INFO 7969 --- [wrongbook-server] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-26T03:57:55.577Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-26T03:57:55.577Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-26T03:57:55.691Z  INFO 7969 --- [wrongbook-server] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-26T03:57:55.692Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-26T03:57:55.692Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-26T03:57:55.702Z  INFO 7969 --- [wrongbook-server] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-26T03:57:55.702Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-26T03:57:55.702Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-26T03:57:55.708Z  WARN 7969 --- [wrongbook-server] [           main] c.e.w.common.GlobalExceptionHandler      : 业务异常：图片无效
+2026-10-26T03:57:55.720Z  INFO 7969 --- [wrongbook-server] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-26T03:57:55.720Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-26T03:57:55.720Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-26T03:57:55.729Z  INFO 7969 --- [wrongbook-server] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-26T03:57:55.730Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-26T03:57:55.730Z  INFO 7969 --- [wrongbook-server] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.455 s -- in com.example.wrongbook.controller.QuestionRecognitionControllerTests
+[INFO] Running com.example.wrongbook.WrongbookServerApplicationTests
+2026-10-26T03:57:55.735Z  INFO 7969 --- [wrongbook-server] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.wrongbook.WrongbookServerApplicationTests]: WrongbookServerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-26T03:57:55.741Z  INFO 7969 --- [wrongbook-server] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.wrongbook.WrongbookServerApplication for test class com.example.wrongbook.WrongbookServerApplicationTests
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.example.wrongbook.WrongbookServerApplicationTests
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 84, Failures: 0, Errors: 0, Skipped: 4
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  39.622 s
+[INFO] Finished at: 2026-10-26T03:57:55Z
+[INFO] ------------------------------------------------------------------------

@@ -27,7 +27,7 @@
       "kind": "text",
       "x": 223.0,
       "y": 42.5,
-      "text": "题干、科目、可选答案",
+      "text": "纯文本题干、科目、可选答案",
       "size": 9,
       "anchor": "middle"
     },
@@ -194,7 +194,7 @@
       "kind": "text",
       "x": 223.0,
       "y": 392.5,
-      "text": "调用 glm-4.7-flash",
+      "text": "调用智谱 GLM 大模型",
       "size": 9,
       "anchor": "middle"
     },

@@ -1,0 +1,210 @@
+{
+  "date": "2026-10-26",
+  "backend": {
+    "tests": 84,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 4
+  },
+  "backend_suites": [
+    {
+      "suite": "com.example.wrongbook.WrongbookServerApplicationTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.config.WebConfigTests",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.controller.QuestionRecognitionControllerTests",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "skipped_tests": [
+        "runsFixedTwentySevenCaseExperiment"
+      ]
+    },
+    {
+      "suite": "com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.EmbeddingContentTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "skipped_tests": [
+        "auditsRebuildsAndVerifiesAllActiveQuestionEmbeddings"
+      ]
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.LiveGlmValidationTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "skipped_tests": [
+        "validatesRealGlmEmbeddingRagAnalysisAndVariantChain"
+      ]
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.LiveQuestionRecognitionTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "skipped_tests": [
+        "recognizesOneBase64PngAsStrictJson"
+      ]
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.RichQuestionIntegrationTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.service.impl.VariantServiceImplTests",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.util.FileStorageUtilTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    },
+    {
+      "suite": "com.example.wrongbook.util.QuestionContentTests",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "skipped_tests": []
+    }
+  ],
+  "frontend": {
+    "typecheck": "passed",
+    "vitest": {
+      "passed": 29,
+      "failed": 0
+    },
+    "build": "passed",
+    "mock_browser": {
+      "passed": 46,
+      "failed": 0
+    },
+    "real_backend_with_mock_ai": {
+      "passed": 4,
+      "failed": 0
+    },
+    "final_css_build": "passed",
+    "final_ai_rich_targeted_recheck": {
+      "passed": 6,
+      "failed": 0
+    }
+  },
+  "real_glm_network": "not executed: no credential",
+  "default_paid_model_access": false
+}

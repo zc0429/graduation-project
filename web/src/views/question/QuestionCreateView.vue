@@ -3,6 +3,8 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, type FormInstance, type FormRules, type UploadFile } from 'element-plus'
 import { ArrowLeft, Check, Delete, MagicStick, Picture } from '@element-plus/icons-vue'
+import QuestionEditor from '@/components/QuestionEditor.vue'
+import { plainTextToHtml, questionHtml, questionText } from '@/utils/question-content'
 import AsyncState from '@/components/AsyncState.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import PaperPanel from '@/components/PaperPanel.vue'
@@ -52,7 +54,10 @@ const form = reactive({
 
 const rules: FormRules = {
   subjectId: [{ required: true, message: '请选择科目', trigger: 'change' }],
-  stem: [{ required: true, message: '请填写题干', trigger: 'blur' }],
+  stem: [{ validator: (_rule, value, callback) => {
+    const text = questionText(value)
+    callback(!text ? new Error('请填写题干') : text.length > 2000 ? new Error('题干不能超过 2000 字') : undefined)
+  }, trigger: 'blur' }],
 }
 
 const imageSizeText = computed(() => {
@@ -183,7 +188,7 @@ async function recognizeImage() {
     if (result.subjectId && subjects.value.some((subject) => subject.id === result.subjectId)) {
       form.subjectId = result.subjectId
     }
-    form.stem = result.stem
+    form.stem = plainTextToHtml(result.stem)
     if (result.source?.trim()) form.source = result.source.trim()
     recognizedStudentAnswer.value = result.studentAnswer?.trim() || ''
     recognitionState.value = 'success'
@@ -199,9 +204,9 @@ async function submit() {
   const valid = await formRef.value?.validate().catch(() => false)
   if (!valid) return
 
-  const stem = form.stem.trim()
-  if (!stem) {
-    ElMessage.warning('题干不能只包含空格')
+  const stem = questionHtml(form.stem)
+  if (!questionText(stem) || questionText(stem).length > 2000) {
+    ElMessage.warning('题干须为 1—2000 字')
     return
   }
   if (!form.subjectId || imageReading.value) return
@@ -217,16 +222,18 @@ async function submit() {
     })
 
     let analysisAccepted = true
+    let analysisError = ''
     try {
       await aiApi.analyze(id)
-    } catch {
+    } catch (cause) {
       analysisAccepted = false
+      analysisError = toApiError(cause, 'AI 服务暂不可用').message
     }
 
     if (analysisAccepted) {
       ElMessage.success('错题已归档，AI 解析正在后台进行')
     } else {
-      ElMessage.warning('错题已归档，但 AI 解析暂未启动，可在详情页重新触发')
+      ElMessage.warning(`错题已归档；AI 解析未启动：${analysisError}`)
     }
     await router.push(`/question/${id}`)
   } catch (cause) {
@@ -305,15 +312,8 @@ onMounted(() => void loadSubjects())
           </div>
 
           <el-form-item label="题干" prop="stem" required>
-            <el-input
-              v-model="form.stem"
-              type="textarea"
-              :rows="6"
-              maxlength="2000"
-              show-word-limit
-              resize="vertical"
-              placeholder="完整抄录题目条件与问题，便于后续检索和解析"
-            />
+            <QuestionEditor v-model="form.stem" :disabled="submitting || recognizing"
+              @blur="formRef?.validateField('stem').catch(() => undefined)" />
           </el-form-item>
 
           <el-form-item label="正确答案或订正（选填）">
@@ -404,7 +404,7 @@ onMounted(() => void loadSubjects())
               size="large"
               :icon="Check"
               :loading="submitting"
-              :disabled="imageReading"
+              :disabled="imageReading || recognizing"
               native-type="submit"
             >
               保存并启动解析

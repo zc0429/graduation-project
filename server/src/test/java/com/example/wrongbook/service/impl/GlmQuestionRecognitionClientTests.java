@@ -29,6 +29,17 @@ class GlmQuestionRecognitionClientTests {
     private static final String IMAGE_DATA_URL = "data:image/png;base64,iVBORw0KGgo=";
 
     @Test
+    void missingKeyRefusesRecognitionWithoutNetworkAndKeepsApplicationConstructible() {
+        RestClient.Builder builder = RestClient.builder();
+        MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();
+        GlmQuestionRecognitionClient client = new GlmQuestionRecognitionClient(
+                builder, new ObjectMapper(), new ImageRecognitionProperties());
+        assertThatThrownBy(() -> client.recognize("data:image/png;base64,iVBORw0KGgo=", List.of("数学")))
+                .hasMessageContaining("未配置");
+        server.verify();
+    }
+
+    @Test
     void sendsVerifiedMultimodalFormatAndParsesStructuredResponse() {
         RestClient.Builder builder = RestClient.builder();
         MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();

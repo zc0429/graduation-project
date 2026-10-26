@@ -12,6 +12,7 @@ import com.example.wrongbook.mapper.QuestionMapper;
 import com.example.wrongbook.mapper.VariantQuestionMapper;
 import com.example.wrongbook.service.LlmClient;
 import com.example.wrongbook.service.VariantService;
+import com.example.wrongbook.util.QuestionContent;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,7 @@ public class VariantServiceImpl implements VariantService {
     @Override
     public List<VariantQuestion> generate(Long questionId) {
         Question question = checkOwnQuestion(questionId);
+        llmClient.verifyReady();
         String kpName = "未归类";
         if (question.getKnowledgePointId() != null) {
             KnowledgePoint kp = knowledgePointMapper.selectById(question.getKnowledgePointId());
@@ -48,7 +50,7 @@ public class VariantServiceImpl implements VariantService {
             }
         }
         String prompt = MockLlmClient.TASK_VARIANT + "\n"
-                + "原题题干：" + question.getStem() + "\n"
+                + "原题题干：" + QuestionContent.plainText(question.getStem()) + "\n"
                 + "原题答案：" + (question.getAnswer() == null ? "" : question.getAnswer()) + "\n"
                 + "知识点：" + kpName + "\n"
                 + "输出要求（必须全部满足）：\n"

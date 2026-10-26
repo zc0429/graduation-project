@@ -156,14 +156,14 @@ DB_USERNAME=<your-local-db-user>
 DB_PASSWORD=<your-local-db-password>
 ```
 
-大模型默认保持 `mock`，无需密钥即可离线开发。正式目标为智谱 GLM；开发联调可临时切换 DeepSeek。模型配置统一从 `server/.env` 或进程环境变量读取，真实密钥不得写入 Git、文档、日志或截图。完整占位配置见 `server/.env.example`。
+正常运行默认 `glm`，文本默认 `glm-5.3-flash`，图片识题默认开启；缺少密钥时手工录入可用，AI 请求明确失败。离线开发需显式设置 `LLM_PROVIDER=mock` 与 `IMAGE_RECOGNITION_ENABLED=false`。模型配置统一从 `server/.env` 或进程环境变量读取，真实密钥不得写入 Git、文档、日志或截图。完整占位配置见 `server/.env.example`。
 
 智谱 GLM 正式配置（获得并轮换为可用的新密钥后填写）：
 
 ```dotenv
 LLM_PROVIDER=glm
 LLM_API_KEY=replace-with-your-glm-api-key
-LLM_CHAT_MODEL=glm-4.7-flash
+LLM_CHAT_MODEL=glm-5.3-flash
 LLM_EMBEDDING_MODEL=embedding-3
 LLM_EMBEDDING_DIMENSIONS=1024
 ```

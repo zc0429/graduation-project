@@ -1,0 +1,16 @@
+[WebServer] (node:5835) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 5 tests using 1 worker
+
+(node:5854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/5] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:7:1 › 错题列表支持筛选并以 JWT 导出文件
+[2/5] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析
+[3/5] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案
+[4/5] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存
+[5/5] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除
+  5 passed (15.8s)

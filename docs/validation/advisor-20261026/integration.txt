@@ -1,0 +1,19 @@
+
+> web@0.0.0 e2e:integration
+> playwright test --config=playwright.integration.config.ts
+
+[WebServer] (node:4293) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 4 tests using 1 worker
+
+(node:4312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/4] e2e/integration/real-backend.spec.ts:22:3 › wrongbook_e2e real backend › student can create, edit, practise, export with JWT, and delete a question
+[2/4] e2e/integration/real-backend.spec.ts:76:3 › wrongbook_e2e real backend › teacher is limited to the aggregate report surface
+[3/4] e2e/integration/real-backend.spec.ts:91:3 › wrongbook_e2e real backend › administrator reaches the real management surfaces
+[4/4] e2e/integration/real-backend.spec.ts:102:3 › wrongbook_e2e real backend › question images are returned only through an owned authenticated detail
+  4 passed (21.7s)

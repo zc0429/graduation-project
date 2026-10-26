@@ -29,7 +29,7 @@
       "kind": "text",
       "x": 223.0,
       "y": 37.5,
-      "text": "页面、图表、Axios 请求与轮询",
+      "text": "富文本编辑、图表、Axios 请求与轮询",
       "size": 9,
       "anchor": "middle"
     },
@@ -233,7 +233,7 @@
       "kind": "text",
       "x": 111.5,
       "y": 369.5,
-      "text": "智谱 glm-4.7-flash 文本生成",
+      "text": "智谱 GLM 大模型文本生成",
       "size": 9,
       "anchor": "middle"
     },
@@ -272,7 +272,7 @@
       "kind": "text",
       "x": 334.5,
       "y": 369.5,
-      "text": "glm-5.3-flash（默认关闭）",
+      "text": "GLM 多模态识别（默认开启）",
       "size": 9,
       "anchor": "middle"
     },

@@ -3,6 +3,8 @@ import { computed, onMounted, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { Download, Filter, Picture, Plus, Refresh } from '@element-plus/icons-vue'
+import QuestionContent from '@/components/QuestionContent.vue'
+import { questionText } from '@/utils/question-content'
 import AsyncState from '@/components/AsyncState.vue'
 import MasteryIndicator from '@/components/MasteryIndicator.vue'
 import PageHeader from '@/components/PageHeader.vue'
@@ -359,7 +361,7 @@ onMounted(() => void loadInitial())
                 <RouterLink
                   class="question-link"
                   :to="`/question/${question.id}`"
-                  :aria-label="`查看错题：${question.stem}`"
+                  :aria-label="`查看错题：${questionText(question.stem)}`"
                 >
                   <span class="correction-mark" aria-hidden="true">✓</span>
                   <div class="card-tags">
@@ -370,7 +372,7 @@ onMounted(() => void loadInitial())
                     </span>
                   </div>
 
-                  <h2>{{ question.stem }}</h2>
+                  <QuestionContent class="question-card-stem" :content="question.stem" />
 
                   <div class="question-meta">
                     <span v-if="question.imageUrl" class="image-note">
@@ -679,7 +681,7 @@ onMounted(() => void loadInitial())
   white-space: nowrap;
 }
 
-.question-link h2 {
+.question-card-stem {
   position: relative;
   z-index: 1;
   display: -webkit-box;
