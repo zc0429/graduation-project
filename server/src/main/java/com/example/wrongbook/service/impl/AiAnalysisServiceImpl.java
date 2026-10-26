@@ -16,6 +16,7 @@ import com.example.wrongbook.service.EmbeddingService;
 import com.example.wrongbook.service.LlmClient;
 import com.example.wrongbook.service.MessageService;
 import com.example.wrongbook.service.RagService;
+import com.example.wrongbook.util.QuestionContent;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -51,6 +52,7 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
     @Override
     public void trigger(Long questionId) {
         Question question = checkOwnQuestion(questionId);
+        llmClient.verifyReady();
         AiAnalysis exist = findByQuestionId(questionId);
         if (exist != null && exist.getStatus() == 0) {
             return;
@@ -187,7 +189,7 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
     private String buildPrompt(Question question, List<KnowledgePoint> candidates, List<Question> references) {
         StringBuilder sb = new StringBuilder();
         sb.append(MockLlmClient.TASK_ANALYZE).append("（RAG）\n");
-        sb.append("题干：").append(question.getStem()).append("\n");
+        sb.append("题干：").append(QuestionContent.plainText(question.getStem())).append("\n");
         if (question.getAnswer() != null) {
             sb.append("答案：").append(question.getAnswer()).append("\n");
         }
@@ -197,7 +199,7 @@ public class AiAnalysisServiceImpl implements AiAnalysisService {
         }
         sb.append("参考题目：\n");
         for (Question ref : references) {
-            String stem = ref.getStem();
+            String stem = QuestionContent.plainText(ref.getStem());
             sb.append("- ").append(stem.length() > 50 ? stem.substring(0, 50) + "…" : stem).append("\n");
         }
         sb.append("输出要求（必须全部满足）：\n");

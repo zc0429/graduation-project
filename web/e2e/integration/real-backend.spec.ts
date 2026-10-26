@@ -36,7 +36,7 @@ test.describe('wrongbook_e2e real backend', () => {
 
     await page.locator('.el-select').first().click()
     await page.getByRole('option', { name: '数学' }).click()
-    await page.getByPlaceholder('完整抄录题目条件与问题，便于后续检索和解析').fill(uniqueStem)
+    await page.getByRole('textbox', { name: '题干', exact: true }).fill(uniqueStem)
     await page.getByPlaceholder('记录正确答案、关键步骤或自己的订正').fill('y = x²，先判断开口方向。')
     await page.getByPlaceholder('如：期中试卷 · 第 18 题').fill('wrongbook_e2e 自动化验收')
     await page.getByRole('button', { name: '保存并启动解析' }).click()
@@ -47,7 +47,7 @@ test.describe('wrongbook_e2e real backend', () => {
     await page.getByRole('button', { name: '编辑错题' }).click()
     const editDialog = page.getByRole('dialog', { name: '编辑错题' })
     await expect(editDialog).toBeVisible()
-    await editDialog.locator('textarea').first().fill(editedStem)
+    await editDialog.getByRole('textbox', { name: '题干', exact: true }).fill(editedStem)
     await editDialog.getByRole('button', { name: '保存修改' }).click()
     await expect(editDialog).toBeHidden()
     await expect(page.getByText(editedStem, { exact: true })).toBeVisible()

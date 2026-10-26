@@ -8,6 +8,10 @@ import java.util.List;
  */
 public interface LlmClient {
 
+    /** Fail before enqueueing work when the real provider has no credential. */
+    default void verifyReady() {
+    }
+
     /** 文本生成：输入提示词，输出文本（结构化任务约定输出 JSON 字符串） */
     String chat(String prompt);
 

@@ -218,9 +218,42 @@ class OpenAiCompatibleLlmClientTests {
         server.verify();
     }
 
+    @Test
+    void defaultGlmUsesRequiredThinkingParametersWithoutChangingEmbeddingSpace() {
+        LlmProperties properties = new LlmProperties();
+        properties.setApiKey("test-api-key");
+        RestClient.Builder builder = RestClient.builder();
+        MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();
+        OpenAiCompatibleLlmClient client = new OpenAiCompatibleLlmClient(builder, properties);
+        server.expect(requestTo("https://open.bigmodel.cn/api/paas/v4/chat/completions"))
+                .andExpect(content().json("""
+                        {"model":"glm-5.3-flash","thinking":{"type":"enabled"},"reasoning_effort":"low",
+                         "response_format":{"type":"json_object"},"stream":false}
+                        """))
+                .andRespond(withSuccess("""
+                        {"model":"glm-5.3-flash","choices":[{"message":{"content":"{}"}}]}
+                        """, MediaType.APPLICATION_JSON));
+        assertThat(client.chat("配置验证")).isEqualTo("{}");
+        assertThat(client.embeddingModelLabel()).isEqualTo("embedding-3-1024");
+        server.verify();
+    }
+
+    @Test
+    void absentKeyDoesNotStopManualInputButRefusesAiWithoutNetworkOrMockFallback() {
+        RestClient.Builder builder = RestClient.builder();
+        MockRestServiceServer server = MockRestServiceServer.bindTo(builder).build();
+        OpenAiCompatibleLlmClient client = new OpenAiCompatibleLlmClient(builder, new LlmProperties());
+        assertThatThrownBy(client::verifyReady).hasMessageContaining("LLM_API_KEY");
+        assertThatThrownBy(() -> client.chat("题目")).hasMessageContaining("LLM_API_KEY");
+        assertThatThrownBy(() -> client.embed("题目")).hasMessageContaining("LLM_API_KEY");
+        assertThat(client.model()).isEqualTo("glm-5.3-flash");
+        server.verify();
+    }
+
     private LlmProperties glmProperties() {
         LlmProperties properties = new LlmProperties();
         properties.setProvider("glm");
+        properties.setChatModel("glm-4.7-flash");
         properties.setApiKey("test-api-key");
         return properties;
     }

@@ -210,3 +210,7 @@ Remove-Item Env:LIGHTHOUSE_USERNAME, Env:LIGHTHOUSE_PASSWORD, Env:LIGHTHOUSE_BAS
 | `wrongbook_e2e` 真实联调 | 4/4；Spring Boot + MySQL + `LLM_PROVIDER=mock`，含 JWT Axios Blob 下载、教师直调 403 与私有图片边界 |
 | 设计证据截图 | 10/10；桌面 5、平板 2、手机 3，全部带 Mock 标识并存于 `docs/design/vue-rebuild-screenshots/` |
 | Lighthouse | 登录页 Performance 99 / Accessibility 100（FCP 693 ms，LCP 769 ms）；学生首页 99 / 100（FCP 744 ms，LCP 926 ms）；两页 TBT 0、CLS 0 |
+
+## 2026-10-26 富文本与识题验证
+
+新增与编辑题干使用Tiptap，展示通过QuestionContent和DOMPurify；图片候选按纯文本转义后回填。后台再次用Jsoup过滤，数据库不迁移。正常运行默认真实GLM且图片识题开启，离线需显式Mock并关闭图片联网。`npm run verify`本轮typecheck、Vitest 29/29、build及四档Mock UI 46/46通过，真实后端+MySQL+Mock AI浏览器4/4通过。完整证据和未验证边界见 `docs/validation/advisor-20261026/README.md`；下方或上方旧统计保留为对应日期历史。

@@ -37,17 +37,17 @@ app:
   cors:
     # 携带凭据时只允许明确来源；测试部署必须通过 profile 显式覆盖
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173,http://localhost:4175,http://127.0.0.1:4175}
-  # 图片识别仅是 Question 创建前的可选旁路，默认关闭，不写业务数据
+  # 图片识别是创建前的候选提取旁路，默认开启，不写业务数据
   image-recognition:
-    enabled: ${IMAGE_RECOGNITION_ENABLED:false}
+    enabled: ${IMAGE_RECOGNITION_ENABLED:true}
     base-url: ${IMAGE_RECOGNITION_BASE_URL:https://open.bigmodel.cn/api/paas/v4}
     # 可复用同一个智谱 Key，但 Client 与模型配置保持隔离
     api-key: ${IMAGE_RECOGNITION_API_KEY:${LLM_API_KEY:}}
     model: ${IMAGE_RECOGNITION_MODEL:glm-5.3-flash}
     max-image-bytes: ${IMAGE_RECOGNITION_MAX_BYTES:5242880}
-  # 大模型提供方：mock（默认、离线）/ glm / deepseek
+  # 大模型提供方：glm（默认、真实）/ mock（显式离线）/ deepseek
   llm:
-    provider: ${LLM_PROVIDER:mock}
+    provider: ${LLM_PROVIDER:glm}
     # 真实提供方的密钥与模型配置仅通过环境变量或未入库的 .env 注入
     base-url: ${LLM_BASE_URL:}
     api-key: ${LLM_API_KEY:}

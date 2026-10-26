@@ -18,7 +18,7 @@ import java.util.Map;
  * 接入真实大模型时新增 OpenAiLlmClient / DashScopeClient 并修改 app.llm.provider。
  */
 @Component
-@ConditionalOnProperty(name = "app.llm.provider", havingValue = "mock", matchIfMissing = true)
+@ConditionalOnProperty(name = "app.llm.provider", havingValue = "mock")
 public class MockLlmClient implements LlmClient {
 
     /** 解析任务与变式任务的提示词标记（由调用方组装提示词时写入） */

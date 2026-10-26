@@ -28,13 +28,13 @@ test('录入错题后进入详情并启动解析', async ({ page, mockApi }) => 
   await page.getByLabel('科目').click()
   await page.getByRole('option', { name: '数学' }).click()
   await page.getByLabel('来源（选填）').fill('专项训练 · 第 6 题')
-  await page.getByLabel('题干').fill('求函数在指定区间内的最大值。')
+  await page.getByRole('textbox', { name: '题干', exact: true }).fill('求函数在指定区间内的最大值。')
   await page.getByLabel('正确答案或订正（选填）').fill('先求导，再比较端点值。')
   await page.getByRole('button', { name: '保存并启动解析' }).click()
 
   await expect(page).toHaveURL(/\/question\/203$/)
   await expect(page.getByRole('heading', { name: '错题 #203' })).toBeVisible()
-  expect(mockApi.questions.some((item) => item.stem === '求函数在指定区间内的最大值。')).toBe(true)
+  expect(mockApi.questions.some((item) => item.stem === '<p>求函数在指定区间内的最大值。</p>')).toBe(true)
   expect(mockApi.requests.some((item) => item.pathname === '/api/ai/analyze/203')).toBe(true)
 })
 
@@ -60,7 +60,7 @@ test('图片识别回填普通表单但不自动保存或污染正确答案', as
   await expect(recognizeButton).toBeDisabled()
 
   await expect(page.locator('.el-select__selected-item').filter({ hasText: '数学' })).toBeVisible()
-  await expect(page.getByLabel('题干')).toHaveValue('已知函数 f(x) = x² - 5x + 6，求方程 f(x) = 0 的解。')
+  await expect(page.getByRole('textbox', { name: '题干', exact: true })).toHaveText('已知函数 f(x) = x² - 5x + 6，求方程 f(x) = 0 的解。')
   await expect(page.getByLabel('来源（选填）')).toHaveValue('高一数学课堂练习')
   await expect(page.getByText('x = 3', { exact: true })).toBeVisible()
   await expect(page.getByText('AI 识别结果仅供辅助，请核对后再保存。')).toBeVisible()
@@ -88,11 +88,11 @@ test('图片识别失败后仍可手工填写并由用户保存', async ({ page,
 
   await page.getByLabel('科目').click()
   await page.getByRole('option', { name: '数学' }).click()
-  await page.getByLabel('题干').fill('识别失败后手工填写的题目。')
+  await page.getByRole('textbox', { name: '题干', exact: true }).fill('识别失败后手工填写的题目。')
   await page.getByRole('button', { name: '保存并启动解析' }).click()
 
   await expect(page).toHaveURL(/\/question\/203$/)
-  expect(mockApi.questions.some((item) => item.stem === '识别失败后手工填写的题目。')).toBe(true)
+  expect(mockApi.questions.some((item) => item.stem === '<p>识别失败后手工填写的题目。</p>')).toBe(true)
 })
 
 test('错题详情可编辑并在确认后删除', async ({ page, mockApi }) => {
@@ -100,11 +100,11 @@ test('错题详情可编辑并在确认后删除', async ({ page, mockApi }) => 
 
   await page.getByRole('button', { name: '编辑错题' }).click()
   const editDialog = page.getByRole('dialog', { name: '编辑错题' })
-  await editDialog.getByLabel('题干').fill('已修订：讨论函数单调性与参数范围。')
+  await editDialog.getByRole('textbox', { name: '题干', exact: true }).fill('已修订：讨论函数单调性与参数范围。')
   await editDialog.getByRole('button', { name: '保存修改' }).click()
   await expect(page.getByText('已修订：讨论函数单调性与参数范围。', { exact: true })).toBeVisible()
 
-  await page.getByRole('button', { name: '删除' }).click()
+  await page.getByRole('button', { name: '删除', exact: true }).click()
   const confirmDialog = page.getByRole('dialog', { name: '删除错题' })
   await confirmDialog.getByRole('button', { name: '确认删除' }).click()
 
