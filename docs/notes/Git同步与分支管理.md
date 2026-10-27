@@ -98,3 +98,5 @@ git worktree add --detach ../graduation-project-thesis-archive origin/codex/thes
 远程分支删除必须先取得用户对具体清单的确认；删除前重新 fetch，并用 `git merge-base --is-ancestor origin/分支 origin/dev` 与独有提交差异核对。已合并分支即使可删，也应检查两端 worktree 和未提交工作；未合并论文、文献分支先保留，按需选取成果或经授权归档。
 
 本轮不执行远程分支删除、已跟踪文件删除、历史重写或强制推送。具体建议与文件清单见 [仓库整理报告](仓库整理报告-20261027.md)。
+
+上述“本轮不执行”指删除前审计阶段。后续用户已确认按清单删除，执行结果见 [删除执行记录](仓库整理删除执行记录-20261027.md)。Windows 接收本次整理时用 `git fetch origin --prune` 清除已不存在的远程跟踪引用，再对干净的 `dev` 执行 `git pull --ff-only origin dev`；该操作不会删除本地任务分支。本地旧分支有工作树或独有提交时先保留，只有确认已合并且无待保存工作后，才使用 `git branch -d 分支名`，不用 `-D` 强删。

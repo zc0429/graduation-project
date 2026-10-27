@@ -1,0 +1,82 @@
+[
+  {
+    "branch": "codex/advisor-update-20261026",
+    "deleted_tip": "f1baeb122f77c23179dd66cf7330837adaa726be",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/advisor-update-20261026",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/backend-data-isolation-p0",
+    "deleted_tip": "87c17f75fcea72ebd09f2652e26d48d3982bd6ea",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/backend-data-isolation-p0",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/embedding-rebuild",
+    "deleted_tip": "f1bf36fec01060ee1239ba65bd410be93aa60757",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/embedding-rebuild",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/frontend-rebuild",
+    "deleted_tip": "0d876c46f64bf3d171bcf46449da6a2a6f7a9081",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/frontend-rebuild",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/gate5-ai-rag-experiment",
+    "deleted_tip": "5d1180933a9d8f665bc056ba097b0c22022300ee",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/gate5-ai-rag-experiment",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/image-question-recognition",
+    "deleted_tip": "4af3613cef35ccb32c081b3fcfcf5051c25b7a77",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/image-question-recognition",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/live-glm-validation",
+    "deleted_tip": "fa5a307798cd3f76aa4ac762d8fc42ede385ab30",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/live-glm-validation",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/question-edit-ai-invalidation-p0",
+    "deleted_tip": "97065c6e8f7fdee582b7f3fe119bbb002636bc7a",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/question-edit-ai-invalidation-p0",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/real-ai-e2e-evidence",
+    "deleted_tip": "032ca9cd5bf2f485090dc4740e7185757a8576bd",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/real-ai-e2e-evidence",
+    "status": "deleted and absence verified"
+  },
+  {
+    "branch": "codex/thesis-truth-sync",
+    "deleted_tip": "19d95388e1e67203ac10532746f4b5dc902a4707",
+    "retained_by_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+    "ancestor_verified": true,
+    "command": "git push origin --delete codex/thesis-truth-sync",
+    "status": "deleted and absence verified"
+  }
+]

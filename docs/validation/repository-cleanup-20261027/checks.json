@@ -1,0 +1,94 @@
+{
+  "base_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+  "base_hygiene": "727796a0491f5e1e38653073c6e9e75ca130542b",
+  "scope": "pre-commit checks for approved cleanup; no application/live-model reruns",
+  "checks": [
+    {
+      "check": "仅删除获准的10个远程分支，重要分支保留",
+      "command": "git ls-remote --heads origin",
+      "status": "PASS",
+      "remaining_branches": {
+        "codex/reference-freeze": "7698cadd9a448b3e4b78ce7f934ea6cc922446db",
+        "codex/repository-hygiene-20261027": "727796a0491f5e1e38653073c6e9e75ca130542b",
+        "codex/thesis-finalization-20260920": "29ae335c98d9944a50360ed8ffa9a1b07f70cd15",
+        "dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+        "main": "d16e31f6b7c06b836a4ceeb649273c23a3e68c61"
+      }
+    },
+    {
+      "check": "已删除的10个分支头仍由dev历史保留",
+      "command": "git merge-base --is-ancestor SHA BASE_DEV (10 checks)",
+      "status": "PASS",
+      "checked": 10
+    },
+    {
+      "check": "524份既有成果字节与规范化blob不变",
+      "command": "Python SHA-256 and git hash-object vs 727796a baseline",
+      "status": "PASS",
+      "files": 524
+    },
+    {
+      "check": "现存文件仅5空占位删除及3说明追加",
+      "command": "git diff --name-status 727796a",
+      "status": "PASS",
+      "deleted": [
+        "server/src/main/java/com/example/wrongbook/dto/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/service/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/service/impl/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/util/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/vo/.gitkeep"
+      ],
+      "modified": [
+        "docs/notes/Git同步与分支管理.md",
+        "docs/notes/仓库整理报告-20261027.md",
+        "docs/notes/进度记录.md"
+      ]
+    },
+    {
+      "check": "文献分支普通子提交只删除Word锁文件",
+      "command": "git diff --name-status -z 7a80cb9 7698cad; git rev-parse 7698cad^",
+      "status": "PASS",
+      "commit": "7698cadd9a448b3e4b78ce7f934ea6cc922446db",
+      "other_blob_changes": 0
+    },
+    {
+      "check": "可重建缓存删除且44份报告/状态保留",
+      "command": "Python path absence and SHA-256 checks",
+      "status": "PASS",
+      "preserved_files": 44,
+      "removed_cache_directories": 6
+    },
+    {
+      "check": "本地旧导师分支删除，原工作树干净保留",
+      "command": "git branch --list; git -C advisor rev-parse HEAD; git -C advisor status --porcelain",
+      "status": "PASS",
+      "worktree_preserved": true
+    },
+    {
+      "check": "未隐藏现存跟踪文件",
+      "command": "git ls-files -ci --exclude-standard",
+      "status": "PASS"
+    },
+    {
+      "check": "工作区及当前暂存空白检查",
+      "command": "git diff --check; git diff --cached --check",
+      "status": "PASS"
+    },
+    {
+      "check": "执行说明新增/更新本地链接有效",
+      "command": "Python relative Markdown link existence check",
+      "status": "PASS",
+      "documents": 4,
+      "links": 17
+    }
+  ],
+  "final_staged_checks": {
+    "status": "PASS",
+    "command": "git diff --cached --name-status; git diff --cached --check; git diff --name-only",
+    "files": 14,
+    "deleted_empty_placeholders": 5,
+    "modified_documentation": 3,
+    "added_documentation_and_evidence": 6,
+    "unstaged_changes": 0
+  }
+}
