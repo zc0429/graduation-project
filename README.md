@@ -25,9 +25,15 @@ graduation-project/
 │   ├── materials/          # 学校规范、导师材料和参考样例
 │   ├── notes/              # 进度记录、开题与过程文档
 │   ├── references/         # BibTeX 与 GB/T 7714 双轨参考文献
-│   └── thesis/             # 论文及提交文档的 Markdown 源稿
+│   ├── thesis/             # 完整论文源稿、建模源文件与必要截图
+│   ├── experiments/        # 历史实验数据与人工评价记录
+│   └── validation/         # 按轮次保存的验证证据
+├── output/                 # 阶段性交付导出件（保留，不是构建缓存）
+├── scripts/                # 文档构建与验证脚本
 └── AGENTS.md               # 跨对话项目约束与关键决策
 ```
+
+最新成果定位、保留规则与历史论文分支见 [文档目录导航](docs/README.md)；云端 Codex 和 Windows 的日常同步步骤见 [Git 同步流程](docs/notes/Git同步与分支管理.md)。分支及文件处置建议见 [2026-10-27 仓库整理报告](docs/notes/仓库整理报告-20261027.md)，清单中的删除项须另行确认。
 
 ## 本地启动
 

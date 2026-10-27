@@ -1,0 +1,244 @@
+{
+  "base_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+  "tracked_files": 522,
+  "tracked_bytes": 36885219,
+  "top_level": {
+    "(root files)": {
+      "files": 3,
+      "bytes": 35326
+    },
+    "docs": {
+      "files": 235,
+      "bytes": 30597746
+    },
+    "output": {
+      "files": 32,
+      "bytes": 5018035
+    },
+    "scripts": {
+      "files": 9,
+      "bytes": 128720
+    },
+    "server": {
+      "files": 152,
+      "bytes": 446684
+    },
+    "web": {
+      "files": 91,
+      "bytes": 658708
+    }
+  },
+  "identical_blob_groups": [
+    {
+      "blob": "4959d395d3ba53e0a002f6c83c1fefea53f0860b",
+      "bytes": 744,
+      "paths": [
+        "docs/validation/advisor-20261026/document-check.json",
+        "docs/validation/merge-advisor-20261026/document-check.json"
+      ]
+    },
+    {
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "paths": [
+        "docs/references/pdfs/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/dto/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/service/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/service/impl/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/util/.gitkeep",
+        "server/src/main/java/com/example/wrongbook/vo/.gitkeep"
+      ]
+    }
+  ],
+  "suspicious_by_remote_tip": {
+    "origin/codex/advisor-update-20261026": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bb4d6315e36341ea3c3bb6fc3b70fa0695544a11",
+        "bytes": 2325
+      }
+    ],
+    "origin/codex/backend-data-isolation-p0": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "110f19bff7d830e1faf2042fdb5b973bcc900f00",
+        "bytes": 937
+      }
+    ],
+    "origin/codex/embedding-rebuild": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a40da596adcd63501ed023a276129b4ffe1866af",
+        "bytes": 1096
+      }
+    ],
+    "origin/codex/frontend-rebuild": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "110f19bff7d830e1faf2042fdb5b973bcc900f00",
+        "bytes": 937
+      }
+    ],
+    "origin/codex/gate5-ai-rag-experiment": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a40da596adcd63501ed023a276129b4ffe1866af",
+        "bytes": 1096
+      }
+    ],
+    "origin/codex/image-question-recognition": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fad1ba5aae1a3474387b638414c8ca4770223a72",
+        "bytes": 1520
+      }
+    ],
+    "origin/codex/live-glm-validation": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a40da596adcd63501ed023a276129b4ffe1866af",
+        "bytes": 1096
+      }
+    ],
+    "origin/codex/question-edit-ai-invalidation-p0": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "110f19bff7d830e1faf2042fdb5b973bcc900f00",
+        "bytes": 937
+      }
+    ],
+    "origin/codex/real-ai-e2e-evidence": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a40da596adcd63501ed023a276129b4ffe1866af",
+        "bytes": 1096
+      }
+    ],
+    "origin/codex/reference-freeze": [
+      {
+        "path": "docs/materials/~$2：云南工商学院本科毕业论文（设计）.docx",
+        "kinds": [
+          "office_or_os_temporary_file"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7e230ba9fe5e6a953a53e479775202ef27e9cc3b",
+        "bytes": 162
+      },
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "900d6a9a1295d68c54ee95379885493ecc11956f",
+        "bytes": 1547
+      }
+    ],
+    "origin/codex/thesis-finalization-20260920": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "232a4642d2d17ccf369f4df8ede62123f4f76a2e",
+        "bytes": 2127
+      }
+    ],
+    "origin/codex/thesis-truth-sync": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "900d6a9a1295d68c54ee95379885493ecc11956f",
+        "bytes": 1547
+      }
+    ],
+    "origin/dev": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bb4d6315e36341ea3c3bb6fc3b70fa0695544a11",
+        "bytes": 2325
+      }
+    ],
+    "origin/main": [
+      {
+        "path": "server/.env.example",
+        "kinds": [
+          "sensitive_filename_review"
+        ],
+        "mode": "100644",
+        "type": "blob",
+        "oid": "07776ba0fea679f1ecab70bcd92001dce89d5006",
+        "bytes": 312
+      }
+    ]
+  },
+  "tracked_ignored": [],
+  "windows": {
+    "invalid_components": [],
+    "case_or_unicode_collisions": [],
+    "paths_at_least_260_with_example_windows_root": []
+  },
+  "credential_shape_scan": {
+    "scope": "distinct UTF-8 text blobs <= 2MB at all 14 remote branch tips; not full history/binary documents",
+    "checked_text_blobs": 670,
+    "hits": []
+  }
+}

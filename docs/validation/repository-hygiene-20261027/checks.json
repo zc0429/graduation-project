@@ -1,0 +1,107 @@
+{
+  "base_dev": "d328adb9b6c48c1d580a0f2a40fe9d20fa2d9521",
+  "scope": "Git/ignore/documentation only; no backend/frontend/live model reruns",
+  "checks": [
+    {
+      "check": "只修改允许的3个既有说明/规则文件",
+      "command": "git diff --name-only BASE",
+      "status": "PASS",
+      "changed_paths": [
+        ".gitignore",
+        "README.md",
+        "docs/notes/进度记录.md"
+      ]
+    },
+    {
+      "check": "无已跟踪文件删除/重命名",
+      "command": "git diff --name-status BASE",
+      "status": "PASS"
+    },
+    {
+      "check": "保护原应用/论文/开题/材料/图示/证据字节",
+      "command": "Python SHA-256 plus git hash-object (honoring existing attributes) against baseline-manifest.json",
+      "status": "PASS",
+      "checked_files": 519
+    },
+    {
+      "check": "远程14个原分支提交未变",
+      "command": "git ls-remote --heads origin",
+      "status": "PASS",
+      "checked_branches": 14
+    },
+    {
+      "check": "逐分支祖先关系与提交计数一致",
+      "command": "git merge-base --is-ancestor REF BASE (14 refs)",
+      "status": "PASS",
+      "checked_branches": 14,
+      "codex_merged": 10,
+      "codex_unmerged": 2
+    },
+    {
+      "check": "两个未合并分支无独有应用代码变更",
+      "command": "git diff --name-only BASE...REF -- server/ web/",
+      "status": "PASS",
+      "checked_branches": 2
+    },
+    {
+      "check": "忽略规则正反例",
+      "command": "git check-ignore --no-index PATH (virtual paths, no files created)",
+      "status": "PASS",
+      "positive_passed": 27,
+      "negative_passed": 20
+    },
+    {
+      "check": "不隐藏任何现存跟踪文件",
+      "command": "git check-ignore --no-index PATH (522 baseline paths)",
+      "status": "PASS",
+      "checked_paths": 522
+    },
+    {
+      "check": "无已跟踪但匹配忽略规则的文件",
+      "command": "git ls-files -ci --exclude-standard",
+      "status": "PASS"
+    },
+    {
+      "check": "新增导航及修改README的本地链接",
+      "command": "Python relative Markdown link existence check",
+      "status": "PASS",
+      "checked_documents": 6,
+      "checked_links": 36
+    },
+    {
+      "check": "工作区diff空白检查",
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "check": "dev与main本地引用保持原样",
+      "command": "git rev-parse dev main",
+      "status": "PASS"
+    }
+  ],
+  "limitations": [
+    "Not executed on Windows/Office/draw.io",
+    "Credential shape scan at remote tips is not full-history/binary forensics",
+    "No remote branch or tracked file deletion authorized or performed"
+  ],
+  "pre_commit_checks": [
+    {
+      "command": "git diff --cached --check",
+      "status": "PASS"
+    },
+    {
+      "command": "git diff --cached --name-status",
+      "status": "PASS",
+      "files": 13,
+      "modified_existing": 3,
+      "added": 10,
+      "deleted": 0,
+      "renamed": 0
+    },
+    {
+      "command": "git diff --name-only",
+      "status": "PASS",
+      "unstaged_changes": 0
+    }
+  ]
+}

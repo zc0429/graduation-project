@@ -22,6 +22,10 @@ target/
 node_modules/
 dist/
 *.local
+*.tsbuildinfo
+/web/coverage/
+/web/.vite/
+/web/.cache/
 
 # ---------- 日志与临时文件 ----------
 *.log
@@ -32,10 +36,22 @@ __pycache__/
 /tmp/
 .~lock.*#
 .~*
+~$*
+*.swp
+*.swo
+
+# 本地交接压缩包/仓库 bundle 与图表转换中间目录，不影响已跟踪导出件和证据
+/output/handoff/
+/.chart-data-*/
 
 # ---------- 环境变量与密钥（禁止入库） ----------
 .env
 **/.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.template
 
 # ---------- 错题图片本地上传目录 ----------
 server/uploads/
