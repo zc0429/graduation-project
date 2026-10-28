@@ -2,6 +2,8 @@
 
 日常工作基于最新远程 `dev`。本导航只说明位置与状态，不迁移、重命名或删除既有成果。开始会话先读根目录 [AGENTS.md](../AGENTS.md) 和 [进度记录](notes/进度记录.md)。
 
+统一交接入口为 [HANDOFF.md](notes/HANDOFF.md)，历史分支的固定快照从 [archives/](archives/README.md) 进入。GitHub 默认分支仍为 main（修改被集成权限拒绝）；新克隆需显式指定 dev。
+
 | 位置 | 内容与使用方式 |
 |---|---|
 | [materials/](materials/README.md) | 学校通知、模板、导师材料和参考论文原件；保留原名与内容 |
@@ -15,10 +17,11 @@
 | [references/](references/README.md) | BibTeX 与顺序编码文献库；论文当前采用已确认的 20 篇及原顺序，不随整理重新编号 |
 | [design/](design/frontend-architecture.md) | 前端架构、早期设计和截图，保留其阶段性用途 |
 | [notes/](notes/README.md) | 进度、交付、需求讲解与历史交接记录；旧日志状态须结合顶部最新说明阅读 |
+| [archives/](archives/README.md) | 历史分支固定标签、成果清单和恢复步骤；保存完整原提交，正文仍取当前 dev |
 | [../output/](../output/README.md) | 开题、任务书、图示等可交付导出物及历史备份；不可整体当作 dist 清除 |
 | [../scripts/](../scripts/) | 文档生成与校验程序；仅审计时不要运行会覆盖交付文件的生成命令 |
 
-独立论文分支 `codex/thesis-finalization-20260920@29ae335` 仍有 7 个未合并提交，包含 Word/PDF/PPT、封面声明、答辩讲稿、文档脚本和验证记录；当前 `dev` 已选取完整正文，其他成果未整体接入。查看这些文件需取得该分支，不能依赖旧交接记录中的 Windows 绝对路径。不要用旧分支正文或图示覆盖 10 月 26 日的版本。
+独立论文分支 `codex/thesis-finalization-20260920@29ae335` 仍有 7 个未合并提交，包含 Word/PDF/PPT、封面声明、答辩讲稿、文档脚本和验证记录；当前 `dev` 已选取完整正文，其他成果未整体接入。该分支已建立固定归档标签，具体入口和恢复命令见 [历史成果索引](archives/20261028-historical-branches.md)。旧 Windows 绝对路径仅作历史定位，当前正文与图示继续使用 dev 版本。
 
 完整 Word/PDF 重导、draw.io 软件实开和默认真实模型联网验收仍为既有待验证事项。本次目录整理不改变其状态。
 

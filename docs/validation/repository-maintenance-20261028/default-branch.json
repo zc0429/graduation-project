@@ -1,0 +1,11 @@
+{
+  "attempt": "gh api --method PATCH repos/zc0429/graduation-project -f default_branch=dev",
+  "status": "blocked",
+  "http_status": 403,
+  "reason": "Resource not accessible by integration",
+  "repository_readback": {
+    "default_branch": "main",
+    "full_name": "zc0429/graduation-project"
+  },
+  "note": "Account metadata reports admin, but the configured integration cannot write repository settings. No credential discovery or interactive login attempted."
+}

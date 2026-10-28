@@ -33,7 +33,9 @@ graduation-project/
 └── AGENTS.md               # 跨对话项目约束与关键决策
 ```
 
-最新成果定位、保留规则与历史论文分支见 [文档目录导航](docs/README.md)；云端 Codex 和 Windows 的日常同步步骤见 [Git 同步流程](docs/notes/Git同步与分支管理.md)。分支及文件处置建议见 [2026-10-27 仓库整理报告](docs/notes/仓库整理报告-20261027.md)，清单中的删除项须另行确认。
+最新成果从 [项目交接入口](docs/notes/HANDOFF.md) 与 [文档目录导航](docs/README.md) 查找；历史论文/文献快照见 [归档索引](docs/archives/README.md)，云端和 Windows 的操作见 [Git 同步流程](docs/notes/Git同步与分支管理.md)。已授权的清理结果见 [2026-10-28 后续整理记录](docs/notes/仓库后续整理-20261028.md)；更早报告保留为历史快照。
+
+日常开发基准是 `dev`。GitHub 默认分支修改因集成权限不足返回 403，目前仍为 `main`；新克隆请显式指定 `git clone --branch dev https://github.com/zc0429/graduation-project.git`。本地已有仓库按同步流程切换并更新 dev。
 
 ## 本地启动
 
@@ -66,7 +68,16 @@ npm run build
 npm run e2e:smoke
 ```
 
+最近一次应用回归是 **2026-10-26 的合并验证**：后端 84 项中 80 通过、4 个真实入口跳过；前端类型检查、29 项单测及构建通过；四档 Mock 浏览器 45 项、真实后端配合 Mock AI 的联调 4 项通过。为保留交付截图，排除 1 项会重写截图的用例；实际命令与范围见 [合并验证记录](docs/validation/merge-advisor-20261026/README.md)。此前导师修改轮的 46 项浏览器验证另见 [该轮证据](docs/validation/advisor-20261026/README.md)，两轮不混算。
+
+2026-10-27/28 的仓库整理只做 Git、文件哈希、文档链接及归档校验，没有重跑应用测试。当前默认模型的真实联网、draw.io 软件实开和完整论文 Word/PDF 重导仍待验证。
+
+<details>
+<summary>较早验收摘要（历史快照）</summary>
+
 2026-08-28 冻结审计验收：JDK 21 后端 70 项中 66 通过、4 个真实联网入口按预期跳过；前端类型检查和生产构建通过，Vitest 23/23、四档 Mock UI 44/44、`wrongbook_e2e + Mock AI` 真实后端联调 4/4。8 月 25 日的 Chrome/Edge/Firefox 59/59、axe-core 3/3 与 Lighthouse 结果保留为历史快照。完整命令、范围与非永久性验收快照见 [web/README.md](web/README.md)。
+
+</details>
 
 ## 已知安全与数据边界
 

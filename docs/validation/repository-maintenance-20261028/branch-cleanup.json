@@ -1,0 +1,8 @@
+{
+  "deleted_remote_branch": "codex/repository-hygiene-20261027",
+  "deleted_tip": "2d5a135f7d22b08673613f268904ddb5c931bb0a",
+  "retained_by_dev": "2d5a135f7d22b08673613f268904ddb5c931bb0a",
+  "remote_absence_verified": true,
+  "local_branch_deleted_with": "git branch -d",
+  "original_worktrees_preserved": true
+}

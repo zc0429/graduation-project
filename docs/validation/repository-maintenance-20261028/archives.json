@@ -1,0 +1,1067 @@
+{
+  "base_dev": "2d5a135f7d22b08673613f268904ddb5c931bb0a",
+  "archives": [
+    {
+      "source_branch": "codex/reference-freeze",
+      "source_head": "7698cadd9a448b3e4b78ce7f934ea6cc922446db",
+      "archive_tag": "archive/reference-freeze-20261028",
+      "annotated_tag_object": "0e939988408e20a16849637c58ba6a66dc60950f",
+      "tree": "26d950add95d0168dc123b6fa602185019eb011a",
+      "remote_tag_verified": true,
+      "git_tree_equal_to_source": true,
+      "unique_commits": 3,
+      "unique_log": [
+        "7698cadd9a448b3e4b78ce7f934ea6cc922446db chore: 删除历史文献分支误提交的Word锁文件",
+        "7a80cb9542d5c1f2caa2bf100579c30aae8e9966 Create ~$2：云南工商学院本科毕业论文（设计）.docx",
+        "9ac47700f709be522f90b2e27c371d725aa45543 docs: 冻结参考文献与引用编号"
+      ],
+      "complete_snapshot_files": 332,
+      "complete_snapshot_bytes": 21757153,
+      "paths_not_in_dev": {
+        "server/src/main/java/com/example/wrongbook/dto/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/service/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/util/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/vo/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "different_existing_paths": {
+        ".gitignore": {
+          "archive_blob": "b44c40847b52cfae1c41e2ff23eb314610b4fccd",
+          "dev_blob": "c31b4d1c99f4d1bc43cbf3c0f55edf9b56dca8e1"
+        },
+        "AGENTS.md": {
+          "archive_blob": "3800d4878a5fcfe36cf27d77b4dbbfc7a26acc74",
+          "dev_blob": "bcc28ac1e5426cafc9eba5b71a62f07c2980d188"
+        },
+        "README.md": {
+          "archive_blob": "26b5d6bed009f25bc1c27b73f57c6e908b9f71e3",
+          "dev_blob": "e31413ea4c7159ed530ecda29dc6ac6269660f4c"
+        },
+        "docs/design/frontend-architecture.md": {
+          "archive_blob": "a864a8eec28d29932895e931dcdb980e7a0931ea",
+          "dev_blob": "886dbced52fba389182d973259b117580990daeb"
+        },
+        "docs/experiments/gate5/manual/error-cause-review.csv": {
+          "archive_blob": "04861bb2df8700e58261b6d877b825fc84c5deee",
+          "dev_blob": "dec39f7546ae5d4a52c2469d00a06cd456556615"
+        },
+        "docs/experiments/gate5/manual/rag-ab-review.csv": {
+          "archive_blob": "f1ab59a69cc9d996ca0c1976141f03cc014dc50f",
+          "dev_blob": "c636ce7f1092324fed96335ee8e945ca8f69a39e"
+        },
+        "docs/materials/README.md": {
+          "archive_blob": "05cc57351400f39ff2a30fef16e51bae19d78a53",
+          "dev_blob": "31c3bae36c3705fc157adec51c272a89e98cfdae"
+        },
+        "docs/notes/README.md": {
+          "archive_blob": "f0f8e64d541be8d3089fbd884800b57445e33ae9",
+          "dev_blob": "d2f3535e7a73855dc96bf6e3141bfb0673f59e50"
+        },
+        "docs/notes/Windows开发环境与启动说明.md": {
+          "archive_blob": "47f04cff4296e0f6b882c384e7f96b0c5d0de00b",
+          "dev_blob": "0256c994d368660e66430c2ff164e555149ef604"
+        },
+        "docs/notes/开题报告.md": {
+          "archive_blob": "e76ab3588fdcdb7bf0df0745bc0b683229bd631a",
+          "dev_blob": "1a412c2a6daa417fab061365dea06feef9af04c5"
+        },
+        "docs/notes/论文要求梳理与选题建议.md": {
+          "archive_blob": "6a2622930e3c1f5fc9508091fa30ae2f844c1bf9",
+          "dev_blob": "0ff914e9b29f771aceba99e69ead33729d01cebf"
+        },
+        "docs/notes/进度记录.md": {
+          "archive_blob": "e8164833d1c44caa9bb1d99818b0bfb8bb44fc5e",
+          "dev_blob": "8386e99638c0740250baf6cd9046e950ddbadef8"
+        },
+        "docs/references/README.md": {
+          "archive_blob": "6a04eb7ebd0a9b2641c1d76e118c54f112409157",
+          "dev_blob": "14380136a2c8c1860704c5f8dc1880d7785e801a"
+        },
+        "docs/references/gb7714-list.md": {
+          "archive_blob": "03db9b7cbd2869f160d7ccf655bc718e3c091a39",
+          "dev_blob": "3314602967e17add571e073c00b7fdbbc85fb306"
+        },
+        "docs/references/references.bib": {
+          "archive_blob": "3a217788fa9ba3a7acfb53dbc0e55303c10e4195",
+          "dev_blob": "413ef3e55675f7e839bc3bf89c45b54eaad2bc55"
+        },
+        "docs/thesis/README.md": {
+          "archive_blob": "e6cf5920a427221d893cda7e76ded636fa1cffbe",
+          "dev_blob": "152b0838f2efb3cb3987c7079c6d17db3d1cba78"
+        },
+        "docs/thesis/任务书-AI错题分析与学习推荐系统.md": {
+          "archive_blob": "f1513fc4b139b87d54c7b14cbce9d328bc5c10c5",
+          "dev_blob": "e1e3ea8dcfe29b9426ddd37eea69ff968f8fe6a8"
+        },
+        "docs/thesis/开题报告-系统填报版.md": {
+          "archive_blob": "c748d3077cfb03714785fab211edcfba043825a9",
+          "dev_blob": "dba8f25934c5639dc71f74735e36a508208645de"
+        },
+        "docs/thesis/开题报告.md": {
+          "archive_blob": "b7304b11e69091fe7cd2a9f4a8348bb6d5afa912",
+          "dev_blob": "27092d17b0df45ad0aada0a9cea8ec35f5cee031"
+        },
+        "docs/thesis/毕业论文.md": {
+          "archive_blob": "09642097953a915a1c0da5dfc2e9567143cef495",
+          "dev_blob": "ffe9e29074de6bd7f1b65e6d46dbbb25b956f1c9"
+        },
+        "docs/thesis/第6章与第7章大纲.md": {
+          "archive_blob": "f543a1070c1a8ec3c6f25bdb472fa6fe63d27bd3",
+          "dev_blob": "4a56994eb99ba2fa3398bcafa6dd35fb4174ce66"
+        },
+        "server/.env.example": {
+          "archive_blob": "900d6a9a1295d68c54ee95379885493ecc11956f",
+          "dev_blob": "bb4d6315e36341ea3c3bb6fc3b70fa0695544a11"
+        },
+        "server/pom.xml": {
+          "archive_blob": "b1e7d9000fc556922813bff1be00900075bbb6b1",
+          "dev_blob": "e0ce65a7fcb36624c2f3a90561b6d99468444363"
+        },
+        "server/src/main/java/com/example/wrongbook/config/ImageRecognitionProperties.java": {
+          "archive_blob": "0628cf0ca3fa7fac8077c838f002dcf33624b55a",
+          "dev_blob": "567dbcb569b7f107f689b0dab9ec85f640e9305f"
+        },
+        "server/src/main/java/com/example/wrongbook/config/LlmProperties.java": {
+          "archive_blob": "cf844c5f1b5d9615d835d35e7807d154fed31739",
+          "dev_blob": "7a4070a7999a21c01637654d81b2f1f26c11f0d8"
+        },
+        "server/src/main/java/com/example/wrongbook/config/WebConfig.java": {
+          "archive_blob": "aea679d11f0706435a752600fb873052704ab874",
+          "dev_blob": "4e1980fba105e88bbcf548632fa82f478816ebe8"
+        },
+        "server/src/main/java/com/example/wrongbook/service/LlmClient.java": {
+          "archive_blob": "608cdd030b881bc42b60dd588608b0edbc4d0b9c",
+          "dev_blob": "655ab5de24d0e040e1b821adbeb65e6c5ab3ded1"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java": {
+          "archive_blob": "6f8ec17501d8f1dbf50d859d7d9f3fd2065deea2",
+          "dev_blob": "3a6ef01f5c8333eb6ec42d597a837812d2e72423"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/EmbeddingServiceImpl.java": {
+          "archive_blob": "e439dc837098b6d75697e434fd8c529aecb4284a",
+          "dev_blob": "f4107d289d7cda7e53bd67a3ae277d6bbd8e4a14"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/GlmQuestionRecognitionClient.java": {
+          "archive_blob": "452b9881f719270cbc9db71e6140af2c9cfacd6d",
+          "dev_blob": "f79ab0c1768052047b761f7957ee5be6502d9820"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/MockLlmClient.java": {
+          "archive_blob": "91931e9c05c92c266a7e64569ade98c80ae49f9a",
+          "dev_blob": "1f8530c8aac407ec0f15294798be62980419e050"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java": {
+          "archive_blob": "4d5e24aaba9bb5c7cf1b5d88b130024734ca9bb5",
+          "dev_blob": "ab6edcd9c3e623dece96e524b7c941c89d6d1d73"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java": {
+          "archive_blob": "f0e10904776a5399a09890fb93ec1862de4e26e3",
+          "dev_blob": "19f40d5601cbde9a78d44a097f21431e4f1d0cd9"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java": {
+          "archive_blob": "fb807f1615ba77fa41777a8ed731d019bfedf291",
+          "dev_blob": "3bc8436d362800d005b5cf06e7442d9db6e716c3"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/VariantServiceImpl.java": {
+          "archive_blob": "d441730049989eaad6ebc301819df19b76299431",
+          "dev_blob": "76524fc85d4264461bb176ad6bb20ef7d16570d0"
+        },
+        "server/src/main/resources/application.yml": {
+          "archive_blob": "80da7d6f7590fc1282dfa08972825713f418cc21",
+          "dev_blob": "7bd5f844c3b845b2d27796eb2e3b04a19aa78df8"
+        },
+        "server/src/test/java/com/example/wrongbook/service/impl/GlmQuestionRecognitionClientTests.java": {
+          "archive_blob": "c20f6e43df100d6015a690ab3cd1ab16b78a795d",
+          "dev_blob": "946d36aa143ab3e9ed240e09402b59fadf67ff77"
+        },
+        "server/src/test/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClientTests.java": {
+          "archive_blob": "570fa15219b7a89ba08cba4b9c76b1ebc8b5053a",
+          "dev_blob": "b758996587df6bb23d0d55a26d52b78817460f31"
+        },
+        "server/src/test/java/com/example/wrongbook/service/impl/VariantServiceImplTests.java": {
+          "archive_blob": "94efb499c8226d8e035984965ec76da2c3f248c8",
+          "dev_blob": "ce32b4b0b50b5c370d594e0f7f4c914518af8788"
+        },
+        "web/README.md": {
+          "archive_blob": "ccc0f3a1df7cc3daad6d07bccd762fd95ae30e33",
+          "dev_blob": "59b0c893f47e74ea1546fcb8c6718d93c3b28813"
+        },
+        "web/e2e/integration/real-backend.spec.ts": {
+          "archive_blob": "ab5156811555df619c73c49741e064485c31e289",
+          "dev_blob": "95c124152756ed18566cc015dd2b8abe7a74d821"
+        },
+        "web/e2e/real-ai/real-glm-evidence.spec.ts": {
+          "archive_blob": "1c822478a097ededed4363c00dcb94e3c7af1d6a",
+          "dev_blob": "7703b237cd0c8b4748f033fbad508a4f577159a7"
+        },
+        "web/e2e/smoke/student-questions.spec.ts": {
+          "archive_blob": "6d50c249e765cf8b3025ed8fb97c02e85a5b1b13",
+          "dev_blob": "b54aa373a32668b671ce3f947df6757baffc3b75"
+        },
+        "web/package-lock.json": {
+          "archive_blob": "039af803c7050260ba5839c49b8c97f0f725760b",
+          "dev_blob": "0a5c524c28d06c0798195cd33951c8ca4d2e09a2"
+        },
+        "web/package.json": {
+          "archive_blob": "a838497d60f0935bbe1b15476f1c52e6a07a15a1",
+          "dev_blob": "38b4d122f373b4f7d4bb955710365e973c474dda"
+        },
+        "web/src/views/question/QuestionCreateView.vue": {
+          "archive_blob": "4c846786006d1e38eb5b63e816e9061d36c5aed5",
+          "dev_blob": "d2bab88d5930fb13a8ec093bc652c00764a5f46c"
+        },
+        "web/src/views/question/QuestionDetailView.vue": {
+          "archive_blob": "b852688993948cb8b0dbbc2a949a3a89591619dd",
+          "dev_blob": "5e675bfad1a15c67d27fcbac1729f856b147c52b"
+        },
+        "web/src/views/question/QuestionListView.vue": {
+          "archive_blob": "f561fcfcee8f233e39b366d25103b25b6ea95fb7",
+          "dev_blob": "257474cc0d5fc3553e6818fc2dd999f4b6cbfba4"
+        },
+        "web/vite.config.ts": {
+          "archive_blob": "dd4b163298b884f23aae3c7816c25330c62e480e",
+          "dev_blob": "1b62179a9d7e7684c1f20f93f7b0e33ceb9f2718"
+        }
+      }
+    },
+    {
+      "source_branch": "codex/thesis-finalization-20260920",
+      "source_head": "29ae335c98d9944a50360ed8ffa9a1b07f70cd15",
+      "archive_tag": "archive/thesis-finalization-20260920-20261028",
+      "annotated_tag_object": "7764fe1f6d96aedc10e79642e7a2961d7b1a973c",
+      "tree": "c30bb079e10d5d8e1a971594c3a117dcdf74f7b2",
+      "remote_tag_verified": true,
+      "git_tree_equal_to_source": true,
+      "unique_commits": 7,
+      "unique_log": [
+        "29ae335c98d9944a50360ed8ffa9a1b07f70cd15 fix: 论文参考文献统一为开题20篇及原顺序",
+        "4774c94e97f01231c1c1737cee5e8204d0eef30f fix: 稳定论文目录更新并补齐封面声明与待办",
+        "000e473c68d04b4b48405be915acc5a6830d7f08 fix: 完成离线文档校验与本机Mock演示验证",
+        "74ab2956156ed2525600d07ed11c959bc1f8f301 fix: 修正论文目录格式并开放文档工具路径配置",
+        "5c942384d673aa1d917c94627109c7791d2a7350 docs: 核对导师范例开题与论文文献顺序",
+        "e66095b3ff8346bc9bc0e0cc9a78a8720beaa064 docs: 完成交接自检并记录实际验收边界",
+        "86ff8c7db523484a1a61532e1d3dff535b11482e docs: 完成论文审阅导出与答辩材料本地交付"
+      ],
+      "complete_snapshot_files": 536,
+      "complete_snapshot_bytes": 42711730,
+      "paths_not_in_dev": {
+        ".gitattributes": {
+          "git_blob": "83260cd9ff8c88b48919f37256d0f6f892570538",
+          "bytes": 217,
+          "mode": "100644",
+          "sha256": "238f8b0379f16f4a46659fd24eef8d92380a3719de991cbd5157dccf73f4bd9f"
+        },
+        "docs/notes/thesis-run-20260920/ACCEPTANCE.md": {
+          "git_blob": "4f0fd0302061b380f6ebcb35cbb3a89cda21e919",
+          "bytes": 2877,
+          "mode": "100644",
+          "sha256": "5fc577315e1a8f20ae9b3e4f4687a0f39ad778d2d5211ae4539280646211c4c2"
+        },
+        "docs/notes/thesis-run-20260920/BLOCKERS.md": {
+          "git_blob": "b101501262c931099abc3222fc8c04ee6c8adeb0",
+          "bytes": 2751,
+          "mode": "100644",
+          "sha256": "65d5f5737ea2f6464b8e40a8445f3a805c615b2c406fd844846d1270d2a52e3f"
+        },
+        "docs/notes/thesis-run-20260920/CHANGELOG.md": {
+          "git_blob": "7642e95d688e5d4998d176aa46813d907f8c424c",
+          "bytes": 1530,
+          "mode": "100644",
+          "sha256": "112f1568a0908cf15739d9e34de42153e5615d33281b7aaf537c9f47f55e12a8"
+        },
+        "docs/notes/thesis-run-20260920/CHAPTER2-AFTER.md": {
+          "git_blob": "e56733c0d4d6351436113158b9df1517f864772b",
+          "bytes": 8201,
+          "mode": "100644",
+          "sha256": "ed13e0ca7c34cc3e35a96002d2724ff3623660e4ee3f3755afe4313b81447793"
+        },
+        "docs/notes/thesis-run-20260920/CHAPTER2-BEFORE.md": {
+          "git_blob": "daee398d95de3b53bc5401b0119a61ac28d4bcfd",
+          "bytes": 6298,
+          "mode": "100644",
+          "sha256": "8195c37fc9d76ed085d88070bdf8c3cf84c30598fbbea2b1c7ea8e3d53db0a66"
+        },
+        "docs/notes/thesis-run-20260920/CONTINUATION-20260921.md": {
+          "git_blob": "df744f11a882d5be346ca4e5b353323cc523b8f7",
+          "bytes": 5726,
+          "mode": "100644",
+          "sha256": "632b4de67d55a77c6f1d426734efd70d2b447a9d7f41304ce8ab296dabefc94c"
+        },
+        "docs/notes/thesis-run-20260920/DEFENSE-QA.md": {
+          "git_blob": "179378c6b43aa1b983c93bdc1fc689d9d32be82b",
+          "bytes": 1072,
+          "mode": "100644",
+          "sha256": "38bbada32ae7723b2a9718e2fd6dd29bddd1c7a8f6b322978476453651edd106"
+        },
+        "docs/notes/thesis-run-20260920/DELIVERY.md": {
+          "git_blob": "1f0a2df5b2772f60cd0cc8548024bb37c37e6268",
+          "bytes": 3380,
+          "mode": "100644",
+          "sha256": "4377f74f0b8ec8d4dbd2865abf3366d752bac411c9a90b4a1cd76753d29b9b64"
+        },
+        "docs/notes/thesis-run-20260920/DEMO-RUNBOOK.md": {
+          "git_blob": "03aa93aab782807304f320ade5f0c958b58ac7b9",
+          "bytes": 4222,
+          "mode": "100644",
+          "sha256": "1d08f07be99f888327551daad5e15201362fc73387e1141e04f775b913dd92f1"
+        },
+        "docs/notes/thesis-run-20260920/DOCUMENT-QA.md": {
+          "git_blob": "71c72c1d82a84a572cd6f05ed8eb7931a2aa59d9",
+          "bytes": 5433,
+          "mode": "100644",
+          "sha256": "06575b32917bad7db44b4dc43c3b26c0b8b01754a99de7a4468359f8802e56b5"
+        },
+        "docs/notes/thesis-run-20260920/DOCX-FULL-VALIDATOR-ENVIRONMENT.txt": {
+          "git_blob": "fba6b31e00add27e5e9a0f6a479fb0259b849d5a",
+          "bytes": 273,
+          "mode": "100644",
+          "sha256": "8bed89672585c80ae3c6014b5468c9ee36dbb63000e4db454a1d1d3620c673e8"
+        },
+        "docs/notes/thesis-run-20260920/DOCX-OFFLINE-XSD.json": {
+          "git_blob": "a4546d8067e710518638c5483692891acde64027",
+          "bytes": 3872,
+          "mode": "100644",
+          "sha256": "0f1dc7f12a065de701b841d57202a74861604308254b9b4da10d2f923da5352d"
+        },
+        "docs/notes/thesis-run-20260920/DOCX-OFFLINE-XSD.txt": {
+          "git_blob": "78c3fbc13d7deacbb5821d55eb250014849515cf",
+          "bytes": 765,
+          "mode": "100644",
+          "sha256": "3587758c14b81e04e78957b64314ded398a4e624f31e6ee2eb719332bff4fd66"
+        },
+        "docs/notes/thesis-run-20260920/DOCX-STRUCTURE-CHECK.txt": {
+          "git_blob": "2cfa59ad15cf7f29490d8e9c087175ae76c15aa5",
+          "bytes": 908,
+          "mode": "100644",
+          "sha256": "8c1299bf5e0c39f2232355e100e9fddfd9111a8bcc6591ba7a5feefd5f6ff899"
+        },
+        "docs/notes/thesis-run-20260920/EXECUTION-PROMPTS.md": {
+          "git_blob": "aadd91d1f5898d013dbec44299659bd97a8a9235",
+          "bytes": 35526,
+          "mode": "100644",
+          "sha256": "5964589a08144485c1108a3d0abaa17eb1fa83dc51e9ce17fb27ec8f6a6ce0c0"
+        },
+        "docs/notes/thesis-run-20260920/EXPERIMENT-RECALC.md": {
+          "git_blob": "a270522cb23ee84608eb669e378c6ed2cf7ea09e",
+          "bytes": 1033,
+          "mode": "100644",
+          "sha256": "a262b16e0250d581b888bf95b57db08657833d58dd1e5d25ced3b85b1eaa2871"
+        },
+        "docs/notes/thesis-run-20260920/FIGURE-TABLE-AUDIT.md": {
+          "git_blob": "a7dc6f2c3a19c7456a88cfe9549e52015c6a0d4d",
+          "bytes": 994,
+          "mode": "100644",
+          "sha256": "60f0636386f7b518643ad7638e075a77b345edb9147cd29dc9c448b91ddb5424"
+        },
+        "docs/notes/thesis-run-20260920/FRONTMATTER-CHECK.txt": {
+          "git_blob": "cedea6062bf6506a1f83c0c2a8ec4f9d653ea3e4",
+          "bytes": 762,
+          "mode": "100644",
+          "sha256": "d7230147a7d3cd41c0d046ca3c274d0bca84c9e78735f1d68c7be2d5cc552db0"
+        },
+        "docs/notes/thesis-run-20260920/HANDOFF-CHECK.md": {
+          "git_blob": "17718d57437f4794f5d6d6cd78119ec32ebee22f",
+          "bytes": 3147,
+          "mode": "100644",
+          "sha256": "c469eabd64a051d0302464ec780d4ef9151a32b429edcf6e66e5393fd512c979"
+        },
+        "docs/notes/thesis-run-20260920/NATIVE-APP-CHECK.json": {
+          "git_blob": "069c8e53c3962420706a0e7cf6e506a679e6c7e0",
+          "bytes": 425,
+          "mode": "100644",
+          "sha256": "ebe555dc668b9cff5a096121cf6520379941aa9c6bd050913303ddb6a868c034"
+        },
+        "docs/notes/thesis-run-20260920/NEXT-AGENT-PROMPT.md": {
+          "git_blob": "a70f78f747d465bd0626ebca42d9ec6af0b26bc7",
+          "bytes": 2447,
+          "mode": "100644",
+          "sha256": "debc6f73340a3ee3b2a93f7f2b49667efccc5566176b61dd44d892d39fd7995f"
+        },
+        "docs/notes/thesis-run-20260920/NEXT.md": {
+          "git_blob": "0198c1b40ac8826397faff41e0207a169b38e71f",
+          "bytes": 2016,
+          "mode": "100644",
+          "sha256": "b6af59867c5a51858e04d50b5c8b1f0c888a417dac4ac7d83045994c82fd795a"
+        },
+        "docs/notes/thesis-run-20260920/OFFLINE-XSD-RENDER-COMPARE.json": {
+          "git_blob": "57f72144e419b29791e452b6c09b601bed6ef662",
+          "bytes": 236,
+          "mode": "100644",
+          "sha256": "bd59bbf61cf02aa6cd20023727f6d523a8d3f3d4a2e87718fab0b05758e52be5"
+        },
+        "docs/notes/thesis-run-20260920/OPENING-TO-THESIS.md": {
+          "git_blob": "653511b2f84ffba33606074d226336b696d7499e",
+          "bytes": 3166,
+          "mode": "100644",
+          "sha256": "3020ef3ac3ae03d9f03759318480a13faee42e93b93a4696cc5edecf69059874"
+        },
+        "docs/notes/thesis-run-20260920/PRIORITY-FIXES-20260921.md": {
+          "git_blob": "c6427f72edb9c03357c7bcf9007c95360a8b75ba",
+          "bytes": 4668,
+          "mode": "100644",
+          "sha256": "22f068d9e0bef03d6e561c7f82d98c8c00143c069c1f6c0162596386b0a03ad5"
+        },
+        "docs/notes/thesis-run-20260920/REFERENCE-ALIGNMENT-20260922.md": {
+          "git_blob": "300601c2ab30285bcfc6685cad49ac83b56c700b",
+          "bytes": 3528,
+          "mode": "100644",
+          "sha256": "3cfa1cba416a4ed294a0ebe17ce58f6549194f63fab27d15db9173a70c33df19"
+        },
+        "docs/notes/thesis-run-20260920/REFERENCE-AUDIT.md": {
+          "git_blob": "1ce374f2f26d4c3d6b3a3c720cf7834b6c3db482",
+          "bytes": 1513,
+          "mode": "100644",
+          "sha256": "18809d1482faf31806239706d238654a6e270b251c284c909ce78738a0858fe9"
+        },
+        "docs/notes/thesis-run-20260920/REPRODUCE.md": {
+          "git_blob": "580e0db541dab3d9faca8d29c81b6db1aa1e5b9f",
+          "bytes": 4067,
+          "mode": "100644",
+          "sha256": "865a2f5370b12defcfb2b0ffc91ce9ddc3e8fff73455701a5ef1a47dbc266991"
+        },
+        "docs/notes/thesis-run-20260920/REQUIRED-INPUTS.md": {
+          "git_blob": "d96ddcfbc26204aa2cc400a7d111ef195f6dbaf2",
+          "bytes": 1044,
+          "mode": "100644",
+          "sha256": "6325c00e408f87f1d1ab50a1fe9f32072f9b054f312d1deb9c733cc49ff65100"
+        },
+        "docs/notes/thesis-run-20260920/RUN-OWNERSHIP.md": {
+          "git_blob": "d235324d7880c0b65e12bfa7c2dc7daeb1e88fc1",
+          "bytes": 2113,
+          "mode": "100644",
+          "sha256": "ba8d83d7ec0db5baa46fdc0f08a665b7d3455021e2c8606ad9505bfb7c45016d"
+        },
+        "docs/notes/thesis-run-20260920/SCHOOL-REQUIREMENTS-STRUCTURE.json": {
+          "git_blob": "8048f3627e97656e52324735869d98008929870e",
+          "bytes": 635405,
+          "mode": "100644",
+          "sha256": "bfa0995fad89c7df729f65af22f210a08e466a47b962c53181239bdd5c20405a"
+        },
+        "docs/notes/thesis-run-20260920/SCHOOL-REQUIREMENTS-TEXT.txt": {
+          "git_blob": "e179a4b7d3e437369e15be06e569202e7c0edc10",
+          "bytes": 27853,
+          "mode": "100644",
+          "sha256": "48b1f3b72cfeca7ad09b73fa745dc2196212eeb8986c8e010f2d6b173ff4f674"
+        },
+        "docs/notes/thesis-run-20260920/SOURCE-MANIFEST.md": {
+          "git_blob": "b5776296872f9f4a602424f111ac314cc36c3abc",
+          "bytes": 776,
+          "mode": "100644",
+          "sha256": "fe114a7fc7e2efaa226b8d88fca8d24df26752260ae85a50616095b25ad74d08"
+        },
+        "docs/notes/thesis-run-20260920/STATE.md": {
+          "git_blob": "60192f57a1f0ecb2614ed1e8d31b24f407635ea7",
+          "bytes": 2593,
+          "mode": "100644",
+          "sha256": "7fe3777f9adb9ee21025649faa2454b0e0412ca89a478630fd0f8b67cd1317d2"
+        },
+        "docs/notes/thesis-run-20260920/TEMPLATE-STRUCTURE.json": {
+          "git_blob": "2b1ff45353cdd3305d2962bffe9deace42877e3a",
+          "bytes": 551480,
+          "mode": "100644",
+          "sha256": "d7c1f5b756b7953b30b1a740b49a2dd5ad59da8431f5b2642659a1a940f072b8"
+        },
+        "docs/notes/thesis-run-20260920/TEMPLATE-TEXT.txt": {
+          "git_blob": "51fd5bae918e0af9ca665673b5c1b3fec8d01a85",
+          "bytes": 13851,
+          "mode": "100644",
+          "sha256": "394bc62d47d82bd0fe7590fd0a017ed91107b6f8279adbf3b13dd0a0778efdd7"
+        },
+        "docs/notes/thesis-run-20260920/TEST-EVIDENCE-INDEX.md": {
+          "git_blob": "bd7bc3d647effd392838aee142bff8e28eae5626",
+          "bytes": 1059,
+          "mode": "100644",
+          "sha256": "ebb27d9851e4514381606c59714b0da5dcc861911c2979f4cf9428377f3c5c61"
+        },
+        "docs/notes/thesis-run-20260920/THESIS-CHANGES.diff": {
+          "git_blob": "3c6369d0dec8aa93030331a7f91f65e2506586fb",
+          "bytes": 28119,
+          "mode": "100644",
+          "sha256": "46fb88302c851b13853d413f4fa1201efb6b935dca4b696520feb4a1bf4a6114"
+        },
+        "docs/notes/thesis-run-20260920/THESIS-CONSISTENCY.md": {
+          "git_blob": "30dd5beb2ee29d274c207dc3e920f392c222eee2",
+          "bytes": 2834,
+          "mode": "100644",
+          "sha256": "2189d276f1a38ce9342fed8138f293bb217faaf3f3e320de2f0526fb8d80fb93"
+        },
+        "docs/notes/thesis-run-20260920/artifact.md": {
+          "git_blob": "620bc3e88f128fc58a54d5113db8eeee4389f966",
+          "bytes": 3878,
+          "mode": "100644",
+          "sha256": "abe0eed1574818d45a2e0351b41f2607e92929be626c3c7800c73da48c1085ee"
+        },
+        "docs/notes/thesis-run-20260920/current-baseline.json": {
+          "git_blob": "0ba304fa7390ada782d5f97848ca2742d2027c09",
+          "bytes": 27590,
+          "mode": "100644",
+          "sha256": "549ffe059bb3e8be30b70c4725f8f95b0da0b8637bcd1e32ea68a7609d8599b6"
+        },
+        "docs/notes/thesis-run-20260920/current-figure-check.json": {
+          "git_blob": "c7b1e8624cfd53baf89462fc5fbd8804524c455d",
+          "bytes": 341,
+          "mode": "100644",
+          "sha256": "2208bd3d62c60f40f1c0d47e1047ace98783cca9ac32f50512ce74edfd35619e"
+        },
+        "docs/notes/thesis-run-20260920/defense-notes.json": {
+          "git_blob": "85535fe6fcb833867e9695217a4408f8ef335c90",
+          "bytes": 6737,
+          "mode": "100644",
+          "sha256": "b78f481a1951670682de6c6e9d8779373e99666f85f6ec56050bfc650511d980"
+        },
+        "docs/notes/thesis-run-20260920/document-check.json": {
+          "git_blob": "2b2475b3787da1328cfd064fbc46b9ff406d695d",
+          "bytes": 1626,
+          "mode": "100644",
+          "sha256": "13081ffc33b91824de6f6988c1a47472ce005781991c8fe4154b453744105d92"
+        },
+        "docs/notes/thesis-run-20260920/heading-keys.json": {
+          "git_blob": "3575799446c5869a0ea25a933007e0364a40490c",
+          "bytes": 2860,
+          "mode": "100644",
+          "sha256": "0b64ca38399519453d1418c8190e19342d1da55eb1eb9f9cffb20327228a84f0"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/01-mock-analysis.png": {
+          "git_blob": "d71f5816d93c26245675b5718b14ec5c76caf5ab",
+          "bytes": 181846,
+          "mode": "100644",
+          "sha256": "d65d5f875a011cf348633c379d72e793c9ac83e53d9013f8811241a2c8fabfc4"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/02-mock-variants.png": {
+          "git_blob": "e16d12f37d510184387b755450602430eca573f6",
+          "bytes": 192231,
+          "mode": "100644",
+          "sha256": "4067e0362a37509efaa09b911360b64f128b71fee7c38ef2bdae37459e94813f"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/03-practice-recorded.png": {
+          "git_blob": "50026f43c2ec4605786d00169f5a8b9d97e98e35",
+          "bytes": 191468,
+          "mode": "100644",
+          "sha256": "06e1fb8b185618fc84336a976a3c677e88fb6c6b9ed51ba5c2e915bdc27e4e42"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/05-report.png": {
+          "git_blob": "9ad8177c11d78cd6ea26f07197b04d1e01037119",
+          "bytes": 197212,
+          "mode": "100644",
+          "sha256": "cb79632975fcef960e192dc682f50044d5024bdb03a18aa480abeed95050db48"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/SHA256.json": {
+          "git_blob": "6172a4eb660b296ae8dce1d8169c1c58776ad145",
+          "bytes": 1601,
+          "mode": "100644",
+          "sha256": "255e6f91b862df4e209b17d5cf15e79afd385fa1138bfe1460bb6e8fea62ffb4"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/attempt1-browser-result.json": {
+          "git_blob": "3fb88ffe818f8605afe9acf51949539cba5ccf9a",
+          "bytes": 301,
+          "mode": "100644",
+          "sha256": "ba208efc243955e949e0d3a0ebe2ac98df1915666037ff3c126846274d0e5f97"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/attempt1-environment-result.json": {
+          "git_blob": "c165cec4b7da581b9fb79e7bc29bcf78082c832a",
+          "bytes": 703,
+          "mode": "100644",
+          "sha256": "4dc005fcf73303a97bd919ff6a68721f85a309b005352a3507e5e3f1064eb77d"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/attempt2-browser-result.json": {
+          "git_blob": "0d5ee16ff2f41180b8b6efe35c400d1895f1749b",
+          "bytes": 549,
+          "mode": "100644",
+          "sha256": "23c0f8d5a0d37d5db255a7fc68d17d481fba82bdaa7c288bb3acef7952dc3dea"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/attempt2-environment-result.json": {
+          "git_blob": "40a9ccd1bbe0af84117bb20796ac6549fc4ab472",
+          "bytes": 745,
+          "mode": "100644",
+          "sha256": "c189a6b9fce3e36943ce1800459f5e1994ee8cdcd00f0d46c73ebc9a33ad2316"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/demo-browser.mjs": {
+          "git_blob": "ed1d700f82e392d628d51033967d4a08b1752ad8",
+          "bytes": 5752,
+          "mode": "100644",
+          "sha256": "579a44c9ce5c440099d601597e74bc8b059bf0b09a964746099d728c2d18e050"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/final-browser-result.json": {
+          "git_blob": "bffa1c8b0e6e814c8a07915d88b7e6c9e3f45dde",
+          "bytes": 5536,
+          "mode": "100644",
+          "sha256": "a18af1cd451db0550385729d67474787d443d73048c0bfa46af231547b4e4b8e"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/final-environment-result.json": {
+          "git_blob": "c6abd14b27c45ff34920845004600e3dce6ba915",
+          "bytes": 744,
+          "mode": "100644",
+          "sha256": "525346adf1ceae21249968242462ab3983065102dedb245ef11cf156662976f4"
+        },
+        "docs/notes/thesis-run-20260920/mock-demo-20260921/run-demo.py": {
+          "git_blob": "79d7576380417943304ccd4bbe0be9580da3c285",
+          "bytes": 6504,
+          "mode": "100644",
+          "sha256": "b2a3a260ad0b6fdd7a397ba4a1e09e9b22cb0e0002c452711402c6b6d2d55d96"
+        },
+        "docs/notes/thesis-run-20260920/opening-reference-check.json": {
+          "git_blob": "50e21b6e860adb2e8d5e38c9d96b2492cbf79c74",
+          "bytes": 4194,
+          "mode": "100644",
+          "sha256": "daffb2ddb5d8e2d094424be9b9232972ab47534d673c874799f6489830b99fbb"
+        },
+        "docs/notes/thesis-run-20260920/page-map.json": {
+          "git_blob": "42b79864f3b80c6905924dd61b89ba061e873f12",
+          "bytes": 771,
+          "mode": "100644",
+          "sha256": "ee7c9c2b9ebee1be50a20f8f16d2f0f2bb0126fc58611f0ace89a9a9d4941f89"
+        },
+        "docs/notes/thesis-run-20260920/pdf-page-image-hashes.json": {
+          "git_blob": "8f9d8ba913cecb95f40bb0651e3b900a4fd05c26",
+          "bytes": 4630,
+          "mode": "100644",
+          "sha256": "32f30600dbac1b597f92db0bced33202985a29536e5e84bc8b3a218edc47200c"
+        },
+        "docs/notes/thesis-run-20260920/ppt-slide-image-hashes.json": {
+          "git_blob": "ac74caff7ebcf9a93526a3bf95d79c90baf64296",
+          "bytes": 905,
+          "mode": "100644",
+          "sha256": "b2214d155514fba29f2736183434266678a4d907ad9d3a685ed643a78e6974f7"
+        },
+        "docs/notes/thesis-run-20260920/presentation-validation.json": {
+          "git_blob": "c74a85bc291aadc34c547efc47ab63c320c24dd3",
+          "bytes": 7286,
+          "mode": "100644",
+          "sha256": "64737209f03cd1bb541215aea36f832df01d6aad6c916a94aa38ad05305ae774"
+        },
+        "docs/notes/thesis-run-20260920/priority-fix-check.json": {
+          "git_blob": "ed47ae34c33585c4144bee20d8f10c33486a9e9c",
+          "bytes": 1644,
+          "mode": "100644",
+          "sha256": "385aaa22cf334723082e95f8c9d8c24dd6b314312d7e7674409bc56604f1c50b"
+        },
+        "docs/notes/thesis-run-20260920/reference-map.json": {
+          "git_blob": "24673a7e2c464351e39318f0bf460bc9b643a34e",
+          "bytes": 2882,
+          "mode": "100644",
+          "sha256": "82d87efaad2e9b8bda18ae3f8d93824864ee6d72d953f70cf29daf0def081628"
+        },
+        "docs/notes/thesis-run-20260920/reference-year-check-20260921.json": {
+          "git_blob": "960f3b5bda914a7e7f3dd63ad8ece4fb68700692",
+          "bytes": 2232,
+          "mode": "100644",
+          "sha256": "c4e22de603847be6d846f75b21c98ece185be6892a96b34a8151d611ed56ea95"
+        },
+        "docs/notes/thesis-run-20260920/word-count.json": {
+          "git_blob": "882037c42a8d9a7fee3fad6ba670de7edb2eb4e7",
+          "bytes": 451,
+          "mode": "100644",
+          "sha256": "d160676588b846b3ea2e41c5bae76aaee30864eaf8896b5d2987294c371aaca7"
+        },
+        "docs/notes/导师范例开题与论文文献顺序核对.md": {
+          "git_blob": "5504b928517a6558aef881bf8b7f19457d529acf",
+          "bytes": 4294,
+          "mode": "100644",
+          "sha256": "079d008882ea578033070905f42a7833d6908ed15afa014f72d69e2ec6dc0ad5"
+        },
+        "docs/notes/毕设待完成事项.md": {
+          "git_blob": "1921b575b81ab8d3a7ddf13495277abfe0b94059",
+          "bytes": 5468,
+          "mode": "100644",
+          "sha256": "67a06575f4c53c268546c7064308d8b9e3d240d1e77f5e7f5c29ea48d710acf0"
+        },
+        "docs/thesis/毕业设计封面与诚信声明.md": {
+          "git_blob": "f85366f505b77e12c572dacd2d9a211b814f73cf",
+          "bytes": 945,
+          "mode": "100644",
+          "sha256": "9fba8136b11453533c8f6e5b5070e4d92397d9cfa7840323279cb13f2f56e5c1"
+        },
+        "docs/thesis/答辩追问要点.md": {
+          "git_blob": "4491c20b8ffa8f4abafac66f1aaeb91293b5dd69",
+          "bytes": 3973,
+          "mode": "100644",
+          "sha256": "de43313a83df0e789c8d495a61dc501f65c15568ed8e94fd7677898b368673f5"
+        },
+        "docs/thesis/答辩逐页讲稿.md": {
+          "git_blob": "a581387d90e49da11031429541980a3e8c5aceb9",
+          "bytes": 7608,
+          "mode": "100644",
+          "sha256": "3d4e733908db09306c7251d39dad245440bef7d1045bbcb2e6a2bfad4b27bbe6"
+        },
+        "output/docx/毕业设计封面与诚信声明-待签署.docx": {
+          "git_blob": "78a9fed6de891c859e11088618c2400eda8ff398",
+          "bytes": 76529,
+          "mode": "100644",
+          "sha256": "5f248d3f3dd9d70d281e8024d2de22cd048d6c9d842f8ec8a30b9aff6cf4d89f"
+        },
+        "output/docx/论文审阅版.docx": {
+          "git_blob": "dadae801c21d7e97150f32a8bdb4b4db47e84b7c",
+          "bytes": 2123968,
+          "mode": "100644",
+          "sha256": "c89643e3cd82494710b05aadf4d391bd8783cea4c5caca99b75da1516db36d3e"
+        },
+        "output/pdf/毕业设计封面与诚信声明-待签署.pdf": {
+          "git_blob": "d54b6f02e458707360af24b00ae6ae7010a1f1fc",
+          "bytes": 133076,
+          "mode": "100644",
+          "sha256": "56fa45926ce46ee9892b74f7c26cf435cea78bc2d5a64652d670a7716ee673fb"
+        },
+        "output/pdf/论文审阅版.pdf": {
+          "git_blob": "d573db88f05ce0e87b5186876594dbf78bdcec86",
+          "bytes": 3983642,
+          "mode": "100644",
+          "sha256": "cb19af95637ead9f2657344b25685bc03ca566a360101cfae0911c662853c58a"
+        },
+        "output/pptx/答辩审阅版.pptx": {
+          "git_blob": "08397cc1b94e8d500a3c57b171e8dc59777218ae",
+          "bytes": 124397,
+          "mode": "100644",
+          "sha256": "f4d4943811e351778b24aa6d07b8212e1d2df74a6c52abea07d85e8484cad70a"
+        },
+        "scripts/documents/align_thesis_references_to_opening.py": {
+          "git_blob": "fe066054091389fd19c8299bd0c65c588d4508ea",
+          "bytes": 4219,
+          "mode": "100644",
+          "sha256": "60d7980d038990db84c066b74aa51e5844c197a85fc0f979fbabbfbf8206604a"
+        },
+        "scripts/documents/align_thesis_review.py": {
+          "git_blob": "5a79830c7d17b5ff2854071df3bb67b3124c9156",
+          "bytes": 6645,
+          "mode": "100644",
+          "sha256": "9923d151a3c3f0fde85771228b484fd657af9033e38341b719c22056f965e440"
+        },
+        "scripts/documents/build_defense.mjs": {
+          "git_blob": "272f887b1750157fe43616d47a62eafa7de22513",
+          "bytes": 14599,
+          "mode": "100644",
+          "sha256": "fb50be0c0b7bd984802039f35f6610187d9e0050e5c787e3f10d04792bdf86a4"
+        },
+        "scripts/documents/build_thesis_frontmatter.py": {
+          "git_blob": "e46eac99839ce3194373df6785e8f0101d249ff6",
+          "bytes": 4097,
+          "mode": "100644",
+          "sha256": "b8ac4193f9ffde4b2097b339d798a7f325a12d6682f51e17d90445e346bec690"
+        },
+        "scripts/documents/build_thesis_review.py": {
+          "git_blob": "81229f5365962a875fc1e100f77238dbd571f5c7",
+          "bytes": 20896,
+          "mode": "100644",
+          "sha256": "41ea2d1a726534f6b69cb5fb972c4fc926f6c937df4c039c76951583560bfd97"
+        },
+        "scripts/documents/inspect_thesis_materials.py": {
+          "git_blob": "661b50a44fafbc3f5df78b2420360206e7c77d00",
+          "bytes": 1932,
+          "mode": "100644",
+          "sha256": "ceacb503cf6fcaeb7db3a6274509695fa57eecac823b32e4b595a7c908e8de0d"
+        },
+        "scripts/documents/package_thesis_handoff.py": {
+          "git_blob": "d3b68098af126511ad31a5d1fd90c04714d487af",
+          "bytes": 4268,
+          "mode": "100644",
+          "sha256": "4d7dda8e6687d4bed864a5cad32f6b1b52ee175ae941f1291314717078584172"
+        },
+        "scripts/documents/record_thesis_audit.py": {
+          "git_blob": "8c11850d6bceb7280d926a297e569a20977f5cff",
+          "bytes": 11950,
+          "mode": "100644",
+          "sha256": "b7b32839813b3210c88b73711f04a7542e81bd4495114ba91a24bcf264c535f8"
+        },
+        "scripts/documents/schemas/dublincore/README.md": {
+          "git_blob": "01029559c9a2e960654dc0b12bcb94ff1cb10e05",
+          "bytes": 546,
+          "mode": "100644",
+          "sha256": "924ac80880165f6b70edfaecd81185ec6532c2ae6c99439db32b809d1da0c537"
+        },
+        "scripts/documents/schemas/dublincore/dc.xsd": {
+          "git_blob": "4d5a065a24c799f4c3c30fc793b17a90ba8c3610",
+          "bytes": 4112,
+          "mode": "100644",
+          "sha256": "bc1d454db1bb20dfb1867a3fe0cf007775fc4afa33a5df425c12d854f049f1f6"
+        },
+        "scripts/documents/schemas/dublincore/dcmitype.xsd": {
+          "git_blob": "54d9da00a863831eb43181e4eb7686c9380f13fc",
+          "bytes": 1442,
+          "mode": "100644",
+          "sha256": "4980845d0bedcf45e707fa64eb47492ae4f95ac4ae42f5c3c68b58c0bc9e8e49"
+        },
+        "scripts/documents/schemas/dublincore/dcterms.xsd": {
+          "git_blob": "0149c6b8320714688615242c0c7c71bf42a68751",
+          "bytes": 11171,
+          "mode": "100644",
+          "sha256": "6328c8b574c166f8ebc28d07231e6ee47121e9791689b70c3afa665f22099fed"
+        },
+        "scripts/documents/schemas/dublincore/sources.json": {
+          "git_blob": "ed307e9eaaab3f1feef46b5cedc299290a6056f5",
+          "bytes": 874,
+          "mode": "100644",
+          "sha256": "98be361bf885ea10c03591805937af099173389f30207b4fe989c8be9beca754"
+        },
+        "scripts/documents/schemas/dublincore/xml.xsd": {
+          "git_blob": "d662b4236cd346b34b09c87ac9f9893904c2d5f3",
+          "bytes": 4726,
+          "mode": "100644",
+          "sha256": "0ed94db44402526e7a683424d0bd4b65e5bc50e65d9b9a762b11b30bae06d0c8"
+        },
+        "scripts/documents/verify_docx_offline.py": {
+          "git_blob": "8d012f7f4d8e5cd7efbd717063f323e7a3b2a1d1",
+          "bytes": 5821,
+          "mode": "100644",
+          "sha256": "f5c87cfda0ac6aff673e96d456037ebe40c2cf2eb66bee878b3e9c582e8f0ebb"
+        },
+        "scripts/documents/verify_thesis_review.py": {
+          "git_blob": "81745ed365196254ea90b91802c2fac512dc1763",
+          "bytes": 9633,
+          "mode": "100644",
+          "sha256": "35630f9bc5fa7d0fe750c9307bd42c4acc785205337c3ed559ee60dc27c75ea6"
+        },
+        "server/src/main/java/com/example/wrongbook/dto/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/service/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/util/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "server/src/main/java/com/example/wrongbook/vo/.gitkeep": {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "bytes": 0,
+          "mode": "100644",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "different_existing_paths": {
+        ".gitignore": {
+          "archive_blob": "9cd0f79f9a38f0ebe5dc60238174afac7ca8b06c",
+          "dev_blob": "c31b4d1c99f4d1bc43cbf3c0f55edf9b56dca8e1"
+        },
+        "AGENTS.md": {
+          "archive_blob": "abc3b2abd1485f39158fb6c301617a8dfe155832",
+          "dev_blob": "bcc28ac1e5426cafc9eba5b71a62f07c2980d188"
+        },
+        "README.md": {
+          "archive_blob": "0aab2620efda50944de7234e25275671eb56f396",
+          "dev_blob": "e31413ea4c7159ed530ecda29dc6ac6269660f4c"
+        },
+        "docs/notes/HANDOFF.md": {
+          "archive_blob": "6cf7a73229fbc386ff343bb829821ac6b6b94003",
+          "dev_blob": "56fae2d4d502fd3a697c4a84cb139855a9a94b36"
+        },
+        "docs/notes/Windows开发环境与启动说明.md": {
+          "archive_blob": "47f04cff4296e0f6b882c384e7f96b0c5d0de00b",
+          "dev_blob": "0256c994d368660e66430c2ff164e555149ef604"
+        },
+        "docs/notes/进度记录.md": {
+          "archive_blob": "5237fe25d4de86567fbfcc94d124852870d99cea",
+          "dev_blob": "8386e99638c0740250baf6cd9046e950ddbadef8"
+        },
+        "docs/thesis/README.md": {
+          "archive_blob": "074e285312a42f9a39058305f66b05e7a9dc45f5",
+          "dev_blob": "152b0838f2efb3cb3987c7079c6d17db3d1cba78"
+        },
+        "docs/thesis/figures/README.md": {
+          "archive_blob": "c051390dda8da040e57276347f71800aca4ea1ce",
+          "dev_blob": "cf63016e4799f4b7b45aed41e314898d16e2c800"
+        },
+        "docs/thesis/figures/manifest.json": {
+          "archive_blob": "058496cfcb0dd997ca91744731c1679add4cb6bf",
+          "dev_blob": "26310a428af7d8901c334ebe5b7b73dde41a5ec6"
+        },
+        "docs/thesis/figures/png/3-2.png": {
+          "archive_blob": "2be6d84b6bda5b60811f681cf1f4df00e5bbf8a0",
+          "dev_blob": "64e43a1cb6be3fffaa53677202c3f073d16d0a7d"
+        },
+        "docs/thesis/figures/png/4-1.png": {
+          "archive_blob": "676c992937ffd221fa78f0c986a2d66f8dc016a6",
+          "dev_blob": "68302796a0cf5ea5a788e7a53f0ba8ccbdcb25d2"
+        },
+        "docs/thesis/figures/png/5-2.png": {
+          "archive_blob": "71c8936ca5754c23dbfd59ccffa0ea8ab8299d9c",
+          "dev_blob": "75dc197d587cf26fd3cb5b29d5ce2db88b4efeba"
+        },
+        "docs/thesis/figures/sources/3-2.json": {
+          "archive_blob": "1cc681f95e59fdaab975dd11c868deea93967d00",
+          "dev_blob": "ba8ca0ef66829f80cfa41d628bef9cff2a98659f"
+        },
+        "docs/thesis/figures/sources/4-1.json": {
+          "archive_blob": "0eae0517b7482bda70a8969d350078b807ffd5f6",
+          "dev_blob": "6ea7039ed5be9fbffedd8013c7e48aa810e1a8b1"
+        },
+        "docs/thesis/figures/sources/5-2.json": {
+          "archive_blob": "d1b667a3f4c693db8380a3a65885a16e3bf6e1e6",
+          "dev_blob": "3b87ca5ec1a0d544e8e7035247a61f76423aedd2"
+        },
+        "docs/thesis/figures/svg/3-2.svg": {
+          "archive_blob": "350cd2a864c1522e862799b0ab3c00e48615a1e4",
+          "dev_blob": "09fdff74099e53bf0ed41f4c6eb7ab6e55473766"
+        },
+        "docs/thesis/figures/svg/4-1.svg": {
+          "archive_blob": "df1502ac81ab8d7da04f2bd9950d23e5e757d7e5",
+          "dev_blob": "d8f7921ddfbd5c15959e5ba228d47e1515a279e7"
+        },
+        "docs/thesis/figures/svg/5-2.svg": {
+          "archive_blob": "fa69d2891b23739eeb111d65e3e8b20b00d09309",
+          "dev_blob": "46f1fbac9563415cd00ed11a769c39ca7b3d937a"
+        },
+        "docs/thesis/毕业论文.md": {
+          "archive_blob": "a4bcaca4c5ee52f8a4f2bafc97f18a6253689465",
+          "dev_blob": "ffe9e29074de6bd7f1b65e6d46dbbb25b956f1c9"
+        },
+        "output/pdf/thesis-figures/3-2.pdf": {
+          "archive_blob": "2255dd197b0ea0e512ff7128151caab08c7b7089",
+          "dev_blob": "d290d3c457cd69bd446835bd4b2daaccf686a7ef"
+        },
+        "output/pdf/thesis-figures/4-1.pdf": {
+          "archive_blob": "5993c1da43bfc826052207e6badb12ff125fb702",
+          "dev_blob": "692a20755e9909074eb7ff98c89a75d1d347d13c"
+        },
+        "output/pdf/thesis-figures/5-2.pdf": {
+          "archive_blob": "36a8c76149b9176deb295199419afa9f5f6cff3e",
+          "dev_blob": "382f2190c827832dba1410c1460a86deb0c2a549"
+        },
+        "scripts/documents/build_thesis_figures.py": {
+          "archive_blob": "9df2e1d4868d4fe932d72de007bdadc9360914df",
+          "dev_blob": "8dd04da84b7a5ed0e02f11f0efc2ddc4524d7077"
+        },
+        "server/.env.example": {
+          "archive_blob": "232a4642d2d17ccf369f4df8ede62123f4f76a2e",
+          "dev_blob": "bb4d6315e36341ea3c3bb6fc3b70fa0695544a11"
+        },
+        "server/pom.xml": {
+          "archive_blob": "0abc080b8d1a48f7ddab737dc3ab7fe6694dad14",
+          "dev_blob": "e0ce65a7fcb36624c2f3a90561b6d99468444363"
+        },
+        "server/src/main/java/com/example/wrongbook/config/ImageRecognitionProperties.java": {
+          "archive_blob": "0628cf0ca3fa7fac8077c838f002dcf33624b55a",
+          "dev_blob": "567dbcb569b7f107f689b0dab9ec85f640e9305f"
+        },
+        "server/src/main/java/com/example/wrongbook/config/LlmProperties.java": {
+          "archive_blob": "cf844c5f1b5d9615d835d35e7807d154fed31739",
+          "dev_blob": "7a4070a7999a21c01637654d81b2f1f26c11f0d8"
+        },
+        "server/src/main/java/com/example/wrongbook/service/LlmClient.java": {
+          "archive_blob": "608cdd030b881bc42b60dd588608b0edbc4d0b9c",
+          "dev_blob": "655ab5de24d0e040e1b821adbeb65e6c5ab3ded1"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java": {
+          "archive_blob": "6f8ec17501d8f1dbf50d859d7d9f3fd2065deea2",
+          "dev_blob": "3a6ef01f5c8333eb6ec42d597a837812d2e72423"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/EmbeddingServiceImpl.java": {
+          "archive_blob": "e439dc837098b6d75697e434fd8c529aecb4284a",
+          "dev_blob": "f4107d289d7cda7e53bd67a3ae277d6bbd8e4a14"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/GlmQuestionRecognitionClient.java": {
+          "archive_blob": "452b9881f719270cbc9db71e6140af2c9cfacd6d",
+          "dev_blob": "f79ab0c1768052047b761f7957ee5be6502d9820"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/MockLlmClient.java": {
+          "archive_blob": "91931e9c05c92c266a7e64569ade98c80ae49f9a",
+          "dev_blob": "1f8530c8aac407ec0f15294798be62980419e050"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java": {
+          "archive_blob": "4d5e24aaba9bb5c7cf1b5d88b130024734ca9bb5",
+          "dev_blob": "ab6edcd9c3e623dece96e524b7c941c89d6d1d73"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java": {
+          "archive_blob": "f0e10904776a5399a09890fb93ec1862de4e26e3",
+          "dev_blob": "19f40d5601cbde9a78d44a097f21431e4f1d0cd9"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java": {
+          "archive_blob": "fb807f1615ba77fa41777a8ed731d019bfedf291",
+          "dev_blob": "3bc8436d362800d005b5cf06e7442d9db6e716c3"
+        },
+        "server/src/main/java/com/example/wrongbook/service/impl/VariantServiceImpl.java": {
+          "archive_blob": "d441730049989eaad6ebc301819df19b76299431",
+          "dev_blob": "76524fc85d4264461bb176ad6bb20ef7d16570d0"
+        },
+        "server/src/main/resources/application.yml": {
+          "archive_blob": "fb5bf972e27ec5eeb6ddcdb69560992a19ce8603",
+          "dev_blob": "7bd5f844c3b845b2d27796eb2e3b04a19aa78df8"
+        },
+        "server/src/test/java/com/example/wrongbook/service/impl/GlmQuestionRecognitionClientTests.java": {
+          "archive_blob": "c20f6e43df100d6015a690ab3cd1ab16b78a795d",
+          "dev_blob": "946d36aa143ab3e9ed240e09402b59fadf67ff77"
+        },
+        "server/src/test/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClientTests.java": {
+          "archive_blob": "570fa15219b7a89ba08cba4b9c76b1ebc8b5053a",
+          "dev_blob": "b758996587df6bb23d0d55a26d52b78817460f31"
+        },
+        "server/src/test/java/com/example/wrongbook/service/impl/VariantServiceImplTests.java": {
+          "archive_blob": "94efb499c8226d8e035984965ec76da2c3f248c8",
+          "dev_blob": "ce32b4b0b50b5c370d594e0f7f4c914518af8788"
+        },
+        "web/README.md": {
+          "archive_blob": "ccc0f3a1df7cc3daad6d07bccd762fd95ae30e33",
+          "dev_blob": "59b0c893f47e74ea1546fcb8c6718d93c3b28813"
+        },
+        "web/e2e/integration/real-backend.spec.ts": {
+          "archive_blob": "ab5156811555df619c73c49741e064485c31e289",
+          "dev_blob": "95c124152756ed18566cc015dd2b8abe7a74d821"
+        },
+        "web/e2e/real-ai/real-glm-evidence.spec.ts": {
+          "archive_blob": "1c822478a097ededed4363c00dcb94e3c7af1d6a",
+          "dev_blob": "7703b237cd0c8b4748f033fbad508a4f577159a7"
+        },
+        "web/e2e/smoke/student-questions.spec.ts": {
+          "archive_blob": "6d50c249e765cf8b3025ed8fb97c02e85a5b1b13",
+          "dev_blob": "b54aa373a32668b671ce3f947df6757baffc3b75"
+        },
+        "web/package-lock.json": {
+          "archive_blob": "039af803c7050260ba5839c49b8c97f0f725760b",
+          "dev_blob": "0a5c524c28d06c0798195cd33951c8ca4d2e09a2"
+        },
+        "web/package.json": {
+          "archive_blob": "a838497d60f0935bbe1b15476f1c52e6a07a15a1",
+          "dev_blob": "38b4d122f373b4f7d4bb955710365e973c474dda"
+        },
+        "web/src/views/question/QuestionCreateView.vue": {
+          "archive_blob": "4c846786006d1e38eb5b63e816e9061d36c5aed5",
+          "dev_blob": "d2bab88d5930fb13a8ec093bc652c00764a5f46c"
+        },
+        "web/src/views/question/QuestionDetailView.vue": {
+          "archive_blob": "b852688993948cb8b0dbbc2a949a3a89591619dd",
+          "dev_blob": "5e675bfad1a15c67d27fcbac1729f856b147c52b"
+        },
+        "web/src/views/question/QuestionListView.vue": {
+          "archive_blob": "f561fcfcee8f233e39b366d25103b25b6ea95fb7",
+          "dev_blob": "257474cc0d5fc3553e6818fc2dd999f4b6cbfba4"
+        }
+      }
+    }
+  ]
+}

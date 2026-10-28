@@ -2,6 +2,8 @@
 
 以远程 `dev` 作为日常集成基准，`main` 保存既有稳定快照。当前 `main` 停在 8 月的旧版本，不代表最新可运行系统；稳定发布应另行验收后正常合并，不在整理中自动更新。
 
+2026-10-28 已尝试将 GitHub 默认分支设为 dev，但当前集成返回 403，远程默认仍为 main。新克隆请用 `git clone --branch dev https://github.com/zc0429/graduation-project.git`；已有仓库显式切换 dev。仓库所有者可在 GitHub Settings → General → Default branch 手动选择 dev，成功后再运行 `git remote set-head origin -a` 更新本地 origin/HEAD；仅运行该 Git 命令不会改变 GitHub 设置。
+
 ## 每次开始：先看状态，再更新
 
 以下步骤在仓库根目录逐条执行，每条确认成功后再继续。Git 命令在 Bash、PowerShell 均可用；无需重新 `git init`、替换 `.git` 或重复添加 `origin`。
@@ -56,10 +58,10 @@ git switch dev
 git pull --ff-only origin dev
 ```
 
-需要审阅某个 Codex 分支时，先确保工作区干净；首次检出使用：
+需要审阅某个 Codex 分支时，先确保工作区干净；将下例 `codex/task-YYYYMMDD` 替换为实际仍存在的远程任务分支。首次检出使用：
 
 ```text
-git switch --track -c codex/repository-hygiene-20261027 origin/codex/repository-hygiene-20261027
+git switch --track -c codex/task-YYYYMMDD origin/codex/task-YYYYMMDD
 ```
 
 本地已存在该分支时改为 `git switch 分支名`，再 `git pull --ff-only`。若云端尚未推送，相应 `origin/codex/...` 不存在，先完成云端分支推送，不能用复制整个工作目录来替代 Git 同步。
@@ -94,6 +96,8 @@ git worktree add --detach ../graduation-project-thesis-archive origin/codex/thes
 ```
 
 如目标目录已存在，先核对其中成果，不覆盖。该命令只是检出已有成果，不代表已合并到 `dev`。旧工作树上的本地 ZIP/bundle、未跟踪文件也不会因分支存在而自动同步。
+
+历史论文和文献分支已于 2026-10-28 建立固定归档标签。跨端执行 `git fetch origin --tags` 后可按 [归档索引](../archives/README.md) 从标签检出历史副本，无需依赖旧机器的路径。标签保留原版本，不代表已接入最新正文或完成论文导出验收。
 
 远程分支删除必须先取得用户对具体清单的确认；删除前重新 fetch，并用 `git merge-base --is-ancestor origin/分支 origin/dev` 与独有提交差异核对。已合并分支即使可删，也应检查两端 worktree 和未提交工作；未合并论文、文献分支先保留，按需选取成果或经授权归档。
 

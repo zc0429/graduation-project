@@ -1,0 +1,111 @@
+{
+  "base_dev": "2d5a135f7d22b08673613f268904ddb5c931bb0a",
+  "scope": "Git/documentation/archive/cache verification; no application/live model reruns",
+  "checks": [
+    {
+      "check": "主树原成果保护",
+      "command": "SHA-256 and git hash-object vs base dev",
+      "status": "PASS",
+      "files": 527
+    },
+    {
+      "check": "旧导师树原文件保护",
+      "command": "SHA-256 plus git status --porcelain in advisor worktree",
+      "status": "PASS",
+      "files": 505
+    },
+    {
+      "check": "旧树重复缓存清理及报告保留",
+      "command": "Python absence and SHA-256 checks",
+      "status": "PASS",
+      "removed_directories": 6,
+      "preserved_evidence_files": 44
+    },
+    {
+      "check": "仅删除已合并整理分支，其他4个原头不变",
+      "command": "git ls-remote --heads; git branch --list; git merge-base --is-ancestor",
+      "status": "PASS",
+      "remote_heads": {
+        "codex/reference-freeze": "7698cadd9a448b3e4b78ce7f934ea6cc922446db",
+        "codex/thesis-finalization-20260920": "29ae335c98d9944a50360ed8ffa9a1b07f70cd15",
+        "dev": "2d5a135f7d22b08673613f268904ddb5c931bb0a",
+        "main": "d16e31f6b7c06b836a4ceeb649273c23a3e68c61"
+      }
+    },
+    {
+      "check": "固定归档完整性及独有文件哈希",
+      "command": "git ls-remote --tags; git rev-parse tag^{} and tag^{tree}; blob SHA-256",
+      "status": "PASS",
+      "tags": 2,
+      "checked_branch_only_paths": 104
+    },
+    {
+      "check": "应用/配置/数据库/论文/开题/图示零改动",
+      "command": "git diff --name-only BASE -- server/ web/ docs/thesis/ docs/materials/ docs/experiments/ output/",
+      "status": "PASS"
+    },
+    {
+      "check": "现存文件仅修改6份说明",
+      "command": "git diff --name-status BASE",
+      "status": "PASS",
+      "modified": [
+        "AGENTS.md",
+        "README.md",
+        "docs/README.md",
+        "docs/notes/Git同步与分支管理.md",
+        "docs/notes/HANDOFF.md",
+        "docs/notes/进度记录.md"
+      ],
+      "tracked_deletions": 0
+    },
+    {
+      "check": "跟踪文件未被忽略规则隐藏",
+      "command": "git ls-files -ci --exclude-standard",
+      "status": "PASS"
+    },
+    {
+      "check": "当前文档相对链接",
+      "command": "Python local Markdown link target check",
+      "status": "PASS",
+      "documents": 10,
+      "links": 65,
+      "historical_windows_links_preserved_in": [
+        "docs/notes/HANDOFF.md",
+        "docs/notes/进度记录.md"
+      ]
+    },
+    {
+      "check": "工作区空白检查",
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "check": "将GitHub默认分支改为dev",
+      "command": "gh api --method PATCH repos/zc0429/graduation-project -f default_branch=dev",
+      "status": "BLOCKED",
+      "http_status": 403,
+      "reason": "Resource not accessible by integration",
+      "readback": {
+        "default_branch": "main",
+        "full_name": "zc0429/graduation-project"
+      },
+      "browser_control_tool_available": false
+    }
+  ],
+  "passed_groups": 10,
+  "blocked_groups": 1,
+  "final_staged_check": {
+    "status": "PASS",
+    "commands": [
+      "git diff --cached --name-status",
+      "git diff --cached --check",
+      "git diff --name-only"
+    ],
+    "files": 16,
+    "modified_documentation": 6,
+    "new_indexes_reports_and_evidence": 10,
+    "tracked_deletions": 0,
+    "application_changes": 0,
+    "unstaged_changes": 0
+  }
+}

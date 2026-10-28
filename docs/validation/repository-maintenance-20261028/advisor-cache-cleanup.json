@@ -1,0 +1,89 @@
+{
+  "worktree": "/workspace/graduation-project-advisor",
+  "tracked_files_preserved": 505,
+  "removed": [
+    {
+      "path": "web/node_modules",
+      "files_or_symlinks": 30972,
+      "apparent_bytes": 445442689,
+      "status": "removed ignored regeneratable cache"
+    },
+    {
+      "path": "web/dist",
+      "files_or_symlinks": 68,
+      "apparent_bytes": 3185500,
+      "status": "removed ignored regeneratable cache"
+    },
+    {
+      "path": "scripts/documents/__pycache__",
+      "files_or_symlinks": 3,
+      "apparent_bytes": 70204,
+      "status": "removed ignored regeneratable cache"
+    },
+    {
+      "path": "server/target/classes",
+      "files_or_symlinks": 119,
+      "apparent_bytes": 440857,
+      "status": "removed ignored regeneratable cache"
+    },
+    {
+      "path": "server/target/test-classes",
+      "files_or_symlinks": 56,
+      "apparent_bytes": 382975,
+      "status": "removed ignored regeneratable cache"
+    },
+    {
+      "path": "server/target/maven-status",
+      "files_or_symlinks": 4,
+      "apparent_bytes": 25137,
+      "status": "removed ignored regeneratable cache"
+    }
+  ],
+  "evidence_sha256_preserved": {
+    "server/target/surefire-reports/TEST-com.example.wrongbook.config.WebConfigTests.xml": "dcbf746fcfb856521a3a8d25990310832c1d455928816096e9187c5f1969cb64",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests.xml": "1e8e399f06605fe03afd7c7ccdf6081f9fc5379a82d4370187251e13b81407dd",
+    "server/target/surefire-reports/com.example.wrongbook.config.WebConfigTests.txt": "c8322be1eda9e57156f7a5891b152197efbe351329c64364520a1e0dbba5136f",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests.txt": "85311e3521961a27dc0243dbc2872b0d81922d1d086b5d31ded3f5caad177d89",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests.xml": "3865ed968e45d3e920b9b5c2ee5ce9f62fc69ffb5556d0c074b175850ef34970",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests.xml": "b1fabe5824051c95b8938e94938553093bebb2732cd32dab96b256640f877f63",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.controller.QuestionRecognitionControllerTests.xml": "8febac8472e5ff7ee2f6f01b8310ae2068b41720cf974f3f7f3cb9670ab2eb1f",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.WrongbookServerApplicationTests.xml": "70f99febb4820395ca0f326a11f39613788873d7bbfb280fe01e84aa3e2dd507",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests.xml": "ff3658c5131cc1fd40c8aec920d15c7d7445726ba118145a5b9c626cba585054",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests.xml": "a8d3cafb301c240a17591819ae8f61ac2392d866f860d3665a722cd61c804794",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.util.FileStorageUtilTests.xml": "95394baf87978bcdb026580902f43f9c0f006c859d0393cb4bba811672917334",
+    "server/target/surefire-reports/com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests.txt": "3897bf1e7f244c709951e4f98f67a42c2017e8c6a5ddacbd1426dab10cf6d420",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.LiveQuestionRecognitionTests.txt": "96740c6829f9e90af9a5f28f4dd1b9837ad795ea13a7b17f6552154e983843bb",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests.txt": "5466273a480651bf7442cf99729a2c0bcc5ab033bf33dea2457e2f21378b6989",
+    "server/target/surefire-reports/com.example.wrongbook.WrongbookServerApplicationTests.txt": "87324874687b0bd9d42d5acefef06224a1c7eabd61099b54f9fef1a0227cc781",
+    "server/target/surefire-reports/com.example.wrongbook.controller.QuestionRecognitionControllerTests.txt": "c4428b78ed9a5b602344342d6611b8f7c55705e1c6fb45061faf41439cd56565",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.VariantServiceImplTests.xml": "467dc83daaf2076eccc49529f349e0a9a43b5627d2161e3dfd69e4d8f78df5ac",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests.xml": "dd2479ca2624f7abb67ce44cd1e8b4541eeeff48f800be4d1510e0cd6194a648",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.LiveGlmValidationTests.txt": "2ae84ac4b8a40f2b735dcac28bf4a77a3e623666a4d3e7acf44f4a4b39e9a65e",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.LiveQuestionRecognitionTests.xml": "d85b95b3fbe63778b06291470d3bb906b304e2e1f689d00b24f33548f19c3fa2",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests.xml": "794ffcdd478a2478f79d811c669ed8cdb215a89e73e998a72869285135124c10",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests.xml": "99b8c0b5472651fab0b043e304b4d1ee7df47b6e65a13955fb25bf0797b26723",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests.xml": "28ff94c9771f6249fcb4a323b7e7d0e8bacc4af886cbd874be0c0916ed36c8ca",
+    "server/target/surefire-reports/com.example.wrongbook.util.QuestionContentTests.txt": "82e76d6909adbd9513f3b0153655a900ab835d042be3911122ffe0ef610c9664",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests.txt": "cdb1e049edce8f92686593fcf0db64396d25fe94eb860ee0049f8df2ba2ea783",
+    "server/target/surefire-reports/com.example.wrongbook.util.FileStorageUtilTests.txt": "65c71135df1206222fb4c4af5d30d6ab90736ab9f0e2a0632d6d7a9139dbb414",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests.xml": "9bbf8255ffc74f96efdfe439c1c1ecaf6985ad5d4474c31274165c83b3fb93b3",
+    "server/target/surefire-reports/com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests.txt": "d224c373c6d2b803475971d0fc5f3437e42a083f6de34d1e7bccf39cfddda59b",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests.xml": "5aa2f853960527874fe173f2cf001e23b7ea3b5cf2afef7766a4ba0c4c1491f7",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.RichQuestionIntegrationTests.xml": "e4859b3d1a36ba722ed05bf374a61450cc8a1f36585c2c4bffa1bf18b7b32fd0",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests.txt": "f201e28cfb9c86e7c3b9f96d282a449d48a1fadea8b4bc5149fe37813028ecf8",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests.txt": "470755f130feaa08a425ce37929618e00cf6aa56b0d71aa0ceec546126061808",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests.txt": "1e8a6467642484f3eb89afbda8c656d46cbe3c2b6194b93692d291918235cc18",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.EmbeddingContentTests.txt": "47c0f9c48070013459fc5d17ba2b397dc7a6b53aa249938b1a670a6af7c2572c",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.RichQuestionIntegrationTests.txt": "649ea03ecdda7372d591d18cb57c3b3cd59f755452fceafc900fdf16f06ad7d6",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests.txt": "66dd7d5590cd7ab16bca4416107c852b638de8b8494a409e08072b9dfd188445",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.VariantServiceImplTests.txt": "c05e795527c896928867a77f2fcb98826362c44f5042c6de9cc69ee7aa66f305",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.LiveGlmValidationTests.xml": "a93e0f9b271d8ad2d3af81b2ffe125f27ad8445be45db08672a6a6c86b1b3483",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.service.impl.EmbeddingContentTests.xml": "1716d4dbb0f212707139b9735d4bf2901eaf554a7cfbdf58b84ea7c8f66eb9ec",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests.txt": "876317af3c81e3e1e267cafbd2aa96620d78daa589944d213bfad5f8b64a5783",
+    "server/target/surefire-reports/TEST-com.example.wrongbook.util.QuestionContentTests.xml": "00026e54621adae5a64f95c70ee9fbafd4bfb6d9aa54f723ac1d95a5f8adea5c",
+    "server/target/surefire-reports/com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests.txt": "45fac62aaff70478dfd7931277a260caf3495d6b3968cde79dfee8593cc97aed",
+    "web/test-results/ui-smoke/.last-run.json": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+    "web/test-results/integration/.last-run.json": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+  },
+  "apparent_bytes_removed": 449547362
+}

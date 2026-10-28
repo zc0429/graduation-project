@@ -73,6 +73,7 @@
 
 ## Git 规范
 
+- **仓库入口（2026-10-28）**：统一交接为 `docs/notes/HANDOFF.md`，历史成果固定标签与恢复入口见 `docs/archives/README.md`。`dev` 是日常基准；修改 GitHub 默认分支被当前集成403拒绝，默认仍为main，新克隆显式指定 `--branch dev`，不能声称设置已成功。原main稳定快照保持不变。
 - 提交信息：`类型: 简述`，类型：`docs` / `feat` / `fix` / `chore` / `ref`
 - 导师材料、过程文档更新后及时提交留痕
 - 推送步骤见根 README（首次需 `git remote add origin`）
