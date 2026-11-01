@@ -4,12 +4,14 @@ Run build_business_swimlanes.py first. Original screenshot figures are untouched
 Font paths can be set through THESIS_SONG_FONT and THESIS_LATIN_FONT.
 """
 from pathlib import Path
+import argparse
 import os
 import json
 
 ROOT = Path(__file__).resolve().parents[2]
-os.environ.setdefault('THESIS_SONG_FONT', str(Path.home()/'.local/share/fonts/NotoSerifSC.ttf'))
-os.environ.setdefault('THESIS_LATIN_FONT', '/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf')
+if os.name != 'nt':
+    os.environ.setdefault('THESIS_SONG_FONT', str(Path.home()/'.local/share/fonts/NotoSerifSC.ttf'))
+    os.environ.setdefault('THESIS_LATIN_FONT', '/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf')
 
 import build_thesis_figures as figures
 import pymupdf
@@ -17,13 +19,23 @@ from reportlab.pdfgen import canvas
 
 
 def main():
-    ids = ['3-2', '3-3', '3-4', '4-1', '5-2']
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--ids', nargs='+', default=['3-2', '3-3', '3-4', '4-1', '5-2'])
+    parser.add_argument('--proof-name', default='导师意见落实-图示校样-20261026.pdf')
+    args = parser.parse_args()
+    ids = args.ids
     manifest_path = figures.BASE/'manifest.json'
     manifest = {item['id']: item for item in json.loads(manifest_path.read_text(encoding='utf-8'))}
-    proof_path = ROOT/'output/pdf/导师意见落实-图示校样-20261026.pdf'
+    proof_path = ROOT/'output/pdf'/args.proof_name
     proof = pymupdf.open()
     for name in ids:
         scene = json.loads((figures.BASE/'sources'/f'{name}.json').read_text(encoding='utf-8'))
+        if scene.get('business_flow_slug'):
+            from build_business_swimlanes import SCENES
+            business = next(item for item in SCENES if item['slug'] == scene['business_flow_slug'])
+            scene['height'] = business['height'] * figures.WIDTH / business['width']
+            (figures.BASE/'sources'/f'{name}.json').write_text(
+                json.dumps(scene, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
         for op in scene['ops']:
             if op['kind'] == 'text':
                 width = figures.text_width(op['text'], op.get('size', 9))

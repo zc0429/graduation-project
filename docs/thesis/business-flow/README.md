@@ -1,6 +1,8 @@
 # 业务泳道图与讲解
 
-本轮借鉴《参考论文一》第3.3节的纵向分工、正交箭头和子流程表达，业务以当前代码为准。参考文件为 `docs/materials/参考论文/论文正文/参考论文1.pdf`，图3.1、3.2位于PDF页19、20。部分区域在本环境显示黑块，未猜测被遮住的形状或文字。改图前分析见[审计与计划](../../notes/导师意见落实-20261026-审计与计划.md)。
+2026-11-01 重绘：借鉴《参考论文1》第3.3节的纵向分工与正交箭头，改为黑白线框、框内标题和白底角色栏。第一张由28个节点精简为18个，保留手录/图片、先保存后分析、可选练习及失败保留数据等业务关系。参考文件为 `docs/materials/参考论文/论文正文/参考论文1.pdf`，图3.1、3.2位于PDF页19、20。部分区域在本环境显示黑块，只借鉴可确认的画法，业务以当前代码为准。此前审计见[审计与计划](../../notes/导师意见落实-20261026-审计与计划.md)。
+
+向导师介绍时优先使用[三分钟讲稿、术语例子与追问回答](../业务流程图-导师介绍讲稿.md)。先说明“整理—分析—练习—复习—反馈”，再沿图中箭头解释谁负责哪一步。
 
 ## 交付文件
 
@@ -10,7 +12,7 @@
 | 02 按期复习 | 学生、学习平台 | `02-按期复习.drawio/.svg/.png/.pdf` |
 | 03 管理与学情查看 | 管理员、学习平台、教师 | `03-管理与学情查看.drawio/.svg/.png/.pdf` |
 
-`业务流程图.drawio`包含全部三页，所有节点、文字和连接均为独立mxCell，没有把整图作为背景图片。`业务流程图.json`保存坐标与连接。PNG为300 dpi，PDF为A4矢量图；合并PDF见 `output/pdf/业务流程图-导师讲解版.pdf`。论文按图3.2、3.3、3.4引用，对应 `../figures/sources/3-2.json` 等委托数据；正文插图宽157.5mm时最小标注约9.33pt。图4.1和5.2也已同步，旧3.2源保存在 `../figures/archive/3-2-before-20261026.json`，其余已有图和真实截图没有批量重绘。
+`业务流程图.drawio`包含全部三页，所有节点、文字和连接均为独立mxCell。`业务流程图.json`保存坐标与连接。PNG为300 dpi，PDF为A4矢量图；合并PDF见 `output/pdf/业务流程图-导师讲解版.pdf`。论文按图3.2、3.3、3.4引用，对应 `../figures/sources/3-2.json` 等委托数据；正文插图宽157.5mm时最小标注约9.33pt。三页论文插图校样为 `output/pdf/业务流程图-论文插图校样-20261101.pdf`。本轮只同步3.2—3.4；图4.1和5.2保留2026-10-26版本，其他图和真实截图未重绘。
 
 ## 业务边界
 
@@ -36,10 +38,9 @@
 
 ```bash
 python scripts/documents/build_business_swimlanes.py
-python scripts/documents/sync_advisor_figures.py
-python scripts/documents/verify_advisor_delivery.py
+python scripts/documents/sync_advisor_figures.py --ids 3-2 3-3 3-4 --proof-name 业务流程图-论文插图校样-20261101.pdf
 ```
 
-字体可通过 `BUSINESS_FLOW_FONT`、`THESIS_SONG_FONT`、`THESIS_LATIN_FONT` 指定，不复制入库。Linux本轮使用Noto Serif SC和Liberation Serif；Windows可指定宋体及Times New Roman。
+字体可通过 `BUSINESS_FLOW_FONT`、`THESIS_SONG_FONT`、`THESIS_LATIN_FONT` 指定，不复制入库。本轮在Windows使用本机宋体；论文渲染器的数字与拉丁字符使用Times New Roman。其他平台可按脚本候选配置字体。
 
-结构检查覆盖唯一性、开始可达性、判断两分支、正交连线、避让无关节点、文字宽度与文件完整性；本轮逐图查看PNG及五页论文图示校样。三页draw.io的节点和连接引用已校验，**尚未在draw.io软件中实际打开、移动节点并保存**。完整论文DOCX/PDF未重导，不能把本套图PDF当作完整论文PDF。
+结构检查覆盖唯一性、开始可达性、判断两分支、正交连线、避让无关节点、文字宽度与文件完整性；本轮逐图查看三页讲解图及三页论文插图校样，检查无裁切、乱码和文字重叠。详细核验见[本轮记录](../../validation/business-flow-20261101.json)。三页draw.io的节点和连接引用已校验，**尚未在draw.io软件中实际打开、移动节点并保存**。完整论文DOCX/PDF未重导；未执行新的真实GLM联网或应用回归，不改历史验证结论。

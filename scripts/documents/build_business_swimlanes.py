@@ -29,8 +29,32 @@ if font_path:
 else:
     FONT = 'STSong-Light'
     pdfmetrics.registerFont(UnicodeCIDFont(FONT))
-INK = '#25313a'
-ACCENT = '#355e76'
+LATIN = 'Times-Roman'
+latin_candidates = [os.environ.get('THESIS_LATIN_FONT', ''), 'C:/Windows/Fonts/times.ttf',
+                    '/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf']
+latin_path = next((path for path in latin_candidates if path and Path(path).is_file()), None)
+if latin_path:
+    LATIN = 'BusinessLatin'
+    pdfmetrics.registerFont(TTFont(LATIN, latin_path))
+
+
+def text_runs(value):
+    runs = []
+    for char in value:
+        font = LATIN if ord(char) < 128 else FONT
+        if runs and runs[-1][0] == font:
+            runs[-1] = (font, runs[-1][1] + char)
+        else:
+            runs.append((font, char))
+    return runs
+
+
+def text_width(value, size):
+    return sum(pdfmetrics.stringWidth(run, font, size) for font, run in text_runs(value))
+
+
+INK = '#202020'
+ACCENT = '#202020'
 SCENES = []
 
 
@@ -62,66 +86,49 @@ def edge(s, a, b, start='b', end='t', bends=(), label='', labelpos=None):
                            points=pts, label=label, labelpos=labelpos))
 
 
-# Layout is deliberately compact enough for a portrait A4 page.
-s = scene('01-错题分析与巩固学习', '错题分析与巩固学习业务流程图', 1510,
+# Business overview follows the reference thesis's actor columns and short labels.
+# Technical details belong to the accompanying explanation, not extra main-flow boxes.
+s = scene('01-错题分析与巩固学习', '错题分析与巩固学习业务流程图', 1350,
           ['学生', '学习平台', 'AI 服务'],
-          '识别失败可手录；解析失败可重试，已存错题与计划保留。\n练习由学生自评，平台保存记录并更新掌握度。')
-a=node(s,'start',0,155,'开始','terminal',160,36)
-b=node(s,'image',0,215,'图片录入？','decision',220,66)
-c=node(s,'upload',0,315,'上传单题图片',w=240,h=54)
-d=node(s,'imagecheck',1,315,'校验图片\n请求识别',w=240,h=54)
-e=node(s,'recognize',2,315,'识别题干、科目\n作答与来源',w=240,h=54)
-f=node(s,'manual',0,410,'手工录入\n富文本编辑',w=240,h=54)
-g=node(s,'candidate',1,410,'回填候选内容\n或显示错误提示',w=240,h=54)
-h=node(s,'confirm',0,505,'核对并编辑\n确认提交',w=240,h=54)
-i=node(s,'save',1,505,'校验并保存\n错题与图片',w=240,h=54)
-j=node(s,'plans',1,595,'创建五条复习计划\n独立请求后台解析',w=260,h=54)
-k=node(s,'embed',2,595,'生成题干文本向量',w=240,h=54)
-l=node(s,'retrieve',1,685,'检索本人参考题\n组装分析输入',w=240,h=54)
-m=node(s,'analyze',2,685,'辅助归类、错因\n与解题解析',w=240,h=54)
-n=node(s,'status',1,775,'校验模型结果\n记录成功或失败',w=240,h=54)
-o=node(s,'read',0,775,'查看解析\n或失败提示',w=240,h=54)
-p=node(s,'extend',0,865,'拓展练习？','decision',220,66)
-q=node(s,'variantchoice',1,865,'请求变式？','decision',220,66)
-r=node(s,'variant',2,871,'生成三道变式题',w=240,h=54)
-t=node(s,'original',0,975,'选择原题练习',w=240,h=54)
-u=node(s,'similar',1,975,'检索本人\n相似题',w=150,h=54)
-u['x']=392
-sv=node(s,'savevariant',1,975,'校验结果\n保存变式题',w=150,h=54)
-sv['x']=558
-v=node(s,'available',1,1070,'有可用题？','decision',220,66)
-w=node(s,'exercise',0,1160,'选择题目作答\n对照答案自评',w=240,h=54)
-x=node(s,'record',1,1160,'保存练习记录\n更新原题掌握度',w=240,h=54)
-y=node(s,'feedback',0,1280,'查看学习反馈',w=240,h=54)
-z=node(s,'end',0,1390,'结束','terminal',160,36)
+          '图片候选须核对；分析失败保留原题与计划，可重试。\n相似题来自本人题库；新变式失败或无可用题时可练原题。')
+a=node(s,'start',0,155,'开始','terminal',160,38)
+b=node(s,'input',0,225,'录入错题\n手工输入或上传单题图',w=280,h=66)
+c=node(s,'imagecheck',1,225,'校验图片\n请求识别',w=240,h=66)
+d=node(s,'recognize',2,225,'识别题干、科目等\n返回候选信息',w=260,h=66)
+e=node(s,'confirm',0,355,'核对并修改内容\n确认提交',w=260,h=66)
+f=node(s,'save',1,355,'校验通过后保存错题\n创建五条复习计划',w=280,h=66)
+g=node(s,'retrieve',1,475,'独立启动后台解析\n检索本人参考题',w=280,h=66)
+h=node(s,'analyze',2,475,'辅助归类与解析\n返回分析结果',w=260,h=66)
+i=node(s,'status',1,595,'校验并保存分析结果\n失败时记录失败状态',w=280,h=66)
+j=node(s,'read',0,595,'查看解析\n或失败提示',w=260,h=66)
+k=node(s,'practice',0,705,'现在练习？','decision',240,80)
+l=node(s,'choose',0,845,'选择原题、相似题\n或请求新变式',w=280,h=70)
+m=node(s,'resources',1,845,'检索本人相似题\n或校验并保存变式',w=280,h=70)
+n=node(s,'variant',2,845,'按需生成\n三道变式题',w=260,h=70)
+o=node(s,'exercise',0,990,'作答后对照答案\n自行判断正误',w=280,h=66)
+p=node(s,'record',1,990,'保存练习记录\n更新原题掌握度',w=280,h=66)
+q=node(s,'feedback',0,1110,'查看个人学习反馈',w=280,h=54)
+r=node(s,'end',0,1210,'结束','terminal',160,38)
 edge(s,a,b)
-edge(s,b,c,label='是',labelpos=(238,301))
-edge(s,b,f,'l','l',[(65,248),(65,437)],label='否',labelpos=(86,388))
-edge(s,c,d,'r','l');edge(s,d,e,'r','l')
-edge(s,e,g,'b','t',[(890,389),(550,389)])
-edge(s,g,h,'b','t',[(550,485),(210,485)])
-edge(s,f,h)
-edge(s,h,i,'r','l')
-edge(s,i,g,'r','r',[(700,532),(700,437)],label='校验失败',labelpos=(780,486))
-edge(s,i,j,label='成功',labelpos=(584,581))
-edge(s,j,k,'r','l')
-edge(s,k,l,'b','t',[(890,671),(550,671)])
-edge(s,l,m,'r','l')
-edge(s,m,n,'b','t',[(890,756),(550,756)])
-edge(s,n,o,'l','r');edge(s,o,p)
-edge(s,p,q,'r','l',label='是',labelpos=(380,888))
-edge(s,p,t,label='否',labelpos=(235,958))
-edge(s,q,r,'r','l',label='是',labelpos=(720,888))
-edge(s,q,u,'b','t',[(550,948),(467,948)],label='否',labelpos=(520,956))
-edge(s,r,sv,'b','t',[(890,950),(633,950)])
-edge(s,u,v,'b','t',[(467,1050),(550,1050)])
-edge(s,sv,v,'b','t',[(633,1050),(550,1050)])
-edge(s,v,w,'b','t',[(550,1148),(210,1148)],label='是',labelpos=(576,1147))
-edge(s,v,t,'l','r',[(380,1103),(380,1002)],label='否',labelpos=(402,1065))
-edge(s,t,w)
-edge(s,w,x,'r','l')
-edge(s,x,y,'b','r',[(550,1307)])
-edge(s,y,z)
+edge(s,b,c,'r','l',label='图片',labelpos=(380,242))
+edge(s,c,d,'r','l')
+edge(s,b,e,label='手录',labelpos=(246,323))
+edge(s,d,e,'b','t',[(890,326),(210,326)],label='候选或识别失败提示',labelpos=(550,310))
+edge(s,e,f,'r','l')
+edge(s,f,g,label='保存成功',labelpos=(610,451))
+edge(s,g,h,'r','l')
+edge(s,h,i,'b','t',[(890,571),(550,571)])
+edge(s,i,j,'l','r');edge(s,j,k)
+edge(s,k,l,label='是',labelpos=(240,817))
+edge(s,k,q,'l','l',[(65,745),(65,1137)],label='否',labelpos=(80,775))
+edge(s,l,m,'r','l',label='拓展题',labelpos=(380,863))
+edge(s,l,o,label='原题',labelpos=(245,953))
+edge(s,m,n,'r','l',label='仅新变式',labelpos=(730,863))
+edge(s,n,m,'b','r',[(890,950),(730,950),(730,880)],label='返回结果',labelpos=(825,935))
+edge(s,m,o,'b','t',[(550,968),(210,968)],label='选择可用题',labelpos=(485,951))
+edge(s,o,p,'r','l')
+edge(s,p,q,'b','r',[(550,1137)])
+edge(s,q,r)
 
 s = scene('02-按期复习', '按期复习业务流程图', 1110,
           ['学生', '学习平台'],
@@ -175,7 +182,7 @@ def validate():
             assert n['x']>=40 and n['x']+n['w']<=1060
             assert 138<=n['y'] and n['y']+n['h']<s['height']-55
             for line in n['text'].splitlines():
-                assert pdfmetrics.stringWidth(line,FONT,23) < n['w']-16, (n['id'],line)
+                assert text_width(line,23) < n['w']-16, (n['id'],line)
         reached=set()
         def visit(key):
             if key in reached:return
@@ -212,13 +219,21 @@ def draw(s, c):
         lines=value.splitlines();first=y-(len(lines)-1)*size*.65
         for idx,line in enumerate(lines):
             baseline=first+idx*size*1.3+size*.35
-            c.drawCentredString(x,H-baseline,line)
-            parts.append(f'<text x="{x}" y="{baseline}" text-anchor="middle" font-family="Noto Serif SC,Noto Serif CJK SC,SimSun,宋体,serif" font-size="{size}" fill="{color}">{escape(line)}</text>')
-    text(550,39,s['title'],31)
+            left=x-text_width(line,size)/2
+            spans=[]
+            for font,run in text_runs(line):
+                c.setFont(font,size)
+                c.drawString(left,H-baseline,run)
+                left+=pdfmetrics.stringWidth(run,font,size)
+                family='Times New Roman,Liberation Serif,serif' if font==LATIN else 'SimSun,宋体,Noto Serif SC,Noto Serif CJK SC,serif'
+                spans.append(f'<tspan font-family="{family}">{escape(run)}</tspan>')
+            parts.append(f'<text x="{x}" y="{baseline}" text-anchor="middle" font-size="{size}" fill="{color}">{"".join(spans)}</text>')
+    rect(40,30,1020,60)
+    text(550,60,s['title'],29)
     count=len(s['lanes']);lw=1020/count
     for idx,lane in enumerate(s['lanes']):
         rect(40+idx*lw,90,lw,H-160,'#ffffff')
-        rect(40+idx*lw,90,lw,48,'#e9eff3')
+        rect(40+idx*lw,90,lw,48,'#ffffff')
         text(40+(idx+.5)*lw,114,lane,25)
     for e in s['edges']:
         pts=e['points']; c.setStrokeColor(ACCENT);c.setFillColor(ACCENT);c.setLineWidth(1.8)
@@ -235,17 +250,17 @@ def draw(s, c):
         x,y,w,h=[n[k] for k in ('x','y','w','h')]
         if n['kind']=='decision':
             pts=[(x+w/2,y),(x+w,y+h/2),(x+w/2,y+h),(x,y+h/2)]
-            c.setStrokeColor(INK);c.setFillColor('#f7f2e7');path=c.beginPath();path.moveTo(pts[0][0],H-pts[0][1])
+            c.setStrokeColor(INK);c.setFillColor('#ffffff');path=c.beginPath();path.moveTo(pts[0][0],H-pts[0][1])
             for px,py in pts[1:]:path.lineTo(px,H-py)
             path.close();c.drawPath(path,stroke=1,fill=1)
-            parts.append(f'<polygon points="{" ".join(f"{px},{py}" for px,py in pts)}" fill="#f7f2e7" stroke="{INK}" stroke-width="1.4"/>')
+            parts.append(f'<polygon points="{" ".join(f"{px},{py}" for px,py in pts)}" fill="#ffffff" stroke="{INK}" stroke-width="1.4"/>')
             text(x+w/2,y+h/2,n['text'],23)
         else:
-            rect(x,y,w,h,'#eef3f5' if n['kind']=='terminal' else '#ffffff',h/2 if n['kind']=='terminal' else 0)
+            rect(x,y,w,h,'#ffffff',h/2 if n['kind']=='terminal' else 0)
             text(x+w/2,y+h/2,n['text'])
     for e in s['edges']:
         if e['label']:
-            x,y=e['labelpos']; width=pdfmetrics.stringWidth(e['label'],FONT,23)+10
+            x,y=e['labelpos']; width=text_width(e['label'],23)+10
             c.setFillColor('#ffffff');c.rect(x-width/2,H-y-11,width,25,stroke=0,fill=1)
             parts.append(f'<rect x="{x-width/2}" y="{y-14}" width="{width}" height="25" fill="white"/>')
             text(x,y,e['label'],23)
@@ -263,13 +278,13 @@ def drawio():
         def cell(key,value,x,y,w,h,style):
             el=ET.SubElement(graph,'mxCell',id=key,value=value,style=style,vertex='1',parent='1')
             ET.SubElement(el,'mxGeometry',x=str(x),y=str(y),width=str(w),height=str(h),attrib={'as':'geometry'})
-        cell('title',s['title'],40,10,1020,60,'text;html=0;fontFamily=SimSun;fontSize=31;align=center;')
+        cell('title',s['title'],40,30,1020,60,'rounded=0;html=0;fontFamily=SimSun;fontSize=29;align=center;fillColor=#ffffff;strokeColor=#202020;')
         for idx,lane in enumerate(s['lanes']):
             lw=1020/len(s['lanes'])
-            cell('lane'+str(idx),lane,40+idx*lw,90,lw,s['height']-160,'swimlane;html=0;startSize=48;horizontal=1;fontSize=25;fontFamily=SimSun;fillColor=#e9eff3;swimlaneFillColor=#ffffff;strokeColor=#25313a;')
+            cell('lane'+str(idx),lane,40+idx*lw,90,lw,s['height']-160,'swimlane;html=0;startSize=48;horizontal=1;fontSize=25;fontFamily=SimSun;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#202020;')
         for n in s['nodes']:
             style='rhombus;' if n['kind']=='decision' else 'rounded=1;arcSize=60;' if n['kind']=='terminal' else 'rounded=0;'
-            style+='html=0;whiteSpace=wrap;fontFamily=SimSun;fontSize=23;align=center;verticalAlign=middle;fillColor='+('#f7f2e7' if n['kind']=='decision' else '#ffffff')+';strokeColor=#25313a;'
+            style+='html=0;whiteSpace=wrap;fontFamily=SimSun;fontSize=23;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#202020;'
             cell(n['id'],n['text'],n['x'],n['y'],n['w'],n['h'],style)
         for idx,e in enumerate(s['edges']):
             ports={'t':(.5,0),'b':(.5,1),'l':(0,.5),'r':(1,.5)}

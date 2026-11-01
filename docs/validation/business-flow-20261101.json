@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-01",
+  "reference_pdf": "docs/materials/参考论文/论文正文/参考论文1.pdf",
+  "reference_pages": [
+    19,
+    20
+  ],
+  "business_pages": 3,
+  "editable_pages": 3,
+  "node_counts": [
+    18,
+    12,
+    9
+  ],
+  "edge_counts": [
+    21,
+    13,
+    7
+  ],
+  "checks": [
+    "graph reachability from starts",
+    "all nodes can reach an end",
+    "two outcomes for decisions",
+    "orthogonal edges avoid unrelated nodes",
+    "nodes fit lanes with no overlap",
+    "labels fit node widths",
+    "drawio endpoints resolve",
+    "single and combined editable sources agree",
+    "SVG XML parses",
+    "300 dpi A4 PNGs",
+    "all node text extracted from PDFs",
+    "A4 page sizes and PDF text within bounds",
+    "preserved thesis/schema/historical evidence"
+  ],
+  "thesis_figure_ids": [
+    "3-2",
+    "3-3",
+    "3-4"
+  ],
+  "thesis_min_font_pt": 9.34,
+  "visual_review": "reviewed all 3 business pages and all 3 thesis proof pages; no clipping, garbled text, or overlapping text",
+  "drawio_application_open": "not performed",
+  "full_thesis_word_pdf": "not regenerated",
+  "application_regression": "not rerun: diagrams and documentation only",
+  "live_glm": "not executed"
+}

@@ -3,12 +3,12 @@
   "format": "A4 portrait",
   "editable_pages": 3,
   "nodes": [
-    26,
+    18,
     12,
     9
   ],
   "edges": [
-    30,
+    21,
     13,
     7
   ],
@@ -22,13 +22,7 @@
     "PDF title extraction",
     "no replacement characters"
   ],
-  "visual_review": "reviewed all three exported diagrams on 2026-10-26; no visible overflow, overlap or cropped page",
-  "drawio_application_open": "not performed; XML references validated",
-  "png_dpi": 300,
-  "minimum_font_pt_at_thesis_width": 9.34,
-  "sha256": {
-    "03-管理与学情查看.png": "66184062b8ffaee4ff17374189f84f65f3a2233460de83ab11ac2f050dd11953",
-    "01-错题分析与巩固学习.png": "1715811a817f786e50b7788121c1838457b5e62a098817689cc1348dcdfd47c9",
-    "02-按期复习.png": "43bf1ba50df711fef50f67ac27bd8bd68dd99ab22c5fa5839863bdf9a9704759"
-  }
+  "visual_review": "reviewed all 3 business pages and all 3 thesis proof pages; no clipping, garbled text, or overlapping text",
+  "date": "2026-11-01",
+  "detailed_verification": "docs/validation/business-flow-20261101.json"
 }

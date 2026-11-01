@@ -32,3 +32,9 @@ SVG 截图文件内含完整的原始图片数据，裁切并非脱敏。当前�
 本轮只重建 3.2、3.3、3.4、4.1、5.2，新增截图以论文源稿中的6.7—6.9直接引用，原有真实截图图版不重绘。3.2—3.4的权威源为 `../business-flow/业务流程图.drawio` 与同目录JSON，`sources/3-2.json`等保存委托关系；旧3.2源保存在 `archive/3-2-before-20261026.json`。生成器已支持该委托，重建不会恢复旧业务图。
 
 本轮重建命令：`python scripts/documents/build_business_swimlanes.py`，然后 `python scripts/documents/sync_advisor_figures.py`。后者只更新五张图及manifest，不覆写其他图。五页A4校样为 `output/pdf/导师意见落实-图示校样-20261026.pdf`；原34页校样是历史工件，未冒充本轮完整论文导出。字体通过环境变量指定，Linux本轮使用Noto Serif SC与Liberation Serif，Word正式排版仍按学校要求使用宋体及Times New Roman。
+
+## 2026-11-01 参考论文风格重绘
+
+图3.2—3.4已同步[重绘后的业务图](../business-flow/README.md)，黑白分栏、标题纳入外框，主图精简为18个节点。`sources/3-2.json`高度与新图同步；其他图、历史五页校样和真实截图保留。当前三页校样为 `output/pdf/业务流程图-论文插图校样-20261101.pdf`，已逐页检查；完整论文Word/PDF没有重导。
+
+定向重建：`python scripts/documents/sync_advisor_figures.py --ids 3-2 3-3 3-4 --proof-name 业务流程图-论文插图校样-20261101.pdf`。先运行业务图构建器，避免委托SVG使用旧导出。
