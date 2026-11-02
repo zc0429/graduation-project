@@ -1,5 +1,6 @@
 package com.example.wrongbook.controller;
 
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.RestResponse;
 import com.example.wrongbook.dto.SubjectRequest;
@@ -7,6 +8,7 @@ import com.example.wrongbook.entity.Subject;
 import com.example.wrongbook.service.SubjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +41,14 @@ public class SubjectController {
     @RequireRole("admin")
     public RestResponse<Void> update(@PathVariable Long id, @Validated @RequestBody SubjectRequest request) {
         subjectService.update(id, request);
+        return RestResponse.ok();
+    }
+
+    @DeleteMapping("/{id}")
+    @RequireRole("admin")
+    @SaCheckPermission("business:subject:delete")
+    public RestResponse<Void> remove(@PathVariable Long id) {
+        subjectService.remove(id);
         return RestResponse.ok();
     }
 }

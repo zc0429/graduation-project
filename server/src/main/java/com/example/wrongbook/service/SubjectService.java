@@ -15,4 +15,7 @@ public interface SubjectService {
 
     /** 修改科目（管理员） */
     void update(Long id, SubjectRequest request);
+
+    /** 删除科目：存在知识点或错题引用时拒绝删除 */
+    void remove(Long id);
 }

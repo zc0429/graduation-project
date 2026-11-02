@@ -2,6 +2,7 @@
 import { computed, ref, type Component } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
+  Avatar,
   Bell,
   Collection,
   DataAnalysis,
@@ -10,6 +11,7 @@ import {
   Grid,
   HomeFilled,
   List,
+  Lock,
   MoreFilled,
   Notebook,
   Reading,
@@ -77,6 +79,8 @@ const moreItems = computed<MobileItem[]>(() => {
   }
   if (store.role === 'teacher') return [profile]
   return [
+    { path: '/admin/role', title: '角色管理', icon: Avatar },
+    { path: '/admin/permission', title: '权限管理', icon: Lock },
     { path: '/admin/subject', title: '科目管理', icon: Collection },
     { path: '/admin/knowledge', title: '知识点管理', icon: List },
     profile,

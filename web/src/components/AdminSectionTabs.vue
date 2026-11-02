@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { Collection, Document, List, User } from '@element-plus/icons-vue'
+import { Avatar, Collection, Document, List, Lock, User } from '@element-plus/icons-vue'
 
 const route = useRoute()
 
 const items = [
   { path: '/admin/user', label: '用户', icon: User },
+  { path: '/admin/role', label: '角色', icon: Avatar },
+  { path: '/admin/permission', label: '权限', icon: Lock },
   { path: '/admin/subject', label: '科目', icon: Collection },
   { path: '/admin/knowledge', label: '知识点', icon: List },
   { path: '/announcement', label: '公告', icon: Document },

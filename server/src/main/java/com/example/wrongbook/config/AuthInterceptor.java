@@ -4,9 +4,9 @@ import com.example.wrongbook.common.LoginUser;
 import com.example.wrongbook.common.RequireRole;
 import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.common.UserContext;
+import cn.dev33.satoken.stp.StpUtil;
 import com.example.wrongbook.entity.User;
 import com.example.wrongbook.mapper.UserMapper;
-import com.example.wrongbook.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -22,13 +22,14 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * 鉴权拦截器：解析 JWT 写入 UserContext，并按 @RequireRole 校验角色
+ * 鉴权拦截器：用 Sa-Token 会话校验登录态并写入 UserContext，再按 @RequireRole 校验角色。
+ * 实训改造：原 JWT 解析已切换为 Sa-Token（token 仍经 Authorization: Bearer 传递，前端无需改动）；
+ * 细粒度权限码校验由 Sa-Token 的 @SaCheckPermission 注解（SaInterceptor）负责，数据源见 StpInterfaceImpl。
  */
 @Component
 @RequiredArgsConstructor
 public class AuthInterceptor implements HandlerInterceptor {
 
-    private final JwtUtil jwtUtil;
     private final UserMapper userMapper;
     private final ObjectMapper objectMapper;
 
@@ -38,15 +39,22 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
         String header = request.getHeader("Authorization");
-        LoginUser tokenUser = null;
+        Long loginId = null;
         if (header != null && header.startsWith("Bearer ")) {
-            tokenUser = jwtUtil.parse(header.substring(7));
+            Object id = StpUtil.getLoginIdByToken(header.substring(7));
+            if (id != null) {
+                try {
+                    loginId = Long.valueOf(String.valueOf(id));
+                } catch (NumberFormatException ignored) {
+                    loginId = null;
+                }
+            }
         }
-        if (tokenUser == null) {
+        if (loginId == null) {
             writeError(response, ResultCode.UNAUTHORIZED);
             return false;
         }
-        User currentUser = userMapper.selectById(tokenUser.getId());
+        User currentUser = userMapper.selectById(loginId);
         if (currentUser == null || !Integer.valueOf(1).equals(currentUser.getStatus())) {
             writeError(response, ResultCode.UNAUTHORIZED);
             return false;

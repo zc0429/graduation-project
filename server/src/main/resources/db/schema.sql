@@ -143,3 +143,59 @@ CREATE TABLE IF NOT EXISTS `announcement` (
     create_time  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '公告表';
+
+-- ============================================================
+-- 实训新增（RBAC 权限模块）：与既有 user 表共同构成权限 5 表
+-- user（已有）/ role / permission / user_role / role_permission
+-- 认证框架：Sa-Token；关系链 user → user_role → role → role_permission → permission
+-- ============================================================
+
+-- 角色表
+CREATE TABLE IF NOT EXISTS `role` (
+    id          BIGINT       NOT NULL AUTO_INCREMENT COMMENT '角色 ID',
+    role_name   VARCHAR(32)  NOT NULL COMMENT '角色名称（如 管理员）',
+    role_key    VARCHAR(32)  NOT NULL COMMENT '角色标识：student/teacher/admin',
+    sort        INT          NOT NULL DEFAULT 0 COMMENT '排序号',
+    status      TINYINT      NOT NULL DEFAULT 1 COMMENT '状态：1 正常，0 停用',
+    remark      VARCHAR(255) DEFAULT NULL COMMENT '备注',
+    create_time DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_role_key (role_key)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色表';
+
+-- 权限表
+CREATE TABLE IF NOT EXISTS `permission` (
+    id            BIGINT       NOT NULL AUTO_INCREMENT COMMENT '权限 ID',
+    parent_id     BIGINT       NOT NULL DEFAULT 0 COMMENT '父级权限 ID：0 表示一级（模块）',
+    name          VARCHAR(64)  NOT NULL COMMENT '权限名称',
+    permission_key VARCHAR(64) NOT NULL COMMENT '权限码（如 system:role:add），Sa-Token 校验用',
+    type          VARCHAR(16)  NOT NULL DEFAULT 'button' COMMENT '类型：menu 菜单，button 按钮/操作',
+    path          VARCHAR(128) DEFAULT NULL COMMENT '前端路由路径（菜单类权限）',
+    sort          INT          NOT NULL DEFAULT 0 COMMENT '排序号',
+    status        TINYINT      NOT NULL DEFAULT 1 COMMENT '状态：1 正常，0 停用',
+    create_time   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_permission_key (permission_key)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '权限表';
+
+-- 用户-角色关联表
+CREATE TABLE IF NOT EXISTS `user_role` (
+    id          BIGINT   NOT NULL AUTO_INCREMENT COMMENT '关联 ID',
+    user_id     BIGINT   NOT NULL COMMENT '用户 ID，逻辑外键 → user(id)',
+    role_id     BIGINT   NOT NULL COMMENT '角色 ID，逻辑外键 → role(id)',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_user_role (user_id, role_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户角色关联表';
+
+-- 角色-权限关联表
+CREATE TABLE IF NOT EXISTS `role_permission` (
+    id            BIGINT   NOT NULL AUTO_INCREMENT COMMENT '关联 ID',
+    role_id       BIGINT   NOT NULL COMMENT '角色 ID，逻辑外键 → role(id)',
+    permission_id BIGINT   NOT NULL COMMENT '权限 ID，逻辑外键 → permission(id)',
+    create_time   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_role_permission (role_id, permission_id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色权限关联表';

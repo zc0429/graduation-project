@@ -25,6 +25,21 @@ public class GlobalExceptionHandler {
         return response(e.getCode(), e.getMessage());
     }
 
+    /** Sa-Token：未登录或会话失效 */
+    @ExceptionHandler(cn.dev33.satoken.exception.NotLoginException.class)
+    public ResponseEntity<RestResponse<Void>> handleNotLogin(cn.dev33.satoken.exception.NotLoginException e) {
+        log.warn("Sa-Token 未登录：{}", e.getMessage());
+        return response(ResultCode.UNAUTHORIZED);
+    }
+
+    /** Sa-Token：缺少权限码或角色（@SaCheckPermission / @SaCheckRole 校验不通过） */
+    @ExceptionHandler({cn.dev33.satoken.exception.NotPermissionException.class,
+            cn.dev33.satoken.exception.NotRoleException.class})
+    public ResponseEntity<RestResponse<Void>> handleNoPermission(cn.dev33.satoken.exception.SaTokenException e) {
+        log.warn("Sa-Token 权限不足：{}", e.getMessage());
+        return response(ResultCode.FORBIDDEN);
+    }
+
     @ExceptionHandler(BindException.class)
     public ResponseEntity<RestResponse<Void>> handleBind(BindException e) {
         FieldError fieldError = e.getBindingResult().getFieldError();

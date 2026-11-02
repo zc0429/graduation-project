@@ -2,6 +2,7 @@
 import { computed, type Component } from 'vue'
 import { useRoute } from 'vue-router'
 import {
+  Avatar,
   Bell,
   Collection,
   DataAnalysis,
@@ -10,6 +11,7 @@ import {
   Fold,
   HomeFilled,
   List,
+  Lock,
   Notebook,
   Reading,
   Timer,
@@ -52,6 +54,8 @@ const primaryItems: NavItem[] = [
   { path: '/review', title: '复习计划', icon: Reading, roles: ['student'] },
   { path: '/report', title: '学情报告', icon: DataAnalysis, roles: ['student', 'teacher'] },
   { path: '/admin/user', title: '用户管理', icon: User, roles: ['admin'] },
+  { path: '/admin/role', title: '角色管理', icon: Avatar, roles: ['admin'] },
+  { path: '/admin/permission', title: '权限管理', icon: Lock, roles: ['admin'] },
   { path: '/admin/subject', title: '科目管理', icon: Collection, roles: ['admin'] },
   { path: '/admin/knowledge', title: '知识点管理', icon: List, roles: ['admin'] },
 ]

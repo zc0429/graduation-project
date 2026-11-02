@@ -54,9 +54,17 @@ app:
     chat-model: ${LLM_CHAT_MODEL:}
     embedding-model: ${LLM_EMBEDDING_MODEL:}
     embedding-dimensions: ${LLM_EMBEDDING_DIMENSIONS:1024}
-  jwt:
-    # 未配置时每次启动生成随机密钥；正式演示/部署应通过 JWT_SECRET 保持重启后会话有效
-    secret: ${JWT_SECRET:${random.uuid}}
-    expire-hours: 24
   # 错题图片本地存储目录（相对 server 工作目录）
   upload-dir: ${UPLOAD_DIR:uploads}
+
+# Sa-Token 配置（实训改造：替代原 JWT 登录会话与权限校验）
+# token 仍通过请求头 Authorization: Bearer <token> 传递，前端保持原有调用方式
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 86400
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: false

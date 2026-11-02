@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
-import { ElMessage } from 'element-plus'
-import { EditPen, Plus } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { Delete, EditPen, Plus } from '@element-plus/icons-vue'
 import { subjectApi, type Subject } from '@/api'
 import { toApiError } from '@/utils/api-error'
 import AdminSectionTabs from '@/components/AdminSectionTabs.vue'
@@ -64,6 +64,22 @@ async function save() {
   }
 }
 
+async function removeSubject(row: Subject) {
+  const confirmed = await ElMessageBox.confirm(
+    `确认删除科目“${row.name}”吗？该科目下存在知识点或错题时后端会拒绝删除。`,
+    '删除科目',
+    { confirmButtonText: '确认删除', cancelButtonText: '取消', type: 'warning' },
+  ).then(() => true).catch(() => false)
+  if (!confirmed) return
+  try {
+    await subjectApi.remove(row.id)
+    ElMessage.success('科目已删除')
+    await load()
+  } catch (error) {
+    ElMessage.error(toApiError(error, '删除科目失败').message)
+  }
+}
+
 onMounted(load)
 </script>
 
@@ -72,7 +88,7 @@ onMounted(load)
     <PageHeader
       eyebrow="SUBJECT CATALOG"
       title="科目管理"
-      description="维护错题归类所需的科目名称、编码与排序。当前接口支持新增和编辑，不提供科目删除。"
+      description="维护错题归类所需的科目名称、编码与排序，支持新增、编辑与删除（存在知识点或错题引用时拒绝删除）。"
     >
       <template #actions>
         <el-button type="primary" :icon="Plus" @click="openDialog()">新增科目</el-button>
@@ -107,7 +123,7 @@ onMounted(load)
             <span>当前科目目录</span>
             <strong class="num">{{ list.length }}</strong>
           </div>
-          <p>科目删除功能尚未提供，页面不会展示无效操作。</p>
+          <p>删除科目时若其下存在知识点或错题，后端会拒绝并给出提示。</p>
         </div>
 
         <div class="subject-grid">
@@ -120,7 +136,10 @@ onMounted(load)
             <h2>{{ subject.name }}</h2>
             <div class="subject-card-foot">
               <span>排序号 <strong class="num">{{ subject.sort }}</strong></span>
-              <el-button size="small" :icon="EditPen" @click="openDialog(subject)">编辑</el-button>
+              <span class="subject-card-actions">
+                <el-button size="small" :icon="EditPen" @click="openDialog(subject)">编辑</el-button>
+                <el-button size="small" type="danger" plain :icon="Delete" @click="removeSubject(subject)">删除</el-button>
+              </span>
             </div>
           </article>
         </div>
@@ -224,6 +243,11 @@ onMounted(load)
 }
 
 .subject-card-top,
+.subject-card-actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
 .subject-card-foot {
   display: flex;
   align-items: center;

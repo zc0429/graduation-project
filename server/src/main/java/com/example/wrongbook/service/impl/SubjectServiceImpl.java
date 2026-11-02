@@ -4,7 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.wrongbook.common.BizException;
 import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.dto.SubjectRequest;
+import com.example.wrongbook.entity.KnowledgePoint;
+import com.example.wrongbook.entity.Question;
 import com.example.wrongbook.entity.Subject;
+import com.example.wrongbook.mapper.KnowledgePointMapper;
+import com.example.wrongbook.mapper.QuestionMapper;
 import com.example.wrongbook.mapper.SubjectMapper;
 import com.example.wrongbook.service.SubjectService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +21,8 @@ import java.util.List;
 public class SubjectServiceImpl implements SubjectService {
 
     private final SubjectMapper subjectMapper;
+    private final KnowledgePointMapper knowledgePointMapper;
+    private final QuestionMapper questionMapper;
 
     @Override
     public List<Subject> list() {
@@ -50,5 +56,21 @@ public class SubjectServiceImpl implements SubjectService {
         subject.setCode(request.getCode());
         subject.setSort(request.getSort());
         subjectMapper.updateById(subject);
+    }
+
+    @Override
+    public void remove(Long id) {
+        Subject exist = subjectMapper.selectById(id);
+        if (exist == null) {
+            throw new BizException(ResultCode.NOT_FOUND.getCode(), "科目不存在");
+        }
+        Long kpCount = knowledgePointMapper.selectCount(
+                new LambdaQueryWrapper<KnowledgePoint>().eq(KnowledgePoint::getSubjectId, id));
+        Long questionCount = questionMapper.selectCount(
+                new LambdaQueryWrapper<Question>().eq(Question::getSubjectId, id));
+        if (kpCount > 0 || questionCount > 0) {
+            throw new BizException("该科目下存在知识点或错题，不能删除");
+        }
+        subjectMapper.deleteById(id);
     }
 }

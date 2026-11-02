@@ -37,6 +37,8 @@ const navigationSuggestions: NavigationSuggestion[] = [
   { value: '系统公告', hint: '查看当前公告', path: '/announcement' },
   { value: '个人中心', hint: '维护当前账号资料', path: '/profile' },
   { value: '用户管理', hint: '查询与逻辑注销用户', path: '/admin/user', roles: ['admin'] },
+  { value: '角色管理', hint: '维护角色并分配权限', path: '/admin/role', roles: ['admin'] },
+  { value: '权限管理', hint: '维护菜单与按钮权限', path: '/admin/permission', roles: ['admin'] },
   { value: '科目管理', hint: '新增与编辑科目', path: '/admin/subject', roles: ['admin'] },
   { value: '知识点管理', hint: '维护章节与考点', path: '/admin/knowledge', roles: ['admin'] },
 ]

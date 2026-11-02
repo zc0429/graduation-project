@@ -68,6 +68,18 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '用户管理', roles: ['admin'] },
       },
       {
+        path: 'admin/role',
+        name: 'admin-role',
+        component: () => import('@/views/admin/AdminRoleView.vue'),
+        meta: { title: '角色管理', roles: ['admin'] },
+      },
+      {
+        path: 'admin/permission',
+        name: 'admin-permission',
+        component: () => import('@/views/admin/AdminPermissionView.vue'),
+        meta: { title: '权限管理', roles: ['admin'] },
+      },
+      {
         path: 'admin/subject',
         name: 'admin-subject',
         component: () => import('@/views/admin/AdminSubjectView.vue'),

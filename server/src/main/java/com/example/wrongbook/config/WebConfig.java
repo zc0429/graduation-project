@@ -45,5 +45,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(authInterceptor)
                 .addPathPatterns("/api/**")
                 .excludePathPatterns("/api/auth/login", "/api/auth/register", "/api/health");
+        // Sa-Token 注解式权限校验（@SaCheckPermission / @SaCheckRole），在登录拦截之后执行
+        registry.addInterceptor(new cn.dev33.satoken.interceptor.SaInterceptor())
+                .addPathPatterns("/api/**")
+                .excludePathPatterns("/api/auth/login", "/api/auth/register", "/api/health");
     }
 }

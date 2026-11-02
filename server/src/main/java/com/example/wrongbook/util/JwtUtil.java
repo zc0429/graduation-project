@@ -1,52 +1,18 @@
 package com.example.wrongbook.util;
 
-import com.example.wrongbook.common.LoginUser;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
-
 /**
- * JWT 工具：生成与解析登录令牌
+ * 【已下线】原 JWT 工具类。
+ *
+ * <p>实训改造后，登录会话与权限校验统一由 Sa-Token 承担
+ * （登录见 AuthServiceImpl 的 StpUtil.login，会话校验见 AuthInterceptor，
+ * 权限码数据源见 StpInterfaceImpl），本类不再被任何代码引用，
+ * 仅保留此类文件说明技术迁移过程，请勿再使用。</p>
+ *
+ * @deprecated 已由 Sa-Token 替代
  */
-@Component
-public class JwtUtil {
+@Deprecated
+public final class JwtUtil {
 
-    @Value("${app.jwt.secret}")
-    private String secret;
-
-    @Value("${app.jwt.expire-hours}")
-    private long expireHours;
-
-    private SecretKey key() {
-        return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
-    }
-
-    public String createToken(Long userId, String role) {
-        Date now = new Date();
-        return Jwts.builder()
-                .subject(String.valueOf(userId))
-                .claim("role", role)
-                .issuedAt(now)
-                .expiration(new Date(now.getTime() + expireHours * 3600_000L))
-                .signWith(key())
-                .compact();
-    }
-
-    /** 解析 token，无效或过期返回 null */
-    public LoginUser parse(String token) {
-        try {
-            Claims claims = Jwts.parser().verifyWith(key()).build()
-                    .parseSignedClaims(token).getPayload();
-            return new LoginUser(Long.valueOf(claims.getSubject()), claims.get("role", String.class));
-        } catch (JwtException | IllegalArgumentException e) {
-            return null;
-        }
+    private JwtUtil() {
     }
 }

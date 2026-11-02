@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Search } from '@element-plus/icons-vue'
-import { userApi, type PageData, type UserRecord } from '@/api'
+import { roleApi, userApi, userRoleApi, type PageData, type RoleRecord, type UserRecord } from '@/api'
 import { useUserStore } from '@/store/user'
 import { toApiError } from '@/utils/api-error'
 import AdminSectionTabs from '@/components/AdminSectionTabs.vue'
@@ -86,6 +86,41 @@ async function deactivate(row: UserRecord) {
   }
 }
 
+const assignVisible = ref(false)
+const assignUser = ref<UserRecord>()
+const allRoles = ref<RoleRecord[]>([])
+const selectedRoleIds = ref<number[]>([])
+const assignSaving = ref(false)
+
+async function openAssignRoles(row: UserRecord) {
+  assignUser.value = row
+  try {
+    if (allRoles.value.length === 0) allRoles.value = await roleApi.list()
+    selectedRoleIds.value = await userRoleApi.roleIdsOfUser(row.id)
+    assignVisible.value = true
+  } catch (error) {
+    ElMessage.error(toApiError(error, '读取用户角色失败').message)
+  }
+}
+
+async function submitAssignRoles() {
+  if (!assignUser.value) return
+  if (selectedRoleIds.value.length === 0) {
+    ElMessage.warning('至少为用户保留一个角色')
+    return
+  }
+  assignSaving.value = true
+  try {
+    await userRoleApi.assignRoles(assignUser.value.id, selectedRoleIds.value)
+    ElMessage.success(`已更新用户“${assignUser.value.username}”的角色授权`)
+    assignVisible.value = false
+  } catch (error) {
+    ElMessage.error(toApiError(error, '分配角色失败').message)
+  } finally {
+    assignSaving.value = false
+  }
+}
+
 function formatDateTime(value?: string) {
   if (!value) return '—'
   return value.replace('T', ' ').slice(0, 16)
@@ -99,7 +134,7 @@ onMounted(load)
     <PageHeader
       eyebrow="ADMIN DATA CATALOG"
       title="用户管理"
-      description="查询当前有效用户并执行逻辑注销。注册角色默认为学生，当前系统不提供角色修改与账号恢复。"
+      description="查询当前有效用户、执行逻辑注销，并通过 user_role 表为用户分配 RBAC 角色（Sa-Token 按角色实时计算权限）。"
     >
       <template #actions>
         <span class="scope-note">有效用户 <strong class="num">{{ page.total }}</strong></span>
@@ -172,8 +207,9 @@ onMounted(load)
             <el-table-column label="注册时间" width="152">
               <template #default="{ row }"><span class="num">{{ formatDateTime(row.createTime) }}</span></template>
             </el-table-column>
-            <el-table-column label="操作" width="112" fixed="right">
+            <el-table-column label="操作" width="190" fixed="right">
               <template #default="{ row }">
+                <el-button size="small" type="primary" plain @click="openAssignRoles(row)">分配角色</el-button>
                 <span v-if="row.id === store.user?.id" class="self-note">当前账号</span>
                 <el-button
                   v-else
@@ -204,6 +240,7 @@ onMounted(load)
               <div><dt>注册</dt><dd class="num">{{ formatDateTime(row.createTime) }}</dd></div>
             </dl>
             <div class="mobile-user-actions">
+              <el-button size="small" type="primary" plain @click="openAssignRoles(row)">分配角色</el-button>
               <span v-if="row.id === store.user?.id" class="self-note">当前账号不可注销</span>
               <el-button
                 v-else
@@ -231,6 +268,24 @@ onMounted(load)
         </div>
       </template>
     </PaperPanel>
+
+    <el-dialog
+      v-model="assignVisible"
+      :title="`分配角色 · ${assignUser?.username || ''}`"
+      width="440px"
+      destroy-on-close
+    >
+      <el-checkbox-group v-model="selectedRoleIds" class="role-checkbox-group">
+        <el-checkbox v-for="roleItem in allRoles" :key="roleItem.id" :value="roleItem.id">
+          {{ roleItem.roleName }}（{{ roleItem.roleKey }}）
+        </el-checkbox>
+      </el-checkbox-group>
+      <p class="assign-note">保存后写入 user_role 表；Sa-Token 将按新角色重新计算该用户的权限集合。</p>
+      <template #footer>
+        <el-button @click="assignVisible = false">取消</el-button>
+        <el-button type="primary" :loading="assignSaving" @click="submitAssignRoles">保存授权</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -333,6 +388,18 @@ onMounted(load)
   color: var(--ink-faint);
   font-size: 10px;
   font-weight: 700;
+}
+
+.role-checkbox-group {
+  display: grid;
+  gap: 6px;
+}
+
+.assign-note {
+  margin: 14px 0 0;
+  color: var(--ink-faint);
+  font-size: 11px;
+  line-height: 1.6;
 }
 
 .mobile-user-list {
