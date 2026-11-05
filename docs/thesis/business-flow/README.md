@@ -12,7 +12,7 @@
 | 02 按期复习 | 学生、学习平台 | `02-按期复习.drawio/.svg/.png/.pdf` |
 | 03 管理与学情查看 | 管理员、学习平台、教师 | `03-管理与学情查看.drawio/.svg/.png/.pdf` |
 
-`业务流程图.drawio`包含全部三页，所有节点、文字和连接均为独立mxCell。`业务流程图.json`保存坐标与连接。PNG为300 dpi，PDF为A4矢量图；合并PDF见 `output/pdf/业务流程图-导师讲解版.pdf`。论文按图3.2、3.3、3.4引用，对应 `../figures/sources/3-2.json` 等委托数据；正文插图宽157.5mm时最小标注约9.33pt。三页论文插图校样为 `output/pdf/业务流程图-论文插图校样-20261101.pdf`。本轮只同步3.2—3.4；图4.1和5.2保留2026-10-26版本，其他图和真实截图未重绘。
+`业务流程图.drawio`包含全部三页，所有节点、文字和连接均为独立mxCell。`业务流程图.json`保存坐标与连接。PNG为300 dpi，PDF为A4矢量图；合并PDF见 `output/pdf/业务流程图-导师讲解版.pdf`。论文按图3.2、3.3、3.4引用，对应 `../figures/sources/3-2.json` 等委托数据；正文插图宽157.5mm时最小标注约9.33pt。三页论文插图校样为 `output/pdf/业务流程图.pdf`。本轮只同步3.2—3.4；图4.1和5.2保留2026-10-26版本，其他图和真实截图未重绘。
 
 ## 业务边界
 
@@ -38,7 +38,7 @@
 
 ```bash
 python scripts/documents/build_business_swimlanes.py
-python scripts/documents/sync_advisor_figures.py --ids 3-2 3-3 3-4 --proof-name 业务流程图-论文插图校样-20261101.pdf
+python scripts/documents/sync_advisor_figures.py --ids 3-2 3-3 3-4 --proof-name 业务流程图.pdf
 ```
 
 字体可通过 `BUSINESS_FLOW_FONT`、`THESIS_SONG_FONT`、`THESIS_LATIN_FONT` 指定，不复制入库。本轮在Windows使用本机宋体；论文渲染器的数字与拉丁字符使用Times New Roman。其他平台可按脚本候选配置字体。

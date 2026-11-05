@@ -35,6 +35,6 @@ SVG 截图文件内含完整的原始图片数据，裁切并非脱敏。当前�
 
 ## 2026-11-01 参考论文风格重绘
 
-图3.2—3.4已同步[重绘后的业务图](../business-flow/README.md)，黑白分栏、标题纳入外框，主图精简为18个节点。`sources/3-2.json`高度与新图同步；其他图、历史五页校样和真实截图保留。当前三页校样为 `output/pdf/业务流程图-论文插图校样-20261101.pdf`，已逐页检查；完整论文Word/PDF没有重导。
+图3.2—3.4已同步[重绘后的业务图](../business-flow/README.md)，黑白分栏、标题纳入外框，主图精简为18个节点。`sources/3-2.json`高度与新图同步；其他图、历史五页校样和真实截图保留。当前三页校样为 `output/pdf/业务流程图.pdf`，已逐页检查；完整论文Word/PDF没有重导。
 
-定向重建：`python scripts/documents/sync_advisor_figures.py --ids 3-2 3-3 3-4 --proof-name 业务流程图-论文插图校样-20261101.pdf`。先运行业务图构建器，避免委托SVG使用旧导出。
+定向重建：`python scripts/documents/sync_advisor_figures.py --ids 3-2 3-3 3-4 --proof-name 业务流程图.pdf`。先运行业务图构建器，避免委托SVG使用旧导出。
