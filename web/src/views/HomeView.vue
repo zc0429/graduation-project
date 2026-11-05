@@ -115,9 +115,8 @@ onMounted(load)
       :title="store.role === 'student' ? `${store.nickname}，先把今天的两件事做好。` : store.role === 'teacher' ? `${store.nickname}，查看全站聚合学情。` : `${store.nickname}，维护当前有效数据。`"
       :description="store.role === 'student' ? '录入一道刚做错的题，完成到期复习；剩下的趋势与反馈交给系统整理。' : store.role === 'teacher' ? '当前后端没有班级、课程或学生绑定；以下只展示真实可用的全站聚合指标。' : '管理员只处理后端已支持的用户、科目、知识点和公告边界。'"
     >
-      <template #actions>
-        <el-button v-if="store.role === 'student'" type="primary" :icon="EditPen" @click="router.push('/question/create')">录入错题</el-button>
-        <el-button v-else-if="store.role === 'teacher'" :icon="ArrowRight" @click="router.push('/report')">打开完整报告</el-button>
+      <template v-if="store.role !== 'student'" #actions>
+        <el-button v-if="store.role === 'teacher'" :icon="ArrowRight" @click="router.push('/report')">打开完整报告</el-button>
         <el-button v-else type="primary" :icon="Grid" @click="router.push('/admin/user')">进入数据管理</el-button>
       </template>
     </PageHeader>

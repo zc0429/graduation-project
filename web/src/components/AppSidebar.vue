@@ -210,6 +210,7 @@ function accessibleLabel(item: NavItem) {
   min-height: 0;
   flex: 1;
   flex-direction: column;
+  overflow-x: hidden;
   overflow-y: auto;
   padding-top: 15px;
   scrollbar-width: thin;
@@ -244,13 +245,12 @@ function accessibleLabel(item: NavItem) {
   border-radius: 5px 12px 12px 5px;
   color: var(--ink-soft);
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  transition: background 160ms ease, color 160ms ease;
 }
 
 .nav-link:hover {
   background: rgba(22, 129, 114, 0.07);
   color: var(--jade-dark);
-  transform: translateX(2px);
 }
 
 .nav-link.is-active {
