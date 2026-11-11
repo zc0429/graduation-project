@@ -35,7 +35,7 @@ graduation-project/
 
 最新成果从 [项目交接入口](docs/notes/HANDOFF.md) 与 [文档目录导航](docs/README.md) 查找；历史论文/文献快照见 [归档索引](docs/archives/README.md)，云端和 Windows 的操作见 [Git 同步流程](docs/notes/Git同步与分支管理.md)。已授权的清理结果见 [2026-10-28 后续整理记录](docs/notes/仓库后续整理-20261028.md)；更早报告保留为历史快照。
 
-日常开发基准是 `dev`。GitHub 默认分支修改因集成权限不足返回 403，目前仍为 `main`；新克隆请显式指定 `git clone --branch dev https://github.com/zc0429/graduation-project.git`。本地已有仓库按同步流程切换并更新 dev。
+日常开发基准和 GitHub 默认分支均为 `dev`（2026-11-11 已重新核验）。新克隆仓库默认检出 `dev`；已有本地仓库请按 [Git 同步流程](docs/notes/Git同步与分支管理.md) 更新 `origin/HEAD` 并拉取 `dev`。`main` 暂保留原稳定快照，不自动同步。
 
 ## 本地启动
 
