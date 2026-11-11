@@ -1,0 +1,22 @@
+{
+  "source_sha256": "a485a66644495b30e49fd0f886da14b000e500bc5e7cb5b0eba44e4f3a912f31",
+  "process_exit_code": -4,
+  "note": "Native XML parse/export; shutdown SIGILL is recorded, not GUI interactive edit/save validation.",
+  "pages": [
+    {
+      "name": "01-错题录入与AI分析",
+      "cells": 45,
+      "native_cell_data_and_geometry_preserved": true
+    },
+    {
+      "name": "02-学习练习与复习",
+      "cells": 62,
+      "native_cell_data_and_geometry_preserved": true
+    },
+    {
+      "name": "03-管理与学情查看",
+      "cells": 26,
+      "native_cell_data_and_geometry_preserved": true
+    }
+  ]
+}

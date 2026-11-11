@@ -1,0 +1,32 @@
+{
+  "baseline_review": "f63423841e463b38fda0db2a882ea52e3abbe7cf",
+  "tracked_files_in_snapshot": 593,
+  "unchanged_files": 571,
+  "changed_allowed_files": [
+    "docs/notes/进度记录.md",
+    "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.drawio",
+    "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.pdf",
+    "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.png",
+    "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.svg",
+    "docs/thesis/business-flow/review-20261111/02-学习练习与复习.drawio",
+    "docs/thesis/business-flow/review-20261111/02-学习练习与复习.pdf",
+    "docs/thesis/business-flow/review-20261111/02-学习练习与复习.png",
+    "docs/thesis/business-flow/review-20261111/02-学习练习与复习.svg",
+    "docs/thesis/business-flow/review-20261111/03-管理与学情查看.drawio",
+    "docs/thesis/business-flow/review-20261111/03-管理与学情查看.pdf",
+    "docs/thesis/business-flow/review-20261111/03-管理与学情查看.png",
+    "docs/thesis/business-flow/review-20261111/03-管理与学情查看.svg",
+    "docs/thesis/business-flow/review-20261111/README.md",
+    "docs/thesis/business-flow/review-20261111/export-log.json",
+    "docs/thesis/business-flow/review-20261111/业务流程图-A4审阅版.pdf",
+    "docs/thesis/business-flow/review-20261111/业务流程图-三页可编辑.drawio",
+    "docs/thesis/business-flow/review-20261111/业务流程图.json",
+    "docs/thesis/business-flow/review-20261111/审计与修改报告.md",
+    "docs/thesis/business-flow/review-20261111/需求复核与绘图规范.md",
+    "scripts/documents/build_business_flow_review.py",
+    "scripts/documents/validate_business_flow_review.py"
+  ],
+  "unexpected_changes": [],
+  "historical_validation_files_unchanged": 82,
+  "delivery_hashes_match_final_validation": true
+}

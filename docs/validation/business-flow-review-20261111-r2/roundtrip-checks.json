@@ -1,0 +1,22 @@
+{
+  "source_sha256": "de9bbda6761b8a4fb6c56f142f7f78d04d44521641884e9e60addcff5db101e8",
+  "process_exit_code": -4,
+  "note": "Native application parsed and exported XML; process SIGILL on shutdown remains an environment limitation, not interactive edit/save validation.",
+  "pages": [
+    {
+      "name": "01-错题录入与AI分析",
+      "cells": 49,
+      "native_cell_data_and_geometry_preserved": true
+    },
+    {
+      "name": "02-学习练习与复习",
+      "cells": 65,
+      "native_cell_data_and_geometry_preserved": true
+    },
+    {
+      "name": "03-管理与学情查看",
+      "cells": 28,
+      "native_cell_data_and_geometry_preserved": true
+    }
+  ]
+}
