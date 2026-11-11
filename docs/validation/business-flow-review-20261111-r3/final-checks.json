@@ -1,0 +1,110 @@
+{
+  "baseline_dev": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+  "pages": [
+    {
+      "page": "01-错题录入与AI分析",
+      "business_nodes": 14,
+      "visible_arrows": 18,
+      "actual_svg_arrows": 18,
+      "one_start_one_end": true,
+      "no_crossing_or_unrelated_node_intersection": true,
+      "arrow_endpoint_directions": true,
+      "native_svg_text_bounds_issues": [],
+      "pdf_pages": 1,
+      "a4_pt": [
+        841.8897705078125,
+        595.2755737304688
+      ],
+      "smallest_pdf_font_pt": 10.36,
+      "text_bbox_pt": [
+        61.97207260131836,
+        36.757118225097656,
+        724.558349609375,
+        519.4102783203125
+      ],
+      "png_pixels": [
+        3508,
+        2481
+      ],
+      "svg_embedded_fonts": true,
+      "svg_foreign_objects": 0
+    },
+    {
+      "page": "02-学习练习与复习",
+      "business_nodes": 19,
+      "visible_arrows": 24,
+      "actual_svg_arrows": 24,
+      "one_start_one_end": true,
+      "no_crossing_or_unrelated_node_intersection": true,
+      "arrow_endpoint_directions": true,
+      "native_svg_text_bounds_issues": [],
+      "pdf_pages": 1,
+      "a4_pt": [
+        841.8897705078125,
+        595.2755737304688
+      ],
+      "smallest_pdf_font_pt": 10.36,
+      "text_bbox_pt": [
+        61.97207260131836,
+        36.757118225097656,
+        718.6522827148438,
+        541.6163940429688
+      ],
+      "png_pixels": [
+        3508,
+        2481
+      ],
+      "svg_embedded_fonts": true,
+      "svg_foreign_objects": 0
+    },
+    {
+      "page": "03-管理与学情查看",
+      "business_nodes": 9,
+      "visible_arrows": 9,
+      "actual_svg_arrows": 9,
+      "one_start_one_end": true,
+      "no_crossing_or_unrelated_node_intersection": true,
+      "arrow_endpoint_directions": true,
+      "native_svg_text_bounds_issues": [],
+      "pdf_pages": 1,
+      "a4_pt": [
+        841.8897705078125,
+        595.2755737304688
+      ],
+      "smallest_pdf_font_pt": 10.36,
+      "text_bbox_pt": [
+        61.97207260131836,
+        36.757118225097656,
+        724.558349609375,
+        510.53948974609375
+      ],
+      "png_pixels": [
+        3508,
+        2481
+      ],
+      "svg_embedded_fonts": true,
+      "svg_foreign_objects": 0
+    }
+  ],
+  "method": "Structure + native SVG browser glyph ink bounds (Canvas actualBoundingBox metrics, not font line boxes) + PDF text/page/ink bounds + PNG dimensions. Visual inspection documented separately.",
+  "combined_pdf_pages": 3,
+  "artifacts": {
+    "02-学习练习与复习.svg": "e8336fb01bb2dada375884d13279277d19fdc045c6eba6105c489f0ae35f59da",
+    "01-错题录入与AI分析.svg": "8752bb95e713736d18d42cc52b26e83e65990e98db96d9422ad0cc056f322229",
+    "02-学习练习与复习.png": "712e801011d6778d64eb1e857c0f9deb806eb84b476ffbf042704c1d5d4d032a",
+    "业务流程图.json": "ce893223a59dfcc577d64a7ba30512d5b91077223647e86306398fcc3f23742b",
+    "02-学习练习与复习.pdf": "e5b42da3ec7fbe0198e4b67d0e94fda5c02af8e467972685288935b2fb24bc4a",
+    "03-管理与学情查看.svg": "7f34e483dffd879fbfdd2f3ae89e94cc7e7ce8b8a090dbb2b506c60013c5225f",
+    "业务流程图-A4审阅版.pdf": "3900523237b6640b77b343428c225134aa0bc191632059138ea1dc04217281c8",
+    "export-log.json": "eb143aa831220ce9c6e2c23a32e546828f481a93bb83e6fb4fe70ca1b1ab3f78",
+    "业务流程图-三页可编辑.drawio": "a485a66644495b30e49fd0f886da14b000e500bc5e7cb5b0eba44e4f3a912f31",
+    "01-错题录入与AI分析.drawio": "19f90b9d9431df3377a848511a7631b60bb634e1aabcbab63772e0e313aa4d20",
+    "03-管理与学情查看.pdf": "b4da9b5f95293cfe2b4c836fddc4ddbe35d5358f6800ec99afc712bde3aed667",
+    "03-管理与学情查看.png": "3ba09a927b99ce102800c8dce9aaf289d869304364734ed66c751d9e2bd3f9e2",
+    "02-学习练习与复习.drawio": "87a147521c98d80677efa8d283e67a06386f69a102325e39626a62738a603e85",
+    "01-错题录入与AI分析.png": "21a2186a2698e0f2a80bd5729fa8ea2d48e3eaadde655e6f7c7f603ed126e0ba",
+    "01-错题录入与AI分析.pdf": "b69a9459107acfbe57860b23b07fb2f90dd6823382f9351f299ab0fdc48bdf73",
+    "03-管理与学情查看.drawio": "ead591a8d10eea96171fa131d2a438072666d5e47b68d9a0581eee5dc598d96f"
+  },
+  "passed": true
+}
