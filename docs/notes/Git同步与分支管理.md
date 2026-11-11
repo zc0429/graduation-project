@@ -2,7 +2,7 @@
 
 以远程 `dev` 作为日常集成基准，`main` 保存既有稳定快照。当前 `main` 停在 8 月的旧版本，不代表最新可运行系统；稳定发布应另行验收后正常合并，不在整理中自动更新。
 
-2026-10-28 已尝试将 GitHub 默认分支设为 dev，但当前集成返回 403，远程默认仍为 main。新克隆请用 `git clone --branch dev https://github.com/zc0429/graduation-project.git`；已有仓库显式切换 dev。仓库所有者可在 GitHub Settings → General → Default branch 手动选择 dev，成功后再运行 `git remote set-head origin -a` 更新本地 origin/HEAD；仅运行该 Git 命令不会改变 GitHub 设置。
+2026-11-11 已重新核验 GitHub 默认分支为 `dev`；2026-10-28 的集成 403 失败仅为历史记录，当前不再需要重复修改默认分支。新克隆直接使用 `git clone https://github.com/zc0429/graduation-project.git` 即可默认检出 `dev`；已有仓库先运行 `git fetch origin --prune`、`git remote set-head origin -a` 更新远程跟踪，再在工作区安全的前提下切换和快进拉取 `dev`。`main` 保留既有稳定快照，不自动合并。
 
 ## 每次开始：先看状态，再更新
 
