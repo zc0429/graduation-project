@@ -1,0 +1,36 @@
+{
+  "meeting.zip": {
+    "size": 41901704,
+    "sha256": "20ca289e2e3178b0266864bb3718120341783d66a3efb6371860d29028fcab2a"
+  },
+  "20261101143110-胡韬的快速会议-视频-1.mp4": {
+    "size": 45865440,
+    "sha256": "c5b3ec43f0d9f959cff1443dae85b5add7a819563084aba3d0fc005180c4b5f2"
+  },
+  "20261101143110-胡韬的快速会议-逐字稿文本-1.txt": {
+    "size": 18723,
+    "sha256": "baae987be1b1dce995f6cfbd52b41433b0dc74bb50fb4dc5b8ec075fa36d1541"
+  },
+  "drive_url": "https://drive.google.com/file/d/133DpKG1TrVD724VA6xi5WUsmpsDThftG/view",
+  "video_duration_seconds": 1352.51,
+  "video_frames_checked_seconds": [
+    32,
+    100,
+    160,
+    200,
+    260,
+    305,
+    350,
+    400,
+    455,
+    500,
+    550,
+    680,
+    750,
+    870,
+    1030,
+    1200,
+    1290
+  ],
+  "method": "逐字稿全文阅读；视频按上述时间点抽帧对照原图与参考论文。没有声称逐秒连续观看或独立音频转写。"
+}

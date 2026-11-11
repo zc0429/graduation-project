@@ -1,0 +1,56 @@
+{
+  "status": "preliminary_audit_meeting_zip_pending",
+  "base": "4093a1cb77eca2f06b2924daf954a55860a7249b",
+  "head": "a6e88ed3d5bd17d864358793f4c2b6f9d5d4ca60",
+  "source_sha256": "2e60846ff51083092a9cdab80a9ddb33cab0718f21b01fe07c335821f3770b26",
+  "render_engine": "draw.io desktop 32.6.10 --headless --export --all-pages",
+  "render_exit_code": 132,
+  "render_note": "PDF exported and successfully reopened/rendered as 3 pages; process exited abnormally afterward. Not a successful application smoke test.",
+  "pages": [
+    {
+      "name": "错题录入与AI分析业务流程图",
+      "width": "1200",
+      "height": "930",
+      "nodes": 14,
+      "edges": 14,
+      "starts": [
+        "start"
+      ],
+      "ends": [
+        "end"
+      ]
+    },
+    {
+      "name": "资源复用、练习与复习业务流程图",
+      "width": "1200",
+      "height": "930",
+      "nodes": 13,
+      "edges": 16,
+      "starts": [
+        "start"
+      ],
+      "ends": [
+        "end"
+      ]
+    },
+    {
+      "name": "管理与学情查看业务流程图",
+      "width": "1200",
+      "height": "930",
+      "nodes": 9,
+      "edges": 9,
+      "starts": [
+        "start"
+      ],
+      "ends": [
+        "end"
+      ]
+    }
+  ],
+  "artifacts": {
+    "before.pdf": "5212d62fa3da41c387d1ac9d9119ff0cf3f6aa9e6d40b6b19722ba2ca68d39dd",
+    "before-1.png": "52140f9eeb27b01a722eedd97d2c3d2c09a3d7709aa8b7c9c6a306a28df85232",
+    "before-3.png": "51b83f6415d45ade888954c621ff62aa96f7d88948261152648c3300237cee50",
+    "before-2.png": "342010acdd80b87fe6ef800bf9096137501ce4653f510f87e5c648d7d25b553c"
+  }
+}

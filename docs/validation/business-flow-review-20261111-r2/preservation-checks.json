@@ -1,0 +1,14 @@
+{
+  "baseline": "a6e88ed3d5bd17d864358793f4c2b6f9d5d4ca60",
+  "tracked_files_git_content_identical": 546,
+  "allowed_changed_tracked_files": [
+    "docs/notes/进度记录.md",
+    "docs/thesis/business-flow/review-20261111/README.md",
+    "docs/thesis/business-flow/review-20261111/业务流程图-三页可编辑.drawio",
+    "docs/thesis/business-flow/review-20261111/需求复核与绘图规范.md"
+  ],
+  "historical_validation_and_opening_report_and_code_unchanged": true,
+  "preliminary_render_hashes_unchanged": true,
+  "comparison": "Git clean filters applied (mvnw.cmd checkout uses CRLF); previous validation artifacts also checked by raw SHA256.",
+  "meeting_archive_committed": false
+}
