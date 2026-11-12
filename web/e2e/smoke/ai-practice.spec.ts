@@ -39,13 +39,14 @@ test('相似题只在打开页签后请求并展示当前账号候选', async ({
   expect(mockApi.requests.filter((item) => item.pathname === '/api/recommend/similar')).toHaveLength(1)
 })
 
-test('生成变式题并提交一次变式练习自评', async ({ page, mockApi }) => {
+test('复用已有变式题并提交一次变式练习自评', async ({ page, mockApi }) => {
+  mockApi.practices = []
   await page.goto('/question/201')
   await page.getByRole('tab', { name: /AI 变式题/ }).click()
 
   await expect(page.getByText('若函数在给定区间单调递减，参数应满足什么条件？')).toBeVisible()
-  await page.getByRole('button', { name: '生成变式题' }).click()
-  await expect(page.getByText('改变区间端点后，重新判断函数单调性。')).toBeVisible()
+  await page.getByRole('button', { name: '获取未练变式题' }).click()
+  await expect(page.getByText('改变区间端点后，重新判断函数单调性。')).toHaveCount(0)
 
   const firstVariant = page.locator('.variant-list article').first()
   await firstVariant.getByRole('button', { name: '作答并记录' }).click()

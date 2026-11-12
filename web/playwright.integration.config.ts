@@ -13,6 +13,7 @@ export default defineConfig({
   reporter: 'line',
   outputDir: 'test-results/integration',
   use: {
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE } : {},
     ...devices['Desktop Chrome'],
     baseURL,
     viewport: { width: 1440, height: 1000 },

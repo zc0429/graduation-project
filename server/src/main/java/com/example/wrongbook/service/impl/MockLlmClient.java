@@ -24,6 +24,8 @@ public class MockLlmClient implements LlmClient {
     /** 解析任务与变式任务的提示词标记（由调用方组装提示词时写入） */
     public static final String TASK_ANALYZE = "任务：错题解析";
     public static final String TASK_VARIANT = "任务：变式题生成";
+    public static final String TASK_KNOWLEDGE = "任务：知识内容学习";
+    private final java.util.concurrent.atomic.AtomicLong variantBatch = new java.util.concurrent.atomic.AtomicLong();
 
     private static final int EMBED_DIM = 8;
 
@@ -31,6 +33,12 @@ public class MockLlmClient implements LlmClient {
 
     @Override
     public String chat(String prompt) {
+        if (prompt.contains(TASK_KNOWLEDGE)) {
+            ObjectNode json = objectMapper.createObjectNode();
+            json.put("content", "（Mock知识讲解）围绕「" + section(prompt, "知识点：", "\n")
+                    + "」梳理定义、条件与易错点。先检查已知条件，再联系原题验证，最后独立练习。此内容仅用于工程测试。");
+            return json.toString();
+        }
         if (prompt.contains(TASK_ANALYZE)) {
             return mockAnalyze(prompt);
         }
@@ -107,6 +115,7 @@ public class MockLlmClient implements LlmClient {
         String kpName = section(prompt, "知识点：", "\n");
         ObjectNode json = objectMapper.createObjectNode();
         ArrayNode variants = json.putArray("variants");
+        long batch = variantBatch.incrementAndGet();
         String[] templates = {
                 "（Mock 变式·基础）将原题中的数值条件调小后重新求解：" + abbreviate(stem),
                 "（Mock 变式·巩固）交换原题的条件与所问，考查逆向运用：" + abbreviate(stem),
@@ -115,7 +124,7 @@ public class MockLlmClient implements LlmClient {
         int[] difficulties = {2, 3, 4};
         for (int i = 0; i < templates.length; i++) {
             ObjectNode v = variants.addObject();
-            v.put("stem", templates[i]);
+            v.put("stem", "（Mock批次" + batch + "）" + templates[i]);
             v.put("answer", "（Mock 生成）参考答案：依据「" + kpName + "」相关性质求解，步骤同原题。");
             v.put("difficulty", difficulties[i]);
         }

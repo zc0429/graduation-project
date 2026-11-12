@@ -13,6 +13,7 @@ export default defineConfig({
   reporter: 'line',
   outputDir: 'test-results/ui-smoke',
   use: {
+    launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE } : {},
     baseURL,
     actionTimeout: 10_000,
     navigationTimeout: 20_000,
