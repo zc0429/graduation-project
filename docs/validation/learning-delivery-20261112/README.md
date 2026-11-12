@@ -1,6 +1,6 @@
 # 2026-11-12 个人资源复用与九章论文交付验证
 
-本轮基于dev `6c667e0`，在独立分支`codex/learning-delivery-20261112`复用已有九章成果并继续实现。未修改原PR #1/#4，未合并dev。代码提交`ec324b4`；本文所指最终导出件为[DOCX](../../../output/thesis/learning-delivery-20261112/毕业论文.docx)、[PDF](../../../output/thesis/learning-delivery-20261112/毕业论文.pdf)。
+本轮基于dev `6c667e0`，在独立分支`codex/learning-delivery-20261112`复用已有九章成果并继续实现。已推送至[Draft PR #5](https://github.com/zc0429/graduation-project/pull/5)。未修改原PR #1/#4，未合并dev。代码提交`ec324b4`；本文所指最终导出件为[DOCX](../../../output/thesis/learning-delivery-20261112/毕业论文.docx)、[PDF](../../../output/thesis/learning-delivery-20261112/毕业论文.pdf)。
 
 ## 审计与实际修改
 

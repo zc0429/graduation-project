@@ -2,7 +2,7 @@
 
 ## 当前交付（2026-11-12，覆盖历史待办）
 
-新独立分支`codex/learning-delivery-20261112`基于dev `6c667e0`，复用PR #4九章成果，保留PR #1/#4原分支和历史，不合并dev。新增实际个人知识缓存、未练题优先、耗尽生成与继续练习，当前11表88字段、39接口。代码提交`ec324b4`；最终图文与导出验证见[本轮交付记录](../validation/learning-delivery-20261112/README.md)。
+新独立分支`codex/learning-delivery-20261112`基于dev `6c667e0`，复用PR #4九章成果，保留PR #1/#4原分支和历史，不合并dev。新增实际个人知识缓存、未练题优先、耗尽生成与继续练习，当前11表88字段、39接口。当前审阅入口：[Draft PR #5](https://github.com/zc0429/graduation-project/pull/5)。代码提交`ec324b4`，图文排版`e2bbf53`，原始日志`9a0fd20`；最终图文与导出验证见[本轮交付记录](../validation/learning-delivery-20261112/README.md)。
 
 - 正文：`docs/thesis/毕业论文.md`，九章及20篇参考文献保留；当前需求分析同步新增实现。
 - DOCX/PDF：`output/thesis/learning-delivery-20261112/毕业论文.docx`与同名PDF。直接复用学校2027母版，按胡老师最新要求使用真实分页符；模板冲突取值见[核对说明](../validation/learning-delivery-20261112/模板取值与冲突处理.md)。
