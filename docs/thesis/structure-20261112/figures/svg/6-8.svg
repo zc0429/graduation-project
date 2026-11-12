@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="110.0667mm" viewBox="0 0 446.4567 312">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="17" y="35" width="143" height="55" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="88.5" y="58.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">待复习</text>
+<text x="88.5" y="72.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">status = 0</text>
+<rect x="286" y="35" width="143" height="55" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="357.5" y="58.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">已过期</text>
+<text x="357.5" y="72.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">status = 2</text>
+<rect x="151" y="193" width="143" height="55" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="222.5" y="216.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">已完成</text>
+<text x="222.5" y="230.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">status = 1</text>
+<polyline points="160,62 286,62" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="286,62 280.73450462865776,64.87655323162522 280.73450462865776,59.123446768374784" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="223" y="28" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">每日 08:00 扫描</text>
+<text x="223" y="107" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">plan_date &lt; 当天</text>
+<polyline points="88,90 88,221 151,221" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="151,221 145.73450462865776,223.87655323162522 145.73450462865776,218.12344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="75" y="157" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">用户完成操作</text>
+<polyline points="357,90 357,221 294,221" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="294,221 299.26549537134224,218.12344676837478 299.26549537134224,223.87655323162522" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="371" y="157" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">用户完成操作</text>
+<text x="223" y="276" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">当天或更早、状态非 1 的计划显示在 /today 列表。</text>
+<text x="223" y="295" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">完成时记录 finish_time；再次完成返回业务错误；日期不重排。</text>
+</svg>

@@ -1,0 +1,54 @@
+{
+  "id": "7-1",
+  "caption": "图 7.1　错题录入表单局部",
+  "height": 459,
+  "evidence": [
+    "docs/validation/real-ai-e2e.md",
+    "web/e2e/real-ai/real-glm-evidence.spec.ts"
+  ],
+  "ops": [
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 17,
+      "text": "表单字段与输入区域（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/03-question-create.png",
+      "x": 8.228350000000006,
+      "y": 30,
+      "w": 430,
+      "crop": [
+        337,
+        321,
+        620,
+        439
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 361.46774193548384,
+      "text": "提交按钮（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/03-question-create.png",
+      "x": 118.22835,
+      "y": 374.46774193548384,
+      "w": 210,
+      "crop": [
+        997,
+        964,
+        218,
+        69
+      ]
+    }
+  ],
+  "note": "来源：2026-08-26 真实浏览器验证，原图保留；本图仅作局部截取。\n文本输入证据不证明图片识别功能；较长题干的全文见原始截图。"
+}
