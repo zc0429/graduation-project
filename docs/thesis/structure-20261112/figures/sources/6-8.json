@@ -1,0 +1,181 @@
+{
+  "id": "6-8",
+  "caption": "图 6.8　复习计划状态转换",
+  "height": 312,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/ScheduleTask.java"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 17,
+      "y": 35,
+      "w": 143,
+      "h": 55
+    },
+    {
+      "kind": "text",
+      "x": 88.5,
+      "y": 58.5,
+      "text": "待复习",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 88.5,
+      "y": 72.5,
+      "text": "status = 0",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 286,
+      "y": 35,
+      "w": 143,
+      "h": 55
+    },
+    {
+      "kind": "text",
+      "x": 357.5,
+      "y": 58.5,
+      "text": "已过期",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 357.5,
+      "y": 72.5,
+      "text": "status = 2",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 151,
+      "y": 193,
+      "w": 143,
+      "h": 55
+    },
+    {
+      "kind": "text",
+      "x": 222.5,
+      "y": 216.5,
+      "text": "已完成",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 222.5,
+      "y": 230.5,
+      "text": "status = 1",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          160,
+          62
+        ],
+        [
+          286,
+          62
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 28,
+      "text": "每日 08:00 扫描",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 107,
+      "text": "plan_date < 当天",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          88,
+          90
+        ],
+        [
+          88,
+          221
+        ],
+        [
+          151,
+          221
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 75,
+      "y": 157,
+      "text": "用户完成操作",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          357,
+          90
+        ],
+        [
+          357,
+          221
+        ],
+        [
+          294,
+          221
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 371,
+      "y": 157,
+      "text": "用户完成操作",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 276,
+      "text": "当天或更早、状态非 1 的计划显示在 /today 列表。",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 295,
+      "text": "完成时记录 finish_time；再次完成返回业务错误；日期不重排。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ]
+}

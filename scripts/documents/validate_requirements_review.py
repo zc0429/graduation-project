@@ -6,7 +6,8 @@ from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parents[2]
 PACK=ROOT/'docs/thesis/requirements-20261112'
-OUT=ROOT/'docs/validation/requirements-20261112'
+BASELINE=ROOT/'docs/validation/requirements-20261112/baseline.json'
+OUT=ROOT/'docs/validation/thesis-structure-20261112/requirements-rerun'
 S=827/1200
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def crosses(a,b,r):
@@ -20,13 +21,14 @@ def crosses(a,b,r):
     return lo<hi and hi>0 and lo<1
 
 def main(chromium):
-    baseline=json.loads((OUT/'baseline.json').read_text());allowed={'docs/thesis/毕业论文.md','docs/notes/HANDOFF.md','docs/notes/进度记录.md'}
+    OUT.mkdir(parents=True,exist_ok=True)
+    baseline=json.loads(BASELINE.read_text());allowed={'docs/thesis/毕业论文.md','docs/notes/HANDOFF.md','docs/notes/进度记录.md'}
     changed=[f for f,h in baseline['files'].items() if not (ROOT/f).exists() or sha(ROOT/f)!=h]
     assert set(changed)<=allowed,changed
     main=(ROOT/'docs/thesis/毕业论文.md').read_text()
     old=subprocess.check_output(['git','show',baseline['dev']+':docs/thesis/毕业论文.md'],cwd=ROOT).decode()
     assert main[main.index('## 参考文献'):]==old[old.index('## 参考文献'):], 'References/acknowledgments changed'
-    chapter=main[main.index('## 3 系统需求分析'):main.index('## 4 系统概要设计')]
+    chapter=main[main.index('## 3 系统需求分析'):main.index('## 4 ')]
     standalone=(PACK/'第3章-需求分析审阅稿.md').read_text().split('## 3 系统需求分析',1)[1]
     assert chapter.split('## 3 系统需求分析',1)[1].replace('requirements-20261112/','')==standalone
     links=re.findall(r'!\[[^\]]*\]\(([^)]+)\)',main)

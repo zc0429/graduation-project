@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="199.3194mm" viewBox="0 0 446.4567 565">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="4" y="5" width="90" height="36" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="49.0" y="26.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">学生页面</text>
+<polyline points="49,41 49,514" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<rect x="120" y="5" width="90" height="36" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="165.0" y="26.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">接口与服务</text>
+<polyline points="165,41 165,514" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<rect x="236" y="5" width="90" height="36" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="281.0" y="26.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">本地执行器</text>
+<polyline points="281,41 281,514" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<rect x="352" y="5" width="90" height="36" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="397.0" y="26.0" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">数据库</text>
+<polyline points="397,41 397,514" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polyline points="49,75 165,75" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="165,75 159.73450462865776,77.87655323162522 159.73450462865776,72.12344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="68" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">提交错题</text>
+<polyline points="165,111 397,111" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,111 391.73450462865776,113.87655323162522 391.73450462865776,108.12344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="281.0" y="104" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">事务保存 question + 5 条 review_plan</text>
+<polyline points="165,146 49,146" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="49,146 54.26549537134223,143.12344676837478 54.26549537134224,148.87655323162522" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="139" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">返回题目 ID</text>
+<polyline points="49,181 165,181" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="165,181 159.73450462865776,183.87655323162522 159.73450462865776,178.12344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="174" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">另行触发解析</text>
+<polyline points="165,216 397,216" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,216 391.73450462865776,218.87655323162522 391.73450462865776,213.12344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="281.0" y="209" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">归属检查；创建或重置解析状态 0</text>
+<polyline points="165,251 281,251" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="281,251 275.73450462865776,253.87655323162522 275.73450462865776,248.12344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="244" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">提交任务</text>
+<polyline points="165,282 49,282" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="49,282 54.26549537134223,279.1234467683748 54.26549537134224,284.8765532316252" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="275" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">触发接口返回</text>
+<polyline points="281,318 397,318" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,318 391.73450462865776,320.8765532316252 391.73450462865776,315.1234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="339.0" y="311" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">读取解析记录与题目</text>
+<rect x="227" y="337" width="109" height="61" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="281.5" y="356.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">执行向量与 RAG</text>
+<text x="281.5" y="370.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">请求外部 GLM</text>
+<text x="281.5" y="384.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">校验结构化响应</text>
+<polyline points="281,430 397,430" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,430 391.73450462865776,432.8765532316252 391.73450462865776,427.1234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="339.0" y="423" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">条件回写 + 完成消息</text>
+<polyline points="49,473 165,473" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="165,473 159.73450462865776,475.8765532316252 159.73450462865776,470.1234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="466" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">轮询解析状态</text>
+<polyline points="165,509 49,509" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="49,509 54.26549537134223,506.1234467683748 54.26549537134224,511.8765532316252" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="502" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">返回 0 / 1 / 2</text>
+<text x="223" y="539" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">保存事务不包含外部模型调用；任务与轮询可并发进行。</text>
+<text x="223" y="557" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">过期输入：回写事务回滚且不发完成消息；异常：当前解析置 2。</text>
+</svg>
