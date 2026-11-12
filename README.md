@@ -1,5 +1,8 @@
 # 基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现
 
+当前独立交付分支 `codex/learning-delivery-20261112`：个人资源复用与持续练习、九章论文及学校模板DOCX/PDF，见[交付与验证](docs/validation/learning-delivery-20261112/README.md)和[Cloud字体初始化](scripts/cloud/README.md)。原审阅PR保持独立，不自动合并dev。
+
+
 本科毕业设计项目，围绕“错题录入 → AI 知识点归类与解析（RAG）→ 变式题练习 → 遗忘曲线复习 → 学情反馈”形成完整学习闭环。前端为 Vue 3 单页应用，后端为 Spring Boot 3.5.16 REST 服务；正常运行默认使用真实智谱 GLM 服务与图片识题；离线开发显式选择 Mock，自动化测试使用隔离的 Mock 配置。缺少密钥时给出明确提示，仍可手工保存错题。
 
 - **英文题目**：Design and Implementation of an AI-Powered Wrong-Question Analysis and Learning Recommendation System Based on the Zhipu GLM Model

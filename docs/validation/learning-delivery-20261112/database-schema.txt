@@ -1,0 +1,6 @@
+tables_count
+11
+columns_count
+88
+Table	Create Table
+learning_content	CREATE TABLE `learning_content` (\n  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '????ID',\n  `user_id` bigint NOT NULL COMMENT '????',\n  `question_id` bigint NOT NULL COMMENT '????',\n  `knowledge_point_id` bigint DEFAULT NULL COMMENT '?????',\n  `input_hash` char(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '??????SHA-256',\n  `content` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '???????????',\n  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `uk_learning_question` (`question_id`),\n  KEY `idx_learning_user` (`user_id`)\n) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='????????'

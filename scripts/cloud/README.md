@@ -11,6 +11,7 @@ FONTCONFIG_FILE="$PWD/scripts/cloud/fonts.conf" fc-match '宋体'
 FONTCONFIG_FILE="$PWD/scripts/cloud/fonts.conf" fc-match 'Times New Roman'
 python scripts/documents/build_delivery_resource_figure.py
 python scripts/documents/build_delivery_dfd.py
+python scripts/documents/build_delivery_design_figures.py
 python scripts/documents/build_thesis_delivery.py
 ./scripts/cloud/export-thesis-pdf.sh
 python scripts/documents/update_delivery_page_map.py
