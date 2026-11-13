@@ -4,7 +4,8 @@ import csv,json,re,os
 import pymupdf
 from PIL import Image,ImageDraw
 ROOT=Path(__file__).resolve().parents[2];DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113');RUN=ROOT/'docs/validation'/DELIVERY
-pdf=pymupdf.open(ROOT/'output/thesis'/DELIVERY/'毕业论文.pdf')
+pdf_name='毕业论文-字体受限预览.pdf' if os.environ.get('THESIS_ALLOW_SUBSTITUTE_PREVIEW')=='1' else '毕业论文.pdf'
+pdf=pymupdf.open(ROOT/'output/thesis'/DELIVERY/pdf_name)
 local=ROOT/'.local'/DELIVERY/'pdf-pages';local.mkdir(parents=True,exist_ok=True)
 proof=RUN/'page-proofs';proof.mkdir(parents=True,exist_ok=True)
 # Remove only superseded proof sheets in the selected delivery, never historical deliveries.

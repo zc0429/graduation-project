@@ -49,7 +49,8 @@ def main():
   with ZipFile(tpl) as original:
    for name in original.namelist():
     if re.fullmatch(r'word/header\d+\.xml',name):assert original.read(name)==z.read(name),name
- pdf=pymupdf.open(OUT/'毕业论文.pdf');toc={norm(t):page for _,t,page in pdf.get_toc()};start=toc[norm('1 绪论')]
+ pdf_name='毕业论文-字体受限预览.pdf' if os.environ.get('THESIS_ALLOW_SUBSTITUTE_PREVIEW')=='1' else '毕业论文.pdf'
+ pdf=pymupdf.open(OUT/pdf_name);toc={norm(t):page for _,t,page in pdf.get_toc()};start=toc[norm('1 绪论')]
  mapping=json.loads((RUN/'page-map.json').read_text());entries=json.loads((RUN/'heading-keys.json').read_text())
  for title,key,_ in entries:
   actual='I' if key=='abstract_cn' else 'II' if key=='abstract_en' else str(toc[norm(title)]-start+1)
@@ -78,8 +79,12 @@ def main():
      x0,y0,x1,y1=span['bbox']
      if x0<0 or y0<0 or x1>page.rect.width+.1 or y1>page.rect.height+.1:bounds.append([i+1,span['text'],span['bbox']])
  assert not bounds,bounds
- fonts=subprocess.check_output(['pdffonts',str(OUT/'毕业论文.pdf')],text=True);(RUN/'pdf-fonts.txt').write_text(fonts)
- assert 'NotoSerifCJKsc' in fonts and 'LiberationSerif' in fonts
+ fonts=subprocess.check_output(['pdffonts',str(OUT/pdf_name)],text=True);(RUN/'pdf-fonts.txt').write_text(fonts)
+ # Read actual PDF font names; do not hard-code success to a substitute family.
+ expected_originals=all(name in fonts for name in ['SimSun','SimHei','TimesNewRoman'])
+ if os.environ.get('THESIS_ALLOW_SUBSTITUTE_PREVIEW')!='1':assert expected_originals,fonts
  result={'template_sha256':hashlib.sha256(tpl.read_bytes()).hexdigest(),'chapters':chapter_pages,'true_chapter_page_breaks':9,'pdf_pages':len(pdf),'landscape_pages':[i+1 for i,p in enumerate(pdf) if p.rect.width>p.rect.height],'references':reference_counts,'figure_count':len(re.findall(r'^\*\*图 ',md,re.M)),'table_count':len(re.findall(r'^\*\*表 ',md,re.M)),'toc_destinations':len(entries),'docx_tables_including_continuations':len(d.tables),'page_bounds_errors':bounds,'original_fonts_verified':False,'visual_review':'Separate manual rendering review; this script does not certify visual quality.'}
+ result.update({'pdf_file':pdf_name,'original_fonts_verified':expected_originals,
+                'microsoft_word_verified':False,'font_limited_preview':os.environ.get('THESIS_ALLOW_SUBSTITUTE_PREVIEW')=='1'})
  (RUN/'document-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2));print(json.dumps(result,ensure_ascii=False))
 if __name__=='__main__':main()

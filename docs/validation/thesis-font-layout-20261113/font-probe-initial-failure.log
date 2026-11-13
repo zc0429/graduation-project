@@ -1,0 +1,17 @@
+The WOFF2 decoder requires the Brotli Python extension, available at: https://github.com/google/brotli
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/check_thesis_fonts.py", line 42, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/check_thesis_fonts.py", line 33, in main
+    report=inspect();report['mode']='font-limited-preview' if args.preview else 'original-required'
+           ^^^^^^^^^
+  File "/workspace/graduation-project/scripts/documents/check_thesis_fonts.py", line 18, in inspect
+    font=TTFont(path,fontNumber=index)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/ttLib/ttFont.py", line 320, in __init__
+    self.reader = SFNTReader(file, checkChecksums, fontNumber=fontNumber)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fontTools/ttLib/woff2.py", line 53, in __init__
+    raise ImportError("No module named brotli")
+ImportError: No module named brotli

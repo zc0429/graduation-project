@@ -1,0 +1,88 @@
+{
+  "checks": [
+    {
+      "check": "formal-export-blocked",
+      "command": [
+        "bash",
+        "scripts/cloud/export-thesis-pdf.sh"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2
+    },
+    {
+      "check": "font-preview-preflight",
+      "command": [
+        "/workspace/graduation-project/.local/audit-venv/bin/python",
+        "scripts/documents/check_thesis_fonts.py",
+        "--preview",
+        "--report",
+        "/workspace/graduation-project/docs/validation/thesis-font-layout-20261113/font-preflight.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "check": "shell-syntax",
+      "command": [
+        "bash",
+        "-n",
+        "scripts/cloud/export-thesis-pdf.sh"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "check": "python-syntax",
+      "command": [
+        "/workspace/graduation-project/.local/audit-venv/bin/python",
+        "-m",
+        "py_compile",
+        "scripts/documents/build_thesis_delivery.py",
+        "scripts/documents/check_thesis_fonts.py",
+        "scripts/documents/audit_thesis_font_layout.py",
+        "scripts/documents/validate_thesis_delivery.py",
+        "scripts/documents/render_thesis_audit.py",
+        "scripts/documents/update_delivery_page_map.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "check": "document-validation",
+      "command": [
+        "/workspace/graduation-project/.local/audit-venv/bin/python",
+        "scripts/documents/validate_thesis_delivery.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "check": "font-layout-validation",
+      "command": [
+        "/workspace/graduation-project/.local/audit-venv/bin/python",
+        "scripts/documents/audit_thesis_font_layout.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0
+    },
+    {
+      "check": "diff-check",
+      "command": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0
+    }
+  ],
+  "strict_export_blocked_as_expected": true,
+  "preview_not_overwritten_by_blocked_export": true,
+  "system_tests_executed": false,
+  "original_fonts_verified": false,
+  "microsoft_word_verified": false,
+  "raw_terminal_log_carriage_returns_preserved": true
+}

@@ -1,3 +1,5 @@
+> **2026-11-13 PR #9字体排版续审（最新）**：继续`codex/thesis-final-quality-20261113`，起点`e211f65`。题目18pt黑体加粗居中、章14pt黑体、节/条12pt黑体、正文12pt宋体/Times New Roman、页码9pt宋体均按用户已确认规范执行，不再询问。修复样式/默认值/东亚与英数字体槽、代码小四与分页、校徽继承裁切及接口续表；Times New Roman四种原字体已合法安装并验证PDF实际使用。宋体/黑体缺本环境可验证授权安装包，Word未安装，原字体终验未完成，PDF明确为字体受限预览（101页、正文87页、120目录项）。28图26表31段275行代码27篇文献不变，1182项原件保护通过；不改正文源稿、开题、业务或历史证据，不合并PR。[报告与新DOCX/预览PDF](../validation/thesis-font-layout-20261113/README.md)。以下为历史入口。
+
 > **独立终稿审阅PR**：[Draft PR #9](https://github.com/zc0429/graduation-project/pull/9)，从PR #8派生，指向dev，不合并。
 
 > **2026-11-13 最新终稿质量交付**：独立分支`codex/thesis-final-quality-20261113`基于Draft PR #8 `21da287`，目标`dev`，不合并。[逐章质量报告与49处对照](../validation/thesis-final-quality-20261113/README.md)／[DOCX](../../output/thesis/thesis-final-quality-20261113/毕业论文.docx)／[PDF](../../output/thesis/thesis-final-quality-20261113/毕业论文.pdf)。99页、正文85页、120目录项、28图26表31段代码27文献。只做必要文字修订和文档验证；系统、开题、学校材料与历史证据不改。原字体Word未测、当前知识讲解真实模型质量及导师暂定规则边界保留。下一步请导师审阅内容与规则，归档前完成合法原字体Word复核。以下为历史入口。

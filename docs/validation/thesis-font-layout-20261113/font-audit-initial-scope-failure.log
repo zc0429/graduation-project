@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 151, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 80, in main
+    assert props['sz']==size and props['eastAsia']=='黑体',(text,props)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('1 绪\u3000论1', {'ascii': 'Times New Roman', 'hAnsi': 'Times New Roman', 'cs': 'Times New Roman', 'eastAsia': '宋体', 'hint': 'eastAsia', 'b': '0', 'sz': '24'})

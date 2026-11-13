@@ -30,6 +30,7 @@ PROPERTY_ORDER={
  'tblBorders':'top start left bottom end right insideH insideV',
  'tcBorders':'top start left bottom end right insideH insideV tl2br tr2bl',
  'tcMar':'top start left bottom end right',
+    'rPr':'rStyle rFonts b bCs i iCs caps smallCaps strike dstrike outline shadow emboss imprint noProof snapToGrid vanish webHidden color spacing w kern position sz szCs highlight u effect bdr shd fitText vertAlign rtl cs em lang eastAsianLayout specVanish oMath rPrChange',
  'pPr':'pStyle keepNext keepLines pageBreakBefore framePr widowControl numPr suppressLineNumbers pBdr shd tabs suppressAutoHyphens kinsoku wordWrap overflowPunct topLinePunct autoSpaceDE autoSpaceDN bidi adjustRightInd snapToGrid spacing ind contextualSpacing mirrorIndents suppressOverlap jc textDirection textAlignment textboxTightWrap outlineLvl divId cnfStyle rPr sectPr pPrChange',
  'tblPr':'tblStyle tblpPr tblOverlap bidiVisual tblStyleRowBandSize tblStyleColBandSize tblW jc tblCellSpacing tblInd tblBorders shd tblLayout tblCellMar tblLook tblCaption tblDescription tblPrChange',
  'tcPr':'cnfStyle tcW gridSpan hMerge vMerge tcBorders shd noWrap tcMar textDirection tcFitText vAlign hideMark headers cellIns cellDel cellMerge tcPrChange',
@@ -51,10 +52,23 @@ def el(tag,**attrs):
     x=OxmlElement('w:'+tag)
     for k,v in attrs.items():x.set(qn('w:'+k),str(v))
     return x
+def font_properties(rpr,size=12,east='宋体',bold=False,latin='Times New Roman'):
+    # Direct names and the East Asian slot must agree with styles. A retained
+    # *Theme attribute can otherwise override a name after Word updates a field.
+    for tag in ['rFonts','sz','szCs','b','bCs','color','lang']:
+        for old in rpr.findall(qn('w:'+tag)):rpr.remove(old)
+    rpr.append(el('rFonts',ascii=latin,hAnsi=latin,cs=latin,eastAsia=east,hint='eastAsia'))
+    rpr.append(el('b',val=int(bold)));rpr.append(el('bCs',val=int(bold)))
+    rpr.append(el('color',val='000000'))
+    rpr.append(el('sz',val=int(size*2)));rpr.append(el('szCs',val=int(size*2)))
+    rpr.append(el('lang',val='en-US',eastAsia='zh-CN'))
 def font(r,size=12,east='宋体',bold=False):
-    r.font.name='Times New Roman'; r.font.size=Pt(size); r.font.bold=bold; r.font.color.rgb=RGBColor(0,0,0)
-    f=r._r.get_or_add_rPr().get_or_add_rFonts();f.set(qn('w:eastAsia'),east)
+    font_properties(r._r.get_or_add_rPr(),size,east,bold)
     return r
+def paragraph_font(p,size=12,east='宋体',bold=False):
+    ppr=p._p.get_or_add_pPr();rpr=ppr.find(qn('w:rPr'))
+    if rpr is None:rpr=el('rPr');ppr.append(rpr)
+    font_properties(rpr,size,east,bold)
 def field(p,instruction,cached,size=12):
     p.add_run()._r.append(el('fldChar',fldCharType='begin'))
     x=el('instrText');x.set(qn('xml:space'),'preserve');x.text=' '+instruction+' ';p.add_run()._r.append(x)
@@ -80,6 +94,7 @@ def inline(p,s,size=12,refs=True):
 def fmt(p,size=12,indent=24,align=WD_ALIGN_PARAGRAPH.JUSTIFY,line=20,before=0,after=0,keep=False):
     f=p.paragraph_format;f.first_line_indent=Pt(indent);f.left_indent=Pt(0);f.right_indent=Pt(0)
     f.line_spacing=Pt(line);f.space_before=Pt(before);f.space_after=Pt(after);f.keep_with_next=keep;f.widow_control=True
+    paragraph_font(p,size)
     p.alignment=align
     p._p.get_or_add_pPr().append(el('snapToGrid',val=0))
     return p
@@ -109,6 +124,7 @@ def heading(doc,text,level=1,key=None,pagebreak=False):
     p.paragraph_format.keep_with_next=True
     if key:k=bookmark_start(p,key)
     font(p.add_run(text),14 if level==1 else 12,'黑体')
+    paragraph_font(p,14 if level==1 else 12,'黑体')
     if text=='参考文献':
         p.paragraph_format.space_before=Pt(6);p.paragraph_format.space_after=Pt(0)
     if text.startswith('附录'):
@@ -135,7 +151,7 @@ def table(doc,rows,cap):
     if '系统接口一览' in cap:widths=[2.2,1.8,6.6,5.15]
     if '3.1' in cap:widths=[1.5,3.0,8.0,3.25]
     if rows[0]==['代码','文件','原始行范围']:widths=[1.5,11.1,3.15]
-    keep_table=bool(re.match(r'表 6\.\d+.*（[a-z_]+）',cap)) or 'Gate5 固定小样本' in cap
+    keep_table=bool(re.match(r'表 6\.\d+.*（[a-z_]+）',cap)) or 'Gate5 固定小样本' in cap or '系统接口一览' in cap
     t=doc.add_table(rows=1,cols=n);t.alignment=WD_TABLE_ALIGNMENT.CENTER;t.autofit=False
     for c,w in zip(t.columns,widths):c.width=Cm(w)
     pr=t._tbl.tblPr
@@ -155,7 +171,7 @@ def table(doc,rows,cap):
             cp.append(margins)
             if ri==0:
                 cb=el('tcBorders');cb.append(el('bottom',val='single',sz=8,color='000000'));cp.append(cb)
-            p=c.paragraphs[0];fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=keep_table and ri<len(rows)-1)
+            p=c.paragraphs[0];fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=keep_table and ri<len(rows)-1)
             # Allow very long identifier runs to wrap while retaining their exact visible text.
             p._p.get_or_add_pPr().append(el('wordWrap',val=0));inline(p,value,10.5,refs=False)
     return t
@@ -172,30 +188,52 @@ def main():
     body=d._element.body
     for x in list(body):body.remove(x)
     for x in cover:body.append(x)
+    # The official inline school emblems must expand their lines naturally.
+    # Body's new exact-20pt Normal style must not clip these inherited pictures.
+    for p in d.paragraphs[:6]:
+        p.paragraph_format.line_spacing=1
+        p.paragraph_format.first_line_indent=Pt(0)
     for x in list(body.iter()):
         if x.tag in {qn('w:commentRangeStart'),qn('w:commentRangeEnd'),qn('w:commentReference'),qn('w:bookmarkStart'),qn('w:bookmarkEnd')}:
             x.getparent().remove(x)
     p=d.paragraphs[6];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=24)
-    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),16,'黑体',True)
+    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),18,'黑体',True)
+    paragraph_font(p,18,'黑体',True)
     p=d.paragraphs[7];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=19,after=20)
     font(p.add_run(re.search(r'> \*\*英文题目\*\*：(.*)',md)[1].strip()),12,'宋体',True)
     for text in ['人工智能学院　软件工程','2023级【本科】软件工程1班','赵灿　23612801026　指导教师：胡韬']:
         p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=20);inline(p,text)
     append_sect(d,section_end(d,base[0]))
-    # Preserve all existing template styles. Only introduce missing semantic styles.
+    # Preserve template layout, but correct the inherited text styles as well as
+    # visible runs. New paragraphs must not revert to 10.5pt/Arial/22pt headings.
     edited_styles=[]
-    for name in ['Caption','Title']:
+    header_style=d.styles['Header']
+    header_style.paragraph_format.line_spacing=1
+    header_style.paragraph_format.first_line_indent=Pt(0)
+    edited_styles.append(header_style.style_id)
+    for name in ['Caption','Title','Thesis Code']:
         if name not in d.styles:
             st=d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH);edited_styles.append(st.style_id)
+    for name,size,east,bold in [('Normal',12,'宋体',False),('Heading 1',14,'黑体',False),
+            ('Heading 2',12,'黑体',False),('Heading 3',12,'黑体',False),
+            ('Title',18,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',12,'宋体',False)]:
+        st=d.styles[name];font_properties(st.element.get_or_add_rPr(),size,east,bold)
+        if name.startswith('Heading'):
+            st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
+        if name=='Normal':
+            st.paragraph_format.line_spacing=Pt(20);st.paragraph_format.first_line_indent=Pt(24)
+        if name=='Thesis Code':
+            st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
+            st.paragraph_format.line_spacing=Pt(20);st.paragraph_format.first_line_indent=Pt(0)
+        if name=='Title':st.paragraph_format.alignment=WD_ALIGN_PARAGRAPH.CENTER
+        edited_styles.append(st.style_id)
     # Word rebuilds a TOC using TOC1/2/3, discarding cached direct formatting.
     # Define these styles explicitly so an update retains the checked layout.
     for level in range(1,4):
         name=f'TOC {level}'
         if name not in d.styles:d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH)
         st=d.styles[name];st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
-        st.font.name='Times New Roman';st.font.size=Pt(14 if level==1 else 12);st.font.bold=False
-        st.font.color.rgb=RGBColor(0,0,0)
-        st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'黑体')
+        font_properties(st.element.get_or_add_rPr(),14 if level==1 else 12,'黑体')
         f=st.paragraph_format;f.first_line_indent=Pt(0);f.left_indent=Cm((level-1)*.5)
         f.right_indent=Pt(0);f.line_spacing=1.5;f.space_before=Pt(0);f.space_after=Pt(0)
         f.keep_with_next=False;f.page_break_before=False;f.alignment=WD_ALIGN_PARAGRAPH.LEFT
@@ -249,10 +287,12 @@ def main():
             code=[]
             while i<len(lines) and not lines[i].startswith('```'):code.append(lines[i]);i+=1
             i+=1
-            # Keep short excerpts together; longer excerpts may break between lines.
+            # 12pt excerpts need natural page breaks once they exceed ten source
+            # lines. Keep the caption and first lines together, never split a
+            # wrapped source line, and avoid whole-method near-empty pages.
             d.paragraphs[-1].paragraph_format.keep_with_next=True
             for j,text in enumerate(code):
-                p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=14,keep=j<len(code)-1 if len(code)<=18 else j<2);p.paragraph_format.keep_together=True; font(p.add_run(text),10.5)
+                p=d.add_paragraph(style='Thesis Code');fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=20,keep=j<len(code)-1 if len(code)<=10 else j<2);p.paragraph_format.keep_together=True; font(p.add_run(text))
             continue
         if line.startswith('!['):
             target=re.search(r'\]\(([^)]+)\)',line)[1];path=ROOT/'docs/thesis'/target
@@ -273,7 +313,10 @@ def main():
                         x0,y0,x1,y1=box;pad=20
                         im=im.crop((max(0,x0-pad),max(0,y0-pad),min(w,x1+pad),min(h,y1+pad)))
                         w,h=im.size
-                width=min(15.75,20*w/h)
+                # This tall RAG figure otherwise jumps past its short lead-in,
+                # leaving most of that page empty with the confirmed body font.
+                max_height=19 if target=='delivery-20261112/figures/6-5.png' else 20
+                width=min(15.75,max_height*w/h)
                 buf=BytesIO();im.save(buf,format='PNG');buf.seek(0);picture=buf
             p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=14,keep=True,before=6)
             p.paragraph_format.line_spacing=1
@@ -297,7 +340,7 @@ def main():
             rows=[[x.strip() for x in r.strip('|').split('|')] for r in rows if not re.match(r'^\|\s*:?-',r)]
             if pending_caption and '系统接口一览' in pending_caption:
                 start=1
-                for ci,count in enumerate([12,14,13]):
+                for ci,count in enumerate([10,16,13]):
                     cap=caption(d,pending_caption,continued=ci>0)
                     if ci:cap.paragraph_format.page_break_before=True
                     table(d,[rows[0]]+rows[start:start+count],pending_caption);start+=count
@@ -318,9 +361,10 @@ def main():
         if in_refs and re.match(r'^\[\d+\]',line):
             num=re.match(r'^\[(\d+)\]',line)[1];k=bookmark_start(p,'ref'+num)
             p.paragraph_format.left_indent=Pt(0);p.paragraph_format.first_line_indent=Pt(0);p.paragraph_format.line_spacing=Pt(22)
+            paragraph_font(p,10.5)
             inline(p,re.sub(r'^(\[\d+\])\s+',r'\1',line),10.5,refs=False);bookmark_end(p,k)
         elif line.startswith('资料来源'):
-            fmt(p,indent=0,line=13,before=6,after=12);inline(p,line,10.5,refs=False)
+            fmt(p,size=10.5,indent=0,line=13,before=6,after=12);inline(p,line,10.5,refs=False)
         else:inline(p,line)
     body.append(section_end(d,base[3],header='rId6',footer='rId9',number=None if body_split else 'decimal'))
     # Refresh is deferred to Word; cached fields are deterministic and separately QAed.
@@ -338,6 +382,14 @@ def main():
                 if x.get(qn('w:styleId'))==sid:styles.remove(x)
             for x in newstyles:
                 if x.get(qn('w:styleId'))==sid:styles.append(deepcopy(x))
+        defaults=styles.find(qn('w:docDefaults'))
+        if defaults is None:defaults=el('docDefaults');styles.insert(0,defaults)
+        default_rpr=defaults.find(qn('w:rPrDefault'))
+        if default_rpr is None:default_rpr=el('rPrDefault');defaults.insert(0,default_rpr)
+        rpr=default_rpr.find(qn('w:rPr'))
+        if rpr is None:rpr=el('rPr');default_rpr.append(rpr)
+        font_properties(rpr)
+        normalize_properties(styles)
         # The retained template places uiPriority after qFormat in some styles.
         # Normalize CT_Style order in the output only; preserve all values and
         # repeated tblStylePr children (unlike singleton property containers).
@@ -354,6 +406,15 @@ def main():
                     for x in list(pp):
                         if x.tag in [qn('w:jc'),qn('w:ind')]:pp.remove(x)
                     pp.append(el('jc',val='center'))
+                    mark=pp.find(qn('w:rPr'))
+                    if mark is None:mark=el('rPr');pp.append(mark)
+                    font_properties(mark,9,latin='宋体')
+                for run in tree.iter(qn('w:r')):
+                    rpr=run.find(qn('w:rPr'))
+                    if rpr is None:rpr=el('rPr');run.insert(0,rpr)
+                    # Page numbers are a specific exception to body Latin text:
+                    # the confirmed school requirement is 9pt Song throughout.
+                    font_properties(rpr,9,latin='宋体')
                 normalize_properties(tree)
                 data=etree.tostring(tree,xml_declaration=True,encoding='UTF-8',standalone=True)
             if name.startswith('word/comments') or name in ['word/footnotes.xml','word/endnotes.xml']:
