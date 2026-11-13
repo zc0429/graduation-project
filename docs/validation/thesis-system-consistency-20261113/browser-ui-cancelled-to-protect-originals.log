@@ -1,0 +1,64 @@
+
+> web@0.0.0 e2e:smoke
+> playwright test --config=playwright.ui.config.ts --project=chromium-desktop --project=chromium-laptop --project=chromium-tablet --project=chromium-mobile
+
+[WebServer] (node:9405) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 54 tests using 1 worker
+
+(node:9424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/54] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:29:1 › 登录页没有严重或关键 WCAG A/AA 问题
+[2/54] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:35:1 › 学生核心工作台没有严重或关键 WCAG A/AA 问题
+[3/54] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:45:1 › 教师与管理员核心页没有严重或关键 WCAG A/AA 问题
+[4/54] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:7:1 › AI 解析展示成功证据并可从空状态重新触发
+[5/54] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:18:1 › AI 失败状态明确提供重试动作
+[6/54] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:32:1 › 相似题只在打开页签后请求并展示当前账号候选
+[7/54] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:42:1 › 复用已有变式题并提交一次变式练习自评
+[8/54] [chromium-desktop] › e2e/smoke/auth.spec.ts:3:1 › 学生可以登录并进入工作台
+[9/54] [chromium-desktop] › e2e/smoke/auth.spec.ts:14:1 › 登录错误留在表单并显示服务端消息
+[10/54] [chromium-desktop] › e2e/smoke/auth.spec.ts:27:1 › 注册请求成功后回到登录模式
+[11/54] [chromium-desktop] › e2e/smoke/auth.spec.ts:45:1 › 恢复的令牌过期时重定向并保留原目标
+[12/54] [chromium-desktop] › e2e/smoke/report-message.spec.ts:7:1 › 周报展示指标、掌握度与可读趋势表，并可重新生成
+[13/54] [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读
+  1) [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读 ───────────────────
+
+    Test was interrupted.
+
+    Error: page.goto: Test ended.
+    Call log:
+      - navigating to "http://127.0.0.1:4174/message", waiting until "load"
+
+
+      20 |
+      21 | test('消息可按未读筛选并标记为已读', async ({ page, mockApi }) => {
+    > 22 |   await page.goto('/message')
+         |              ^
+      23 |
+      24 |   await page.getByRole('button', { name: '未读' }).click()
+      25 |   await expect(page.getByText('有 1 道逾期错题待复习', { exact: true })).toBeVisible()
+        at /workspace/graduation-project/web/e2e/smoke/report-message.spec.ts:22:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/ui-smoke/report-message-消息可按未读筛选并标记为已读-chromium-desktop/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/ui-smoke/report-message-消息可按未读筛选并标记为已读-chromium-desktop/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/ui-smoke/report-message-消息可按未读筛选并标记为已读-chromium-desktop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/ui-smoke/report-message-消息可按未读筛选并标记为已读-chromium-desktop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  1 interrupted
+    [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读 ────────────────────
+  41 did not run
+  12 passed (45.8s)
