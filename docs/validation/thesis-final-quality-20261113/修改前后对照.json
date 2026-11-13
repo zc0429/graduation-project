@@ -1,0 +1,345 @@
+[
+  {
+    "id": "Q01",
+    "section": "中文摘要",
+    "reason": "按问题、方法、核心实现、验证与结论组织，删去功能清单重复并保留历史与工程测试边界。",
+    "before": "针对个人错题分散、解析与后续练习脱节的问题，设计并实现基于智谱GLM大模型的AI错题分析与学习推荐系统。系统采用Vue 3、TypeScript、Spring Boot、MyBatis-Plus与MySQL构建前后端分离架构，结合个人题库检索组织模型上下文，由平台校验并保存分析和变式题。系统支持错题录入、图片辅助输入、相似题查询、练习记录、固定计划复习及学情查看，并通过角色和数据归属约束访问范围。测试包括离线自动化、隔离数据库联调、真实模型调用和受控小样本实验，结果支持所测条件下的功能可用性，不能推导普遍教学效果。题目级状态采用规则分值，尚未形成概率知识追踪；系统已实现个人知识内容缓存、未练题筛选与资源耗尽后的生成编排；其适用性结论限定在实际验证范围内。",
+    "after": "针对个人错题分散、解析与后续练习脱节的问题，设计并实现基于智谱GLM大模型的AI错题分析与学习推荐系统。系统采用Vue 3、TypeScript、Spring Boot、MyBatis-Plus与MySQL构建前后端分离架构，通过个人题库检索组织模型上下文，校验并保存辅助解析与练习资源。平台优先复用有效知识内容和未练题，资源耗尽后再补充生成，并记录实际作答、固定节点复习及题目级规则分值。学生、教师和管理员按角色及数据归属访问相应功能。工程测试及既有真实模型调用、小样本实验支持所测条件下的功能可用性，同时显示生成内容仍需核查。系统形成了个人错题学习与练习的连续流程，尚未实现概率知识追踪，其长期教学效果仍需进一步评价。"
+  },
+  {
+    "id": "Q02",
+    "section": "英文摘要",
+    "reason": "与中文摘要逐句对齐，明确真实模型结果来自既有记录。",
+    "before": "To connect scattered personal wrong-question records with analysis and follow-up practice, this project designs and implements an AI-powered wrong-question analysis and learning recommendation system based on the Zhipu GLM model. The system uses Vue 3, TypeScript, Spring Boot, MyBatis-Plus and MySQL in a decoupled front-end and back-end architecture. Retrieval from the learner's own question collection supplies model context, while the platform validates and stores analyses and variant exercises. Functions include question recording, image-assisted input, similar-question retrieval, practice records, fixed-schedule review and learning reports. Role and ownership checks constrain data access. Evaluation includes offline automated tests, integration with an isolated database, live model calls and controlled small-sample experiments. The results support functional operation under the tested conditions, without establishing general educational effectiveness. Question-level status uses a rule-based score rather than probabilistic knowledge tracing. The system implements personal knowledge-content caching, unpractised-question selection and generation after resource exhaustion, with claims limited to the verified scope.",
+    "after": "To connect scattered personal wrong-question records with analysis and follow-up practice, this project designs and implements an AI-powered wrong-question analysis and learning recommendation system based on the Zhipu GLM model. The system uses Vue 3, TypeScript, Spring Boot, MyBatis-Plus and MySQL in a decoupled front-end and back-end architecture. Retrieval from the learner's own question collection supplies model context, and the platform validates and stores auxiliary analyses and practice resources. It reuses valid knowledge content and unpractised questions before generating additional resources, while recording actual attempts, fixed-schedule reviews and rule-based question scores. Students, teachers and administrators access functions according to their roles and data ownership. Engineering tests, previously recorded live model calls and small-sample experiments support functional operation under the tested conditions and show that generated content still requires review. The system connects personal wrong-question study with continued practice. Probabilistic knowledge tracing has not been implemented, and long-term educational effectiveness requires further evaluation."
+  },
+  {
+    "id": "Q03",
+    "section": "1.2",
+    "reason": "将核查清单改为工程问题与处理方式，减少抽象评价。",
+    "before": "在软件工程层面，本课题需要处理外部模型与本地业务之间的边界。结果格式合规、输入没有过期、记录成功落库和用户有权访问，都是可用结果的必要条件。个人资源缓存、未练题优先、短事务写回及异步快照检查，使平台在调用模型之外承担了实际的组织和保护职责。这些处理也为同类小规模学习应用提供了可解释的实现实例。",
+    "after": "在软件工程层面，外部模型的响应需要与本地业务状态衔接。平台通过结构校验和输入快照检查接收有效结果，以短事务保存关联数据，再根据用户归属提供访问。个人资源缓存和未练题优先策略将一次生成与后续使用连接起来，为同类小规模学习应用提供实现参考。"
+  },
+  {
+    "id": "Q04",
+    "section": "2.1",
+    "reason": "去除组织顺序的编辑说明，直接引入综述对象。",
+    "before": "错题学习系统需要同时考虑资源整理、知识状态描述、推荐与生成反馈。本文按先国内、后国外的顺序组织研究现状：国内部分围绕错题与学习记录、资源推荐、检索增强和教育大模型展开；国外部分讨论间隔复习、知识追踪、生成风险和问题生成。评述关注研究采用的数据及任务条件，并据此说明本课题的设计选择，不把他人结果作为本系统效果。",
+    "after": "错题学习系统涉及资源整理、知识状态描述、推荐与生成反馈。国内研究主要关注学习记录建模、资源推荐和教育大模型应用；国外研究为间隔复习、知识追踪、检索增强和问题生成提供了方法参考。本章结合各项研究的数据条件与任务，分析其对个人错题场景的适用性，作为系统设计的依据。"
+  },
+  {
+    "id": "Q05",
+    "section": "2.2 错题资源",
+    "reason": "保留文献启示，删去重复的效果免责声明。",
+    "before": "其价值主要在于把错题放回学习活动中，不能据此证明某种软件或模型必然有效。本文据此连接录入、解析、阅读、练习和复习，并把资源是否保存、是否已经实际作答作为独立状态。",
+    "after": "这一研究将错题整理与后续学习活动联系起来。本文据此连接录入、解析、阅读、练习和复习，并分别记录资源保存与实际作答状态。"
+  },
+  {
+    "id": "Q06",
+    "section": "2.2 推荐",
+    "reason": "从数据条件解释方法选择，避免连续否定式表述。",
+    "before": "本课题不收集多方训练数据，也没有完整用户画像；推荐首先限定在学生本人题库，按知识点与相近难度选择，再用向量结果补足。这样的规则能够解释候选来源，但不属于联邦推荐模型的复现。",
+    "after": "本课题可用数据主要来自个人错题，推荐因此限定在学生本人题库，按知识点与相近难度选择，再用向量结果补足。该方案保留候选来源的可解释性，与需要多方训练数据的联邦推荐方法具有不同的适用条件。"
+  },
+  {
+    "id": "Q07",
+    "section": "2.3 间隔复习",
+    "reason": "保留固定规则与动态算法的区别，改为理论到设计的自然过渡。",
+    "before": "Ebbinghaus对记忆保持与遗忘的实验研究，为间隔复习提供了经典认识[23]。从遗忘现象到软件计划仍存在设计选择，不能将任意固定日期说成对个人遗忘曲线的估计。本文使用第1、2、4、7、15天的计划节点，明确其为现有实现规则，任务是否完成由学生另行确认，尚未根据作答自动调整间隔。",
+    "after": "Ebbinghaus对记忆保持与遗忘的实验研究，为间隔复习提供了经典认识[23]。这一认识支持分散安排复习，但具体日期仍需结合应用条件确定。本文采用第1、2、4、7、15天的固定计划节点，由学生单独确认任务完成；该规则不估计个体遗忘曲线，也未根据作答自动调整间隔。"
+  },
+  {
+    "id": "Q08",
+    "section": "3.2 管理员需求",
+    "reason": "去除对错误流程画法的解释。",
+    "before": "管理员的维护动作和教师的报告查询分别与平台交互，不存在“管理员操作完毕后教师才能查看”的顺序要求。",
+    "after": "基础维护与教师报告查询分别通过各自入口完成。"
+  },
+  {
+    "id": "Q09",
+    "section": "3.3.1 录入",
+    "reason": "将修改过程说明还原为实际业务动作。",
+    "before": "填写、补全与提交作为录入过程统一表达，不再突出一个独立的“修改内容确认”业务步骤。",
+    "after": "学生核对候选内容，补充科目、题干等必要信息后提交。"
+  },
+  {
+    "id": "Q10",
+    "section": "3.3.1 分析",
+    "reason": "精简章节边界说明。",
+    "before": "本流程不展开生成批量、复习日期和算法参数，相关规则放在详细设计中说明。",
+    "after": "生成校验与复习安排的具体规则见第6章。"
+  },
+  {
+    "id": "Q11",
+    "section": "3.3.2",
+    "reason": "业务图说明集中在交接关系，将待确认细则集中到需求范围。",
+    "before": "图 3.2保留上述业务关系。批量题数、复习次数、掌握度分值和资源匹配阈值不在业务图中确定。资源默认在学生个人范围内复用，知识内容按原题及输入快照匹配，未练状态取自当前学生的实际练习记录。上述细则暂定，待导师最终确认；不开放跨学生私人错题共享。",
+    "after": "图3.2展示资源查询、生成与继续学习之间的交接。资源按学生个人范围查询，知识内容与原题及输入快照匹配，未练状态取自实际练习记录。暂定规则及确认范围见第3.4.2节。"
+  },
+  {
+    "id": "Q12",
+    "section": "3.3.3",
+    "reason": "删除重复的绘图纠错口吻。",
+    "before": "两条路径从当前登录角色分开，各自完成后结束，既不串行为前后步骤，也不要求两种角色同时执行。",
+    "after": "两类业务分别根据当前角色发起，并由平台返回各自处理结果。"
+  },
+  {
+    "id": "Q13",
+    "section": "3.4.2",
+    "reason": "将审计判据改为需求中的状态与关联要求。",
+    "before": "资源复用需要关联资源身份与实际作答目标。保存生成文本、查询未练状态和触发补充生成分别验证，不能仅以已有资源列表证明持续练习已完成。",
+    "after": "资源复用需要保留内容与原题的关联，练习记录则需要指向实际作答目标。平台据此区分已有资源、未练题和已练题，为继续练习选择题目。"
+  },
+  {
+    "id": "Q14",
+    "section": "3.5.1",
+    "reason": "避免口语和绘图教程式说明，保留图的范围。",
+    "before": "图 3.4给出系统的核心用例。图中的关联线表示参与关系，不表示调用顺序；AI模型位于系统边界之外。登录、本人资料、消息和公告查看作为共同入口在功能需求表中列出，避免把每一条公共关联都挤入核心用例图。",
+    "after": "图3.4按参与者目标展示系统核心用例，AI模型作为外部参与者与平台交互。登录、本人资料、消息和公告查看属于公共功能，已在表3.1列出。"
+  },
+  {
+    "id": "Q15",
+    "section": "3.5.2",
+    "reason": "用实际前提和可选路径替代UML画法解释。",
+    "before": "图 3.4中的核心用例按参与者目标划分。已登录和权限有效属于业务前提，不把“登录”重复画成每个用例的必然包含关系。图片辅助录入是录入方式，模型生成是平台取得资源的一种方式，二者不代表学生必须每次使用AI。",
+    "after": "核心业务以登录有效且具有相应权限为前提。学生可以选择手工或图片辅助录入，平台根据已有资源情况决定是否调用模型。"
+  },
+  {
+    "id": "Q16",
+    "section": "3.6.1",
+    "reason": "精简数据流图基础知识解释。",
+    "before": "图中箭头表示数据传递，不表示业务执行顺序，也不使用开始、结束或判断菱形。",
+    "after": "各数据流描述参与者与平台之间传递的资料及结果。"
+  },
+  {
+    "id": "Q17",
+    "section": "3.6.2",
+    "reason": "保留分图阅读所必需的信息，删去重复解释。",
+    "before": "为保证打印可读性，同一层分为图 3.6与图 3.7两幅展示；两图合起来构成完整0层，而不是先后执行的两个流程。相同编号的数据存储表示同一逻辑对象，重复画出只是为了减少长连线。",
+    "after": "为便于阅读，图3.6与图3.7分别展示同一0层的两组加工，共同构成完整分解；相同编号表示同一逻辑数据存储。"
+  },
+  {
+    "id": "Q18",
+    "section": "表3.4 资源请求",
+    "reason": "用数据约束替代编辑要求。",
+    "before": "只有缺少可用资源时形成，不携带擅定批量参数",
+    "after": "缺少可用资源时形成，携带目标及必要上下文"
+  },
+  {
+    "id": "Q19",
+    "section": "表3.4 作答",
+    "reason": "正面说明真实结果来源。",
+    "before": "目标明确且归属合法；不虚构自动判卷结果",
+    "after": "目标明确且归属合法；结果由学生自评"
+  },
+  {
+    "id": "Q20",
+    "section": "表3.4 报告",
+    "reason": "说明数据含义，效果边界集中在测试章。",
+    "before": "学生本人范围、教师系统聚合范围；不推导学习效果",
+    "after": "学生本人范围、教师系统聚合范围；反映现有记录"
+  },
+  {
+    "id": "Q21",
+    "section": "4.4",
+    "reason": "技术概述突出本课题采用方式，内容质量限制保留在下段。",
+    "before": "本课题通过接口调用智谱GLM大模型，不进行基础模型训练，也不把通用模型视为已经具备特定学科的可靠教学判断。",
+    "after": "本课题通过服务端接口调用智谱GLM大模型，重点在于任务输入、结构化输出和业务流程的衔接。"
+  },
+  {
+    "id": "Q22",
+    "section": "5.1",
+    "reason": "统一交叉引用，避免每章重复同一待确认声明。",
+    "before": "资源共享、未练判定及重做细则采用已实现的暂定方案，尚待导师最终确认。",
+    "after": "个人资源范围、未练判定及重做细则沿用第3.4.2节的暂定规则。"
+  },
+  {
+    "id": "Q23",
+    "section": "5.5.1",
+    "reason": "概要说明只保留交互，写回保护由图后段及详细设计说明。",
+    "before": "保存错题与异步解析的交互如图 5.3 所示。错题和五阶段计划先在同一事务中保存，前端取得 ID 后才另行触发解析。图中后台任务与轮询可以并发进行，不把图示纵向排列理解为页面必须等待后台计算完成才开始轮询。短事务回写还要匹配输入快照和生成中记录；过期结果不能覆盖当前输入。",
+    "after": "保存错题与异步解析的交互如图5.3所示。错题和五阶段计划先在同一事务中保存，前端取得ID后另行触发解析。后台任务执行期间，前端通过轮询取得处理状态。"
+  },
+  {
+    "id": "Q24",
+    "section": "6.1.1",
+    "reason": "以完成态介绍ER分图，删除开发先后口吻。",
+    "before": "重复出现的实体表示同一张物理表，三个视图覆盖原有10张表，新增知识内容的归属与关联见图 6.4，合计11张物理表。",
+    "after": "重复出现的实体表示同一张物理表，知识内容的归属与关联另见图6.4，四个视图共同覆盖11张物理表。"
+  },
+  {
+    "id": "Q25",
+    "section": "6.1.1 资源关联",
+    "reason": "删除开发变更记录，说明实体设计依据。",
+    "before": "资源编排沿用原有错题、变式题、练习记录与权限边界，补充知识内容表和三个学习接口。原题与知识内容的关联见图 6.4，业务处理约束见第6.2.4节。",
+    "after": "知识内容通过用户和原题确定归属，以输入摘要维护缓存有效性。其关联见图6.4，资源复用的业务约束见第6.2.4节。"
+  },
+  {
+    "id": "Q26",
+    "section": "6.2.2",
+    "reason": "避免与6.2.1重复解释Controller、Service、Mapper职责。",
+    "before": "系统后端采用 Controller—Service—Mapper 分层设计：Controller 层负责接收请求、参数校验与响应封装；Service 层承载业务逻辑；Mapper 层为 MyBatis-Plus 数据访问接口；实体层包含与 11 张物理表对应的实体类（User、Subject、KnowledgePoint、Question、AiAnalysis、VariantQuestion、ReviewPlan、PracticeRecord、Message、Announcement、LearningContent）。",
+    "after": "实体层包含与11张物理表对应的User、Subject、KnowledgePoint、Question、AiAnalysis、VariantQuestion、ReviewPlan、PracticeRecord、Message、Announcement和LearningContent。业务服务通过模型网关取得生成与向量结果，再完成校验和写入。"
+  },
+  {
+    "id": "Q27",
+    "section": "6.2.3",
+    "reason": "删除同节首段已说明的聚合SQL内容，保留事务职责。",
+    "before": "对于学情统计类需求（如按知识点分组统计掌握度），在 Mapper XML 中编写自定义 SQL，使用 `GROUP BY` 聚合完成；涉及多表写操作的业务（如错题删除时级联清理解析、变式题与复习计划）通过 Service 层 `@Transactional` 声明式事务保证一致性。",
+    "after": "多表写入由Service层通过`@Transactional`组织，例如删除错题时一并清理解析、变式题与复习计划，保证关联处理的一致性。"
+  },
+  {
+    "id": "Q28",
+    "section": "6.2.4",
+    "reason": "统一“接口约定”术语，集中需求确认说明。",
+    "before": "默认规则暂定，待导师最终确认。资源隔离和事务一致性是实现约束；每次生成3道题沿用现有接口合同，不据此推断导师要求固定练习次数。",
+    "after": "规则确认范围见第3.4.2节。每批生成3道题属于现有接口约定，资源隔离和事务一致性由服务层保证。"
+  },
+  {
+    "id": "Q29",
+    "section": "7.1.1",
+    "reason": "用简洁的目录引入代替无必要对照。",
+    "before": "代码按表7.1分层，而不是把业务全部放入控制器。",
+    "after": "工程目录及各层职责见表7.1。"
+  },
+  {
+    "id": "Q30",
+    "section": "7.1.1 验证版本",
+    "reason": "用具体日期替代会随终稿更新而歧义的“新一轮”。",
+    "before": "本文新一轮工程验证使用JDK 21.0.13、MySQL 8.0.46、Node.js 24.22.1与Chromium，具体结果在第8章分项报告；它不能覆盖历史真实模型实验的内容质量。",
+    "after": "2026年11月13日工程验证使用JDK 21.0.13、MySQL 8.0.46、Node.js 24.22.1与Chromium，结果及历史真实模型证据在第8章分别报告。"
+  },
+  {
+    "id": "Q31",
+    "section": "7.1.1 代码选取",
+    "reason": "删去内部基线措辞，强调正文核心代码。",
+    "before": "以下片段来自本次基线实际源码，正文只保留与业务边界有关的内容。",
+    "after": "本章选取实际源码中与核心业务有关的片段。"
+  },
+  {
+    "id": "Q32",
+    "section": "7.6.3 截图总说明",
+    "reason": "保留Mock与真实截图界线，将PR管理信息移至索引。",
+    "before": "图7.1至图7.3来自2026年11月13日论文基线PR #7的实际前后端与专用数据库运行，模型显式为Mock。它们用于说明当前录入、个人资源复用与作答界面，不能证明本轮真实GLM内容质量。历史真实模型截图随后单独列出，日期及验证范围写在资料来源中。",
+    "after": "图7.1至图7.3记录2026年11月13日实际前后端与专用数据库中的录入、个人资源复用和作答界面，模型显式为Mock，仅用于说明界面与交互。图7.4至图7.8为既有真实模型验证截图，日期、范围与版本索引分别列于资料来源和附录1。"
+  },
+  {
+    "id": "Q33",
+    "section": "图7.1 资料来源",
+    "reason": "修正“本分支bbe1c51”歧义，截图代码版本保留在附录。",
+    "before": "资料来源：2026-11-13，本分支bbe1c51业务代码，真实Spring Boot、MySQL与Chromium；Mock模型，图片识别关闭。",
+    "after": "资料来源：2026-11-13隔离环境，真实Spring Boot、MySQL与Chromium；Mock模型，图片识别关闭，代码版本见附录1。"
+  },
+  {
+    "id": "Q34",
+    "section": "7.7.4",
+    "reason": "收束到本节维护结果，将重复限制改为交叉引用。",
+    "before": "该历史维护支持数据兼容处理，不代表新增知识讲解已经在当前真实模型下验收。题干去重、分段锁和当前向量遍历也各有范围限制，后续改进应由新的内容、并发与规模验证决定。",
+    "after": "该记录验证了当批历史数据的兼容处理。当前知识讲解质量、并发生成和检索规模的验证范围见第8章。"
+  },
+  {
+    "id": "Q35",
+    "section": "8.1.1",
+    "reason": "测试章按研究方法组织，避免终稿审阅被误读为新一轮系统测试。",
+    "before": "本章首先报告一致性修正后的工程验证，单独标明沿用的基线回读，再说明历史真实模型与Gate5实验；不同日期、数据和入口的结果不合并为一次总通过率。",
+    "after": "本章分别报告2026年11月13日工程测试、同日资源循环专项回读及既有真实模型与Gate5实验。各批次按实际日期、环境和入口独立统计。"
+  },
+  {
+    "id": "Q36",
+    "section": "8.1.1 体验范围",
+    "reason": "保留未开展事项，删除任务管理口吻。",
+    "before": "真人体验测试已经取消，不补写参与者、满意度或访谈数据；自动化浏览器仅证明所测路径可完成，不能代替真实学习效果研究。",
+    "after": "验证范围包括自动化浏览器操作，不包含真人体验调查或学习效果研究。"
+  },
+  {
+    "id": "Q37",
+    "section": "8.1.2",
+    "reason": "去除正文Git基线说明，保留实测日期和校验前提。",
+    "before": "2026年11月13日，以论文基线7d0d40e及其业务祖先bbe1c51进行审计，修复科目有效性、两级知识点与引用删除校验后，重新执行工程验证。",
+    "after": "2026年11月13日，在完成科目有效性、两级知识点及引用删除校验后，对系统执行工程回归。"
+  },
+  {
+    "id": "Q38",
+    "section": "8.1.2 统计口径",
+    "reason": "明确测试层次和分母，保留跳过原因，减少反复声明不累计。",
+    "before": "修正后日志独立保存于thesis-system-consistency-20261113，未累计基线或历史结果。后端113项包含不启动Spring数据库上下文的60项和启动上下文的53项，分别为59通过/1跳过、50通过/3跳过；不能把全部113项称为纯单元测试。基线另跑106项、102通过和4跳过，只用于修改前比较。4项跳过为真实GLM、真实图片识别、历史向量维护和Gate5联网入口，不计为通过。",
+    "after": "后端113项包含不启动Spring数据库上下文的60项和启动上下文的53项，分别为59通过、1跳过及50通过、3跳过，覆盖单元、边界与集成测试。4项跳过对应真实GLM、真实图片识别、历史向量维护和Gate5联网入口。表8.1采用最终完整批次，日志见附录1；修改前106项的记录仅供版本比较。"
+  },
+  {
+    "id": "Q39",
+    "section": "8.1.2 执行限制",
+    "reason": "精简排障过程，保留会影响可复现性的条件和失败记录。",
+    "before": "执行中保留首次编译和磁盘不足日志：当前JDK缺少release元数据，采用同版本source/target编译；排版镜像与数据库同时占满磁盘后，释放本轮可重建镜像再完整重跑。新增科目校验还暴露旧编辑测试未建立真实科目，补齐夹具后原断言不变。最终通过数来自修正后的同一完整批次，不累计失败轮或基线通过数。",
+    "after": "执行环境曾因JDK缺少release元数据改用同版本source/target编译，并在释放可重建镜像、恢复磁盘空间后完整重跑。旧编辑用例补齐有效科目夹具，原断言保持不变。编译、环境失败及最终回归日志均独立保留，表8.1只统计最终批次。"
+  },
+  {
+    "id": "Q40",
+    "section": "表8.4 B03",
+    "reason": "核验要点直接列实际断言，报告读取由下文补充流程说明。",
+    "before": "报告菜单可见，错题路由和写入请求拒绝；本例未读取报告",
+    "after": "报告菜单可见；错题路由和写入请求被拒绝"
+  },
+  {
+    "id": "Q41",
+    "section": "表8.4 B04",
+    "reason": "核验要点直接列本用例范围，公告验证保留在补充流程。",
+    "before": "用户、科目与知识点三页面；本例未验证公告发布",
+    "after": "用户、科目与知识点三个管理页面可访问"
+  },
+  {
+    "id": "Q42",
+    "section": "8.3.2 截图及界面测试",
+    "reason": "区分界面截图、真实后端联调和Mock HTTP，删去反复的当前分支描述。",
+    "before": "本次健康检查后5项完整通过。第7章三张当前界面沿用论文基线同日录入、知识复用和作答截图，时间、版本及文件哈希保存于原来源清单，本轮未重新覆盖截图。截图中的模型内容明确为Mock，不作为真实GLM成功样本；本轮另跑53项四视口Mock HTTP界面测试，排除会覆盖历史截图的证据生成用例，不据此声称所有浏览器与设备均兼容。",
+    "after": "健康检查后5项完整通过。第7章三张Mock界面截图来自同日的录入、知识复用和作答记录，时间、版本与文件哈希见附录1的来源清单。另有53项四视口Mock HTTP界面测试，用于检查布局和交互状态；证据生成用例未纳入该批执行，原截图保持不变。这些记录仅支持所测视口与路径。"
+  },
+  {
+    "id": "Q43",
+    "section": "8.3.3",
+    "reason": "用测试来源和方法替代PR名称，保留独立统计口径。",
+    "before": "表8.5沿用论文基线PR #7的独立回读：为使“复用”和“耗尽”能够与真实记录对应，当批在wrongbook_browser另建一条合成数学原题，使用实际HTTP接口连续操作，并在每步读取MySQL。模型仍为显式Mock；这是一条独立专项跟踪，不追加到浏览器5项的计数中，也不作为真实GLM实验。",
+    "after": "表8.5引用2026年11月13日资源循环专项回读。在wrongbook_browser中另建一条合成数学原题，通过实际HTTP接口连续操作，并逐步读取MySQL，观察复用和耗尽时的记录变化。模型显式为Mock，该专项与表8.4的5项浏览器流程独立统计。"
+  },
+  {
+    "id": "Q44",
+    "section": "8.3.3 证据索引",
+    "reason": "集中路径和规则引用，保留专项证据来源，不重复测试边界。",
+    "before": "基线原始响应摘要与每步查询值保存于thesis-align-reference1-20261113/learning-cycle-trace.json，当批全部断言通过后删除原题。本轮另以runtime-api-audit.json检查旧变式入口、统一继续入口、固定日期、独立完成复习及权限，不将两批步骤合并计数。专用库保留的旧练习不被当作新增样本；操作顺序、分母和失败条件均由本次跟踪独立记录。当前方案按本人原题及关联变式组织资源，这仍是已实现但待导师最终确认的细则。",
+    "after": "原始响应与逐步查询值见learning-cycle-trace.json，当批断言通过后删除测试原题。另有runtime-api-audit.json记录旧变式入口、统一继续入口、固定日期、独立完成复习及权限检查，两个批次分别保留操作顺序、断言与失败条件。完整路径见附录1，资源规则的确认范围见第3.4.2节。"
+  },
+  {
+    "id": "Q45",
+    "section": "8.4.3",
+    "reason": "用可复核的指标来源替代工作指令语气。",
+    "before": "本次只从历史JSON和人工CSV复算指标，不重新请求GLM，也不修改人工评分、样本、盲评键或失败日志。",
+    "after": "上述指标依据历史JSON和人工CSV复算，所用样本、评分、盲评键及失败日志保持原件，未重新请求GLM。"
+  },
+  {
+    "id": "Q46",
+    "section": "8.5",
+    "reason": "结果讨论突出证据作用，避免机械自述。",
+    "before": "本章因此保留历史错误样本、重试与首轮结果、环境失败及构建警告，而不以单一总通过率替代分析。",
+    "after": "历史错误样本、首轮与重试结果、环境失败及构建警告共同说明了这些限制。"
+  },
+  {
+    "id": "Q47",
+    "section": "9.1",
+    "reason": "总结完成工作与证据含义，减少审稿指令口吻。",
+    "before": "历史GLM及Gate5记录同时保留成功、失败和人工核查结果，6题RAG比较没有支持一致质量优势，本文据此限定结论，不将工程验证写成教学效果证明。",
+    "after": "历史GLM及Gate5记录呈现了生成内容的可用性与错误，其中6题RAG比较未显示一致质量优势。工程流程已具备可验证的运行结果，内容质量与教学效果仍需分别评价。"
+  },
+  {
+    "id": "Q48",
+    "section": "附录1 代码说明",
+    "reason": "明确固定代码版本，删除修改过程叙述；附录保持必要索引。",
+    "before": "正文代码按PR #7及本轮最小一致性修正后的实际工作树重新逐行核对；科目写入校验所在片段同步更新，其余业务片段保留。以下只提供复核索引，不重复收录完整程序。",
+    "after": "正文31段代码逐行对应系统版本21da287744a252e7ccae0aadbe5832336c8b3b27；终稿文字修订未改变业务代码。以下提供源码位置和验证材料索引。"
+  },
+  {
+    "id": "Q49",
+    "section": "附录1 截图版本",
+    "reason": "正文省略的Mock截图版本集中保存，确保来源未丢失。",
+    "before": "历史真实界面图7.4—7.8来自提交ebda1278b8098aa2fc9e70c578bfe260624f9491的证据批次；",
+    "after": "图7.1—7.3来自thesis-align-reference1-20261113截图清单，对应业务版本bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff。历史真实界面图7.4—7.8来自提交ebda1278b8098aa2fc9e70c578bfe260624f9491的证据批次；"
+  }
+]
