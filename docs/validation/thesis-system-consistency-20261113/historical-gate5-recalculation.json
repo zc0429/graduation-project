@@ -1,0 +1,435 @@
+{
+  "scope": "Retained 2026-08-27 data, no new model call; formulas follow Gate5Metrics: NFKC/lower/no whitespace on errorCause + analysis",
+  "sample_count": 27,
+  "analysis_success_count": 27,
+  "exact_match_count": 26,
+  "concept_coverage_mean": 0.941358024691358,
+  "concept_coverage_median": 1.0,
+  "concept_full_count": 22,
+  "retrieval_recomputed": {
+    "rag": {
+      "hit": 0.9629629629629629,
+      "recall": 0.8703703703703703,
+      "mrr": 0.8641975308641975
+    },
+    "recommend": {
+      "hit": 1.0,
+      "recall": 1.0,
+      "mrr": 0.9722222222222222
+    }
+  },
+  "failure_count": 34,
+  "failure_reasons": {
+    "AnalysisStatus2": 15,
+    "TooManyRequests-HTTP-429": 14,
+    "SchemaValidationFailure": 5
+  },
+  "ablations": 6,
+  "case_metrics": [
+    {
+      "caseId": "MATH-LINEAR-001",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 0.5,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-LINEAR-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 0.5,
+        "mrr": 0.3333333333333333
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-LINEAR-003",
+      "exactMatch": true,
+      "conceptCoverage": 0.75,
+      "rag": {
+        "hit": 1.0,
+        "recall": 0.5,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-QUAD-001",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-QUAD-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-QUAD-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 0.5
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-CONG-001",
+      "exactMatch": true,
+      "conceptCoverage": 0.6666666666666666,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-CONG-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-CONG-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-CIRCLE-001",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-CIRCLE-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 0.5,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "MATH-CIRCLE-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 0.5
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-N2-001",
+      "exactMatch": true,
+      "conceptCoverage": 0.6666666666666666,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-N2-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-N2-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-FRIC-001",
+      "exactMatch": false,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 0.5,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 0.25
+      }
+    },
+    {
+      "caseId": "PHYSICS-FRIC-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-FRIC-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-OHM-001",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-OHM-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "PHYSICS-OHM-003",
+      "exactMatch": true,
+      "conceptCoverage": 0.6666666666666666,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "ENGLISH-REL-001",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "ENGLISH-REL-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 0.5
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "ENGLISH-REL-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "ENGLISH-TENSE-001",
+      "exactMatch": true,
+      "conceptCoverage": 0.6666666666666666,
+      "rag": {
+        "hit": 0.0,
+        "recall": 0.0,
+        "mrr": 0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "ENGLISH-TENSE-002",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 0.5
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    },
+    {
+      "caseId": "ENGLISH-TENSE-003",
+      "exactMatch": true,
+      "conceptCoverage": 1.0,
+      "rag": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      },
+      "recommend": {
+        "hit": 1.0,
+        "recall": 1.0,
+        "mrr": 1.0
+      }
+    }
+  ]
+}

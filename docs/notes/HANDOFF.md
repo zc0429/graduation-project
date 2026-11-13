@@ -1,3 +1,5 @@
+> **2026-11-13 最新审阅交付**：[Draft PR #8](https://github.com/zc0429/graduation-project/pull/8)，分支`codex/thesis-system-consistency-audit-20261113`基于PR #7 `7d0d40e`。请从[全面一致性审计总报告](../validation/thesis-system-consistency-20261113/README.md)进入FR矩阵、P1/P2修正、独立99页DOCX/PDF及本轮实际日志。修正后后端109通过/4跳过、前端33通过、真实浏览器5通过及另4条补充流程；Mock/历史/真实模型不混算。保留原PR、学校原件与开题/历史证据，不合并dev。以下旧入口作为历史保留。
+
 # 项目交接与成果定位
 
 ## 当前交付（2026-11-13，参考论文1结构重构）

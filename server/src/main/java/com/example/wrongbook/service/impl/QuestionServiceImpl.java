@@ -62,7 +62,7 @@ public class QuestionServiceImpl implements QuestionService {
     public Long create(QuestionRequest request) {
         Question question = new Question();
         question.setUserId(UserContext.getUserId());
-        question.setSubjectId(request.getSubjectId());
+        question.setSubjectId(requireSubject(request.getSubjectId()));
         question.setStem(QuestionContent.validatedStem(request.getStem()));
         question.setAnswer(request.getAnswer());
         question.setSource(request.getSource());
@@ -73,7 +73,7 @@ public class QuestionServiceImpl implements QuestionService {
                 question.setImageUrl(savedImageUrl);
             }
             questionMapper.insert(question);
-            // 录入成功即按艾宾浩斯遗忘曲线生成 5 阶段复习计划（论文 5.3 类设计 (6)）
+            // 录入成功建立固定第 1/2/4/7/15 天复习计划，不动态估计遗忘曲线。
             reviewPlanService.createPlans(question);
             return question.getId();
         } catch (RuntimeException e) {
@@ -105,6 +105,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(rollbackFor = Exception.class)
     public void update(Long id, QuestionRequest request) {
         Question question = getOwnQuestion(id);
+        requireSubject(request.getSubjectId());
         String stem = QuestionContent.validatedStem(request.getStem());
         boolean aiInputChanged = !Objects.equals(question.getSubjectId(), request.getSubjectId())
                 || !Objects.equals(question.getStem(), stem)
@@ -157,6 +158,13 @@ public class QuestionServiceImpl implements QuestionService {
                 .eq(ReviewPlan::getQuestionId, id));
         questionMapper.deleteById(question.getId());
         fileStorageUtil.deleteIfExists(question.getImageUrl());
+    }
+
+    private Long requireSubject(Long subjectId) {
+        if (subjectId == null || subjectMapper.selectById(subjectId) == null) {
+            throw new BizException("所属科目不存在或已停用");
+        }
+        return subjectId;
     }
 
     /** 查询本人错题；管理员内部调用可处理学生数据，HTTP 学生接口另有角色限制。 */

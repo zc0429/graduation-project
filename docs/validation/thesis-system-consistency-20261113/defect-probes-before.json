@@ -1,0 +1,38 @@
+{
+  "phase": "before",
+  "scope": "isolated wrongbook_browser; explicit Mock; direct SQL only for declared fixture",
+  "observations": [
+    {
+      "case": "Q01 nonexistent subject must not create question and plans",
+      "http_status": 200,
+      "response": {
+        "code": 0,
+        "message": "success",
+        "data": 1
+      },
+      "expected": "HTTP 400; no invalid write"
+    },
+    {
+      "case": "K01 a leaf must not accept a third hierarchy level",
+      "http_status": 200,
+      "response": {
+        "code": 0,
+        "message": "success",
+        "data": 17
+      },
+      "expected": "HTTP 400; no invalid write"
+    },
+    {
+      "case": "K02 referenced knowledge point must remain available",
+      "http_status": 200,
+      "response": {
+        "code": 0,
+        "message": "success",
+        "data": null
+      },
+      "expected": "HTTP 400; no invalid write",
+      "remaining_knowledge_point_rows": 0
+    }
+  ],
+  "regression_assertions_passed": false
+}

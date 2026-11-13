@@ -1,0 +1,1750 @@
+{
+  "baseline": {
+    "date": "2026-11-13",
+    "pr7": "7d0d40e771a2159f91662542d168ed2ebded56ff",
+    "pr6": "bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff",
+    "pr5": "0fe7707f47a50a04a929705d39264292e2713d95",
+    "dev": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "main": "d16e31f6b7c06b836a4ceeb649273c23a3e68c61",
+    "draft_pr": "https://github.com/zc0429/graduation-project/pull/8",
+    "branch": "codex/thesis-system-consistency-audit-20261113"
+  },
+  "tables": [
+    {
+      "table": "user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '用户 ID'",
+          "line": 10
+        },
+        {
+          "name": "username",
+          "type": "VARCHAR(32)",
+          "definition": "NOT NULL COMMENT '登录用户名'",
+          "line": 11
+        },
+        {
+          "name": "password",
+          "type": "VARCHAR(128)",
+          "definition": "NOT NULL COMMENT '密码（加密存储）'",
+          "line": 12
+        },
+        {
+          "name": "nickname",
+          "type": "VARCHAR(32)",
+          "definition": "DEFAULT NULL COMMENT '昵称'",
+          "line": 13
+        },
+        {
+          "name": "role",
+          "type": "VARCHAR(16)",
+          "definition": "NOT NULL DEFAULT 'student' COMMENT '角色：student/teacher/admin'",
+          "line": 14
+        },
+        {
+          "name": "class_name",
+          "type": "VARCHAR(64)",
+          "definition": "DEFAULT NULL COMMENT '班级名称'",
+          "line": 15
+        },
+        {
+          "name": "email",
+          "type": "VARCHAR(64)",
+          "definition": "DEFAULT NULL COMMENT '邮箱'",
+          "line": 16
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 1 COMMENT '状态：1 正常，0 停用'",
+          "line": 17
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 18
+        },
+        {
+          "name": "update_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'",
+          "line": 19
+        }
+      ],
+      "column_count": 10,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "UNIQUE KEY uk_username",
+          "username"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/User.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/UserMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "subject",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '科目 ID'",
+          "line": 26
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(32)",
+          "definition": "NOT NULL COMMENT '科目名称（如数学、物理）'",
+          "line": 27
+        },
+        {
+          "name": "code",
+          "type": "VARCHAR(32)",
+          "definition": "DEFAULT NULL COMMENT '科目编码'",
+          "line": 28
+        },
+        {
+          "name": "sort",
+          "type": "INT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '排序号'",
+          "line": 29
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 1 COMMENT '状态：1 启用，0 停用'",
+          "line": 30
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 31
+        }
+      ],
+      "column_count": 6,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "UNIQUE KEY uk_name",
+          "name"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/Subject.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/SubjectMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "knowledge_point",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '知识点 ID'",
+          "line": 38
+        },
+        {
+          "name": "subject_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '所属科目，逻辑外键 → subject(id)'",
+          "line": 39
+        },
+        {
+          "name": "parent_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '父级 ID：0 表示一级章节'",
+          "line": 40
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(64)",
+          "definition": "NOT NULL COMMENT '知识点名称'",
+          "line": 41
+        },
+        {
+          "name": "sort",
+          "type": "INT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '排序号'",
+          "line": 42
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 43
+        }
+      ],
+      "column_count": 6,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/KnowledgePoint.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/KnowledgePointMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "question",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '错题 ID'",
+          "line": 49
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '所属学生，逻辑外键 → user(id)'",
+          "line": 50
+        },
+        {
+          "name": "subject_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '所属科目，逻辑外键 → subject(id)'",
+          "line": 51
+        },
+        {
+          "name": "knowledge_point_id",
+          "type": "BIGINT",
+          "definition": "DEFAULT NULL COMMENT '知识点（AI 归类后回填），逻辑外键 → knowledge_point(id)'",
+          "line": 52
+        },
+        {
+          "name": "stem",
+          "type": "TEXT",
+          "definition": "NOT NULL COMMENT '题干'",
+          "line": 53
+        },
+        {
+          "name": "answer",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '答案'",
+          "line": 54
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(128)",
+          "definition": "DEFAULT NULL COMMENT '题目来源（如作业、试卷）'",
+          "line": 55
+        },
+        {
+          "name": "image_url",
+          "type": "VARCHAR(255)",
+          "definition": "DEFAULT NULL COMMENT '题目图片地址'",
+          "line": 56
+        },
+        {
+          "name": "difficulty",
+          "type": "TINYINT",
+          "definition": "DEFAULT NULL COMMENT '难度（1-5，AI 评估）'",
+          "line": 57
+        },
+        {
+          "name": "mastery",
+          "type": "INT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '掌握度（0-100）'",
+          "line": 58
+        },
+        {
+          "name": "embedding",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '题干语义向量（JSON 数组）'",
+          "line": 59
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 1 COMMENT '状态：1 正常，0 删除'",
+          "line": 60
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 61
+        },
+        {
+          "name": "update_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'",
+          "line": 62
+        }
+      ],
+      "column_count": 14,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "KEY idx_user_subject",
+          "user_id, subject_id"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/Question.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/QuestionMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "ai_analysis",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '解析记录 ID'",
+          "line": 69
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '对应错题，逻辑外键 → question(id)'",
+          "line": 70
+        },
+        {
+          "name": "knowledge_point_id",
+          "type": "BIGINT",
+          "definition": "DEFAULT NULL COMMENT 'AI 归类知识点，逻辑外键 → knowledge_point(id)'",
+          "line": 71
+        },
+        {
+          "name": "error_cause",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '错因分析'",
+          "line": 72
+        },
+        {
+          "name": "analysis",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '解析内容'",
+          "line": 73
+        },
+        {
+          "name": "reference_ids",
+          "type": "VARCHAR(255)",
+          "definition": "DEFAULT NULL COMMENT '参考的本地题目 ID（JSON）'",
+          "line": 74
+        },
+        {
+          "name": "llm_model",
+          "type": "VARCHAR(64)",
+          "definition": "DEFAULT NULL COMMENT '所用大模型标识'",
+          "line": 75
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '状态：0 生成中，1 成功，2 失败'",
+          "line": 76
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 77
+        }
+      ],
+      "column_count": 9,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "UNIQUE KEY uk_question",
+          "question_id"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/AiAnalysis.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/AiAnalysisMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "variant_question",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '变式题 ID'",
+          "line": 84
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '原题 ID，逻辑外键 → question(id)'",
+          "line": 85
+        },
+        {
+          "name": "stem",
+          "type": "TEXT",
+          "definition": "NOT NULL COMMENT '变式题题干'",
+          "line": 86
+        },
+        {
+          "name": "answer",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '变式题答案'",
+          "line": 87
+        },
+        {
+          "name": "difficulty",
+          "type": "TINYINT",
+          "definition": "DEFAULT NULL COMMENT '难度（1-5）'",
+          "line": 88
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 89
+        }
+      ],
+      "column_count": 6,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/VariantQuestion.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/VariantQuestionMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "review_plan",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '复习计划 ID'",
+          "line": 95
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '所属学生，逻辑外键 → user(id)'",
+          "line": 96
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '待复习错题，逻辑外键 → question(id)'",
+          "line": 97
+        },
+        {
+          "name": "review_stage",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 1 COMMENT '复习阶段（第 1-5 次）'",
+          "line": 98
+        },
+        {
+          "name": "plan_date",
+          "type": "DATE",
+          "definition": "NOT NULL COMMENT '计划复习日期'",
+          "line": 99
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '状态：0 待复习，1 已完成，2 已过期'",
+          "line": 100
+        },
+        {
+          "name": "finish_time",
+          "type": "DATETIME",
+          "definition": "DEFAULT NULL COMMENT '完成时间'",
+          "line": 101
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 102
+        }
+      ],
+      "column_count": 8,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "KEY idx_user_date",
+          "user_id, plan_date"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/ReviewPlan.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/ReviewPlanMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "practice_record",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '练习记录 ID'",
+          "line": 109
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '作答学生，逻辑外键 → user(id)'",
+          "line": 110
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "definition": "DEFAULT NULL COMMENT '重做的错题，逻辑外键 → question(id)'",
+          "line": 111
+        },
+        {
+          "name": "variant_id",
+          "type": "BIGINT",
+          "definition": "DEFAULT NULL COMMENT '作答的变式题，逻辑外键 → variant_question(id)'",
+          "line": 112
+        },
+        {
+          "name": "user_answer",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '学生作答内容'",
+          "line": 113
+        },
+        {
+          "name": "is_correct",
+          "type": "TINYINT",
+          "definition": "DEFAULT NULL COMMENT '是否正确：1 正确，0 错误'",
+          "line": 114
+        },
+        {
+          "name": "duration",
+          "type": "INT",
+          "definition": "DEFAULT NULL COMMENT '作答用时（秒）'",
+          "line": 115
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 116
+        }
+      ],
+      "column_count": 8,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "KEY idx_user_time",
+          "user_id, create_time"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/PracticeRecord.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/PracticeRecordMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "message",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '消息 ID'",
+          "line": 123
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '接收用户，逻辑外键 → user(id)'",
+          "line": 124
+        },
+        {
+          "name": "type",
+          "type": "VARCHAR(32)",
+          "definition": "NOT NULL DEFAULT 'system' COMMENT '消息类型：review_remind 复习提醒/report 报告/system 系统'",
+          "line": 125
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(128)",
+          "definition": "NOT NULL COMMENT '消息标题'",
+          "line": 126
+        },
+        {
+          "name": "content",
+          "type": "VARCHAR(512)",
+          "definition": "DEFAULT NULL COMMENT '消息内容'",
+          "line": 127
+        },
+        {
+          "name": "is_read",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 0 COMMENT '是否已读：1 已读，0 未读'",
+          "line": 128
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 129
+        }
+      ],
+      "column_count": 7,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "KEY idx_user_time",
+          "user_id, create_time"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/Message.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/MessageMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "announcement",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '公告 ID'",
+          "line": 136
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(128)",
+          "definition": "NOT NULL COMMENT '公告标题'",
+          "line": 137
+        },
+        {
+          "name": "content",
+          "type": "TEXT",
+          "definition": "DEFAULT NULL COMMENT '公告内容'",
+          "line": 138
+        },
+        {
+          "name": "publisher_id",
+          "type": "BIGINT",
+          "definition": "DEFAULT NULL COMMENT '发布人，逻辑外键 → user(id)'",
+          "line": 139
+        },
+        {
+          "name": "status",
+          "type": "TINYINT",
+          "definition": "NOT NULL DEFAULT 1 COMMENT '状态：1 正常，0 下线'",
+          "line": 140
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'",
+          "line": 141
+        }
+      ],
+      "column_count": 6,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/Announcement.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/AnnouncementMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    },
+    {
+      "table": "learning_content",
+      "columns": [
+        {
+          "name": "id",
+          "type": "BIGINT",
+          "definition": "NOT NULL AUTO_INCREMENT COMMENT '知识内容ID'",
+          "line": 147
+        },
+        {
+          "name": "user_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '所属学生'",
+          "line": 148
+        },
+        {
+          "name": "question_id",
+          "type": "BIGINT",
+          "definition": "NOT NULL COMMENT '关联原题'",
+          "line": 149
+        },
+        {
+          "name": "knowledge_point_id",
+          "type": "BIGINT",
+          "definition": "DEFAULT NULL COMMENT '关联知识点'",
+          "line": 150
+        },
+        {
+          "name": "input_hash",
+          "type": "CHAR(64)",
+          "definition": "NOT NULL COMMENT '生成输入快照SHA-256'",
+          "line": 151
+        },
+        {
+          "name": "content",
+          "type": "TEXT",
+          "definition": "NOT NULL COMMENT '经校验的纯文本知识讲解'",
+          "line": 152
+        },
+        {
+          "name": "create_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+          "line": 153
+        },
+        {
+          "name": "update_time",
+          "type": "DATETIME",
+          "definition": "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+          "line": 154
+        }
+      ],
+      "column_count": 8,
+      "indexes": [
+        [
+          "PRIMARY KEY",
+          "id"
+        ],
+        [
+          "UNIQUE KEY uk_learning_question",
+          "question_id"
+        ],
+        [
+          "KEY idx_learning_user",
+          "user_id"
+        ]
+      ],
+      "entity": "server/src/main/java/com/example/wrongbook/entity/LearningContent.java",
+      "mapper": "server/src/main/java/com/example/wrongbook/mapper/LearningContentMapper.java",
+      "foreign_keys": [],
+      "checks": []
+    }
+  ],
+  "table_count": 11,
+  "column_count": 88,
+  "index_count_including_primary": 20,
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/ai/analyze/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AiController.java",
+      "line": 23,
+      "signature": "RestResponse<Void> analyze(@PathVariable Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai/analysis/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AiController.java",
+      "line": 30,
+      "signature": "RestResponse<AiAnalysis> analysis(@PathVariable Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/announcement/list",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AnnouncementController.java",
+      "line": 25,
+      "signature": "RestResponse<List<Announcement>> list()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/announcement",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AnnouncementController.java",
+      "line": 30,
+      "signature": "RestResponse<Long> publish(@Validated @RequestBody AnnouncementRequest request)",
+      "dto": [
+        "AnnouncementRequest"
+      ],
+      "validation": {
+        "AnnouncementRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.Size;\nimport lombok.Data;\n\n@Data\npublic class AnnouncementRequest {\n\n    @NotBlank(message = \"公告标题不能为空\")\n    @Size(max = 128, message = \"公告标题最长 128 位\")\n    private String title;\n\n    private String content;\n}\n"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/register",
+      "roles": [
+        "public"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AuthController.java",
+      "line": 22,
+      "signature": "RestResponse<Long> register(@Validated @RequestBody RegisterRequest request)",
+      "dto": [
+        "RegisterRequest"
+      ],
+      "validation": {
+        "RegisterRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.Size;\nimport lombok.Data;\n\n@Data\npublic class RegisterRequest {\n\n    @NotBlank(message = \"用户名不能为空\")\n    @Size(min = 4, max = 32, message = \"用户名长度须为 4-32 位\")\n    private String username;\n\n    @NotBlank(message = \"密码不能为空\")\n    @Size(min = 6, max = 32, message = \"密码长度须为 6-32 位\")\n    private String password;\n\n    @Size(max = 32, message = \"昵称最长 32 位\")\n    private String nickname;\n}\n"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "roles": [
+        "public"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/AuthController.java",
+      "line": 27,
+      "signature": "RestResponse<LoginResponse> login(@Validated @RequestBody LoginRequest request)",
+      "dto": [
+        "LoginRequest"
+      ],
+      "validation": {
+        "LoginRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport lombok.Data;\n\n@Data\npublic class LoginRequest {\n\n    @NotBlank(message = \"用户名不能为空\")\n    private String username;\n\n    @NotBlank(message = \"密码不能为空\")\n    private String password;\n}\n"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "roles": [
+        "public"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/HealthController.java",
+      "line": 14,
+      "signature": "RestResponse<Map<String, String>> health()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge-point/tree",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java",
+      "line": 28,
+      "signature": "RestResponse<List<KnowledgePointNode>> tree(@RequestParam(required = false) Long subjectId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge-point",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java",
+      "line": 33,
+      "signature": "RestResponse<Long> add(@Validated @RequestBody KnowledgePointRequest request)",
+      "dto": [
+        "KnowledgePointRequest"
+      ],
+      "validation": {
+        "KnowledgePointRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.NotNull;\nimport jakarta.validation.constraints.Size;\nimport lombok.Data;\n\n@Data\npublic class KnowledgePointRequest {\n\n    @NotNull(message = \"所属科目不能为空\")\n    private Long subjectId;\n\n    /** 父级 ID：0 表示一级章节 */\n    @NotNull(message = \"父级 ID 不能为空\")\n    private Long parentId;\n\n    @NotBlank(message = \"知识点名称不能为空\")\n    @Size(max = 64, message = \"知识点名称最长 64 位\")\n    private String name;\n\n    private Integer sort;\n}\n"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/knowledge-point/{id}",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/KnowledgePointController.java",
+      "line": 39,
+      "signature": "RestResponse<Void> remove(@PathVariable Long id)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/knowledge/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/LearningController.java",
+      "line": 18,
+      "signature": "RestResponse<LearningContentVO> knowledge(@PathVariable Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/practice/next/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/LearningController.java",
+      "line": 22,
+      "signature": "RestResponse<PracticeResourceVO> nextPractice(@PathVariable Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/learning/practice/progress/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/LearningController.java",
+      "line": 26,
+      "signature": "RestResponse<PracticeProgressVO> progress(@PathVariable Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/message/page",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/MessageController.java",
+      "line": 22,
+      "signature": "RestResponse<Page<Message>> page(@RequestParam(defaultValue = \"1\") Integer pageNum, @RequestParam(defaultValue = \"10\") Integer pageSize, @RequestParam(required = false) Integer isRead)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "PUT",
+      "path": "/api/message/{id}/read",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/MessageController.java",
+      "line": 29,
+      "signature": "RestResponse<Void> markRead(@PathVariable Long id)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/message/unread-count",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/MessageController.java",
+      "line": 35,
+      "signature": "RestResponse<Long> unreadCount()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/practice",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/PracticeController.java",
+      "line": 26,
+      "signature": "RestResponse<Long> submit(@Validated @RequestBody PracticeRequest request)",
+      "dto": [
+        "PracticeRequest"
+      ],
+      "validation": {
+        "PracticeRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotNull;\nimport lombok.Data;\n\n@Data\npublic class PracticeRequest {\n\n    /** 重做的错题（与 variantId 二选一） */\n    private Long questionId;\n\n    /** 作答的变式题（与 questionId 二选一） */\n    private Long variantId;\n\n    private String userAnswer;\n\n    /** 是否正确：1 正确，0 错误 */\n    @NotNull(message = \"作答结果不能为空\")\n    private Integer isCorrect;\n\n    /** 作答用时（秒） */\n    private Integer duration;\n}\n"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/practice/page",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/PracticeController.java",
+      "line": 31,
+      "signature": "RestResponse<Page<PracticeRecord>> page(@RequestParam(defaultValue = \"1\") Integer pageNum, @RequestParam(defaultValue = \"10\") Integer pageSize)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/question",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 30,
+      "signature": "RestResponse<Long> create(@Validated @RequestBody QuestionRequest request)",
+      "dto": [
+        "QuestionRequest"
+      ],
+      "validation": {
+        "QuestionRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.NotNull;\nimport lombok.Data;\n\n@Data\npublic class QuestionRequest {\n\n    @NotNull(message = \"所属科目不能为空\")\n    private Long subjectId;\n\n    @NotBlank(message = \"题干不能为空\")\n    private String stem;\n\n    private String answer;\n\n    private String source;\n\n    /** 题目图片（Base64，由录入/修改接口一并接收，服务端落盘本地） */\n    private String imageBase64;\n}\n"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/page",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 35,
+      "signature": "RestResponse<Page<Question>> page(@RequestParam(defaultValue = \"1\") Integer pageNum, @RequestParam(defaultValue = \"10\") Integer pageSize, @RequestParam(required = false) Long subjectId, @RequestParam(required = false) Long knowledgePointId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/{id}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 43,
+      "signature": "RestResponse<Question> detail(@PathVariable Long id)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/export",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 49,
+      "signature": "void export(@RequestParam(required = false) Long subjectId, @RequestParam(required = false) Long knowledgePointId, HttpServletResponse response)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "PUT",
+      "path": "/api/question/{id}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 56,
+      "signature": "RestResponse<Void> update(@PathVariable Long id, @Validated @RequestBody QuestionRequest request)",
+      "dto": [
+        "QuestionRequest"
+      ],
+      "validation": {
+        "QuestionRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.NotNull;\nimport lombok.Data;\n\n@Data\npublic class QuestionRequest {\n\n    @NotNull(message = \"所属科目不能为空\")\n    private Long subjectId;\n\n    @NotBlank(message = \"题干不能为空\")\n    private String stem;\n\n    private String answer;\n\n    private String source;\n\n    /** 题目图片（Base64，由录入/修改接口一并接收，服务端落盘本地） */\n    private String imageBase64;\n}\n"
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/question/{id}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionController.java",
+      "line": 62,
+      "signature": "RestResponse<Void> remove(@PathVariable Long id)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/question-recognition/recognize",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/QuestionRecognitionController.java",
+      "line": 23,
+      "signature": "RestResponse<QuestionRecognitionResult> recognize( @Validated @RequestBody QuestionRecognitionRequest request)",
+      "dto": [
+        "QuestionRecognitionRequest"
+      ],
+      "validation": {
+        "QuestionRecognitionRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport lombok.Data;\n\n@Data\npublic class QuestionRecognitionRequest {\n\n    @NotBlank(message = \"请选择需要识别的题目图片\")\n    private String imageBase64;\n}\n"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/recommend/similar",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/RecommendController.java",
+      "line": 23,
+      "signature": "RestResponse<List<Question>> similar(@RequestParam Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/report/weekly",
+      "roles": [
+        "student",
+        "teacher"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReportController.java",
+      "line": 21,
+      "signature": "RestResponse<WeeklyReportVO> weekly()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/report/generate",
+      "roles": [
+        "student",
+        "teacher"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReportController.java",
+      "line": 26,
+      "signature": "RestResponse<WeeklyReportVO> generate()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/review-plan/today",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReviewPlanController.java",
+      "line": 24,
+      "signature": "RestResponse<List<ReviewPlanVO>> today()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "PUT",
+      "path": "/api/review-plan/{id}/finish",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/ReviewPlanController.java",
+      "line": 29,
+      "signature": "RestResponse<Void> finish(@PathVariable Long id)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/subject/list",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/SubjectController.java",
+      "line": 27,
+      "signature": "RestResponse<List<Subject>> list()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/subject",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/SubjectController.java",
+      "line": 32,
+      "signature": "RestResponse<Long> add(@Validated @RequestBody SubjectRequest request)",
+      "dto": [
+        "SubjectRequest"
+      ],
+      "validation": {
+        "SubjectRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.Size;\nimport lombok.Data;\n\n@Data\npublic class SubjectRequest {\n\n    @NotBlank(message = \"科目名称不能为空\")\n    @Size(max = 32, message = \"科目名称最长 32 位\")\n    private String name;\n\n    @Size(max = 32, message = \"科目编码最长 32 位\")\n    private String code;\n\n    private Integer sort;\n}\n"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/api/subject/{id}",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/SubjectController.java",
+      "line": 38,
+      "signature": "RestResponse<Void> update(@PathVariable Long id, @Validated @RequestBody SubjectRequest request)",
+      "dto": [
+        "SubjectRequest"
+      ],
+      "validation": {
+        "SubjectRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.NotBlank;\nimport jakarta.validation.constraints.Size;\nimport lombok.Data;\n\n@Data\npublic class SubjectRequest {\n\n    @NotBlank(message = \"科目名称不能为空\")\n    @Size(max = 32, message = \"科目名称最长 32 位\")\n    private String name;\n\n    @Size(max = 32, message = \"科目编码最长 32 位\")\n    private String code;\n\n    private Integer sort;\n}\n"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/profile",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 27,
+      "signature": "RestResponse<User> profile()",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "PUT",
+      "path": "/api/user/profile",
+      "roles": [
+        "authenticated"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 32,
+      "signature": "RestResponse<Void> updateProfile(@Validated @RequestBody ProfileUpdateRequest request)",
+      "dto": [
+        "ProfileUpdateRequest"
+      ],
+      "validation": {
+        "ProfileUpdateRequest": "package com.example.wrongbook.dto;\n\nimport jakarta.validation.constraints.Email;\nimport jakarta.validation.constraints.Size;\nimport lombok.Data;\n\n@Data\npublic class ProfileUpdateRequest {\n\n    @Size(max = 32, message = \"昵称最长 32 位\")\n    private String nickname;\n\n    @Email(message = \"邮箱格式不正确\")\n    private String email;\n\n    @Size(max = 64, message = \"班级名称最长 64 位\")\n    private String className;\n}\n"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/page",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 38,
+      "signature": "RestResponse<Page<User>> page(@RequestParam(defaultValue = \"1\") Integer pageNum, @RequestParam(defaultValue = \"10\") Integer pageSize, @RequestParam(required = false) String role, @RequestParam(required = false) String keyword)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/user/{id}",
+      "roles": [
+        "admin"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/UserController.java",
+      "line": 47,
+      "signature": "RestResponse<Void> remove(@PathVariable Long id)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "POST",
+      "path": "/api/variant/generate/{questionId}",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/VariantController.java",
+      "line": 25,
+      "signature": "RestResponse<List<VariantQuestion>> generate(@PathVariable Long questionId)",
+      "dto": [],
+      "validation": {}
+    },
+    {
+      "method": "GET",
+      "path": "/api/variant/list",
+      "roles": [
+        "student"
+      ],
+      "source": "server/src/main/java/com/example/wrongbook/controller/VariantController.java",
+      "line": 30,
+      "signature": "RestResponse<List<VariantQuestion>> list(@RequestParam Long questionId)",
+      "dto": [],
+      "validation": {}
+    }
+  ],
+  "endpoint_count": 39,
+  "public": 3,
+  "views": [
+    "web/src/views/HomeView.vue",
+    "web/src/views/LoginView.vue",
+    "web/src/views/admin/AdminKnowledgeView.vue",
+    "web/src/views/admin/AdminSubjectView.vue",
+    "web/src/views/admin/AdminUserView.vue",
+    "web/src/views/announcement/AnnouncementView.vue",
+    "web/src/views/message/MessageView.vue",
+    "web/src/views/practice/PracticeHistoryView.vue",
+    "web/src/views/profile/ProfileView.vue",
+    "web/src/views/question/QuestionCreateView.vue",
+    "web/src/views/question/QuestionDetailView.vue",
+    "web/src/views/question/QuestionListView.vue",
+    "web/src/views/report/ReportView.vue",
+    "web/src/views/review/ReviewPlanView.vue",
+    "web/src/views/system/NotFoundView.vue"
+  ],
+  "figures": [
+    {
+      "number": "3.1",
+      "caption": "错题录入与AI分析业务流程图",
+      "path": "docs/thesis/align-reference1-20261113/business-flow/3-1.png",
+      "sha256": "718c6c220a279b8b04781cbb776b259f209aad58eab6506d6d713ae223036319"
+    },
+    {
+      "number": "3.2",
+      "caption": "知识学习、练习与复习业务流程图",
+      "path": "docs/thesis/align-reference1-20261113/business-flow/3-2.png",
+      "sha256": "7ad86b65716a95d8bfb540efe4110d7d389e306068d10564630fbd02116c0b5d"
+    },
+    {
+      "number": "3.3",
+      "caption": "管理与学情查看业务流程图",
+      "path": "docs/thesis/align-reference1-20261113/business-flow/3-3.png",
+      "sha256": "57a55a092077c2068ffc3f8151a06d59f2c25a8a6434954c43662eb108d10c22"
+    },
+    {
+      "number": "3.4",
+      "caption": "系统用例图",
+      "path": "docs/thesis/requirements-20261112/figures/3-1.png",
+      "sha256": "4d7a9d5147e0aee3469655d493a0e9c104762e3082020590d7d1a13d5f26985e"
+    },
+    {
+      "number": "3.5",
+      "caption": "系统顶层数据流图",
+      "path": "docs/thesis/align-reference1-20261113/figures/3-5.png",
+      "sha256": "5d6ca6c15ff73d0ef93cd09997fec33ac76859ceacb9eddb169e6afa3e363e19"
+    },
+    {
+      "number": "3.6",
+      "caption": "系统0层数据流图（一）",
+      "path": "docs/thesis/align-reference1-20261113/figures/3-6.png",
+      "sha256": "ba52d8ac31154f6d0253d40c96e27cd8c570fb92181710ab9d54445f7b695d82"
+    },
+    {
+      "number": "3.7",
+      "caption": "系统0层数据流图（二）",
+      "path": "docs/thesis/align-reference1-20261113/figures/3-7.png",
+      "sha256": "6bf7f6028df5cde5c4e157efc849645e5ff977e0492d7dd5609e749d299b581f"
+    },
+    {
+      "number": "3.8",
+      "caption": "学习练习加工1层数据流图（一）",
+      "path": "docs/thesis/align-reference1-20261113/figures/3-8.png",
+      "sha256": "dc7e4ad4d0d12a7cb0cf2596d391443b8e4e043b2723ff61f78a1b9d4371e520"
+    },
+    {
+      "number": "3.9",
+      "caption": "学习练习加工1层数据流图（二）",
+      "path": "docs/thesis/align-reference1-20261113/figures/3-9.png",
+      "sha256": "5109f7d3ed57b483fe4e02435edb567aaafd2c8207ce736659672608a641d423"
+    },
+    {
+      "number": "5.1",
+      "caption": "系统分层架构与外部依赖",
+      "path": "docs/thesis/delivery-20261112/figures/5-1.png",
+      "sha256": "c5a16e02ac1d61da90e9a73cb3c06706c4b54b96056ce8490a72ef485eac108f"
+    },
+    {
+      "number": "5.2",
+      "caption": "系统功能模块",
+      "path": "docs/thesis/align-reference1-20261113/figures/5-2.png",
+      "sha256": "1a98860e1d1613c46f8d07ab2dd53c1d1873be53d22059f401de64060f27896c"
+    },
+    {
+      "number": "5.3",
+      "caption": "错题保存与异步解析时序",
+      "path": "docs/thesis/align-reference1-20261113/figures/5-3.png",
+      "sha256": "18bfc0bcf0137bba9008d85095861f154cd4059958cc0ca440c08b14d0fa3f66"
+    },
+    {
+      "number": "5.4",
+      "caption": "AI 解析中的 RAG 与结构校验",
+      "path": "docs/thesis/delivery-20261112/figures/6-5.png",
+      "sha256": "1376ea7f0e86d8fb8a97873209e0740c93d5c2f18f7088f1add27c1739c6b2e1"
+    },
+    {
+      "number": "5.5",
+      "caption": "练习提交与掌握度更新时序",
+      "path": "docs/thesis/structure-20261112/figures/png/6-7.png",
+      "sha256": "ce4486881409e9e79bf92ab8dd179a7cbbab7c2a675968de5caea5603f4ff4a0"
+    },
+    {
+      "number": "5.6",
+      "caption": "复习计划状态转换",
+      "path": "docs/thesis/structure-20261112/figures/png/6-8.png",
+      "sha256": "69ea2a05991e4f2efc5032d869cfc1dfe557a7ce074040d3a476543c12e3a5bb"
+    },
+    {
+      "number": "6.1",
+      "caption": "错题归属、知识归类与解析关系",
+      "path": "docs/thesis/structure-20261112/figures/png/6-1.png",
+      "sha256": "34a6c415b664dedcf4385c7c1aa0f06bfe26898d586c70b111227246da25181b"
+    },
+    {
+      "number": "6.2",
+      "caption": "复习计划与练习记录关系",
+      "path": "docs/thesis/structure-20261112/figures/png/6-2.png",
+      "sha256": "074999fe5787d093b7d83e4ea2ad51d19bc15a3dd6b86ef7fe452acfa0c6b6d1"
+    },
+    {
+      "number": "6.3",
+      "caption": "消息与公告关系",
+      "path": "docs/thesis/structure-20261112/figures/png/6-3.png",
+      "sha256": "b5e043c2ac6719120c717ab93066cd4a8c514b6fd790bff756b67964723d6fc7"
+    },
+    {
+      "number": "6.4",
+      "caption": "知识内容与个人资源关联",
+      "path": "docs/thesis/delivery-20261112/figures/6-9.png",
+      "sha256": "fa82341eb5f04508c64960e3372a323ad11a255fac6a40d4bbdace8ef788c2ea"
+    },
+    {
+      "number": "6.5",
+      "caption": "模型网关的核心类关系",
+      "path": "docs/thesis/structure-20261112/figures/png/6-4.png",
+      "sha256": "de11dc5ae8b13e0d60617968eb1c251c96a32fda633267be2ae3d64de83275e6"
+    },
+    {
+      "number": "7.1",
+      "caption": "当前错题录入界面",
+      "path": "docs/thesis/align-reference1-20261113/screenshots/current-create.png",
+      "sha256": "cc2927a6d9b3494fb073ee3f4eb95311f02e58843744fb75cbaf49d45d44ff91"
+    },
+    {
+      "number": "7.2",
+      "caption": "当前个人知识内容复用界面",
+      "path": "docs/thesis/align-reference1-20261113/screenshots/current-knowledge.png",
+      "sha256": "e4f8001564f15870e4e7dcb0863b7cb7677d0a0bd05846c6109e70323bbedb47"
+    },
+    {
+      "number": "7.3",
+      "caption": "当前持续练习与作答记录界面",
+      "path": "docs/thesis/align-reference1-20261113/screenshots/current-practice.png",
+      "sha256": "a0eb9ff0e37cdc6a1e8c0ee11a575f0a555ab5b177b06d0a596e2ce9339dd440"
+    },
+    {
+      "number": "7.4",
+      "caption": "历史真实GLM解析界面局部",
+      "path": "docs/thesis/structure-20261112/figures/png/7-2.png",
+      "sha256": "e5bc23889273bd21d17e286b58520f1905842a41b1812c69891a4df1171fb6c8"
+    },
+    {
+      "number": "7.5",
+      "caption": "历史RAG参考题标识局部",
+      "path": "docs/thesis/structure-20261112/figures/png/7-3.png",
+      "sha256": "a268ea80919163c98a98a07680d40082fb86a731d7f83a08eb91c34aad6f55c6"
+    },
+    {
+      "number": "7.6",
+      "caption": "历史变式题及作答入口局部",
+      "path": "docs/thesis/structure-20261112/figures/png/7-4.png",
+      "sha256": "313175d70e7274eb9dacce70b2bc4761f1af43a65a13cb4f96abc290e82f77d7"
+    },
+    {
+      "number": "7.7",
+      "caption": "历史学生统计与练习反馈局部",
+      "path": "docs/thesis/structure-20261112/figures/png/7-5.png",
+      "sha256": "983887431dce9d606c491a323191209492868cc0c3a4668d73411b437f9f5ca9"
+    },
+    {
+      "number": "7.8",
+      "caption": "教师系统聚合报告范围局部",
+      "path": "docs/thesis/structure-20261112/figures/png/7-6.png",
+      "sha256": "b84be15155072dd40c12d58b4bd710094d6a3886abfb9a9629c27d99fa75d3c0"
+    }
+  ],
+  "logical_tables": [
+    [
+      "3.1",
+      "系统功能需求清单"
+    ],
+    [
+      "3.2",
+      "核心用例说明"
+    ],
+    [
+      "3.3",
+      "逻辑数据存储说明"
+    ],
+    [
+      "3.4",
+      "核心数据流字典"
+    ],
+    [
+      "5.1",
+      "功能模块与实现职责"
+    ],
+    [
+      "5.2",
+      "角色与数据访问范围"
+    ],
+    [
+      "6.1",
+      "用户表（user）"
+    ],
+    [
+      "6.2",
+      "科目表（subject）"
+    ],
+    [
+      "6.3",
+      "知识点表（knowledge_point）"
+    ],
+    [
+      "6.4",
+      "错题表（question）"
+    ],
+    [
+      "6.5",
+      "AI 解析记录表（ai_analysis）"
+    ],
+    [
+      "6.6",
+      "变式题表（variant_question）"
+    ],
+    [
+      "6.7",
+      "复习计划表（review_plan）"
+    ],
+    [
+      "6.8",
+      "练习记录表（practice_record）"
+    ],
+    [
+      "6.9",
+      "消息通知表（message）"
+    ],
+    [
+      "6.10",
+      "公告表（announcement）"
+    ],
+    [
+      "6.11",
+      "知识内容表（learning_content）"
+    ],
+    [
+      "6.12",
+      "个人资源复用与持续练习设计"
+    ],
+    [
+      "6.13",
+      "系统接口一览"
+    ],
+    [
+      "7.1",
+      "项目主要目录与实现职责"
+    ],
+    [
+      "8.1",
+      "本次工程验证的环境与分项结果"
+    ],
+    [
+      "8.2",
+      "代表性单元与边界用例"
+    ],
+    [
+      "8.3",
+      "关键数据库集成用例"
+    ],
+    [
+      "8.4",
+      "浏览器业务用例与结果"
+    ],
+    [
+      "8.5",
+      "个人资源循环的实际接口与数据库回读"
+    ],
+    [
+      "8.6",
+      "Gate5 固定小样本指标及解释边界"
+    ]
+  ],
+  "code_excerpts": 31,
+  "excerpt_raw_lines": 275,
+  "dfd_balance": {
+    "P4_to_1": {
+      "parent": "P4",
+      "children": [
+        "P4.1",
+        "P4.2",
+        "P4.3",
+        "P4.4"
+      ],
+      "interfaces": {
+        "E1:in": [
+          "作答数据",
+          "复习查询",
+          "学习请求",
+          "完成确认"
+        ],
+        "E1:out": [
+          "复习信息",
+          "学习资源",
+          "练习反馈"
+        ],
+        "E4:out": [
+          "生成上下文"
+        ],
+        "E4:in": [
+          "生成结果"
+        ],
+        "D2:in": [
+          "科目知识点"
+        ],
+        "D3:in": [
+          "本人原题",
+          "解析"
+        ],
+        "D3:out": [
+          "掌握度"
+        ],
+        "D4:in": [
+          "拓展题",
+          "知识内容"
+        ],
+        "D4:out": [
+          "生成资源"
+        ],
+        "D5:in": [
+          "复习任务",
+          "已练题标识"
+        ],
+        "D5:out": [
+          "复习状态",
+          "练习记录"
+        ]
+      },
+      "balanced": true
+    },
+    "top_to_0": {
+      "balanced": true,
+      "interfaces": {
+        "E1:in": [
+          "作答数据",
+          "基础查询",
+          "复习查询",
+          "学习请求",
+          "完成确认",
+          "已读确认",
+          "报告查询",
+          "登录资料",
+          "解析请求",
+          "账户维护资料",
+          "通知查询",
+          "错题导出查询",
+          "错题资料"
+        ],
+        "E1:out": [
+          "基础信息",
+          "复习信息",
+          "学习资源",
+          "报告信息",
+          "练习反馈",
+          "账户结果",
+          "身份结果",
+          "通知信息",
+          "错题导出结果",
+          "错题解析信息"
+        ],
+        "E4:out": [
+          "生成上下文",
+          "识别分析上下文"
+        ],
+        "E4:in": [
+          "生成结果",
+          "识别分析结果"
+        ],
+        "E2:in": [
+          "基础查询",
+          "已读确认",
+          "报告查询",
+          "登录资料",
+          "账户维护资料",
+          "通知查询"
+        ],
+        "E2:out": [
+          "基础信息",
+          "报告信息",
+          "账户结果",
+          "身份结果",
+          "通知信息"
+        ],
+        "E3:in": [
+          "公告资料",
+          "基础查询",
+          "基础维护资料",
+          "已读确认",
+          "登录资料",
+          "账户维护资料",
+          "通知查询"
+        ],
+        "E3:out": [
+          "基础信息",
+          "维护结果",
+          "账户结果",
+          "身份结果",
+          "通知信息"
+        ]
+      },
+      "scope": "P2维护限管理员；P5报告限学生本人和教师聚合，其余共有资料按权限访问"
+    }
+  },
+  "references": {
+    "total": 27,
+    "2024-2026": 23,
+    "2025-2027_published_by_audit": 15,
+    "foreign_language": 5,
+    "citation_first_appearance": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "opening_report_unchanged": true,
+    "chinese_first": true
+  },
+  "gate5_recalculated": {
+    "count": 27,
+    "total": 46,
+    "mean": 1.7037037037037037,
+    "distribution": {
+      "2": 20,
+      "1": 6,
+      "0": 1
+    },
+    "ab_count": 6,
+    "preferences": {
+      "RAG_OFF": 4,
+      "RAG_ON": 2
+    }
+  }
+}

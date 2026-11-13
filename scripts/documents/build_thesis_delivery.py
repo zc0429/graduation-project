@@ -302,8 +302,8 @@ def main():
                     if ci:cap.paragraph_format.page_break_before=True
                     table(d,[rows[0]]+rows[start:start+count],pending_caption);start+=count
                 assert start==len(rows),(pending_caption,start,len(rows))
-            elif pending_caption and re.match(r'表 (3\.3|8\.3)\s',pending_caption):
-                sizes=[4,2] if pending_caption.startswith('表 3.3') else [1,7]
+            elif pending_caption and re.match(r'表 3\.3\s',pending_caption):
+                sizes=[4,2]
                 start=1
                 for ci,count in enumerate(sizes):
                     cap=caption(d,pending_caption,continued=ci>0)
