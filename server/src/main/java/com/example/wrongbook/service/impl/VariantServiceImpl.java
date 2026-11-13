@@ -25,6 +25,9 @@ import org.springframework.web.client.RestClientResponseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Slf4j
 @Service
@@ -37,10 +40,18 @@ public class VariantServiceImpl implements VariantService {
     private final LlmClient llmClient;
     private final ObjectMapper objectMapper;
     private final TransactionTemplate transactionTemplate;
+    private final LearningResourceAccess resourceAccess;
 
     @Override
     public List<VariantQuestion> generate(Long questionId) {
+        return resourceAccess.serialized(questionId, () -> generateOrReuse(questionId));
+    }
+
+    private List<VariantQuestion> generateOrReuse(Long questionId) {
         Question question = checkOwnQuestion(questionId);
+        List<VariantQuestion> stored = list(questionId);
+        List<VariantQuestion> available = stored.stream().filter(v -> !Boolean.TRUE.equals(v.getPracticed())).toList();
+        if (!available.isEmpty()) return available;
         llmClient.verifyReady();
         String kpName = "未归类";
         if (question.getKnowledgePointId() != null) {
@@ -49,7 +60,12 @@ public class VariantServiceImpl implements VariantService {
                 kpName = kp.getName();
             }
         }
+        String history = stored.stream().skip(Math.max(0, stored.size() - 100))
+                .map(v -> QuestionContent.plainText(v.getStem()))
+                .map(t -> t.substring(0, Math.min(80, t.length())))
+                .collect(java.util.stream.Collectors.joining("\n"));
         String prompt = MockLlmClient.TASK_VARIANT + "\n"
+                + "已生成题目（不要重复，改变具体条件，不仅修改措辞）：\n" + history + "\n"
                 + "原题题干：" + QuestionContent.plainText(question.getStem()) + "\n"
                 + "原题答案：" + (question.getAnswer() == null ? "" : question.getAnswer()) + "\n"
                 + "知识点：" + kpName + "\n"
@@ -65,18 +81,27 @@ public class VariantServiceImpl implements VariantService {
         try {
             String content = llmClient.chat(prompt);
             List<VariantQuestion> variants = parseVariants(questionId, content);
+            AtomicReference<List<VariantQuestion>> chosen = new AtomicReference<>(variants);
             transactionTemplate.executeWithoutResult(status -> {
                 Question currentQuestion = questionMapper.selectByIdForUpdate(questionId);
                 if (!matchesVariantInput(question, currentQuestion)) {
                     throw new IllegalStateException("原题输入已变化，放弃写入旧变式题");
                 }
+                List<VariantQuestion> current = list(questionId);
+                List<VariantQuestion> reusable = current.stream().filter(v -> !Boolean.TRUE.equals(v.getPracticed())).toList();
+                if (!reusable.isEmpty()) { chosen.set(reusable); return; }
+                Set<String> stems = new HashSet<>();
+                current.forEach(v -> stems.add(normalizedStem(v.getStem())));
                 for (VariantQuestion variant : variants) {
+                    if (!stems.add(normalizedStem(variant.getStem()))) {
+                        throw new IllegalArgumentException("模型返回重复题目，未保存");
+                    }
                     if (variantQuestionMapper.insert(variant) != 1) {
                         throw new IllegalStateException("变式题保存失败");
                     }
                 }
             });
-            return variants;
+            return chosen.get();
         } catch (Exception e) {
             logVariantFailure(questionId, e);
             throw new BizException("变式题生成失败，请稍后重试");
@@ -86,9 +111,16 @@ public class VariantServiceImpl implements VariantService {
     @Override
     public List<VariantQuestion> list(Long questionId) {
         checkOwnQuestion(questionId);
-        return variantQuestionMapper.selectList(new LambdaQueryWrapper<VariantQuestion>()
+        List<VariantQuestion> variants = variantQuestionMapper.selectList(new LambdaQueryWrapper<VariantQuestion>()
                 .eq(VariantQuestion::getQuestionId, questionId)
                 .orderByAsc(VariantQuestion::getId));
+        Set<Long> practiced = resourceAccess.practicedVariants(variants);
+        variants.forEach(v -> v.setPracticed(practiced.contains(v.getId())));
+        return variants;
+    }
+
+    private String normalizedStem(String text) {
+        return QuestionContent.plainText(text).replaceAll("\\s+", "");
     }
 
     private List<VariantQuestion> parseVariants(Long questionId, String content) throws Exception {
@@ -132,7 +164,11 @@ public class VariantServiceImpl implements VariantService {
 
             VariantQuestion variant = new VariantQuestion();
             variant.setQuestionId(questionId);
-            variant.setStem(stem.asText().trim());
+            String plainStem = QuestionContent.plainText(stem.asText()).trim();
+            if (plainStem.isBlank() || plainStem.length() > 2000 || answer.asText().length() > 8000) {
+                throw new IllegalArgumentException("变式题内容长度不合格");
+            }
+            variant.setStem(plainStem);
             variant.setAnswer(answer.asText().trim());
             variant.setDifficulty(difficulty.asInt());
             variants.add(variant);
@@ -177,13 +213,6 @@ public class VariantServiceImpl implements VariantService {
     }
 
     private Question checkOwnQuestion(Long questionId) {
-        Question question = questionMapper.selectById(questionId);
-        if (question == null) {
-            throw new BizException(ResultCode.NOT_FOUND.getCode(), "错题不存在");
-        }
-        if (!"admin".equals(UserContext.getRole()) && !question.getUserId().equals(UserContext.getUserId())) {
-            throw new BizException(ResultCode.FORBIDDEN.getCode(), "无权访问该错题");
-        }
-        return question;
+        return resourceAccess.ownQuestion(questionId);
     }
 }

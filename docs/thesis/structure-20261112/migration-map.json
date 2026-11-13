@@ -1,0 +1,378 @@
+{
+  "source_commit": "b71bb29e7358a2296c05ca270023843479e8f61b",
+  "figure_numbers": {
+    "4.1": "5.1",
+    "4.2": "6.1",
+    "4.3": "6.2",
+    "4.4": "6.3",
+    "5.1": "6.4",
+    "5.2": "6.5",
+    "5.3": "6.6",
+    "5.4": "6.7",
+    "5.5": "6.8",
+    "6.1": "7.1",
+    "6.2": "7.2",
+    "6.3": "7.3",
+    "6.4": "7.4",
+    "6.5": "7.5",
+    "6.6": "7.6",
+    "6.7": "7.7",
+    "6.8": "7.8",
+    "6.9": "7.9"
+  },
+  "table_numbers": {
+    "4.1": "5.1",
+    "5.1": "6.1",
+    "5.2": "6.2",
+    "5.3": "6.3",
+    "5.4": "6.4",
+    "5.5": "6.5",
+    "5.6": "6.6",
+    "5.7": "6.7",
+    "5.8": "6.8",
+    "5.9": "6.9",
+    "5.10": "6.10",
+    "5.11": "6.11",
+    "6.1": "8.1",
+    "6.2": "8.2",
+    "6.3": "8.3"
+  },
+  "assets": [
+    {
+      "from": "docs/thesis/figures/png/4-1.png",
+      "to": "docs/thesis/structure-20261112/figures/png/5-1.png",
+      "source_sha256": "d1477cfeb9ccddd8ab2232a351e85b5d767b2005d29fd67f6d7ed3c0d26a1f86",
+      "target_sha256": "d1477cfeb9ccddd8ab2232a351e85b5d767b2005d29fd67f6d7ed3c0d26a1f86",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/4-1.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/5-1.svg",
+      "source_sha256": "e496fbdcfa8d8e181df946c1c2b4f56b3990b64e986bdb2067f5d43ac3f69c67",
+      "target_sha256": "e496fbdcfa8d8e181df946c1c2b4f56b3990b64e986bdb2067f5d43ac3f69c67",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/4-1.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/5-1.json",
+      "source_sha256": "0d1145acb80509b4576fbc9cf0b81caa8a8e1b263cc130dc8a648b928afd4a47",
+      "target_sha256": "bae0d88d2c11656d285182e8fe0ec18ee037c9c219f12bf9bf2a8b036d0698eb",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/4-2.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-1.png",
+      "source_sha256": "34a6c415b664dedcf4385c7c1aa0f06bfe26898d586c70b111227246da25181b",
+      "target_sha256": "34a6c415b664dedcf4385c7c1aa0f06bfe26898d586c70b111227246da25181b",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/4-2.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-1.svg",
+      "source_sha256": "9dcb9aaae2fd19eeff88cee3b146a5c7f5fd18b759d8e67166201f9218a141de",
+      "target_sha256": "9dcb9aaae2fd19eeff88cee3b146a5c7f5fd18b759d8e67166201f9218a141de",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/4-2.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-1.json",
+      "source_sha256": "50945c4d4ceff71b9e727c789adeb5b8059b5b3746951f6448d2840f042c7f21",
+      "target_sha256": "faa87e18b38d953cfeef55085768cc584008be6cb93655f5faf5ab9089b86d19",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/4-3.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-2.png",
+      "source_sha256": "074999fe5787d093b7d83e4ea2ad51d19bc15a3dd6b86ef7fe452acfa0c6b6d1",
+      "target_sha256": "074999fe5787d093b7d83e4ea2ad51d19bc15a3dd6b86ef7fe452acfa0c6b6d1",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/4-3.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-2.svg",
+      "source_sha256": "b7c1f8088f14f64e239f657d0c910ef165034a34ea06a0bc8761714656c3b633",
+      "target_sha256": "b7c1f8088f14f64e239f657d0c910ef165034a34ea06a0bc8761714656c3b633",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/4-3.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-2.json",
+      "source_sha256": "27245ee41c4fb88e4636b95263491ff4b1c49ffab12b360b10eb7da876c6153e",
+      "target_sha256": "b91a5e964548e2d0b17239248df82cc52c4bb8e8559a6873dd28946b6fdb4743",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/4-4.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-3.png",
+      "source_sha256": "b5e043c2ac6719120c717ab93066cd4a8c514b6fd790bff756b67964723d6fc7",
+      "target_sha256": "b5e043c2ac6719120c717ab93066cd4a8c514b6fd790bff756b67964723d6fc7",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/4-4.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-3.svg",
+      "source_sha256": "f9348a0e237b9b9853706faaabc6618360669890ba3884029e810a362ea54ed1",
+      "target_sha256": "f9348a0e237b9b9853706faaabc6618360669890ba3884029e810a362ea54ed1",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/4-4.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-3.json",
+      "source_sha256": "50e6986df71fd424d02e13406eddf85498915b071a9327e4ae36a27dea4a5de8",
+      "target_sha256": "4d5ac2214ab143a753d5568b7192824e16f6d05689bf83da6bea515915b6809d",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/5-1.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-4.png",
+      "source_sha256": "de11dc5ae8b13e0d60617968eb1c251c96a32fda633267be2ae3d64de83275e6",
+      "target_sha256": "de11dc5ae8b13e0d60617968eb1c251c96a32fda633267be2ae3d64de83275e6",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/5-1.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-4.svg",
+      "source_sha256": "e20b79e7e16de8e173f677c0a8dcbf32edf3390c5a6665152d7aeb6715a8fded",
+      "target_sha256": "e20b79e7e16de8e173f677c0a8dcbf32edf3390c5a6665152d7aeb6715a8fded",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/5-1.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-4.json",
+      "source_sha256": "7579df2a4d4b53904cb4a4bb86fbdaeab590935a67b36ec022bfe9b5bc089179",
+      "target_sha256": "b36da74225e848593a15c13fcd4efa0b4209bc2e7e05957fe9b3d77130079adc",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/5-2.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-5.png",
+      "source_sha256": "3f2de49a8bb908a0d432a5f9fffafd55eec1665f9821de8affbcf1775e40a33b",
+      "target_sha256": "3f2de49a8bb908a0d432a5f9fffafd55eec1665f9821de8affbcf1775e40a33b",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/5-2.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-5.svg",
+      "source_sha256": "b962865bbb599fa025cfff4a1b426a51bb7cd44a45316ded3d2938fe50a685d9",
+      "target_sha256": "b962865bbb599fa025cfff4a1b426a51bb7cd44a45316ded3d2938fe50a685d9",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/5-2.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-5.json",
+      "source_sha256": "a529dde679c995d4e78aa7a57f5fa3072dbc7f753b6d5f56a22867d1e9fa5d62",
+      "target_sha256": "050f7528013023d0af0fde430734fc8e140a086e88e3539111b2dadeedba1676",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/5-3.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-6.png",
+      "source_sha256": "b0db42f41416d68276e496d0cb6ee49ed684c6de28392f7bde20dab6fbf9bcbf",
+      "target_sha256": "b0db42f41416d68276e496d0cb6ee49ed684c6de28392f7bde20dab6fbf9bcbf",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/5-3.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-6.svg",
+      "source_sha256": "fd8844d243d2f8e6b88ee32f57dbcb991e02868537ca68f6b04f41dc4f846bc4",
+      "target_sha256": "fd8844d243d2f8e6b88ee32f57dbcb991e02868537ca68f6b04f41dc4f846bc4",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/5-3.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-6.json",
+      "source_sha256": "ee46cafc2c57a68932764d710d314858a9bdd5c6ceded010055f29208bfcda45",
+      "target_sha256": "ca659702525244284bb191c00ac7ab0656a5e28e3adf15ffd19b5938caaa9284",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/5-4.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-7.png",
+      "source_sha256": "ce4486881409e9e79bf92ab8dd179a7cbbab7c2a675968de5caea5603f4ff4a0",
+      "target_sha256": "ce4486881409e9e79bf92ab8dd179a7cbbab7c2a675968de5caea5603f4ff4a0",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/5-4.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-7.svg",
+      "source_sha256": "3aeb6a7d2515f3f748187adf9e813131dba4953c0e976db0863d0f21cdd9dba5",
+      "target_sha256": "3aeb6a7d2515f3f748187adf9e813131dba4953c0e976db0863d0f21cdd9dba5",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/5-4.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-7.json",
+      "source_sha256": "2ba09183a457e80dfce1227011e9abf6aef5f7fb27034b6d62f9641356999b45",
+      "target_sha256": "67d5bf214ea54667a5a110bbc4b290fa8a696ac677af518912812ba9f8be4faf",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/5-5.png",
+      "to": "docs/thesis/structure-20261112/figures/png/6-8.png",
+      "source_sha256": "69ea2a05991e4f2efc5032d869cfc1dfe557a7ce074040d3a476543c12e3a5bb",
+      "target_sha256": "69ea2a05991e4f2efc5032d869cfc1dfe557a7ce074040d3a476543c12e3a5bb",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/5-5.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/6-8.svg",
+      "source_sha256": "0e6cf696930a26ce66cdbe709cb4c79bd93f69472ab7030331afad75995d1b10",
+      "target_sha256": "0e6cf696930a26ce66cdbe709cb4c79bd93f69472ab7030331afad75995d1b10",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/5-5.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/6-8.json",
+      "source_sha256": "2deb40e2eff87ea8c9f7b051781adc02720843388eb2e98dba95b353ce272ca7",
+      "target_sha256": "a95d7baf6d3908940a3d535d4abfeee61dc442ebdeb5d0e4a683b63e8eccf812",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/6-1.png",
+      "to": "docs/thesis/structure-20261112/figures/png/7-1.png",
+      "source_sha256": "270442a8b2ef8f58acd705c183eb2a5c387ae268e656c33a89f15e0552b2b4ca",
+      "target_sha256": "270442a8b2ef8f58acd705c183eb2a5c387ae268e656c33a89f15e0552b2b4ca",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/6-1.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/7-1.svg",
+      "source_sha256": "6b2fc67029a1a3a897c4322bda2dff38668679e95c3b01e4971deae3dc4cf881",
+      "target_sha256": "6b2fc67029a1a3a897c4322bda2dff38668679e95c3b01e4971deae3dc4cf881",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/6-1.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/7-1.json",
+      "source_sha256": "2846931d848e7a046d93d7f345cacd7fd0041029e75a3961fd80b8c5a3b0ee49",
+      "target_sha256": "d474ea8e5fb2cd42c31636c4fe30c50a50196466aabfd66e79dcd90654419d34",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/6-2.png",
+      "to": "docs/thesis/structure-20261112/figures/png/7-2.png",
+      "source_sha256": "e5bc23889273bd21d17e286b58520f1905842a41b1812c69891a4df1171fb6c8",
+      "target_sha256": "e5bc23889273bd21d17e286b58520f1905842a41b1812c69891a4df1171fb6c8",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/6-2.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/7-2.svg",
+      "source_sha256": "a984003dc24e7c1b16921e51729dd45abc323a91294c64247f5463139743bdf8",
+      "target_sha256": "a984003dc24e7c1b16921e51729dd45abc323a91294c64247f5463139743bdf8",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/6-2.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/7-2.json",
+      "source_sha256": "1663afcbb68068bda4ced013484aa542d76671776334394ad717280fcbe9be58",
+      "target_sha256": "292cf385b8229a3af187ff1844e3dd097f34892914c294b2eea83b834b8c6880",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/6-3.png",
+      "to": "docs/thesis/structure-20261112/figures/png/7-3.png",
+      "source_sha256": "a268ea80919163c98a98a07680d40082fb86a731d7f83a08eb91c34aad6f55c6",
+      "target_sha256": "a268ea80919163c98a98a07680d40082fb86a731d7f83a08eb91c34aad6f55c6",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/6-3.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/7-3.svg",
+      "source_sha256": "331eb91cb0091b967fccf2e3662734987932eb89abe7996282fce564a239aa32",
+      "target_sha256": "331eb91cb0091b967fccf2e3662734987932eb89abe7996282fce564a239aa32",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/6-3.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/7-3.json",
+      "source_sha256": "ffc8b0b9d7c774d316fa79f4ddfeed1e0b637b4c94b8678c8f3e9b38fde2e15c",
+      "target_sha256": "603ae7978d8d6f8cb010582b3bcd3c64e35f4e257f74094e439fb3979858a99b",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/6-4.png",
+      "to": "docs/thesis/structure-20261112/figures/png/7-4.png",
+      "source_sha256": "313175d70e7274eb9dacce70b2bc4761f1af43a65a13cb4f96abc290e82f77d7",
+      "target_sha256": "313175d70e7274eb9dacce70b2bc4761f1af43a65a13cb4f96abc290e82f77d7",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/6-4.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/7-4.svg",
+      "source_sha256": "6fa399cad12065a813e13b0ccd2ef5826d7ff060cf50e3fc0de87ad7ba5d3b9f",
+      "target_sha256": "6fa399cad12065a813e13b0ccd2ef5826d7ff060cf50e3fc0de87ad7ba5d3b9f",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/6-4.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/7-4.json",
+      "source_sha256": "8487551356e5225ee39b9f6c145bc517c5494391f360b53d08e98f894b7d65af",
+      "target_sha256": "653d9f9a7bbd971baad3b4c782f97e1a3d52f2b63b3f535aabf0dfac031acc5d",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/6-5.png",
+      "to": "docs/thesis/structure-20261112/figures/png/7-5.png",
+      "source_sha256": "983887431dce9d606c491a323191209492868cc0c3a4668d73411b437f9f5ca9",
+      "target_sha256": "983887431dce9d606c491a323191209492868cc0c3a4668d73411b437f9f5ca9",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/6-5.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/7-5.svg",
+      "source_sha256": "3df53f20ee7c90103385981fec88eff97c16d83f68274757c571d65beffb5203",
+      "target_sha256": "3df53f20ee7c90103385981fec88eff97c16d83f68274757c571d65beffb5203",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/6-5.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/7-5.json",
+      "source_sha256": "1a0676ad1cad94e5cf81bc53b41fa74937531f84735d6b5594d8f25c9d011897",
+      "target_sha256": "cb5af7fbb7bb94f2f57c98d6a11e6f89cd05f4742b8330d9916a44b6d1f2dd57",
+      "change": "caption/id only"
+    },
+    {
+      "from": "docs/thesis/figures/png/6-6.png",
+      "to": "docs/thesis/structure-20261112/figures/png/7-6.png",
+      "source_sha256": "b84be15155072dd40c12d58b4bd710094d6a3886abfb9a9629c27d99fa75d3c0",
+      "target_sha256": "b84be15155072dd40c12d58b4bd710094d6a3886abfb9a9629c27d99fa75d3c0",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/svg/6-6.svg",
+      "to": "docs/thesis/structure-20261112/figures/svg/7-6.svg",
+      "source_sha256": "799c3287ed8e95e5f605b014d5146d49ad7672859043f8214c389f3a67a66627",
+      "target_sha256": "799c3287ed8e95e5f605b014d5146d49ad7672859043f8214c389f3a67a66627",
+      "change": "byte-identical"
+    },
+    {
+      "from": "docs/thesis/figures/sources/6-6.json",
+      "to": "docs/thesis/structure-20261112/figures/sources/7-6.json",
+      "source_sha256": "f41c9eb450a13335b51876ec938f0a73788fba4de547624860393b9732d3a010",
+      "target_sha256": "a0973f6ae3e62d7713c2942f718a71ba064cdd6441a223fb49b97fdcf6e26f5f",
+      "change": "caption/id only"
+    }
+  ],
+  "chapter_mapping": {
+    "1": "1 (organization updated)",
+    "2": "2 unchanged",
+    "3": "3 unchanged",
+    "4.1-4.2": "5.1-5.2",
+    "4.3": "6.1",
+    "5.1-5.6": "6.2-6.7",
+    "6.1-6.4": "7.1-7.4",
+    "6.5.1-6.5.4": "8.1-8.4",
+    "6.6": "8.5",
+    "7": "9"
+  },
+  "added_sections": [
+    "4.1-4.5",
+    "5.3-5.4",
+    "6.8"
+  ],
+  "rewritten_sections": [
+    "Chinese/English abstracts",
+    "1.4 organization"
+  ]
+}

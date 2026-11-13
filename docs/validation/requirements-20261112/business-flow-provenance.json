@@ -1,0 +1,75 @@
+{
+  "commit": "d72b3827d1dd5d1f4582d93b88b27a5c412ac0ad",
+  "files": [
+    {
+      "source": "docs/thesis/business-flow/review-20261111/02-学习练习与复习.svg",
+      "copy": "docs/thesis/requirements-20261112/business-flow/02-学习练习与复习.svg",
+      "sha256": "e8336fb01bb2dada375884d13279277d19fdc045c6eba6105c489f0ae35f59da"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.svg",
+      "copy": "docs/thesis/requirements-20261112/business-flow/01-错题录入与AI分析.svg",
+      "sha256": "8752bb95e713736d18d42cc52b26e83e65990e98db96d9422ad0cc056f322229"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/02-学习练习与复习.png",
+      "copy": "docs/thesis/requirements-20261112/business-flow/02-学习练习与复习.png",
+      "sha256": "712e801011d6778d64eb1e857c0f9deb806eb84b476ffbf042704c1d5d4d032a"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/02-学习练习与复习.pdf",
+      "copy": "docs/thesis/requirements-20261112/business-flow/02-学习练习与复习.pdf",
+      "sha256": "e5b42da3ec7fbe0198e4b67d0e94fda5c02af8e467972685288935b2fb24bc4a"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/03-管理与学情查看.svg",
+      "copy": "docs/thesis/requirements-20261112/business-flow/03-管理与学情查看.svg",
+      "sha256": "7f34e483dffd879fbfdd2f3ae89e94cc7e7ce8b8a090dbb2b506c60013c5225f"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/业务流程图-A4审阅版.pdf",
+      "copy": "docs/thesis/requirements-20261112/business-flow/业务流程图-A4审阅版.pdf",
+      "sha256": "3900523237b6640b77b343428c225134aa0bc191632059138ea1dc04217281c8"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/业务流程图-三页可编辑.drawio",
+      "copy": "docs/thesis/requirements-20261112/business-flow/业务流程图-三页可编辑.drawio",
+      "sha256": "a485a66644495b30e49fd0f886da14b000e500bc5e7cb5b0eba44e4f3a912f31"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.drawio",
+      "copy": "docs/thesis/requirements-20261112/business-flow/01-错题录入与AI分析.drawio",
+      "sha256": "19f90b9d9431df3377a848511a7631b60bb634e1aabcbab63772e0e313aa4d20"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/03-管理与学情查看.pdf",
+      "copy": "docs/thesis/requirements-20261112/business-flow/03-管理与学情查看.pdf",
+      "sha256": "b4da9b5f95293cfe2b4c836fddc4ddbe35d5358f6800ec99afc712bde3aed667"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/03-管理与学情查看.png",
+      "copy": "docs/thesis/requirements-20261112/business-flow/03-管理与学情查看.png",
+      "sha256": "3ba09a927b99ce102800c8dce9aaf289d869304364734ed66c751d9e2bd3f9e2"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/02-学习练习与复习.drawio",
+      "copy": "docs/thesis/requirements-20261112/business-flow/02-学习练习与复习.drawio",
+      "sha256": "87a147521c98d80677efa8d283e67a06386f69a102325e39626a62738a603e85"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.png",
+      "copy": "docs/thesis/requirements-20261112/business-flow/01-错题录入与AI分析.png",
+      "sha256": "21a2186a2698e0f2a80bd5729fa8ea2d48e3eaadde655e6f7c7f603ed126e0ba"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/01-错题录入与AI分析.pdf",
+      "copy": "docs/thesis/requirements-20261112/business-flow/01-错题录入与AI分析.pdf",
+      "sha256": "b69a9459107acfbe57860b23b07fb2f90dd6823382f9351f299ab0fdc48bdf73"
+    },
+    {
+      "source": "docs/thesis/business-flow/review-20261111/03-管理与学情查看.drawio",
+      "copy": "docs/thesis/requirements-20261112/business-flow/03-管理与学情查看.drawio",
+      "sha256": "ead591a8d10eea96171fa131d2a438072666d5e47b68d9a0581eee5dc598d96f"
+    }
+  ]
+}

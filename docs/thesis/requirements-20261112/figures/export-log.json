@@ -1,0 +1,74 @@
+[
+  {
+    "figure": "3-1",
+    "format": "svg",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-1",
+    "format": "pdf",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-5",
+    "format": "svg",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-5",
+    "format": "pdf",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-6",
+    "format": "svg",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-6",
+    "format": "pdf",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-7",
+    "format": "svg",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-7",
+    "format": "pdf",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-8",
+    "format": "svg",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-8",
+    "format": "pdf",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-9",
+    "format": "svg",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  },
+  {
+    "figure": "3-9",
+    "format": "pdf",
+    "returncode": -4,
+    "note": "export file independently parsed; shutdown SIGILL is not GUI edit/save acceptance"
+  }
+]

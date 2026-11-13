@@ -1,0 +1,178 @@
+[
+  {
+    "name": "com.example.wrongbook.WrongbookServerApplicationTests",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "2.111"
+  },
+  {
+    "name": "com.example.wrongbook.config.WebConfigTests",
+    "tests": "3",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "3.224"
+  },
+  {
+    "name": "com.example.wrongbook.controller.QuestionRecognitionControllerTests",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.785"
+  },
+  {
+    "name": "com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "0.0"
+  },
+  {
+    "name": "com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.167"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.EmbeddingContentTests",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.059"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "0.001"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.244"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.908"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.095"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.LearningResourceIntegrationTests",
+    "tests": "22",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "1.591"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.LiveGlmValidationTests",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "0.0"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.LiveQuestionRecognitionTests",
+    "tests": "1",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "1",
+    "time": "0.0"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests",
+    "tests": "12",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "15.624"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests",
+    "tests": "9",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "7.476"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests",
+    "tests": "5",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.168"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.016"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.08"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.RichQuestionIntegrationTests",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "2.184"
+  },
+  {
+    "name": "com.example.wrongbook.service.impl.VariantServiceImplTests",
+    "tests": "10",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.462"
+  },
+  {
+    "name": "com.example.wrongbook.util.FileStorageUtilTests",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.047"
+  },
+  {
+    "name": "com.example.wrongbook.util.QuestionContentTests",
+    "tests": "4",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.07"
+  }
+]
