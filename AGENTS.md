@@ -1,3 +1,5 @@
+> **独立终稿审阅PR**：[Draft PR #9](https://github.com/zc0429/graduation-project/pull/9)，从PR #8派生，指向dev，不合并。
+
 > **2026-11-13 终稿质量审阅（最新入口）**：从Draft PR #8 `21da287`新建`codex/thesis-final-quality-20261113`，按参考论文1、2027母版、导师保留要求与开题方案完成九章质量审查。49处最小文字修订；28图26表31段275行代码及27篇文献保留，独立99页DOCX/PDF、120目录项与99页视觉复核完成。未修改系统、开题或历史证据，1130项既有文件保护通过；本轮只运行文档验证，未重跑系统或真实GLM。原字体Word及导师暂定规则边界保留。[终稿报告](docs/validation/thesis-final-quality-20261113/README.md)。以下为历史交付记录。
 
 > **2026-11-13 全面一致性审计交付**：基于PR #7 `7d0d40e`在独立`codex/thesis-system-consistency-audit-20261113`工作，交付[Draft PR #8](https://github.com/zc0429/graduation-project/pull/8)，不修改原PR、不合并dev/main。完成14FR矩阵、11表88字段/20索引、39映射、31段代码及28图26表核验；修复无效科目、三级知识点及引用删除3个既有缺陷，新增7项测试。修正后后端113项109通过/4跳过，前端33通过，真实后端浏览器5通过、另4条补充界面、53项Mock HTTP界面和76步API/90项权限断言各自保留。最终99页DOCX/PDF独立保存，原件/历史证据保持原字节；原字体、当前真实GLM及导师规则/历史保留边界未冒称验收。新入口：[审计总报告](docs/validation/thesis-system-consistency-20261113/README.md)。以下为既有阶段记录。

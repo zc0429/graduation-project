@@ -1,0 +1,12 @@
+{
+  "draft_pr": "https://github.com/zc0429/graduation-project/pull/9",
+  "base": "dev",
+  "head": "codex/thesis-final-quality-20261113",
+  "source_pr": 8,
+  "source_sha": "21da287744a252e7ccae0aadbe5832336c8b3b27",
+  "dev": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+  "main": "d16e31f6b7c06b836a4ceeb649273c23a3e68c61",
+  "protected_refs_unchanged": true,
+  "no_pr_merged": true,
+  "commit_resolution": "Final commit is the head of Draft PR #9; resolve with git rev-parse origin/codex/thesis-final-quality-20261113. This file does not embed its own commit hash."
+}

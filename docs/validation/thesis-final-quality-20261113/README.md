@@ -1,3 +1,5 @@
+> **独立终稿审阅PR**：[Draft PR #9](https://github.com/zc0429/graduation-project/pull/9)，从PR #8派生，指向dev，不合并。
+
 # 毕业论文终稿质量审查交付
 
 本轮基于[Draft PR #8](https://github.com/zc0429/graduation-project/pull/8)最新提交`21da287744a252e7ccae0aadbe5832336c8b3b27`，独立分支`codex/thesis-final-quality-20261113`，目标`dev`，不合并PR。重点为论文语言、论证组织与最终排版；系统代码、已通过开题、学校材料、参考论文、历史验证和旧导出件均不修改。

@@ -1,3 +1,5 @@
+> **独立终稿审阅PR**：[Draft PR #9](https://github.com/zc0429/graduation-project/pull/9)，从PR #8派生，指向dev，不合并。
+
 > **2026-11-13 最新终稿质量交付**：独立分支`codex/thesis-final-quality-20261113`基于Draft PR #8 `21da287`，目标`dev`，不合并。[逐章质量报告与49处对照](../validation/thesis-final-quality-20261113/README.md)／[DOCX](../../output/thesis/thesis-final-quality-20261113/毕业论文.docx)／[PDF](../../output/thesis/thesis-final-quality-20261113/毕业论文.pdf)。99页、正文85页、120目录项、28图26表31段代码27文献。只做必要文字修订和文档验证；系统、开题、学校材料与历史证据不改。原字体Word未测、当前知识讲解真实模型质量及导师暂定规则边界保留。下一步请导师审阅内容与规则，归档前完成合法原字体Word复核。以下为历史入口。
 
 > **2026-11-13 最新审阅交付**：[Draft PR #8](https://github.com/zc0429/graduation-project/pull/8)，分支`codex/thesis-system-consistency-audit-20261113`基于PR #7 `7d0d40e`。请从[全面一致性审计总报告](../validation/thesis-system-consistency-20261113/README.md)进入FR矩阵、P1/P2修正、独立99页DOCX/PDF及本轮实际日志。修正后后端109通过/4跳过、前端33通过、真实浏览器5通过及另4条补充流程；Mock/历史/真实模型不混算。保留原PR、学校原件与开题/历史证据，不合并dev。以下旧入口作为历史保留。
