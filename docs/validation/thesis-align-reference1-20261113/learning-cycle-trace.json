@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-13",
+  "model": "explicit Mock",
+  "scope": "One independent API trace with database snapshots; not added to browser test counts",
+  "question_id": 6,
+  "steps": [
+    {
+      "step": "创建原题",
+      "response": {
+        "questionId": 6
+      },
+      "database": {
+        "knowledge_rows": 0,
+        "variant_rows": 0,
+        "practice_rows": 0,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "首次知识请求",
+      "response": {
+        "reused": false
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 0,
+        "practice_rows": 0,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "再次知识请求",
+      "response": {
+        "reused": true
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 0,
+        "practice_rows": 0,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "获取未练原题",
+      "response": {
+        "source": "original",
+        "questionId": 6,
+        "variantId": null
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 0,
+        "practice_rows": 0,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "原题答错提交",
+      "response": {
+        "code": 0
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 0,
+        "practice_rows": 1,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "首次补充变式",
+      "response": {
+        "source": "generated",
+        "variantId": 10
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 3,
+        "practice_rows": 1,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "重复获取未提交题",
+      "response": {
+        "source": "existing",
+        "variantId": 10
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 3,
+        "practice_rows": 1,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "三道变式全部提交",
+      "response": {
+        "submitted": 3
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 3,
+        "practice_rows": 4,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "耗尽后继续",
+      "response": {
+        "source": "generated",
+        "variantId": 13
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 6,
+        "practice_rows": 4,
+        "plan_rows": 5,
+        "mastery": 0
+      }
+    },
+    {
+      "step": "主动重做原题",
+      "response": {
+        "code": 0
+      },
+      "database": {
+        "knowledge_rows": 1,
+        "variant_rows": 6,
+        "practice_rows": 5,
+        "plan_rows": 5,
+        "mastery": 15
+      }
+    }
+  ],
+  "assertions_passed": true
+}

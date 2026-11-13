@@ -18,6 +18,7 @@ import {
   type VariantQuestion,
 } from '@/api'
 import QuestionEditor from '@/components/QuestionEditor.vue'
+import LearningResources from '@/components/LearningResources.vue'
 import QuestionContent from '@/components/QuestionContent.vue'
 import { questionHtml, questionText } from '@/utils/question-content'
 import AsyncState from '@/components/AsyncState.vue'
@@ -60,7 +61,6 @@ const editImageSize = ref(0)
 const editImageReading = ref(false)
 const editImageError = ref('')
 const analysisStale = ref(false)
-const variantsStale = ref(false)
 let editImageReadVersion = 0
 let variantRequestVersion = 0
 let similarRequestVersion = 0
@@ -180,7 +180,6 @@ async function loadPage() {
   similarLoaded.value = false
   similarError.value = ''
   analysisStale.value = false
-  variantsStale.value = false
   polling.stop()
   try {
     if (!subjects.value.length) {
@@ -219,12 +218,12 @@ async function retryAnalysisSync() {
 }
 
 async function generateVariants() {
-  if (generating.value || analysisStale.value || variantsStale.value) return
+  if (generating.value) return
   generating.value = true
   variantError.value = ''
   try {
     const generated = await variantApi.generate(questionId.value)
-    ElMessage.success(`已生成 ${generated.length} 道变式题`)
+    ElMessage.success(`已取得 ${generated.length} 道可用变式题`)
     await loadVariants()
   } catch (error) {
     variantError.value = error instanceof Error ? error.message : '变式题生成失败，请稍后重试。'
@@ -232,6 +231,8 @@ async function generateVariants() {
     generating.value = false
   }
 }
+
+async function loadPageAfterPractice() { await Promise.allSettled([loadQuestion(), loadVariants()]) }
 
 function rejectEditImage(message: string) {
   editImageError.value = message
@@ -313,24 +314,27 @@ async function saveEdit() {
   }
   try {
     await questionApi.update(questionId.value, payload)
-    const hadExistingVariants = variants.value.length > 0 || variantLoading.value || Boolean(variantError.value)
-    variantRequestVersion += 1
-    variantLoading.value = false
-    polling.stop()
-    polling.analysis.value = null
-    analysisStale.value = true
-    variantsStale.value = hadExistingVariants
-    variants.value = []
-    variantError.value = ''
-    similarRequestVersion += 1
-    similarQuestions.value = []
-    similarLoading.value = false
-    similarLoaded.value = false
-    similarError.value = ''
+    const coreChanged = payload.subjectId !== question.value?.subjectId
+      || payload.stem !== questionHtml(question.value?.stem || '')
+      || payload.answer !== (question.value?.answer || '') || Boolean(payload.imageBase64)
+    if (coreChanged) {
+      variantRequestVersion += 1
+      variantLoading.value = false
+      polling.stop()
+      polling.analysis.value = null
+      analysisStale.value = true
+      variants.value = []
+      variantError.value = ''
+      similarRequestVersion += 1
+      similarQuestions.value = []
+      similarLoading.value = false
+      similarLoaded.value = false
+      similarError.value = ''
+    }
     editVisible.value = false
     try {
       await loadQuestion()
-      ElMessage.success('错题内容已更新，请重新生成 AI 解析')
+      ElMessage.success(coreChanged ? '错题内容已更新，可重新获取解析与学习资源' : '错题来源已更新')
     } catch {
       ElMessage.warning('错题已保存，但最新内容暂未重新加载，请刷新页面')
     }
@@ -386,7 +390,7 @@ async function submitPractice() {
       duration: practiceForm.duration,
     })
     practiceVisible.value = false
-    await loadQuestion()
+    await Promise.all([loadQuestion(), loadVariants()])
     ElMessage.success('练习结果已记录，掌握度已更新')
   } catch (error) {
     practiceError.value = error instanceof Error ? error.message : '练习记录提交失败。'
@@ -436,7 +440,7 @@ onMounted(loadPage)
       </section>
 
       <PaperPanel :padded="false" class="analysis-workbench">
-        <div v-if="analysisStale || variantsStale" class="derived-stale-note" role="status">
+        <div v-if="analysisStale" class="derived-stale-note" role="status">
           <span aria-hidden="true">!</span>
           <div>
             <strong>题目内容已经修改</strong>
@@ -491,14 +495,16 @@ onMounted(loadPage)
             </div>
           </el-tab-pane>
 
-          <el-tab-pane :label="variantsStale ? 'AI 变式题 · 已过期' : `AI 变式题 · ${variants.length}`" name="variants">
+          <el-tab-pane label="学习与练习" name="learning" lazy>
+              <div class="tab-content"><LearningResources :question-id="questionId" :revision="JSON.stringify([question.subjectId,question.stem,question.answer,question.knowledgePointId])" @practiced="loadPageAfterPractice" /></div>
+            </el-tab-pane>
+            <el-tab-pane :label="`AI 变式题 · ${variants.length}`" name="variants">
             <div class="tab-content">
-              <div class="variant-head"><p>{{ variantsStale ? '已有变式题基于修改前的内容，不能继续与新结果混合。' : analysisStale ? '请先重新解析当前题目，再生成新的变式题。' : '变式题生成是同步模型调用，可能需要较长时间；请不要重复点击。' }}</p><el-button v-if="!variantsStale" type="primary" :icon="MagicStick" :loading="generating" :disabled="analysisStale" @click="generateVariants">{{ analysisStale ? '等待重新解析' : '生成变式题' }}</el-button></div>
-              <div v-if="variantsStale" class="truth-note stale-variants"><strong>旧变式题已隐藏</strong><p>当前生成接口只会追加记录，不会安全替换旧结果。为避免新旧题目混在一起，在后端提供清理或替换能力前，本题不再继续生成变式题。</p></div>
-              <AsyncState v-else-if="variantLoading" status="loading" compact title="正在读取变式题" />
+              <div class="variant-head"><p>优先复用已有未练变式题；耗尽后才生成并保存新题。</p><el-button type="primary" :icon="MagicStick" :loading="generating" @click="generateVariants">获取未练变式题</el-button></div>
+              <AsyncState v-if="variantLoading" status="loading" compact title="正在读取变式题" />
               <AsyncState v-else-if="variantError" status="error" compact title="变式题操作失败" :description="variantError" @retry="loadVariants" />
               <AsyncState v-else-if="variants.length === 0" status="empty" compact title="还没有变式题" description="生成后可逐题作答并提交自评。" />
-              <div v-else class="variant-list"><article v-for="(item, index) in variants" :key="item.id"><div><span>变式 {{ index + 1 }}</span><em>难度 {{ difficultyText(item.difficulty) }}</em></div><QuestionContent :content="item.stem" /><details><summary>查看参考答案</summary><p>{{ item.answer || '后端未返回答案。' }}</p></details><el-button @click="openPractice({ variantId: item.id }, `作答变式 ${index + 1}`)">作答并记录</el-button></article></div>
+              <div v-else class="variant-list"><article v-for="(item, index) in variants" :key="item.id"><div><span>变式 {{ index + 1 }}</span><em>难度 {{ difficultyText(item.difficulty) }}</em></div><QuestionContent :content="item.stem" /><details><summary>查看参考答案</summary><p>{{ item.answer || '后端未返回答案。' }}</p></details><el-button @click="openPractice({ variantId: item.id }, `作答变式 ${index + 1}`)">{{ item.practiced ? '重新练习' : '作答并记录' }}</el-button></article></div>
             </div>
           </el-tab-pane>
         </el-tabs>

@@ -57,6 +57,7 @@ export interface AiAnalysis {
 }
 
 export interface VariantQuestion {
+  practiced?: boolean
   id: number
   questionId: number
   stem: string

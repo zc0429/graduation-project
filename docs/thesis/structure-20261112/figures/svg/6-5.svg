@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="202.8472mm" viewBox="0 0 446.4567 575">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="30" y="8" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="28.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">读取当前错题输入快照</text>
+<text x="223.0" y="42.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">纯文本题干、科目、可选答案</text>
+<rect x="30" y="80" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="100.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">embedding-3 生成题干向量</text>
+<text x="223.0" y="114.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">客户端检查 1024 维与有限数</text>
+<polyline points="223,57 223,80" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,80 220.12344676837478,74.73450462865776 225.87655323162522,74.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="30" y="153" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="173.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">候选查询：同用户、同科目、排除原题</text>
+<text x="223.0" y="187.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">向量非空；再次核验候选所属用户</text>
+<polyline points="223,129 223,153" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,153 220.12344676837478,147.73450462865776 225.87655323162522,147.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="30" y="226" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="246.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">应用内余弦相似度计算</text>
+<text x="223.0" y="260.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">保留相似度 &gt; 0，降序取最多 3 条</text>
+<polyline points="223,202 223,226" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,226 220.12344676837478,220.73450462865776 225.87655323162522,220.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="30" y="299" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="319.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">构造提示词：题干 + 可选答案 + 知识点候选</text>
+<text x="223.0" y="333.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">参考题只取题干片段（每题最多前 50 字）</text>
+<polyline points="223,275 223,299" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,299 220.12344676837478,293.73450462865776 225.87655323162522,293.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="30" y="372" width="386" height="49" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="392.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">调用智谱 GLM 大模型</text>
+<text x="223.0" y="406.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">校验精确字段、候选 ID、难度 1-5 和中文文本</text>
+<polyline points="223,348 223,372" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,372 220.12344676837478,366.73450462865776 225.87655323162522,366.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<rect x="30" y="463" width="386" height="61" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="482.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">短事务比较输入快照与解析记录状态</text>
+<text x="223.0" y="496.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">成功写入向量、归类、解析及 reference_ids</text>
+<text x="223.0" y="510.5" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">同事务发送完成消息</text>
+<polyline points="223,421 223,463" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="223,463 220.12344676837478,457.73450462865776 225.87655323162522,457.73450462865776" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="223" y="552" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">空参考集仍可生成；异常记失败，输入过期则放弃旧结果回写。</text>
+<text x="223" y="569" font-family="Times New Roman, SimSun, serif" font-size="9" text-anchor="middle" fill="black">RAG 不强制同知识点；reference_ids 记录本次实际参考题。</text>
+</svg>

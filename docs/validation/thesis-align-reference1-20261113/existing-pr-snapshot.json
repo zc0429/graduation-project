@@ -1,0 +1,62 @@
+[
+  {
+    "number": 1,
+    "url": "https://github.com/zc0429/graduation-project/pull/1",
+    "title": "docs: 按导师要求修订三页业务流程图及A4交付（待审阅）",
+    "state": "open",
+    "merged": false,
+    "draft": true,
+    "base": "dev",
+    "base_sha": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "head": "codex/business-flow-review-20261111",
+    "head_sha": "d72b3827d1dd5d1f4582d93b88b27a5c412ac0ad"
+  },
+  {
+    "number": 3,
+    "url": "https://github.com/zc0429/graduation-project/pull/3",
+    "title": "docs: 校正默认分支与导师业务图审阅状态",
+    "state": "open",
+    "merged": false,
+    "draft": false,
+    "base": "dev",
+    "base_sha": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "head": "codex/repository-sweep-20261111",
+    "head_sha": "35741ff2f6c0ca2cd639358e1a15f3015aec18ab"
+  },
+  {
+    "number": 4,
+    "url": "https://github.com/zc0429/graduation-project/pull/4",
+    "title": "docs: 完善第3章需求分析并整理九章论文与设计",
+    "state": "open",
+    "merged": false,
+    "draft": true,
+    "base": "dev",
+    "base_sha": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "head": "codex/thesis-requirements-20261111",
+    "head_sha": "7429f8505d329383f7a49c433c4badd8e142c2ea"
+  },
+  {
+    "number": 5,
+    "url": "https://github.com/zc0429/graduation-project/pull/5",
+    "title": "实现个人资源持续练习，完成九章论文审计与32篇文献核验",
+    "state": "open",
+    "merged": false,
+    "draft": true,
+    "base": "dev",
+    "base_sha": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "head": "codex/learning-delivery-20261112",
+    "head_sha": "0fe7707f47a50a04a929705d39264292e2713d95"
+  },
+  {
+    "number": 6,
+    "url": "https://github.com/zc0429/graduation-project/pull/6",
+    "title": "chore: 整合PR #5成果并校准仓库现行入口（待全量复验）",
+    "state": "open",
+    "merged": false,
+    "draft": true,
+    "base": "dev",
+    "base_sha": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "head": "codex/integrate-pr5-repo-audit-20261113",
+    "head_sha": "bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "observed_mysql": {
+    "version": "8.0.46",
+    "tables": 11,
+    "columns": 88,
+    "all_types_nullability_defaults_and_auto_increment_match": true,
+    "all_primary_unique_and_ordinary_indexes_match": true,
+    "index_count": 20
+  },
+  "gate5_recalculation": {
+    "new_model_calls": 0,
+    "cases": 27,
+    "score": 46,
+    "maximum": 54,
+    "mean": 1.7037037037037037,
+    "distribution": {
+      "2": 20,
+      "1": 6,
+      "0": 1
+    },
+    "ab_cases": 6,
+    "preferences": {
+      "RAG_OFF": 4,
+      "RAG_ON": 2
+    },
+    "original_data_unchanged": "Protected file SHA verification in code-thesis-audit.json"
+  },
+  "scope": "New MySQL metadata verification; historical Gate5 statistics recomputed, no experiment output or manual score overwritten."
+}

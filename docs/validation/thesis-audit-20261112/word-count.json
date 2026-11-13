@@ -1,0 +1,59 @@
+{
+  "basis": "正文第1—9章，排除文末参考文献和图片路径；中文字符及去标记非空字符两种口径，非Word官方字数统计",
+  "chapters": [
+    {
+      "chapter": "1",
+      "title": "绪　论",
+      "non_whitespace_characters": 1433,
+      "chinese_characters": 1224
+    },
+    {
+      "chapter": "2",
+      "title": "文献综述",
+      "non_whitespace_characters": 2551,
+      "chinese_characters": 2254
+    },
+    {
+      "chapter": "3",
+      "title": "系统需求分析",
+      "non_whitespace_characters": 7577,
+      "chinese_characters": 6399
+    },
+    {
+      "chapter": "4",
+      "title": "相关技术概述",
+      "non_whitespace_characters": 1893,
+      "chinese_characters": 1556
+    },
+    {
+      "chapter": "5",
+      "title": "系统概要设计",
+      "non_whitespace_characters": 2361,
+      "chinese_characters": 1648
+    },
+    {
+      "chapter": "6",
+      "title": "系统详细设计",
+      "non_whitespace_characters": 12356,
+      "chinese_characters": 5393
+    },
+    {
+      "chapter": "7",
+      "title": "系统开发与实现",
+      "non_whitespace_characters": 6233,
+      "chinese_characters": 4502
+    },
+    {
+      "chapter": "8",
+      "title": "系统测试",
+      "non_whitespace_characters": 5591,
+      "chinese_characters": 3500
+    },
+    {
+      "chapter": "9",
+      "title": "总结与展望",
+      "non_whitespace_characters": 997,
+      "chinese_characters": 811
+    }
+  ]
+}

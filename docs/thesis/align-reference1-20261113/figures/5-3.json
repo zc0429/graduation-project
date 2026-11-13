@@ -1,0 +1,453 @@
+{
+  "id": "5-3",
+  "caption": "图 6.6　错题保存与异步解析时序",
+  "height": 448.8,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
+    "web/src/composables/useAiAnalysisPolling.ts",
+    "web/src/views/question/QuestionCreateView.vue"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 4,
+      "y": 8.8,
+      "w": 90,
+      "h": 28.8,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 49.0,
+      "y": 25.6,
+      "text": "学生页面",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          49,
+          37.6
+        ],
+        [
+          49,
+          407.0
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "rect",
+      "x": 120,
+      "y": 8.8,
+      "w": 90,
+      "h": 28.8,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 165.0,
+      "y": 25.6,
+      "text": "接口与服务",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          37.6
+        ],
+        [
+          165,
+          407.0
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "rect",
+      "x": 236,
+      "y": 8.8,
+      "w": 90,
+      "h": 28.8,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 281.0,
+      "y": 25.6,
+      "text": "本地执行器",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          281,
+          37.6
+        ],
+        [
+          281,
+          407.0
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "rect",
+      "x": 352,
+      "y": 8.8,
+      "w": 90,
+      "h": 28.8,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 397.0,
+      "y": 25.6,
+      "text": "数据库",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          397,
+          37.6
+        ],
+        [
+          397,
+          407.0
+        ]
+      ],
+      "arrow": null,
+      "dash": true
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          49,
+          64.8
+        ],
+        [
+          165,
+          64.8
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 107.0,
+      "y": 59.2,
+      "text": "提交错题",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          92.80000000000001
+        ],
+        [
+          397,
+          92.80000000000001
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 281.0,
+      "y": 87.2,
+      "text": "事务保存 question + 5 条 review_plan",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          120.80000000000001
+        ],
+        [
+          49,
+          120.80000000000001
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "text",
+      "x": 107.0,
+      "y": 115.2,
+      "text": "返回题目 ID",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          49,
+          148.8
+        ],
+        [
+          165,
+          148.8
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 107.0,
+      "y": 143.20000000000002,
+      "text": "另行触发解析",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          176.8
+        ],
+        [
+          397,
+          176.8
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 281.0,
+      "y": 171.20000000000002,
+      "text": "归属检查；创建或重置解析状态 0",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          204.8
+        ],
+        [
+          281,
+          204.8
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 199.20000000000002,
+      "text": "提交任务",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          229.60000000000002
+        ],
+        [
+          49,
+          229.60000000000002
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "text",
+      "x": 107.0,
+      "y": 224.0,
+      "text": "触发接口返回",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          281,
+          257.6
+        ],
+        [
+          397,
+          257.6
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 339.0,
+      "y": 252.0,
+      "text": "读取解析记录与题目",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 227,
+      "y": 272.8,
+      "w": 109,
+      "h": 48.800000000000004
+    },
+    {
+      "kind": "text",
+      "x": 281.5,
+      "y": 288.40000000000003,
+      "text": "执行向量与 RAG",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 281.5,
+      "y": 299.6,
+      "text": "请求外部 GLM",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 281.5,
+      "y": 310.8,
+      "text": "校验结构化响应",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          281,
+          347.20000000000005
+        ],
+        [
+          397,
+          347.20000000000005
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 339.0,
+      "y": 341.6,
+      "text": "条件回写 + 完成消息",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          49,
+          375.20000000000005
+        ],
+        [
+          165,
+          375.20000000000005
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 107.0,
+      "y": 369.6,
+      "text": "轮询解析状态",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          165,
+          403.20000000000005
+        ],
+        [
+          49,
+          403.20000000000005
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "text",
+      "x": 107.0,
+      "y": 397.6,
+      "text": "返回 0 / 1 / 2",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 425.6,
+      "text": "保存事务不包含外部模型调用；任务与轮询可并发进行。",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 440.0,
+      "text": "过期输入：回写事务回滚且不发完成消息；异常：当前解析置 2。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ]
+}

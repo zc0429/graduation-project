@@ -1,0 +1,1803 @@
+[
+  {
+    "old_number": 1,
+    "key": "zhao2024knowledge",
+    "entry": "赵雅娟，孟繁军，徐行健．在线教育学习者知识追踪综述［J］．计算机应用，2024，44（6）：1683-1698．",
+    "year": 2024,
+    "source_url": "https://www.joca.cn/CN/Y2024/V44/I6/1683",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.joca.cn/CN/Y2024/V44/I6/1683",
+        "status": 200,
+        "final_url": "https://www.joca.cn/CN/Y2024/V44/I6/1683",
+        "sha256": "655843f1164ce7ef790e606dcc95020c10d6a15f8d04733c3a646eb4f284bcbf",
+        "bytes": 194132,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "在线教育学习者知识追踪综述 Toggle navigation 首页 期刊介绍 期刊简介 历史沿革 收录情况 获奖情况 引用指标 编委会 期刊在线 文章推荐 过刊浏览 专辑专刊 下载排行 阅读排行 投稿指南 组稿方向 投稿须知 论文模板 常见问题 署名变更申请 单位变更申请 版权转让协议 中图分类号 引言书写要求 参考文献著录格式 插图与表格规范 英文摘要书写要求 收费标准 学术诚信 联系我们 编辑部联系方式 位置示意图 期刊订阅办法 广告合作 English 《计算机应用》唯一官方网站 ›› 2024 , Vol. 44 ›› Issue (6) : 1683-1698. DOI: 10.11772/j.issn.1001-9081.2023060852 所属专题： 综述 ； CCF第38届中国计算机应用大会 (CCF NCCA 2023) • CCF第38届中国计算机应用大会 (CCF NCCA 2023) • 上一篇 下一篇 在线教育学习者知识追踪综述 赵雅娟, 孟繁军( ), 徐行健 内蒙古师范大学 计算机科学技术学院，呼和浩特 010022 收稿日期: 2023-07-01 修回日期: 2023-10-26 接受日期: 2023-10-27 发布日期: 2023-11-07 出版日期: 2024-06-10 通讯作者: 孟繁军 作者简介: 赵雅娟（1999—），女，内蒙古呼和浩特人，硕士研究生，CCF会员，主要研究方向：教育大数据 徐行健（1988—），男，安徽蚌埠人，"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2023060852",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2023060852",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 2,
+    "key": "dong2023recommendation",
+    "entry": "董永峰，王雅琮，董瑶，等．在线学习资源推荐综述［J］．计算机应用，2023，43（6）：1655-1663．",
+    "year": 2023,
+    "source_url": "https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2022091335",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2022091335",
+        "status": 200,
+        "final_url": "https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2022091335",
+        "sha256": "7fcf107f6f895904d667461f4ed8af10c6f8b5ce773b0e7ce403f865d5997581",
+        "bytes": 132049,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": " Teaching Reform Research and Practice Project(2020GJJG027) 在线学习资源推荐综述 董永峰 1 , 2 , 3 , 王雅琮 1 , 2 , 3 , 董瑶 1 , 2 , 3 ( ), 邓亚晗 1 , 2 , 3 1. 河北工业大学 人工智能与数据科学学院, 天津 300401 2. 河北省大数据计算重点实验室(河北工业大学), 天津 300401 3. 河北省数据驱动工业智能工程研究中心(河北工业大学), 天津 300401 通讯作者: 董瑶 作者简介: 董永峰（1977—），男，河北定州人，教授，博士，CCF会员，主要研究方向：人工智能、知识图谱 王雅琮（1998—），女，河北石家庄人，硕士研究生，CCF会员，主要研究方向：推荐系统、知识图谱 董瑶（1982—），女，河北唐山人，高级实验师，博士研究生，CCF会员，主要研究方向：知识图谱、数据挖掘；Email： dongyao@scse.hebut.edu.cn 邓亚晗（1997—），女，广东新会人，硕士研究生，CCF会员，主要研究方向：知识图谱、机器学习。 基金资助: 河北省高等学校科学技术研究项目(QN2021213);河北省高等教育教学改革研究与实践项目(2020GJJG027) RichHTML PDF Knowledge 0 Abstract Abstract: In recent years， more and more schools tend to use"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2022091335",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2022091335",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 3,
+    "key": "suo2025interpretable",
+    "entry": "索晋贤，张丽萍，闫盛，等．可解释的深度知识追踪方法综述［J］．计算机应用，2025，45（7）：2043-2055．",
+    "year": 2025,
+    "source_url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024070970",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024070970",
+        "status": 200,
+        "final_url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024070970",
+        "sha256": "2a509700b7ae6c9ec48665280830b06af028db8e20434fef074f9f1f510bf772",
+        "bytes": 179953,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "可解释的深度知识追踪方法综述 Toggle navigation 首页 期刊介绍 期刊简介 历史沿革 收录情况 获奖情况 引用指标 编委会 期刊在线 文章推荐 过刊浏览 专辑专刊 下载排行 阅读排行 投稿指南 组稿方向 投稿须知 论文模板 常见问题 署名变更申请 单位变更申请 版权转让协议 中图分类号 引言书写要求 参考文献著录格式 插图与表格规范 英文摘要书写要求 收费标准 学术诚信 联系我们 编辑部联系方式 位置示意图 期刊订阅办法 广告合作 English 《计算机应用》唯一官方网站 ›› 2025 , Vol. 45 ›› Issue (7) : 2043-2055. DOI: 10.11772/j.issn.1001-9081.2024070970 • CCF第39届中国计算机应用大会 (CCF NCCA 2024) • 下一篇 可解释的深度知识追踪方法综述 索晋贤, 张丽萍( ), 闫盛, 王东奇, 张雅雯 内蒙古师范大学 计算机科学技术学院，呼和浩特 010022 收稿日期: 2024-07-03 修回日期: 2024-09-06 接受日期: 2024-09-25 发布日期: 2025-07-10 出版日期: 2025-07-10 通讯作者: 张丽萍 作者简介: 索晋贤（2001—），男，山西大同人，硕士研究生，CCF学生会员，主要研究方向：教育数据挖掘、智慧教育 闫盛（1984—），男，内蒙古包头市人，讲师，硕士，CCF会员，主要研究方向：计算机教育应用 王东奇（"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2024070970",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2024070970",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 4,
+    "key": "ma2023hotspots",
+    "entry": "马华，李京泽，唐文胜，等．个性化在线学习资源推荐研究热点与趋势——基于2011—2021年CNKI和WoS文献的可视化分析［J］．软件导刊，2023，22（1）：29-37．",
+    "year": 2023,
+    "source_url": "https://www.rjdk.org.cn/zh/article/doi/10.11907/rjdk.221215/",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.rjdk.org.cn/zh/article/doi/10.11907/rjdk.221215/",
+        "status": 200,
+        "final_url": "https://www.rjdk.org.cn/zh/article/doi/10.11907/rjdk.221215/",
+        "sha256": "6fd1bff0dc32c0be792714d5305b8d7c18e462bf6329fbcb23233c5156126604",
+        "bytes": 247875,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "个性化在线学习资源推荐研究热点与趋势——基于2011-2021年CNKI和WoS文献的可视化分析 您当前的位置： 首页 > 文章列表页 > 个性化在线学习资源推荐研究热点与趋势——基于2011-2021年CNKI和WoS文献的可视化分析 专题：智慧教育 | 更新时间：2023-02-09 上一篇 | 下一篇 个性化在线学习资源推荐研究热点与趋势——基于2011-2021年CNKI和WoS文献的可视化分析 Hot Spots and Trends of Research on Personalized Online Learning Resources RecommendationVisual Analysis Based on CNKI and WoS Literatures from 2011-2021 软件导刊 2023年22卷第1期 页码：29-37 作者机构： 1.湖南师范大学 信息科学与工程学院，湖南 长沙 410081 2.腾讯云计算（长沙）有限责任公司，湖南 长沙 410221 作者简介： 马华（1979-），男，博士，CCF高级会员，湖南师范大学信息科学与工程学院教授、硕士生导师，研究方向为个性化学习和服务计算 李京泽（1997-），男，湖南师范大学信息科学与工程学院硕士研究生，研究方向为个性化学习与系统。 唐文胜（1970-），男，博士，湖南师范大学信息科学与工程学院教授、硕士生导师，研究方向为个性化学习和先进计算 黄卓轩（1995-），男，湖南师范大学信息科学"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11907/rjdk.221215",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11907/rjdk.221215",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 5,
+    "key": "zheng2023path",
+    "entry": "郑雅倩，李新，李艳燕，等．人工智能视域下个性化学习路径推荐：机理、演进、价值与趋势［J］．现代远距离教育，2023（3）：39-47．",
+    "year": 2023,
+    "source_url": "https://yuan.cbpt.cnki.net/portal/journal/portal/client/paper/2c6b0e970a3d61d1f11bb091bb3a0aba",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://yuan.cbpt.cnki.net/portal/journal/portal/client/paper/2c6b0e970a3d61d1f11bb091bb3a0aba",
+        "status": 200,
+        "final_url": "https://yuan.cbpt.cnki.net/portal/journal/portal/client/paper/2c6b0e970a3d61d1f11bb091bb3a0aba",
+        "sha256": "07aa63760051ea1dac5d1837b0aa8160d18fc3df202bd501c74f89e6203bd806",
+        "bytes": 104556,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "3, \n\n                    No.207 \n\n                    39-47 人工智能视域下个性化学习路径推荐:机理、演进、价值与趋势 郑雅倩 1 李新 2 李艳燕 1 王德亮 3 包昊罡 4 1.北京师范大学 2.江苏师范大学 3.香港大学 4.中国教育科学研究院 基金项目(Foundation): 国家自然科学基金面上项目“融合多模态学习分析的协作过程监测和智能反馈研究”(编号：62277006);\r\n北京市自然科学基金面上项目“面向数字社会发展的智慧教育支持服务关键技术研究”(编号：9222019) 邮箱(Email): DOI: 10.13927/j.cnki.yuan.20230628.002 发布时间： 2023-06-29 出版时间： 2023-06-29 网络发布时间： 2023-06-29 移动端阅读 4,132 63 300 下载次数 被引频次 阅读次数 引用本文 下载本文 PDF 引用导出 GB/T 7714-2015 MLA APA Refworks EndNote NoteExpress NoteFirst 分享 摘要 全文 参考文献 出版信息 相关文章 摘要： 个性化学习路径推荐是智能技术驱动教育服务智能升级的关键力量，是实现大规模个性化教育的重要驱动。然而，目前个性化学习路径推荐的研究与实践仍未成熟，难以满足学习者因人而异、因时而变的个性化需求。个性化学习路径推荐的主流推荐框架包括基于机器学习、基于进化计算和"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.13927/j.cnki.yuan.20230628.002",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.13927/j.cnki.yuan.20230628.002",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 6,
+    "key": "han2025federated",
+    "entry": "韩姣，付瑞，孙昊，等．基于联邦学习的个性化学习资源推荐系统研究［J］．教育学刊，2025，3（12）：74-81．",
+    "year": 2025,
+    "source_url": "https://cn.sgsci.org/jyxk/article/view/912",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://cn.sgsci.org/jyxk/article/view/912",
+        "status": 200,
+        "final_url": "https://cn.sgsci.org/jyxk/article/view/912",
+        "sha256": "e9935c270f6cb95c7f6ee4bcb6a17c6172183c20d66b4a2db70f0f6ccf9850ad",
+        "bytes": 48138,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "基于联邦学习的个性化学习资源推荐系统研究 Open Menu 教育学刊 首页 最新一期 档案 关于我们 关于期刊 编辑方针 利益冲突 剽窃方针 文章处理费 文章语言 编辑团队 索引和存档 投稿 投稿须知 投稿 隐私声明 开放存取政策 Downloads Download PDF 已出版 2025-12-25 How to Cite 基于联邦学习的个性化学习资源推荐系统研究. (2025). 教育学刊 , 3 (12), 74-81. https://doi.org/10.62836/jer.v3n12.0912 More Citation Formats ACM ACS APA ABNT Chicago Harvard IEEE MLA Turabian Vancouver AMA Download Citation Endnote/Zotero/Mendeley (RIS) BibTeX 期次 Volume 3, Issue 12, December 2025 License Copyright (c) 2025 韩姣, 付瑞, 孙昊, 李碧锦, 张玉涛 This work is licensed under a Creative Commons Attribution 4.0 International License . 基于联邦学习的个性化学习资源推荐系统研究 韩姣，付瑞 * ，孙昊，李碧锦，张玉涛 潍坊科技学院信息科学与工程学院，山东潍坊 摘要 ：智能时代，开展学生个性"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.62836/jer.v3n12.0912",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.62836/jer.v3n12.0912",
+        "sha256": "34264c80d5dfcd463bffac0b455950b8a123a12fbe0c706d3cee7b78d1798444",
+        "bytes": 8599,
+        "crossref_metadata": {
+          "title": [
+            "基于联邦学习的个性化学习资源推荐系统研究"
+          ],
+          "author": [
+            {
+              "family": "韩姣",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "family": "付瑞",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "family": "孙昊",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "family": "李碧锦",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "family": "张玉涛",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                12,
+                25
+              ]
+            ]
+          },
+          "published-print": null,
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                12,
+                25
+              ]
+            ]
+          },
+          "volume": null,
+          "issue": null,
+          "page": "74-81",
+          "container-title": [
+            "教育学刊"
+          ],
+          "DOI": "10.62836/jer.v3n12.0912"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"基于联邦学习的个性化学习资源推荐系统研究\"], \"author\": [{\"family\": \"韩姣\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"family\": \"付瑞\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"family\": \"孙昊\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"family\": \"李碧锦\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"family\": \"张玉涛\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}], \"published"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 7,
+    "key": "zhu2024llmrecommendation",
+    "entry": "朱敏．基于大语言模型的个性化资源推荐方法研究［J］．兰州文理学院学报（自然科学版），2024，38（5）：59-64．",
+    "year": 2024,
+    "source_url": "https://gxjb.cbpt.cnki.net/portal/journal/portal/client/paper/f0bd82b2ae9a1240a634c4e939c5f529",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://gxjb.cbpt.cnki.net/portal/journal/portal/client/paper/f0bd82b2ae9a1240a634c4e939c5f529",
+        "status": 200,
+        "final_url": "https://gxjb.cbpt.cnki.net/portal/journal/portal/client/paper/f0bd82b2ae9a1240a634c4e939c5f529",
+        "sha256": "ebaa1b7b790eae20b1a6bf1eafb21794786b6fc8d298b5f4ac7e43125519aa25",
+        "bytes": 101871,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": " 05, \n\n                    v.38 \n\n                    59-64 基于大语言模型的个性化资源推荐方法研究 朱敏 1.安徽警官职业学院信息管理系 基金项目(Foundation): 2023年度安徽省中青年教师培养行动项目(YQYB2023185);\r\n2023年度安徽省高校科研计划校级重点研究项目(2023zrkz002) 邮箱(Email): DOI: 10.13804/j.cnki.2095-6991.2024.05.002 发布时间： 2024-09-10 出版时间： 2024-09-10 移动端阅读 303 5 211 下载次数 被引频次 阅读次数 引用本文 下载本文 PDF 引用导出 GB/T 7714-2015 MLA APA Refworks EndNote NoteExpress NoteFirst 分享 摘要 全文 参考文献 出版信息 相关文章 摘要： 为了能够高效地理解、分析资源用户的需求，并精准推荐符合用户预期与偏好的个性化资源，提高资源推荐的效率与准确性，提出基于大语言模型的个性化资源推荐方法.结合层次分析法，深度分析用户兴趣数据属性结构；利用多维兴趣标签与项值权重，对应抓取不同属性的用户兴趣数据，构建包含兴趣标签与特征权重的用户数据数学模型；融合大语言模型的核心数据处理架构，将数学模型中代表用户需求的用户兴趣信息序列作为输入；优化搭建Transformer架构进行上下文学习，实现个性化资源推荐.实验结"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.13804/j.cnki.2095-6991.2024.05.002",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.13804/j.cnki.2095-6991.2024.05.002",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 8,
+    "key": "sun2024cuoti",
+    "entry": "孙辉．高中物理错题资源的整合［J］．现代教育探索，2024，5（2）：131-133．",
+    "year": 2024,
+    "source_url": "https://ojs.omniscient.sg/index.php/mee/article/download/37502/36432/",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://ojs.omniscient.sg/index.php/mee/article/download/37502/36432/",
+        "status": 200,
+        "final_url": "https://ojs.omniscient.sg/index.php/mee/article/download/37502/36432/",
+        "sha256": "2fa9e3265321ff2cfa27714d029938a82dc2ac2e7191345a0e019f053b82f3c1",
+        "bytes": 230076,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "现代教育探索·2024\u0004 第5卷\u0004 第2期\n131\n高中物理错题资源的整合\n孙\u0002辉\n邯郸市第二中学\b河北\b邯郸\b056000\n摘\r要：高中物理错题资源整合是提高学生学习效果的重要环节。通过系统收集、分类、分析和共享错题资源，\n能够帮助学生深入理解物理概念，掌握解题技巧，并发现学习中的薄弱环节。本研究案例通过实施详细的错题收集和\n整理方案，结合学生的普遍错误进行专题讲解和辅导，制作学习资料和练习试题，并注重资源的共享与应用。这些措\n施有效提升学生的学习效果，为高中物理教学提供新的思路和方法。\n关键词：高中；物理错题；资源整合\n1\u0014\u0014高中学习物理的重要性\n高中学习物理的重要性不言而喻，它不仅是科学知\n识体系中的核心学科，更是培养学生逻辑思维、实践能\n力和创新精神的重要途径。第一，物理作为自然科学的\n基础学科，涵盖了力学、热学、电磁学、光学和量子物\n理等多个领域，为我们揭示自然界的基本规律和现象。\n通过学习物理，学生可以深入理解自然界的奥秘，认识\n到科学的魅力和力量，从而激发对科学探索的兴趣和热\n情。第二，高中物理学习有助于培养学生的逻辑思维和\n解决问题的能力，物理学科注重实验和观察，要求学生\n通过实证方法来验证理论，这种过程需要学生具备严密\n的逻辑思维和严谨的科学态度。物理题目往往涉及复杂\n的问题情境，需要学生运用所学知识进行综合分析，提\n出解决方案，这有助于培养学生的问题意识和解决问题\n的能力。第三，高中物理学习对于培养学生的实践能力\n和创新精神具有重要意义，物理学科不仅注重理论知"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.37155/2717-5561-0502-43",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.37155/2717-5561-0502-43",
+        "sha256": "b7b245f9ba4c0242124d69886d001c0c0b8c3133c6f20948ba84ea27fa99437c",
+        "bytes": 1719,
+        "crossref_metadata": {
+          "title": [
+            "高中物理错题资源的整合"
+          ],
+          "author": [
+            {
+              "family": "孙　辉",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2024
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                2024
+              ]
+            ]
+          },
+          "published-online": null,
+          "volume": "5",
+          "issue": "2",
+          "page": "131-133",
+          "container-title": [
+            "现代教育探索"
+          ],
+          "DOI": "10.37155/2717-5561-0502-43"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"高中物理错题资源的整合\"], \"author\": [{\"family\": \"孙　辉\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"role\": \"author\", \"vocabulary\": \"crossref\"}]}], \"published\": {\"date-parts\": [[2024]]}, \"published-print\": {\"date-parts\": [[2024]]}, \"published-online\": null, \"volume\": \"5\", \"issue\": \"2\", \"page\": \"131-133\", \"container-title\": [\"现代教育探索\"], \"DOI\": \"10.37155/2717-5561-0502-43\"}"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 9,
+    "key": "xu2024education",
+    "entry": "徐刚，刘志鹏，冯骐，等．大语言模型在教育信息化中的实践：规范、框架与应用［J］．通信学报，2024，45（Z2）：229-241．",
+    "year": 2024,
+    "source_url": "https://www.joconline.com.cn/zh/article/doi/10.11959/j.issn.1000-436x.2024249/",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.joconline.com.cn/zh/article/doi/10.11959/j.issn.1000-436x.2024249/",
+        "status": 200,
+        "final_url": "https://www.joconline.com.cn/zh/article/doi/10.11959/j.issn.1000-436x.2024249/",
+        "sha256": "6f8b8985983461084ac38e281ec871e5b0989235e6d46100536172dab783b502",
+        "bytes": 229252,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "大语言模型在教育信息化中的实践：规范、框架与应用 首页 期刊简介 期刊介绍 期刊信息 学术文献 当期目录 过刊浏览 优先出版 编委会 《通信学报》第十届编委会 《通信学报》第一届青年编委会 投稿指南 投稿须知 稿件格式要求 审稿流程 下载中心 道德声明 期刊协议 期刊订阅 会议活动 联系我们 个人中心 退出登录 浏览全部资源 扫码关注微信 首页 期刊简介 期刊介绍 期刊信息 学术文献 当期目录 过刊浏览 优先出版 编委会 《通信学报》第十届编委会 《通信学报》第一届青年编委会 投稿指南 投稿须知 稿件格式要求 审稿流程 下载中心 道德声明 期刊协议 期刊订阅 会议活动 联系我们 您当前的位置： 首页 > 文章列表页 > 大语言模型在教育信息化中的实践：规范、框架与应用 人工智能应用 | 更新时间：2026-05-11 上一篇 | 下一篇 大语言模型在教育信息化中的实践：规范、框架与应用 Practical application of large language models in educational informatics: specification, framework, and applications 通信学报 2024年45卷第Z2期 页码：229-241 作者机构： 1.华东师范大学软件工程学院，上海 200062 2.华东师范大学信息化治理办公室，上海 200062 3.华东师范大学计算机科学与技术学院， 上海 200062 作者简介： [\n  \"徐刚（19"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11959/j.issn.1000-436x.2024249",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11959/j.issn.1000-436x.2024249",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 10,
+    "key": "liu2024educationmodel",
+    "entry": "刘邦奇，喻彦琨，王涛，等．人工智能教育大模型：体系架构与关键技术策略［J］．开放教育研究，2024，30（5）：76-86．",
+    "year": 2024,
+    "source_url": "https://openedu.sou.edu.cn/upload/qikanfile/202409281000290675.pdf",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://openedu.sou.edu.cn/upload/qikanfile/202409281000290675.pdf",
+        "status": 200,
+        "final_url": "https://openedu.sou.edu.cn/upload/qikanfile/202409281000290675.pdf",
+        "sha256": "0ed5a4d840d2ee0a11286adbaea8a6bb5ab787a70eb01ff22c37fb946c5ce133",
+        "bytes": 1581256,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": " \n人工智能教育大模型：体系架构与\n关键技术策略\n刘邦奇1,2　 喻彦琨2　 王　涛2　 袁婷婷1,2　 韩　萌2\n（1.  西北师范大学 教育技术学院, 甘肃兰州 730071；\n2.  讯飞教育技术研究院, 安徽合肥 230088）\n[摘要]　以大模型为代表的生成式人工智能技术为破解教学难题、革新教学样态带来了机遇。虽然大\n模型以其强大的泛化性能和跨领域的适应性，能够在多类场景中展现出强大能力，但若仅依靠海量数据训练\n带来的优势，往往很难满足教育场景下更高的知识准确度、价值观与安全性要求。为此，能够满足教育特定\n场景任务需要的人工智能教育大模型应运而生，能有效提升教育质量和推进个性化、智能化教学。本文综合\n分析了人工智能教育大模型的发展现状、概念内涵、技术特征和体系框架，旨在为人工智能教育大模型的未\n来发展提供理论与技术参考。当前，教育大模型的竞争力主要取决于技术和算力、教育数据和理解、教育场\n景和应用等，本文进而提出建设与应用框架及关键技术策略，以期推动中国版人工智能教育大模型在大规模\n因材施教、创新性与个性化教学中的应用，加快教育数字转型和智能升级。\n[关键词]　人工智能教育大模型；数据；体系框架；关键技术\n[中图分类号] G434　　　 [文献标识码] A　　　[文章编号] 1007−2179（2024）05−0076−11\n \n人工智能教育大模型是用于实现教育领域多\n种任务的大规模人工智能模型系统（上海市人工智\n能行业协会，2023）。人工智能通用大模型多缺乏\n专业的"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.13966/j.cnki.kfjyyj.2024.05.008",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.13966/j.cnki.kfjyyj.2024.05.008",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 11,
+    "key": "yu2024teacher",
+    "entry": "余胜泉，熊莎莎．基于大模型增强的通用人工智能教师架构［J］．开放教育研究，2024，30（1）：33-43．",
+    "year": 2024,
+    "source_url": "https://openedu.sou.edu.cn/upload/qikanfile/202401222231595229.pdf",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://openedu.sou.edu.cn/upload/qikanfile/202401222231595229.pdf",
+        "status": 200,
+        "final_url": "https://openedu.sou.edu.cn/upload/qikanfile/202401222231595229.pdf",
+        "sha256": "f1c3272b3e8ba00067d81a7bd2c9286b0873287790a86b2ac46f287a9ab705b3",
+        "bytes": 1564916,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": " \n基于大模型增强的通用人工智能教师架构\n余胜泉　 熊莎莎\n（北京师范大学未来教育高精尖创新中心，北京 102206）\n[摘要]　以ChatGPT 为代表的预训练大模型在教育界产生了巨大影响，也为发展通用人工智能教师带\n来了曙光。预训练大模型应用于教育存在幻觉、深度逻辑缺失、社会情感缺失等局限，如果这些关键问题不\n解决，大模型不可能在教育中得到真正有价值的应用。本文提出通过增强大模型构建通用人工智能教师架\n构，其核心思路是精调训练增强场景知识、检索增强认知、外部智能组件编排增强推理、多模态融合增强感知、\n情感计算增强社会情感，再通过教育知识图谱对大模型输出进行监督。通用人工智能教师主要有六种应用\n场景：需要渊博知识的场景、洞察创意增强场景、约束与管理场景、社会情感互动场景、个性化指导与反馈场\n景、多模态内容表现场景。文章最后分析了通用智能时代人类教师面临的机遇与挑战，提出教师需要主动拥\n抱、使用、驾驭并控制智能技术，解放、增强、进化自我，并跨越陷阱。\n[关键词]　人工智能教师；生成式人工智能；预训练大模型；人工智能教育应用\n[中图分类号] G451　　　[文献标识码] A　　　[文章编号] 1007−2179（2024）01−0033−11\n \n \n人工智能技术的教育应用，不仅为教学活动注\n入新的活力，也提高了教师的专业水平。例如，人\n工智能教师可以利用机器学习、计算机视觉、自然\n语言处理、人机交互等技术，分析学生学习和情感\n状态，自动批改和生成作业及试卷，辅助写作和语\n音答题，"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.13966/j.cnki.kfjyyj.2024.01.004",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.13966/j.cnki.kfjyyj.2024.01.004",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 12,
+    "key": "luo2024feedback",
+    "entry": "罗恒，廖小芳，茹琦琦，等．生成式人工智能支持的教师评语研究：基于初中数学课堂的实践探索［J］．电化教育研究，2024，45（5）：58-66．",
+    "year": 2024,
+    "source_url": "https://doi.org/10.13811/j.cnki.eer.2024.05.008",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://doi.org/10.13811/j.cnki.eer.2024.05.008",
+        "status": 200,
+        "final_url": "https://www.chndoi.org/Resolution/Handler?doi=10.13811/j.cnki.eer.2024.05.008",
+        "sha256": "d8356b020a513f2bc4a38947c57c1bc29356ccedb22d4c54ace4581bda4a8c27",
+        "bytes": 1722,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "多重解析地址选择页面 题名： 生成式人工智能支持的教师评语研究：基于初中数学课堂的实践探索 作者： 罗恒;廖小芳;茹琦琦;王志锋; 来源： 出版机构： 同方知网（北京）技术有限公司 出版年: DOI码： 10.13811/j.cnki.eer.2024.05.008 注册时间： 2024-05-09 05:00:02 以下是您获得的URL地址： https://link.cnki.net/doi/10.13811/j.cnki.eer.2024.05.008 (境内) https://link.oversea.cnki.net/doi/10.13811/j.cnki.eer.2024.05.008 (境外)"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.13811/j.cnki.eer.2024.05.008",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.13811/j.cnki.eer.2024.05.008",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 13,
+    "key": "wu2024risk",
+    "entry": "吴砥，吴河江．通用大模型教育应用的潜在风险及其规避——基于技术伦理的视角［J］．华东师范大学学报（教育科学版），2024，42（8）：64-75．",
+    "year": 2024,
+    "source_url": "https://xbjk.ecnu.edu.cn/CN/abstract/article/1000-5560/11104",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://xbjk.ecnu.edu.cn/CN/abstract/article/1000-5560/11104",
+        "status": 200,
+        "final_url": "https://xbjk.ecnu.edu.cn/CN/abstract/article/1000-5560/11104",
+        "sha256": "5ea4fcaaeddc4cb4327c100ae9a6eeeaeaa437fa9c4877cf74c72f5e85e85149",
+        "bytes": 58329,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "通用大模型教育应用的潜在风险及其规避——基于技术伦理的视角 × 模态框（Modal）标题 在这里添加一些文本 关闭 关闭 提交更改 取消 确定并提交 × 模态框（Modal）标题 × 中国人文社会科学核心期刊 中文社会科学引文索引(CSSCI)来源期刊 中文核心期刊 导航切换 华东师范大学学报(教育科学版) 首页 关于本刊 期刊沿革 组织架构 期刊荣誉 编委会 编辑团队 学术动态 本刊活动 国内会议 国际会议 投稿审稿 投稿须知 作者投稿 编辑审稿 专家审稿 主编审稿 读者中心 最新出版 专刊 高被引文章 摘要点击排行 全文下载排行 全年目录 按栏目浏览 过刊浏览 征订启事 留言 E-mail Alert 下载中心 联系我们 English 华东师范大学学报(教育科学版) > 2024 , Vol. 42 > Issue 8 : 64\r\n\t\t\t\t\t\t- 75 DOI: https://doi.org/10.16382/j.cnki.1000-5560.2024.08.006 人工智能与教育转型 通用大模型教育应用的潜在风险及其规避——基于技术伦理的视角 吴砥 , 吴河江 展开 华中师范大学教育部教育信息化战略研究基地（华中），武汉 430079 录用日期: 2024-04-11 网络出版日期: 2024-07-23 基金资助 2022年度教育部哲学社会科学研究重大课题攻关项目“教育数字化转型的国际比较研究”（22JZD045）。 收起 Potential Risks of the"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.16382/j.cnki.1000-5560.2024.08.006",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.16382/j.cnki.1000-5560.2024.08.006",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 14,
+    "key": "mei2024ragqa",
+    "entry": "梅忆寒，王琳琳，王鹏飞，等．基于多模态与检索增强生成的数据库知识问答系统［J］．计算机教育，2024（12）：236-241．",
+    "year": 2024,
+    "source_url": "https://jyjs.cbpt.cnki.net/portal/journal/portal/client/paper/eefe975e09aaaf975387fa4178ff936f",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://jyjs.cbpt.cnki.net/portal/journal/portal/client/paper/eefe975e09aaaf975387fa4178ff936f",
+        "status": 200,
+        "final_url": "https://jyjs.cbpt.cnki.net/portal/journal/portal/client/paper/eefe975e09aaaf975387fa4178ff936f",
+        "sha256": "2e08598dae653fac66b84574c95ce53c3b900643fff1cc75a7ca19c1cb2d1807",
+        "bytes": 101931,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": " \n\n                    No.360 \n\n                    232-237 基于多模态与检索增强生成的数据库知识问答系统 梅忆寒 1 王琳琳 1 王鹏飞 1 戴思龙 1 岑黎彬 1 蔡琰 1 倪伟聪 1 王晓玲 1 陈红 2 杜小勇 2 1.华东师范大学计算机科学与技术学院 2.中国人民大学信息学院 基金项目(Foundation): 教育部—华为“智能基座”虚拟教研室学科协作组教学教研项目;\r\n国家自然科学基金重点项目(62136002) 邮箱(Email): xlwang@cs.ecnu.edu.cn; DOI: 10.16512/j.cnki.jsjjy.2024.12.023 发布时间： 2024-12-10 出版时间： 2024-12-10 移动端阅读 1,918 16 2565 下载次数 被引频次 阅读次数 引用本文 下载本文 PDF 引用导出 GB/T 7714-2015 MLA APA Refworks EndNote NoteExpress NoteFirst 分享 摘要 全文 参考文献 出版信息 相关文章 摘要： 探讨大语言模型(Large Language Model，LLM)作为一种新型辅助教学的技术，在数据库课程教学中的应用，基于多模态与检索增强生成(Retrieval Augmented Generation，RAG)技术阐述数据库知识问答系统开发及模块构建过程，最后介绍系统功能演示应用。 关键词： 向量数据"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 15,
+    "key": "vaswani2017attention",
+    "entry": "（印）Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems 30．2017：5998-6008．",
+    "year": 2017,
+    "source_url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+        "status": 200,
+        "final_url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+        "sha256": "42974e1042efb1f9127b6a8bd910eedd8e925b89c4de2b3653ecba00ab2f3cf0",
+        "bytes": 9316,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "Attention is All you Need Attention is All you Need Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, Illia Polosukhin Advances in Neural Information Processing Systems 30  (NIPS 2017) Bibtex Metadata Paper Reviews Abstract The dominant sequence transduction models are based on complex recurrent orconvolutional neural networks in an encoder and decoder configuration. The best performing such models also connect the encoder and decoder through an attentionm echanisms.  We propose a novel, simple network architecture based solely onan attention mechanism, dispensing with recurrence and convol"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 16,
+    "key": "corbett1994knowledge",
+    "entry": "（美）Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1994，4（4）：253-278．",
+    "year": 1994,
+    "source_url": "https://link.springer.com/article/10.1007/BF01099821",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://link.springer.com/article/10.1007/BF01099821",
+        "status": 200,
+        "final_url": "https://link.springer.com/article/10.1007/BF01099821",
+        "sha256": "644120af8ca8c361728e51955208ed1bc69429739139a4e837c0927f0f870cf5",
+        "bytes": 290330,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "Knowledge tracing: Modeling the acquisition of procedural knowledge | User Modeling and User-Adapted Interaction | Springer Nature Link Skip to main content Advertisement Log in Knowledge tracing: Modeling the acquisition of procedural knowledge Published: December 1994 Volume 4 , pages 253–278 ( 1994 ) Cite this article Save article View saved research User Modeling and User-Adapted Interaction Aims and scope Submit manuscript Albert T. Corbett 1 & John R. Anderson 2 11k Accesses 2056 Citations 14 Altmetric Explore all metrics Abstract This paper describes an effort to model students' changing knowledge state during skill acquisition. Studen"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1007/BF01099821",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.1007/BF01099821",
+        "sha256": "afc59ab3f469884c18a9315363cc0416a1484a697020d2d745867286cd430f76",
+        "bytes": 14262,
+        "crossref_metadata": {
+          "title": [
+            "Knowledge tracing: Modeling the acquisition of procedural knowledge"
+          ],
+          "author": [
+            {
+              "given": "Albert T.",
+              "family": "Corbett",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "John R.",
+              "family": "Anderson",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                1995
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                1995
+              ]
+            ]
+          },
+          "published-online": null,
+          "volume": "4",
+          "issue": "4",
+          "page": "253-278",
+          "container-title": [
+            "User Modelling and User-Adapted Interaction"
+          ],
+          "DOI": "10.1007/bf01099821"
+        },
+        "title_match": true,
+        "year_present": false,
+        "metadata_excerpt": "{\"title\": [\"Knowledge tracing: Modeling the acquisition of procedural knowledge\"], \"author\": [{\"given\": \"Albert T.\", \"family\": \"Corbett\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"John R.\", \"family\": \"Anderson\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}], \"published\": {\"date-parts\": [[1995]]}, \"published-print\": {\"date-parts\": [[1995]]}, \"published-online\": null, \"volume\": \"4\", \"issue\": \"4\", \"page\": \"253-278\", \"container-title\": [\"User Modelling and User-Adapted Interaction\"], \"DOI\": \"10.1007/bf01099821\"}"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 17,
+    "key": "piech2015deep",
+    "entry": "（美）Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems 28．2015：505-513．",
+    "year": 2015,
+    "source_url": "https://papers.nips.cc/paper/5654-deep-knowledge-tracing",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://papers.nips.cc/paper/5654-deep-knowledge-tracing",
+        "status": 200,
+        "final_url": "https://papers.nips.cc/paper_files/paper/2015/hash/bac9162b47c56fc8a4d2a519803d51b3-Abstract.html",
+        "sha256": "47d20612b5f4e6ead20c3196dc037f1732965a7d07b17213d644d5589ac1349c",
+        "bytes": 9359,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "Deep Knowledge Tracing Deep Knowledge Tracing Chris Piech, Jonathan Bassen, Jonathan Huang, Surya Ganguli, Mehran Sahami, Leonidas Guibas, Jascha Sohl-Dickstein Advances in Neural Information Processing Systems 28  (NIPS 2015) Bibtex Metadata Paper Reviews Supplemental Abstract Knowledge tracing, where a machine models the knowledge of a student as they interact with coursework, is an established and significantly unsolved problem in computer supported education.In this paper we explore the benefit of using recurrent neural networks to model student learning.This family of models have important advantages over current state of the art methods"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 18,
+    "key": "ebbinghaus1885memory",
+    "entry": "（德）Ebbinghaus H．Über das Gedächtnis：Untersuchungen zur experimentellen Psychologie［M］．Leipzig：Duncker & Humblot，1885．",
+    "year": 1885,
+    "source_url": "https://search.worldcat.org/de/title/uber-das-gedachtnis-untersuchungen-zur-experimentellen-psychologie/oclc/5876733",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://search.worldcat.org/de/title/uber-das-gedachtnis-untersuchungen-zur-experimentellen-psychologie/oclc/5876733",
+        "status": 200,
+        "final_url": "https://search.worldcat.org/de/title/uber-das-gedachtnis-untersuchungen-zur-experimentellen-psychologie/oclc/5876733",
+        "sha256": "f06ef3714316a729781367edb024c7c7134b146b9e2c7835c97b166c3b1164fa",
+        "bytes": 280608,
+        "title_match": false,
+        "year_present": true,
+        "metadata_excerpt": "Über das Gedächtnis. Untersuchungen zur experimentellen Psychologie | WorldCat.org JavaScript required We’re sorry, but WorldCat does not work without JavaScript enabled. Please enable JavaScript on your browser. Titel ​ ​ Über das Gedächtnis. Untersuchungen zur experimentellen Psychologie Von : Hermann Ebbinghaus Zusammenfassung : On memory experiments with nonsense syllables Gedrucktes Buch , Deutsch , 1885 Verlag : Duncker & Humblot , Leipzig , 1885 WorldCat ist der weltweit größte Bibliothekskatalog, mit dem Sie Bibliotheksmedien online finden können. Sprache Čeština Deutsch English Español Français Italiano 日本語 한국어 Nederlands Portugu"
+      }
+    ],
+    "status": "直接访问未核实，转官方检索或记录限制"
+  },
+  {
+    "old_number": 19,
+    "key": "kasneci2023chatgpt",
+    "entry": "（德）Kasneci E，Sessler K，Küchemann S，等．ChatGPT for good? On opportunities and challenges of large language models for education［J］．Learning and Individual Differences，2023，103：102274．",
+    "year": 2023,
+    "source_url": "https://epub.ub.uni-muenchen.de/125071/",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://epub.ub.uni-muenchen.de/125071/",
+        "status": 503,
+        "final_url": "https://epub.ub.uni-muenchen.de/125071/",
+        "sha256": "2f85832e31ca57711e6107af6b142363351ae516adb71c69afc643fac26be7f6",
+        "bytes": 91
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1016/j.lindif.2023.102274",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.1016/j.lindif.2023.102274",
+        "sha256": "aaf0b4f966309cc47aee07a1c2af8737ac4e1ac26cb7228ec4b0e4095e584a7f",
+        "bytes": 23860,
+        "crossref_metadata": {
+          "title": [
+            "ChatGPT for good? On opportunities and challenges of large language models for education"
+          ],
+          "author": [
+            {
+              "given": "Enkelejda",
+              "family": "Kasneci",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Kathrin",
+              "family": "Sessler",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Stefan",
+              "family": "Küchemann",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Maria",
+              "family": "Bannert",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Daryna",
+              "family": "Dementieva",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Frank",
+              "family": "Fischer",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Urs",
+              "family": "Gasser",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Georg",
+              "family": "Groh",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Stephan",
+              "family": "Günnemann",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Eyke",
+              "family": "Hüllermeier",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Stephan",
+              "family": "Krusche",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Gitta",
+              "family": "Kutyniok",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Tilman",
+              "family": "Michaeli",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Claudia",
+              "family": "Nerdel",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jürgen",
+              "family": "Pfeffer",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Oleksandra",
+              "family": "Poquet",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Michael",
+              "family": "Sailer",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Albrecht",
+              "family": "Schmidt",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Tina",
+              "family": "Seidel",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Matthias",
+              "family": "Stadler",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jochen",
+              "family": "Weller",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jochen",
+              "family": "Kuhn",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Gjergji",
+              "family": "Kasneci",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2023,
+                4
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                2023,
+                4
+              ]
+            ]
+          },
+          "published-online": null,
+          "volume": "103",
+          "issue": null,
+          "page": "102274",
+          "container-title": [
+            "Learning and Individual Differences"
+          ],
+          "DOI": "10.1016/j.lindif.2023.102274"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"ChatGPT for good? On opportunities and challenges of large language models for education\"], \"author\": [{\"given\": \"Enkelejda\", \"family\": \"Kasneci\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Kathrin\", \"family\": \"Sessler\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Stefan\", \"family\": \"Küchemann\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Maria\", \"family\": \"Bannert\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabular"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 20,
+    "key": "zhao2026rag",
+    "entry": "（中）Zhao P，Zhang H，Yu Q，等．Retrieval-augmented generation for AI-generated content：A survey［J］．Data Science and Engineering，2026，11（1）：1-29．",
+    "year": 2026,
+    "source_url": "https://link.springer.com/article/10.1007/s41019-025-00335-5",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://link.springer.com/article/10.1007/s41019-025-00335-5",
+        "status": 200,
+        "final_url": "https://link.springer.com/article/10.1007/s41019-025-00335-5",
+        "sha256": "f1dc4bc91bc938abd5d4e8898e84fa21e809917a6cfa8e69b04df4788f53f805",
+        "bytes": 841410,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "ta leakage, and managing high training and inference costs. Retrieval-augmented generation (RAG) has recently emerged as a paradigm to address such challenges. In particular, RAG introduces the information retrieval process, which enhances the generation process by retrieving relevant objects from available data stores, leading to higher accuracy and better robustness. In this paper, we comprehensively review existing efforts that integrate RAG techniques into AIGC scenarios. We first classify RAG foundations according to how the retriever augments the generator, distilling the fundamental abstractions of the augmentation methodologies for va"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1007/s41019-025-00335-5",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.1007/s41019-025-00335-5",
+        "sha256": "ef8e921b1a4715e925fbdfbc94b7b1f512149aa18f2ef8370007b66f98e0f533",
+        "bytes": 84679,
+        "crossref_metadata": {
+          "title": [
+            "Retrieval-Augmented Generation for AI-Generated Content: A Survey"
+          ],
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0009-0003-1436-6660",
+              "authenticated-orcid": false,
+              "given": "Penghao",
+              "family": "Zhao",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Hailin",
+              "family": "Zhang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Qinhan",
+              "family": "Yu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Zhengren",
+              "family": "Wang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Yunteng",
+              "family": "Geng",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Fangcheng",
+              "family": "Fu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Ling",
+              "family": "Yang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Wentao",
+              "family": "Zhang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jie",
+              "family": "Jiang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Bin",
+              "family": "Cui",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                2
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                2026,
+                3
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                2
+              ]
+            ]
+          },
+          "volume": "11",
+          "issue": "1",
+          "page": "1-29",
+          "container-title": [
+            "Data Science and Engineering"
+          ],
+          "DOI": "10.1007/s41019-025-00335-5"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"Retrieval-Augmented Generation for AI-Generated Content: A Survey\"], \"author\": [{\"ORCID\": \"https://orcid.org/0009-0003-1436-6660\", \"authenticated-orcid\": false, \"given\": \"Penghao\", \"family\": \"Zhao\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Hailin\", \"family\": \"Zhang\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Qinhan\", \"family\": \"Yu\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Zhengren\", \"family\": \"Wang\", \"sequence\": \"additional"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 21,
+    "key": "xiao2025education",
+    "entry": "肖建力，黄星宇，姜飞．智慧教育中的大语言模型综述［J］．智能系统学报，2025，20（5）：1054-1070．",
+    "year": 2025,
+    "source_url": "https://tis.hrbeu.edu.cn/oa/DArticle.aspx?id=202406040&type=view",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://tis.hrbeu.edu.cn/oa/DArticle.aspx?id=202406040&type=view",
+        "status": 200,
+        "final_url": "https://tis.hrbeu.edu.cn/oa/DArticle.aspx?id=202406040&type=view",
+        "sha256": "e6cb75821fff356a5ca3e0c5658b93301eb7caf4a0c8b78b95eac08697eb644e",
+        "bytes": 47036,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "智慧教育中的大语言模型综述-《智能系统学报》 Toggle navigation 首页 关于本刊 期刊介绍 收录情况 期刊荣誉 期刊影响力 联系我们 订阅 编委会 主编简介 成员介绍 作者中心 投稿须知 论文模板 版权协议 审稿费/版面费说明 再审稿件修改须知 录用稿件修改须知 中图分类号查询 郑重声明 专家中心 审稿指南 审稿原则 在线期刊 最新一期 过刊浏览 浏览排行 下载排行 高级检索 道德声明与制度 出版伦理声明 研究伦理制度 学术不端审查机制 回避制度 勘误和撤稿制度 审稿流程 English <-上一篇/Previous Article 下一篇/Next\r\n                                    Article-> [1]肖建力,黄星宇,姜飞.智慧教育中的大语言模型综述[J].智能系统学报,2025,20(5):1054-1070.[doi:10.11992/tis.202406040] XIAO Jianli,HUANG Xingyu,JIANG Fei.A survey of large language models in smart education[J].CAAI transactions on intelligent systems,2025,20(5):1054-1070.[doi:10.11992/tis.202406040] 点击复制 智慧教育中的大语言模型综述 PDF下载 HTML 《智能系统学报》 [ISSN 1"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11992/tis.202406040",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11992/tis.202406040",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 22,
+    "key": "zhang2025behavior",
+    "entry": "张维，龚中伟，李志新，等．学习行为增强的知识追踪模型［J］．计算机应用，2025，45（9）：2747-2754．",
+    "year": 2025,
+    "source_url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024081153",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024081153",
+        "status": 200,
+        "final_url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024081153",
+        "sha256": "1ca41c34ae823defb3f385ecfc19cd9bda7a11ec473b573b30f054be714e19ae",
+        "bytes": 118304,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "学习行为增强的知识追踪模型 Toggle navigation 首页 期刊介绍 期刊简介 历史沿革 收录情况 获奖情况 引用指标 编委会 期刊在线 文章推荐 过刊浏览 专辑专刊 下载排行 阅读排行 投稿指南 组稿方向 投稿须知 论文模板 常见问题 署名变更申请 单位变更申请 版权转让协议 中图分类号 引言书写要求 参考文献著录格式 插图与表格规范 英文摘要书写要求 收费标准 学术诚信 联系我们 编辑部联系方式 位置示意图 期刊订阅办法 广告合作 English 《计算机应用》唯一官方网站 ›› 2025 , Vol. 45 ›› Issue (9) : 2747-2754. DOI: 10.11772/j.issn.1001-9081.2024081153 • 人工智能 • 上一篇 学习行为增强的知识追踪模型 张维, 龚中伟( ), 李志新, 罗佩华, 宋玲玲 华中师范大学 人工智能教育学部，武汉 430079 收稿日期: 2024-08-16 修回日期: 2025-01-06 接受日期: 2025-01-10 发布日期: 2025-02-17 出版日期: 2025-09-10 通讯作者: 龚中伟 作者简介: 张维（1975—），男，湖北仙桃人，教授，博士，主要研究方向：大数据分析、数据挖掘、智能教育评价 李志新（2000—），男，湖北潜江人，硕士研究生，主要研究方向：知识追踪 罗佩华（1999—），女，广东兴宁人，硕士研究生，主要研究方向：知识追踪 宋玲玲（1994—），女，湖"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2024081153",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2024081153",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 23,
+    "key": "he2026concept",
+    "entry": "何凡，李理，苑中旭，等．融合图注意力的概念关联记忆网络知识追踪模型［J］．计算机应用，2026，46（1）：43-51．",
+    "year": 2026,
+    "source_url": "https://www.joca.cn/CN/Y2026/V46/I1/43",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.joca.cn/CN/Y2026/V46/I1/43",
+        "status": 200,
+        "final_url": "https://www.joca.cn/CN/Y2026/V46/I1/43",
+        "sha256": "bde1d70da5299851a7197a17352a4d9d8c58825a33b0bbae1e840f0a4d919e33",
+        "bytes": 136390,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "融合图注意力的概念关联记忆网络知识追踪模型 Toggle navigation 首页 期刊介绍 期刊简介 历史沿革 收录情况 获奖情况 引用指标 编委会 期刊在线 文章推荐 过刊浏览 专辑专刊 下载排行 阅读排行 投稿指南 组稿方向 投稿须知 论文模板 常见问题 署名变更申请 单位变更申请 版权转让协议 中图分类号 引言书写要求 参考文献著录格式 插图与表格规范 英文摘要书写要求 收费标准 学术诚信 联系我们 编辑部联系方式 位置示意图 期刊订阅办法 广告合作 English 《计算机应用》唯一官方网站 ›› 2026 , Vol. 46 ›› Issue (1) : 43-51. DOI: 10.11772/j.issn.1001-9081.2025010065 • 人工智能 • 上一篇 下一篇 融合图注意力的概念关联记忆网络知识追踪模型 何凡 1 , 2 , 李理 1 , 2 ( ), 苑中旭 1 , 2 , 杨秀 1 , 2 , 韩东轩 1 , 2 , 3 1. 西南科技大学 计算机科学与技术学院，四川 绵阳 621010 2. 四川省工业自主可控人工智能工程技术研究中心，四川 绵阳 621010 3. 认知智能全国重点实验室（中国科学技术大学），安徽 合肥 230088 收稿日期: 2025-01-15 修回日期: 2025-03-27 接受日期: 2025-03-27 发布日期: 2026-01-10 出版日期: 2026-01-10 通讯作者: 李理 作者简介: 何凡"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2025010065",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.11772/j.issn.1001-9081.2025010065",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 24,
+    "key": "wu2025rag",
+    "entry": "吴璇，付涛．检索增强生成技术研究综述［J］．计算机工程与应用，2025，61（20）：19-35．",
+    "year": 2025,
+    "source_url": "https://opaj.napstic.cn/periodicalArticle/0120251101170993",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://opaj.napstic.cn/periodicalArticle/0120251101170993",
+        "status": 200,
+        "final_url": "https://opaj.napstic.cn/periodicalArticle/0120251101170993",
+        "sha256": "1e4ab1c346e9678b068b43b7a3caab0089ed749fe8a3d1322893a39ae8699852",
+        "bytes": 16511,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "国家科技期刊平台 检索增强生成技术研究综述_国家科技期刊平台 | 国家科技期刊平台 | 注册 中文 EN 首页 | 期刊导航 | 计算机工程与应用 | 检索增强生成技术研究综述 检索增强生成技术研究综述 吴璇 付涛 计算机工程与应用 2025，Vol.61 Issue(20)：19-35,17. 下载 ✕ 计算机工程与应用 2025，Vol.61 Issue(20) ：19-35,17. DOI:10.3778/j.issn.1002-8331.2501-0061 检索增强生成技术研究综述 Comprehensive Review of Retrieval-Augmented Generation 吴璇 1 付涛 1 作者信息 1. 云南财经大学,昆明 650221 折叠 摘要 Abstract Large language models have shown strong capabilities in the field of natural language processing,but still face problems such as hallucinations and lack of domain-specific knowledge.Retrieval-augmented generation(RAG)effectively alleviates some of the problems faced by large language models by ut"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.3778/j.issn.1002-8331.2501-0061",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.3778/j.issn.1002-8331.2501-0061",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 25,
+    "key": "zhou2026graph",
+    "entry": "周楚雄，张丽萍，闫盛，等．基于图神经网络的深度知识追踪方法综述［J］．计算机工程与应用，2026，62（12）：37-59．",
+    "year": 2026,
+    "source_url": "https://opaj.napstic.cn/periodicalArticle/0120260701425422",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://opaj.napstic.cn/periodicalArticle/0120260701425422",
+        "status": 200,
+        "final_url": "https://opaj.napstic.cn/periodicalArticle/0120260701425422",
+        "sha256": "f2daef7440829372d64607c61810b4fdf60da416e5054e91ee9355c70557a149",
+        "bytes": 18762,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "国家科技期刊平台 基于图神经网络的深度知识追踪方法综述_国家科技期刊平台 | 国家科技期刊平台 | 注册 中文 EN 首页 | 期刊导航 | 计算机工程与应用 | 基于图神经网络的深度知识追踪方法综述 基于图神经网络的深度知识追踪方法综述 周楚雄 张丽萍 闫盛 李娜 王东奇 计算机工程与应用 2026，Vol.62 Issue(12)：37-59,23. 下载 ✕ 计算机工程与应用 2026，Vol.62 Issue(12) ：37-59,23. DOI:10.3778/j.issn.1002-8331.2508-0006 基于图神经网络的深度知识追踪方法综述 Survey on Deep Knowledge Tracing Methods Based on Graph Neural Networks 周楚雄 1 张丽萍 1 闫盛 1 李娜 2 王东奇 1 作者信息 1. 内蒙古师范大学 计算机科学技术学院,呼和浩特 010022 2. 内蒙古师范大学 教育学院,呼和浩特 010022 折叠 摘要 Abstract With the advancement of digital transformation in education,deep knowledge tracing has emerged as a research focus in intelligent education due to its ability to dynamically model learn"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.3778/j.issn.1002-8331.2508-0006",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.3778/j.issn.1002-8331.2508-0006",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 26,
+    "key": "chen2026innovation",
+    "entry": "陈静远，高雨婕．大语言模型赋能教育创新：核心技术、应用场景与关键挑战［J］．教育智能化前沿，2026，39（3）：24-32．",
+    "year": 2026,
+    "source_url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/db793e2bd1d755fdd8440a6ac9ccd9bc",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/db793e2bd1d755fdd8440a6ac9ccd9bc",
+        "status": 200,
+        "final_url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/db793e2bd1d755fdd8440a6ac9ccd9bc",
+        "sha256": "3976c18adca0b4f2fb637f111b7a3456d04dc856b95d9458373ac742e32c9042",
+        "bytes": 178289,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": " 03, \n\n                    v.39 \n\n                    24-32 大语言模型赋能教育创新：核心技术、应用场景与关键挑战 陈静远 高雨婕 1.浙江大学教育学院 基金项目(Foundation): 2025年浙江省“尖兵”“领雁”研发攻关计划资助“面向中小学课堂教学的教育大模型关键技术与应用示范”(项目编号：2025C02022);\n国家教材建设重点研究基地(高等学校人工智能教材研究)重点研究成果 邮箱(Email): DOI: 投稿时间： 2026-07-31 投稿日期（年）： 2026 终审时间： 2026-07-31 终审日期（年）： 2026 审稿周期（年）： 1 发布时间： 2026-06-28 出版时间： 2026-06-28 移动端阅读 110 0 600 下载次数 被引频次 阅读次数 收藏 引用本文 下载本文 PDF 引用导出 GB/T 7714-2015 MLA APA Refworks EndNote NoteExpress NoteFirst 分享 摘要 全文 参考文献 出版信息 相关文章 摘要： 大语言模型作为新一代人工智能技术的前沿，为教育数字化和智能化转型提供了新的发展机遇。鉴于既有综述在分析大语言模型应用于教育领域时存在未能从学习者主体的角度进行分析、分类标准不统一、缺乏综合性和系统性、对风险与挑战的分析不够深入等不足，本文从当前教育实践出发，对大语言模型赋能教育创新的核心技术、应用场景与关键挑战进行"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 27,
+    "key": "zhang2026tracking",
+    "entry": "张所娟，龙佳琪，郝文宁，等．大语言模型时代的知识追踪：教育智能化的新范式与路径展望［J］．教育智能化前沿，2026，39（4）：40-49，96．",
+    "year": 2026,
+    "source_url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/e7f372c6a98d916e5e83de4accd0b7fa",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/e7f372c6a98d916e5e83de4accd0b7fa",
+        "status": 200,
+        "final_url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/e7f372c6a98d916e5e83de4accd0b7fa",
+        "sha256": "c8fed0f33296f3487eeffd7046a7555429753c82a0bcbc2e5d1db46eded2c028",
+        "bytes": 182089,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": ", \n\n                    v.39 \n\n                    40-49+96 大语言模型时代的知识追踪：教育智能化的新范式与路径展望 张所娟 龙佳琪 郝文宁 崔思佳 1.中国人民解放军陆军工程大学 基金项目(Foundation): 国家自然科学基金面上项目“面向‘兵棋推演’教育场景的情境耦合认知建模与自适应学习推荐方法研究”（项目编号：62577053） 邮箱(Email): DOI: 发布时间： 2026-08-28 出版时间： 2026-08-28 移动端阅读 11 0 38 下载次数 被引频次 阅读次数 收藏 引用本文 下载本文 PDF 引用导出 GB/T 7714-2015 MLA APA Refworks EndNote NoteExpress NoteFirst 分享 摘要 全文 参考文献 出版信息 相关文章 摘要： 知识追踪作为智能教育领域核心的动态认知状态评估方法，旨在精准评估学习者实时认知状态，为优化在线学习过程提供支撑。传统方法在预测精度上取得进展，但受限于ID直推的底层缺陷，存在语义建模能力不足、冷启动与泛化性瓶颈突出、可解释性薄弱、多模态融合能力匮乏等局限。近年来，大语言模型凭借强大的语义理解、逻辑推理及知识迁移能力，为知识追踪提供了全新范式。本文遵循PRISMA框架系统检索2022—2026年间大语言模型与知识追踪融合的研究。首先梳理知识追踪从传统方法向融合大语言模型的演变路径与优势，进而构建两层四大范式分类体"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 28,
+    "key": "zhang2026software",
+    "entry": "张犬俊，谢杨，房春荣，等．检索增强生成在软件工程中的应用综述［J］．软件学报，2026，37（3）：1316-1339．",
+    "year": 2026,
+    "source_url": "https://www.jos.org.cn/jos/article/abstract/7567",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.jos.org.cn/jos/article/abstract/7567",
+        "status": 200,
+        "final_url": "https://www.jos.org.cn/jos/article/abstract/7567",
+        "sha256": "a832c6ad3284ae31678b28b1ed4b852081d3b1117ca98497ba7c23b0eddc92b9",
+        "bytes": 55168,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "检索增强生成在软件工程中的应用综述 微信小程序 微信服务号 微信订阅号 主页 期刊介绍 编委会 服务介绍 投稿指南 出版道德 联系我们 E-mail Alert English 首页 > 过刊浏览 > 2026年第37卷第3期 >1316-1339. DOI:10.13328/j.cnki.jos.007567 优先出版 PDF HTML阅读 XML下载 导出引用 引用提醒 检索增强生成在软件工程中的应用综述 DOI: 10.13328/j.cnki.jos.007567 CSTR: 32375.14.jos.007567 作者: 作者单位: 作者简介: 通讯作者: 中图分类号: 基金项目: 国家自然科学基金(U24A20337, 62372228); 中央高校基本科研业务费专项资金(14380029) Survey on Application of Retrieval-augmented Generation in Software Engineering Author: Affiliation: Fund Project: 摘要 | 图/表 | 访问统计 | 参考文献 | 相似文献 | 引证文献 | 资源附件 | 文章评论 摘要: 检索增强生成(retrieval-augmented generation, RAG)通过融合信息检索与语言生成模型, 显著提升代码生成、补全、程序修复等软件工程下游任务的性能. 随着RAG在软件工程领域的迅速发展, 研究者难以全面掌握其最新的进"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.13328/j.cnki.jos.007567",
+        "status": 404,
+        "final_url": "https://api.crossref.org/works/10.13328/j.cnki.jos.007567",
+        "sha256": "ae8462e3af85ca7577aaa97ff22a194f9dfd7fada58cf4944b53d2fdfa7b1f92",
+        "bytes": 19
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 29,
+    "key": "jia2025rag",
+    "entry": "贾洪愿，居发礼，余晓平．基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建［J］．智慧教育，2025，2（2）：198-201．",
+    "year": 2025,
+    "source_url": "https://www.juzhikan.cn/zhjy/2988.html",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://www.juzhikan.cn/zhjy/2988.html",
+        "status": 200,
+        "final_url": "https://www.juzhikan.cn/zhjy/2988.html",
+        "sha256": "04640899f61658355465b34a9059dcaadb0fc16f73d8dccca439aa9ae4f78635",
+        "bytes": 10849,
+        "title_match": true,
+        "year_present": false,
+        "metadata_excerpt": "基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建_新加坡聚知刊出版有限公司 欢迎访问新加坡聚知刊出版有限公司官方网站 info@juzhikan.asia 登录 注册 Journal publishing 期刊 基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建 ISSN： 3029-2735（Online）3029-2719（Print） DOI： 10.69979/3029-2735.25.2.062 出版频率： 月刊 语言： 中文 收录数据库： ISSN：https://portal.issn.org/    ；中国知网：https://scholar.cnki.net/journal/search    ；RCCSE权威核心学术期刊：http://qk.nseac.com 下载 基于检索增强生成（ RAG ）的《建环专业计算机应用》 课程智能知识库构建 贾洪愿 居发礼 余晓平 重庆科技大学，重庆，401331； 摘要：本文探讨了基于检索增强生成（RAG）技术在《建环专业计算机应用》课程中的应用，通过构建智能知识 库提升教学内容的系统性、时效性和可操作性。针对当前课程资源分散、更新滞后及个性化辅导不足的问题，本 文提出了一套结合检索增强生成技术和教学资源优化的方法体系。通过智能知识库的构建与应用，形成基于多模 态资源的教学内容，支持实时知识检索与生成，满足个性化学习需求。实践表明，智能知识库有效提升了学生对 建筑性能模拟与数据分析工具的"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.69979/3029-2735.25.2.062",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.69979/3029-2735.25.2.062",
+        "sha256": "4b9cd07cbc379da6a4493b7abc655384f8413437c646653da23ac9e04530c004",
+        "bytes": 1849,
+        "crossref_metadata": {
+          "title": [
+            "基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建"
+          ],
+          "author": [
+            {
+              "given": "贾洪愿",
+              "family": "居发礼，余晓平",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "role": "author",
+                  "vocabulary": "crossref"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                20
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                20
+              ]
+            ]
+          },
+          "published-online": {
+            "date-parts": [
+              [
+                2025,
+                1,
+                20
+              ]
+            ]
+          },
+          "volume": "2",
+          "issue": "2",
+          "page": null,
+          "container-title": [
+            "智慧教育"
+          ],
+          "DOI": "10.69979/3029-2735.25.2.062"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建\"], \"author\": [{\"given\": \"贾洪愿\", \"family\": \"居发礼，余晓平\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"role\": \"author\", \"vocabulary\": \"crossref\"}]}], \"published\": {\"date-parts\": [[2025, 1, 20]]}, \"published-print\": {\"date-parts\": [[2025, 1, 20]]}, \"published-online\": {\"date-parts\": [[2025, 1, 20]]}, \"volume\": \"2\", \"issue\": \"2\", \"page\": null, \"container-title\": [\"智慧教育\"], \"DOI\": \"10.69979/3029-2735.25.2.062\"}"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 30,
+    "key": "tang2025llm",
+    "entry": "唐颖川．大语言模型赋能探究型高职教育——以Python语言课程为例［J］．现代教育探索，2025，6（6）：44-46．",
+    "year": 2025,
+    "source_url": "https://ojs.omniscient.sg/index.php/mee/article/view/61366",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://ojs.omniscient.sg/index.php/mee/article/view/61366",
+        "status": 200,
+        "final_url": "https://ojs.omniscient.sg/index.php/mee/article/view/61366",
+        "sha256": "89b8de81f32d0c7bcaa2ab0a7c1fba4bd011dd3b0d335c3a9cfaba8fb192b72f",
+        "bytes": 15210,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "大语言模型赋能探究型高职教育——以Python语言课程为例\n\t\t\t\t\t\t\t| 现代教育探索 现代教育探索 Login Home About About the Journal Contact Current Archives Editorial Board Author Guidelines Special issues Home > Current 大语言模型赋能探究型高职教育——以Python语言课程为例 唐颖川 （\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t成都东软学院\n\t\t\t\t\t\t\t\t） https://doi.org/10.37155/2717-5561-0606-14 Abstract 随着大语言模型的高速迭代，各领域均有应用，在高职教育中融入大语言模型具备巨大价值。研究发现\r\n传统探究式学习（IBL）模式存在反馈延迟、产教脱节以及评估维度单一的问题。本文以python语言课程为例，分析\r\n了IBL模式现阶段存在的问题，探究融入大语言模型的智能体后，在课程内容、评估体系两方面能为传统的IBL模式进\r\n行改良的路径，旨在为高职教育提供一个新的方式，以提高教师教学内容的质量。 Keywords 探究型教育；大语言模型；高职教育 Full Text PDF References [1]吴蕴超,罗飞,陶俊臣,等.基于ACT-R的认知间隔重复 学习方法[J].华东理工大学学报(自然科学版).2024(1-10). [2]Simon Goorney, et al. framework "
+      },
+      {
+        "url": "https://api.crossref.org/works/10.37155/2717-5561-0606-14",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.37155/2717-5561-0606-14",
+        "sha256": "d4ddb0a8e15ddadd5e9171e4c360c43213c58a12550e6de94781182ee00b0720",
+        "bytes": 1794,
+        "crossref_metadata": {
+          "title": [
+            "大语言模型赋能探究型高职教育——以Python语言课程为例"
+          ],
+          "author": [
+            {
+              "family": "唐颖川",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "published-online": null,
+          "volume": "6",
+          "issue": "6",
+          "page": "44-46",
+          "container-title": [
+            "现代教育探索"
+          ],
+          "DOI": "10.37155/2717-5561-0606-14"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"大语言模型赋能探究型高职教育——以Python语言课程为例\"], \"author\": [{\"family\": \"唐颖川\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}], \"published\": {\"date-parts\": [[2025]]}, \"published-print\": {\"date-parts\": [[2025]]}, \"published-online\": null, \"volume\": \"6\", \"issue\": \"6\", \"page\": \"44-46\", \"container-title\": [\"现代教育探索\"], \"DOI\": \"10.37155/2717-5561-0606-14\"}"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 31,
+    "key": "zhang2026double",
+    "entry": "张鲁燕，巩清波．大语言模型赋能高职教育“双师课堂”的路径探索［J］．教育学刊，2026，4（1）：136-141．",
+    "year": 2026,
+    "source_url": "https://cn.sgsci.org/jyxk/article/view/992",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://cn.sgsci.org/jyxk/article/view/992",
+        "status": 200,
+        "final_url": "https://cn.sgsci.org/jyxk/article/view/992",
+        "sha256": "12612c42fdecb4e53dca360434ade91d576566aff9e16f76513ceb9c42087a5c",
+        "bytes": 45135,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "大语言模型赋能高职教育“双师课堂”的路径探索 Open Menu 教育学刊 首页 最新一期 档案 关于我们 关于期刊 编辑方针 利益冲突 剽窃方针 文章处理费 文章语言 编辑团队 索引和存档 投稿 投稿须知 投稿 隐私声明 开放存取政策 Downloads Download PDF 已出版 2026-01-27 How to Cite 大语言模型赋能高职教育“双师课堂”的路径探索. (2026). 教育学刊 , 4 (1), 136-141. https://doi.org/10.62836/jer.v4n1.0992 More Citation Formats ACM ACS APA ABNT Chicago Harvard IEEE MLA Turabian Vancouver AMA Download Citation Endnote/Zotero/Mendeley (RIS) BibTeX 期次 Volume 4, Issue 1, January 2026 License Copyright (c) 2026 张鲁燕, 巩清波 This work is licensed under a Creative Commons Attribution 4.0 International License . 大语言模型赋能高职教育“双师课堂”的路径探索 张鲁燕 1 ，巩清波 2 1. 重庆城市职业学院人工智能与大数据学院，重庆； 2. 重庆文理学院体育学院，重庆 摘要 ：聚焦“双"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.62836/jer.v4n1.0992",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.62836/jer.v4n1.0992",
+        "sha256": "bafe3609d2981ec35f2f2c6f1e199e4d99eb3d32f5a15734a472b1cccecff870",
+        "bytes": 6069,
+        "crossref_metadata": {
+          "title": [
+            "大语言模型赋能高职教育“双师课堂”的路径探索"
+          ],
+          "author": [
+            {
+              "family": "张鲁燕",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "family": "巩清波",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                27
+              ]
+            ]
+          },
+          "published-print": null,
+          "published-online": {
+            "date-parts": [
+              [
+                2026,
+                1,
+                27
+              ]
+            ]
+          },
+          "volume": null,
+          "issue": null,
+          "page": "136-141",
+          "container-title": [
+            "教育学刊"
+          ],
+          "DOI": "10.62836/jer.v4n1.0992"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"大语言模型赋能高职教育“双师课堂”的路径探索\"], \"author\": [{\"family\": \"张鲁燕\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"family\": \"巩清波\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}], \"published\": {\"date-parts\": [[2026, 1, 27]]}, \"published-print\": null, \"published-online\": {\"date-parts\": [[2026, 1, 27]]}, \"volume\": null, \"issue\": null, \"page\": \"136-141\", \"container-title\": [\"教育学刊\"], \"DOI\": \"10.62836/jer.v4n1.0992\"}"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  },
+  {
+    "old_number": 32,
+    "key": "cheng2025questions",
+    "entry": "（中）Cheng C，Huang Z，Zhao G，等．From Objectives to Questions: A Planning-based Framework for Educational Mathematical Question Generation［C］//Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)．Vienna：Association for Computational Linguistics，2025：12836-12856．",
+    "year": 2025,
+    "source_url": "https://aclanthology.org/2025.acl-long.628/",
+    "checked_on": "2026-11-13",
+    "attempts": [
+      {
+        "url": "https://aclanthology.org/2025.acl-long.628/",
+        "status": 200,
+        "final_url": "https://aclanthology.org/2025.acl-long.628/",
+        "sha256": "4995c3d54f04812cac56742e40b7dfc7cd7f9ab6e64e0ab37577b8c9683e1b3e",
+        "bytes": 47957,
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "From Objectives to Questions: A Planning-based Framework for Educational Mathematical Question Generation - ACL Anthology From Objectives to Questions: A Planning-based Framework for Educational Mathematical Question Generation Cheng Cheng , Zhenya Huang , GuanHao Zhao , Yuxiang Guo , Xin Lin , Jinze Wu , Xin Li , Shijin Wang Correct Metadata for Use this form to create a GitHub issue with structured data describing the correction. You will need a GitHub account.\nOnce you create that issue, the correction will be reviewed by a staff member. ⚠️ Mobile Users: Submitting this form to create a new issue will only work with github.com, not the Git"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.18653/v1/2025.acl-long.628",
+        "status": 200,
+        "final_url": "https://api.crossref.org/works/10.18653/v1/2025.acl-long.628",
+        "sha256": "667be603b82a4ae182418f29606ace3fdf9db9f97c1522fa023342b6b8750d34",
+        "bytes": 2623,
+        "crossref_metadata": {
+          "title": [
+            "From Objectives to Questions: A Planning-based Framework for Educational Mathematical Question Generation"
+          ],
+          "author": [
+            {
+              "given": "Cheng",
+              "family": "Cheng",
+              "sequence": "first",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Zhenya",
+              "family": "Huang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "GuanHao",
+              "family": "Zhao",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Yuxiang",
+              "family": "Guo",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Xin",
+              "family": "Lin",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Jinze",
+              "family": "Wu",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Xin",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            },
+            {
+              "given": "Shijin",
+              "family": "Wang",
+              "sequence": "additional",
+              "affiliation": [],
+              "role": [
+                {
+                  "vocabulary": "crossref",
+                  "role": "author"
+                }
+              ]
+            }
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "published-print": {
+            "date-parts": [
+              [
+                2025
+              ]
+            ]
+          },
+          "published-online": null,
+          "volume": null,
+          "issue": null,
+          "page": "12836-12856",
+          "container-title": [
+            "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)"
+          ],
+          "DOI": "10.18653/v1/2025.acl-long.628"
+        },
+        "title_match": true,
+        "year_present": true,
+        "metadata_excerpt": "{\"title\": [\"From Objectives to Questions: A Planning-based Framework for Educational Mathematical Question Generation\"], \"author\": [{\"given\": \"Cheng\", \"family\": \"Cheng\", \"sequence\": \"first\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Zhenya\", \"family\": \"Huang\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"GuanHao\", \"family\": \"Zhao\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabulary\": \"crossref\", \"role\": \"author\"}]}, {\"given\": \"Yuxiang\", \"family\": \"Guo\", \"sequence\": \"additional\", \"affiliation\": [], \"role\": [{\"vocabul"
+      }
+    ],
+    "status": "题名及年份命中，仍需核对题录"
+  }
+]

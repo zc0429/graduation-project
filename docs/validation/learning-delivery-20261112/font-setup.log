@@ -1,0 +1,28 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.thesis
+#1 transferring dockerfile: 346B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian:13-slim
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/debian:13-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2
+#4 DONE 0.0s
+
+#5 [2/2] RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends     fonts-noto-cjk fonts-liberation fonts-arphic-uming fontconfig libreoffice-writer     poppler-utils python3-uno python3-pil ca-certificates     && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 exporting to image
+#6 exporting layers done
+#6 writing image sha256:c7c0c6804c2d4532c9b304dce5282ada2b87028e2fa7d184be98af6a4869f54a done
+#6 naming to docker.io/library/graduation-thesis-tools:20261112 done
+#6 DONE 0.0s
+uming.ttc: "AR PL UMing CN" "Light"
+NotoSerifCJK-Regular.ttc: "Noto Serif CJK SC" "Regular"
+LiberationSerif-Regular.ttf: "Liberation Serif" "Regular"
+Open-source substitutes configured; this does NOT establish original SimSun/Times New Roman availability.

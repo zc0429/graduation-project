@@ -11,6 +11,8 @@ import com.example.wrongbook.dto.QuestionRequest;
 import com.example.wrongbook.entity.AiAnalysis;
 import com.example.wrongbook.entity.KnowledgePoint;
 import com.example.wrongbook.entity.Question;
+import com.example.wrongbook.entity.LearningContent;
+import com.example.wrongbook.mapper.LearningContentMapper;
 import com.example.wrongbook.entity.ReviewPlan;
 import com.example.wrongbook.entity.Subject;
 import com.example.wrongbook.entity.VariantQuestion;
@@ -48,6 +50,7 @@ public class QuestionServiceImpl implements QuestionService {
     private final QuestionMapper questionMapper;
     private final AiAnalysisMapper aiAnalysisMapper;
     private final VariantQuestionMapper variantQuestionMapper;
+    private final LearningContentMapper learningContentMapper;
     private final ReviewPlanMapper reviewPlanMapper;
     private final SubjectMapper subjectMapper;
     private final KnowledgePointMapper knowledgePointMapper;
@@ -125,6 +128,7 @@ public class QuestionServiceImpl implements QuestionService {
         try {
             questionMapper.update(null, update);
             if (aiInputChanged) {
+                learningContentMapper.delete(new LambdaQueryWrapper<LearningContent>().eq(LearningContent::getQuestionId, question.getId()));
                 aiAnalysisMapper.delete(new LambdaQueryWrapper<AiAnalysis>()
                         .eq(AiAnalysis::getQuestionId, id));
                 variantQuestionMapper.delete(new LambdaQueryWrapper<VariantQuestion>()
@@ -144,6 +148,7 @@ public class QuestionServiceImpl implements QuestionService {
     public void remove(Long id) {
         Question question = getOwnQuestion(id);
         // 级联清理解析、变式题与复习计划（论文 5.4 事务一致性）
+        learningContentMapper.delete(new LambdaQueryWrapper<LearningContent>().eq(LearningContent::getQuestionId, question.getId()));
         aiAnalysisMapper.delete(new LambdaQueryWrapper<AiAnalysis>()
                 .eq(AiAnalysis::getQuestionId, id));
         variantQuestionMapper.delete(new LambdaQueryWrapper<VariantQuestion>()

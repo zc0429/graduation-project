@@ -1,0 +1,14 @@
+{
+  "database": "isolated wrongbook_audit",
+  "mysql": "8.0.46",
+  "tables": 11,
+  "columns_verified": 88,
+  "checks": [
+    "name",
+    "type",
+    "nullability",
+    "default",
+    "auto_increment"
+  ],
+  "result": "passed"
+}

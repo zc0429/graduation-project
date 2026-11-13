@@ -81,7 +81,8 @@ class VariantServiceImplTests {
         UserContext.set(new LoginUser(USER_ID, "student"));
 
         variantService = new VariantServiceImpl(variantQuestionMapper, questionMapper,
-                knowledgePointMapper, llmClient, new ObjectMapper(), transactionTemplate);
+                knowledgePointMapper, llmClient, new ObjectMapper(), transactionTemplate,
+                new LearningResourceAccess(questionMapper, mock(com.example.wrongbook.mapper.PracticeRecordMapper.class)));
     }
 
     @AfterEach

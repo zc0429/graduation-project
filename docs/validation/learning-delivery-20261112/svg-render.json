@@ -1,0 +1,114 @@
+[
+  {
+    "figure": "3-5",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 19
+  },
+  {
+    "figure": "3-6",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 38
+  },
+  {
+    "figure": "3-7",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 40
+  },
+  {
+    "figure": "3-8",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 27
+  },
+  {
+    "figure": "3-9",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 23
+  },
+  {
+    "figure": "5-1",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 23
+  },
+  {
+    "figure": "6-5",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 17
+  },
+  {
+    "figure": "6-9",
+    "fonts": [
+      {
+        "family": "DeliveryLatin",
+        "status": "loaded"
+      },
+      {
+        "family": "DeliverySong",
+        "status": "loaded"
+      }
+    ],
+    "textCount": 15
+  }
+]

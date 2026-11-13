@@ -1,0 +1,292 @@
+{
+  "id": "6-5",
+  "caption": "图 6.5　AI 解析中的 RAG 与结构校验",
+  "height": 575,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/RagServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 8,
+      "w": 386,
+      "h": 49
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 28.5,
+      "text": "读取当前错题输入快照",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 42.5,
+      "text": "纯文本题干、科目、可选答案",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 80,
+      "w": 386,
+      "h": 49
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 100.5,
+      "text": "向量服务生成题干向量",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 114.5,
+      "text": "客户端检查 1024 维与有限数",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          57
+        ],
+        [
+          223,
+          80
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 153,
+      "w": 386,
+      "h": 49
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 173.5,
+      "text": "候选查询：同用户、同科目、排除原题",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 187.5,
+      "text": "向量非空；再次核验候选所属用户",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          129
+        ],
+        [
+          223,
+          153
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 226,
+      "w": 386,
+      "h": 49
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 246.5,
+      "text": "应用内余弦相似度计算",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 260.5,
+      "text": "保留相似度 > 0，降序取最多 3 条",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          202
+        ],
+        [
+          223,
+          226
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 299,
+      "w": 386,
+      "h": 49
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 319.5,
+      "text": "构造提示词：题干 + 可选答案 + 知识点候选",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 333.5,
+      "text": "参考题只取题干片段（每题最多前 50 字）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          275
+        ],
+        [
+          223,
+          299
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 372,
+      "w": 386,
+      "h": 49
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 392.5,
+      "text": "调用智谱 GLM 大模型",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 406.5,
+      "text": "校验精确字段、候选 ID、难度 1-5 和中文文本",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          348
+        ],
+        [
+          223,
+          372
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "rect",
+      "x": 30,
+      "y": 463,
+      "w": 386,
+      "h": 61,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 482.5,
+      "text": "短事务比较输入快照与解析记录状态",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 496.5,
+      "text": "成功写入向量、归类、解析及 reference_ids",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 510.5,
+      "text": "同事务发送完成消息",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          223,
+          421
+        ],
+        [
+          223,
+          463
+        ]
+      ],
+      "arrow": "filled",
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 552,
+      "text": "空参考集仍可生成；异常记失败，输入过期则放弃旧结果回写。",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 569,
+      "text": "RAG 不强制同知识点；reference_ids 记录本次实际参考题。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ]
+}
