@@ -2,7 +2,7 @@
 
 以远程 `dev` 作为日常集成基准，`main` 保存既有稳定快照。当前 `main` 停在 8 月的旧版本，不代表最新可运行系统；稳定发布应另行验收后正常合并，不在整理中自动更新。
 
-2026-10-28 已尝试将 GitHub 默认分支设为 dev，但当前集成返回 403，远程默认仍为 main。新克隆请用 `git clone --branch dev https://github.com/zc0429/graduation-project.git`；已有仓库显式切换 dev。仓库所有者可在 GitHub Settings → General → Default branch 手动选择 dev，成功后再运行 `git remote set-head origin -a` 更新本地 origin/HEAD；仅运行该 Git 命令不会改变 GitHub 设置。
+**2026-11-13重新核实**：GitHub 默认分支已经是 `dev`，2026-10-28 的403只属于历史；不需要再修改默认分支。新克隆默认检出 `dev`，本地已有仓库安全确认后执行 `git fetch origin --prune` 和 `git remote set-head origin -a` 再快进更新 `dev`。PR #5 集成前，`origin/dev` 与当前候选成果可能不同；具体见[集成审计记录](仓库集成审计-20261113.md)。
 
 ## 每次开始：先看状态，再更新
 
@@ -89,7 +89,7 @@ Windows 需要时另设 `git config --local core.longpaths true`；IDE 与 Offic
 
 ## 查看历史成果与清理分支
 
-正文当前以 `dev:docs/thesis/毕业论文.md` 为准。需要查看尚未接入的论文审阅版、答辩材料，可独立检出只读工作树：
+集成未完成时，当前**最新审阅正文**以 PR #5 的 `docs/thesis/毕业论文.md` 为准，`dev` 保存当时已合并版本；完成正常合并且实测通过后才改由 `dev` 作为最新正文。需要查看尚未接入的论文审阅版、答辩材料，可独立检出只读工作树：
 
 ```text
 git worktree add --detach ../graduation-project-thesis-archive origin/codex/thesis-finalization-20260920
