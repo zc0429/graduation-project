@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 repo_root="$(cd "$(dirname "$0")/../.." && pwd)"
-output=output/thesis/learning-delivery-20261112
+output=output/thesis/thesis-audit-20261112
 if command -v libreoffice >/dev/null 2>&1; then
   profile_dir="$(mktemp -d)"
   trap 'rm -r "$profile_dir"' EXIT

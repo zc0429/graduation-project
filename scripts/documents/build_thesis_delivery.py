@@ -19,8 +19,8 @@ from docx.oxml.ns import qn
 from PIL import Image,ImageOps
 
 ROOT=Path(__file__).resolve().parents[2]
-RUN=ROOT/'docs/validation/learning-delivery-20261112'
-OUT=ROOT/'output/thesis/learning-delivery-20261112/毕业论文.docx'
+RUN=ROOT/'docs/validation/thesis-audit-20261112'
+OUT=ROOT/'output/thesis/thesis-audit-20261112/毕业论文.docx'
 TPL=next((ROOT/'docs/materials/27届毕业设计学校通知和模板').rglob('*正文模板.docx'))
 BOOKMARK_ID=100
 
@@ -157,9 +157,8 @@ def main():
     assert hashlib.sha256(TPL.read_bytes()).hexdigest()=='79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e'
     RUN.mkdir(parents=True,exist_ok=True)
     md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
-    opening=(ROOT/'docs/thesis/开题报告.md').read_text(encoding='utf-8')
-    references=re.findall(r'^\[(\d+)\]\s*(.+)$',md,re.M)
-    assert len(references)==20 and references==re.findall(r'^\[(\d+)\]\s*(.+)$',opening,re.M), 'Thesis references must match the opening report.'
+    from validate_thesis_references import validate
+    validate()
     md=re.sub(r'<!--.*?-->','',md,flags=re.S)
     pages=json.loads((RUN/'page-map.json').read_text(encoding='utf-8')) if (RUN/'page-map.json').exists() else {}
     d=Document(TPL);d.core_properties.author='赵灿';d.core_properties.title='基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现';base=[deepcopy(s._sectPr) for s in d.sections]
@@ -188,9 +187,9 @@ def main():
         name=f'TOC {level}'
         if name not in d.styles:d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH)
         st=d.styles[name];st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
-        st.font.name='Times New Roman';st.font.size=Pt(12);st.font.bold=False
+        st.font.name='Times New Roman';st.font.size=Pt(14 if level==1 else 12);st.font.bold=False
         st.font.color.rgb=RGBColor(0,0,0)
-        st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'宋体')
+        st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'黑体')
         f=st.paragraph_format;f.first_line_indent=Pt(0);f.left_indent=Cm((level-1)*.5)
         f.right_indent=Pt(0);f.line_spacing=1.5;f.space_before=Pt(0);f.space_after=Pt(0)
         f.keep_with_next=False;f.page_break_before=False;f.alignment=WD_ALIGN_PARAGRAPH.LEFT
@@ -207,11 +206,13 @@ def main():
     key_by_title={t:k for t,k,l in entries}
     for i,(t,key,lev) in enumerate(entries):
         p=d.add_paragraph(style=f'TOC {lev}');fmt(p,indent=0,line=20,align=WD_ALIGN_PARAGRAPH.LEFT);p.paragraph_format.line_spacing=1.5
+        # Keep template font sizes and 1.5 spacing; balance the four TOC pages.
+        if i and i%20==0:p.paragraph_format.page_break_before=True
         p.paragraph_format.left_indent=Cm((lev-1)*.5)
         p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
         if i==0:
             p.add_run()._r.append(el('fldChar',fldCharType='begin'));x=el('instrText');x.text=' TOC \\o "1-3" \\h \\z \\u ';p.add_run()._r.append(x);p.add_run()._r.append(el('fldChar',fldCharType='separate'))
-        link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(t),14 if key in ['abstract_cn','abstract_en'] or t in ['参考文献','致　谢'] else 12,'黑体' if lev==1 else '宋体');link.append(r._r);p._p.append(link)
+        link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(t),14 if lev==1 else 12,'黑体');link.append(r._r);p._p.append(link)
         font(p.add_run('\t'));field(p,f'PAGEREF {key} \\h',pages.get(key,'1'))
         if i==len(entries)-1:p.add_run()._r.append(el('fldChar',fldCharType='end'))
     append_sect(d,section_end(d,base[1],header='rId6',footer='rId7'))
@@ -242,8 +243,10 @@ def main():
             code=[]
             while i<len(lines) and not lines[i].startswith('```'):code.append(lines[i]);i+=1
             i+=1
-            for text in code:
-                p=d.add_paragraph();fmt(p,indent=0,line=14);font(p.add_run(text),10.5)
+            # Short source examples remain readable as a complete block.
+            d.paragraphs[-1].paragraph_format.keep_with_next=True
+            for j,text in enumerate(code):
+                p=d.add_paragraph();fmt(p,indent=0,line=14,keep=j<len(code)-1);p.paragraph_format.keep_together=True; font(p.add_run(text),10.5)
             continue
         if line.startswith('!['):
             target=re.search(r'\]\(([^)]+)\)',line)[1];path=ROOT/'docs/thesis'/target

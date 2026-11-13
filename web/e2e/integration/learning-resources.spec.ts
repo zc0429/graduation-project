@@ -31,7 +31,7 @@ test('personal resources: saved knowledge, original first, exhausted pool, expli
     await page.getByRole('button', { name: '继续练习', exact: true }).click(); await expect.poll(async () => (await list()).length).toBe(6)
     await page.locator('.learning-resources').getByText('答对了', { exact: true }).click(); await page.getByRole('button', { name: '保存本次练习' }).click()
     await expect(page.getByRole('button', { name: '重新练习本题' })).toBeVisible()
-    const dir = resolve('../docs/thesis/delivery-20261112/screenshots'); mkdirSync(dir, { recursive: true })
+    const dir = resolve(process.env.THESIS_EVIDENCE_DIR || '../docs/validation/thesis-audit-20261112/screenshots'); mkdirSync(dir, { recursive: true })
     await page.screenshot({ path: resolve(dir, 'learning-loop-mock.png'), fullPage: true })
     await page.getByRole('button', { name: '重新练习本题' }).click(); await page.locator('.learning-resources').getByText('仍然答错', { exact: true }).click(); await page.getByRole('button', { name: '保存本次练习' }).click()
     await expect(page.getByRole('button', { name: '重新练习本题' })).toBeVisible(); expect(await list()).toHaveLength(6)
