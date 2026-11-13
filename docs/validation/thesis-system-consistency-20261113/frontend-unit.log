@@ -1,0 +1,13 @@
+
+> web@0.0.0 test:unit
+> vitest run --config vitest.config.ts --maxWorkers=2
+
+
+ RUN  v4.1.11 /workspace/graduation-project/web
+
+
+ Test Files  11 passed (11)
+      Tests  33 passed (33)
+   Start at  09:40:48
+   Duration  9.01s (transform 1.55s, setup 140ms, import 4.08s, tests 1.67s, environment 9.51s)
+

@@ -1,0 +1,88 @@
+ai_analysis	id	bigint	NO	NULL	auto_increment
+ai_analysis	question_id	bigint	NO	NULL	
+ai_analysis	knowledge_point_id	bigint	YES	NULL	
+ai_analysis	error_cause	text	YES	NULL	
+ai_analysis	analysis	text	YES	NULL	
+ai_analysis	reference_ids	varchar(255)	YES	NULL	
+ai_analysis	llm_model	varchar(64)	YES	NULL	
+ai_analysis	status	tinyint	NO	0	
+ai_analysis	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+announcement	id	bigint	NO	NULL	auto_increment
+announcement	title	varchar(128)	NO	NULL	
+announcement	content	text	YES	NULL	
+announcement	publisher_id	bigint	YES	NULL	
+announcement	status	tinyint	NO	1	
+announcement	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+knowledge_point	id	bigint	NO	NULL	auto_increment
+knowledge_point	subject_id	bigint	NO	NULL	
+knowledge_point	parent_id	bigint	NO	0	
+knowledge_point	name	varchar(64)	NO	NULL	
+knowledge_point	sort	int	NO	0	
+knowledge_point	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+learning_content	id	bigint	NO	NULL	auto_increment
+learning_content	user_id	bigint	NO	NULL	
+learning_content	question_id	bigint	NO	NULL	
+learning_content	knowledge_point_id	bigint	YES	NULL	
+learning_content	input_hash	char(64)	NO	NULL	
+learning_content	content	text	NO	NULL	
+learning_content	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+learning_content	update_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED on update CURRENT_TIMESTAMP
+message	id	bigint	NO	NULL	auto_increment
+message	user_id	bigint	NO	NULL	
+message	type	varchar(32)	NO	system	
+message	title	varchar(128)	NO	NULL	
+message	content	varchar(512)	YES	NULL	
+message	is_read	tinyint	NO	0	
+message	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+practice_record	id	bigint	NO	NULL	auto_increment
+practice_record	user_id	bigint	NO	NULL	
+practice_record	question_id	bigint	YES	NULL	
+practice_record	variant_id	bigint	YES	NULL	
+practice_record	user_answer	text	YES	NULL	
+practice_record	is_correct	tinyint	YES	NULL	
+practice_record	duration	int	YES	NULL	
+practice_record	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+question	id	bigint	NO	NULL	auto_increment
+question	user_id	bigint	NO	NULL	
+question	subject_id	bigint	NO	NULL	
+question	knowledge_point_id	bigint	YES	NULL	
+question	stem	text	NO	NULL	
+question	answer	text	YES	NULL	
+question	source	varchar(128)	YES	NULL	
+question	image_url	varchar(255)	YES	NULL	
+question	difficulty	tinyint	YES	NULL	
+question	mastery	int	NO	0	
+question	embedding	text	YES	NULL	
+question	status	tinyint	NO	1	
+question	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+question	update_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED on update CURRENT_TIMESTAMP
+review_plan	id	bigint	NO	NULL	auto_increment
+review_plan	user_id	bigint	NO	NULL	
+review_plan	question_id	bigint	NO	NULL	
+review_plan	review_stage	tinyint	NO	1	
+review_plan	plan_date	date	NO	NULL	
+review_plan	status	tinyint	NO	0	
+review_plan	finish_time	datetime	YES	NULL	
+review_plan	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+subject	id	bigint	NO	NULL	auto_increment
+subject	name	varchar(32)	NO	NULL	
+subject	code	varchar(32)	YES	NULL	
+subject	sort	int	NO	0	
+subject	status	tinyint	NO	1	
+subject	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+user	id	bigint	NO	NULL	auto_increment
+user	username	varchar(32)	NO	NULL	
+user	password	varchar(128)	NO	NULL	
+user	nickname	varchar(32)	YES	NULL	
+user	role	varchar(16)	NO	student	
+user	class_name	varchar(64)	YES	NULL	
+user	email	varchar(64)	YES	NULL	
+user	status	tinyint	NO	1	
+user	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED
+user	update_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED on update CURRENT_TIMESTAMP
+variant_question	id	bigint	NO	NULL	auto_increment
+variant_question	question_id	bigint	NO	NULL	
+variant_question	stem	text	NO	NULL	
+variant_question	answer	text	YES	NULL	
+variant_question	difficulty	tinyint	YES	NULL	
+variant_question	create_time	datetime	NO	CURRENT_TIMESTAMP	DEFAULT_GENERATED

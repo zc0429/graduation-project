@@ -1,0 +1,89 @@
+TABLE_NAME	COLUMN_NAME	COLUMN_TYPE	IS_NULLABLE	COLUMN_DEFAULT	COLUMN_KEY	EXTRA	ORDINAL_POSITION
+ai_analysis	id	bigint	NO		PRI	auto_increment	1
+ai_analysis	question_id	bigint	NO		UNI		2
+ai_analysis	knowledge_point_id	bigint	YES				3
+ai_analysis	error_cause	text	YES				4
+ai_analysis	analysis	text	YES				5
+ai_analysis	reference_ids	varchar(255)	YES				6
+ai_analysis	llm_model	varchar(64)	YES				7
+ai_analysis	status	tinyint	NO	0			8
+ai_analysis	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	9
+announcement	id	bigint	NO		PRI	auto_increment	1
+announcement	title	varchar(128)	NO				2
+announcement	content	text	YES				3
+announcement	publisher_id	bigint	YES				4
+announcement	status	tinyint	NO	1			5
+announcement	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	6
+knowledge_point	id	bigint	NO		PRI	auto_increment	1
+knowledge_point	subject_id	bigint	NO				2
+knowledge_point	parent_id	bigint	NO	0			3
+knowledge_point	name	varchar(64)	NO				4
+knowledge_point	sort	int	NO	0			5
+knowledge_point	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	6
+learning_content	id	bigint	NO		PRI	auto_increment	1
+learning_content	user_id	bigint	NO		MUL		2
+learning_content	question_id	bigint	NO		UNI		3
+learning_content	knowledge_point_id	bigint	YES				4
+learning_content	input_hash	char(64)	NO				5
+learning_content	content	text	NO				6
+learning_content	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	7
+learning_content	update_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED on update CURRENT_TIMESTAMP	8
+message	id	bigint	NO		PRI	auto_increment	1
+message	user_id	bigint	NO		MUL		2
+message	type	varchar(32)	NO	system			3
+message	title	varchar(128)	NO				4
+message	content	varchar(512)	YES				5
+message	is_read	tinyint	NO	0			6
+message	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	7
+practice_record	id	bigint	NO		PRI	auto_increment	1
+practice_record	user_id	bigint	NO		MUL		2
+practice_record	question_id	bigint	YES				3
+practice_record	variant_id	bigint	YES				4
+practice_record	user_answer	text	YES				5
+practice_record	is_correct	tinyint	YES				6
+practice_record	duration	int	YES				7
+practice_record	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	8
+question	id	bigint	NO		PRI	auto_increment	1
+question	user_id	bigint	NO		MUL		2
+question	subject_id	bigint	NO				3
+question	knowledge_point_id	bigint	YES				4
+question	stem	text	NO				5
+question	answer	text	YES				6
+question	source	varchar(128)	YES				7
+question	image_url	varchar(255)	YES				8
+question	difficulty	tinyint	YES				9
+question	mastery	int	NO	0			10
+question	embedding	text	YES				11
+question	status	tinyint	NO	1			12
+question	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	13
+question	update_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED on update CURRENT_TIMESTAMP	14
+review_plan	id	bigint	NO		PRI	auto_increment	1
+review_plan	user_id	bigint	NO		MUL		2
+review_plan	question_id	bigint	NO				3
+review_plan	review_stage	tinyint	NO	1			4
+review_plan	plan_date	date	NO				5
+review_plan	status	tinyint	NO	0			6
+review_plan	finish_time	datetime	YES				7
+review_plan	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	8
+subject	id	bigint	NO		PRI	auto_increment	1
+subject	name	varchar(32)	NO		UNI		2
+subject	code	varchar(32)	YES				3
+subject	sort	int	NO	0			4
+subject	status	tinyint	NO	1			5
+subject	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	6
+user	id	bigint	NO		PRI	auto_increment	1
+user	username	varchar(32)	NO		UNI		2
+user	password	varchar(128)	NO				3
+user	nickname	varchar(32)	YES				4
+user	role	varchar(16)	NO	student			5
+user	class_name	varchar(64)	YES				6
+user	email	varchar(64)	YES				7
+user	status	tinyint	NO	1			8
+user	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	9
+user	update_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED on update CURRENT_TIMESTAMP	10
+variant_question	id	bigint	NO		PRI	auto_increment	1
+variant_question	question_id	bigint	NO				2
+variant_question	stem	text	NO				3
+variant_question	answer	text	YES				4
+variant_question	difficulty	tinyint	YES				5
+variant_question	create_time	datetime	NO	CURRENT_TIMESTAMP		DEFAULT_GENERATED	6

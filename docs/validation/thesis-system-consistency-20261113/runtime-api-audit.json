@@ -1,0 +1,1303 @@
+{
+  "model": "explicit Mock; no external GLM request",
+  "cases": [
+    {
+      "case": "seed login student",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "seed login teacher",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "seed login admin",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 registration",
+      "method": "POST",
+      "path": "/auth/register",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 new student login",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 duplicate registration",
+      "method": "POST",
+      "path": "/auth/register",
+      "http_status": 400,
+      "business_code": 400,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 invalid credentials",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 401,
+      "business_code": 401,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 profile update",
+      "method": "PUT",
+      "path": "/user/profile",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 profile readback",
+      "method": "GET",
+      "path": "/user/profile",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR02 create subject",
+      "method": "POST",
+      "path": "/subject",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR02 update subject",
+      "method": "PUT",
+      "path": "/subject/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR02 subject readback",
+      "method": "GET",
+      "path": "/subject/list",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR03 create chapter",
+      "method": "POST",
+      "path": "/knowledge-point",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR03 create leaf",
+      "method": "POST",
+      "path": "/knowledge-point",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR03 tree readback",
+      "method": "GET",
+      "path": "/knowledge-point/tree?subjectId=4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR03 parent cannot delete before child",
+      "method": "DELETE",
+      "path": "/knowledge-point/20",
+      "http_status": 400,
+      "business_code": 400,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR04 create question",
+      "method": "POST",
+      "path": "/question",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR07 same-owner reference question",
+      "method": "POST",
+      "path": "/question",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR04 other student question",
+      "method": "POST",
+      "path": "/question",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR06 first knowledge",
+      "method": "POST",
+      "path": "/learning/knowledge/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR06 cache reuse",
+      "method": "POST",
+      "path": "/learning/knowledge/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR08 original first",
+      "method": "POST",
+      "path": "/learning/practice/next/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR08 legacy variant generation before original attempt",
+      "method": "POST",
+      "path": "/variant/generate/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR08 unified next still returns original",
+      "method": "POST",
+      "path": "/learning/practice/next/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 incorrect original consumes only original",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR08 reuse stored unpracticed variant",
+      "method": "POST",
+      "path": "/learning/practice/next/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 submit each variant",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 submit each variant",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 submit each variant",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR08 exhausted pool generates new batch",
+      "method": "POST",
+      "path": "/learning/practice/next/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 explicit original redo",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 history is own",
+      "method": "GET",
+      "path": "/practice/page?pageSize=100",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR10 exclusive target validation",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 400,
+      "business_code": 400,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "GET",
+      "path": "/question/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "DELETE",
+      "path": "/question/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "POST",
+      "path": "/ai/analyze/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "POST",
+      "path": "/learning/knowledge/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "POST",
+      "path": "/learning/practice/next/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "GET",
+      "path": "/learning/practice/progress/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "GET",
+      "path": "/variant/list?questionId=4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "POST",
+      "path": "/variant/generate/4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user object isolation",
+      "method": "GET",
+      "path": "/recommend/similar?questionId=4",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "cross-user answer isolation",
+      "method": "POST",
+      "path": "/practice",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 trigger asynchronous Mock analysis",
+      "method": "POST",
+      "path": "/ai/analyze/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR05 poll real persisted Mock state",
+      "method": "GET",
+      "path": "/ai/analysis/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR07 same-owner recommendation",
+      "method": "GET",
+      "path": "/recommend/similar?questionId=4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR09 due list",
+      "method": "GET",
+      "path": "/review-plan/today",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR09 foreign finish denied",
+      "method": "PUT",
+      "path": "/review-plan/16/finish",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR09 finish independently",
+      "method": "PUT",
+      "path": "/review-plan/16/finish",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR09 repeated finish rejected",
+      "method": "PUT",
+      "path": "/review-plan/16/finish",
+      "http_status": 400,
+      "business_code": 400,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR11 student report",
+      "method": "GET",
+      "path": "/report/weekly",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR11 teacher report",
+      "method": "GET",
+      "path": "/report/weekly",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR11 generate notification",
+      "method": "POST",
+      "path": "/report/generate",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR13 own messages",
+      "method": "GET",
+      "path": "/message/page?pageSize=100",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR13 foreign read denied",
+      "method": "PUT",
+      "path": "/message/2/read",
+      "http_status": 403,
+      "business_code": 403,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR13 mark read",
+      "method": "PUT",
+      "path": "/message/2/read",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR13 unread count",
+      "method": "GET",
+      "path": "/message/unread-count",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR14 publish",
+      "method": "POST",
+      "path": "/announcement",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR14 visible to student",
+      "method": "GET",
+      "path": "/announcement/list",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR14 visible to teacher",
+      "method": "GET",
+      "path": "/announcement/list",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR14 visible to admin",
+      "method": "GET",
+      "path": "/announcement/list",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR04 recognition unavailable retains manual workflow",
+      "method": "POST",
+      "path": "/question-recognition/recognize",
+      "http_status": 400,
+      "business_code": 400,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR04 core edit invalidates persisted derived rows",
+      "method": "PUT",
+      "path": "/question/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 admin cannot disable itself",
+      "method": "DELETE",
+      "path": "/user/1",
+      "http_status": 400,
+      "business_code": 400,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 disable user",
+      "method": "DELETE",
+      "path": "/user/4",
+      "http_status": 200,
+      "business_code": 0,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 old session rejected after disable",
+      "method": "GET",
+      "path": "/user/profile",
+      "http_status": 401,
+      "business_code": 401,
+      "assertion": "passed"
+    },
+    {
+      "case": "FR01 disabled login rejected",
+      "method": "POST",
+      "path": "/auth/login",
+      "http_status": 401,
+      "business_code": 401,
+      "assertion": "passed"
+    }
+  ],
+  "permission_sweep": [
+    {
+      "method": "POST",
+      "path": "/api/ai/analyze/{questionId}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/ai/analyze/{questionId}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/ai/analyze/{questionId}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai/analysis/{questionId}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai/analysis/{questionId}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/ai/analysis/{questionId}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/announcement/list",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/announcement",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/announcement",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/announcement",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/knowledge-point/tree",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge-point",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge-point",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/knowledge-point",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/knowledge-point/{id}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/knowledge-point/{id}",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/knowledge-point/{id}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/knowledge/{questionId}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/knowledge/{questionId}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/knowledge/{questionId}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/practice/next/{questionId}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/practice/next/{questionId}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/learning/practice/next/{questionId}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/learning/practice/progress/{questionId}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/learning/practice/progress/{questionId}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/learning/practice/progress/{questionId}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/message/page",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "PUT",
+      "path": "/api/message/{id}/read",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/message/unread-count",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/practice",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/practice",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/practice",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/practice/page",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/practice/page",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/practice/page",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/question",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/question",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/question",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/page",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/page",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/page",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/{id}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/{id}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/{id}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/export",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/export",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/question/export",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "PUT",
+      "path": "/api/question/{id}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "PUT",
+      "path": "/api/question/{id}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "PUT",
+      "path": "/api/question/{id}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/question/{id}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/question/{id}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/question/{id}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/question-recognition/recognize",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/question-recognition/recognize",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/question-recognition/recognize",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/recommend/similar",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/recommend/similar",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/recommend/similar",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/report/weekly",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/report/weekly",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/report/generate",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/report/generate",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/review-plan/today",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/review-plan/today",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/review-plan/today",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "PUT",
+      "path": "/api/review-plan/{id}/finish",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "PUT",
+      "path": "/api/review-plan/{id}/finish",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "PUT",
+      "path": "/api/review-plan/{id}/finish",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/subject/list",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/subject",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/subject",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/subject",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "PUT",
+      "path": "/api/subject/{id}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "PUT",
+      "path": "/api/subject/{id}",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "PUT",
+      "path": "/api/subject/{id}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/profile",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "PUT",
+      "path": "/api/user/profile",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/page",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/page",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/user/page",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/user/{id}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/user/{id}",
+      "role": "student",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/user/{id}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/variant/generate/{questionId}",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/variant/generate/{questionId}",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "POST",
+      "path": "/api/variant/generate/{questionId}",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/variant/list",
+      "role": "anonymous",
+      "expected": 401,
+      "actual": 401
+    },
+    {
+      "method": "GET",
+      "path": "/api/variant/list",
+      "role": "teacher",
+      "expected": 403,
+      "actual": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/variant/list",
+      "role": "admin",
+      "expected": 403,
+      "actual": 403
+    }
+  ],
+  "cycle_snapshots": [
+    {
+      "step": "create: five fixed dates",
+      "knowledge_rows": 0,
+      "variant_rows": 0,
+      "practice_rows": 0,
+      "plan_rows": 5,
+      "finished_plans": 0,
+      "mastery": 0
+    },
+    {
+      "step": "knowledge generated once and reused",
+      "knowledge_rows": 1,
+      "variant_rows": 0,
+      "practice_rows": 0,
+      "plan_rows": 5,
+      "finished_plans": 0,
+      "mastery": 0
+    },
+    {
+      "step": "get without submission",
+      "knowledge_rows": 1,
+      "variant_rows": 0,
+      "practice_rows": 0,
+      "plan_rows": 5,
+      "finished_plans": 0,
+      "mastery": 0
+    },
+    {
+      "step": "three variants all submitted",
+      "knowledge_rows": 1,
+      "variant_rows": 3,
+      "practice_rows": 4,
+      "plan_rows": 5,
+      "finished_plans": 0,
+      "mastery": 0
+    },
+    {
+      "step": "continue after exhaustion",
+      "knowledge_rows": 1,
+      "variant_rows": 6,
+      "practice_rows": 4,
+      "plan_rows": 5,
+      "finished_plans": 0,
+      "mastery": 0
+    },
+    {
+      "step": "redo: no generated resources or completed plans",
+      "knowledge_rows": 1,
+      "variant_rows": 6,
+      "practice_rows": 5,
+      "plan_rows": 5,
+      "finished_plans": 0,
+      "mastery": 15
+    }
+  ],
+  "fixtures": "SQL declares candidate vectors, one due date, and removes only task data; not historical experiments",
+  "passed": true
+}

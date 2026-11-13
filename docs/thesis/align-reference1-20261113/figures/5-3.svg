@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="158.3267mm" viewBox="0 0 446.4567 448.8">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="4" y="8.8" width="90" height="28.8" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="49.0" y="25.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">学生页面</text>
+<polyline points="49,37.6 49,407.0" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<rect x="120" y="8.8" width="90" height="28.8" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="165.0" y="25.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">接口与服务</text>
+<polyline points="165,37.6 165,407.0" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<rect x="236" y="8.8" width="90" height="28.8" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="281.0" y="25.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">本地执行器</text>
+<polyline points="281,37.6 281,407.0" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<rect x="352" y="8.8" width="90" height="28.8" fill="#f2f2f2" stroke="#292929" stroke-width=".7"/>
+<text x="397.0" y="25.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">数据库</text>
+<polyline points="397,37.6 397,407.0" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polyline points="49,64.8 165,64.8" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="165,64.8 159.73450462865776,67.67655323162522 159.73450462865776,61.92344676837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="59.2" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">提交错题</text>
+<polyline points="165,92.80000000000001 397,92.80000000000001" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,92.80000000000001 391.73450462865776,95.67655323162523 391.73450462865776,89.92344676837479" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="281.0" y="87.2" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">事务保存 question + 5 条 review_plan</text>
+<polyline points="165,120.80000000000001 49,120.80000000000001" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="49,120.80000000000001 54.26549537134223,117.92344676837479 54.26549537134224,123.67655323162523" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="115.2" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">返回题目 ID</text>
+<polyline points="49,148.8 165,148.8" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="165,148.8 159.73450462865776,151.67655323162523 159.73450462865776,145.9234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="143.20000000000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">另行触发解析</text>
+<polyline points="165,176.8 397,176.8" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,176.8 391.73450462865776,179.67655323162523 391.73450462865776,173.9234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="281.0" y="171.20000000000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">归属检查；创建或重置解析状态 0</text>
+<polyline points="165,204.8 281,204.8" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="281,204.8 275.73450462865776,207.67655323162523 275.73450462865776,201.9234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="223.0" y="199.20000000000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">提交任务</text>
+<polyline points="165,229.60000000000002 49,229.60000000000002" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="49,229.60000000000002 54.26549537134223,226.7234467683748 54.26549537134224,232.47655323162525" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="224.0" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">触发接口返回</text>
+<polyline points="281,257.6 397,257.6" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,257.6 391.73450462865776,260.47655323162525 391.73450462865776,254.7234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="339.0" y="252.0" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">读取解析记录与题目</text>
+<rect x="227" y="272.8" width="109" height="48.800000000000004" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="281.5" y="288.40000000000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">执行向量与 RAG</text>
+<text x="281.5" y="299.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">请求外部 GLM</text>
+<text x="281.5" y="310.8" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">校验结构化响应</text>
+<polyline points="281,347.20000000000005 397,347.20000000000005" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="397,347.20000000000005 391.73450462865776,350.07655323162527 391.73450462865776,344.3234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="339.0" y="341.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">条件回写 + 完成消息</text>
+<polyline points="49,375.20000000000005 165,375.20000000000005" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="165,375.20000000000005 159.73450462865776,378.07655323162527 159.73450462865776,372.3234467683748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="369.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">轮询解析状态</text>
+<polyline points="165,403.20000000000005 49,403.20000000000005" fill="none" stroke="#292929" stroke-width=".7" stroke-dasharray="3 2"/>
+<polygon points="49,403.20000000000005 54.26549537134223,400.3234467683748 54.26549537134224,406.07655323162527" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="107.0" y="397.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">返回 0 / 1 / 2</text>
+<text x="223" y="425.6" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">保存事务不包含外部模型调用；任务与轮询可并发进行。</text>
+<text x="223" y="440.0" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9" text-anchor="middle" fill="black">过期输入：回写事务回滚且不发完成消息；异常：当前解析置 2。</text>
+</svg>

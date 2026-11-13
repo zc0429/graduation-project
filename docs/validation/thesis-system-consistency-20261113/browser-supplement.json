@@ -1,0 +1,40 @@
+{
+  "model": "explicit Mock",
+  "flows": [
+    {
+      "flow": "admin real catalog create/edit/add/delete",
+      "passed": true
+    },
+    {
+      "flow": "admin publishes and student reads actual announcement",
+      "passed": true
+    },
+    {
+      "flow": "teacher aggregate report and student generate/read message",
+      "passed": true
+    },
+    {
+      "flow": "due review opens original, records answer, separately confirms selected plan",
+      "passed": true
+    }
+  ],
+  "created": {
+    "subjectId": 5,
+    "chapterId": 22,
+    "pointId": 23,
+    "announcementId": 3
+  },
+  "fixture": {
+    "questionId": 10,
+    "planId": 46,
+    "stem": "审计UI复习251543623",
+    "suffix": "48735466"
+  },
+  "allFourPassed": true,
+  "database_readback": {
+    "mastery": 15,
+    "plan_status": 1,
+    "finish_time_present": true,
+    "practice_rows": 1
+  }
+}

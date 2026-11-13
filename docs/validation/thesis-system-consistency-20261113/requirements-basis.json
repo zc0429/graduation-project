@@ -1,0 +1,242 @@
+{
+  "school_and_reference_immutable": {
+    "docs/materials/毕业论文概要说明.pdf": "a28953591aa8221eaaab314ecbb7ab9494f08c8d276fbd9c806fba81bcbc40ef",
+    "docs/materials/附件2：云南工商学院本科毕业论文（设计）.docx": "9144415f283a81cd6e41e1ed246f15f20c97039afdee4ad0e51948ad703e9cbc",
+    "docs/materials/README.md": "0a5de6baa9f5aaf0cb23d4dc1f852d49f83a42cd722bad6d72dec83e0a5cddfc",
+    "docs/materials/27届毕业设计学校通知和模板/关于做好2027届本科毕业论文（设计）工作的通知.docx": "c6aba4de517a2a96b428544d86add22140e780a3d1ebc330628ae62d8cdab60c",
+    "docs/materials/27届毕业设计学校通知和模板/附件2：云南工商学院本科毕业论文（设计）撰写规范及要求 (1).docx": "6a68c85a3cddbb7e0384b7c4d44beafa36fd5ffae77e714ea72fb3c9c122554b",
+    "docs/materials/27届毕业设计学校通知和模板/附件1：云南工商学院2027届本科毕业论文（设计）工作方案.docx": "0ef6b7afafe7561ee5733e0e38a22601e4364f6bc37d8dc327ee222aa3b2aa31",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件4：毕业论文（设计）正文模板.docx": "79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件3：毕业论文（设计）内容资料.docx": "a4fe4ba9cfea0f8a0edcf8aa7b670b3027f744910b1a24bd188db955e62239a8",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件6：二级学院存档的相关资料表格.docx": "e1306a243365756c886d636602a9834e9999e1790f7fc253181a27cc9c058693",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件2：云南工商学院学生毕业论文（设计）相关资料.docx": "1e20d6c048c5e2d068140a52925cdfbcafaba68801c2742917f2d1e61be1307b",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件7：毕业论文(设计)验收表.docx": "63432b3c907a5bf45405f80d6e1e7eb1532453c9569162217738b0fbc0f68b44",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件1：云南工商学毕业论文（设计）材料目录.docx": "dfa86f07f1fe6fa574da5d1396f4b05e99fcbfa58b549a0cc91d8b3f62932315",
+    "docs/materials/27届毕业设计学校通知和模板/附件3：毕业论文（设计）相关模板（2027）/附件5：毕业论文（设计）工作记录手册.docx": "c0fc95b0250fe294ee8735f6b37bbd97999ba748f81bd3775555389f8eef45b0",
+    "docs/materials/参考论文/其他文档/中期检查报告.pdf": "73e58eb66968415719d62608ecdb92a000d33e1749220e204f36850a4576ef7e",
+    "docs/materials/参考论文/其他文档/任务书参考.docx": "031107b31fa8ac9abb353bbcc11a611bd83efb112df4fbc42d3ae43b0afbef1c",
+    "docs/materials/参考论文/其他文档/开题报告.pdf": "319e116cfcc6fd93981d2815e44dbd4ef28210013104b9ef5800377a47ba7ee9",
+    "docs/materials/参考论文/其他文档/任务书参考.pdf": "91f18d4e7ede8b434dda2488c224ab5ab1e5bf96081e03812230dd069686bd8c",
+    "docs/materials/参考论文/论文正文/参考论文1.pdf": "d35fc31a552818d03864500831e12b39c837887f2f77217797c2844e8b417741",
+    "docs/materials/参考论文/论文正文/参考论文2.pdf": "f0dac5853d4d315509a14e2c099402376d11cff9c3ad54bf63b6c669875512b6",
+    "docs/materials/参考论文/论文正文/参考论文3.pdf": "a383be0902b3aa82aad707073885f3260caef9ed2d63f7013227f0d2ec687280"
+  },
+  "reference1": {
+    "path": "docs/materials/参考论文/论文正文/参考论文1.pdf",
+    "sha256": "d35fc31a552818d03864500831e12b39c837887f2f77217797c2844e8b417741",
+    "pdf_pages": 106,
+    "body_pdf_start": 9,
+    "references_pdf_start": 95,
+    "chapters": [
+      {
+        "chapter": 1,
+        "title": "绪论",
+        "pdf_start": 9,
+        "body_start": 1,
+        "pages": 3,
+        "figures": [],
+        "tables": []
+      },
+      {
+        "chapter": 2,
+        "title": "文献综述",
+        "pdf_start": 12,
+        "body_start": 4,
+        "pages": 4,
+        "figures": [],
+        "tables": []
+      },
+      {
+        "chapter": 3,
+        "title": "系统需求分析",
+        "pdf_start": 16,
+        "body_start": 8,
+        "pages": 14,
+        "figures": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "tables": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "chapter": 4,
+        "title": "相关技术概述",
+        "pdf_start": 30,
+        "body_start": 22,
+        "pages": 2,
+        "figures": [],
+        "tables": []
+      },
+      {
+        "chapter": 5,
+        "title": "系统概要设计",
+        "pdf_start": 32,
+        "body_start": 24,
+        "pages": 8,
+        "figures": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "tables": [
+          "1"
+        ]
+      },
+      {
+        "chapter": 6,
+        "title": "系统详细设计",
+        "pdf_start": 40,
+        "body_start": 32,
+        "pages": 20,
+        "figures": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "tables": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "chapter": 7,
+        "title": "系统开发与实现",
+        "pdf_start": 60,
+        "body_start": 52,
+        "pages": 24,
+        "figures": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "tables": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "chapter": 8,
+        "title": "系统测试",
+        "pdf_start": 84,
+        "body_start": 76,
+        "pages": 10,
+        "figures": [],
+        "tables": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "chapter": 9,
+        "title": "总结与展望",
+        "pdf_start": 94,
+        "body_start": 86,
+        "pages": 1,
+        "figures": [],
+        "tables": []
+      }
+    ],
+    "toc": []
+  },
+  "current_chapter_metrics": [
+    {
+      "chapter": 1,
+      "chinese_prose_chars": 1633,
+      "figure_count": 0,
+      "table_count": 0
+    },
+    {
+      "chapter": 2,
+      "chinese_prose_chars": 2313,
+      "figure_count": 0,
+      "table_count": 0
+    },
+    {
+      "chapter": 3,
+      "chinese_prose_chars": 4155,
+      "figure_count": 9,
+      "table_count": 4
+    },
+    {
+      "chapter": 4,
+      "chinese_prose_chars": 1562,
+      "figure_count": 0,
+      "table_count": 0
+    },
+    {
+      "chapter": 5,
+      "chinese_prose_chars": 2975,
+      "figure_count": 6,
+      "table_count": 2
+    },
+    {
+      "chapter": 6,
+      "chinese_prose_chars": 4795,
+      "figure_count": 5,
+      "table_count": 13
+    },
+    {
+      "chapter": 7,
+      "chinese_prose_chars": 6004,
+      "figure_count": 8,
+      "table_count": 1
+    },
+    {
+      "chapter": 8,
+      "chinese_prose_chars": 3865,
+      "figure_count": 0,
+      "table_count": 6
+    },
+    {
+      "chapter": 9,
+      "chinese_prose_chars": 529,
+      "figure_count": 0,
+      "table_count": 0
+    }
+  ],
+  "adviser_basis": "Current user instruction and retained 20261112/13 decision/audit records. Original chat/video/transcript was not supplied in this session; not independently replayed. No new adviser approval inferred."
+}

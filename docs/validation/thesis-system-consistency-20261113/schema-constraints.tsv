@@ -1,0 +1,16 @@
+TABLE_NAME	CONSTRAINT_NAME	CONSTRAINT_TYPE
+ai_analysis	PRIMARY	PRIMARY KEY
+ai_analysis	uk_question	UNIQUE
+announcement	PRIMARY	PRIMARY KEY
+knowledge_point	PRIMARY	PRIMARY KEY
+learning_content	PRIMARY	PRIMARY KEY
+learning_content	uk_learning_question	UNIQUE
+message	PRIMARY	PRIMARY KEY
+practice_record	PRIMARY	PRIMARY KEY
+question	PRIMARY	PRIMARY KEY
+review_plan	PRIMARY	PRIMARY KEY
+subject	PRIMARY	PRIMARY KEY
+subject	uk_name	UNIQUE
+user	PRIMARY	PRIMARY KEY
+user	uk_username	UNIQUE
+variant_question	PRIMARY	PRIMARY KEY

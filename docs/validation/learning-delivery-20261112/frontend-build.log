@@ -1,0 +1,82 @@
+
+> web@0.0.0 build
+> vue-tsc -b && vite build
+
+vite v8.2.1 building client environment for production...
+[2Ktransforming...✓ 2375 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           1.15 kB │ gzip:   0.52 kB
+dist/assets/QuestionContent-BPqWeNBj.css                  0.27 kB │ gzip:   0.16 kB
+dist/assets/NotFoundView-3GtmNc6V.css                     0.57 kB │ gzip:   0.30 kB
+dist/assets/QuestionEditor-DxYfvp5v.css                   0.70 kB │ gzip:   0.33 kB
+dist/assets/AdminSectionTabs-DdFrXfkj.css                 1.03 kB │ gzip:   0.48 kB
+dist/assets/MasteryIndicator-D9BWrD7s.css                 1.05 kB │ gzip:   0.42 kB
+dist/assets/AppBrand-A5Uieq8x.css                         1.28 kB │ gzip:   0.57 kB
+dist/assets/PaperPanel-BsAV7Cba.css                       1.38 kB │ gzip:   0.53 kB
+dist/assets/PracticeHistoryView-B0GeQfXP.css              1.68 kB │ gzip:   0.60 kB
+dist/assets/ProfileView-BAcZAFTs.css                      2.25 kB │ gzip:   0.74 kB
+dist/assets/MessageView-DWyzglE1.css                      2.35 kB │ gzip:   0.72 kB
+dist/assets/AdminSubjectView-XRuQ9v1-.css                 2.59 kB │ gzip:   0.87 kB
+dist/assets/AnnouncementView-Dtu74hzH.css                 2.74 kB │ gzip:   0.80 kB
+dist/assets/PageHeader-DEEZwPDq.css                       2.76 kB │ gzip:   0.97 kB
+dist/assets/AdminUserView-EnhDSouo.css                    3.05 kB │ gzip:   0.91 kB
+dist/assets/AdminKnowledgeView-D7pJwuxw.css               3.50 kB │ gzip:   0.99 kB
+dist/assets/ReviewPlanView-DM5Q74dC.css                   4.47 kB │ gzip:   1.19 kB
+dist/assets/LoginView-CXDhmSWI.css                        5.66 kB │ gzip:   1.72 kB
+dist/assets/QuestionListView-DJpRfFde.css                 5.83 kB │ gzip:   1.58 kB
+dist/assets/QuestionCreateView-Wz4ekyg-.css               6.08 kB │ gzip:   1.47 kB
+dist/assets/ReportView-prsjMmW7.css                       7.25 kB │ gzip:   1.76 kB
+dist/assets/HomeView-CrlaIwc2.css                         8.47 kB │ gzip:   1.97 kB
+dist/assets/QuestionDetailView-D6bvpTbs.css              11.53 kB │ gzip:   2.39 kB
+dist/assets/AppLayout-30Y3Vnwe.css                       12.62 kB │ gzip:   2.91 kB
+dist/assets/index-DFHnvmUw.css                          364.33 kB │ gzip:  49.97 kB
+dist/assets/QuestionContent-BBE1sRxK.js                   0.34 kB │ gzip:   0.25 kB
+dist/assets/PaperPanel-Cd_tlClu.js                        0.53 kB │ gzip:   0.36 kB
+dist/assets/rolldown-runtime-hePW80VL.js                  0.71 kB │ gzip:   0.42 kB
+dist/assets/useApi-CROJJdhE-DeKjrM8n.js                   0.83 kB │ gzip:   0.45 kB
+dist/assets/NotFoundView-BDCC__3Q.js                      0.86 kB │ gzip:   0.63 kB
+dist/assets/AppBrand-Cvy0bkcU.js                          0.87 kB │ gzip:   0.60 kB
+dist/assets/AdminSectionTabs-B5kNoyZk.js                  1.02 kB │ gzip:   0.65 kB
+dist/assets/MasteryIndicator-9TYBA_1U.js                  1.03 kB │ gzip:   0.62 kB
+dist/assets/preload-helper-Czpn1I53.js                    1.19 kB │ gzip:   0.67 kB
+dist/assets/api-B1t8rDJb.js                               2.08 kB │ gzip:   0.88 kB
+dist/assets/PageHeader-gyT-Ik5K.js                        2.61 kB │ gzip:   1.43 kB
+dist/assets/PracticeHistoryView-BmEQbeaV.js               2.94 kB │ gzip:   1.70 kB
+dist/assets/createSeriesData-MycorRRJ.js                  3.12 kB │ gzip:   1.28 kB
+dist/assets/MessageView-B1f0Tk90.js                       3.60 kB │ gzip:   1.82 kB
+dist/assets/ProfileView-Yb4m2UgX.js                       4.32 kB │ gzip:   2.19 kB
+dist/assets/AdminSubjectView-dWV87_pu.js                  4.56 kB │ gzip:   2.23 kB
+dist/assets/core-DIU9EWRV.js                              4.78 kB │ gzip:   2.22 kB
+dist/assets/AnnouncementView-D0BD2aBt.js                  4.94 kB │ gzip:   2.38 kB
+dist/assets/ReviewPlanView-Xe3M3f5V.js                    5.43 kB │ gzip:   2.83 kB
+dist/assets/LoginView-Cm5ElMoM.js                         6.63 kB │ gzip:   2.99 kB
+dist/assets/AdminUserView-BhAYLlQL.js                     6.80 kB │ gzip:   2.97 kB
+dist/assets/AdminKnowledgeView-Dq2ZfZhC.js                7.09 kB │ gzip:   3.07 kB
+dist/assets/user-D-xqggMt.js                              7.18 kB │ gzip:   3.28 kB
+dist/assets/QuestionListView-DfJbPkw-.js                  9.93 kB │ gzip:   4.14 kB
+dist/assets/QuestionCreateView-B11DMbcZ.js               10.94 kB │ gzip:   4.87 kB
+dist/assets/HomeView-OrVlue9-.js                         13.06 kB │ gzip:   5.08 kB
+dist/assets/AppLayout-57NAKQ-S.js                        13.49 kB │ gzip:   5.11 kB
+dist/assets/ReportView-CGAHQxPk.js                       13.60 kB │ gzip:   5.17 kB
+dist/assets/vue-router-BtIFZ-B-.js                       22.30 kB │ gzip:   8.92 kB
+dist/assets/QuestionDetailView-2wqm9R-T.js               28.48 kB │ gzip:  10.09 kB
+dist/assets/question-content-B84nnBug.js                 30.02 kB │ gzip:  11.86 kB
+dist/assets/renderers-DT3BCHrs.js                        33.69 kB │ gzip:  13.06 kB
+dist/assets/message-box-zpfkyr92.js                      60.31 kB │ gzip:  21.15 kB
+dist/assets/_plugin-vue_export-helper-Bhv8uZgw.js        95.15 kB │ gzip:  32.92 kB
+dist/assets/user-fNriYeM1.js                            113.56 kB │ gzip:  43.47 kB
+dist/assets/customGraphicKeyframeAnimation-CQKwnMkB.js  144.20 kB │ gzip:  49.54 kB
+dist/assets/graphic-ChK7NCHW.js                         149.06 kB │ gzip:  50.03 kB
+dist/assets/parseGeoJson-0udlN2yY.js                    244.71 kB │ gzip:  84.57 kB
+dist/assets/charts-LM7KEcWc.js                          258.94 kB │ gzip:  84.71 kB
+dist/assets/components-D3SNRGxY.js                      259.01 kB │ gzip:  82.97 kB
+dist/assets/QuestionEditor-B7oxtpxY.js                  386.34 kB │ gzip: 122.04 kB
+dist/assets/index-3MYERF76.js                           773.70 kB │ gzip: 245.13 kB
+
+✓ built in 1.58s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

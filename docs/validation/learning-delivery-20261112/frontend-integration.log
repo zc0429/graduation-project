@@ -1,0 +1,57 @@
+
+> web@0.0.0 e2e:integration
+> playwright test --config=playwright.integration.config.ts
+
+[WebServer] (node:15058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 5 tests using 1 worker
+
+(node:15101) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/5] e2e/integration/learning-resources.spec.ts:5:1 › personal resources: saved knowledge, original first, exhausted pool, explicit repetition
+  1) e2e/integration/learning-resources.spec.ts:5:1 › personal resources: saved knowledge, original first, exhausted pool, explicit repetition 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 0
+
+      27 |     for (const variant of batch) {
+      28 |       const result = await request.post(`${base}/practice`, { headers, data: { variantId: variant.id, isCorrect: 0, userAnswer: '自动化自评：答错仍视为已练' } })
+    > 29 |       expect((await result.json()).code).toBe(200)
+         |                                          ^
+      30 |     }
+      31 |     await page.getByRole('button', { name: '继续练习', exact: true }).click(); await expect.poll(async () => (await list()).length).toBe(6)
+      32 |     await page.locator('.learning-resources').getByText('答对了', { exact: true }).click(); await page.getByRole('button', { name: '保存本次练习' }).click()
+        at /workspace/graduation-delivery/web/e2e/integration/learning-resources.spec.ts:29:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:15499) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/5] e2e/integration/real-backend.spec.ts:22:3 › wrongbook_e2e real backend › student can create, edit, practise, export with JWT, and delete a question
+[3/5] e2e/integration/real-backend.spec.ts:76:3 › wrongbook_e2e real backend › teacher is limited to the aggregate report surface
+[4/5] e2e/integration/real-backend.spec.ts:91:3 › wrongbook_e2e real backend › administrator reaches the real management surfaces
+[5/5] e2e/integration/real-backend.spec.ts:102:3 › wrongbook_e2e real backend › question images are returned only through an owned authenticated detail
+  1 failed
+    e2e/integration/learning-resources.spec.ts:5:1 › personal resources: saved knowledge, original first, exhausted pool, explicit repetition 
+  4 passed (37.0s)

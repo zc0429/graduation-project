@@ -1,0 +1,27 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.16)
+
+2026-11-13T09:43:30.907Z  INFO 7614 --- [wrongbook-server] [           main] c.e.w.WrongbookServerApplication         : Starting WrongbookServerApplication v0.0.1-SNAPSHOT using Java 21.0.13 with PID 7614 (/workspace/graduation-project/server/target/wrongbook-server-0.0.1-SNAPSHOT.jar started by agent in /workspace/graduation-project/server)
+2026-11-13T09:43:30.920Z  INFO 7614 --- [wrongbook-server] [           main] c.e.w.WrongbookServerApplication         : The following 1 profile is active: "dev"
+2026-11-13T09:43:35.313Z  INFO 7614 --- [wrongbook-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-11-13T09:43:35.327Z  INFO 7614 --- [wrongbook-server] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-13T09:43:35.328Z  INFO 7614 --- [wrongbook-server] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-11-13T09:43:35.353Z  INFO 7614 --- [wrongbook-server] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-13T09:43:35.355Z  INFO 7614 --- [wrongbook-server] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4232 ms
+2026-11-13T09:43:36.217Z  INFO 7614 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-13T09:43:36.604Z  INFO 7614 --- [wrongbook-server] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e38c472
+2026-11-13T09:43:36.607Z  INFO 7614 --- [wrongbook-server] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-13T09:43:39.433Z  INFO 7614 --- [wrongbook-server] [           main] b.m.s.MybatisPlusApplicationContextAware : Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5cdd09b1
+2026-11-13T09:43:39.610Z  INFO 7614 --- [wrongbook-server] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-11-13T09:43:39.637Z  INFO 7614 --- [wrongbook-server] [           main] c.e.w.WrongbookServerApplication         : Started WrongbookServerApplication in 9.995 seconds (process running for 11.689)
+2026-11-13T09:44:09.067Z  INFO 7614 --- [wrongbook-server] [0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-13T09:44:09.067Z  INFO 7614 --- [wrongbook-server] [0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-13T09:44:09.068Z  INFO 7614 --- [wrongbook-server] [0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-11-13T09:44:10.214Z  WARN 7614 --- [wrongbook-server] [0.1-8080-exec-3] c.e.w.common.GlobalExceptionHandler      : 业务异常：知识点不存在

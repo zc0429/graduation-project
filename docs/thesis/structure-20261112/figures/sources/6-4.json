@@ -1,0 +1,384 @@
+{
+  "id": "6-4",
+  "caption": "图 6.4　模型网关的核心类关系",
+  "height": 360,
+  "evidence": [
+    "server/src/main/java/com/example/wrongbook/service/LlmClient.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/EmbeddingServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/VariantServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/MockLlmClient.java"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 8,
+      "w": 200,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 8,
+      "w": 200,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 108.0,
+      "y": 23,
+      "text": "AiAnalysisServiceImpl",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 15,
+      "y": 45,
+      "text": "trigger(questionId)",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 15,
+      "y": 60,
+      "text": "getByQuestion(questionId)",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 238,
+      "y": 8,
+      "w": 200,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 238,
+      "y": 8,
+      "w": 200,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 338.0,
+      "y": 23,
+      "text": "VariantServiceImpl",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 245,
+      "y": 45,
+      "text": "generate(questionId)",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 245,
+      "y": 60,
+      "text": "list(questionId)",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 128,
+      "w": 190,
+      "h": 48
+    },
+    {
+      "kind": "text",
+      "x": 103.0,
+      "y": 148.0,
+      "text": "EmbeddingServiceImpl",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 103.0,
+      "y": 162.0,
+      "text": "embed(text)",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "rect",
+      "x": 238,
+      "y": 112,
+      "w": 200,
+      "h": 72
+    },
+    {
+      "kind": "rect",
+      "x": 238,
+      "y": 112,
+      "w": 200,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 338.0,
+      "y": 127,
+      "text": "«interface» LlmClient",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 245,
+      "y": 149,
+      "text": "chat(prompt): String",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 245,
+      "y": 164,
+      "text": "embed(text): List<Double>",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 245,
+      "y": 179,
+      "text": "model(): String",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          50,
+          65
+        ],
+        [
+          50,
+          128
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "text",
+      "x": 86,
+      "y": 100,
+      "text": "依赖",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          208,
+          48
+        ],
+        [
+          220,
+          48
+        ],
+        [
+          220,
+          129
+        ],
+        [
+          238,
+          129
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          339,
+          65
+        ],
+        [
+          339,
+          112
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          198,
+          152
+        ],
+        [
+          238,
+          152
+        ]
+      ],
+      "arrow": "filled",
+      "dash": true
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 276,
+      "w": 195,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 8,
+      "y": 276,
+      "w": 195,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 105.5,
+      "y": 291,
+      "text": "MockLlmClient",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 15,
+      "y": 313,
+      "text": "实现 LlmClient",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 15,
+      "y": 328,
+      "text": "离线输出",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 237,
+      "y": 276,
+      "w": 201,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 237,
+      "y": 276,
+      "w": 201,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 337.5,
+      "y": 291,
+      "text": "OpenAiCompatibleLlmClient",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 244,
+      "y": 313,
+      "text": "实现 LlmClient",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 244,
+      "y": 328,
+      "text": "外部 HTTP 调用",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          105,
+          276
+        ],
+        [
+          105,
+          240
+        ],
+        [
+          300,
+          240
+        ],
+        [
+          300,
+          184
+        ]
+      ],
+      "arrow": "open",
+      "dash": true
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          337,
+          276
+        ],
+        [
+          337,
+          184
+        ]
+      ],
+      "arrow": "open",
+      "dash": true
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 353,
+      "text": "虚线箭头表示依赖；空心三角表示接口实现。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ],
+  "note": "聚焦模型调用边界，省略 Controller、Mapper 和实体重复展开。\nAI 编排经 EmbeddingService 接口调用其实现；LlmClient 为实际注入接口。"
+}

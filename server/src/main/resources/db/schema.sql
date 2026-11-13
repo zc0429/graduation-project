@@ -1,13 +1,11 @@
 -- ============================================================
 -- AI 错题分析与学习推荐系统 数据库 DDL
--- 对齐毕业论文 5.1 节表 5.1–5.8；message / announcement 两张表
--- 经 2026-08-16 与用户裁定补充（接口表 5.9 与类设计 (10) 已要求，
--- 论文 5.1 将于三稿阶段同步修正为 10 张表）。
+-- 对齐九章论文第6章表6.1—6.11：11张表、88字段（2026-11-12）。
 -- 约定：主键自增 BIGINT；时间字段由数据库自动维护；逻辑外键不建物理外键；
 --      user / subject / question 的 status 为软删除标记（1 正常，0 删除/停用）。
 -- ============================================================
 
--- 表 5.1 用户表
+-- 表 6.1 用户表
 CREATE TABLE IF NOT EXISTS `user` (
     id          BIGINT       NOT NULL AUTO_INCREMENT COMMENT '用户 ID',
     username    VARCHAR(32)  NOT NULL COMMENT '登录用户名',
@@ -23,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     UNIQUE KEY uk_username (username)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户表';
 
--- 表 5.2 科目表
+-- 表 6.2 科目表
 CREATE TABLE IF NOT EXISTS `subject` (
     id          BIGINT      NOT NULL AUTO_INCREMENT COMMENT '科目 ID',
     name        VARCHAR(32) NOT NULL COMMENT '科目名称（如数学、物理）',
@@ -35,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `subject` (
     UNIQUE KEY uk_name (name)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '科目表';
 
--- 表 5.3 知识点表
+-- 表 6.3 知识点表
 CREATE TABLE IF NOT EXISTS `knowledge_point` (
     id          BIGINT      NOT NULL AUTO_INCREMENT COMMENT '知识点 ID',
     subject_id  BIGINT      NOT NULL COMMENT '所属科目，逻辑外键 → subject(id)',
@@ -46,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `knowledge_point` (
     PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '知识点表';
 
--- 表 5.4 错题表
+-- 表 6.4 错题表
 CREATE TABLE IF NOT EXISTS `question` (
     id                 BIGINT       NOT NULL AUTO_INCREMENT COMMENT '错题 ID',
     user_id            BIGINT       NOT NULL COMMENT '所属学生，逻辑外键 → user(id)',
@@ -66,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `question` (
     KEY idx_user_subject (user_id, subject_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '错题表';
 
--- 表 5.5 AI 解析记录表（analysis 为 MySQL 8 保留字，需反引号）
+-- 表 6.5 AI 解析记录表（analysis 为 MySQL 8 保留字，需反引号）
 CREATE TABLE IF NOT EXISTS `ai_analysis` (
     id                 BIGINT       NOT NULL AUTO_INCREMENT COMMENT '解析记录 ID',
     question_id        BIGINT       NOT NULL COMMENT '对应错题，逻辑外键 → question(id)',
@@ -81,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `ai_analysis` (
     UNIQUE KEY uk_question (question_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'AI 解析记录表';
 
--- 表 5.6 变式题表
+-- 表 6.6 变式题表
 CREATE TABLE IF NOT EXISTS `variant_question` (
     id          BIGINT   NOT NULL AUTO_INCREMENT COMMENT '变式题 ID',
     question_id BIGINT   NOT NULL COMMENT '原题 ID，逻辑外键 → question(id)',
@@ -92,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `variant_question` (
     PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '变式题表';
 
--- 表 5.7 复习计划表
+-- 表 6.7 复习计划表
 CREATE TABLE IF NOT EXISTS `review_plan` (
     id           BIGINT   NOT NULL AUTO_INCREMENT COMMENT '复习计划 ID',
     user_id      BIGINT   NOT NULL COMMENT '所属学生，逻辑外键 → user(id)',
@@ -106,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `review_plan` (
     KEY idx_user_date (user_id, plan_date)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '复习计划表';
 
--- 表 5.8 练习记录表
+-- 表 6.8 练习记录表
 CREATE TABLE IF NOT EXISTS `practice_record` (
     id           BIGINT   NOT NULL AUTO_INCREMENT COMMENT '练习记录 ID',
     user_id      BIGINT   NOT NULL COMMENT '作答学生，逻辑外键 → user(id)',
@@ -120,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `practice_record` (
     KEY idx_user_time (user_id, create_time)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '练习记录表';
 
--- 补充表（2026-08-16 裁定）：消息通知表，对应接口表 5.9 消息通知管理与类设计 (10) MessageService
+-- 表 6.9 消息通知表（2026-08-16补充；历史DDL保持不变）
 CREATE TABLE IF NOT EXISTS `message` (
     id          BIGINT       NOT NULL AUTO_INCREMENT COMMENT '消息 ID',
     user_id     BIGINT       NOT NULL COMMENT '接收用户，逻辑外键 → user(id)',
@@ -133,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `message` (
     KEY idx_user_time (user_id, create_time)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '消息通知表';
 
--- 补充表（2026-08-16 裁定）：公告表，对应接口表 5.9 公告管理
+-- 表 6.10 公告表（2026-08-16补充；历史DDL保持不变）
 CREATE TABLE IF NOT EXISTS `announcement` (
     id           BIGINT       NOT NULL AUTO_INCREMENT COMMENT '公告 ID',
     title        VARCHAR(128) NOT NULL COMMENT '公告标题',
@@ -143,3 +141,18 @@ CREATE TABLE IF NOT EXISTS `announcement` (
     create_time  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '公告表';
+
+-- 表 6.11 个人知识内容缓存；增量、幂等，不改变原十表DDL。
+CREATE TABLE IF NOT EXISTS `learning_content` (
+    id BIGINT NOT NULL AUTO_INCREMENT COMMENT '知识内容ID',
+    user_id BIGINT NOT NULL COMMENT '所属学生',
+    question_id BIGINT NOT NULL COMMENT '关联原题',
+    knowledge_point_id BIGINT DEFAULT NULL COMMENT '关联知识点',
+    input_hash CHAR(64) NOT NULL COMMENT '生成输入快照SHA-256',
+    content TEXT NOT NULL COMMENT '经校验的纯文本知识讲解',
+    create_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_learning_question (question_id),
+    KEY idx_learning_user (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='个人知识学习资源';

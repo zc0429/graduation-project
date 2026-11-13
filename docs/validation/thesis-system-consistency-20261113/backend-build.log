@@ -1,0 +1,41 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.example:wrongbook-server >--------------------
+[INFO] Building wrongbook-server 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ wrongbook-server ---
+[INFO] Copying 4 resources from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ wrongbook-server ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 115 source files with javac [debug parameters target 21] to target/classes
+[INFO] /workspace/graduation-project/server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java: Some input files use or override a deprecated API.
+[INFO] /workspace/graduation-project/server/src/main/java/com/example/wrongbook/service/impl/ReportServiceImpl.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ wrongbook-server ---
+[INFO] skip non existing resourceDirectory /workspace/graduation-project/server/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ wrongbook-server ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 27 source files with javac [debug parameters target 21] to target/test-classes
+[INFO] /workspace/graduation-project/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java: /workspace/graduation-project/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java uses or overrides a deprecated API.
+[INFO] /workspace/graduation-project/server/src/test/java/com/example/wrongbook/service/impl/LiveGlmValidationTests.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ wrongbook-server ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ wrongbook-server ---
+[INFO] Building jar: /workspace/graduation-project/server/target/wrongbook-server-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ wrongbook-server ---
+[INFO] Replacing main artifact /workspace/graduation-project/server/target/wrongbook-server-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /workspace/graduation-project/server/target/wrongbook-server-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.639 s
+[INFO] Finished at: 2026-11-13T09:41:51Z
+[INFO] ------------------------------------------------------------------------

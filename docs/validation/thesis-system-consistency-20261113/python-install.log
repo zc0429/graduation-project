@@ -1,0 +1,24 @@
+Collecting requests
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting beautifulsoup4
+  Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+Collecting pymysql
+  Downloading pymysql-1.2.4-py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: charset_normalizer<4,>=2 in /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages (from requests) (3.5.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages (from requests) (3.18)
+Collecting urllib3<3,>=1.26 (from requests)
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Requirement already satisfied: certifi>=2023.5.7 in /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages (from requests) (2026.10.19)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4)
+  Downloading soupsieve-4.1-py3-none-any.whl.metadata (4.4 kB)
+Requirement already satisfied: typing-extensions>=4.0.0 in /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages (from beautifulsoup4) (4.16.0)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+Downloading pymysql-1.2.4-py3-none-any.whl (46 kB)
+Downloading soupsieve-4.1-py3-none-any.whl (52 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Installing collected packages: urllib3, soupsieve, pymysql, requests, beautifulsoup4
+Successfully installed beautifulsoup4-4.15.0 pymysql-1.2.4 requests-2.34.2 soupsieve-4.1 urllib3-2.8.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: python3 -m pip install --upgrade pip

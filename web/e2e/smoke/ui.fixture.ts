@@ -571,13 +571,15 @@ async function handleApiRoute(route: Route, state: MockApiState) {
 
   if (pathname === '/api/variant/list' && method === 'GET') {
     const id = numberValue(url.searchParams.get('questionId'))
-    await json(route, state.variants.filter((item) => numberValue(item.questionId) === id))
+    await json(route, state.variants.filter((item) => numberValue(item.questionId) === id).map(item => ({ ...item, practiced: state.practices.some(p => p.variantId === item.id) })))
     return
   }
 
   const generateVariantMatch = pathname.match(/^\/api\/variant\/generate\/(\d+)$/)
   if (generateVariantMatch && method === 'POST') {
     const questionId = Number(generateVariantMatch[1])
+    const available = state.variants.filter(item => numberValue(item.questionId) === questionId && !state.practices.some(p => p.variantId === item.id))
+    if (available.length) { await json(route, available); return }
     const generated = {
       id: 700 + state.variants.length + 1,
       questionId,

@@ -94,6 +94,9 @@ class QuestionAiInvalidationIntegrationTests {
 
     @BeforeEach
     void setUp() {
+        // Real subject rows are required by the write-side integrity check.
+        jdbcTemplate.update("INSERT INTO subject(id,name) VALUES (?,?)", SUBJECT_A, "编辑一致性科目A");
+        jdbcTemplate.update("INSERT INTO subject(id,name) VALUES (?,?)", SUBJECT_B, "编辑一致性科目B");
         questionId = insertFixture();
         UserContext.set(new LoginUser(USER_ID, "student"));
     }
@@ -106,6 +109,7 @@ class QuestionAiInvalidationIntegrationTests {
         jdbcTemplate.update("DELETE FROM variant_question WHERE question_id = ?", questionId);
         jdbcTemplate.update("DELETE FROM ai_analysis WHERE question_id = ?", questionId);
         jdbcTemplate.update("DELETE FROM question WHERE id = ?", questionId);
+        jdbcTemplate.update("DELETE FROM subject WHERE id IN (?,?)", SUBJECT_A, SUBJECT_B);
     }
 
     @Test

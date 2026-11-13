@@ -1,0 +1,65 @@
+{
+  "template_sha256": "79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e",
+  "chapters": [
+    {
+      "chapter": "1",
+      "pdf_page": 7,
+      "body_page": 1
+    },
+    {
+      "chapter": "2",
+      "pdf_page": 9,
+      "body_page": 3
+    },
+    {
+      "chapter": "3",
+      "pdf_page": 12,
+      "body_page": 6
+    },
+    {
+      "chapter": "4",
+      "pdf_page": 34,
+      "body_page": 28
+    },
+    {
+      "chapter": "5",
+      "pdf_page": 37,
+      "body_page": 31
+    },
+    {
+      "chapter": "6",
+      "pdf_page": 41,
+      "body_page": 35
+    },
+    {
+      "chapter": "7",
+      "pdf_page": 64,
+      "body_page": 58
+    },
+    {
+      "chapter": "8",
+      "pdf_page": 79,
+      "body_page": 73
+    },
+    {
+      "chapter": "9",
+      "pdf_page": 85,
+      "body_page": 79
+    }
+  ],
+  "true_chapter_page_breaks": 9,
+  "pdf_pages": 88,
+  "landscape_pages": [
+    16,
+    18,
+    20
+  ],
+  "references": 20,
+  "figure_count": 29,
+  "table_count": 22,
+  "toc_destinations": 76,
+  "docx_tables_including_continuations": 24,
+  "page_bounds_errors": [],
+  "original_fonts_verified": false,
+  "visual_review": "Separate manual rendering review; this script does not certify visual quality."
+}
