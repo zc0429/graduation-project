@@ -1,0 +1,75 @@
+{
+  "id": "7-4",
+  "caption": "图 7.4　变式题数量与作答入口局部",
+  "height": 377,
+  "evidence": [
+    "docs/validation/real-ai-e2e.md",
+    "web/e2e/real-ai/real-glm-evidence.spec.ts"
+  ],
+  "ops": [
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 17,
+      "text": "已生成数量与同步调用说明（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+      "x": 8.228350000000006,
+      "y": 30,
+      "w": 430,
+      "crop": [
+        303,
+        614,
+        598,
+        115
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 139.69230769230768,
+      "text": "第一道变式题及作答入口（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+      "x": 8.228350000000006,
+      "y": 152.69230769230768,
+      "w": 430,
+      "crop": [
+        326,
+        750,
+        598,
+        145
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 283.95652173913044,
+      "text": "第三道变式题存在性（局部）",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "image",
+      "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+      "x": 8.228350000000006,
+      "y": 296.95652173913044,
+      "w": 430,
+      "crop": [
+        326,
+        1107,
+        598,
+        86
+      ]
+    }
+  ],
+  "note": "来源：2026-08-26 真实浏览器验证；为保持可读性选择三个局部。\n三题完整内容与 3/3 数据库回读见原图和验证记录，不由裁图推定。"
+}

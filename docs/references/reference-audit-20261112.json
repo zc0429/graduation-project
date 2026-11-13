@@ -1,0 +1,534 @@
+{
+  "audit_date": "2026-11-12",
+  "counting_basis": "正式卷期出版年；不以DOI字符串、检索日期或论文题名年份计数。2024—2026为当前写作年及前两年；2025—2027为毕业年及前两年，尚未发表的2027文献不计入。学校未明确滚动36个月或自然年，保留两套统计供确认。",
+  "opening_report_sha256": "3f6382753053ad868d216de0c128982f65776cbdda3a17a7b21975be34ca8569",
+  "records": [
+    {
+      "number": 1,
+      "entry": "赵雅娟，孟繁军，徐行健．在线教育学习者知识追踪综述［J］．计算机应用，2024，44（6）：1683-1698．",
+      "key": "zhao2024knowledge",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://www.joca.cn/CN/Y2024/V44/I6/1683",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 1,
+      "doi": "10.11772/j.issn.1001-9081.2023060852",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "1.1 研究背景",
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 2,
+      "entry": "董永峰，王雅琮，董瑶，等．在线学习资源推荐综述［J］．计算机应用，2023，43（6）：1655-1663．",
+      "key": "dong2023recommendation",
+      "year": 2023,
+      "language": "zh",
+      "source_url": "https://www.joca.cn/EN/10.11772/j.issn.1001-9081.2022091335",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 2,
+      "doi": "10.11772/j.issn.1001-9081.2022091335",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "1.1 研究背景",
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取"
+      ]
+    },
+    {
+      "number": 3,
+      "entry": "索晋贤，张丽萍，闫盛，等．可解释的深度知识追踪方法综述［J］．计算机应用，2025，45（7）：2043-2055．",
+      "key": "suo2025interpretable",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024070970",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 3,
+      "doi": "10.11772/j.issn.1001-9081.2024070970",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 4,
+      "entry": "马华，李京泽，唐文胜，等．个性化在线学习资源推荐研究热点与趋势——基于2011—2021年CNKI和WoS文献的可视化分析［J］．软件导刊，2023，22（1）：29-37．",
+      "key": "ma2023hotspots",
+      "year": 2023,
+      "language": "zh",
+      "source_url": "https://www.rjdk.org.cn/zh/article/doi/10.11907/rjdk.221215/",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 4,
+      "doi": "10.11907/rjdk.221215",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取"
+      ]
+    },
+    {
+      "number": 5,
+      "entry": "郑雅倩，李新，李艳燕，等．人工智能视域下个性化学习路径推荐：机理、演进、价值与趋势［J］．现代远距离教育，2023（3）：39-47．",
+      "key": "zheng2023path",
+      "year": 2023,
+      "language": "zh",
+      "source_url": "https://yuan.cbpt.cnki.net/portal/journal/portal/client/paper/2c6b0e970a3d61d1f11bb091bb3a0aba",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 5,
+      "doi": "10.13927/j.cnki.yuan.20230628.002",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取"
+      ]
+    },
+    {
+      "number": 6,
+      "entry": "韩姣，付瑞，孙昊，等．基于联邦学习的个性化学习资源推荐系统研究［J］．教育学刊，2025，3（12）：74-81．",
+      "key": "han2025federated",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://cn.sgsci.org/jyxk/article/view/912",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 6,
+      "doi": "10.62836/jer.v3n12.0912",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 7,
+      "entry": "朱敏．基于大语言模型的个性化资源推荐方法研究［J］．兰州文理学院学报（自然科学版），2024，38（5）：59-64．",
+      "key": "zhu2024llmrecommendation",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://gxjb.cbpt.cnki.net/portal/journal/portal/client/paper/f0bd82b2ae9a1240a634c4e939c5f529",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 7,
+      "doi": "10.13804/j.cnki.2095-6991.2024.05.002",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 8,
+      "entry": "孙辉．高中物理错题资源的整合［J］．现代教育探索，2024，5（2）：131-133．",
+      "key": "sun2024cuoti",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://ojs.omniscient.sg/index.php/mee/article/download/37502/36432/",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 8,
+      "doi": "10.37155/2717-5561-0502-43",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取"
+      ]
+    },
+    {
+      "number": 9,
+      "entry": "徐刚，刘志鹏，冯骐，等．大语言模型在教育信息化中的实践：规范、框架与应用［J］．通信学报，2024，45（Z2）：229-241．",
+      "key": "xu2024education",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://www.joconline.com.cn/zh/article/doi/10.11959/j.issn.1000-436x.2024249/",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 9,
+      "doi": "10.11959/j.issn.1000-436x.2024249",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取",
+        "4.4 智谱GLM大模型"
+      ]
+    },
+    {
+      "number": 10,
+      "entry": "刘邦奇，喻彦琨，王涛，等．人工智能教育大模型：体系架构与关键技术策略［J］．开放教育研究，2024，30（5）：76-86．",
+      "key": "liu2024educationmodel",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://openedu.sou.edu.cn/upload/qikanfile/202409281000290675.pdf",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "作者姓名据期刊PDF更正为喻彦琨",
+      "original_opening_number": 10,
+      "doi": "10.13966/j.cnki.kfjyyj.2024.05.008",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 11,
+      "entry": "余胜泉，熊莎莎．基于大模型增强的通用人工智能教师架构［J］．开放教育研究，2024，30（1）：33-43．",
+      "key": "yu2024teacher",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://openedu.sou.edu.cn/upload/qikanfile/202401222231595229.pdf",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 11,
+      "doi": "10.13966/j.cnki.kfjyyj.2024.01.004",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取",
+        "4.4 智谱GLM大模型"
+      ]
+    },
+    {
+      "number": 12,
+      "entry": "罗恒，廖小芳，茹琦琦，等．生成式人工智能支持的教师评语研究：基于初中数学课堂的实践探索［J］．电化教育研究，2024，45（5）：58-66．",
+      "key": "luo2024feedback",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://doi.org/10.13811/j.cnki.eer.2024.05.008",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 12,
+      "doi": "10.13811/j.cnki.eer.2024.05.008",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 13,
+      "entry": "吴砥，吴河江．通用大模型教育应用的潜在风险及其规避——基于技术伦理的视角［J］．华东师范大学学报（教育科学版），2024，42（8）：64-75．",
+      "key": "wu2024risk",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://xbjk.ecnu.edu.cn/CN/abstract/article/1000-5560/11104",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 13,
+      "doi": "10.16382/j.cnki.1000-5560.2024.08.006",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状"
+      ]
+    },
+    {
+      "number": 14,
+      "entry": "梅忆寒，王琳琳，王鹏飞，等．基于多模态与检索增强生成的数据库知识问答系统［J］．计算机教育，2024（12）：236-241．",
+      "key": "mei2024ragqa",
+      "year": 2024,
+      "language": "zh",
+      "source_url": "https://jyjs.cbpt.cnki.net/portal/journal/portal/client/paper/eefe975e09aaaf975387fa4178ff936f",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 14,
+      "doi": "",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.2 国内研究现状",
+        "3.1 系统需求描述与获取"
+      ]
+    },
+    {
+      "number": 15,
+      "entry": "（印）Vaswani A，Shazeer N，Parmar N，等．Attention is all you need［C］//Advances in Neural Information Processing Systems 30．2017：5998-6008．",
+      "key": "vaswani2017attention",
+      "year": 2017,
+      "language": "foreign",
+      "source_url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 15,
+      "doi": "",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.3 国外研究现状",
+        "4.4 智谱GLM大模型"
+      ]
+    },
+    {
+      "number": 16,
+      "entry": "（美）Corbett A T，Anderson J R．Knowledge tracing：Modeling the acquisition of procedural knowledge［J］．User Modeling and User-Adapted Interaction，1994，4（4）：253-278．",
+      "key": "corbett1994knowledge",
+      "year": 1994,
+      "language": "foreign",
+      "source_url": "https://link.springer.com/article/10.1007/BF01099821",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "出版社标注1994年12月；原1995更正，开题报告不改",
+      "original_opening_number": 16,
+      "doi": "10.1007/BF01099821",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.3 国外研究现状"
+      ]
+    },
+    {
+      "number": 17,
+      "entry": "（美）Piech C，Bassen J，Huang J，等．Deep knowledge tracing［C］//Advances in Neural Information Processing Systems 28．2015：505-513．",
+      "key": "piech2015deep",
+      "year": 2015,
+      "language": "foreign",
+      "source_url": "https://papers.nips.cc/paper/5654-deep-knowledge-tracing",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 17,
+      "doi": "",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.3 国外研究现状"
+      ]
+    },
+    {
+      "number": 18,
+      "entry": "（德）Ebbinghaus H．Über das Gedächtnis：Untersuchungen zur experimentellen Psychologie［M］．Leipzig：Duncker & Humblot，1885．",
+      "key": "ebbinghaus1885memory",
+      "year": 1885,
+      "language": "foreign",
+      "source_url": "https://search.worldcat.org/de/title/uber-das-gedachtnis-untersuchungen-zur-experimentellen-psychologie/oclc/5876733",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 18,
+      "doi": "",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.3 国外研究现状",
+        "3.1 系统需求描述与获取"
+      ]
+    },
+    {
+      "number": 19,
+      "entry": "（德）Kasneci E，Sessler K，Küchemann S，等．ChatGPT for good? On opportunities and challenges of large language models for education［J］．Learning and Individual Differences，2023，103：102274．",
+      "key": "kasneci2023chatgpt",
+      "year": 2023,
+      "language": "foreign",
+      "source_url": "https://epub.ub.uni-muenchen.de/125071/",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 19,
+      "doi": "10.1016/j.lindif.2023.102274",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.3 国外研究现状"
+      ]
+    },
+    {
+      "number": 20,
+      "entry": "（中）Zhao P，Zhang H，Yu Q，等．Retrieval-augmented generation for AI-generated content：A survey［J］．Data Science and Engineering，2026，11（1）：1-29．",
+      "key": "zhao2026rag",
+      "year": 2026,
+      "language": "foreign",
+      "source_url": "https://link.springer.com/article/10.1007/s41019-025-00335-5",
+      "verification": "出版社/期刊原文或书目记录",
+      "change": "原编号保留",
+      "original_opening_number": 20,
+      "doi": "10.1007/s41019-025-00335-5",
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.3 国外研究现状",
+        "3.1 系统需求描述与获取",
+        "4.5 检索增强生成"
+      ]
+    },
+    {
+      "number": 21,
+      "entry": "肖建力，黄星宇，姜飞．智慧教育中的大语言模型综述［J］．智能系统学报，2025，20（5）：1054-1070．",
+      "key": "xiao2025education",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://tis.hrbeu.edu.cn/oa/DArticle.aspx?id=202406040&type=view",
+      "doi": "10.11992/tis.202406040",
+      "verification": "期刊/出版社正式页面",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 22,
+      "entry": "张维，龚中伟，李志新，等．学习行为增强的知识追踪模型［J］．计算机应用，2025，45（9）：2747-2754．",
+      "key": "zhang2025behavior",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://www.joca.cn/CN/10.11772/j.issn.1001-9081.2024081153",
+      "doi": "10.11772/j.issn.1001-9081.2024081153",
+      "verification": "期刊/出版社正式页面",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 23,
+      "entry": "何凡，李理，苑中旭，等．融合图注意力的概念关联记忆网络知识追踪模型［J］．计算机应用，2026，46（1）：43-51．",
+      "key": "he2026concept",
+      "year": 2026,
+      "language": "zh",
+      "source_url": "https://www.joca.cn/CN/Y2026/V46/I1/43",
+      "doi": "10.11772/j.issn.1001-9081.2025010065",
+      "verification": "期刊/出版社正式页面",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 24,
+      "entry": "吴璇，付涛．检索增强生成技术研究综述［J］．计算机工程与应用，2025，61（20）：19-35．",
+      "key": "wu2025rag",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://opaj.napstic.cn/periodicalArticle/0120251101170993",
+      "doi": "10.3778/j.issn.1002-8331.2501-0061",
+      "verification": "国家科技期刊开放平台题录/摘要；出版社站点本轮不可达",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 25,
+      "entry": "周楚雄，张丽萍，闫盛，等．基于图神经网络的深度知识追踪方法综述［J］．计算机工程与应用，2026，62（12）：37-59．",
+      "key": "zhou2026graph",
+      "year": 2026,
+      "language": "zh",
+      "source_url": "https://opaj.napstic.cn/periodicalArticle/0120260701425422",
+      "doi": "10.3778/j.issn.1002-8331.2508-0006",
+      "verification": "国家科技期刊开放平台题录/摘要；出版社站点本轮不可达",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 26,
+      "entry": "陈静远，高雨婕．大语言模型赋能教育创新：核心技术、应用场景与关键挑战［J］．教育智能化前沿，2026，39（3）：24-32．",
+      "key": "chen2026innovation",
+      "year": 2026,
+      "language": "zh",
+      "source_url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/db793e2bd1d755fdd8440a6ac9ccd9bc",
+      "doi": "",
+      "verification": "期刊/出版社正式页面",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 27,
+      "entry": "张所娟，龙佳琪，郝文宁，等．大语言模型时代的知识追踪：教育智能化的新范式与路径展望［J］．教育智能化前沿，2026，39（4）：40-49，96．",
+      "key": "zhang2026tracking",
+      "year": 2026,
+      "language": "zh",
+      "source_url": "https://jyznhqy.cbpt.cnki.net/portal/journal/portal/client/paper/e7f372c6a98d916e5e83de4accd0b7fa",
+      "doi": "",
+      "verification": "期刊/出版社正式页面",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 28,
+      "entry": "张犬俊，谢杨，房春荣，等．检索增强生成在软件工程中的应用综述［J］．软件学报，2026，37（3）：1316-1339．",
+      "key": "zhang2026software",
+      "year": 2026,
+      "language": "zh",
+      "source_url": "https://www.jos.org.cn/jos/article/abstract/7567",
+      "doi": "10.13328/j.cnki.jos.007567",
+      "verification": "期刊/出版社正式页面",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 29,
+      "entry": "贾洪愿，居发礼，余晓平．基于检索增强生成（RAG）的《建环专业计算机应用》课程智能知识库构建［J］．智慧教育，2025，2（2）：198-201．",
+      "key": "jia2025rag",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://www.juzhikan.cn/zhjy/2988.html",
+      "doi": "10.69979/3029-2735.25.2.062",
+      "verification": "期刊/出版社正式页面及PDF原文",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 30,
+      "entry": "唐颖川．大语言模型赋能探究型高职教育——以Python语言课程为例［J］．现代教育探索，2025，6（6）：44-46．",
+      "key": "tang2025llm",
+      "year": 2025,
+      "language": "zh",
+      "source_url": "https://ojs.omniscient.sg/index.php/mee/article/view/61366",
+      "doi": "10.37155/2717-5561-0606-14",
+      "verification": "期刊/出版社正式页面及PDF原文",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 31,
+      "entry": "张鲁燕，巩清波．大语言模型赋能高职教育“双师课堂”的路径探索［J］．教育学刊，2026，4（1）：136-141．",
+      "key": "zhang2026double",
+      "year": 2026,
+      "language": "zh",
+      "source_url": "https://cn.sgsci.org/jyxk/article/view/992",
+      "doi": "10.62836/jer.v4n1.0992",
+      "verification": "期刊/出版社正式页面及PDF原文",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    },
+    {
+      "number": 32,
+      "entry": "（中）Cheng C，Huang Z，Zhao G，等．From Objectives to Questions: A Planning-based Framework for Educational Mathematical Question Generation［C］//Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)．Vienna：Association for Computational Linguistics，2025：12836-12856．",
+      "key": "cheng2025questions",
+      "year": 2025,
+      "language": "foreign",
+      "source_url": "https://aclanthology.org/2025.acl-long.628/",
+      "doi": "10.18653/v1/2025.acl-long.628",
+      "verification": "期刊/出版社正式页面及PDF原文",
+      "change": "补充近期相关研究",
+      "original_opening_number": null,
+      "checked_on": "2026-11-12",
+      "citation_sections": [
+        "2.4 近期研究进展"
+      ]
+    }
+  ]
+}

@@ -196,7 +196,7 @@ test.describe('真实 GLM 浏览器业务闭环与论文证据', () => {
         response.url().includes(`/api/variant/generate/${target!.id}`)
         && response.request().method() === 'POST'
       ))
-      await page.getByRole('button', { name: '生成变式题' }).click()
+      await page.getByRole('button', { name: '获取未练变式题' }).click()
       const generatedEnvelope = await (await generationResponse).json() as RestEnvelope<EvidenceVariant[]>
       expect(generatedEnvelope.code).toBe(0)
       generated = generatedEnvelope.data
