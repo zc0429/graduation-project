@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="177.0278mm" viewBox="0 0 446.4567 501.8110299999999">
+<rect width="100%" height="100%" fill="white"/>
+<ellipse cx="223.22835" cy="130.05512000000002" rx="40.9251975" ry="29.763780000000004" fill="white" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="127.8228365" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">P3</text>
+<text x="223.22835" y="138.2401595" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">错题录入与分析</text>
+<rect x="20.46259875" y="115.17322999999999" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="59.52756" y="133.031498" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学生</text>
+<rect x="184.16338875" y="11.0" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="28.858268" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">AI模型</text>
+<polyline points="431.57481,74.24803250000001 342.28347,74.24803250000001 342.28347,96.5708675 431.57481,96.5708675" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="83.1771665" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D2</text>
+<text x="386.92914" y="93.59448950000001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">科目与知识点</text>
+<polyline points="431.57481,118.89370249999999 342.28347,118.89370249999999 342.28347,141.2165375 431.57481,141.2165375" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="133.031498" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D3 错题与解析</text>
+<polyline points="431.57481,179.8189 342.28347,179.8189 342.28347,202.141735 431.57481,202.141735" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="188.748034" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D5</text>
+<text x="386.92914" y="199.165357" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">练习与复习记录</text>
+<ellipse cx="223.22835" cy="375.8228395" rx="40.9251975" ry="29.763779999999997" fill="white" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="373.590556" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">P4</text>
+<text x="223.22835" y="384.007879" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学习练习与复习</text>
+<rect x="20.46259875" y="360.9409495" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="59.52756" y="378.7992175" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学生</text>
+<rect x="184.16338875" y="228.094491" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="245.95275900000001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">AI模型</text>
+<polyline points="431.57481,295.062996 342.28347,295.062996 342.28347,317.385831 431.57481,317.385831" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="303.99213" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D2</text>
+<text x="386.92914" y="314.409453" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">科目与知识点</text>
+<polyline points="431.57481,346.0590595 342.28347,346.0590595 342.28347,368.3818945 431.57481,368.3818945" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="360.19685499999997" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D3 错题与解析</text>
+<polyline points="431.57481,405.5866195 342.28347,405.5866195 342.28347,427.9094545 431.57481,427.9094545" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="419.724415" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D4 学习资源</text>
+<polyline points="431.57481,462.53543899999994 342.28347,462.53543899999994 342.28347,484.858274 431.57481,484.858274" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="471.4645729999999" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D5</text>
+<text x="386.92914" y="481.8818959999999" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">练习与复习记录</text>
+<polyline points="98.59252125,121.49803324999999 184.03098823944782,121.49803324999999" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="184.03098823944782,121.49803324999999 178.76549286810558,124.37458648162522 178.76549286810558,118.62148001837477" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="141.31175474472388" y="115.17322999999999" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">错题资料与查询</text>
+<polyline points="184.03098823944782,138.61220675 98.59252125,138.61220675" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="98.59252125,138.61220675 103.85801662134224,135.7356535183748 103.85801662134224,141.48875998162524" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="140.447836875" y="151.26181325" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">错题信息与导出</text>
+<polyline points="210.20669625,101.83817228538264 210.20669625,40.76378" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="210.20669625,40.76378 213.08324948162522,46.02927537134224 207.33014301837477,46.02927537134223" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="167.4212625" y="74.992127" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">识别分析上下文</text>
+<polyline points="236.25000375,40.76378 236.25000375,101.83817228538264" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="236.25000375,101.83817228538264 233.37345051837477,96.5726769140404 239.1265569816252,96.5726769140404" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="271.5944925" y="50.80905575" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">识别分析结果</text>
+<polyline points="342.28347,79.82874125000001 286.4763825,79.82874125000001 255.17557205894488,111.45275749999999" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="255.17557205894488,111.45275749999999 256.835215685218,105.68685921493018 260.92411744537947,109.73397131780581" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="73.503938" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">科目知识点</text>
+<polyline points="342.28347,124.47441125 286.4763825,124.47441125 263.10417483189906,123.3582695" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="263.10417483189906,123.3582695 268.5008900158555,120.73615866648167 268.22646267526045,126.48271621097976" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="118.149608" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">本人题目与参考</text>
+<polyline points="262.1039219203125,139.35630125 286.4763825,135.63582875 342.28347,135.63582875" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,135.63582875 337.0179746286578,138.51238198162523 337.0179746286578,132.75927551837478" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="147.1692935" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">错题与解析</text>
+<polyline points="257.0651921691257,146.79724625 286.4763825,196.56102625 342.28347,196.56102625" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,196.56102625 337.0179746286578,199.43757948162522 337.0179746286578,193.68447301837477" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="208.094491" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">复习计划</text>
+<polyline points="98.59252125,367.26575275 184.03098823944782,367.26575275" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="184.03098823944782,367.26575275 178.76549286810558,370.1423059816252 178.76549286810558,364.38919951837477" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="141.31175474472388" y="352.75591" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">学习、作答</text>
+<text x="141.31175474472388" y="363.173233" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">与复习资料</text>
+<polyline points="184.03098823944782,384.37992625 98.59252125,384.37992625" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="98.59252125,384.37992625 103.85801662134224,381.50337301837476 103.85801662134224,387.2564794816252" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="140.447836875" y="397.02953275" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">资源与学习反馈</text>
+<polyline points="210.20669625,347.6058917853826 210.20669625,257.858271" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="210.20669625,257.858271 213.08324948162522,263.12376637134224 207.33014301837477,263.12376637134224" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="173.00197125" y="305.10827175000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">生成上下文</text>
+<polyline points="236.25000375,257.858271 236.25000375,347.6058917853826" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="236.25000375,347.6058917853826 233.37345051837477,342.34039641404036 239.1265569816252,342.34039641404036" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="267.87402" y="284.645673" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">生成结果</text>
+<polyline points="342.28347,300.64370475 286.4763825,300.64370475 255.17557205894488,357.220477" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="255.17557205894488,357.220477 255.20755838319576,351.2205622610174 260.241608507869,354.00562479528327" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="294.3189015" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">科目知识点</text>
+<polyline points="342.28347,351.63976825 286.4763825,351.63976825 262.1039219203125,366.52165825" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="262.1039219203125,366.52165825 265.0988199768802,361.3225635566166 268.0969595778668,366.23269521579743" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="345.314965" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">本人原题／解析</text>
+<polyline points="264.1535475,375.8228395 286.4763825,362.80118575 342.28347,362.80118575" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,362.80118575 337.0179746286578,365.6777389816252 337.0179746286578,359.9246325183748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="374.3346505" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">掌握度</text>
+<polyline points="342.28347,411.16732825 286.4763825,411.16732825 262.85400208943736,383.2637845" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="262.85400208943736,383.2637845 268.4516566813211,385.4239379829644 264.0607212942393,389.14118432992154" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="396.6574855" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">知识内容／</text>
+<text x="310.65945375" y="407.0748085" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">拓展题</text>
+<polyline points="259.24194247148006,389.960635 286.4763825,422.32874575 342.28347,422.32874575" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,422.32874575 337.0179746286578,425.2052989816252 337.0179746286578,419.4521925183748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="433.8622105" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">生成资源</text>
+<polyline points="342.28347,468.1161477499999 286.4763825,468.1161477499999 255.17557205894488,394.425202" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="255.17557205894488,394.425202 259.88173895975683,398.14702858135786 254.5865158085545,400.39621638064557" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="461.7913445" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">已练标识／任务</text>
+<polyline points="247.08615186906394,400.00591075 286.4763825,479.27756525 342.28347,479.27756525" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,479.27756525 337.0179746286578,482.15411848162523 337.0179746286578,476.4010120183748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="490.8110299999999" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">练习／复习状态</text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "branch": "codex/thesis-align-reference1-20261113",
+  "base_commit": "bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff",
+  "dev_unchanged": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+  "pr6_base_matches": true,
+  "only_target_branch_will_be_pushed": true,
+  "merge_authorized": false
+}

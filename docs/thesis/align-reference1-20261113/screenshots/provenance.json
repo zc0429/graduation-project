@@ -1,0 +1,26 @@
+[
+  {
+    "file": "thesis/align-reference1-20261113/screenshots/current-create.png",
+    "sha256": "cc2927a6d9b3494fb073ee3f4eb95311f02e58843744fb75cbaf49d45d44ff91",
+    "captured_at": "2026-11-13T05:50:05.638Z",
+    "model": "explicit Mock",
+    "question_id": 5,
+    "scope": "Current editor and manual form; recognition disabled, no live model claim"
+  },
+  {
+    "file": "thesis/align-reference1-20261113/screenshots/current-knowledge.png",
+    "sha256": "e4f8001564f15870e4e7dcb0863b7cb7677d0a0bd05846c6109e70323bbedb47",
+    "captured_at": "2026-11-13T05:50:07.212Z",
+    "model": "explicit Mock",
+    "question_id": 5,
+    "scope": "Saved knowledge cache reused through actual UI"
+  },
+  {
+    "file": "thesis/align-reference1-20261113/screenshots/current-practice.png",
+    "sha256": "a0eb9ff0e37cdc6a1e8c0ee11a575f0a555ab5b177b06d0a596e2ce9339dd440",
+    "captured_at": "2026-11-13T05:50:07.878Z",
+    "model": "explicit Mock",
+    "question_id": 5,
+    "scope": "Original recorded, generated variant recorded as incorrect, repeat action visible"
+  }
+]

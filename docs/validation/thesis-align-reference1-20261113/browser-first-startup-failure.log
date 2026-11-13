@@ -1,0 +1,111 @@
+
+> web@0.0.0 e2e:integration
+> playwright test --config=playwright.integration.config.ts
+
+[WebServer] (node:2756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 5 tests using 1 worker
+
+(node:2778) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/5] e2e/integration/learning-resources.spec.ts:5:1 › personal resources: saved knowledge, original first, exhausted pool, explicit repetition
+  1) e2e/integration/learning-resources.spec.ts:5:1 › personal resources: saved knowledge, original first, exhausted pool, explicit repetition 
+
+    Error: apiRequestContext.post: connect ECONNREFUSED 127.0.0.1:8080
+    Call log:
+      - → POST http://127.0.0.1:8080/api/auth/login
+        - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.7922.34 Safari/537.36
+        - accept: */*
+        - accept-encoding: gzip,deflate,br
+        - content-type: application/json
+        - content-length: 42
+
+
+       5 | test('personal resources: saved knowledge, original first, exhausted pool, explicit repetition', async ({ page, request }) => {
+       6 |   const base = 'http://127.0.0.1:8080/api'
+    >  7 |   const login = await request.post(`${base}/auth/login`, { data: { username: 'student', password: '123456' } })
+         |                               ^
+       8 |   const auth = (await login.json()).data
+       9 |   const headers = { Authorization: `Bearer ${auth.token}` }
+      10 |   const create = await request.post(`${base}/question`, { headers, data: { subjectId: 1, stem: '求函数 y=x² 在区间 [0,2] 上的值域。', answer: '[0,4]', source: '20261112 自动化联调，Mock模型' } })
+        at /workspace/graduation-project/web/e2e/integration/learning-resources.spec.ts:7:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/integration/learning-resources-persona-ce990-ed-pool-explicit-repetition/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:2929) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/5] e2e/integration/real-backend.spec.ts:22:3 › wrongbook_e2e real backend › student can create, edit, practise, export with JWT, and delete a question
+[WebServer] 5:47:29 AM [vite] http proxy error: /api/auth/login
+[WebServer] AggregateError [ECONNREFUSED]: 
+[WebServer]     at internalConnectMultiple (node:net:1492:18)
+[WebServer]     at afterConnectMultiple (node:net:2161:7)
+
+  2) e2e/integration/real-backend.spec.ts:22:3 › wrongbook_e2e real backend › student can create, edit, practise, export with JWT, and delete a question 
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /\/$/
+    Received string:  "http://127.0.0.1:4175/login"
+    Timeout: 12000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 12000ms
+        27 × locator resolved to <html lang="zh-CN">…</html>
+           - unexpected value "http://127.0.0.1:4175/login"
+
+
+       9 |   await page.getByLabel('密码', { exact: true }).fill(seedPassword)
+      10 |   await page.getByRole('button', { name: '进入知错工作台' }).click()
+    > 11 |   await expect(page).toHaveURL(/\/$/)
+         |                      ^
+      12 |   await expect(page.getByRole('navigation', { name: '功能目录' })).toBeVisible()
+      13 | }
+      14 |
+        at login (/workspace/graduation-project/web/e2e/integration/real-backend.spec.ts:11:22)
+        at /workspace/graduation-project/web/e2e/integration/real-backend.spec.ts:33:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/integration/real-backend-wrongbook-e2e-92901-h-JWT-and-delete-a-question/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/integration/real-backend-wrongbook-e2e-92901-h-JWT-and-delete-a-question/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/integration/real-backend-wrongbook-e2e-92901-h-JWT-and-delete-a-question/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/integration/real-backend-wrongbook-e2e-92901-h-JWT-and-delete-a-question/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+(node:3155) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[3/5] e2e/integration/real-backend.spec.ts:76:3 › wrongbook_e2e real backend › teacher is limited to the aggregate report surface
+[4/5] e2e/integration/real-backend.spec.ts:91:3 › wrongbook_e2e real backend › administrator reaches the real management surfaces
+[5/5] e2e/integration/real-backend.spec.ts:102:3 › wrongbook_e2e real backend › question images are returned only through an owned authenticated detail
+  2 failed
+    e2e/integration/learning-resources.spec.ts:5:1 › personal resources: saved knowledge, original first, exhausted pool, explicit repetition 
+    e2e/integration/real-backend.spec.ts:22:3 › wrongbook_e2e real backend › student can create, edit, practise, export with JWT, and delete a question 
+  3 passed (36.2s)

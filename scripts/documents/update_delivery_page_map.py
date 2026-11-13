@@ -1,10 +1,10 @@
 """Cache Word PAGEREF results from actual LibreOffice PDF heading destinations."""
 from pathlib import Path
-import json,re
+import json,re,os
 import pymupdf
-ROOT=Path(__file__).resolve().parents[2];RUN=ROOT/'docs/validation/thesis-audit-20261112'
+ROOT=Path(__file__).resolve().parents[2];DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113');RUN=ROOT/'docs/validation'/DELIVERY
 def norm(s):return re.sub(r'\s+','',s)
-pdf=pymupdf.open(ROOT/'output/thesis/thesis-audit-20261112/毕业论文.pdf')
+pdf=pymupdf.open(ROOT/'output/thesis'/DELIVERY/'毕业论文.pdf')
 actual={norm(title):page for _,title,page in pdf.get_toc()}
 entries=json.loads((RUN/'heading-keys.json').read_text());start=actual[norm('1 绪论')];result={}
 for title,key,_ in entries:

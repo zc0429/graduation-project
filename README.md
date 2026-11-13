@@ -1,6 +1,6 @@
 # 基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现
 
-**当前集成候选（2026-11-13）**：以 [Draft PR #5](https://github.com/zc0429/graduation-project/pull/5) 的 `0fe7707` 为完整成果源，在 `codex/integrate-pr5-repo-audit-20261113` 整理文档及 PR #3 有效维护说明，目标 `dev`。未经新增全量环境验证前不宣称已合并；当前 `dev` 是否更新以远程实际 SHA 为准。参阅[集成审计记录](docs/notes/仓库集成审计-20261113.md)、[最新论文审计](docs/validation/thesis-audit-20261112/README.md)和[交接说明](docs/notes/HANDOFF.md)。
+**本轮论文重构（2026-11-13，覆盖下文历史口径）**：仅在 `codex/thesis-align-reference1-20261113` 工作，起点与 PR #6 同为 `bbe1c510`；目标为新的 Draft PR 到 `dev`，不合并、不修改 PR #1/#3/#4/#5/#6。九章源稿及2027母版导出更新为99页（正文85页）、120目录项、28图26表、27篇文献（中文22在前、外文5在后）、1个索引附录。正式论文不再保留旧32篇或原20篇编号，已通过开题及历史成果不改。 参阅[交付报告](docs/validation/thesis-align-reference1-20261113/README.md)、[DOCX/PDF入口](docs/thesis/align-reference1-20261113/README.md)和[交接说明](docs/notes/HANDOFF.md)。
 
 
 本科毕业设计项目，围绕“错题录入 → AI 知识点归类与解析（RAG）→ 变式题练习 → 遗忘曲线复习 → 学情反馈”形成完整学习闭环。前端为 Vue 3 单页应用，后端为 Spring Boot 3.5.16 REST 服务；正常运行默认使用真实智谱 GLM 服务与图片识题；离线开发显式选择 Mock，自动化测试使用隔离的 Mock 配置。缺少密钥时给出明确提示，仍可手工保存错题。

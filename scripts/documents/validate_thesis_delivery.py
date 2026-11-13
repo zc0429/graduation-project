@@ -4,9 +4,9 @@ from zipfile import ZipFile
 from lxml import etree as E
 from docx import Document
 from docx.oxml.ns import qn
-import hashlib,json,re,subprocess
+import hashlib,json,re,subprocess,os
 import pymupdf
-ROOT=Path(__file__).resolve().parents[2];RUN=ROOT/'docs/validation/thesis-audit-20261112';OUT=ROOT/'output/thesis/thesis-audit-20261112'
+ROOT=Path(__file__).resolve().parents[2];DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113');RUN=ROOT/'docs/validation'/DELIVERY;OUT=ROOT/'output/thesis'/DELIVERY
 ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 def norm(s):return re.sub(r'\s+','',s)
 def main():
@@ -65,7 +65,7 @@ def main():
  bounds=[];chapter_pages=[]
  for n,title in chapters:
   page=toc[norm(n+' '+title)];chapter_pages.append({'chapter':n,'pdf_page':page,'body_page':page-start+1})
-  lines=[x.strip() for x in pdf[page-1].get_text().splitlines() if x.strip() and not re.fullmatch(r'[IVX0-9]+',x.strip())]
+  lines=[x.strip() for x in pdf[page-1].get_text(sort=True).splitlines() if x.strip() and not re.fullmatch(r'[IVX0-9]+',x.strip())]
   assert norm(lines[0])==norm(n+' '+title),(n,lines[:2])
  for i,page in enumerate(pdf):
   assert min(abs(page.rect.width-595.3),abs(page.rect.height-595.3))<.1

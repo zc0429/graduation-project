@@ -1,9 +1,9 @@
 """Reconcile all DDL columns/constraints/indexes and controller mappings with chapter 6."""
 from pathlib import Path
-import re,json,hashlib,subprocess
+import re,json,hashlib,subprocess,os
 from collections import Counter
 from validate_thesis_references import validate
-ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'docs/validation/thesis-audit-20261112'
+ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'docs/validation'/os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113')
 def normalize(s):return re.sub(r'\s+',' ',s.strip()).replace('`','')
 def main():
  md=(ROOT/'docs/thesis/毕业论文.md').read_text();sql=(ROOT/'server/src/main/resources/db/schema.sql').read_text();tables=[]
@@ -43,14 +43,19 @@ def main():
  for kind in ['图','表']:
   nums=re.findall(r'^\*\*'+kind+r' (\d+)\.(\d+)',md,re.M)
   for ch in set(x[0] for x in nums):assert [int(n) for c,n in nums if c==ch]==list(range(1,sum(c==ch for c,n in nums)+1))
- # Compare immutable historical inputs/artifacts against the user's explicit baseline.
- tracked=subprocess.check_output(['git','ls-tree','-rz','--name-only','ed7d94c'],cwd=ROOT).decode().split('\0');protected={}
- for path in tracked:
-  if path.startswith(('docs/materials/','docs/experiments/','output/','docs/thesis/requirements-20261112/','docs/thesis/delivery-20261112/','docs/thesis/screenshots/')) or path=='docs/thesis/开题报告.md':
-   original=subprocess.check_output(['git','show','ed7d94c:'+path],cwd=ROOT)
-   assert (ROOT/path).read_bytes()==original,('Protected original changed',path)
-   protected[path]=hashlib.sha256(original).hexdigest()
- result={'baseline_commit':'ed7d94c','tables':tables,'table_count':len(tables),'field_count':sum(len(t['fields']) for t in tables),'endpoints':endpoints,'endpoint_count':len(endpoints),'public_endpoints':3,'authenticated_endpoints':36,'dfd_balance':dfd,'references':validate(),'protected_files':protected,'checked':'全部字段名称、类型、主键、非空、默认值、自增、唯一与普通索引；全部控制器路径方法及角色；DFD父子边界字段；图表编号与文件；受保护历史文件字节一致'}
+ # Compare every immutable original against the captured PR #6 baseline, including old validation logs.
+ protected=json.loads((OUT/'protected-files.json').read_text())
+ for path,digest in protected.items():
+  assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==digest,('Protected original changed',path)
+ # Exact source provenance: dedentation is the only allowed excerpt transformation.
+ import textwrap
+ excerpts=json.loads((OUT/'code-excerpts.json').read_text())
+ for rec in excerpts:
+  source=ROOT/rec['path'];assert hashlib.sha256(source.read_bytes()).hexdigest()==rec['source_sha256']
+  actual=textwrap.dedent('\n'.join(source.read_text().splitlines()[rec['start_line']-1:rec['end_line']]))
+  assert actual==rec['text'] and '```\n' not in actual
+  assert rec['text'] in md,rec['number']
+ result={'baseline_commit':'bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff','tables':tables,'table_count':len(tables),'field_count':sum(len(t['fields']) for t in tables),'endpoints':endpoints,'endpoint_count':len(endpoints),'public_endpoints':3,'authenticated_endpoints':36,'dfd_balance':dfd,'references':validate(),'protected_files':protected,'code_excerpts':len(excerpts),'checked':'全部字段名称、类型、主键、非空、默认值、自增、唯一与普通索引；全部控制器路径方法及角色；DFD父子边界字段；图表编号与文件；源码逐行与原文件SHA对应；受保护历史文件字节一致'}
  OUT.mkdir(parents=True,exist_ok=True);(OUT/'code-thesis-audit.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
  print(json.dumps({k:result[k] for k in ['table_count','field_count','endpoint_count','public_endpoints','authenticated_endpoints']},ensure_ascii=False),'protected',len(protected))
 if __name__=='__main__':main()

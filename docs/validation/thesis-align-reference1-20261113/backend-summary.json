@@ -1,0 +1,350 @@
+[
+  {
+    "class": "com.example.wrongbook.WrongbookServerApplicationTests",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 3.174,
+    "database_context": true,
+    "test_methods": [
+      "contextLoads"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.config.WebConfigTests",
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 4.139,
+    "database_context": false,
+    "test_methods": [
+      "allowsConfiguredOriginWithCredentials",
+      "rejectsWildcardConfiguration",
+      "rejectsUnconfiguredOrigin"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.controller.QuestionRecognitionControllerTests",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 1.278,
+    "database_context": false,
+    "test_methods": [
+      "authenticatedRecognitionReturnsTemporaryResultWithoutBusinessWrites",
+      "requiresAuthentication",
+      "businessErrorsUseMatchingHttpStatus",
+      "rejectsDisabledAccountEvenWhenItsTokenIsStillCryptographicallyValid",
+      "usesCurrentDatabaseRoleInsteadOfStaleTokenRole"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "seconds": 0.004,
+    "database_context": true,
+    "test_methods": [
+      "runsFixedTwentySevenCaseExperiment"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.107,
+    "database_context": false,
+    "test_methods": [
+      "blindLabelsAreStableAndContainBothOrders",
+      "calculatesConceptCoverageWithSynonymsAndNormalization",
+      "fixedDatasetHasRequiredDistributionAndLockedLabels",
+      "calculatesRetrievalMetricsAtK"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.EmbeddingContentTests",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.003,
+    "database_context": false,
+    "test_methods": [
+      "normalizesRichTextBeforeCallingTheEmbeddingProvider"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "seconds": 0.0,
+    "database_context": true,
+    "test_methods": [
+      "auditsRebuildsAndVerifiesAllActiveQuestionEmbeddings"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.977,
+    "database_context": true,
+    "test_methods": [
+      "continuesAfterOneFailureAndKeepsSummaryCountsMutuallyExclusive",
+      "writesAValid1024DimensionEmbedding",
+      "rejectsNullWrongDimensionAndNonFiniteEmbeddings",
+      "auditsNullInvalidNonFiniteAndExpectedDimensionBuckets",
+      "doesNotOverwriteAStemChangedOnlyByCase"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.813,
+    "database_context": true,
+    "test_methods": [
+      "questionCreateRollsBackWhenReviewPlanCreationFails",
+      "practiceRecordRollsBackWhenMasteryUpdateFails",
+      "practiceRejectsQuestionAndVariantSubmittedTogether",
+      "repeatedPracticeUsesBoundedAtomicMasteryUpdates"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests",
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.062,
+    "database_context": false,
+    "test_methods": [
+      "rejectsEmptyStem",
+      "rejectsMissingResponseField",
+      "mapsNetworkTimeoutToStableBusinessError",
+      "mapsRateLimitAndServerFailureWithoutLeakingUpstreamBody",
+      "missingKeyRefusesRecognitionWithoutNetworkAndKeepsApplicationConstructible",
+      "rejectsNonJsonContent",
+      "sendsVerifiedMultimodalFormatAndParsesStructuredResponse"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.LearningResourceIntegrationTests",
+    "tests": 22,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 2.475,
+    "database_context": true,
+    "test_methods": [
+      "repeatedDeliveryDoesNotMarkAnUnansweredQuestionPracticed",
+      "rejectsInvalidKnowledgeBeforePersistence(String)[1]",
+      "rejectsInvalidKnowledgeBeforePersistence(String)[2]",
+      "rejectsInvalidKnowledgeBeforePersistence(String)[3]",
+      "rejectsInvalidKnowledgeBeforePersistence(String)[4]",
+      "rejectsInvalidKnowledgeBeforePersistence(String)[5]",
+      "rejectsInvalidKnowledgeBeforePersistence(String)[6]",
+      "duplicateBatchRollsBackEveryInsertedVariant",
+      "contentEditInvalidatesKnowledgeAndSourceOnlyEditKeepsIt",
+      "originalAndStoredUnpracticedResourcesPrecedeGenerationThenCycle",
+      "otherUsersAndNonStudentRolesCannotReadOrGenerateResources(String)[1]",
+      "otherUsersAndNonStudentRolesCannotReadOrGenerateResources(String)[2]",
+      "otherUsersAndNonStudentRolesCannotReadOrGenerateResources(String)[3]",
+      "anotherStudentsPracticeCannotConsumeMyResource",
+      "concurrentKnowledgeRequestsShareOneGeneratedRecord",
+      "legacyVariantEndpointReusesUntilActualRecordsExhaustThePool",
+      "failedGenerationKeepsOldResourcesAvailableForExplicitRepeat",
+      "knowledgePersistsAndReusesWithoutModelReadiness",
+      "staleKnowledgeResponseCannotWriteAfterAnEdit",
+      "explicitRepeatKeepsHistoryAndDoesNotCallModel",
+      "deleteQuestionAlsoRemovesItsKnowledgeCache",
+      "alreadyStoredStemsAreNotSavedAsNewQuestionsAfterExhaustion"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.LiveGlmValidationTests",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "seconds": 0.0,
+    "database_context": true,
+    "test_methods": [
+      "validatesRealGlmEmbeddingRagAnalysisAndVariantChain"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.LiveQuestionRecognitionTests",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "seconds": 0.0,
+    "database_context": false,
+    "test_methods": [
+      "recognizesOneBase64PngAsStrictJson"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests",
+    "tests": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 15.652,
+    "database_context": false,
+    "test_methods": [
+      "retriesOneTransientServerFailure",
+      "rejectsUnexpectedEmbeddingDimensions",
+      "doesNotRetryNonOverloadRateLimit",
+      "parsesGlmEmbeddingResponseWithConfiguredDimensions",
+      "retriesOnePlatformOverload",
+      "doesNotReplayChatAfterReadTimeout",
+      "defaultGlmUsesRequiredThinkingParametersWithoutChangingEmbeddingSpace",
+      "parsesGlmChatResponseAndSendsJsonMode",
+      "absentKeyDoesNotStopManualInputButRefusesAiWithoutNetworkOrMockFallback",
+      "deepseekUsesDeterministicLocalEmbeddingAndRealChatModelName",
+      "doesNotImmediatelyRetryUserRateLimit",
+      "rejectsNonFiniteEmbeddingValues"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests",
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 7.749,
+    "database_context": true,
+    "test_methods": [
+      "sourceOnlyChangeKeepsAiDerivedData",
+      "invalidStructuredResponseCannotBePersistedAsSuccess(String)[1]",
+      "invalidStructuredResponseCannotBePersistedAsSuccess(String)[2]",
+      "stemChangeInvalidatesAllAiDerivedData",
+      "unchangedQuestionStillCompletesAiAnalysisNormally",
+      "staleAsyncTaskCannotWriteOldResultsAfterQuestionEdit",
+      "derivedDeleteFailureRollsBackQuestionAndAllDerivedChanges",
+      "answerChangeInvalidatesAllAiDerivedData",
+      "subjectChangeInvalidatesAllAiDerivedData"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.182,
+    "database_context": false,
+    "test_methods": [
+      "mapsOnlyAnExistingSubjectAndKeepsStudentAnswerTransient",
+      "discardsSubjectNameOutsideCurrentCandidates",
+      "disabledModeFailsBeforeSubjectLookupOrNetworkCall",
+      "rejectsImageOverConfiguredLimit",
+      "rejectsUnsupportedInvalidAndSpoofedImagesBeforeNetworkCall"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.036,
+    "database_context": false,
+    "test_methods": [
+      "returnsEmptyWhenOnlyAnotherUsersCandidateExists",
+      "retrievesOnlyTheSourceOwnersCandidates"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.018,
+    "database_context": false,
+    "test_methods": [
+      "sameKnowledgePointCandidatesStayWithinTheSourceOwner",
+      "embeddingFallbackCannotReintroduceAnotherUsersQuestion",
+      "adminUsesTheSourceQuestionOwnerAsTheCandidateBoundary",
+      "returnsEmptyWhenNoCandidateBelongsToTheSourceOwner"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.RichQuestionIntegrationTests",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 1.535,
+    "database_context": true,
+    "test_methods": [
+      "exportsPlainTextAndProvidesPlainReviewSummariesWithExistingTextCompatible",
+      "storesSanitizedRichTextAndKeepsLearningRecordsAcrossAnEdit"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.service.impl.VariantServiceImplTests",
+    "tests": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.247,
+    "database_context": false,
+    "test_methods": [
+      "validatesAllVariantsBeforeOpeningShortInsertTransaction(String)[1]",
+      "validatesAllVariantsBeforeOpeningShortInsertTransaction(String)[2]",
+      "rejectsStaleQuestionInputBeforeAnyInsert",
+      "variantPromptReceivesNormalizedQuestionText",
+      "rejectsInvalidResponseBeforeAnyInsert(String)[1]",
+      "rejectsInvalidResponseBeforeAnyInsert(String)[2]",
+      "rejectsInvalidResponseBeforeAnyInsert(String)[3]",
+      "rejectsInvalidResponseBeforeAnyInsert(String)[4]",
+      "rejectsInvalidResponseBeforeAnyInsert(String)[5]",
+      "rejectsInvalidResponseBeforeAnyInsert(String)[6]"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.util.FileStorageUtilTests",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.013,
+    "database_context": false,
+    "test_methods": [
+      "rejectsUploadPathTraversal",
+      "returnsOwnedImageAsInlineDataAndDeletesReplacedFile"
+    ]
+  },
+  {
+    "class": "com.example.wrongbook.util.QuestionContentTests",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.086,
+    "database_context": false,
+    "test_methods": [
+      "removesActiveContentAndAllAttributesButPreservesSupportedFormatting",
+      "refusesEmptyRichTextAndExcessiveInput",
+      "keepsLegacyMathematicalTextWithoutInterpretingComparisonsAsTags",
+      "normalizesParagraphsListsAndMathematicalIndicesForAiAndExport"
+    ]
+  }
+]

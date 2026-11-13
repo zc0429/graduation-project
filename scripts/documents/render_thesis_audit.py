@@ -1,12 +1,15 @@
 """Render every delivered PDF page and four-page sheets for human visual inspection."""
 from pathlib import Path
-import csv,json,re
+import csv,json,re,os
 import pymupdf
 from PIL import Image,ImageDraw
-ROOT=Path(__file__).resolve().parents[2];RUN=ROOT/'docs/validation/thesis-audit-20261112'
-pdf=pymupdf.open(ROOT/'output/thesis/thesis-audit-20261112/毕业论文.pdf')
-local=ROOT/'.local/audit/pdf-pages';local.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[2];DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113');RUN=ROOT/'docs/validation'/DELIVERY
+pdf=pymupdf.open(ROOT/'output/thesis'/DELIVERY/'毕业论文.pdf')
+local=ROOT/'.local'/DELIVERY/'pdf-pages';local.mkdir(parents=True,exist_ok=True)
 proof=RUN/'page-proofs';proof.mkdir(parents=True,exist_ok=True)
+# Remove only superseded proof sheets in the selected delivery, never historical deliveries.
+for stale in proof.glob('sheet-*.jpg'):
+ if int(stale.stem.split('-')[-1])>(len(pdf)+3)//4:stale.unlink()
 rows=[]
 for i,p in enumerate(pdf):
  path=local/f'page-{i+1:03}.png';p.get_pixmap(dpi=120,alpha=False).save(path)

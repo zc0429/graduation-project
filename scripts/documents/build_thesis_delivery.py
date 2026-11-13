@@ -7,7 +7,7 @@ from pathlib import Path
 from copy import deepcopy
 from io import BytesIO
 from zipfile import ZipFile, ZIP_DEFLATED
-import re,json,hashlib
+import re,json,hashlib,os
 from lxml import etree
 from docx import Document
 from docx.shared import Pt,Cm,RGBColor
@@ -19,8 +19,9 @@ from docx.oxml.ns import qn
 from PIL import Image,ImageOps
 
 ROOT=Path(__file__).resolve().parents[2]
-RUN=ROOT/'docs/validation/thesis-audit-20261112'
-OUT=ROOT/'output/thesis/thesis-audit-20261112/毕业论文.docx'
+DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113')
+RUN=ROOT/'docs/validation'/DELIVERY
+OUT=ROOT/'output/thesis'/DELIVERY/'毕业论文.docx'
 TPL=next((ROOT/'docs/materials/27届毕业设计学校通知和模板').rglob('*正文模板.docx'))
 BOOKMARK_ID=100
 
@@ -110,6 +111,9 @@ def heading(doc,text,level=1,key=None,pagebreak=False):
     font(p.add_run(text),14 if level==1 else 12,'黑体')
     if text=='参考文献':
         p.paragraph_format.space_before=Pt(6);p.paragraph_format.space_after=Pt(0)
+    if text.startswith('附录'):
+        p.alignment=WD_ALIGN_PARAGRAPH.CENTER
+        for r in p.runs:font(r,16,'黑体')
     if key:bookmark_end(p,k)
     return p
 def caption(doc,text,continued=False):
@@ -128,8 +132,10 @@ def table(doc,rows,cap):
     n=len(rows[0]);widths=([3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else
         [2.2,6.2,7.35] if n==3 and '接口' in cap else
         [3,4.0,5.0,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n)
-    if '6.12' in cap:widths=[2.2,1.8,6.6,5.15]
+    if '系统接口一览' in cap:widths=[2.2,1.8,6.6,5.15]
     if '3.1' in cap:widths=[1.5,3.0,8.0,3.25]
+    if rows[0]==['代码','文件','原始行范围']:widths=[1.5,11.1,3.15]
+    keep_table=bool(re.match(r'表 6\.\d+.*（[a-z_]+）',cap)) or 'Gate5 固定小样本' in cap
     t=doc.add_table(rows=1,cols=n);t.alignment=WD_TABLE_ALIGNMENT.CENTER;t.autofit=False
     for c,w in zip(t.columns,widths):c.width=Cm(w)
     pr=t._tbl.tblPr
@@ -149,7 +155,7 @@ def table(doc,rows,cap):
             cp.append(margins)
             if ri==0:
                 cb=el('tcBorders');cb.append(el('bottom',val='single',sz=8,color='000000'));cp.append(cb)
-            p=c.paragraphs[0];fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=ri<len(rows)-1)
+            p=c.paragraphs[0];fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=keep_table and ri<len(rows)-1)
             # Allow very long identifier runs to wrap while retaining their exact visible text.
             p._p.get_or_add_pPr().append(el('wordWrap',val=0));inline(p,value,10.5,refs=False)
     return t
@@ -201,12 +207,12 @@ def main():
     hp.paragraph_format.line_spacing=1
     entries=[('摘　要','abstract_cn',1),('Abstract','abstract_en',1)]
     for line in md.splitlines():
-        m=re.match(r'^(#{2,4}) (\d+(?:\.\d+)* .+|参考文献|致　谢.*)$',line)
+        m=re.match(r'^(#{2,4}) (\d+(?:\.\d+)* .+|参考文献|致　谢.*|附录\d+ .+)$',line)
         if m:entries.append((m[2].replace('（预留）',''),'h'+str(len(entries)),len(m[1])-1))
     key_by_title={t:k for t,k,l in entries}
     for i,(t,key,lev) in enumerate(entries):
         p=d.add_paragraph(style=f'TOC {lev}');fmt(p,indent=0,line=20,align=WD_ALIGN_PARAGRAPH.LEFT);p.paragraph_format.line_spacing=1.5
-        # Keep template font sizes and 1.5 spacing; balance the four TOC pages.
+        # Keep template font sizes and 1.5 spacing; balance the TOC in groups of twenty entries.
         if i and i%20==0:p.paragraph_format.page_break_before=True
         p.paragraph_format.left_indent=Cm((lev-1)*.5)
         p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
@@ -237,28 +243,38 @@ def main():
         if not line or line=='---' or line.startswith('>'):continue
         if line.startswith('#'):
             n=len(line)-len(line.lstrip('#'));title=line[n:].strip().replace('（预留）','')
-            in_refs=title=='参考文献' or (in_refs and title!='致　谢')
+            in_refs=title=='参考文献'
             heading(d,title,n-1,key_by_title.get(title),pagebreak=n==2);continue
         if line.startswith('```'):
             code=[]
             while i<len(lines) and not lines[i].startswith('```'):code.append(lines[i]);i+=1
             i+=1
-            # Short source examples remain readable as a complete block.
+            # Keep short excerpts together; longer excerpts may break between lines.
             d.paragraphs[-1].paragraph_format.keep_with_next=True
             for j,text in enumerate(code):
-                p=d.add_paragraph();fmt(p,indent=0,line=14,keep=j<len(code)-1);p.paragraph_format.keep_together=True; font(p.add_run(text),10.5)
+                p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=14,keep=j<len(code)-1 if len(code)<=18 else j<2);p.paragraph_format.keep_together=True; font(p.add_run(text),10.5)
             continue
         if line.startswith('!['):
             target=re.search(r'\]\(([^)]+)\)',line)[1];path=ROOT/'docs/thesis'/target
             im=Image.open(path).convert('RGB');w,h=im.size
-            landscape='business-flow/' in target
-            if landscape:
-                append_sect(d,section_end(d,base[3],header='rId6',footer='rId9',number='decimal' if not body_split else None));body_split=True
+            is_business='business-flow/' in target
+            if is_business:
+                if not landscape:
+                    append_sect(d,section_end(d,base[3],header='rId6',footer='rId9',number='decimal' if not body_split else None));body_split=True
+                landscape=True
                 box=ImageOps.invert(im.convert('L')).point(lambda x: 255 if x>30 else 0).getbbox()
                 im=im.crop(box);w,h=im.size;buf=BytesIO();im.save(buf,format='PNG');buf.seek(0)
                 width=min(24.45,14.6*w/h);picture=buf
             else:
-                width=min(15.75,(23 if 'delivery-20261112/figures/3-' in target else 20)*w/h);picture=str(path)
+                # Remove only surrounding page whitespace during embedding, preserving originals.
+                if '/screenshots/' not in target and 'screenshots/' not in target:
+                    box=ImageOps.invert(im.convert('L')).point(lambda x:255 if x>30 else 0).getbbox()
+                    if box:
+                        x0,y0,x1,y1=box;pad=20
+                        im=im.crop((max(0,x0-pad),max(0,y0-pad),min(w,x1+pad),min(h,y1+pad)))
+                        w,h=im.size
+                width=min(15.75,20*w/h)
+                buf=BytesIO();im.save(buf,format='PNG');buf.seek(0);picture=buf
             p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=14,keep=True,before=6)
             p.paragraph_format.line_spacing=1
             p.add_run().add_picture(picture,width=Cm(width));continue
@@ -267,20 +283,33 @@ def main():
             following=next((x.strip() for x in lines[i:] if x.strip()),'')
             p.paragraph_format.keep_with_next=following.startswith('资料来源')
             if landscape:
-                sec=section_end(d,base[3],header='rId6',footer='rId9')
-                pg=sec.find(qn('w:pgSz'));pg.set(qn('w:w'),'16838');pg.set(qn('w:h'),'11906');pg.set(qn('w:orient'),'landscape')
-                append_sect(d,sec);landscape=False
+                if following.startswith('![') and 'business-flow/' in following:
+                    p.add_run().add_break(WD_BREAK.PAGE)
+                else:
+                    sec=section_end(d,base[3],header='rId6',footer='rId9')
+                    pg=sec.find(qn('w:pgSz'));pg.set(qn('w:w'),'16838');pg.set(qn('w:h'),'11906');pg.set(qn('w:orient'),'landscape')
+                    append_sect(d,sec);landscape=False
             continue
         if line.startswith('**表 '):pending_caption=plain(line);continue
         if line.startswith('|'):
             rows=[line]
             while i<len(lines) and lines[i].strip().startswith('|'):rows.append(lines[i].strip());i+=1
             rows=[[x.strip() for x in r.strip('|').split('|')] for r in rows if not re.match(r'^\|\s*:?-',r)]
-            if pending_caption and '6.12' in pending_caption:
-                for ci,start in enumerate(range(1,len(rows),14)):
+            if pending_caption and '系统接口一览' in pending_caption:
+                start=1
+                for ci,count in enumerate([12,14,13]):
                     cap=caption(d,pending_caption,continued=ci>0)
-                    cap.paragraph_format.page_break_before=True
-                    table(d,[rows[0]]+rows[start:start+14],pending_caption)
+                    if ci:cap.paragraph_format.page_break_before=True
+                    table(d,[rows[0]]+rows[start:start+count],pending_caption);start+=count
+                assert start==len(rows),(pending_caption,start,len(rows))
+            elif pending_caption and re.match(r'表 (3\.3|8\.3)\s',pending_caption):
+                sizes=[4,2] if pending_caption.startswith('表 3.3') else [1,7]
+                start=1
+                for ci,count in enumerate(sizes):
+                    cap=caption(d,pending_caption,continued=ci>0)
+                    if ci:cap.paragraph_format.page_break_before=True
+                    table(d,[rows[0]]+rows[start:start+count],pending_caption);start+=count
+                assert start==len(rows),(pending_caption,start,len(rows))
             else:
                 if pending_caption:caption(d,pending_caption)
                 table(d,rows,pending_caption or '')
