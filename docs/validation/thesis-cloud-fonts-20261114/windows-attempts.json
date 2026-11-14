@@ -1,0 +1,34 @@
+{
+  "superseded_run": {
+    "id": 43540192904,
+    "event": "pull_request",
+    "sha": "5156d12015f510c31b7b006278449929ae82a27a",
+    "cancel_requested": true,
+    "reason": "Duplicate earlier trigger; continue the newest branch push run only"
+  },
+  "attempts": [
+    {
+      "id": 43540172943,
+      "sha": "768a93e13fbff275edc4a1e3678c9bd3942bf04c",
+      "result": "failed",
+      "original_fonts_installed": true,
+      "reason": "First-launch MAR updater detached before PDF conversion"
+    },
+    {
+      "id": 43541003736,
+      "sha": "42790cec5256c242746933d80cd5c5d29045c1e2",
+      "result": "failed",
+      "original_fonts_installed": true,
+      "reason": "PDF body uses originals, but page numbers use Times New Roman; PDF file handle also prevented failure-path renaming"
+    },
+    {
+      "id": 43541893783,
+      "sha": "d117e1989b05921263f61d514b1b7456ff0d1d9b",
+      "result": "success",
+      "original_fonts_installed": true,
+      "actual_original_font_rendering_verified": true,
+      "pdf_pages": 101,
+      "page_number_errors": 0
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+> **2026-11-14最新原字体方案**：PR #9已在Windows Actions中通过官方Hans可选字体组件补齐SimHei，使用真实SimSun/SimHei/Times New Roman及LibreOffice生成正式PDF，并确认字体嵌入和94页宋体页码。见[新交付与云端复现](../../docs/validation/thesis-cloud-fonts-20261114/README.md)及[Windows流程](../../.github/workflows/thesis-windows-fonts.yml)。不需要用户本机运行Codex；字体不复制到Linux或上传Git。以下Linux替代方案与旧交付记录作为历史保留，不代表新PDF仍使用替代字体。
+
 # Cloud复现
 
 当前交付为`output/thesis/thesis-align-reference1-20261113/`，基于PR #6的`bbe1c510`；历史图和旧导出目录保持原样。以下命令只生成当前审计产物。最终须实际查看全部页面；机器校验不会自动认证视觉质量。更换字体或正文后应再次更新页码映射并校验，直到映射稳定。

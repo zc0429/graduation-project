@@ -1,0 +1,475 @@
+{
+  "source_commit": "d117e1989b05921263f61d514b1b7456ff0d1d9b",
+  "self_excluded": true,
+  "standalone_font_binaries_distributed": false,
+  "files": {
+    ".github/workflows/thesis-windows-fonts.yml": {
+      "bytes": 1813,
+      "sha256": "de34a8871e25cc8b86bc4be70b4b6302e22c4ad078791f133115ea81007fe70e"
+    },
+    "AGENTS.md": {
+      "bytes": 35283,
+      "sha256": "3a791107548c029308407b1625490201bf073187b6e0ea2592fc7197308eabda"
+    },
+    "docs/notes/HANDOFF.md": {
+      "bytes": 15515,
+      "sha256": "d213d7779c1134ddd49b6428f23dde83eb3ec64f4867c3a49dcf88f4b9f3bab0"
+    },
+    "docs/notes/进度记录.md": {
+      "bytes": 93986,
+      "sha256": "1263e28a7a2adbc0c2c8840ad249d52a88be6b73434839ae9fe5f5ccff615e73"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/README.md": {
+      "bytes": 3854,
+      "sha256": "3d389fa4cd8feb954a96d639e0d938d9586bc3269123a0adc28d3aaa855d7f75"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/baseline-files.json": {
+      "bytes": 171060,
+      "sha256": "f2be98484bb0877a7ed08bd0ef5fe7890561892de071dd03f9ecd631b90365ad"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/build-1.log": {
+      "bytes": 111,
+      "sha256": "376620382f6a62d282a6790b5ca11eb9c56efaa999c70ce0e6bddb8240e8430d"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/environment.json": {
+      "bytes": 432,
+      "sha256": "190e3134179c9dbf98b5c13c19e8bd0558d45ac64b1f7cc2bd0740e2df855ab3"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/export-1.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/font-inventory-initial.json": {
+      "bytes": 2599,
+      "sha256": "069fe32f6c218375c4f80e006bbd6b1ebd403a54503def283599f10b21ec4801"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/font-inventory.json": {
+      "bytes": 2863,
+      "sha256": "6dbc66602b6d623011c826f4ebd5388ba591d0d5a82fb7a22998124363dd3387"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/heading-keys.json": {
+      "bytes": 7795,
+      "sha256": "c4753786654365207e1ac57f05e8a437d2cb6fe402e0bb036ad8411809523d7d"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/libreoffice-install.log": {
+      "bytes": 1075,
+      "sha256": "a682ad79a0f4a59949486cb51d0e1f9310c2afcac320ddca3eb23f8b6c794e7f"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/windows-optional-fonts.log": {
+      "bytes": 141,
+      "sha256": "fab5e35a87d66c3b94eaaf04a35dbf47c58e5cff6e0e7378437db6e335502a02"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/windows-transcript.log": {
+      "bytes": 1996,
+      "sha256": "5761fc0e7b13f9c27ceeff4e674f98d80e405a3a5981376977f8a5ce79cddf61"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-1/workflow-result.json": {
+      "bytes": 348,
+      "sha256": "f4dd168d5c7dfcbda75e3bf4603ad7c4a2e40865926a5c2ee17a2ec6b25a885d"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/actual-pdf-fonts.json": {
+      "bytes": 13002,
+      "sha256": "e27a901e99c67815a023f9ea46c8dde6a4200f77e3a087f372a7ed95e8a28888"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/baseline-files.json": {
+      "bytes": 171060,
+      "sha256": "6961e501266e7b330e9fd35ea6b47e9757087cc05669ab99fa30ccae990beb60"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/build-1.log": {
+      "bytes": 111,
+      "sha256": "8d6767a5af0421e666538e4c28bc0afd19165176a2d3f0f05a8d83a4fecc3656"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/build-2.log": {
+      "bytes": 111,
+      "sha256": "8d6767a5af0421e666538e4c28bc0afd19165176a2d3f0f05a8d83a4fecc3656"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/commands.jsonl": {
+      "bytes": 1904,
+      "sha256": "35c1d09081f235f3bfd7c63c6ad786d94ac93aef0e83fe5f080853b0b126d87e"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/environment.json": {
+      "bytes": 432,
+      "sha256": "23be6725f42822df356f33d19e9ddebeccf742dd61003c506b711528710bb58c"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/export-1.log": {
+      "bytes": 237,
+      "sha256": "9ae2747401d7d3db12ac3519c6af2a070019f4ddfae95b9f75598c20a0ce2e71"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/export-2.log": {
+      "bytes": 237,
+      "sha256": "45abc1576429a476a306e5f854e688bc5918c2ee54e38875eb193d155dc19b08"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/font-inventory-initial.json": {
+      "bytes": 2599,
+      "sha256": "069fe32f6c218375c4f80e006bbd6b1ebd403a54503def283599f10b21ec4801"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/font-inventory.json": {
+      "bytes": 2863,
+      "sha256": "6dbc66602b6d623011c826f4ebd5388ba591d0d5a82fb7a22998124363dd3387"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/heading-keys.json": {
+      "bytes": 7795,
+      "sha256": "c4753786654365207e1ac57f05e8a437d2cb6fe402e0bb036ad8411809523d7d"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/libreoffice-install.log": {
+      "bytes": 939,
+      "sha256": "1adf96b1212f42d70390992ed6df6a96d519046f6f19969c7eba60e705059257"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/page-map-1.log": {
+      "bytes": 61,
+      "sha256": "f691c12edd2733937b9086f27c1c958b4e21e80d24c67a40a622bd29a4270557"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/page-map-2.log": {
+      "bytes": 61,
+      "sha256": "f691c12edd2733937b9086f27c1c958b4e21e80d24c67a40a622bd29a4270557"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/page-map.json": {
+      "bytes": 1925,
+      "sha256": "02385a2e192abf986cf15a7722f1386b2a722707cfddcd6ebca8fc6af952f7d5"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/windows-optional-fonts.log": {
+      "bytes": 141,
+      "sha256": "fab5e35a87d66c3b94eaaf04a35dbf47c58e5cff6e0e7378437db6e335502a02"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/attempt-2/windows-transcript.log": {
+      "bytes": 1860,
+      "sha256": "f0464b758e31c53f41dfc5bfa7b62ec808d49b512822c580fcebf54d133b6444"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/baseline-files.json": {
+      "bytes": 169438,
+      "sha256": "585e5b63b480aed569db72a60d792671d9fefd2f33f6f3736ac7e93e7569585b"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/baseline.json": {
+      "bytes": 160,
+      "sha256": "8f09424d20a635042529cceb4aeb02398e95d21decabbe731b51705b7aedc612"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/delivery-result.json": {
+      "bytes": 1067,
+      "sha256": "2c9d7d11775086eba5a78ff92cc4aaf93cb043db545c3f00234661194862ddc3"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/final-checks.json": {
+      "bytes": 1225,
+      "sha256": "7be1c29610127a0ef68592dc8223e6366f995bf43ad4377bd06c4d29ddf7111d"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/independent-pdf-fonts.json": {
+      "bytes": 2552,
+      "sha256": "79f269365273ef96d5498e696abe7cb3fb6b1a6d510900be22c81144245eaef9"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/independent-pdf-fonts.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/independent-pdffonts.txt": {
+      "bytes": 940,
+      "sha256": "6db3961459d0d75b8fc73d544bc5e7eb0fd93781224d7d4857d300a7fc5dcfa6"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/negative-control-pdf-fonts.json.gz": {
+      "bytes": 116848,
+      "sha256": "c09c2c4a3f5ac62838774eddf07551549cba4ccc31892d355230ca9a5cdb97a3"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/negative-control-result.json": {
+      "bytes": 112,
+      "sha256": "cfdde5c5e1317b184a8499071aa8c5c5eac6bc21bab9b148215f6a558ec8d318"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/negative-control-summary.json": {
+      "bytes": 527,
+      "sha256": "dd3e128f7872ef1c0ac6873c58c1c04bb063ce6b801696a789dff26b670ac257"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/negative-control.log": {
+      "bytes": 644,
+      "sha256": "cbcab3aee3e8bc525d107cee341bde37077836d5931f7b69ad5c8a4eb5519a4e"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/official-font-sources.json": {
+      "bytes": 2698,
+      "sha256": "a260e8c3d9ef02e8acd7c531de2e7305cd226c89f673b81906c62e958c985835"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/page-number-negative-control.json": {
+      "bytes": 12366,
+      "sha256": "88235fbf020ad5489748f3d461fc30b70f3f43837194a119d46cfc4f2435db74"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/proof-integrity.json": {
+      "bytes": 13436,
+      "sha256": "30fd2c136ccdcacb5ab8472ce24900c0b41d3b32d75d9b55cd873bcd8f3dc388"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/protected-files-check.json": {
+      "bytes": 559,
+      "sha256": "92a22828e54092557ea29875eb7345699990fca882533c349eb4acea3187a353"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/source-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/visual-review.csv": {
+      "bytes": 20789,
+      "sha256": "69d66af1551cb434e4740a4b40f2428a7d11cd8acd0a3fdb1d5dd6e092267885"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/windows-attempt-1-job.log": {
+      "bytes": 28915,
+      "sha256": "50b290799ce6d37fbf9611100f01c6e302480f1ee6895cb9ce0c36ef4fc24183"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/windows-attempt-2-job.log": {
+      "bytes": 27269,
+      "sha256": "4c13afa2478396cdb1c9717e36268440ed0d615ac5bc2885401ca695286850b4"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/windows-attempt-3-job.log": {
+      "bytes": 24811,
+      "sha256": "625a0b1333791b297c431d2f768a33da7c8fcf05664070feb8408b74b85474d5"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/windows-attempts.json": {
+      "bytes": 1072,
+      "sha256": "3c9886de9a07d1106b45db1d4021b5c12156b4d87674b832d1f0bd04b3e7b483"
+    },
+    "docs/validation/thesis-cloud-fonts-20261114/字体验证报告.md": {
+      "bytes": 7215,
+      "sha256": "613685496e54fe33b0afffe03ec1fc8a16dd935a0caa003be3e1cf028e07f336"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/README.md": {
+      "bytes": 668,
+      "sha256": "310e96c01903f8e3b3c79cf65cb599db0c4af349d9b884c09eedfddabf11486c"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/actual-pdf-fonts.json": {
+      "bytes": 2668,
+      "sha256": "81883dc25df3c286a14b7b26d964657575dd7290895fa534ec8e2cba6da10903"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/baseline-files.json": {
+      "bytes": 171060,
+      "sha256": "bf5617156a2089f2a2979a2c36b54a01441c4ad80a98de2f3633e324a7cd5bba"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/build-1.log": {
+      "bytes": 111,
+      "sha256": "c75143d7e3e69ebd4eb4247e56e9927107ec238458ba7b2f681c739bc8bde769"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/build-2.log": {
+      "bytes": 111,
+      "sha256": "c75143d7e3e69ebd4eb4247e56e9927107ec238458ba7b2f681c739bc8bde769"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/commands.jsonl": {
+      "bytes": 2561,
+      "sha256": "66374cb7adce0805afac660333eec146da0290efde58e02fb15a551993fe0c32"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/document-check.json": {
+      "bytes": 1902,
+      "sha256": "0cecdc6928541c66d4bbb6573b344afa5879d0ef9ea4342767db2d0cc33ccba3"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/document-validation.log": {
+      "bytes": 1295,
+      "sha256": "a9a53ef3b860b94c141256ea67189bee44580cf34ca5d58c5cee186c38356df2"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/environment.json": {
+      "bytes": 432,
+      "sha256": "9e548729ca9c8246a8e2bc6e1eab4655ac493dcf4dc328680a9d2833a488ef5a"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/export-1.log": {
+      "bytes": 237,
+      "sha256": "260d961fdb5909b87330d3ba9fe12444bbf9912b535efee9c1f6117a52013187"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/export-2.log": {
+      "bytes": 237,
+      "sha256": "4b6f7dd39fd9521e9f447045b3c0de162158b60e7c7c8b8d3fbe309f7bd0d5eb"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/font-inventory-initial.json": {
+      "bytes": 2599,
+      "sha256": "069fe32f6c218375c4f80e006bbd6b1ebd403a54503def283599f10b21ec4801"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/font-inventory.json": {
+      "bytes": 2863,
+      "sha256": "6dbc66602b6d623011c826f4ebd5388ba591d0d5a82fb7a22998124363dd3387"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/font-layout-check.json": {
+      "bytes": 36401,
+      "sha256": "07529d385325347a764867d6c4f0f69571fef4ce8c23e53acbb67e44524b1c74"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/font-layout-validation.log": {
+      "bytes": 990,
+      "sha256": "c31b350fa1f3914254d99c2a0004c64b334db12852fba6c65663e7cf78309bb4"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/heading-keys.json": {
+      "bytes": 7795,
+      "sha256": "c4753786654365207e1ac57f05e8a437d2cb6fe402e0bb036ad8411809523d7d"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/libreoffice-install.log": {
+      "bytes": 939,
+      "sha256": "1adf96b1212f42d70390992ed6df6a96d519046f6f19969c7eba60e705059257"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-inventory.csv": {
+      "bytes": 24018,
+      "sha256": "d2f1087d7fcda0bb757185102ba3bbf7b329b19102b6448b1ec77175a6178eb0"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-map-1.log": {
+      "bytes": 61,
+      "sha256": "f691c12edd2733937b9086f27c1c958b4e21e80d24c67a40a622bd29a4270557"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-map-2.log": {
+      "bytes": 61,
+      "sha256": "f691c12edd2733937b9086f27c1c958b4e21e80d24c67a40a622bd29a4270557"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-map.json": {
+      "bytes": 1925,
+      "sha256": "02385a2e192abf986cf15a7722f1386b2a722707cfddcd6ebca8fc6af952f7d5"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-01.jpg": {
+      "bytes": 393393,
+      "sha256": "f3044046025b900f9183b3e735417c745b9b9f8847a19c1a919f584d038638ed"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-02.jpg": {
+      "bytes": 398109,
+      "sha256": "4c72c716cca0b1db9683b5b1b7ed14f9995ece38a9149d21fa69381014c691fb"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-03.jpg": {
+      "bytes": 528213,
+      "sha256": "b436ddb1d50979a0c44ead88ee6e996a50f06254dcea5fce50ee396afbe85a56"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-04.jpg": {
+      "bytes": 733460,
+      "sha256": "fdbcaf0ae95eee1d11bb06e5c530b347c6ca46d2e5e79539241a36f6475470fe"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-05.jpg": {
+      "bytes": 404496,
+      "sha256": "813af0c4b36ab63783718a61e2073c8ed3f2cf7c3dcfd0e94f7cbc48d648cff5"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-06.jpg": {
+      "bytes": 364335,
+      "sha256": "3f5763764d67333121890f011e9043e0f4dd59b74d03b00148a1ef73a892487b"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-07.jpg": {
+      "bytes": 435073,
+      "sha256": "40016bb0b82b6cde82e6aece034b89d7ea0b2213c47a7aff6d7033b9b24982df"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-08.jpg": {
+      "bytes": 441716,
+      "sha256": "6fe7a734770457e9bb121215043ba60b9355470a3d4f6982bca445db8f74392a"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-09.jpg": {
+      "bytes": 665061,
+      "sha256": "fbda401fa73389d6409e80394d18c6b56234eaddcb6609356789c605317db445"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-10.jpg": {
+      "bytes": 462396,
+      "sha256": "8ec5d0d2c95f8e8d474d872d3598dc2833e16bbd34e73aedfd0bb0f408e0c02e"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-11.jpg": {
+      "bytes": 521200,
+      "sha256": "e59e04fdc86881ef64db91daea19218862afb51d5e65fd9169c1b94e9e522338"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-12.jpg": {
+      "bytes": 343151,
+      "sha256": "12e469700a7b195424faab58f8197e40ebca9e6cb077e82ac675b77e74082331"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-13.jpg": {
+      "bytes": 477796,
+      "sha256": "6117a80935263e051ac44d2d5e732c3d2d7ed364820468d5da37b6b3d050de7c"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-14.jpg": {
+      "bytes": 586929,
+      "sha256": "31ccd259e956c73bdffa6dcbf28c87560241541ee4639943117a7df27260e64a"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-15.jpg": {
+      "bytes": 561257,
+      "sha256": "0ae14360f5d67b80d8e25c481da2556f4a6de92c38443383e099fc59683c04aa"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-16.jpg": {
+      "bytes": 634996,
+      "sha256": "2e68220c74da3af413a821e2567d43748c6271b9c5573a3a881fe6e23887f9e9"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-17.jpg": {
+      "bytes": 607565,
+      "sha256": "d43e39cdbae91ad3290ed6181740b2b2628c1d696d9998afaa359caa605de9be"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-18.jpg": {
+      "bytes": 588225,
+      "sha256": "08d322892b031b37bada8b7e510d1910ee182bc9d7ffd1c4e67a5eadf1065f16"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-19.jpg": {
+      "bytes": 574966,
+      "sha256": "82aea7a23af0dd98d9985345e3dd735d53fea1c8e02712d12780797809d9ca1d"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-20.jpg": {
+      "bytes": 347998,
+      "sha256": "3ab86420cb69aeb410343ea87559567fd43cfc2b45497e0fe3c456a64b13725e"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-21.jpg": {
+      "bytes": 446914,
+      "sha256": "11d403d622d968bccf3ea0c8415f3bd585584419e372ad48fbebe9ae20e0b814"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-22.jpg": {
+      "bytes": 542761,
+      "sha256": "892e3aef849e789d0590f1096f6161dc7c806a2e5ea32e288e3d9e327577f9ee"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-23.jpg": {
+      "bytes": 666634,
+      "sha256": "924f48fe350a61b09d3223d2bd82ffc03bf4ef4472a85f170ccb0209bcde2963"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-24.jpg": {
+      "bytes": 572591,
+      "sha256": "0138706c8e28996f69734810a061cf120c9d472ae26c120511827b4e83b98c6a"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-25.jpg": {
+      "bytes": 465164,
+      "sha256": "55f990f22686b36a635fd45a6c7db0bc37f64d6421cbb469728410ab908f1331"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/page-proofs/sheet-26.jpg": {
+      "bytes": 177724,
+      "sha256": "c757320aa0636966fbbbf1f90d38fd5a03b621fabdd7918385608aac52763cd4"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/pdf-fonts.txt": {
+      "bytes": 524,
+      "sha256": "265b1a5ac03e64508e2f10edb77c7a9df0e7cbbd0f03165af4f7f1c01ad42363"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/render.log": {
+      "bytes": 156,
+      "sha256": "36c30c56f694ad86e3880de77971b6672bacb13e93470b5cc46aafd556fde3be"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/windows-optional-fonts.log": {
+      "bytes": 141,
+      "sha256": "fab5e35a87d66c3b94eaaf04a35dbf47c58e5cff6e0e7378437db6e335502a02"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/windows-transcript.log": {
+      "bytes": 1861,
+      "sha256": "d29eb959b7a0c93d86763b17bbb95d0a8ddb6b75ffb5157fe899832f6673c2ed"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/workflow-result.json": {
+      "bytes": 488,
+      "sha256": "e50fb5435830920490539f7db0a5363d2801787cf9e52e4bb899a8bc90df8a85"
+    },
+    "docs/validation/thesis-windows-fonts-43541893783-1/图表代码文献页码索引.csv": {
+      "bytes": 11371,
+      "sha256": "ff07fd9dda4923c28ce7fffb6cd816fb7256314cc1361e9a603c580ca1f63b77"
+    },
+    "output/thesis/thesis-windows-fonts-43541893783-1/README.md": {
+      "bytes": 904,
+      "sha256": "3ad91ef6b0b67c309c70beb6f24dc9ecdfbf9e6d099d988ff5c5bc10b50b9e45"
+    },
+    "output/thesis/thesis-windows-fonts-43541893783-1/毕业论文.docx": {
+      "bytes": 4147479,
+      "sha256": "4ef45c33aa2bf6fe6001534676916266ce39c14f231faae85ca4161027180070"
+    },
+    "output/thesis/thesis-windows-fonts-43541893783-1/毕业论文.pdf": {
+      "bytes": 5531678,
+      "sha256": "3652cfe62363e8b11ed8f321fccf97c3ac0fa6a8f0073d60411d4217a53065f8"
+    },
+    "scripts/cloud/Invoke-ThesisWindows.ps1": {
+      "bytes": 3672,
+      "sha256": "565c704bbd7302f201c27af332a01d9cb650441215d106e73c528d67db2b391d"
+    },
+    "scripts/cloud/README.md": {
+      "bytes": 3469,
+      "sha256": "ea689208b04b5b4f9cf47763adf0a6f73b00f807c129e261fdea8ec88c349beb"
+    },
+    "scripts/documents/audit_thesis_font_layout.py": {
+      "bytes": 14457,
+      "sha256": "deaf4dbfe088efe3f44af75e17ce2e329fe045a31af7a9eb1e03189bbd184bb7"
+    },
+    "scripts/documents/build_thesis_delivery.py": {
+      "bytes": 28712,
+      "sha256": "44cada61eecf32423512ce1e64dc34796ddc78ed970e0985a2fcf5a9948ddb57"
+    },
+    "scripts/documents/thesis_windows_cloud.py": {
+      "bytes": 13402,
+      "sha256": "618dc49b5d2a85d3de7d7743875351e9cfd3b000bae564be9e0afb8957f984cb"
+    },
+    "scripts/documents/validate_thesis_delivery.py": {
+      "bytes": 6769,
+      "sha256": "bde0732dcbd6dd22dc9474f00934ba3f10ecdeaba63a474ab416d21baae0c39b"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "original_pdf_text_fonts_verified": true,
+  "automated_layout_checks_passed": true,
+  "toc_stable": true,
+  "toc_destinations": 120,
+  "exports": 2,
+  "manuscript_unchanged": true,
+  "manual_visual_review_completed": false,
+  "raster_figure_fonts_verified": false,
+  "microsoft_word_verified": false,
+  "docx_sha256": "4ef45c33aa2bf6fe6001534676916266ce39c14f231faae85ca4161027180070",
+  "pdf_sha256": "3652cfe62363e8b11ed8f321fccf97c3ac0fa6a8f0073d60411d4217a53065f8"
+}

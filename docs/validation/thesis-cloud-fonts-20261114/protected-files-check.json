@@ -1,0 +1,16 @@
+{
+  "review_start_sha": "0559bfbbac07f487da7f862662e6c167f1096459",
+  "files_checked": 1267,
+  "changes": [],
+  "manuscript_unchanged": true,
+  "allowed_existing_changes": [
+    "AGENTS.md",
+    "docs/notes/HANDOFF.md",
+    "docs/notes/进度记录.md",
+    "scripts/cloud/README.md",
+    "scripts/documents/audit_thesis_font_layout.py",
+    "scripts/documents/build_thesis_delivery.py",
+    "scripts/documents/validate_thesis_delivery.py"
+  ],
+  "note": "New workflow, Windows scripts, output and evidence are additions; no font binaries are distributed."
+}

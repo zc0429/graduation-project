@@ -1,0 +1,34 @@
+{
+  "source_commit": "d117e1989b05921263f61d514b1b7456ff0d1d9b",
+  "github_run_id": 43541893783,
+  "workflow_conclusion": "success",
+  "downloaded_artifact_sha256": "27d47ef03574fda6e733dec5522949091056627e44dac79f5578df78425f1228",
+  "docx_sha256": "4ef45c33aa2bf6fe6001534676916266ce39c14f231faae85ca4161027180070",
+  "pdf_sha256": "3652cfe62363e8b11ed8f321fccf97c3ac0fa6a8f0073d60411d4217a53065f8",
+  "original_pdf_text_fonts_verified": true,
+  "all_used_fonts_embedded_and_subset": true,
+  "all_94_page_numbers_9pt_simsun": true,
+  "used_text_spans": {
+    "SimSun": 3363,
+    "SimHei": 250,
+    "Times New Roman": 2799
+  },
+  "manual_visual_review_completed": true,
+  "pages_reviewed": 101,
+  "zoom_pages": [
+    1,
+    10,
+    59,
+    60,
+    72,
+    98
+  ],
+  "toc_stable": true,
+  "toc_destinations": 120,
+  "raster_figure_fonts_verified": false,
+  "microsoft_word_verified": false,
+  "physical_print_verified": false,
+  "system_tests_executed": false,
+  "linux_substitute_used_for_final_pdf": false,
+  "standalone_restricted_font_files_distributed": false
+}
