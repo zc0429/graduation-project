@@ -1,0 +1,19 @@
+{
+  "id": 14106711306,
+  "name": "thesis-windows-fonts-43576840299-1",
+  "size_in_bytes": 55571366,
+  "url": "https://api.github.com/repos/zc0429/graduation-project/actions/artifacts/14106711306",
+  "archive_download_url": "https://api.github.com/repos/zc0429/graduation-project/actions/artifacts/14106711306/zip",
+  "expired": false,
+  "created_at": "2026-11-14T08:43:59Z",
+  "expires_at": "2026-11-28T08:43:56Z",
+  "updated_at": "2026-11-14T08:43:59Z",
+  "digest": "sha256:b219f1bd80ca505f86ec1052562e5e91b4fc32023187cb0ff99507092b6b560e",
+  "workflow_run": {
+    "id": 43576840299,
+    "repository_id": 1335953236,
+    "head_repository_id": 1335953236,
+    "head_branch": "codex/thesis-final-quality-20261113",
+    "head_sha": "c18cc911f153a626ece88e549398b7c852d9dc54"
+  }
+}

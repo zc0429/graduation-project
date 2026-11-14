@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/check_thesis_border_polish.py", line 135, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/check_thesis_border_polish.py", line 131, in main
+    manifest,checks=inspect_figures();result={'raster_geometry':checks,'figure_count':len(checks),'svg_padding_units':24,'raster_scale':4,'geometry_checks_passed':True}
+                    ^^^^^^^^^^^^^^^^^
+  File "/workspace/graduation-project/scripts/documents/check_thesis_border_polish.py", line 45, in inspect_figures
+    values=rectangle_edges(im,geo,vb,scale);assert min(values)>=.97,(m['number'],geo,values)
+                                                   ^^^^^^^^^^^^^^^^
+AssertionError: ('3.1', {'x': 247.135, 'y': 319.5875, 'w': 45.192, 'h': 24.0375}, [0.0, 1.0, 0.0, 0.43478260869565216])

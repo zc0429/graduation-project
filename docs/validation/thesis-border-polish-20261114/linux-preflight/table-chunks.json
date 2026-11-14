@@ -1,0 +1,1935 @@
+[
+  {
+    "caption": "表 3.1　系统功能需求清单",
+    "chunk_index": 0,
+    "headers": [
+      "编号",
+      "功能名称",
+      "功能需求描述",
+      "使用角色"
+    ],
+    "rows": [
+      [
+        "FR01",
+        "用户与账户",
+        "注册学生账号、登录及维护本人资料；管理员查询和停用账号",
+        "学生、教师、管理员"
+      ],
+      [
+        "FR02",
+        "科目管理",
+        "查询科目；管理员新增、修改科目信息",
+        "全部角色、管理员"
+      ],
+      [
+        "FR03",
+        "知识点管理",
+        "按科目查看知识点；管理员维护归类所需知识点",
+        "全部角色、管理员"
+      ],
+      [
+        "FR04",
+        "错题管理",
+        "录入、查询、编辑和删除本人错题，图片识别辅助填写；保留内容归属",
+        "学生"
+      ],
+      [
+        "FR05",
+        "错题分析",
+        "准备上下文、调用模型、校验保存分析并返回结果或失败信息",
+        "学生"
+      ],
+      [
+        "FR06",
+        "知识学习",
+        "按本人原题及输入快照查询讲解，缺少时生成并保存，支持再次使用",
+        "学生"
+      ],
+      [
+        "FR07",
+        "相似题查询",
+        "从本人可访问题库查询与所选错题相关的题目",
+        "学生"
+      ],
+      [
+        "FR08",
+        "拓展练习资源",
+        "查询已有变式题，结合已练标识选择可用题；资源耗尽后补充生成并保存",
+        "学生"
+      ],
+      [
+        "FR09",
+        "复习任务",
+        "查看到期及逾期未完成任务，围绕原题学习或练习，单独确认任务完成",
+        "学生"
+      ],
+      [
+        "FR10",
+        "练习记录",
+        "保存题目标识、作答与自评结果，更新学习状态并支持历史查询",
+        "学生"
+      ],
+      [
+        "FR11",
+        "学情报告",
+        "学生查看本人统计，教师查看系统聚合统计，明确数据范围",
+        "学生、教师"
+      ],
+      [
+        "FR12",
+        "错题本导出",
+        "按筛选条件导出本人错题，保持题干可读及数据隔离",
+        "学生"
+      ],
+      [
+        "FR13",
+        "消息通知",
+        "查看本人消息、未读状态并标记已读，接收业务提醒",
+        "全部角色"
+      ],
+      [
+        "FR14",
+        "公告",
+        "管理员发布公告，登录用户查看公告",
+        "管理员、全部角色"
+      ]
+    ]
+  },
+  {
+    "caption": "表 3.2　核心用例说明",
+    "chunk_index": 0,
+    "headers": [
+      "用例",
+      "参与者与前提",
+      "基本交互",
+      "异常与完成结果"
+    ],
+    "rows": [
+      [
+        "UC01 录入与分析错题",
+        "学生；具有录入权限",
+        "填写或图片辅助录入；提交；平台保存错题并组织分析；学生查看平台处理后的结果",
+        "输入不合格返回修改；识别失败可手录；分析失败保留原题并允许重试"
+      ],
+      [
+        "UC02 学习知识内容",
+        "学生；已选择本人原题（可关联知识点）",
+        "平台查询已有知识内容；有则提供，无则组织生成、校验和保存；学生阅读并决定是否继续",
+        "无效生成不作为成功资源保存；纯阅读不写作答记录；继续时重新查库"
+      ],
+      [
+        "UC03 开展做题练习",
+        "学生；已选择本人原题及其关联变式",
+        "平台优先提供已有可用题；必要时补充生成；学生作答并自评；平台保存题目标识与结果",
+        "无权题目拒绝；保存失败反馈；继续练习再次判断可用资源，不无条件调用模型"
+      ],
+      [
+        "UC04 完成复习",
+        "学生；存在本人待完成任务",
+        "查看任务，结合原题学习或练习，选择确认完成，平台更新该任务状态",
+        "无任务展示空状态；未确认则保留未完成；不据一次练习自动改期"
+      ],
+      [
+        "UC05 查看学情",
+        "学生或教师；具有报告权限",
+        "请求统计；平台读取记录并按角色确定范围；展示本人或系统聚合报告",
+        "无数据明确提示；教师不能据此钻取班级或个人作答详情"
+      ],
+      [
+        "UC06 维护基础资料",
+        "管理员；具有维护权限",
+        "选择科目、知识点、账户或公告事项；提交请求；平台校验并保存或查询",
+        "不合格输入和越权操作拒绝；返回处理结果，不依赖教师完成其他操作"
+      ]
+    ]
+  },
+  {
+    "caption": "表 3.3　逻辑数据存储说明",
+    "chunk_index": 0,
+    "headers": [
+      "编号",
+      "名称",
+      "主要内容与来源",
+      "用途及当前物理对应"
+    ],
+    "rows": [
+      [
+        "D1",
+        "账户资料",
+        "用户标识、账户、角色与状态；来自注册、资料维护及管理员操作",
+        "身份与权限判断；对应user"
+      ],
+      [
+        "D2",
+        "科目与知识点",
+        "科目及知识点标识、名称和层级；来自管理员维护",
+        "输入选择、归类及资源查询；对应subject、knowledge_point"
+      ],
+      [
+        "D3",
+        "错题与解析",
+        "归属、题干、答案、知识点、解析、参考标识与状态；来自录入及平台处理",
+        "本人错题查询、分析和统计；对应question、ai_analysis"
+      ],
+      [
+        "D4",
+        "学习资源",
+        "内容类型、资源标识、内容及原题或知识点关联；来自平台校验后的生成结果",
+        "对应variant_question、learning_content；由原题限定个人归属"
+      ],
+      [
+        "D5",
+        "练习与复习记录",
+        "用户及作答目标、自评结果、用时、任务日期和完成状态",
+        "标识已练题、更新与统计；对应practice_record、review_plan"
+      ],
+      [
+        "D6",
+        "消息与公告",
+        "接收人或发布人、标题、内容及阅读状态；来自业务提醒和管理员发布",
+        "个人消息与公告查看；对应message、announcement"
+      ]
+    ]
+  },
+  {
+    "caption": "表 3.4　核心数据流字典",
+    "chunk_index": 0,
+    "headers": [
+      "数据流",
+      "来源与去向",
+      "关键组成",
+      "约束"
+    ],
+    "rows": [
+      [
+        "错题资料",
+        "学生→P3",
+        "科目、题干、可选答案、来源和图片",
+        "题干与归属有效；识别候选不直接当作正式保存结果"
+      ],
+      [
+        "识别分析上下文",
+        "P3→AI模型",
+        "输入内容、候选知识点、本人参考内容",
+        "最小必要数据，不含密钥或其他学生私有题目"
+      ],
+      [
+        "识别分析结果",
+        "AI模型→P3",
+        "候选题目信息或知识归类、错因、解析",
+        "平台校验后使用；失败保留已有错题"
+      ],
+      [
+        "学习请求",
+        "学生→P4.1",
+        "本人原题标识、学习或练习类型",
+        "不把学习请求等同于作答记录"
+      ],
+      [
+        "未满足的资源请求",
+        "P4.1→P4.2",
+        "目标类型、知识点或原题上下文",
+        "缺少可用资源时形成，携带目标及必要上下文"
+      ],
+      [
+        "生成上下文与结果",
+        "P4.2↔AI模型",
+        "请求的内容类型、题目上下文；返回的讲解或练习题",
+        "未通过校验的内容不作为有效资源写入D4"
+      ],
+      [
+        "作答数据",
+        "学生→P4.3",
+        "原题或变式目标、自评结果、可选作答及用时",
+        "目标明确且归属合法；结果由学生自评"
+      ],
+      [
+        "练习记录",
+        "P4.3→D5",
+        "用户、题目标识、结果与时间",
+        "支持后续识别已练题；不代表复习任务自动完成"
+      ],
+      [
+        "完成确认与复习状态",
+        "学生→P4.4→D5",
+        "所选任务、本人确认与完成状态",
+        "只更新本人选定任务，不隐含动态改期"
+      ],
+      [
+        "报告信息",
+        "P5→学生或教师",
+        "题目、练习、复习及知识点聚合指标",
+        "学生本人范围、教师系统聚合范围；反映现有记录"
+      ]
+    ]
+  },
+  {
+    "caption": "表 5.1　功能模块与实现职责",
+    "chunk_index": 0,
+    "headers": [
+      "功能模块",
+      "主要服务或接口",
+      "职责边界"
+    ],
+    "rows": [
+      [
+        "用户与权限",
+        "AuthService、UserService、AuthInterceptor",
+        "注册学生、认证、资料维护、用户停用与角色校验"
+      ],
+      [
+        "基础错题",
+        "QuestionService、SubjectService、KnowledgePointService",
+        "错题、科目和知识点；图片识别仅提供录入候选"
+      ],
+      [
+        "AI 辅助解析",
+        "AiAnalysisService、EmbeddingService、LlmClient",
+        "异步任务、向量、结构化校验和归类回填"
+      ],
+      [
+        "练习资源",
+        "RagService、RecommendService、VariantService、LearningService",
+        "个人题库检索、规则优先推荐、知识缓存与未练题优先编排"
+      ],
+      [
+        "复习计划",
+        "ReviewPlanService、ScheduleTask",
+        "固定五阶段计划、完成与过期状态、到期提醒"
+      ],
+      [
+        "练习记录",
+        "PracticeService",
+        "保存用户自评作答并更新原题规则分值"
+      ],
+      [
+        "学情与导出",
+        "ReportService、QuestionService",
+        "请求时聚合报告与 XLSX 导出，无报告快照"
+      ],
+      [
+        "消息与公告",
+        "MessageService、AnnouncementService",
+        "本人站内消息与管理员公告发布，无推送通道"
+      ]
+    ]
+  },
+  {
+    "caption": "表 5.2　角色与数据访问范围",
+    "chunk_index": 0,
+    "headers": [
+      "参与者",
+      "允许的主要范围",
+      "设计约束"
+    ],
+    "rows": [
+      [
+        "学生",
+        "本人账户、错题、练习、复习、报告与消息；公共科目、知识点和公告",
+        "题目与派生资源通过所属用户校验；图片访问同样受归属限制"
+      ],
+      [
+        "教师",
+        "本人资料与消息、公共基础资料、系统聚合学情",
+        "不建立班级关系，不提供学生个人作答明细或题目维护权限"
+      ],
+      [
+        "管理员",
+        "本人资料与消息、账户状态、科目、知识点及公告维护",
+        "不取得学生学习接口或教师报告接口权限"
+      ],
+      [
+        "AI模型",
+        "平台为当前任务准备的必要输入",
+        "不直接读写业务数据库，返回内容经平台校验后使用"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.1　用户表（user）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "用户 ID"
+      ],
+      [
+        "username",
+        "VARCHAR(32)",
+        "NOT NULL UNIQUE",
+        "登录用户名"
+      ],
+      [
+        "password",
+        "VARCHAR(128)",
+        "NOT NULL",
+        "密码（加密存储）"
+      ],
+      [
+        "nickname",
+        "VARCHAR(32)",
+        "DEFAULT NULL",
+        "昵称"
+      ],
+      [
+        "role",
+        "VARCHAR(16)",
+        "NOT NULL DEFAULT 'student'",
+        "角色：student/teacher/admin"
+      ],
+      [
+        "class_name",
+        "VARCHAR(64)",
+        "DEFAULT NULL",
+        "预留班级文本，不建立班级业务关系"
+      ],
+      [
+        "email",
+        "VARCHAR(64)",
+        "DEFAULT NULL",
+        "邮箱"
+      ],
+      [
+        "status",
+        "TINYINT",
+        "NOT NULL DEFAULT 1",
+        "状态：1 正常，0 停用"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ],
+      [
+        "update_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+        "更新时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.2　科目表（subject）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "科目 ID"
+      ],
+      [
+        "name",
+        "VARCHAR(32)",
+        "NOT NULL UNIQUE",
+        "科目名称（如数学、物理）"
+      ],
+      [
+        "code",
+        "VARCHAR(32)",
+        "DEFAULT NULL",
+        "科目编码"
+      ],
+      [
+        "sort",
+        "INT",
+        "NOT NULL DEFAULT 0",
+        "排序号"
+      ],
+      [
+        "status",
+        "TINYINT",
+        "NOT NULL DEFAULT 1",
+        "状态：1 启用，0 停用"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.3　知识点表（knowledge_point）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "知识点 ID"
+      ],
+      [
+        "subject_id",
+        "BIGINT",
+        "NOT NULL",
+        "所属科目，逻辑外键 → subject(id)"
+      ],
+      [
+        "parent_id",
+        "BIGINT",
+        "NOT NULL DEFAULT 0",
+        "父级 ID：0 表示一级章节"
+      ],
+      [
+        "name",
+        "VARCHAR(64)",
+        "NOT NULL",
+        "知识点名称"
+      ],
+      [
+        "sort",
+        "INT",
+        "NOT NULL DEFAULT 0",
+        "排序号"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.4　错题表（question）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "错题 ID"
+      ],
+      [
+        "user_id",
+        "BIGINT",
+        "NOT NULL",
+        "所属学生，逻辑外键 → user(id)"
+      ],
+      [
+        "subject_id",
+        "BIGINT",
+        "NOT NULL",
+        "所属科目，逻辑外键 → subject(id)"
+      ],
+      [
+        "knowledge_point_id",
+        "BIGINT",
+        "DEFAULT NULL",
+        "知识点（AI 归类后回填），逻辑外键 → knowledge_point(id)"
+      ],
+      [
+        "stem",
+        "TEXT",
+        "NOT NULL",
+        "题干"
+      ],
+      [
+        "answer",
+        "TEXT",
+        "DEFAULT NULL",
+        "答案"
+      ],
+      [
+        "source",
+        "VARCHAR(128)",
+        "DEFAULT NULL",
+        "题目来源（如作业、试卷）"
+      ],
+      [
+        "image_url",
+        "VARCHAR(255)",
+        "DEFAULT NULL",
+        "题目图片地址"
+      ],
+      [
+        "difficulty",
+        "TINYINT",
+        "DEFAULT NULL",
+        "难度（1-5，AI 评估）"
+      ],
+      [
+        "mastery",
+        "INT",
+        "NOT NULL DEFAULT 0",
+        "掌握度（0-100）"
+      ],
+      [
+        "embedding",
+        "TEXT",
+        "DEFAULT NULL",
+        "题干语义向量（JSON 数组）"
+      ],
+      [
+        "status",
+        "TINYINT",
+        "NOT NULL DEFAULT 1",
+        "状态：1 正常，0 删除"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ],
+      [
+        "update_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+        "更新时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.5　AI 解析记录表（ai_analysis）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "解析记录 ID"
+      ],
+      [
+        "question_id",
+        "BIGINT",
+        "NOT NULL UNIQUE",
+        "对应错题，逻辑外键 → question(id)"
+      ],
+      [
+        "knowledge_point_id",
+        "BIGINT",
+        "DEFAULT NULL",
+        "AI 归类知识点，逻辑外键 → knowledge_point(id)"
+      ],
+      [
+        "error_cause",
+        "TEXT",
+        "DEFAULT NULL",
+        "错因分析"
+      ],
+      [
+        "analysis",
+        "TEXT",
+        "DEFAULT NULL",
+        "解析内容"
+      ],
+      [
+        "reference_ids",
+        "VARCHAR(255)",
+        "DEFAULT NULL",
+        "参考的本地题目 ID（JSON）"
+      ],
+      [
+        "llm_model",
+        "VARCHAR(64)",
+        "DEFAULT NULL",
+        "所用大模型标识"
+      ],
+      [
+        "status",
+        "TINYINT",
+        "NOT NULL DEFAULT 0",
+        "状态：0 生成中，1 成功，2 失败"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.6　变式题表（variant_question）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "变式题 ID"
+      ],
+      [
+        "question_id",
+        "BIGINT",
+        "NOT NULL",
+        "原题 ID，逻辑外键 → question(id)"
+      ],
+      [
+        "stem",
+        "TEXT",
+        "NOT NULL",
+        "变式题题干"
+      ],
+      [
+        "answer",
+        "TEXT",
+        "DEFAULT NULL",
+        "变式题答案"
+      ],
+      [
+        "difficulty",
+        "TINYINT",
+        "DEFAULT NULL",
+        "难度（1-5）"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.7　复习计划表（review_plan）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "复习计划 ID"
+      ],
+      [
+        "user_id",
+        "BIGINT",
+        "NOT NULL",
+        "所属学生，逻辑外键 → user(id)"
+      ],
+      [
+        "question_id",
+        "BIGINT",
+        "NOT NULL",
+        "待复习错题，逻辑外键 → question(id)"
+      ],
+      [
+        "review_stage",
+        "TINYINT",
+        "NOT NULL DEFAULT 1",
+        "复习阶段（第 1-5 次）"
+      ],
+      [
+        "plan_date",
+        "DATE",
+        "NOT NULL",
+        "计划复习日期"
+      ],
+      [
+        "status",
+        "TINYINT",
+        "NOT NULL DEFAULT 0",
+        "状态：0 待复习，1 已完成，2 已过期"
+      ],
+      [
+        "finish_time",
+        "DATETIME",
+        "DEFAULT NULL",
+        "完成时间"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.8　练习记录表（practice_record）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "练习记录 ID"
+      ],
+      [
+        "user_id",
+        "BIGINT",
+        "NOT NULL",
+        "作答学生，逻辑外键 → user(id)"
+      ],
+      [
+        "question_id",
+        "BIGINT",
+        "DEFAULT NULL",
+        "重做的错题，逻辑外键 → question(id)"
+      ],
+      [
+        "variant_id",
+        "BIGINT",
+        "DEFAULT NULL",
+        "作答的变式题，逻辑外键 → variant_question(id)"
+      ],
+      [
+        "user_answer",
+        "TEXT",
+        "DEFAULT NULL",
+        "学生作答内容"
+      ],
+      [
+        "is_correct",
+        "TINYINT",
+        "DEFAULT NULL",
+        "是否正确：1 正确，0 错误"
+      ],
+      [
+        "duration",
+        "INT",
+        "DEFAULT NULL",
+        "作答用时（秒）"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.9　消息通知表（message）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "消息 ID"
+      ],
+      [
+        "user_id",
+        "BIGINT",
+        "NOT NULL",
+        "接收用户，逻辑外键 → user(id)"
+      ],
+      [
+        "type",
+        "VARCHAR(32)",
+        "NOT NULL DEFAULT 'system'",
+        "消息类型：review_remind 复习提醒/report 报告/system 系统"
+      ],
+      [
+        "title",
+        "VARCHAR(128)",
+        "NOT NULL",
+        "消息标题"
+      ],
+      [
+        "content",
+        "VARCHAR(512)",
+        "DEFAULT NULL",
+        "消息内容"
+      ],
+      [
+        "is_read",
+        "TINYINT",
+        "NOT NULL DEFAULT 0",
+        "是否已读：1 已读，0 未读"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.10　公告表（announcement）",
+    "chunk_index": 0,
+    "headers": [
+      "字段名",
+      "数据类型",
+      "约束",
+      "注释"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "公告 ID"
+      ],
+      [
+        "title",
+        "VARCHAR(128)",
+        "NOT NULL",
+        "公告标题"
+      ],
+      [
+        "content",
+        "TEXT",
+        "DEFAULT NULL",
+        "公告内容"
+      ],
+      [
+        "publisher_id",
+        "BIGINT",
+        "DEFAULT NULL",
+        "发布人，逻辑外键 → user(id)"
+      ],
+      [
+        "status",
+        "TINYINT",
+        "NOT NULL DEFAULT 1",
+        "状态：1 正常，0 下线"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.11　知识内容表（learning_content）",
+    "chunk_index": 0,
+    "headers": [
+      "字段",
+      "类型",
+      "约束",
+      "说明"
+    ],
+    "rows": [
+      [
+        "id",
+        "BIGINT",
+        "PRIMARY KEY NOT NULL AUTO_INCREMENT",
+        "内容标识"
+      ],
+      [
+        "user_id",
+        "BIGINT",
+        "NOT NULL",
+        "所属学生"
+      ],
+      [
+        "question_id",
+        "BIGINT",
+        "NOT NULL UNIQUE",
+        "关联原题"
+      ],
+      [
+        "knowledge_point_id",
+        "BIGINT",
+        "DEFAULT NULL",
+        "关联知识点"
+      ],
+      [
+        "input_hash",
+        "CHAR(64)",
+        "NOT NULL",
+        "输入快照摘要"
+      ],
+      [
+        "content",
+        "TEXT",
+        "NOT NULL",
+        "校验后的知识讲解"
+      ],
+      [
+        "create_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        "创建时间"
+      ],
+      [
+        "update_time",
+        "DATETIME",
+        "NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+        "最近更新时间"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.12　个人资源复用与持续练习设计",
+    "chunk_index": 0,
+    "headers": [
+      "业务",
+      "数据与处理",
+      "边界"
+    ],
+    "rows": [
+      [
+        "查询知识内容",
+        "原题及输入摘要匹配learning_content，命中直接返回",
+        "仅本人资源；缺少模型配置仍可读有效缓存"
+      ],
+      [
+        "取得未练题",
+        "统一next入口先本人未练原题，再按ID查关联未练变式",
+        "只有实际提交practice_record才记已练；答错也计已练"
+      ],
+      [
+        "耗尽后生成",
+        "调用模型，校验结构、长度与批内及历史题干重复，短事务保存",
+        "失败不产生半批题目，不删除历史可重做题"
+      ],
+      [
+        "并发与编辑",
+        "单实例按原题分段锁，写回时锁原题并复查快照和可用资源",
+        "多实例可能重复调用，但写入前再次判断；不承诺分布式单次调用"
+      ],
+      [
+        "继续与重做",
+        "继续时重新查询；显式重做保存新的练习记录",
+        "不把获取或阅读当成已练；作答不自动完成复习任务"
+      ]
+    ]
+  },
+  {
+    "caption": "表 6.13　系统接口一览",
+    "chunk_index": 0,
+    "headers": [
+      "模块",
+      "方法",
+      "路径",
+      "说明"
+    ],
+    "rows": [
+      [
+        "用户管理",
+        "POST",
+        "/api/auth/register",
+        "用户注册；权限：公开"
+      ],
+      [
+        "用户管理",
+        "POST",
+        "/api/auth/login",
+        "用户登录（返回 JWT）；权限：公开"
+      ],
+      [
+        "系统状态",
+        "GET",
+        "/api/health",
+        "健康检查；权限：公开"
+      ],
+      [
+        "用户管理",
+        "GET",
+        "/api/user/profile",
+        "查询个人信息；权限：登录用户"
+      ],
+      [
+        "用户管理",
+        "PUT",
+        "/api/user/profile",
+        "修改个人信息；权限：登录用户"
+      ],
+      [
+        "用户管理",
+        "GET",
+        "/api/user/page",
+        "用户分页查询（管理员）；权限：管理员"
+      ],
+      [
+        "用户管理",
+        "DELETE",
+        "/api/user/{id}",
+        "停用用户（管理员，逻辑状态变更）；权限：管理员"
+      ],
+      [
+        "科目管理",
+        "GET",
+        "/api/subject/list",
+        "科目列表；权限：登录用户"
+      ],
+      [
+        "科目管理",
+        "POST",
+        "/api/subject",
+        "新增科目（管理员）；权限：管理员"
+      ],
+      [
+        "科目管理",
+        "PUT",
+        "/api/subject/{id}",
+        "修改科目（管理员）；权限：管理员"
+      ],
+      [
+        "知识点管理",
+        "GET",
+        "/api/knowledge-point/tree",
+        "知识点树（按科目）；权限：登录用户"
+      ],
+      [
+        "知识点管理",
+        "POST",
+        "/api/knowledge-point",
+        "新增知识点（管理员）；权限：管理员"
+      ],
+      [
+        "知识点管理",
+        "DELETE",
+        "/api/knowledge-point/{id}",
+        "删除知识点（管理员）；权限：管理员"
+      ],
+      [
+        "错题录入管理",
+        "POST",
+        "/api/question",
+        "录入错题；权限：学生"
+      ]
+    ]
+  },
+  {
+    "caption": "续表 6.13　系统接口一览",
+    "chunk_index": 1,
+    "headers": [
+      "模块",
+      "方法",
+      "路径",
+      "说明"
+    ],
+    "rows": [
+      [
+        "错题录入管理",
+        "POST",
+        "/api/question-recognition/recognize",
+        "单图题目识别并返回表单候选值；权限：学生"
+      ],
+      [
+        "错题录入管理",
+        "GET",
+        "/api/question/page",
+        "错题分页筛选（科目/知识点）；权限：学生"
+      ],
+      [
+        "错题录入管理",
+        "GET",
+        "/api/question/{id}",
+        "错题详情；权限：学生"
+      ],
+      [
+        "错题录入管理",
+        "PUT",
+        "/api/question/{id}",
+        "修改错题；权限：学生"
+      ],
+      [
+        "错题录入管理",
+        "DELETE",
+        "/api/question/{id}",
+        "删除错题；权限：学生"
+      ],
+      [
+        "AI 解析管理",
+        "POST",
+        "/api/ai/analyze/{questionId}",
+        "触发 AI 解析（异步）；权限：学生"
+      ],
+      [
+        "AI 解析管理",
+        "GET",
+        "/api/ai/analysis/{questionId}",
+        "查询解析结果；权限：学生"
+      ],
+      [
+        "相似题推荐管理",
+        "GET",
+        "/api/recommend/similar",
+        "相似题推荐（questionId 参数）；权限：学生"
+      ],
+      [
+        "变式题管理",
+        "POST",
+        "/api/variant/generate/{questionId}",
+        "生成变式题；权限：学生"
+      ],
+      [
+        "变式题管理",
+        "GET",
+        "/api/variant/list",
+        "变式题列表（questionId 参数）；权限：学生"
+      ],
+      [
+        "复习计划管理",
+        "GET",
+        "/api/review-plan/today",
+        "到期及逾期未完成任务；权限：学生"
+      ],
+      [
+        "复习计划管理",
+        "PUT",
+        "/api/review-plan/{id}/finish",
+        "完成复习任务；权限：学生"
+      ],
+      [
+        "练习记录管理",
+        "POST",
+        "/api/practice",
+        "提交练习作答；权限：学生"
+      ]
+    ]
+  },
+  {
+    "caption": "续表 6.13　系统接口一览",
+    "chunk_index": 2,
+    "headers": [
+      "模块",
+      "方法",
+      "路径",
+      "说明"
+    ],
+    "rows": [
+      [
+        "练习记录管理",
+        "GET",
+        "/api/practice/page",
+        "练习记录分页；权限：学生"
+      ],
+      [
+        "学情报告管理",
+        "GET",
+        "/api/report/weekly",
+        "查询学情周报；权限：学生、教师"
+      ],
+      [
+        "学情报告管理",
+        "POST",
+        "/api/report/generate",
+        "聚合当前周报并发送一条站内消息；权限：学生、教师"
+      ],
+      [
+        "错题本导出管理",
+        "GET",
+        "/api/question/export",
+        "导出错题本（筛选参数）；权限：学生"
+      ],
+      [
+        "消息通知管理",
+        "GET",
+        "/api/message/page",
+        "消息分页查询；权限：登录用户"
+      ],
+      [
+        "消息通知管理",
+        "GET",
+        "/api/message/unread-count",
+        "查询未读消息数；权限：登录用户"
+      ],
+      [
+        "消息通知管理",
+        "PUT",
+        "/api/message/{id}/read",
+        "标记消息已读；权限：登录用户"
+      ],
+      [
+        "公告管理",
+        "GET",
+        "/api/announcement/list",
+        "公告列表；权限：登录用户"
+      ],
+      [
+        "公告管理",
+        "POST",
+        "/api/announcement",
+        "发布公告（管理员）；权限：管理员"
+      ],
+      [
+        "学习资源",
+        "POST",
+        "/api/learning/knowledge/{questionId}",
+        "复用知识内容或生成校验后保存；权限：学生"
+      ],
+      [
+        "学习资源",
+        "POST",
+        "/api/learning/practice/next/{questionId}",
+        "取得未练题或耗尽后生成；权限：学生"
+      ],
+      [
+        "学习资源",
+        "GET",
+        "/api/learning/practice/progress/{questionId}",
+        "查询原题与变式的实际已练状态；权限：学生"
+      ]
+    ]
+  },
+  {
+    "caption": "表 7.1　项目主要目录与实现职责",
+    "chunk_index": 0,
+    "headers": [
+      "项目位置",
+      "主要内容",
+      "对应职责"
+    ],
+    "rows": [
+      [
+        "server/.../controller、dto、vo",
+        "控制器、请求及返回对象",
+        "接口契约、角色注解、参数接收和结果封装"
+      ],
+      [
+        "server/.../service/impl",
+        "分析、检索、学习、练习与复习服务",
+        "业务编排、校验、快照及事务"
+      ],
+      [
+        "server/.../mapper、entity",
+        "Mapper、SQL与表实体",
+        "数据映射、筛选、行锁及聚合"
+      ],
+      [
+        "server/.../config、util",
+        "鉴权、线程池、题干与文件工具",
+        "公共运行边界与安全处理"
+      ],
+      [
+        "web/src/views、components",
+        "角色页面与通用组件",
+        "录入、学习交互及状态显示"
+      ],
+      [
+        "web/src/api、router、store、utils",
+        "API、导航、会话与文本工具",
+        "请求封装、路由和输入回显"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.1　本次工程验证的环境与分项结果",
+    "chunk_index": 0,
+    "headers": [
+      "项目",
+      "条件与数据范围",
+      "本次结果及证据"
+    ],
+    "rows": [
+      [
+        "后端默认全量回归",
+        "专用MySQL；Mock；联网入口按开关",
+        "113项，109通过、4跳过，0失败、0错误；backend-final-tests.log"
+      ],
+      [
+        "前端单元测试",
+        "Vitest，2个worker，11个测试文件",
+        "33/33通过；frontend-unit.log"
+      ],
+      [
+        "类型与生产构建",
+        "vue-tsc与Vite",
+        "通过；frontend-build.log；保留大包警告"
+      ],
+      [
+        "真实数据库结构",
+        "information_schema实际元数据，DDL静态比对",
+        "11表88字段；schema-columns.tsv及静态审计"
+      ],
+      [
+        "浏览器业务联调",
+        "真实Spring Boot、MySQL与Chromium；Mock模型",
+        "健康检查后完整5/5通过；browser-integration.log"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.2　代表性单元与边界用例",
+    "chunk_index": 0,
+    "headers": [
+      "编号与输入",
+      "预期结果",
+      "实际结果与测试依据"
+    ],
+    "rows": [
+      [
+        "U01 GLM响应缺少正文、模型标识不符",
+        "拒绝作为有效生成内容",
+        "OpenAiCompatibleLlmClientTests 12项通过，含协议及异常分支"
+      ],
+      [
+        "U02 向量含非数值、维度错误",
+        "拒绝非法向量",
+        "同组客户端测试及EmbeddingContentTests通过"
+      ],
+      [
+        "U03 识别图片类型、签名或大小不合格",
+        "识别前拒绝；保留手录路径",
+        "QuestionRecognitionServiceImplTests 5项通过"
+      ],
+      [
+        "U04 变式字段、项数或难度不符",
+        "整体拒绝，不返回半批成功",
+        "VariantServiceImplTests 10项通过"
+      ],
+      [
+        "U05 RAG候选混入其他用户记录",
+        "查询限定归属，结果再次过滤",
+        "RagServiceImplDataIsolationTests 2项通过"
+      ],
+      [
+        "U06 推荐规则与向量补足含他人记录",
+        "其他用户题目不进入返回列表",
+        "RecommendServiceImplDataIsolationTests 4项通过"
+      ],
+      [
+        "U07 题干包含脚本、格式标签与纯文本",
+        "危险内容过滤；纯文本转换一致",
+        "QuestionContentTests 4项及EmbeddingContentTests通过"
+      ],
+      [
+        "U08 未登录或角色错误调用识别入口",
+        "HTTP层拒绝，不调用识别业务",
+        "QuestionRecognitionControllerTests 5项通过"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.3　关键数据库集成用例",
+    "chunk_index": 0,
+    "headers": [
+      "编号与操作条件",
+      "预期持久化行为",
+      "本次结果与对应测试"
+    ],
+    "rows": [
+      [
+        "I01 同原题连续获取知识，第二次模型不可用",
+        "返回有效缓存，内容记录不重复",
+        "LearningResourceIntegrationTests通过"
+      ],
+      [
+        "I02 取得题目后未提交；随后答错提交",
+        "取得不计已练，答错记录计已练",
+        "同组获取与未练状态用例通过"
+      ],
+      [
+        "I03 已有未练题，之后全部提交",
+        "先复用，耗尽后补充；旧题保留",
+        "同组资源循环及旧变式入口用例通过"
+      ],
+      [
+        "I04 新批次含重复题或中途保存失败",
+        "整批回滚，不留下部分题目",
+        "同组重复批次、已有题重复拒绝用例通过"
+      ],
+      [
+        "I05 生成期间编辑原题核心输入",
+        "旧讲解或旧分析不能写回",
+        "学习缓存及QuestionAiInvalidationIntegrationTests通过"
+      ],
+      [
+        "I06 创建计划或更新分值时异常",
+        "关联题目或练习记录一并回滚",
+        "FinalDeliveryCoreIntegrationTests通过"
+      ],
+      [
+        "I07 他人记录、教师或管理员访问学习资源",
+        "拒绝访问，他人练习不消耗本人题池",
+        "学习权限与隔离用例通过"
+      ],
+      [
+        "I08 修改来源、修改题干、删除原题",
+        "来源修改保留缓存，核心编辑和删除清理缓存",
+        "LearningResourceIntegrationTests通过"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.4　浏览器业务用例与结果",
+    "chunk_index": 0,
+    "headers": [
+      "编号与流程",
+      "核验要点",
+      "本次结果"
+    ],
+    "rows": [
+      [
+        "B01 知识获取、复用、原题与持续练习",
+        "缓存复用；原题优先；首批3题耗尽后累计6题；重做不再生成",
+        "通过；learning-resources.spec.ts"
+      ],
+      [
+        "B02 学生录入、编辑、练习、导出和删除",
+        "JWT请求、保存结果、编辑回显与导出授权",
+        "通过；real-backend.spec.ts学生用例"
+      ],
+      [
+        "B03 教师菜单与受限入口",
+        "报告菜单可见；错题路由和写入请求被拒绝",
+        "通过；同文件教师用例"
+      ],
+      [
+        "B04 管理员进入管理页面",
+        "用户、科目与知识点三个管理页面可访问",
+        "通过；同文件管理员用例"
+      ],
+      [
+        "B05 题图访问",
+        "匿名路径不可取，所属学生详情鉴权返回",
+        "通过；同文件私有图片用例"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.5　个人资源循环的实际接口与数据库回读",
+    "chunk_index": 0,
+    "headers": [
+      "步骤",
+      "接口返回或操作",
+      "知识/变式/练习/计划及分值"
+    ],
+    "rows": [
+      [
+        "创建原题",
+        "questionId=6",
+        "0/0/0/5；mastery=0"
+      ],
+      [
+        "首次知识请求",
+        "reused=false",
+        "1/0/0/5；mastery=0"
+      ],
+      [
+        "再次知识请求",
+        "reused=true",
+        "1/0/0/5；mastery=0"
+      ],
+      [
+        "获取未练原题",
+        "source=original；questionId=6；variantId=None",
+        "1/0/0/5；mastery=0"
+      ],
+      [
+        "原题答错提交",
+        "isCorrect=0（答错），响应 code=0",
+        "1/0/1/5；mastery=0"
+      ],
+      [
+        "首次补充变式",
+        "source=generated；variantId=10",
+        "1/3/1/5；mastery=0"
+      ],
+      [
+        "重复获取未提交题",
+        "source=existing；variantId=10",
+        "1/3/1/5；mastery=0"
+      ],
+      [
+        "三道变式全部提交",
+        "submitted=3",
+        "1/3/4/5；mastery=0"
+      ],
+      [
+        "耗尽后继续",
+        "source=generated；variantId=13",
+        "1/6/4/5；mastery=0"
+      ],
+      [
+        "主动重做原题",
+        "isCorrect=1（答对），响应 code=0",
+        "1/6/5/5；mastery=15"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.6　Gate5 固定小样本指标及解释边界",
+    "chunk_index": 0,
+    "headers": [
+      "指标",
+      "样本与结果",
+      "解释边界"
+    ],
+    "rows": [
+      [
+        "知识点 Exact Match",
+        "27 题；26/27，96.30%",
+        "固定标签一致率，不是总体准确率"
+      ],
+      [
+        "错因概念覆盖代理",
+        "27 题；均值 94.14%；22/27 全覆盖",
+        "字符串与概念覆盖，不等同内容正确"
+      ],
+      [
+        "RAG 检索",
+        "27 题；Hit@3 0.962963；Recall@3 0.870370；MRR@3 0.864198",
+        "人工相关组定义下的检索结果"
+      ],
+      [
+        "混合相似题推荐",
+        "27 题；Hit@5、Recall@5 均为 1.000000",
+        "规则优先加向量补足，不是纯向量模型"
+      ],
+      [
+        "人工错因评分",
+        "27 题；46/54；均分 1.7037；2/1/0 分分别 20/6/1 题",
+        "本次用户复核，不宣称多专家一致性"
+      ],
+      [
+        "RAG ON/OFF 自动比较",
+        "固定 6 题；覆盖均为 88.89%；结构均 6/6",
+        "没有观察到概念覆盖增益"
+      ],
+      [
+        "RAG ON/OFF 人工偏好",
+        "固定 6 题；ON 2/6，OFF 4/6",
+        "不支持该集合中一致质量优势；无显著性检验"
+      ],
+      [
+        "失败历史",
+        "34 次尝试：HTTP 429 为 14 次、解析状态 2 为 15 次、结构校验为 5 次",
+        "失败尝试不是 34 道独立错题，也不当作超时"
+      ]
+    ]
+  },
+  {
+    "caption": "表 8.7　需求—设计—实现—测试可追踪矩阵",
+    "chunk_index": 0,
+    "headers": [
+      "需求与角色",
+      "概要设计模块（表5.1）",
+      "核心接口映射（表6.13）",
+      "验证用例"
+    ],
+    "rows": [
+      [
+        "FR01 三类角色账户",
+        "用户与权限",
+        "/auth/register、/auth/login、/user/profile、/user/page、/user/{id}",
+        "B02–B04；权限专项"
+      ],
+      [
+        "FR02 科目；管理员维护",
+        "基础错题",
+        "/subject/list、/subject、/subject/{id}",
+        "B04、B06"
+      ],
+      [
+        "FR03 知识点；管理员维护",
+        "基础错题",
+        "/knowledge-point/tree、/knowledge-point、/knowledge-point/{id}",
+        "B04、B06"
+      ],
+      [
+        "FR04 本人错题；学生",
+        "基础错题",
+        "/question、/question/page、/question/{id}、/question-recognition/recognize",
+        "U03、U07、U08、I05、B02、B05"
+      ],
+      [
+        "FR05 辅助分析；学生",
+        "AI 辅助解析",
+        "/ai/analyze/{questionId}、/ai/analysis/{questionId}",
+        "U01、U02、I05"
+      ],
+      [
+        "FR06 知识学习；学生",
+        "练习资源",
+        "/learning/knowledge/{questionId}",
+        "I01、I05、I08、B01"
+      ],
+      [
+        "FR07 相似题；学生",
+        "练习资源",
+        "/recommend/similar",
+        "U05、U06；检索专项"
+      ],
+      [
+        "FR08 持续练习；学生",
+        "练习资源",
+        "/learning/practice/next/{questionId}、/learning/practice/progress/{questionId}、/variant/generate/{questionId}、/variant/list",
+        "U04、I02–I04、I07、B01"
+      ],
+      [
+        "FR09 复习；学生",
+        "复习计划",
+        "/review-plan/today、/review-plan/{id}/finish",
+        "I06、B09"
+      ],
+      [
+        "FR10 作答记录；学生",
+        "练习记录",
+        "/practice、/practice/page",
+        "I02、I06、B01、B02"
+      ],
+      [
+        "FR11 报告；学生、教师",
+        "学情与导出",
+        "/report/weekly、/report/generate",
+        "B03、B08；统计回读"
+      ],
+      [
+        "FR12 导出；学生",
+        "学情与导出",
+        "/question/export",
+        "U07、B02"
+      ],
+      [
+        "FR13 消息；登录用户",
+        "消息与公告",
+        "/message/page、/message/unread-count、/message/{id}/read",
+        "B08；消息归属专项"
+      ],
+      [
+        "FR14 公告；管理员发布",
+        "消息与公告",
+        "/announcement/list、/announcement",
+        "B07；角色权限专项"
+      ]
+    ]
+  },
+  {
+    "caption": "表 A.1　测试批次与证据适用范围",
+    "chunk_index": 0,
+    "headers": [
+      "批次与模式",
+      "版本与结果",
+      "证据适用范围"
+    ],
+    "rows": [
+      [
+        "全量工程回归；Mock",
+        "bbe1c510：102 通过、4 跳过；21da2877：109 通过、4 跳过；前端 33 项和真实数据库浏览器 5 项分别通过",
+        "当前 11 表 88 字段、39 个接口映射，事务回滚、权限隔离，以及知识缓存复用、未练优先、耗尽生成控制流；不同版本不累加"
+      ],
+      [
+        "真实模型与小样本；Live GLM",
+        "ebda1278：真实调用及浏览器链路；e80b6e3e：27 题向量与 Gate5 固定集合；人工表另按原始记录复核",
+        "证明相应历史版本的真实智谱 GLM 调用与样本结果；图片候选提取另见 2026-08-28 独立专项记录；不能替代当前新增知识讲解提示词的教学内容质量评价"
+      ]
+    ]
+  },
+  {
+    "caption": "表 A.2　核心代码位置索引",
+    "chunk_index": 0,
+    "headers": [
+      "代码",
+      "文件",
+      "原始行范围"
+    ],
+    "rows": [
+      [
+        "7.1",
+        "entity/Question.java",
+        "46—53"
+      ],
+      [
+        "7.2",
+        "service/impl/QuestionServiceImpl.java",
+        "87—92"
+      ],
+      [
+        "7.3",
+        "mapper/QuestionMapper.java",
+        "16—17"
+      ],
+      [
+        "7.4",
+        "SQL/QuestionMapper.xml",
+        "6—15"
+      ],
+      [
+        "7.5",
+        "service/impl/QuestionServiceImpl.java",
+        "63—78"
+      ],
+      [
+        "7.6",
+        "service/impl/QuestionServiceImpl.java",
+        "109—112"
+      ],
+      [
+        "7.7",
+        "service/impl/QuestionRecognitionServiceImpl.java",
+        "59—71"
+      ],
+      [
+        "7.8",
+        "service/impl/OpenAiCompatibleLlmClient.java",
+        "106—117"
+      ],
+      [
+        "7.9",
+        "service/impl/AiAnalysisServiceImpl.java",
+        "222—227"
+      ],
+      [
+        "7.10",
+        "service/impl/AiAnalysisServiceImpl.java",
+        "233—242"
+      ],
+      [
+        "7.11",
+        "service/impl/AiAnalysisServiceImpl.java",
+        "127—134"
+      ],
+      [
+        "7.12",
+        "service/impl/RagServiceImpl.java",
+        "32—37"
+      ],
+      [
+        "7.13",
+        "service/impl/RagServiceImpl.java",
+        "39—46"
+      ],
+      [
+        "7.14",
+        "service/impl/RecommendServiceImpl.java",
+        "48—54"
+      ],
+      [
+        "7.15",
+        "service/impl/LearningServiceImpl.java",
+        "49—54"
+      ],
+      [
+        "7.16",
+        "service/impl/LearningServiceImpl.java",
+        "70—77"
+      ],
+      [
+        "7.17",
+        "service/impl/LearningServiceImpl.java",
+        "99—109"
+      ],
+      [
+        "7.18",
+        "service/impl/VariantServiceImpl.java",
+        "93—100"
+      ],
+      [
+        "7.19",
+        "service/impl/PracticeServiceImpl.java",
+        "39—42"
+      ],
+      [
+        "7.20",
+        "service/impl/PracticeServiceImpl.java",
+        "52—58"
+      ],
+      [
+        "7.21",
+        "service/impl/ReviewPlanServiceImpl.java",
+        "35—42"
+      ]
+    ]
+  },
+  {
+    "caption": "续表 A.2　核心代码位置索引",
+    "chunk_index": 1,
+    "headers": [
+      "代码",
+      "文件",
+      "原始行范围"
+    ],
+    "rows": [
+      [
+        "7.22",
+        "service/impl/LearningResourceAccess.java",
+        "29—35"
+      ],
+      [
+        "7.23",
+        "controller/LearningController.java",
+        "12—28"
+      ],
+      [
+        "7.24",
+        "前端/views/question/QuestionCreateView.vue",
+        "185—194"
+      ],
+      [
+        "7.25",
+        "前端/components/LearningResources.vue",
+        "41—48"
+      ],
+      [
+        "7.26",
+        "前端/components/LearningResources.vue",
+        "60—65"
+      ],
+      [
+        "7.27",
+        "service/impl/OpenAiCompatibleLlmClient.java",
+        "191—199"
+      ],
+      [
+        "7.28",
+        "service/impl/AiAnalysisServiceImpl.java",
+        "176—187"
+      ],
+      [
+        "7.29",
+        "util/QuestionContent.java",
+        "50—64"
+      ],
+      [
+        "7.30",
+        "util/FileStorageUtil.java",
+        "102—113"
+      ],
+      [
+        "7.31",
+        "mapper/QuestionMapper.java",
+        "29—39"
+      ]
+    ]
+  }
+]
