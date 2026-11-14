@@ -1,0 +1,57 @@
+name: Snapshot latest thesis branch for private Drive backup
+
+on:
+  push:
+    branches:
+      - codex/drive-backup-20261114
+    paths:
+      - .github/workflows/drive-snapshot-20261114.yml
+
+permissions:
+  contents: read
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout original thesis branch commit
+        uses: actions/checkout@v4
+        with:
+          ref: 34f6ac93fc3c45e43619eda9d4b36866658c29c4
+          fetch-depth: 0
+          lfs: true
+          submodules: recursive
+          persist-credentials: false
+      - name: Create complete source snapshot and Git history bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_SHA=34f6ac93fc3c45e43619eda9d4b36866658c29c4
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          mkdir -p backup
+          ARCHIVE="graduation-project-34f6ac93-full-source.tar.gz"
+          BUNDLE="graduation-project-34f6ac93-branch-history.bundle"
+          tar -C . --exclude='./.git' --exclude='./backup' -czf "backup/$ARCHIVE" .
+          git update-ref refs/heads/snapshot-34f6ac93 "$SOURCE_SHA"
+          git bundle create "backup/$BUNDLE" refs/heads/snapshot-34f6ac93
+          git bundle verify "backup/$BUNDLE"
+          {
+            echo "Repository: zc0429/graduation-project"
+            echo "Source branch: codex/thesis-final-quality-20261113"
+            echo "Exact source commit: $SOURCE_SHA"
+            echo "Source archive contains all checkout files (including hidden .github), excluding only .git."
+            echo "Git bundle contains the source branch commit and all reachable history."
+            echo "Git-tracked file count: $(git ls-files | wc -l)"
+            echo "Generated on GitHub Actions Ubuntu runner."
+          } > backup/README-BACKUP.txt
+          (cd backup && sha256sum "$ARCHIVE" "$BUNDLE" > SHA256SUMS.txt)
+          ls -lh backup/
+      - name: Upload archive as one backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-full-backup-34f6ac93-20261114
+          path: backup/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
