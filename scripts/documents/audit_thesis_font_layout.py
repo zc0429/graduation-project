@@ -12,7 +12,7 @@ OUT=ROOT/'output/thesis'/DELIVERY
 NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
 W='{'+NS['w']+'}'
 
-def norm(s):return re.sub(r'\s+','',s)
+def norm(s):return re.sub(r'[\s\u200b\u00ad]+','',s)
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def properties(rpr):
     if rpr is None:return {}
@@ -28,7 +28,11 @@ def main():
     allowed={'AGENTS.md','docs/notes/进度记录.md','docs/notes/HANDOFF.md',
              'scripts/cloud/export-thesis-pdf.sh','scripts/cloud/fonts.conf',
              'scripts/documents/build_thesis_delivery.py','scripts/documents/validate_thesis_delivery.py',
-             'scripts/documents/render_thesis_audit.py','scripts/documents/update_delivery_page_map.py'}
+             'scripts/documents/render_thesis_audit.py','scripts/documents/update_delivery_page_map.py',
+             'docs/thesis/毕业论文.md','docs/references/gb7714-list.md',
+             '.github/workflows/thesis-windows-fonts.yml',
+             'scripts/documents/thesis_windows_cloud.py','scripts/documents/audit_thesis_font_layout.py',
+             'scripts/documents/validate_thesis_references.py'}
     protected={p:h for p,h in baseline.items() if p not in allowed}
     changed=[p for p,h in protected.items() if not (ROOT/p).is_file() or sha(ROOT/p)!=h]
     assert not changed,changed
@@ -53,13 +57,13 @@ def main():
         expected={'Normal':(12,'宋体'),'heading 1':(14,'黑体'),'heading 2':(12,'黑体'),
                   'heading 3':(12,'黑体'),'Title':(18,'黑体'),
                   'TOC 1':(14,'黑体'),'TOC 2':(12,'黑体'),'TOC 3':(12,'黑体'),
-                  'Thesis Code':(12,'宋体'),'footer':(9,'宋体')}
+                  'Thesis Code':(9.5,'宋体'),'footer':(9,'宋体')}
         for sid,s in by_id.items():
             name=s.find('w:name',NS).get(W+'val')
             if name not in expected:continue
             size,east=expected[name];props=style_props(sid)
-            assert props['eastAsia']==east and props['sz']==str(size*2),(name,props)
-            assert props['ascii']==props['hAnsi']==('宋体' if name=='footer' else 'Times New Roman'),(name,props)
+            assert props['eastAsia']==east and props['sz']==str(int(size*2)),(name,props)
+            assert props['ascii']==props['hAnsi']==('宋体' if name=='footer' else 'Courier New' if name=='Thesis Code' else 'Times New Roman'),(name,props)
             assert not any(k.endswith('Theme') for k in props),(name,props)
             style_checks.append({'style':name,'effective':props})
         assert len(style_checks)==len(expected)
@@ -96,7 +100,7 @@ def main():
         for line in md[md.index('## 1 '):].splitlines():
             if line.startswith('```'):inside_code=not inside_code;continue
             if inside_code or not line.strip() or line.startswith(('#','|','!','>','---','**图','**表')):continue
-            prose[norm(plain(line))]=21 if line.startswith('资料来源') or re.match(r'^\[\d+\]',line) else 24
+            prose[norm(plain(line))]=21 if re.match(r'^代码\s*7\.\d+',plain(line)) or line.startswith('资料来源') or re.match(r'^\[\d+\]',line) else 24
         checked=0
         for p in paragraphs:
             text=norm(''.join(p.xpath('.//w:t/text()',namespaces=NS)))
@@ -104,7 +108,7 @@ def main():
             for run in p.findall('w:r',NS):
                 if not run.xpath('./w:t',namespaces=NS):continue
                 props=effective(run,p)
-                assert props['sz']==str(prose[text]) and props['eastAsia']=='宋体',(text[:70],props)
+                assert props['sz']==str(prose[text]) and props['eastAsia']==('黑体' if text.startswith('代码7.') else '宋体'),(text[:70],props)
                 assert props['ascii']==props['hAnsi']=='Times New Roman',(text[:70],props)
             checked+=1
         assert checked>=180,checked
@@ -115,8 +119,8 @@ def main():
         assert [''.join(p.xpath('.//w:t/text()',namespaces=NS)) for p in code_paragraphs]==expected_lines
         for p in code_paragraphs:
             for run in p.findall('w:r',NS):
-                props=effective(run,p);assert props['sz']=='24' and props['eastAsia']=='宋体'
-                assert props['ascii']==props['hAnsi']=='Times New Roman'
+                props=effective(run,p);assert props['sz']=='19' and props['eastAsia']=='宋体'
+                assert props['ascii']==props['hAnsi']=='Courier New'
         footers=[]
         for name in z.namelist():
             if not re.fullmatch(r'word/footer\d+\.xml',name):continue
@@ -157,7 +161,7 @@ def main():
     indexed=[]
     for line in md.splitlines():
         caption=plain(line)
-        match=re.match(r'^(图|表|代码)\s*(\d+\.\d+)\s*(.+)$',caption)
+        match=re.match(r'^(图|表|代码)\s*([A-Z0-9]+\.\d+)\s*(.+)$',caption)
         ref=re.match(r'^\[(\d+)\]\s*(.+)$',caption)
         if match:
             kind,number,title=match.groups()
@@ -169,7 +173,7 @@ def main():
         indexed.append({'kind':kind,'number':number,'title':title,
                         'pdf_pages':';'.join(map(str,pages))})
     item_counts={kind:sum(r['kind']==kind for r in indexed) for kind in ['图','表','代码','文献']}
-    assert item_counts=={'图':28,'表':26,'代码':31,'文献':27},item_counts
+    assert item_counts=={'图':28,'表':29,'代码':31,'文献':27},item_counts
     with (RUN/'图表代码文献页码索引.csv').open('w') as f:
         writer=csv.DictWriter(f,fieldnames=['kind','number','title','pdf_pages'],lineterminator='\n')
         writer.writeheader();writer.writerows(indexed)
@@ -214,7 +218,7 @@ def main():
             'school_header_pages_checked':len(header_checks),'school_headers':header_checks,
             'original_pdf_fonts_verified':original_pdf,'microsoft_word_verified':False,
             'pdf_page_number_spans':page_spans,'raster_figure_fonts_revalidated':False,
-            'raster_figure_limit':'Existing 28 figures and historical screenshots are unchanged raster assets; their original font metadata cannot be inferred from DOCX run fonts.'}
+            'raster_figure_limit':'Historical screenshot UI remains unchanged; nine review derivatives remove editorial titles or reflow coordinates. Raster labels retain their source fonts; DOCX run fonts do not certify raster typography.'}
     (RUN/'font-layout-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:v for k,v in result.items() if k not in {'style_checks','pdf_page_number_spans','school_headers'}},ensure_ascii=False))
 

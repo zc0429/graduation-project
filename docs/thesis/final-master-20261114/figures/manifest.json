@@ -1,0 +1,217 @@
+{
+  "align-reference1-20261113/business-flow/3-1.png": {
+    "file": "3-1.png",
+    "source": "docs/thesis/align-reference1-20261113/business-flow/3-1.svg",
+    "source_sha256": "cbf0718680a267d123e4ee22bc2e515fe64144c8eb3ddb2e2551d013b975e6b5",
+    "removed": [
+      "internal figure title"
+    ],
+    "transform": {
+      "x": 0.7,
+      "y": 1.25
+    },
+    "text_content_unchanged_except_title": true
+  },
+  "align-reference1-20261113/business-flow/3-2.png": {
+    "file": "3-2.png",
+    "source": "docs/thesis/align-reference1-20261113/business-flow/3-2.svg",
+    "source_sha256": "6325985a80d0e791815b409db5245a8b6950e1641f1f4678922aa7efe807ea62",
+    "removed": [
+      "internal figure title"
+    ],
+    "transform": {
+      "x": 0.7,
+      "y": 1.25
+    },
+    "text_content_unchanged_except_title": true
+  },
+  "align-reference1-20261113/business-flow/3-3.png": {
+    "file": "3-3.png",
+    "source": "docs/thesis/align-reference1-20261113/business-flow/3-3.svg",
+    "source_sha256": "9740f93dbfb498aded91011d4be8d544029367e50ec6e132c7d7aeb6d370900b",
+    "removed": [
+      "internal figure title"
+    ],
+    "transform": {
+      "x": 0.7,
+      "y": 1.25
+    },
+    "text_content_unchanged_except_title": true
+  },
+  "structure-20261112/figures/png/7-2.png": {
+    "file": "7-4.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/7-2.json",
+    "source_sha256": "292cf385b8229a3af187ff1844e3dd097f34892914c294b2eea83b834b8c6880",
+    "retained_image_ops": [
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "x": 8.228350000000006,
+        "y": 30,
+        "w": 430,
+        "crop": [
+          306,
+          678,
+          575,
+          205
+        ]
+      },
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "x": 103.22835,
+        "y": 223.30434782608697,
+        "w": 240,
+        "crop": [
+          1247,
+          303,
+          290,
+          191
+        ]
+      }
+    ],
+    "removed": "editorial subtitle text outside screenshot crops; screenshot UI unmodified"
+  },
+  "structure-20261112/figures/png/7-3.png": {
+    "file": "7-5.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/7-3.json",
+    "source_sha256": "603ae7978d8d6f8cb010582b3bcd3c64e35f4e257f74094e439fb3979858a99b",
+    "retained_image_ops": [
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/06-rag-references.png",
+        "x": 8.228350000000006,
+        "y": 30,
+        "w": 430,
+        "crop": [
+          300,
+          614,
+          605,
+          215
+        ]
+      }
+    ],
+    "removed": "editorial subtitle text outside screenshot crops; screenshot UI unmodified"
+  },
+  "structure-20261112/figures/png/7-4.png": {
+    "file": "7-6.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/7-4.json",
+    "source_sha256": "653d9f9a7bbd971baad3b4c782f97e1a3d52f2b63b3f535aabf0dfac031acc5d",
+    "retained_image_ops": [
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "x": 8.228350000000006,
+        "y": 30,
+        "w": 430,
+        "crop": [
+          303,
+          614,
+          598,
+          115
+        ]
+      },
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "x": 8.228350000000006,
+        "y": 152.69230769230768,
+        "w": 430,
+        "crop": [
+          326,
+          750,
+          598,
+          145
+        ]
+      },
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "x": 8.228350000000006,
+        "y": 296.95652173913044,
+        "w": 430,
+        "crop": [
+          326,
+          1107,
+          598,
+          86
+        ]
+      }
+    ],
+    "removed": "editorial subtitle text outside screenshot crops; screenshot UI unmodified"
+  },
+  "structure-20261112/figures/png/7-5.png": {
+    "file": "7-7.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/7-5.json",
+    "source_sha256": "cb5af7fbb7bb94f2f57c98d6a11e6f89cd05f4742b8330d9916a44b6d1f2dd57",
+    "retained_image_ops": [
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/10-student-report.png",
+        "x": 8.228350000000006,
+        "y": 30,
+        "w": 430,
+        "crop": [
+          291,
+          278,
+          624,
+          153
+        ]
+      },
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/10-student-report.png",
+        "x": 8.228350000000006,
+        "y": 175.43269230769232,
+        "w": 430,
+        "crop": [
+          941,
+          708,
+          596,
+          369
+        ]
+      }
+    ],
+    "removed": "editorial subtitle text outside screenshot crops; screenshot UI unmodified"
+  },
+  "structure-20261112/figures/png/7-6.png": {
+    "file": "7-8.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/7-6.json",
+    "source_sha256": "a0973f6ae3e62d7713c2942f718a71ba064cdd6441a223fb49b97fdcf6e26f5f",
+    "retained_image_ops": [
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/11-teacher-report.png",
+        "x": 8.228350000000006,
+        "y": 30,
+        "w": 430,
+        "crop": [
+          282,
+          94,
+          616,
+          108
+        ]
+      },
+      {
+        "kind": "image",
+        "path": "docs/thesis/screenshots/real-glm/11-teacher-report.png",
+        "x": 8.228350000000006,
+        "y": 145.3896103896104,
+        "w": 430,
+        "crop": [
+          294,
+          283,
+          622,
+          64
+        ]
+      }
+    ],
+    "removed": "editorial subtitle text outside screenshot crops; screenshot UI unmodified"
+  },
+  "requirements-20261112/figures/3-1.png": {
+    "file": "3-4.png",
+    "source": "docs/thesis/requirements-20261112/figures/3-1.png",
+    "source_sha256": "4d7a9d5147e0aee3469655d493a0e9c104762e3082020590d7d1a13d5f26985e",
+    "removed": "top 5% generic figure title / whitespace; actor and system-boundary pixels retained"
+  }
+}

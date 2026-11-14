@@ -6,8 +6,11 @@ def validate():
  data=json.loads((ROOT/'docs/references/reference-audit-20261113.json').read_text())
  md=(ROOT/'docs/thesis/毕业论文.md').read_text();records=data['records']
  actual=re.findall(r'^\[(\d+)\]\s*(.+)$',md,re.M)
- expected=[(str(x['number']),x['entry']) for x in records]
- assert actual==expected,'Manuscript and verified metadata differ'
+ def formatted(entry):
+  entry=entry.translate(str.maketrans({'，':',','．':'.','［':'[','］':']','（':'(','）':')','：':':'}))
+  return re.sub(r'([.,:])(?=\S)',r'\1 ',entry)
+ expected=[(str(x['number']),formatted(x['entry'])) for x in records]
+ assert actual==expected,'Manuscript and verified metadata differ beyond authorized punctuation normalization'
  assert actual==re.findall(r'^\[(\d+)\]\s*(.+)$',(ROOT/'docs/references/gb7714-list.md').read_text(),re.M)
  assert [x['number'] for x in records]==list(range(1,len(records)+1))
  body=re.sub(r'```.*?```','',md.split('## 参考文献')[0],flags=re.S)

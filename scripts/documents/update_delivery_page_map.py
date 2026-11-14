@@ -11,5 +11,9 @@ entries=json.loads((RUN/'heading-keys.json').read_text());start=actual[norm('1 ç
 for title,key,_ in entries:
  page=actual[norm(title)]
  result[key]='I' if key=='abstract_cn' else 'II' if key=='abstract_en' else str(page-start+1)
+for title,key,_ in json.loads((RUN/'list-keys.json').read_text()):
+ matches=[i+1 for i,p in enumerate(pdf) if i+1>=start and norm(title) in norm(p.get_text())]
+ assert matches,('Missing caption destination',title)
+ result[key]=str(matches[0]-start+1)
 (RUN/'page-map.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
 print('Mapped',len(result),'heading destinations; body starts at PDF page',start)

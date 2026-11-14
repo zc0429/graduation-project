@@ -23,6 +23,7 @@ FAMILIES = {
     'SimSun': {'SimSun', '宋体'},
     'SimHei': {'SimHei', '黑体'},
     'Times New Roman': {'Times New Roman'},
+    'Courier New': {'Courier New'},
 }
 
 
@@ -43,7 +44,7 @@ def inventory(output):
     if os.name != 'nt':
         raise RuntimeError('Windows system-font inventory must execute on Windows')
     directory = Path(os.environ['WINDIR']) / 'Fonts'
-    files = ['simsun.ttc', 'simhei.ttf', 'times.ttf', 'timesbd.ttf', 'timesi.ttf', 'timesbi.ttf']
+    files = ['simsun.ttc', 'simhei.ttf', 'times.ttf', 'timesbd.ttf', 'timesi.ttf', 'timesbi.ttf', 'cour.ttf', 'courbd.ttf', 'couri.ttf', 'courbi.ttf']
     records = []
     for filename in files:
         path = directory / filename
@@ -100,17 +101,21 @@ def verify_pdf(path, output):
     def family(name):
         name = name.split('+')[-1]
         return next((f for f, key in [('SimSun', 'SimSun'), ('SimHei', 'SimHei'),
-                                     ('Times New Roman', 'TimesNewRoman')] if key in name), None)
+                                     ('Times New Roman', 'TimesNewRoman'), ('Courier New', 'CourierNew')] if key in name), None)
     usage = {f: sum(family(s['font']) == f for _, s in spans) for f in FAMILIES}
     unknown = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                for p, s in spans if family(s['font']) is None]
     chinese_wrong = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                      for p, s in spans if re.search(r'[\u3400-\u9fff]', s['text'])
                      and family(s['font']) not in {'SimSun', 'SimHei'}]
+    code_regions={i+1:[d['rect'] for d in page.get_drawings() if d.get('fill') and all(abs(a-b)<.006 for a,b in zip(d['fill'],(.97255,.97647,.98039)))] for i,page in enumerate(doc)}
+    def is_code(p,s):
+        box=fitz.Rect(s['bbox']);centre=(box.tl+box.br)/2
+        return family(s['font'])=='Courier New' and abs(s['size']-9.5)<.05 and any(centre in rect for rect in code_regions[p])
     latin_wrong = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                    for p, s in spans if re.search(r'[A-Za-z0-9]', s['text'])
                    and s['bbox'][1] <= doc[p - 1].rect.height - 55
-                   and family(s['font']) != 'Times New Roman']
+                   and family(s['font']) != 'Times New Roman' and not is_code(p,s)]
     footer_wrong = [{'page': p, 'font': s['font'], 'text': s['text'], 'size': s['size']}
                     for p, s in spans if re.fullmatch(r'[IVX]+|\d+', s['text'].strip())
                     and s['bbox'][1] > doc[p - 1].rect.height - 55
@@ -170,7 +175,7 @@ def render(office):
     try:
         previous = None
         stable = False
-        for iteration in range(1, 6):
+        for iteration in range(1, 7):
             script(f'build-{iteration}', 'build_thesis_delivery.py')
             with tempfile.TemporaryDirectory(prefix='thesis-office-', ignore_cleanup_errors=True) as temp:
                 temp_path = Path(temp)
@@ -205,10 +210,11 @@ def render(office):
                 break
             previous = current
         if not stable:
-            raise RuntimeError('TOC page map did not stabilize after five exports')
+            raise RuntimeError('TOC page map did not stabilize after six exports')
         verify_pdf(pdf, run / 'actual-pdf-fonts.json')
         script('document-validation', 'validate_thesis_delivery.py')
         script('font-layout-validation', 'audit_thesis_font_layout.py')
+        script('master-final-validation', 'check_thesis_master_final.py')
         script('render', 'render_thesis_audit.py')
         # Artifact includes every 120dpi page so the cloud task can inspect the
         # actual Windows result without requesting a local Word installation.

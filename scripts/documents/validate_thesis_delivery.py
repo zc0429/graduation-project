@@ -8,7 +8,7 @@ import hashlib,json,re,subprocess,os,shutil
 import pymupdf
 ROOT=Path(__file__).resolve().parents[2];DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113');RUN=ROOT/'docs/validation'/DELIVERY;OUT=ROOT/'output/thesis'/DELIVERY
 ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
-def norm(s):return re.sub(r'\s+','',s)
+def norm(s):return re.sub(r'[\s\u200b\u00ad]+','',s)
 def main():
  md=(ROOT/'docs/thesis/毕业论文.md').read_text();opening=(ROOT/'docs/thesis/开题报告.md').read_text()
  from validate_thesis_references import validate
@@ -20,7 +20,7 @@ def main():
   style=d.styles[f'TOC {level}']
   assert style.font.size.pt==(14 if level==1 else 12)
   assert style.element.get_or_add_rPr().get_or_add_rFonts().get(qn('w:eastAsia'))=='黑体'
-  assert style.paragraph_format.line_spacing==1.5
+  assert style.paragraph_format.line_spacing.pt==16
  for p in d.paragraphs:
   if re.match(r'^\[\d+\]',p.text):
    assert p.paragraph_format.line_spacing.pt==22
@@ -69,6 +69,7 @@ def main():
   lines=[x.strip() for x in pdf[page-1].get_text(sort=True).splitlines() if x.strip() and not re.fullmatch(r'[IVX0-9]+',x.strip())]
   assert norm(lines[0])==norm(n+' '+title),(n,lines[:2])
  for i,page in enumerate(pdf):
+  assert page.rect.width<page.rect.height,('Landscape page',i+1)
   assert min(abs(page.rect.width-595.3),abs(page.rect.height-595.3))<.1
   assert '\ufffd' not in page.get_text()
   if i>=start-1:assert str(i-start+2) in page.get_text().splitlines()[:3],('body page number',i+1)

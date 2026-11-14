@@ -10,6 +10,13 @@ on:
       - scripts/documents/validate_thesis_delivery.py
       - scripts/documents/build_thesis_delivery.py
       - scripts/documents/audit_thesis_font_layout.py
+      - scripts/documents/check_thesis_master_final.py
+      - scripts/documents/thesis_final_figures.py
+      - scripts/documents/update_delivery_page_map.py
+      - scripts/documents/validate_thesis_references.py
+      - docs/thesis/毕业论文.md
+      - docs/thesis/final-master-20261114/**
+      - docs/references/gb7714-list.md
   workflow_dispatch:
 
 permissions:

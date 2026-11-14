@@ -62,8 +62,8 @@ def font_properties(rpr,size=12,east='宋体',bold=False,latin='Times New Roman'
     rpr.append(el('color',val='000000'))
     rpr.append(el('sz',val=int(size*2)));rpr.append(el('szCs',val=int(size*2)))
     rpr.append(el('lang',val='en-US',eastAsia='zh-CN'))
-def font(r,size=12,east='宋体',bold=False):
-    font_properties(r._r.get_or_add_rPr(),size,east,bold)
+def font(r,size=12,east='宋体',bold=False,latin='Times New Roman'):
+    font_properties(r._r.get_or_add_rPr(),size,east,bold,latin)
     return r
 def paragraph_font(p,size=12,east='宋体',bold=False):
     ppr=p._p.get_or_add_pPr();rpr=ppr.find(qn('w:rPr'))
@@ -133,25 +133,49 @@ def heading(doc,text,level=1,key=None,pagebreak=False):
     if key:bookmark_end(p,k)
     return p
 def caption(doc,text,continued=False):
-    m=re.match(r'([图表])\s*(\d+)\.(\d+)\s*(.*)',text);kind,ch,n,title=m.groups()
+    m=re.match(r'([图表])\s*([A-Z0-9]+)\.(\d+)\s*(.*)',text);kind,ch,n,title=m.groups()
     p=doc.add_paragraph(style='Caption');fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=13,
-        before=12 if kind=='表' else 6,after=6 if kind=='表' else 12,keep=kind=='表')
+        before=8 if kind=='表' else 3,after=4 if kind=='表' else 6,keep=kind=='表')
     name=('fig' if kind=='图' else 'tab')+ch+'_'+n
     if not continued:k=bookmark_start(p,name)
     font(p.add_run(('续' if continued else '')+kind+' '+ch+'.'),10.5)
     if continued:font(p.add_run(n),10.5)
     else:field(p,f'SEQ {"Figure" if kind=="图" else "Table"}{ch} \\* ARABIC'+(' \\r 1' if n=='1' else ''),n,10.5)
     if not continued:bookmark_end(p,k)
-    font(p.add_run('　'+title),10.5)
+    font(p.add_run('　'+title),10.5,bold=kind=='表')
+    if not continued:
+        tc=el('fldSimple');tc.set(qn('w:instr'),f'TC "{kind} {ch}.{n}　{title}" \\f {"F" if kind=="图" else "T"} \\l 1');p._p.append(tc)
+    if kind=='表':
+        for r in p.runs:font(r,10.5,bold=True)
     return p
+TABLE_CHUNKS=[]
+def column_widths(rows,cap):
+    n=len(rows[0])
+    if '系统接口一览' in cap:return [2.0,1.6,7.0,5.15]
+    if cap.startswith('表 3.1'):return [1.5,3.0,8.0,3.25]
+    if re.match(r'表 8\.[234] ',cap):return [4.0,4.0,7.75]
+    if cap.startswith('表 8.7'):return [2.7,2.2,8.1,2.75]
+    if cap.startswith('表 A.1'):return [3.0,6.0,6.75]
+    if rows[0]==['代码','文件','原始行范围']:return [1.5,11.1,3.15]
+    return [3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else [3,4,5,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n
+
+def row_height(data,widths):
+    # Conservative character widths; physical chunks are indivisible and the
+    # PDF validator checks their first/last rows against actual page positions.
+    heights=[]
+    for value,width in zip(data,widths):
+        used=0;lines=1;limit=width*28.346-9
+        for token in re.findall(r'[A-Za-z0-9_/.{}@=-]+|.',plain(value)):
+            width_pt=sum(10.5 if ord(c)>255 else 5.25 for c in token)
+            if used+width_pt>limit:
+                lines+=1;used=0
+            while width_pt>limit:lines+=1;width_pt-=limit
+            used+=width_pt
+        heights.append(lines*13+10)
+    return max(heights)
+
 def table(doc,rows,cap):
-    n=len(rows[0]);widths=([3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else
-        [2.2,6.2,7.35] if n==3 and '接口' in cap else
-        [3,4.0,5.0,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n)
-    if '系统接口一览' in cap:widths=[2.2,1.8,6.6,5.15]
-    if '3.1' in cap:widths=[1.5,3.0,8.0,3.25]
-    if rows[0]==['代码','文件','原始行范围']:widths=[1.5,11.1,3.15]
-    keep_table=bool(re.match(r'表 6\.\d+.*（[a-z_]+）',cap)) or 'Gate5 固定小样本' in cap or '系统接口一览' in cap
+    widths=column_widths(rows,cap);n=len(rows[0])
     t=doc.add_table(rows=1,cols=n);t.alignment=WD_TABLE_ALIGNMENT.CENTER;t.autofit=False
     for c,w in zip(t.columns,widths):c.width=Cm(w)
     pr=t._tbl.tblPr
@@ -162,19 +186,41 @@ def table(doc,rows,cap):
         borders.append(el(side,val='single' if side in ['top','bottom'] else 'nil',sz=12 if side in ['top','bottom'] else 0,color='000000'))
     pr.append(borders)
     for ri,data in enumerate(rows):
-        row=t.rows[0] if ri==0 else t.add_row(); row._tr.get_or_add_trPr().append(el('cantSplit'))
+        row=t.rows[0] if ri==0 else t.add_row();row._tr.get_or_add_trPr().append(el('cantSplit'))
         if ri==0:row._tr.get_or_add_trPr().append(el('tblHeader'))
         for ci,(c,value) in enumerate(zip(row.cells,data)):
             c.width=Cm(widths[ci]);c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
-            cp=c._tc.get_or_add_tcPr(); margins=el('tcMar')
+            cp=c._tc.get_or_add_tcPr();margins=el('tcMar')
             for side,v in [('top',35),('bottom',35),('left',60),('right',60)]:margins.append(el(side,w=v,type='dxa'))
             cp.append(margins)
             if ri==0:
                 cb=el('tcBorders');cb.append(el('bottom',val='single',sz=8,color='000000'));cp.append(cb)
-            p=c.paragraphs[0];fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=keep_table and ri<len(rows)-1)
-            # Allow very long identifier runs to wrap while retaining their exact visible text.
-            p._p.get_or_add_pPr().append(el('wordWrap',val=0));inline(p,value,10.5,refs=False)
+            p=c.paragraphs[0];fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=ri<len(rows)-1)
+            p._p.get_or_add_pPr().append(el('wordWrap',val=0))
+            # Narrow class names at 9pt, with breaks only at camel-case
+            # boundaries; no final isolated plural 's'. Source wording is intact.
+            for part in re.split(r'([A-Za-z][A-Za-z0-9_]{23,})',plain(value)):
+                if re.fullmatch(r'[A-Za-z][A-Za-z0-9_]{23,}',part):
+                    part=re.sub(r'(?<=[a-z])(?=[A-Z])','\u200b',part)
+                    font(p.add_run(part),9)
+                elif part:inline(p,part,10.5,refs=False)
     return t
+
+def paginated_table(doc,rows,cap):
+    widths=column_widths(rows,cap);budget=520;chunks=[];chunk=[];height=row_height(rows[0],widths)
+    for row in rows[1:]:
+        rh=row_height(row,widths)
+        if chunk and height+rh>budget:
+            chunks.append(chunk);chunk=[];height=row_height(rows[0],widths)
+        chunk.append(row);height+=rh
+    if chunk:chunks.append(chunk)
+    for ci,chunk in enumerate(chunks):
+        if cap:
+            p=caption(doc,cap,continued=ci>0)
+            if ci:p.paragraph_format.page_break_before=True
+        table(doc,[rows[0]]+chunk,cap)
+        TABLE_CHUNKS.append({'caption':('续' if ci else '')+cap,'chunk_index':ci,'headers':rows[0],'rows':chunk})
+
 def main():
     assert hashlib.sha256(TPL.read_bytes()).hexdigest()=='79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e'
     RUN.mkdir(parents=True,exist_ok=True)
@@ -226,15 +272,15 @@ def main():
             st=d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH);edited_styles.append(st.style_id)
     for name,size,east,bold in [('Normal',12,'宋体',False),('Heading 1',14,'黑体',False),
             ('Heading 2',12,'黑体',False),('Heading 3',12,'黑体',False),
-            ('Title',18,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',12,'宋体',False)]:
-        st=d.styles[name];font_properties(st.element.get_or_add_rPr(),size,east,bold)
+            ('Title',18,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',9.5,'宋体',False)]:
+        st=d.styles[name];font_properties(st.element.get_or_add_rPr(),size,east,bold,'Courier New' if name=='Thesis Code' else 'Times New Roman')
         if name.startswith('Heading'):
             st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
         if name=='Normal':
             st.paragraph_format.line_spacing=Pt(20);st.paragraph_format.first_line_indent=Pt(24)
         if name=='Thesis Code':
             st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
-            st.paragraph_format.line_spacing=Pt(20);st.paragraph_format.first_line_indent=Pt(0)
+            st.paragraph_format.line_spacing=Pt(12.5);st.paragraph_format.first_line_indent=Pt(0)
         if name=='Title':st.paragraph_format.alignment=WD_ALIGN_PARAGRAPH.CENTER
         edited_styles.append(st.style_id)
     # Word rebuilds a TOC using TOC1/2/3, discarding cached direct formatting.
@@ -245,7 +291,7 @@ def main():
         st=d.styles[name];st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
         font_properties(st.element.get_or_add_rPr(),14 if level==1 else 12,'黑体')
         f=st.paragraph_format;f.first_line_indent=Pt(0);f.left_indent=Cm((level-1)*.5)
-        f.right_indent=Pt(0);f.line_spacing=1.5;f.space_before=Pt(0);f.space_after=Pt(0)
+        f.right_indent=Pt(0);f.line_spacing=Pt(16);f.space_before=Pt(0);f.space_after=Pt(0)
         f.keep_with_next=False;f.page_break_before=False;f.alignment=WD_ALIGN_PARAGRAPH.LEFT
         f.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
         st.element.get_or_add_pPr().append(el('outlineLvl',val=9))
@@ -259,9 +305,7 @@ def main():
         if m:entries.append((m[2].replace('（预留）',''),'h'+str(len(entries)),len(m[1])-1))
     key_by_title={t:k for t,k,l in entries}
     for i,(t,key,lev) in enumerate(entries):
-        p=d.add_paragraph(style=f'TOC {lev}');fmt(p,indent=0,line=20,align=WD_ALIGN_PARAGRAPH.LEFT);p.paragraph_format.line_spacing=1.5
-        # Keep template font sizes and 1.5 spacing; balance the TOC in groups of twenty entries.
-        if i and i%20==0:p.paragraph_format.page_break_before=True
+        p=d.add_paragraph(style=f'TOC {lev}');fmt(p,indent=0,line=16,align=WD_ALIGN_PARAGRAPH.LEFT)
         p.paragraph_format.left_indent=Cm((lev-1)*.5)
         p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
         if i==0:
@@ -269,6 +313,21 @@ def main():
         link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(t),14 if lev==1 else 12,'黑体');link.append(r._r);p._p.append(link)
         font(p.add_run('\t'));field(p,f'PAGEREF {key} \\h',pages.get(key,'1'))
         if i==len(entries)-1:p.add_run()._r.append(el('fldChar',fldCharType='end'))
+    list_entries=[]
+    for label,identifier in [('表','T'),('图','F')]:
+        hp=heading(d,label+' 目 录',pagebreak=True);hp.style='Normal'
+        caps=[plain(line) for line in md.splitlines() if line.startswith('**'+label+' ')]
+        for ci,text in enumerate(caps):
+            number=re.match(r'[图表]\s*([A-Z0-9]+\.\d+)',text)[1]
+            key=('tab' if label=='表' else 'fig')+number.replace('.','_')
+            list_entries.append((text,key,1))
+            p=d.add_paragraph();fmt(p,indent=0,line=17,align=WD_ALIGN_PARAGRAPH.LEFT)
+            p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
+            if ci==0:
+                p.add_run()._r.append(el('fldChar',fldCharType='begin'));x=el('instrText');x.text=f' TOC \\f {identifier} \\h \\z ';p.add_run()._r.append(x);p.add_run()._r.append(el('fldChar',fldCharType='separate'))
+            link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(text),10.5);link.append(r._r);p._p.append(link)
+            font(p.add_run('\t'),10.5);field(p,f'PAGEREF {key} \\h',pages.get(key,'1'),10.5)
+            if ci==len(caps)-1:p.add_run()._r.append(el('fldChar',fldCharType='end'))
     append_sect(d,section_end(d,base[1],header='rId6',footer='rId7'))
     for title,key in [('摘　要','abstract_cn'),('Abstract','abstract_en')]:
         p=heading(d,title,key=key,pagebreak=key=='abstract_en')
@@ -285,7 +344,7 @@ def main():
                 inline(p,parts[-1].strip())
             else:inline(p,line)
     append_sect(d,section_end(d,base[2],header='rId6',footer='rId8',number='upperRoman'))
-    lines=md[md.index('## 1 '):].splitlines();i=0;pending_caption=None;in_refs=False;body_split=False;landscape=False
+    lines=md[md.index('## 1 '):].splitlines();i=0;pending_caption=None;in_refs=False;body_split=False
     while i<len(lines):
         line=lines[i].strip();i+=1
         if not line or line=='---' or line.startswith('>'):continue
@@ -297,77 +356,48 @@ def main():
             code=[]
             while i<len(lines) and not lines[i].startswith('```'):code.append(lines[i]);i+=1
             i+=1
-            # 12pt excerpts need natural page breaks once they exceed ten source
-            # lines. Keep the caption and first lines together, never split a
-            # wrapped source line, and avoid whole-method near-empty pages.
             d.paragraphs[-1].paragraph_format.keep_with_next=True
             for j,text in enumerate(code):
-                p=d.add_paragraph(style='Thesis Code');fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=20,keep=j<len(code)-1 if len(code)<=10 else j<2);p.paragraph_format.keep_together=True; font(p.add_run(text))
+                p=d.add_paragraph(style='Thesis Code');fmt(p,size=9.5,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=12.5,keep=j<len(code)-1)
+                p.paragraph_format.left_indent=Pt(6);p.paragraph_format.right_indent=Pt(6);p.paragraph_format.keep_together=True
+                font(p.add_run(text),9.5,latin='Courier New')
+                font_properties(p._p.get_or_add_pPr().find(qn('w:rPr')),9.5,latin='Courier New')
+                ppr=p._p.get_or_add_pPr();ppr.append(el('shd',val='clear',fill='F8F9FA'))
+                border=el('pBdr')
+                for side in ['top','left','bottom','right']:border.append(el(side,val='single',sz=3,space=3,color='D0D3D6'))
+                ppr.append(border);ppr.append(el('wordWrap',val=0));ppr.append(el('suppressAutoHyphens',val=1))
             continue
         if line.startswith('!['):
             target=re.search(r'\]\(([^)]+)\)',line)[1];path=ROOT/'docs/thesis'/target
             im=Image.open(path).convert('RGB');w,h=im.size
-            is_business='business-flow/' in target
-            if is_business:
-                if not landscape:
-                    append_sect(d,section_end(d,base[3],header='rId6',footer='rId9',number='decimal' if not body_split else None));body_split=True
-                landscape=True
-                box=ImageOps.invert(im.convert('L')).point(lambda x: 255 if x>30 else 0).getbbox()
-                im=im.crop(box);w,h=im.size;buf=BytesIO();im.save(buf,format='PNG');buf.seek(0)
-                width=min(24.45,14.6*w/h);picture=buf
-            else:
-                # Remove only surrounding page whitespace during embedding, preserving originals.
-                if '/screenshots/' not in target and 'screenshots/' not in target:
-                    box=ImageOps.invert(im.convert('L')).point(lambda x:255 if x>30 else 0).getbbox()
-                    if box:
-                        x0,y0,x1,y1=box;pad=20
-                        im=im.crop((max(0,x0-pad),max(0,y0-pad),min(w,x1+pad),min(h,y1+pad)))
-                        w,h=im.size
-                # This tall RAG figure otherwise jumps past its short lead-in,
-                # leaving most of that page empty with the confirmed body font.
-                max_height=19 if target=='delivery-20261112/figures/6-5.png' else 20
-                width=min(15.75,max_height*w/h)
-                buf=BytesIO();im.save(buf,format='PNG');buf.seek(0);picture=buf
+            # Derived visual assets remove editorial title bands; retained
+            # school / historical image originals are never overwritten.
+            from thesis_final_figures import derivative
+            im=derivative(target,im,RUN);w,h=im.size
+            if 'screenshots/' not in target:
+                box=ImageOps.invert(im.convert('L')).point(lambda x:255 if x>30 else 0).getbbox()
+                if box:
+                    x0,y0,x1,y1=box;pad=8;im=im.crop((max(0,x0-pad),max(0,y0-pad),min(w,x1+pad),min(h,y1+pad)));w,h=im.size
+            max_height=19 if 'business-flow/' in target else 11 if re.search(r'(?:6-[123]\.png|6-9\.png)$',target) else 12.8 if re.search(r'/7-[2-6]\.png$',target) else 19
+            width=min(15.0 if 'business-flow/' in target else 15.75,max_height*w/h)
+            buf=BytesIO();im.save(buf,format='PNG');buf.seek(0);picture=buf
             p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=14,keep=True,before=6)
             p.paragraph_format.line_spacing=1
             p.add_run().add_picture(picture,width=Cm(width));continue
         if line.startswith('**图 '):
             p=caption(d,plain(line))
-            following=next((x.strip() for x in lines[i:] if x.strip()),'')
-            p.paragraph_format.keep_with_next=following.startswith('资料来源')
-            if landscape:
-                if following.startswith('![') and 'business-flow/' in following:
-                    p.add_run().add_break(WD_BREAK.PAGE)
-                else:
-                    sec=section_end(d,base[3],header='rId6',footer='rId9')
-                    pg=sec.find(qn('w:pgSz'));pg.set(qn('w:w'),'16838');pg.set(qn('w:h'),'11906');pg.set(qn('w:orient'),'landscape')
-                    append_sect(d,sec);landscape=False
             continue
         if line.startswith('**表 '):pending_caption=plain(line);continue
         if line.startswith('|'):
             rows=[line]
             while i<len(lines) and lines[i].strip().startswith('|'):rows.append(lines[i].strip());i+=1
             rows=[[x.strip() for x in r.strip('|').split('|')] for r in rows if not re.match(r'^\|\s*:?-',r)]
-            if pending_caption and '系统接口一览' in pending_caption:
-                start=1
-                for ci,count in enumerate([10,16,13]):
-                    cap=caption(d,pending_caption,continued=ci>0)
-                    if ci:cap.paragraph_format.page_break_before=True
-                    table(d,[rows[0]]+rows[start:start+count],pending_caption);start+=count
-                assert start==len(rows),(pending_caption,start,len(rows))
-            elif pending_caption and re.match(r'表 3\.3\s',pending_caption):
-                sizes=[4,2]
-                start=1
-                for ci,count in enumerate(sizes):
-                    cap=caption(d,pending_caption,continued=ci>0)
-                    if ci:cap.paragraph_format.page_break_before=True
-                    table(d,[rows[0]]+rows[start:start+count],pending_caption);start+=count
-                assert start==len(rows),(pending_caption,start,len(rows))
-            else:
-                if pending_caption:caption(d,pending_caption)
-                table(d,rows,pending_caption or '')
+            paginated_table(d,rows,pending_caption or '')
             pending_caption=None;continue
         p=d.add_paragraph();fmt(p)
+        if re.match(r'^代码\s*7\.\d+',plain(line)):
+            fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=14,before=8,after=4,keep=True)
+            font(p.add_run(plain(line)),10.5,'黑体');continue
         if in_refs and re.match(r'^\[\d+\]',line):
             num=re.match(r'^\[(\d+)\]',line)[1];k=bookmark_start(p,'ref'+num)
             p.paragraph_format.left_indent=Pt(0);p.paragraph_format.first_line_indent=Pt(0);p.paragraph_format.line_spacing=Pt(22)
@@ -435,6 +465,8 @@ def main():
             out.writestr(name,data)
         for name in generated.namelist():
             if name not in orig.namelist():out.writestr(name,generated.read(name))
+    (RUN/'table-chunks.json').write_text(json.dumps(TABLE_CHUNKS,ensure_ascii=False,indent=2),encoding='utf-8')
+    (RUN/'list-keys.json').write_text(json.dumps(list_entries,ensure_ascii=False,indent=2),encoding='utf-8')
     (RUN/'heading-keys.json').write_text(json.dumps(entries,ensure_ascii=False,indent=2),encoding='utf-8')
     print(OUT)
 if __name__=='__main__':main()
