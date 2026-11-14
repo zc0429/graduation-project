@@ -4,7 +4,7 @@ from zipfile import ZipFile
 from lxml import etree as E
 from docx import Document
 from docx.oxml.ns import qn
-import hashlib,json,re,subprocess,os
+import hashlib,json,re,subprocess,os,shutil
 import pymupdf
 ROOT=Path(__file__).resolve().parents[2];DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113');RUN=ROOT/'docs/validation'/DELIVERY;OUT=ROOT/'output/thesis'/DELIVERY
 ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
@@ -79,7 +79,15 @@ def main():
      x0,y0,x1,y1=span['bbox']
      if x0<0 or y0<0 or x1>page.rect.width+.1 or y1>page.rect.height+.1:bounds.append([i+1,span['text'],span['bbox']])
  assert not bounds,bounds
- fonts=subprocess.check_output(['pdffonts',str(OUT/pdf_name)],text=True);(RUN/'pdf-fonts.txt').write_text(fonts)
+ # Windows hosted runners need not install a second PDF toolchain merely to
+ # list actual embedded fonts. Keep Poppler where available; otherwise inspect
+ # the same PDF's font objects using MuPDF, clearly identifying the backend.
+ if shutil.which('pdffonts'):
+  fonts=subprocess.check_output(['pdffonts',str(OUT/pdf_name)],text=True)
+ else:
+  fonts='Backend: PyMuPDF get_fonts / extract_font (Poppler unavailable)\n'
+  fonts+='\n'.join(str(font) for font in sorted({font for page in pdf for font in page.get_fonts()}))+'\n'
+ (RUN/'pdf-fonts.txt').write_text(fonts,encoding='utf-8')
  # Read actual PDF font names; do not hard-code success to a substitute family.
  expected_originals=all(name in fonts for name in ['SimSun','SimHei','TimesNewRoman'])
  if os.environ.get('THESIS_ALLOW_SUBSTITUTE_PREVIEW')!='1':assert expected_originals,fonts
