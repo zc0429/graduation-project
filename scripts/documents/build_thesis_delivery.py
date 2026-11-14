@@ -207,7 +207,7 @@ def table(doc,rows,cap):
     return t
 
 def paginated_table(doc,rows,cap):
-    widths=column_widths(rows,cap);budget=520;chunks=[];chunk=[];height=row_height(rows[0],widths)
+    widths=column_widths(rows,cap);budget=660 if cap.startswith('表 8.7') else 520;chunks=[];chunk=[];height=row_height(rows[0],widths)
     for row in rows[1:]:
         rh=row_height(row,widths)
         if chunk and height+rh>budget:
