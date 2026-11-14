@@ -1,0 +1,13 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+BAAAAA+NotoSerifCJKsc-Bold           Type 1            Builtin          yes yes yes   7566  0
+CAAAAA+NotoSansCJKsc-Bold            Type 1            Builtin          yes yes yes   7581  0
+DAAAAA+TimesNewRomanPS-BoldMT        TrueType          WinAnsi          yes yes yes   7531  0
+EAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   7546  0
+FAAAAA+TimesNewRomanPSMT             TrueType          WinAnsi          yes yes yes   7536  0
+GAAAAA+NotoSansCJKsc-Regular         Type 1            Builtin          yes yes yes   7571  0
+HAAAAA+NotoSansCJKsc-Regular         Type 1            Builtin          yes yes yes   7576  0
+IAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   7551  0
+JAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   7556  0
+KAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   7561  0
+LAAAAA+LiberationMono                TrueType          WinAnsi          yes yes yes   7541  0

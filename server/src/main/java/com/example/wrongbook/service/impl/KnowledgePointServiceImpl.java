@@ -6,6 +6,12 @@ import com.example.wrongbook.common.ResultCode;
 import com.example.wrongbook.dto.KnowledgePointRequest;
 import com.example.wrongbook.entity.KnowledgePoint;
 import com.example.wrongbook.entity.Subject;
+import com.example.wrongbook.entity.Question;
+import com.example.wrongbook.entity.AiAnalysis;
+import com.example.wrongbook.entity.LearningContent;
+import com.example.wrongbook.mapper.QuestionMapper;
+import com.example.wrongbook.mapper.AiAnalysisMapper;
+import com.example.wrongbook.mapper.LearningContentMapper;
 import com.example.wrongbook.mapper.KnowledgePointMapper;
 import com.example.wrongbook.mapper.SubjectMapper;
 import com.example.wrongbook.service.KnowledgePointService;
@@ -25,6 +31,9 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
 
     private final KnowledgePointMapper knowledgePointMapper;
     private final SubjectMapper subjectMapper;
+    private final QuestionMapper questionMapper;
+    private final AiAnalysisMapper aiAnalysisMapper;
+    private final LearningContentMapper learningContentMapper;
 
     @Override
     public List<KnowledgePointNode> tree(Long subjectId) {
@@ -61,6 +70,9 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
             if (parent == null || !parent.getSubjectId().equals(request.getSubjectId())) {
                 throw new BizException("父级知识点不存在或不属于该科目");
             }
+            if (!Long.valueOf(0).equals(parent.getParentId())) {
+                throw new BizException("考点只能添加在一级章节下");
+            }
         }
         KnowledgePoint kp = new KnowledgePoint();
         kp.setSubjectId(request.getSubjectId());
@@ -81,6 +93,14 @@ public class KnowledgePointServiceImpl implements KnowledgePointService {
                 new LambdaQueryWrapper<KnowledgePoint>().eq(KnowledgePoint::getParentId, id));
         if (children > 0) {
             throw new BizException("请先删除该章节下的考点");
+        }
+        if (questionMapper.selectCount(new LambdaQueryWrapper<Question>()
+                .eq(Question::getKnowledgePointId, id)) > 0
+                || aiAnalysisMapper.selectCount(new LambdaQueryWrapper<AiAnalysis>()
+                .eq(AiAnalysis::getKnowledgePointId, id)) > 0
+                || learningContentMapper.selectCount(new LambdaQueryWrapper<LearningContent>()
+                .eq(LearningContent::getKnowledgePointId, id)) > 0) {
+            throw new BizException("该知识点仍被错题或学习内容引用，不能删除");
         }
         knowledgePointMapper.deleteById(id);
     }

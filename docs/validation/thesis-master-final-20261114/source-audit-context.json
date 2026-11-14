@@ -1,0 +1,8 @@
+{
+  "task_start_commit": "34f6ac93fc3c45e43619eda9d4b36866658c29c4",
+  "last_render_source_commit": "a5bea8478980511db6eb97677da1a6618a98c88e",
+  "application_source_reference": "21da287744a252e7ccae0aadbe5832336c8b3b27",
+  "historical_upstream_baseline": "bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff",
+  "protected_existing_files": 1373,
+  "checks": "Read-only schema/controller/source-excerpt preservation verification, not another full system audit or fresh application test batch."
+}

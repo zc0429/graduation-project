@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/features-on-demand-language-fod",
+    "http_status": 200,
+    "excerpts": [
+      ".0 ur-PK Urdu Language.Fonts.Arab~~~und-ARAB~0.0.1.0 zh-CN Chinese (Simplified) Language.Fonts.Hans~~~und-HANS~0.0.1.0 zh-TW Chinese Traditional (Hong Kong Special Administrative Region, Macao Special Administrative Region and Taiwan) Language.Fonts.Hant~~~und-HANT~0.0.1.0 Additional fonts available These fonts are optional and not required for any region. Capability Name Description Language.Fonts.PanEuropeanSupplementalFonts~~~~0.0.1.0 Pan-European Supplemental Fonts. Includes additional fonts: Arial Nova, Georgia Pro, Gill Sans Nova, Neue Haas Grotesk, Rockwell Nova, Verdana Pro. Other region-specific requirements Region Package Description Recommendation zh-TW Microsoft-Windows-InternationalFeatures-Taiwan-Package~31bf3856ad364e35~amd64~~.cab Supplemental support fo"
+    ]
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/typography/fonts/font-faq",
+    "http_status": 200,
+    "excerpts": [
+      " WebType.com. Other Windows fonts may be available from their original creator. Document embedding Although the redistribution of fonts supplied with Windows is generally not allowed, “document font embedding” is a special case which is allowed in some circumstances. What is document embedding? Document font embedding is defined in the OpenType and TrueType font specifications – with a specific set of rules and restrictions. When can I use document embedding? The brief answer: If an application follows the rules and restrictions defined in the OpenType or TrueType specification, you can use it to embed Windows supplied fonts in any document file it creates. For example, Microsoft Word and PowerPoint follow the rules and restrictions, so you can use these applications to",
+      "t stack, as the “use” of the font occurs on the Windows device, not on your web server. Web fonts are fonts that are hosted on a web server. You do not have rights to: copy fonts from a Windows installation to a web server, a process known as web font “self-hosting”. convert the font to the formats typically associated with web fonts, such as the WOFF or WOFF2 format. Many Windows fonts are available for web use through Monotype’s Fonts.com web font service, some are also available via Type Network’s WebType.com. Other Windows fonts may be available from their original creator. Document embedding Although the redistribution of fonts supplied with Windows is generally not allowed, “document font embedding” is a special case which is allowed in some circumstances. What is"
+    ]
+  }
+]

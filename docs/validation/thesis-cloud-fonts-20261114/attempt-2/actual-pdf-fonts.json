@@ -1,0 +1,678 @@
+{
+  "pdf": "output\\thesis\\thesis-windows-fonts-43541003736-1\\毕业论文.pdf",
+  "pdf_pages": 101,
+  "fonts": [
+    {
+      "xref": 6976,
+      "pdf_name": "BAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 75312,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6961,
+      "pdf_name": "CAAAAA+SimHei",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 64128,
+      "embedded_family_names": [
+        "SimHei",
+        "黑体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6956,
+      "pdf_name": "DAAAAA+TimesNewRomanPS-BoldMT",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 40624,
+      "embedded_family_names": [
+        "Times New Roman"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6971,
+      "pdf_name": "EAAAAA+TimesNewRomanPSMT",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 75992,
+      "embedded_family_names": [
+        "Times New Roman"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6966,
+      "pdf_name": "FAAAAA+SimHei",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 7748,
+      "embedded_family_names": [
+        "SimHei",
+        "黑体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6981,
+      "pdf_name": "GAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 79748,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6986,
+      "pdf_name": "HAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 86780,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 6991,
+      "pdf_name": "IAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 71820,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    }
+  ],
+  "used_text_spans": {
+    "SimSun": 3269,
+    "SimHei": 250,
+    "Times New Roman": 2893
+  },
+  "unrecognized_fonts": [],
+  "chinese_font_errors": [],
+  "latin_number_font_errors": [],
+  "page_number_font_errors": [
+    {
+      "page": 8,
+      "font": "TimesNewRomanPSMT",
+      "text": "I",
+      "size": 9.0
+    },
+    {
+      "page": 9,
+      "font": "TimesNewRomanPSMT",
+      "text": "II",
+      "size": 9.0
+    },
+    {
+      "page": 10,
+      "font": "TimesNewRomanPSMT",
+      "text": "1",
+      "size": 9.0
+    },
+    {
+      "page": 11,
+      "font": "TimesNewRomanPSMT",
+      "text": "2",
+      "size": 9.0
+    },
+    {
+      "page": 12,
+      "font": "TimesNewRomanPSMT",
+      "text": "3",
+      "size": 9.0
+    },
+    {
+      "page": 13,
+      "font": "TimesNewRomanPSMT",
+      "text": "4",
+      "size": 9.0
+    },
+    {
+      "page": 14,
+      "font": "TimesNewRomanPSMT",
+      "text": "5",
+      "size": 9.0
+    },
+    {
+      "page": 15,
+      "font": "TimesNewRomanPSMT",
+      "text": "6",
+      "size": 9.0
+    },
+    {
+      "page": 16,
+      "font": "TimesNewRomanPSMT",
+      "text": "7",
+      "size": 9.0
+    },
+    {
+      "page": 17,
+      "font": "TimesNewRomanPSMT",
+      "text": "8",
+      "size": 9.0
+    },
+    {
+      "page": 18,
+      "font": "TimesNewRomanPSMT",
+      "text": "9",
+      "size": 9.0
+    },
+    {
+      "page": 19,
+      "font": "TimesNewRomanPSMT",
+      "text": "10",
+      "size": 9.0
+    },
+    {
+      "page": 20,
+      "font": "TimesNewRomanPSMT",
+      "text": "11",
+      "size": 9.0
+    },
+    {
+      "page": 21,
+      "font": "TimesNewRomanPSMT",
+      "text": "12",
+      "size": 9.0
+    },
+    {
+      "page": 22,
+      "font": "TimesNewRomanPSMT",
+      "text": "13",
+      "size": 9.0
+    },
+    {
+      "page": 23,
+      "font": "TimesNewRomanPSMT",
+      "text": "14",
+      "size": 9.0
+    },
+    {
+      "page": 24,
+      "font": "TimesNewRomanPSMT",
+      "text": "15",
+      "size": 9.0
+    },
+    {
+      "page": 25,
+      "font": "TimesNewRomanPSMT",
+      "text": "16",
+      "size": 9.0
+    },
+    {
+      "page": 26,
+      "font": "TimesNewRomanPSMT",
+      "text": "17",
+      "size": 9.0
+    },
+    {
+      "page": 27,
+      "font": "TimesNewRomanPSMT",
+      "text": "18",
+      "size": 9.0
+    },
+    {
+      "page": 28,
+      "font": "TimesNewRomanPSMT",
+      "text": "19",
+      "size": 9.0
+    },
+    {
+      "page": 29,
+      "font": "TimesNewRomanPSMT",
+      "text": "20",
+      "size": 9.0
+    },
+    {
+      "page": 30,
+      "font": "TimesNewRomanPSMT",
+      "text": "21",
+      "size": 9.0
+    },
+    {
+      "page": 31,
+      "font": "TimesNewRomanPSMT",
+      "text": "22",
+      "size": 9.0
+    },
+    {
+      "page": 32,
+      "font": "TimesNewRomanPSMT",
+      "text": "23",
+      "size": 9.0
+    },
+    {
+      "page": 33,
+      "font": "TimesNewRomanPSMT",
+      "text": "24",
+      "size": 9.0
+    },
+    {
+      "page": 34,
+      "font": "TimesNewRomanPSMT",
+      "text": "25",
+      "size": 9.0
+    },
+    {
+      "page": 35,
+      "font": "TimesNewRomanPSMT",
+      "text": "26",
+      "size": 9.0
+    },
+    {
+      "page": 36,
+      "font": "TimesNewRomanPSMT",
+      "text": "27",
+      "size": 9.0
+    },
+    {
+      "page": 37,
+      "font": "TimesNewRomanPSMT",
+      "text": "28",
+      "size": 9.0
+    },
+    {
+      "page": 38,
+      "font": "TimesNewRomanPSMT",
+      "text": "29",
+      "size": 9.0
+    },
+    {
+      "page": 39,
+      "font": "TimesNewRomanPSMT",
+      "text": "30",
+      "size": 9.0
+    },
+    {
+      "page": 40,
+      "font": "TimesNewRomanPSMT",
+      "text": "31",
+      "size": 9.0
+    },
+    {
+      "page": 41,
+      "font": "TimesNewRomanPSMT",
+      "text": "32",
+      "size": 9.0
+    },
+    {
+      "page": 42,
+      "font": "TimesNewRomanPSMT",
+      "text": "33",
+      "size": 9.0
+    },
+    {
+      "page": 43,
+      "font": "TimesNewRomanPSMT",
+      "text": "34",
+      "size": 9.0
+    },
+    {
+      "page": 44,
+      "font": "TimesNewRomanPSMT",
+      "text": "35",
+      "size": 9.0
+    },
+    {
+      "page": 45,
+      "font": "TimesNewRomanPSMT",
+      "text": "36",
+      "size": 9.0
+    },
+    {
+      "page": 46,
+      "font": "TimesNewRomanPSMT",
+      "text": "37",
+      "size": 9.0
+    },
+    {
+      "page": 47,
+      "font": "TimesNewRomanPSMT",
+      "text": "38",
+      "size": 9.0
+    },
+    {
+      "page": 48,
+      "font": "TimesNewRomanPSMT",
+      "text": "39",
+      "size": 9.0
+    },
+    {
+      "page": 49,
+      "font": "TimesNewRomanPSMT",
+      "text": "40",
+      "size": 9.0
+    },
+    {
+      "page": 50,
+      "font": "TimesNewRomanPSMT",
+      "text": "41",
+      "size": 9.0
+    },
+    {
+      "page": 51,
+      "font": "TimesNewRomanPSMT",
+      "text": "42",
+      "size": 9.0
+    },
+    {
+      "page": 52,
+      "font": "TimesNewRomanPSMT",
+      "text": "43",
+      "size": 9.0
+    },
+    {
+      "page": 53,
+      "font": "TimesNewRomanPSMT",
+      "text": "44",
+      "size": 9.0
+    },
+    {
+      "page": 54,
+      "font": "TimesNewRomanPSMT",
+      "text": "45",
+      "size": 9.0
+    },
+    {
+      "page": 55,
+      "font": "TimesNewRomanPSMT",
+      "text": "46",
+      "size": 9.0
+    },
+    {
+      "page": 56,
+      "font": "TimesNewRomanPSMT",
+      "text": "47",
+      "size": 9.0
+    },
+    {
+      "page": 57,
+      "font": "TimesNewRomanPSMT",
+      "text": "48",
+      "size": 9.0
+    },
+    {
+      "page": 58,
+      "font": "TimesNewRomanPSMT",
+      "text": "49",
+      "size": 9.0
+    },
+    {
+      "page": 59,
+      "font": "TimesNewRomanPSMT",
+      "text": "50",
+      "size": 9.0
+    },
+    {
+      "page": 60,
+      "font": "TimesNewRomanPSMT",
+      "text": "51",
+      "size": 9.0
+    },
+    {
+      "page": 61,
+      "font": "TimesNewRomanPSMT",
+      "text": "52",
+      "size": 9.0
+    },
+    {
+      "page": 62,
+      "font": "TimesNewRomanPSMT",
+      "text": "53",
+      "size": 9.0
+    },
+    {
+      "page": 63,
+      "font": "TimesNewRomanPSMT",
+      "text": "54",
+      "size": 9.0
+    },
+    {
+      "page": 64,
+      "font": "TimesNewRomanPSMT",
+      "text": "55",
+      "size": 9.0
+    },
+    {
+      "page": 65,
+      "font": "TimesNewRomanPSMT",
+      "text": "56",
+      "size": 9.0
+    },
+    {
+      "page": 66,
+      "font": "TimesNewRomanPSMT",
+      "text": "57",
+      "size": 9.0
+    },
+    {
+      "page": 67,
+      "font": "TimesNewRomanPSMT",
+      "text": "58",
+      "size": 9.0
+    },
+    {
+      "page": 68,
+      "font": "TimesNewRomanPSMT",
+      "text": "59",
+      "size": 9.0
+    },
+    {
+      "page": 69,
+      "font": "TimesNewRomanPSMT",
+      "text": "60",
+      "size": 9.0
+    },
+    {
+      "page": 70,
+      "font": "TimesNewRomanPSMT",
+      "text": "61",
+      "size": 9.0
+    },
+    {
+      "page": 71,
+      "font": "TimesNewRomanPSMT",
+      "text": "62",
+      "size": 9.0
+    },
+    {
+      "page": 72,
+      "font": "TimesNewRomanPSMT",
+      "text": "63",
+      "size": 9.0
+    },
+    {
+      "page": 73,
+      "font": "TimesNewRomanPSMT",
+      "text": "64",
+      "size": 9.0
+    },
+    {
+      "page": 74,
+      "font": "TimesNewRomanPSMT",
+      "text": "65",
+      "size": 9.0
+    },
+    {
+      "page": 75,
+      "font": "TimesNewRomanPSMT",
+      "text": "66",
+      "size": 9.0
+    },
+    {
+      "page": 76,
+      "font": "TimesNewRomanPSMT",
+      "text": "67",
+      "size": 9.0
+    },
+    {
+      "page": 77,
+      "font": "TimesNewRomanPSMT",
+      "text": "68",
+      "size": 9.0
+    },
+    {
+      "page": 78,
+      "font": "TimesNewRomanPSMT",
+      "text": "69",
+      "size": 9.0
+    },
+    {
+      "page": 79,
+      "font": "TimesNewRomanPSMT",
+      "text": "70",
+      "size": 9.0
+    },
+    {
+      "page": 80,
+      "font": "TimesNewRomanPSMT",
+      "text": "71",
+      "size": 9.0
+    },
+    {
+      "page": 81,
+      "font": "TimesNewRomanPSMT",
+      "text": "72",
+      "size": 9.0
+    },
+    {
+      "page": 82,
+      "font": "TimesNewRomanPSMT",
+      "text": "73",
+      "size": 9.0
+    },
+    {
+      "page": 83,
+      "font": "TimesNewRomanPSMT",
+      "text": "74",
+      "size": 9.0
+    },
+    {
+      "page": 84,
+      "font": "TimesNewRomanPSMT",
+      "text": "75",
+      "size": 9.0
+    },
+    {
+      "page": 85,
+      "font": "TimesNewRomanPSMT",
+      "text": "76",
+      "size": 9.0
+    },
+    {
+      "page": 86,
+      "font": "TimesNewRomanPSMT",
+      "text": "77",
+      "size": 9.0
+    },
+    {
+      "page": 87,
+      "font": "TimesNewRomanPSMT",
+      "text": "78",
+      "size": 9.0
+    },
+    {
+      "page": 88,
+      "font": "TimesNewRomanPSMT",
+      "text": "79",
+      "size": 9.0
+    },
+    {
+      "page": 89,
+      "font": "TimesNewRomanPSMT",
+      "text": "80",
+      "size": 9.0
+    },
+    {
+      "page": 90,
+      "font": "TimesNewRomanPSMT",
+      "text": "81",
+      "size": 9.0
+    },
+    {
+      "page": 91,
+      "font": "TimesNewRomanPSMT",
+      "text": "82",
+      "size": 9.0
+    },
+    {
+      "page": 92,
+      "font": "TimesNewRomanPSMT",
+      "text": "83",
+      "size": 9.0
+    },
+    {
+      "page": 93,
+      "font": "TimesNewRomanPSMT",
+      "text": "84",
+      "size": 9.0
+    },
+    {
+      "page": 94,
+      "font": "TimesNewRomanPSMT",
+      "text": "85",
+      "size": 9.0
+    },
+    {
+      "page": 95,
+      "font": "TimesNewRomanPSMT",
+      "text": "86",
+      "size": 9.0
+    },
+    {
+      "page": 96,
+      "font": "TimesNewRomanPSMT",
+      "text": "87",
+      "size": 9.0
+    },
+    {
+      "page": 97,
+      "font": "TimesNewRomanPSMT",
+      "text": "88",
+      "size": 9.0
+    },
+    {
+      "page": 98,
+      "font": "TimesNewRomanPSMT",
+      "text": "89",
+      "size": 9.0
+    },
+    {
+      "page": 99,
+      "font": "TimesNewRomanPSMT",
+      "text": "90",
+      "size": 9.0
+    },
+    {
+      "page": 100,
+      "font": "TimesNewRomanPSMT",
+      "text": "91",
+      "size": 9.0
+    },
+    {
+      "page": 101,
+      "font": "TimesNewRomanPSMT",
+      "text": "92",
+      "size": 9.0
+    }
+  ],
+  "original_pdf_text_fonts_verified": false,
+  "standalone_font_binaries_exported": false,
+  "raster_figure_fonts_verified": false,
+  "microsoft_word_verified": false
+}

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157.5mm" height="137.1917mm" viewBox="0 0 446.4567 388.88976900000006">
+<rect width="100%" height="100%" fill="white"/>
+<ellipse cx="223.22835" cy="40.763780000000004" rx="40.9251975" ry="29.763780000000004" fill="white" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="38.53149649999999" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">P1</text>
+<text x="223.22835" y="48.9488195" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">认证与账户管理</text>
+<rect x="20.46259875" y="25.88189" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="59.52756" y="38.53149649999999" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学生、教师</text>
+<text x="59.52756" y="48.9488195" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">管理员</text>
+<polyline points="431.57481,29.602362499999998 342.28347,29.602362499999998 342.28347,51.925197499999996 431.57481,51.925197499999996" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="43.740157999999994" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D1 账户资料</text>
+<ellipse cx="223.22835" cy="147.566931" rx="40.9251975" ry="29.763779999999997" fill="white" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="145.33464750000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">P2</text>
+<text x="223.22835" y="155.75197050000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">基础资料维护</text>
+<rect x="20.46259875" y="132.685041" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="59.52756" y="145.33464750000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学生、教师</text>
+<text x="59.52756" y="155.75197050000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">管理员</text>
+<polyline points="431.57481,99.20078850000004 342.28347,99.20078850000004 342.28347,121.52362350000004 431.57481,121.52362350000004" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="108.12992250000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D2</text>
+<text x="386.92914" y="118.54724550000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">科目与知识点</text>
+<polyline points="431.57481,173.61023850000004 342.28347,173.61023850000004 342.28347,195.93307350000003 431.57481,195.93307350000003" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="187.74803400000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D6 消息与公告</text>
+<ellipse cx="223.22835" cy="301.24803550000007" rx="40.9251975" ry="29.763779999999997" fill="white" stroke="#292929" stroke-width=".7"/>
+<text x="223.22835" y="299.0157520000001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">P5</text>
+<text x="223.22835" y="309.43307500000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学情与通知处理</text>
+<rect x="20.46259875" y="286.3661455000001" width="78.12992249999999" height="29.763779999999997" fill="#ffffff" stroke="#292929" stroke-width=".7"/>
+<text x="59.52756" y="299.0157520000001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">学生、教师</text>
+<text x="59.52756" y="309.43307500000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">管理员</text>
+<polyline points="431.57481,230.55905800000005 342.28347,230.55905800000005 342.28347,252.88189300000005 431.57481,252.88189300000005" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="244.69685350000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D3 错题与解析</text>
+<polyline points="431.57481,290.08661800000004 342.28347,290.08661800000004 342.28347,312.40945300000004 431.57481,312.40945300000004" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="299.0157520000001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D5</text>
+<text x="386.92914" y="309.43307500000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">练习与复习记录</text>
+<polyline points="431.57481,349.6141780000001 342.28347,349.6141780000001 342.28347,371.93701300000015 431.57481,371.93701300000015" fill="none" stroke="#292929" stroke-width=".7" />
+<text x="386.92914" y="363.7519735" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="9.6732285" text-anchor="middle" fill="black">D6 消息与公告</text>
+<polyline points="98.59252125,32.20669324999999 184.03098823944782,32.20669324999999" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="184.03098823944782,32.20669324999999 178.76549286810558,35.0832464816252 178.76549286810558,29.33014001837477" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="141.31175474472388" y="25.88189" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">登录与账户资料</text>
+<polyline points="184.03098823944782,49.32086674999999 98.59252125,49.32086674999999" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="98.59252125,49.32086674999999 103.85801662134224,46.44431351837478 103.85801662134224,52.19741998162521" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="140.447836875" y="61.97047324999998" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">身份与账户结果</text>
+<polyline points="262.4257117605522,32.20669324999999 342.28347,32.20669324999999" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,32.20669324999999 337.0179746286578,35.0832464816252 337.0179746286578,29.33014001837477" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="296.7738821302761" y="25.88189" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">账户变更</text>
+<polyline points="342.28347,49.32086674999999 262.4257117605522,49.32086674999999" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="262.4257117605522,49.32086674999999 267.69120713189443,46.44431351837478 267.69120713189443,52.19741998162521" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="297.63779999999997" y="61.97047324999998" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">账户数据</text>
+<polyline points="98.59252125,139.00984425000001 184.03098823944782,139.00984425000001" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="184.03098823944782,139.00984425000001 178.76549286810558,141.88639748162524 178.76549286810558,136.1332910183748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="141.31175474472388" y="124.50000150000005" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">基础查询与</text>
+<text x="141.31175474472388" y="134.91732450000006" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">维护资料</text>
+<polyline points="184.03098823944782,156.12401775000006 98.59252125,156.12401775000006" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="98.59252125,156.12401775000006 103.85801662134224,153.24746451837484 103.85801662134224,159.0005709816253" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="140.447836875" y="166.54134075000002" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">基础信息与</text>
+<text x="140.447836875" y="176.95866375000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">维护结果</text>
+<polyline points="342.28347,104.78149725000003 286.4763825,104.78149725000003 258.6706106898954,132.685041" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="258.6706106898954,132.685041 260.3497410170534,126.92478741665681 264.424934933031,130.98570215654894" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="98.45669400000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">基础记录</text>
+<polyline points="263.8325606029509,143.84645850000004 286.4763825,115.94291475000006 342.28347,115.94291475000006" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,115.94291475000006 337.0179746286578,118.81946798162528 337.0179746286578,113.06636151837483" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="127.47637950000006" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">基础资料</text>
+<polyline points="260.02904105030603,160.58858475000005 286.4763825,190.35236475000005 342.28347,190.35236475000005" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,190.35236475000005 337.0179746286578,193.22891798162527 337.0179746286578,187.47581151837483" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="201.88582950000006" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">公告</text>
+<polyline points="98.59252125,292.6909487500001 184.03098823944782,292.6909487500001" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="184.03098823944782,292.6909487500001 178.76549286810558,295.5675019816253 178.76549286810558,289.81439551837485" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="141.31175474472388" y="278.18110600000006" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">报告查询／</text>
+<text x="141.31175474472388" y="288.59842900000007" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">通知操作</text>
+<polyline points="184.03098823944782,309.80512225000007 98.59252125,309.80512225000007" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="98.59252125,309.80512225000007 103.85801662134224,306.92856901837484 103.85801662134224,312.6816754816253" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="140.447836875" y="322.4547287500001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">报告与通知信息</text>
+<polyline points="342.28347,236.13976675000004 286.4763825,236.13976675000004 255.17557205894488,282.64567300000004" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="255.17557205894488,282.64567300000004 255.72923713193327,276.6712730312205 260.50200279992436,279.8835840149112" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="229.81496350000003" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">错题统计</text>
+<polyline points="342.28347,295.6673267500001 286.4763825,295.6673267500001 263.4277228686439,295.6673267500001" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="263.4277228686439,295.6673267500001 268.69321823998615,292.79077351837486 268.69321823998615,298.5438799816253" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="289.3425235000001" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">练习复习数据</text>
+<polyline points="342.28347,355.1948867500001 286.4763825,355.1948867500001 261.1670234729489,312.40945300000004" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="261.1670234729489,312.40945300000004 266.32367424058316,315.47685464645224 261.3720442890169,318.4059491823534" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="348.8700835" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">消息与公告</text>
+<polyline points="250.29782373530057,323.57087050000007 286.4763825,366.35630425000005 342.28347,366.35630425000005" fill="none" stroke="#292929" stroke-width=".7" />
+<polygon points="342.28347,366.35630425000005 337.0179746286578,369.2328574816253 337.0179746286578,363.4797510183748" fill="#292929" stroke="#292929" stroke-width=".7"/>
+<text x="310.65945375" y="377.88976900000006" font-family="Liberation Serif, Noto Serif CJK SC, serif" font-size="8.929134" text-anchor="middle" fill="black">消息状态</text>
+</svg>

@@ -1,0 +1,12 @@
+{
+  "model": "explicit Mock",
+  "flows": [],
+  "created": {},
+  "fixture": {
+    "questionId": 10,
+    "planId": 46,
+    "stem": "审计UI复习251543623",
+    "suffix": "48735466"
+  },
+  "allFourPassed": false
+}

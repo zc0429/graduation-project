@@ -1,0 +1,425 @@
+{
+  "id": "6-1",
+  "caption": "图 6.1　错题归属、知识归类与解析关系",
+  "height": 430,
+  "evidence": [
+    "server/src/main/resources/db/schema.sql",
+    "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 10,
+      "w": 162,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 10,
+      "w": 162,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 91.0,
+      "y": 25,
+      "text": "用户 user",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 47,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 62,
+      "text": "role / status",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 266,
+      "y": 10,
+      "w": 170,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 266,
+      "y": 10,
+      "w": 170,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 351.0,
+      "y": 25,
+      "text": "科目 subject",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 47,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 62,
+      "text": "UK name",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 157,
+      "w": 192,
+      "h": 87
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 157,
+      "w": 192,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 106.0,
+      "y": 172,
+      "text": "错题 question",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 194,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 209,
+      "text": "user_id / subject_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 224,
+      "text": "knowledge_point_id 可空",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 239,
+      "text": "stem / embedding",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 266,
+      "y": 137,
+      "w": 170,
+      "h": 72
+    },
+    {
+      "kind": "rect",
+      "x": 266,
+      "y": 137,
+      "w": 170,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 351.0,
+      "y": 152,
+      "text": "知识点 knowledge_point",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 174,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 189,
+      "text": "subject_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 204,
+      "text": "parent_id：0 为根节点",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 320,
+      "w": 192,
+      "h": 72
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 320,
+      "w": 192,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 106.0,
+      "y": 335,
+      "text": "解析 ai_analysis",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 357,
+      "text": "PK id / UK question_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 372,
+      "text": "knowledge_point_id 可空",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 387,
+      "text": "reference_ids：ID 数组",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          91,
+          67
+        ],
+        [
+          91,
+          157
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 120,
+      "y": 111,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          266,
+          40
+        ],
+        [
+          228,
+          40
+        ],
+        [
+          228,
+          179
+        ],
+        [
+          202,
+          179
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 208,
+      "y": 93,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          351,
+          67
+        ],
+        [
+          351,
+          137
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 384,
+      "y": 108,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          266,
+          195
+        ],
+        [
+          202,
+          195
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 234,
+      "y": 209,
+      "text": "0..1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          106,
+          244
+        ],
+        [
+          106,
+          320
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 139,
+      "y": 291,
+      "text": "1 : 0..1",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          414,
+          209
+        ],
+        [
+          414,
+          356
+        ],
+        [
+          202,
+          356
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 318,
+      "y": 342,
+      "text": "0..1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 260,
+      "y": 403,
+      "text": "reference_ids 为 JSON 留痕，未另建关联表。",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 351,
+      "y": 233,
+      "text": "自关联：父 0..1，子 0..N",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ],
+  "note": "连线标注采用“父实体 : 子记录”顺序；PK 为主键，UK 为唯一约束。\n知识点 parent_id=0 表示根；各图重复实体为同一张表；不建物理外键。"
+}

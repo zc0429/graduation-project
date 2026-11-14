@@ -1,0 +1,104 @@
+
+> web@0.0.0 e2e:smoke
+> playwright test --config=playwright.ui.config.ts --project=chromium-desktop --project=chromium-laptop --project=chromium-tablet --project=chromium-mobile --grep-invert 界面证据
+
+[WebServer] (node:15878) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 53 tests using 1 worker
+
+(node:15899) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/53] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:29:1 › 登录页没有严重或关键 WCAG A/AA 问题
+[2/53] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:35:1 › 学生核心工作台没有严重或关键 WCAG A/AA 问题
+[3/53] [chromium-desktop] › e2e/smoke/accessibility.spec.ts:45:1 › 教师与管理员核心页没有严重或关键 WCAG A/AA 问题
+[4/53] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:7:1 › AI 解析展示成功证据并可从空状态重新触发
+[5/53] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:18:1 › AI 失败状态明确提供重试动作
+[6/53] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:32:1 › 相似题只在打开页签后请求并展示当前账号候选
+[7/53] [chromium-desktop] › e2e/smoke/ai-practice.spec.ts:42:1 › 复用已有变式题并提交一次变式练习自评
+[8/53] [chromium-desktop] › e2e/smoke/auth.spec.ts:3:1 › 学生可以登录并进入工作台
+[9/53] [chromium-desktop] › e2e/smoke/auth.spec.ts:14:1 › 登录错误留在表单并显示服务端消息
+[10/53] [chromium-desktop] › e2e/smoke/auth.spec.ts:27:1 › 注册请求成功后回到登录模式
+[11/53] [chromium-desktop] › e2e/smoke/auth.spec.ts:45:1 › 恢复的令牌过期时重定向并保留原目标
+[12/53] [chromium-desktop] › e2e/smoke/report-message.spec.ts:7:1 › 周报展示指标、掌握度与可读趋势表，并可重新生成
+[13/53] [chromium-desktop] › e2e/smoke/report-message.spec.ts:21:1 › 消息可按未读筛选并标记为已读
+[14/53] [chromium-desktop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[15/53] [chromium-desktop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[16/53] [chromium-desktop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[17/53] [chromium-desktop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+[18/53] [chromium-desktop] › e2e/smoke/review.spec.ts:7:1 › 复习筛选区分逾期与今日任务
+[19/53] [chromium-desktop] › e2e/smoke/review.spec.ts:19:1 › 确认完成复习后从清单移除任务
+[20/53] [chromium-desktop] › e2e/smoke/rich-question.spec.ts:7:1 › 富文本录入、展示、编辑与练习回显保持格式并过滤旧数据脚本
+[21/53] [chromium-desktop] › e2e/smoke/routing.spec.ts:3:1 › 未登录访问受保护页面会带回跳地址进入登录页
+[22/53] [chromium-desktop] › e2e/smoke/routing.spec.ts:10:1 › 学生访问管理员页面会回到工作台并显示权限提示
+[23/53] [chromium-desktop] › e2e/smoke/routing.spec.ts:18:1 › 已登录用户访问未知地址会看到 404 并可返回工作台
+[24/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 1912x948
+[25/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover student 1912x948
+[26/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover teacher 1912x948
+[27/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 1366x600
+[28/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 1366x420
+[29/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 1024x768
+[30/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 390x844
+  1) [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 390x844 ───────
+
+    Error: ENOSPC: no space left on device, mkdir '/workspace/graduation-delivery/web/test-results/ui-smoke/sidebar-hover-sidebar-hover-admin-390x844-chromium-desktop'
+
+      21 |     if (scenario.width <= 700) {
+      22 |       await expect(sidebar).toBeHidden()
+    > 23 |       await page.screenshot({ path: testInfo.outputPath('mobile.png') })
+         |                                              ^
+      24 |       return
+      25 |     }
+      26 |     await expect(sidebar).toBeVisible()
+        at /workspace/graduation-delivery/web/e2e/smoke/sidebar-hover.spec.ts:23:46
+
+    Error: ENOSPC: no space left on device, mkdir '/workspace/graduation-delivery/web/test-results/ui-smoke/sidebar-hover-sidebar-hover-admin-390x844-chromium-desktop'
+
+    Error: ENOSPC: no space left on device, mkdir '/workspace/graduation-delivery/web/test-results/ui-smoke/sidebar-hover-sidebar-hover-admin-390x844-chromium-desktop'
+
+
+(node:17667) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[31/53] [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 1912x948 collapsed
+[32/53] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:7:1 › 错题列表支持筛选并以 JWT 导出文件
+[33/53] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:25:1 › 录入错题后进入详情并启动解析
+[34/53] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:41:1 › 图片识别回填普通表单但不自动保存或污染正确答案
+[35/53] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:74:1 › 图片识别失败后仍可手工填写并由用户保存
+[36/53] [chromium-desktop] › e2e/smoke/student-questions.spec.ts:98:1 › 错题详情可编辑并在确认后删除
+[37/53] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:3:1 › 教师周报只声明并展示全站聚合范围
+[38/53] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:13:1 › 管理员可筛选并逻辑注销其他用户
+[39/53] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:27:1 › 管理员可新增并编辑科目
+[40/53] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:48:1 › 管理员可新增章节、添加考点并删除叶节点
+[41/53] [chromium-desktop] › e2e/smoke/teacher-admin.spec.ts:71:1 › 管理员可发布公告且公告立即进入列表
+(node:18524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[42/53] [chromium-laptop] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[43/53] [chromium-laptop] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[44/53] [chromium-laptop] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[45/53] [chromium-laptop] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:18827) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[46/53] [chromium-tablet] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[47/53] [chromium-tablet] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[48/53] [chromium-tablet] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[49/53] [chromium-tablet] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+(node:19115) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[50/53] [chromium-mobile] › e2e/smoke/responsive.spec.ts:9:1 › 登录页在当前视口无页面级横向溢出
+[51/53] [chromium-mobile] › e2e/smoke/responsive.spec.ts:18:1 › 学生错题目录在当前视口无页面级横向溢出
+[52/53] [chromium-mobile] › e2e/smoke/responsive.spec.ts:28:1 › 图片识别录入区在当前视口无页面级横向溢出
+[53/53] [chromium-mobile] › e2e/smoke/responsive.spec.ts:39:1 › 周报密集布局在当前视口无页面级横向溢出
+  1 failed
+    [chromium-desktop] › e2e/smoke/sidebar-hover.spec.ts:15:3 › sidebar hover admin 390x844 ────────
+  52 passed (2.9m)

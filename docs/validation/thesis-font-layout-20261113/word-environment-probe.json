@@ -1,0 +1,13 @@
+{
+  "programs": {
+    "winword": null,
+    "WINWORD.EXE": null,
+    "wine": null,
+    "libreoffice": null,
+    "soffice": "/opt/codex/runtimes/codex-primary-runtime/dependencies/bin/override/soffice"
+  },
+  "renderer_used": "Docker graduation-thesis-tools:20261112 / LibreOffice 25.2.3.2",
+  "native_soffice_version": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "native_renderer_used": false,
+  "microsoft_word_verified": false
+}

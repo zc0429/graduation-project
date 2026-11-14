@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/check_thesis_border_polish.py", line 139, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/check_thesis_border_polish.py", line 136, in main
+    if not args.figures_only:result.update(check_delivery(manifest,checks))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/graduation-project/scripts/documents/check_thesis_border_polish.py", line 95, in check_delivery
+    r=fitz.Rect(item['bbox']);assert r.x0>=77.4 and r.x1<=pg.rect.width-70.3 and r.y0>=70 and r.y1<=pg.rect.height-70,(number,list(r))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('3.5', [87.0, 77.85076904296875, 533.4500122070312, 397.4507751464844])

@@ -1,0 +1,56 @@
+[
+  {
+    "chapter": 1,
+    "chinese_prose_characters": 1680,
+    "figures": 0,
+    "body_tables": 0
+  },
+  {
+    "chapter": 2,
+    "chinese_prose_characters": 2269,
+    "figures": 0,
+    "body_tables": 0
+  },
+  {
+    "chapter": 3,
+    "chinese_prose_characters": 3928,
+    "figures": 9,
+    "body_tables": 4
+  },
+  {
+    "chapter": 4,
+    "chinese_prose_characters": 1553,
+    "figures": 0,
+    "body_tables": 0
+  },
+  {
+    "chapter": 5,
+    "chinese_prose_characters": 2850,
+    "figures": 6,
+    "body_tables": 2
+  },
+  {
+    "chapter": 6,
+    "chinese_prose_characters": 4712,
+    "figures": 5,
+    "body_tables": 13
+  },
+  {
+    "chapter": 7,
+    "chinese_prose_characters": 4892,
+    "figures": 8,
+    "body_tables": 1
+  },
+  {
+    "chapter": 8,
+    "chinese_prose_characters": 4000,
+    "figures": 0,
+    "body_tables": 7
+  },
+  {
+    "chapter": 9,
+    "chinese_prose_characters": 512,
+    "figures": 0,
+    "body_tables": 0
+  }
+]

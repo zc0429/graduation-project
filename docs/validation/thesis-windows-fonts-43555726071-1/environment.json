@@ -1,0 +1,11 @@
+{
+  "sha": "a5bea8478980511db6eb97677da1a6618a98c88e",
+  "runner_os": "Windows",
+  "image_os": "win22",
+  "image_version": "20261112.366.7",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "libreoffice": "LibreOffice 25.2.3.2 bbb074479178df812d175f709636b368952c2ce3",
+  "github_run_id": "43555726071",
+  "github_run_attempt": "1",
+  "microsoft_word_verified": false
+}

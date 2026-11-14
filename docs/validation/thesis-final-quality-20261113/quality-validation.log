@@ -1,0 +1,114 @@
+{
+  "baseline": "21da287744a252e7ccae0aadbe5832336c8b3b27",
+  "recorded_edits": 49,
+  "protected_files_checked": 1130,
+  "protected_changes": [],
+  "figures": 28,
+  "logical_tables": 26,
+  "actual_code_excerpts": 31,
+  "references": {
+    "total": 27,
+    "2024-2026": 23,
+    "2025-2027_published_by_audit": 15,
+    "foreign_language": 5,
+    "citation_first_appearance": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "opening_report_unchanged": true,
+    "chinese_first": true
+  },
+  "chapter_prose_counts": [
+    {
+      "chapter": 1,
+      "before_prose_han": 1633,
+      "after_prose_han": 1608,
+      "figures": 0,
+      "tables": 0
+    },
+    {
+      "chapter": 2,
+      "before_prose_han": 2313,
+      "after_prose_han": 2269,
+      "figures": 0,
+      "tables": 0
+    },
+    {
+      "chapter": 3,
+      "before_prose_han": 4022,
+      "after_prose_han": 3803,
+      "figures": 9,
+      "tables": 4
+    },
+    {
+      "chapter": 4,
+      "before_prose_han": 1562,
+      "after_prose_han": 1553,
+      "figures": 0,
+      "tables": 0
+    },
+    {
+      "chapter": 5,
+      "before_prose_han": 2892,
+      "after_prose_han": 2830,
+      "figures": 6,
+      "tables": 2
+    },
+    {
+      "chapter": 6,
+      "before_prose_han": 4661,
+      "after_prose_han": 4573,
+      "figures": 5,
+      "tables": 13
+    },
+    {
+      "chapter": 7,
+      "before_prose_han": 4716,
+      "after_prose_han": 4644,
+      "figures": 8,
+      "tables": 1
+    },
+    {
+      "chapter": 8,
+      "before_prose_han": 3891,
+      "after_prose_han": 3691,
+      "figures": 0,
+      "tables": 6
+    },
+    {
+      "chapter": 9,
+      "before_prose_han": 529,
+      "after_prose_han": 537,
+      "figures": 0,
+      "tables": 0
+    }
+  ],
+  "count_method": "Chinese characters outside code, tables, figure/table/code captions and source notes; headings retained; not Word word count",
+  "new_system_tests_executed": false,
+  "original_fonts_verified": false
+}

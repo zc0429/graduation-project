@@ -1,0 +1,153 @@
+{
+  "dfd_reflow": [
+    {
+      "source": "docs/thesis/delivery-20261112/figures/3-5.json",
+      "target": "3-5",
+      "before_height_pt": 613.8779625,
+      "after_height_pt": 298.6732315,
+      "removed_blank_intervals": [
+        [
+          114.614175,
+          187.37205025
+        ],
+        [
+          211.71850725,
+          263.01378375
+        ],
+        [
+          369.46654125000003,
+          416.181109
+        ],
+        [
+          440.527566,
+          517.86615
+        ]
+      ],
+      "text_order_unchanged": true,
+      "graph_semantics": "Only coordinate transformation of vector operations; original DFD graph retained."
+    },
+    {
+      "source": "docs/thesis/delivery-20261112/figures/3-6.json",
+      "target": "3-6",
+      "before_height_pt": 613.8779625,
+      "after_height_pt": 388.88976900000006,
+      "removed_blank_intervals": [
+        [
+          144.37795500000001,
+          237.59842899999998
+        ],
+        [
+          354.9566985,
+          401.299219
+        ]
+      ],
+      "text_order_unchanged": true,
+      "graph_semantics": "Only coordinate transformation of vector operations; original DFD graph retained."
+    },
+    {
+      "source": "docs/thesis/delivery-20261112/figures/3-7.json",
+      "target": "3-7",
+      "before_height_pt": 613.8779625,
+      "after_height_pt": 501.8110299999999,
+      "removed_blank_intervals": [
+        [
+          181.58268,
+          201.6259875
+        ],
+        [
+          235.9015785,
+          298.3582725
+        ],
+        [
+          393.6496125,
+          408.740164
+        ],
+        [
+          511.2165435,
+          527.795284
+        ]
+      ],
+      "text_order_unchanged": true,
+      "graph_semantics": "Only coordinate transformation of vector operations; original DFD graph retained."
+    },
+    {
+      "source": "docs/thesis/delivery-20261112/figures/3-8.json",
+      "target": "3-8",
+      "before_height_pt": 613.8779625,
+      "after_height_pt": 377.29134299999987,
+      "removed_blank_intervals": [
+        [
+          81.1299225,
+          116.05512
+        ],
+        [
+          229.9488225,
+          267.362209
+        ],
+        [
+          310.68307575,
+          406.251975
+        ],
+        [
+          471.779535,
+          522.95866975
+        ]
+      ],
+      "text_order_unchanged": true,
+      "graph_semantics": "Only coordinate transformation of vector operations; original DFD graph retained."
+    },
+    {
+      "source": "docs/thesis/delivery-20261112/figures/3-9.json",
+      "target": "3-9",
+      "before_height_pt": 613.8779625,
+      "after_height_pt": 267.511814,
+      "removed_blank_intervals": [
+        [
+          109.4055135,
+          130.93701
+        ],
+        [
+          196.46456999999998,
+          246.2716575
+        ],
+        [
+          280.5472485,
+          416.181109
+        ]
+      ],
+      "text_order_unchanged": true,
+      "graph_semantics": "Only coordinate transformation of vector operations; original DFD graph retained."
+    },
+    {
+      "source": "docs/thesis/structure-20261112/figures/sources/6-6.json",
+      "target": "5-3",
+      "before_height_pt": 565,
+      "after_height_pt": 448.8,
+      "removed_blank_intervals": [
+        [
+          78,
+          93
+        ],
+        [
+          285,
+          300
+        ],
+        [
+          433,
+          455
+        ],
+        [
+          476,
+          491
+        ],
+        [
+          512,
+          528
+        ]
+      ],
+      "text_order_unchanged": true,
+      "graph_semantics": "Same participants, messages and vertical order; vertical spacing scaled 0.8, all font sizes unchanged."
+    }
+  ],
+  "module_figure": "Derived from controller roles and actual services; teacher reads system aggregate report, student reads own report."
+}

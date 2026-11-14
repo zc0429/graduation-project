@@ -1,0 +1,434 @@
+{
+  "id": "6-2",
+  "caption": "图 6.2　复习计划与练习记录关系",
+  "height": 470,
+  "evidence": [
+    "server/src/main/resources/db/schema.sql",
+    "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
+    "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java"
+  ],
+  "ops": [
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 10,
+      "w": 164,
+      "h": 42
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 10,
+      "w": 164,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 92.0,
+      "y": 25,
+      "text": "用户 user",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 47,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 266,
+      "y": 10,
+      "w": 170,
+      "h": 57
+    },
+    {
+      "kind": "rect",
+      "x": 266,
+      "y": 10,
+      "w": 170,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 351.0,
+      "y": 25,
+      "text": "错题 question",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 47,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 273,
+      "y": 62,
+      "text": "user_id / mastery",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 170,
+      "w": 176,
+      "h": 87
+    },
+    {
+      "kind": "rect",
+      "x": 10,
+      "y": 170,
+      "w": 176,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 98.0,
+      "y": 185,
+      "text": "复习 review_plan",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 207,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 222,
+      "text": "user_id / question_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 237,
+      "text": "review_stage / plan_date",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 17,
+      "y": 252,
+      "text": "status / finish_time",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 260,
+      "y": 170,
+      "w": 176,
+      "h": 72
+    },
+    {
+      "kind": "rect",
+      "x": 260,
+      "y": 170,
+      "w": 176,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 348.0,
+      "y": 185,
+      "text": "变式 variant_question",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 267,
+      "y": 207,
+      "text": "PK id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 267,
+      "y": 222,
+      "text": "question_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 267,
+      "y": 237,
+      "text": "stem / answer / difficulty",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "rect",
+      "x": 117,
+      "y": 345,
+      "w": 212,
+      "h": 72
+    },
+    {
+      "kind": "rect",
+      "x": 117,
+      "y": 345,
+      "w": 212,
+      "h": 23,
+      "fill": [
+        0.95,
+        0.95,
+        0.95
+      ]
+    },
+    {
+      "kind": "text",
+      "x": 223.0,
+      "y": 360,
+      "text": "练习 practice_record",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 124,
+      "y": 382,
+      "text": "PK id / user_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 124,
+      "y": 397,
+      "text": "question_id 或 variant_id",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "text",
+      "x": 124,
+      "y": 412,
+      "text": "user_answer / is_correct",
+      "size": 9,
+      "anchor": "start"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          92,
+          52
+        ],
+        [
+          92,
+          170
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 126,
+      "y": 110,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          266,
+          50
+        ],
+        [
+          228,
+          50
+        ],
+        [
+          228,
+          202
+        ],
+        [
+          186,
+          202
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 220,
+      "y": 148,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          352,
+          67
+        ],
+        [
+          352,
+          170
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 385,
+      "y": 119,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          25,
+          52
+        ],
+        [
+          4,
+          52
+        ],
+        [
+          4,
+          322
+        ],
+        [
+          149,
+          322
+        ],
+        [
+          149,
+          345
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 78,
+      "y": 309,
+      "text": "1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          414,
+          67
+        ],
+        [
+          444,
+          67
+        ],
+        [
+          444,
+          395
+        ],
+        [
+          329,
+          395
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 390,
+      "y": 385,
+      "text": "0..1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "line",
+      "points": [
+        [
+          348,
+          242
+        ],
+        [
+          348,
+          289
+        ],
+        [
+          270,
+          289
+        ],
+        [
+          270,
+          345
+        ]
+      ],
+      "arrow": null,
+      "dash": false
+    },
+    {
+      "kind": "text",
+      "x": 314,
+      "y": 281,
+      "text": "0..1 : 0..N",
+      "size": 9,
+      "anchor": "middle"
+    },
+    {
+      "kind": "text",
+      "x": 223,
+      "y": 450,
+      "text": "选择变式题时，通过 variant_question.question_id 更新原题掌握度。",
+      "size": 9,
+      "anchor": "middle"
+    }
+  ],
+  "note": "两种练习目标由 Service 强制二选一；Schema 未建立 CHECK 或外键约束。\n删题或失效清理可能使旧练习指向已删除变式题，因此历史关联不保证仍可解析。"
+}

@@ -1,0 +1,52 @@
+**********************
+PowerShell transcript start
+Start time: 20261114083953
+Username: runnervm9zap3\runneradmin
+RunAs User: runnervm9zap3\runneradmin
+Configuration Name: 
+Machine: runnervm9zap3 (Microsoft Windows NT 10.0.20348.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -command . 'D:\a\_temp\81f3b5a2-f0c3-4539-a7dd-bec13e313660.ps1'
+Process ID: 5784
+PSVersion: 7.6.10
+PSEdition: Core
+GitCommitId: 7.6.10
+OS: Microsoft Windows 10.0.20348
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Transcript started, output file is D:\a\graduation-project\graduation-project\docs\validation\thesis-windows-fonts-43576840299-1\windows-transcript.log
+
+
+Chocolatey v2.7.5
+Installing the following packages:
+libreoffice-fresh
+By installing, you accept licenses for the packages.
+Downloading package from source 'https://community.chocolatey.org/api/v2/'
+
+libreoffice-fresh v25.2.3 [Approved]
+libreoffice-fresh package files install completed. Performing other installation steps.
+Downloading libreoffice-fresh 64 bit
+  from 'https://downloadarchive.documentfoundation.org/libreoffice/old/25.2.3.2/win/x86_64/LibreOffice_25.2.3.2_Win_x86-64.msi'
+
+Download of LibreOffice_25.2.3.2_Win_x86-64.msi (348.21 MB) completed.
+Hashes match.
+Installing libreoffice-fresh...
+libreoffice-fresh has been installed.
+  libreoffice-fresh may be able to be automatically uninstalled.
+ The install of libreoffice-fresh was successful.
+  Deployed to 'C:\Program Files\LibreOffice\'
+
+Chocolatey installed 1/1 packages.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+
+Enjoy using Chocolatey? Explore more amazing features to take your
+experience to the next level at
+ https://chocolatey.org/compare
+
+**********************
+PowerShell transcript end
+End time: 20261114084356
+**********************

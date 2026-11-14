@@ -1,0 +1,22 @@
+{
+  "snapshot_phase": "before_delivery_commit",
+  "review_start_sha": "e211f65552eda38634cf98aeb359d7f74a4a9403",
+  "pr": {
+    "number": 9,
+    "url": "https://github.com/zc0429/graduation-project/pull/9",
+    "state": "open",
+    "draft": true,
+    "merged": false,
+    "head": "codex/thesis-final-quality-20261113",
+    "head_sha": "e211f65552eda38634cf98aeb359d7f74a4a9403",
+    "base": "dev",
+    "base_sha": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002"
+  },
+  "protected_remote_refs": {
+    "dev": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "main": "d16e31f6b7c06b836a4ceeb649273c23a3e68c61",
+    "pr8": "21da287744a252e7ccae0aadbe5832336c8b3b27"
+  },
+  "scope": "Only continue existing Draft PR #9; no PR merges, no changes to dev/main/PR #8.",
+  "final_commit_lookup": "See PR #9 head SHA / git rev-parse HEAD after fetching codex/thesis-final-quality-20261113."
+}

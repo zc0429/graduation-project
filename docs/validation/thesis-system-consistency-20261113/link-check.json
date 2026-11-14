@@ -1,0 +1,15 @@
+{
+  "new_audit_docs_missing": [],
+  "historical_notes_missing_not_modified": [
+    {
+      "source": "docs/notes/HANDOFF.md",
+      "target": "D:/Documents/GitHub/graduation-project-thesis-20260920/docs/notes/HANDOFF.md",
+      "new_audit_doc": false
+    },
+    {
+      "source": "docs/notes/进度记录.md",
+      "target": "D:/Documents/GitHub/graduation-project-thesis-20260920/docs/notes/毕设待完成事项.md",
+      "new_audit_doc": false
+    }
+  ]
+}

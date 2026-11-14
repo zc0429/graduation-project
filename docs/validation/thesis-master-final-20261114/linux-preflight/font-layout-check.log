@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 225, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 111, in main
+    assert props['sz']==str(prose[text]) and props['eastAsia']==('黑体' if text.startswith('代码7.') else '宋体'),(text[:70],props)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('代码7.1向量隐藏与逻辑删除字段（Question.java，第46—53行；仅摘录所列片段，其余省略）', {'ascii': 'Times New Roman', 'hAnsi': 'Times New Roman', 'cs': 'Times New Roman', 'eastAsia': '宋体', 'hint': 'eastAsia', 'b': '0', 'sz': '24'})

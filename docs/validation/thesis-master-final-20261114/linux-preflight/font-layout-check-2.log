@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 225, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 172, in main
+    assert pages,('Caption or reference not found in PDF',kind,number)
+           ^^^^^
+AssertionError: ('Caption or reference not found in PDF', '文献', '23')

@@ -1,0 +1,20 @@
+[
+  {
+    "source": "requirements-20261112/business-flow/01-错题录入与AI分析",
+    "new_number": "3.1",
+    "change": "Only title numbering; graph, nodes, flows, labels and geometry unchanged",
+    "source_png_sha256": "21a2186a2698e0f2a80bd5729fa8ea2d48e3eaadde655e6f7c7f603ed126e0ba"
+  },
+  {
+    "source": "thesis-audit-20261112/business-flow/02-学习练习与复习",
+    "new_number": "3.2",
+    "change": "Only title numbering; graph, nodes, flows, labels and geometry unchanged",
+    "source_png_sha256": "c23f82e5c55b0f81a0474e62ad5de225cd2ca76af51d8a3831ec07eec09b08c6"
+  },
+  {
+    "source": "requirements-20261112/business-flow/03-管理与学情查看",
+    "new_number": "3.3",
+    "change": "Only title numbering; graph, nodes, flows, labels and geometry unchanged",
+    "source_png_sha256": "3ba09a927b99ce102800c8dce9aaf289d869304364734ed66c751d9e2bd3f9e2"
+  }
+]

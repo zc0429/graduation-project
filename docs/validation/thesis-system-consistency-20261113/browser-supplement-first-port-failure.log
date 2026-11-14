@@ -1,0 +1,93 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(page).toHaveURL(expected) failed
+
+Expected pattern: /\/$/
+Received string:  "http://127.0.0.1:4176/login"
+Timeout: 5000ms
+
+Call log:
+  - Expect "to.have.url" with timeout 5000ms
+    13 × locator resolved to <html lang="zh-CN">…</html>
+       - unexpected value "http://127.0.0.1:4176/login"
+
+    at captureRawStack (/workspace/graduation-project/web/node_modules/playwright-core/lib/coreBundle.js:9681:17)
+    at callMatcherAsStep (/workspace/graduation-project/web/node_modules/playwright/lib/matchers/expect.js:13310:57)
+    at Object.toHaveURL (/workspace/graduation-project/web/node_modules/playwright/lib/matchers/expect.js:13300:23)
+    at login (/workspace/graduation-project/scripts/validation/verify_consistency_browser.mjs:21:22)
+    at async file:///workspace/graduation-project/scripts/validation/verify_consistency_browser.mjs:33:50 {
+  matcherResult: {
+    name: 'toHaveURL',
+    expected: /\/$/,
+    message: 'expect(page).toHaveURL(expected) failed\n' +
+      '\n' +
+      'Expected pattern: /\\/$/\n' +
+      'Received string:  "http://127.0.0.1:4176/login"\n' +
+      'Timeout: 5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.have.url" with timeout 5000ms\n' +
+      '    13 × locator resolved to <html lang="zh-CN">…</html>\n' +
+      '       - unexpected value "http://127.0.0.1:4176/login"\n',
+    pass: false,
+    actual: 'http://127.0.0.1:4176/login',
+    log: [
+      '  - Expect "to.have.url" with timeout 5000ms',
+      '    13 × locator resolved to <html lang="zh-CN">…</html>',
+      '       - unexpected value "http://127.0.0.1:4176/login"'
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- main:\n' +
+      '  - region "把每一道错题， 变成会生长 的学习线索。":\n' +
+      '    - link "知错首页":\n' +
+      '      - /url: /\n' +
+      '      - strong: 知错\n' +
+      '      - text: AI 错题分析与学习推荐\n' +
+      '    - text: 毕业设计系统\n' +
+      '    - paragraph: 数字错题本 · 个性化学习工作台\n' +
+      '    - heading "把每一道错题， 变成会生长 的学习线索。" [level=1]\n' +
+      '    - paragraph: 从错题录入、智能解析到复习反馈，让零散的错误沉淀为清晰、可执行的个人学习路径。\n' +
+      '    - list "学习闭环":\n' +
+      '      - listitem:\n' +
+      '        - strong: 录入\n' +
+      '        - text: 留住问题 →\n' +
+      '      - listitem:\n' +
+      '        - strong: 解析\n' +
+      '        - text: 定位错因 →\n' +
+      '      - listitem:\n' +
+      '        - strong: 推荐\n' +
+      '        - text: 举一反三 →\n' +
+      '      - listitem:\n' +
+      '        - strong: 复习\n' +
+      '        - text: 按时巩固 →\n' +
+      '      - listitem:\n' +
+      '        - strong: 反馈\n' +
+      '        - text: 看见进步\n' +
+      '    - paragraph: 基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现\n' +
+      '  - region "回到学习桌":\n' +
+      '    - paragraph: 继续你的学习记录\n' +
+      '    - heading "回到学习桌" [level=2]\n' +
+      '    - group "账号操作":\n' +
+      '      - button "登录" [pressed]\n' +
+      '      - button "注册"\n' +
+      '    - text: "*用户名"\n' +
+      '    - textbox "*用户名":\n' +
+      '      - /placeholder: 请输入用户名\n' +
+      '      - text: admin\n' +
+      '    - text: "*密码"\n' +
+      '    - textbox "*密码":\n' +
+      '      - /placeholder: 6–32 位\n' +
+      '      - text: "123456"\n' +
+      '    - button "显示密码":\n' +
+      '      - img\n' +
+      '    - paragraph: Request failed with status code 403\n' +
+      '    - button "进入知错工作台":\n' +
+      '      - text: 进入知错工作台\n' +
+      '      - img\n' +
+      '    - paragraph: 正式页面不展示测试账号或密码。登录失败与令牌过期会明确提示；账号停用目前由后端统一返回登录失败。'
+  }
+}
+
+Node.js v24.22.1

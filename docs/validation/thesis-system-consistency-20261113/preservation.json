@@ -1,0 +1,42 @@
+{
+  "baseline_commit": "7d0d40e771a2159f91662542d168ed2ebded56ff",
+  "baseline_files": 1009,
+  "unchanged_files": 1001,
+  "intentional_changes": {
+    "AGENTS.md": {
+      "before": "506ed878aa57a529de7f9b74d40a7ce9cbc540a71d8f7233d1adf0b16749f88f",
+      "after": "d3369a53f02eb8ab669462fb9cd41990ce267d6a86dfef559f0cd150584dac8a"
+    },
+    "docs/notes/HANDOFF.md": {
+      "before": "f05a2eb1f5bc71eb5ede711826b6ec0ffecb8f44d59cb5952337b5086808936a",
+      "after": "305f8a8393486c88b6609faa9fc3854e80d3e4cd037f2bd8b18affd106907768"
+    },
+    "docs/notes/进度记录.md": {
+      "before": "490588da97880c6a7bb8f87acc1dc35435f3e3eeaac1803d485d6668aa1ed94c",
+      "after": "d03be234a71eb50ee003c2ccc02b12dea100d20545ccf3bc48d195fda99a8cd3"
+    },
+    "docs/thesis/毕业论文.md": {
+      "before": "fbe5f7da9919daff5273cea6e6f935b69dc32a020fc2f9b037aab2ebbba2c280",
+      "after": "fed1f7eb5e2209333441ca80198e82b4d0549e9e1a2b9666bc821cb66602d64d"
+    },
+    "scripts/documents/build_thesis_delivery.py": {
+      "before": "d2a28f96da97c53174b9e18c7ff80a56a2bb4a1fa17ac73fd9fd2924d6d600e6",
+      "after": "fe12180409a3aae9018ed2d4a8ef12adc1877cc0d1774a4da47a5321e252a986"
+    },
+    "server/src/main/java/com/example/wrongbook/service/impl/KnowledgePointServiceImpl.java": {
+      "before": "5329b717124f4b411387ed486753d28254e28b69c737c0b4cbe46bfe57f67622",
+      "after": "ca709ba63eb57ff3d91f01efb1cee3fc4097d72121f335b9bf63ba1f74063948"
+    },
+    "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java": {
+      "before": "1b23ff23eb8a9f4ae722b756e2b1120d6f68fbff2381ac8515f61b6bfb11a01b",
+      "after": "7f23d2245d084ba5c8968ff2fb2c79ef642d01d7a55cb19950502a02ee749532"
+    },
+    "server/src/test/java/com/example/wrongbook/service/impl/QuestionAiInvalidationIntegrationTests.java": {
+      "before": "58b51d99a136d78e9910f244b027090d5b1a8fc55bbfab87188675d409e023fb",
+      "after": "2911c5c2e818cecc162f12ab18f88b6c914fd6550c29fcb7a999dba812e3b2e5"
+    }
+  },
+  "school_opening_reference_historical_evidence_unchanged": true,
+  "all_original_figures_and_screenshots_unchanged": true,
+  "dev_main_sources_unchanged": true
+}

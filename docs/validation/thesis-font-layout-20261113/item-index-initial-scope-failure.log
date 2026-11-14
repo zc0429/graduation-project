@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 219, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 170, in main
+    assert item_counts=={'图':28,'表':26,'代码':31,'文献':27},item_counts
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'图': 35, '表': 45, '代码': 31, '文献': 27}

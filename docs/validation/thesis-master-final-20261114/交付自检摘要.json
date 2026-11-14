@@ -1,0 +1,57 @@
+{
+  "delivery": "thesis-windows-fonts-43555726071-1",
+  "render_source_sha": "a5bea8478980511db6eb97677da1a6618a98c88e",
+  "windows_run_id": "43555726071",
+  "pdf_pages": 100,
+  "nine_chapter_body_pages": 86,
+  "sensitive_match_count": 0,
+  "portrait_a4_percent": 100,
+  "landscape_pages": [],
+  "main_toc_pages": 3,
+  "printed_directory_targets": 177,
+  "table_chunks": 32,
+  "continuations": [
+    {
+      "caption": "续表 6.13　系统接口一览",
+      "pdf_page": 60,
+      "rows": 13,
+      "all_cells_on_page": true,
+      "repeated_header": true
+    },
+    {
+      "caption": "续表 6.13　系统接口一览",
+      "pdf_page": 61,
+      "rows": 12,
+      "all_cells_on_page": true,
+      "repeated_header": true
+    },
+    {
+      "caption": "续表 A.2　核心代码位置索引",
+      "pdf_page": 100,
+      "rows": 10,
+      "all_cells_on_page": true,
+      "repeated_header": true
+    }
+  ],
+  "code_blocks": 31,
+  "code_source_lines": 275,
+  "references": 27,
+  "figures": 28,
+  "body_tables": 27,
+  "appendix_tables": 2,
+  "actual_embedded_font_objects": 9,
+  "actual_font_spans": {
+    "SimSun": 3513,
+    "SimHei": 405,
+    "Times New Roman": 2803,
+    "Courier New": 323
+  },
+  "original_pdf_text_fonts_verified": true,
+  "raster_font_certification": false,
+  "microsoft_word_verified": false,
+  "current_system_tests_executed": false,
+  "new_live_model_calls": 0,
+  "missing_review_item": "M14原文未提供",
+  "pdf_sha256": "8285d74c38aeb1d18d5c22ef31106fd986b48bcc5667f1a054e30ca3daab858d",
+  "docx_sha256": "b378179190e9fec85c544e6bad59a2c5195fa77ae7479b8996fd6d0fc4727ab8"
+}

@@ -1,0 +1,11 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+BAAAAA+SimSun                        TrueType          WinAnsi          yes yes yes   7509  0
+CAAAAA+SimHei                        TrueType          WinAnsi          yes yes yes   7534  0
+DAAAAA+TimesNewRomanPS-BoldMT        TrueType          WinAnsi          yes yes yes   7544  0
+EAAAAA+TimesNewRomanPSMT             TrueType          WinAnsi          yes yes yes   7529  0
+FAAAAA+SimHei                        TrueType          WinAnsi          yes yes yes   7539  0
+GAAAAA+SimSun                        TrueType          WinAnsi          yes yes yes   7514  0
+HAAAAA+SimSun                        TrueType          WinAnsi          yes yes yes   7519  0
+IAAAAA+SimSun                        TrueType          WinAnsi          yes yes yes   7524  0
+JAAAAA+CourierNewPSMT                TrueType          WinAnsi          yes yes yes   7504  0

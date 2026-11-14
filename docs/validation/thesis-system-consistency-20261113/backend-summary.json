@@ -1,0 +1,818 @@
+{
+  "total": 113,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 4,
+  "classes": [
+    {
+      "class": "com.example.wrongbook.WrongbookServerApplicationTests",
+      "spring_context": true,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "contextLoads",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.config.WebConfigTests",
+      "spring_context": false,
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "allowsConfiguredOriginWithCredentials",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsWildcardConfiguration",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsUnconfiguredOrigin",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.controller.QuestionRecognitionControllerTests",
+      "spring_context": false,
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "authenticatedRecognitionReturnsTemporaryResultWithoutBusinessWrites",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "requiresAuthentication",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "businessErrorsUseMatchingHttpStatus",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsDisabledAccountEvenWhenItsTokenIsStillCryptographicallyValid",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "usesCurrentDatabaseRoleInsteadOfStaleTokenRole",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.experiment.gate5.Gate5AiRagExperimentTests",
+      "spring_context": true,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "cases": [
+        {
+          "name": "runsFixedTwentySevenCaseExperiment",
+          "status": "skipped",
+          "reason": "Environment variable [RUN_GATE5_EXPERIMENT] does not exist"
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.experiment.gate5.Gate5ExperimentInfrastructureTests",
+      "spring_context": false,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "blindLabelsAreStableAndContainBothOrders",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "calculatesConceptCoverageWithSynonymsAndNormalization",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "fixedDatasetHasRequiredDistributionAndLockedLabels",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "calculatesRetrievalMetricsAtK",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.CatalogIntegrityIntegrationTests",
+      "spring_context": true,
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "referencedLeafCannotBeRemoved(String)[1]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "referencedLeafCannotBeRemoved(String)[2]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "referencedLeafCannotBeRemoved(String)[3]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "disabledSubjectCannotReplaceCurrentInput",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "unusedLeafAndEmptyChapterCanStillBeRemoved",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "unknownSubjectCannotCreateQuestionOrPlans",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "leafCannotBecomeParentOfThirdLevel",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.EmbeddingContentTests",
+      "spring_context": false,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "normalizesRichTextBeforeCallingTheEmbeddingProvider",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceLiveTests",
+      "spring_context": true,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "cases": [
+        {
+          "name": "auditsRebuildsAndVerifiesAllActiveQuestionEmbeddings",
+          "status": "skipped",
+          "reason": "Environment variable [RUN_EMBEDDING_REBUILD] does not exist"
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.EmbeddingRebuildMaintenanceTests",
+      "spring_context": true,
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "continuesAfterOneFailureAndKeepsSummaryCountsMutuallyExclusive",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "writesAValid1024DimensionEmbedding",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsNullWrongDimensionAndNonFiniteEmbeddings",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "auditsNullInvalidNonFiniteAndExpectedDimensionBuckets",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "doesNotOverwriteAStemChangedOnlyByCase",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.FinalDeliveryCoreIntegrationTests",
+      "spring_context": true,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "questionCreateRollsBackWhenReviewPlanCreationFails",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "practiceRecordRollsBackWhenMasteryUpdateFails",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "practiceRejectsQuestionAndVariantSubmittedTogether",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "repeatedPracticeUsesBoundedAtomicMasteryUpdates",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.GlmQuestionRecognitionClientTests",
+      "spring_context": false,
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "rejectsEmptyStem",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsMissingResponseField",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "mapsNetworkTimeoutToStableBusinessError",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "mapsRateLimitAndServerFailureWithoutLeakingUpstreamBody",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "missingKeyRefusesRecognitionWithoutNetworkAndKeepsApplicationConstructible",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsNonJsonContent",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "sendsVerifiedMultimodalFormatAndParsesStructuredResponse",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.LearningResourceIntegrationTests",
+      "spring_context": true,
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "repeatedDeliveryDoesNotMarkAnUnansweredQuestionPracticed",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidKnowledgeBeforePersistence(String)[1]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidKnowledgeBeforePersistence(String)[2]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidKnowledgeBeforePersistence(String)[3]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidKnowledgeBeforePersistence(String)[4]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidKnowledgeBeforePersistence(String)[5]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidKnowledgeBeforePersistence(String)[6]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "duplicateBatchRollsBackEveryInsertedVariant",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "contentEditInvalidatesKnowledgeAndSourceOnlyEditKeepsIt",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "originalAndStoredUnpracticedResourcesPrecedeGenerationThenCycle",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "otherUsersAndNonStudentRolesCannotReadOrGenerateResources(String)[1]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "otherUsersAndNonStudentRolesCannotReadOrGenerateResources(String)[2]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "otherUsersAndNonStudentRolesCannotReadOrGenerateResources(String)[3]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "anotherStudentsPracticeCannotConsumeMyResource",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "concurrentKnowledgeRequestsShareOneGeneratedRecord",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "legacyVariantEndpointReusesUntilActualRecordsExhaustThePool",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "failedGenerationKeepsOldResourcesAvailableForExplicitRepeat",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "knowledgePersistsAndReusesWithoutModelReadiness",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "staleKnowledgeResponseCannotWriteAfterAnEdit",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "explicitRepeatKeepsHistoryAndDoesNotCallModel",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "deleteQuestionAlsoRemovesItsKnowledgeCache",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "alreadyStoredStemsAreNotSavedAsNewQuestionsAfterExhaustion",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.LiveGlmValidationTests",
+      "spring_context": true,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "cases": [
+        {
+          "name": "validatesRealGlmEmbeddingRagAnalysisAndVariantChain",
+          "status": "skipped",
+          "reason": "Environment variable [RUN_LIVE_LLM_TESTS] does not exist"
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.LiveQuestionRecognitionTests",
+      "spring_context": false,
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1,
+      "cases": [
+        {
+          "name": "recognizesOneBase64PngAsStrictJson",
+          "status": "skipped",
+          "reason": "Environment variable [RUN_LIVE_IMAGE_RECOGNITION_TESTS] does not exist"
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.OpenAiCompatibleLlmClientTests",
+      "spring_context": false,
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "retriesOneTransientServerFailure",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsUnexpectedEmbeddingDimensions",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "doesNotRetryNonOverloadRateLimit",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "parsesGlmEmbeddingResponseWithConfiguredDimensions",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "retriesOnePlatformOverload",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "doesNotReplayChatAfterReadTimeout",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "defaultGlmUsesRequiredThinkingParametersWithoutChangingEmbeddingSpace",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "parsesGlmChatResponseAndSendsJsonMode",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "absentKeyDoesNotStopManualInputButRefusesAiWithoutNetworkOrMockFallback",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "deepseekUsesDeterministicLocalEmbeddingAndRealChatModelName",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "doesNotImmediatelyRetryUserRateLimit",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsNonFiniteEmbeddingValues",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.QuestionAiInvalidationIntegrationTests",
+      "spring_context": true,
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "sourceOnlyChangeKeepsAiDerivedData",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "invalidStructuredResponseCannotBePersistedAsSuccess(String)[1]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "invalidStructuredResponseCannotBePersistedAsSuccess(String)[2]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "stemChangeInvalidatesAllAiDerivedData",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "unchangedQuestionStillCompletesAiAnalysisNormally",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "staleAsyncTaskCannotWriteOldResultsAfterQuestionEdit",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "derivedDeleteFailureRollsBackQuestionAndAllDerivedChanges",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "answerChangeInvalidatesAllAiDerivedData",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "subjectChangeInvalidatesAllAiDerivedData",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.QuestionRecognitionServiceImplTests",
+      "spring_context": false,
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "mapsOnlyAnExistingSubjectAndKeepsStudentAnswerTransient",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "discardsSubjectNameOutsideCurrentCandidates",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "disabledModeFailsBeforeSubjectLookupOrNetworkCall",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsImageOverConfiguredLimit",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsUnsupportedInvalidAndSpoofedImagesBeforeNetworkCall",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.RagServiceImplDataIsolationTests",
+      "spring_context": false,
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "returnsEmptyWhenOnlyAnotherUsersCandidateExists",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "retrievesOnlyTheSourceOwnersCandidates",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.RecommendServiceImplDataIsolationTests",
+      "spring_context": false,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "sameKnowledgePointCandidatesStayWithinTheSourceOwner",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "embeddingFallbackCannotReintroduceAnotherUsersQuestion",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "adminUsesTheSourceQuestionOwnerAsTheCandidateBoundary",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "returnsEmptyWhenNoCandidateBelongsToTheSourceOwner",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.RichQuestionIntegrationTests",
+      "spring_context": true,
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "exportsPlainTextAndProvidesPlainReviewSummariesWithExistingTextCompatible",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "storesSanitizedRichTextAndKeepsLearningRecordsAcrossAnEdit",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.service.impl.VariantServiceImplTests",
+      "spring_context": false,
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "validatesAllVariantsBeforeOpeningShortInsertTransaction(String)[1]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "validatesAllVariantsBeforeOpeningShortInsertTransaction(String)[2]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsStaleQuestionInputBeforeAnyInsert",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "variantPromptReceivesNormalizedQuestionText",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidResponseBeforeAnyInsert(String)[1]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidResponseBeforeAnyInsert(String)[2]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidResponseBeforeAnyInsert(String)[3]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidResponseBeforeAnyInsert(String)[4]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidResponseBeforeAnyInsert(String)[5]",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "rejectsInvalidResponseBeforeAnyInsert(String)[6]",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.util.FileStorageUtilTests",
+      "spring_context": false,
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "rejectsUploadPathTraversal",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "returnsOwnedImageAsInlineDataAndDeletesReplacedFile",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    },
+    {
+      "class": "com.example.wrongbook.util.QuestionContentTests",
+      "spring_context": false,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "cases": [
+        {
+          "name": "removesActiveContentAndAllAttributesButPreservesSupportedFormatting",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "refusesEmptyRichTextAndExcessiveInput",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "keepsLegacyMathematicalTextWithoutInterpretingComparisonsAsTags",
+          "status": "passed",
+          "reason": ""
+        },
+        {
+          "name": "normalizesParagraphsListsAndMathematicalIndicesForAiAndExport",
+          "status": "passed",
+          "reason": ""
+        }
+      ]
+    }
+  ],
+  "passed": 109,
+  "context_groups": {
+    "False": {
+      "tests": 60,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "True": {
+      "tests": 53,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3
+    }
+  }
+}

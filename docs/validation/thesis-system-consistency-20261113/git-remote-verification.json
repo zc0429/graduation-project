@@ -1,0 +1,14 @@
+{
+  "after_final_fetch": {
+    "dev": "6c667e0c2d72430c7f6638c52a6cb700b7a7a002",
+    "main": "d16e31f6b7c06b836a4ceeb649273c23a3e68c61",
+    "pr7": "7d0d40e771a2159f91662542d168ed2ebded56ff",
+    "pr6": "bbe1c5104ad6db8fea0a0294c6921d63b86cd1ff",
+    "pr5": "0fe7707f47a50a04a929705d39264292e2713d95"
+  },
+  "all_match_initial_baseline": true,
+  "review_branch": "codex/thesis-system-consistency-audit-20261113",
+  "draft_pr": 8,
+  "target": "dev",
+  "merged": false
+}

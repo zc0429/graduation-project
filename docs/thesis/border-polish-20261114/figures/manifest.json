@@ -1,0 +1,1984 @@
+{
+  "align-reference1-20261113/business-flow/3-1.png": {
+    "number": "3.1",
+    "file": "3-1.png",
+    "source": "docs/thesis/final-master-20261114/figures/3-1.svg",
+    "source_sha256": "7dcd0ec356118963f5b924113e5c91605521ac74ee717bcefbf14052133de4e4",
+    "png_sha256": "22d6abedf53bb2a35c3cf00a63805ede1060021ce18f2055761f201a59133ec3",
+    "svg_sha256": "0d0afef49e5809d2b1a957b11761e39d2ad4334a0992df9b0509ac59f1080d60",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      3040,
+      3656
+    ],
+    "actual_white_margins_px": [
+      92,
+      92,
+      94,
+      95
+    ],
+    "viewBox": [
+      29.895999908447266,
+      72.0250015258789,
+      760,
+      914
+    ],
+    "rectangles": [
+      {
+        "x": 135.12099999999998,
+        "y": 151.325,
+        "w": 76.923,
+        "h": 30.9
+      },
+      {
+        "x": 94.255,
+        "y": 211.42499999999998,
+        "w": 158.64799999999997,
+        "h": 53.224999999999994
+      },
+      {
+        "x": 339.444,
+        "y": 325.6,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 575.008,
+        "y": 325.6,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 332.227,
+        "y": 430.3375,
+        "w": 173.06799999999998,
+        "h": 53.224999999999994
+      },
+      {
+        "x": 339.444,
+        "y": 524.775,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 94.255,
+        "y": 614.9125,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 332.227,
+        "y": 709.35,
+        "w": 173.06799999999998,
+        "h": 51.5125
+      },
+      {
+        "x": 575.008,
+        "y": 709.35,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 332.227,
+        "y": 799.4875000000001,
+        "w": 173.06799999999998,
+        "h": 51.5125
+      },
+      {
+        "x": 94.255,
+        "y": 799.4875000000001,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 135.12099999999998,
+        "y": 876.75,
+        "w": 76.923,
+        "h": 30.9
+      },
+      {
+        "x": 247.135,
+        "y": 319.5875,
+        "w": 45.192,
+        "h": 24.0375
+      },
+      {
+        "x": 326.459,
+        "y": 405.4375,
+        "w": 45.192,
+        "h": 24.0375
+      },
+      {
+        "x": 175.021,
+        "y": 519.625,
+        "w": 45.192,
+        "h": 24.0375
+      },
+      {
+        "x": 295.694,
+        "y": 615.775,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 430.304,
+        "y": 680.1625,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 436.55499999999995,
+        "y": 767.7249999999999,
+        "w": 65.38,
+        "h": 24.0375
+      },
+      {
+        "x": 232.71499999999997,
+        "y": 709.35,
+        "w": 45.192,
+        "h": 24.0375
+      },
+      {
+        "x": 53.896,
+        "y": 96.025,
+        "w": 711.508,
+        "h": 865.363
+      }
+    ],
+    "closed_outer_frame": {
+      "x": 53.896,
+      "y": 96.025,
+      "w": 711.508,
+      "h": 865.363,
+      "stroke_width": 1.6
+    },
+    "text_content": [
+      "学生",
+      "学习平台",
+      "AI模型",
+      "开始",
+      "录入并提交错题",
+      "手工填写／图片辅助",
+      "本次操作？",
+      "校验图片",
+      "准备识别请求",
+      "识别图片内容",
+      "返回候选题目信息",
+      "处理候选并回填",
+      "识别失败则提示手录",
+      "校验并保存错题",
+      "创建复习计划",
+      "保存成功？",
+      "根据提示修改输入",
+      "检索本人参考题",
+      "准备上下文并发起解析",
+      "归类知识点",
+      "分析错因与解题思路",
+      "校验、保存分析结果",
+      "或记录／返回失败信息",
+      "查看知识点与解析",
+      "或失败提示",
+      "结束",
+      "图片辅助",
+      "不可识别",
+      "提交题目",
+      "否",
+      "是",
+      "未启动／失败",
+      "重试解析"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/business-flow/3-2.png": {
+    "number": "3.2",
+    "file": "3-2.png",
+    "source": "docs/thesis/final-master-20261114/figures/3-2.svg",
+    "source_sha256": "459d9d6b3821cc614cf153904384a372b913c92c7b952523d8226774df1e4707",
+    "png_sha256": "b4f34df543e4c431d76f4effde17233ce69b57fe97c38324b1df00e5a98c3be8",
+    "svg_sha256": "3418aa55a9936f858e781f61c30323a0f8dbd9c9a6eef0d1018f308d9daed51e",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      3040,
+      3656
+    ],
+    "actual_white_margins_px": [
+      92,
+      92,
+      94,
+      95
+    ],
+    "viewBox": [
+      29.895999908447266,
+      72.0250015258789,
+      760,
+      914
+    ],
+    "rectangles": [
+      {
+        "x": 135.12099999999998,
+        "y": 145.32500000000002,
+        "w": 76.923,
+        "h": 30.9
+      },
+      {
+        "x": 94.255,
+        "y": 195.975,
+        "w": 158.64799999999997,
+        "h": 49.787499999999994
+      },
+      {
+        "x": 332.227,
+        "y": 241.47500000000002,
+        "w": 173.06799999999998,
+        "h": 46.362500000000004
+      },
+      {
+        "x": 332.227,
+        "y": 318.7375,
+        "w": 173.06799999999998,
+        "h": 51.5125
+      },
+      {
+        "x": 575.008,
+        "y": 400.2875,
+        "w": 158.64799999999997,
+        "h": 51.5125
+      },
+      {
+        "x": 332.227,
+        "y": 580.5749999999999,
+        "w": 173.06799999999998,
+        "h": 51.5125
+      },
+      {
+        "x": 72.625,
+        "y": 670.7125000000001,
+        "w": 91.343,
+        "h": 51.5125
+      },
+      {
+        "x": 183.19699999999997,
+        "y": 670.7125000000001,
+        "w": 91.343,
+        "h": 51.5125
+      },
+      {
+        "x": 332.227,
+        "y": 670.7125000000001,
+        "w": 173.06799999999998,
+        "h": 51.5125
+      },
+      {
+        "x": 332.227,
+        "y": 752.2750000000001,
+        "w": 173.06799999999998,
+        "h": 51.5125
+      },
+      {
+        "x": 135.12099999999998,
+        "y": 917.9625,
+        "w": 76.923,
+        "h": 25.75
+      },
+      {
+        "x": 247.135,
+        "y": 274.1,
+        "w": 45.192,
+        "h": 24.0375
+      },
+      {
+        "x": 227.90599999999998,
+        "y": 332.475,
+        "w": 45.192,
+        "h": 24.0375
+      },
+      {
+        "x": 509.62799999999993,
+        "y": 395.13750000000005,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 432.705,
+        "y": 558.25,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 489.433,
+        "y": 499.0125,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 302.904,
+        "y": 482.70000000000005,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 84.161,
+        "y": 630.3625000000001,
+        "w": 24.997,
+        "h": 24.0375
+      },
+      {
+        "x": 216.37,
+        "y": 629.5125,
+        "w": 24.997,
+        "h": 24.0375
+      },
+      {
+        "x": 278.866,
+        "y": 748.8375000000001,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 146.65699999999998,
+        "y": 810.65,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 264.44599999999997,
+        "y": 837.2624999999999,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 185.12199999999999,
+        "y": 897.35,
+        "w": 15.386,
+        "h": 24.0375
+      },
+      {
+        "x": 64.932,
+        "y": 379.6875,
+        "w": 24.997,
+        "h": 24.0375
+      },
+      {
+        "x": 53.896,
+        "y": 96.025,
+        "w": 711.508,
+        "h": 865.363
+      }
+    ],
+    "closed_outer_frame": {
+      "x": 53.896,
+      "y": 96.025,
+      "w": 711.508,
+      "h": 865.363,
+      "stroke_width": 1.6
+    },
+    "text_content": [
+      "学生",
+      "学习平台",
+      "AI模型",
+      "开始",
+      "选择本人原题",
+      "或复习任务原题",
+      "本次需要？",
+      "查询已有知识内容",
+      "查询本人原题／拓展题",
+      "优先提供未练题",
+      "有合适资源？",
+      "按所选类型生成",
+      "知识讲解／变式题",
+      "结果可用？",
+      "校验后保存生成内容",
+      "关联原题与知识点",
+      "所选内容类型？",
+      "阅读知识内容",
+      "作答并自行",
+      "判定正误",
+      "保存作答与题目标识",
+      "更新掌握度",
+      "完成所选复习？",
+      "记录该复习任务完成",
+      "继续学习或练习？",
+      "B",
+      "B",
+      "结束",
+      "知识学习",
+      "做题练习",
+      "无",
+      "是",
+      "否",
+      "有",
+      "学习",
+      "练习",
+      "是",
+      "否",
+      "是",
+      "否",
+      "退出"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/business-flow/3-3.png": {
+    "number": "3.3",
+    "file": "3-3.png",
+    "source": "docs/thesis/final-master-20261114/figures/3-3.svg",
+    "source_sha256": "42c51ca40c64e356f765892265e88d44aea0d446fb35946710c8e5154992fc2a",
+    "png_sha256": "e5ed5f217e748c42b932beb8c8b2cbb906d39c3ffc3daa713ec5b04ecb9ff87a",
+    "svg_sha256": "815d27c4be1f8798e967390d650580d67bf98020d8dd0c1a3cd1ec885537289b",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      3040,
+      3656
+    ],
+    "actual_white_margins_px": [
+      92,
+      92,
+      94,
+      95
+    ],
+    "viewBox": [
+      29.895999908447266,
+      72.0250015258789,
+      760,
+      914
+    ],
+    "rectangles": [
+      {
+        "x": 377.902,
+        "y": 159.91250000000002,
+        "w": 81.725,
+        "h": 34.3375
+      },
+      {
+        "x": 79.835,
+        "y": 378.825,
+        "w": 187.495,
+        "h": 70.4
+      },
+      {
+        "x": 572.607,
+        "y": 378.825,
+        "w": 163.457,
+        "h": 53.224999999999994
+      },
+      {
+        "x": 327.42499999999995,
+        "y": 473.26250000000005,
+        "w": 182.686,
+        "h": 65.25
+      },
+      {
+        "x": 327.42499999999995,
+        "y": 623.5,
+        "w": 182.686,
+        "h": 65.25
+      },
+      {
+        "x": 82.236,
+        "y": 623.5,
+        "w": 182.686,
+        "h": 65.25
+      },
+      {
+        "x": 567.798,
+        "y": 760.8499999999999,
+        "w": 173.06799999999998,
+        "h": 65.25
+      },
+      {
+        "x": 377.902,
+        "y": 859.5749999999999,
+        "w": 81.725,
+        "h": 34.3375
+      },
+      {
+        "x": 228.144,
+        "y": 246.625,
+        "w": 35.098,
+        "h": 24.0375
+      },
+      {
+        "x": 569.723,
+        "y": 246.625,
+        "w": 24.997,
+        "h": 24.0375
+      },
+      {
+        "x": 53.896,
+        "y": 96.025,
+        "w": 711.508,
+        "h": 865.363
+      }
+    ],
+    "closed_outer_frame": {
+      "x": 53.896,
+      "y": 96.025,
+      "w": 711.508,
+      "h": 865.363,
+      "stroke_width": 1.6
+    },
+    "text_content": [
+      "管理员",
+      "学习平台",
+      "教师",
+      "开始",
+      "当前登录角色？",
+      "选择管理事项",
+      "科目／知识点、",
+      "账号、公告",
+      "请求全站学情报告",
+      "按权限处理管理请求",
+      "查询或校验、保存变更",
+      "按权限读取当前记录",
+      "聚合全站学情数据",
+      "接收查询／操作结果",
+      "失败时按提示处理",
+      "查看汇总报告",
+      "或无数据／失败提示",
+      "结束",
+      "管理员",
+      "教师"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "requirements-20261112/figures/3-1.png": {
+    "number": "3.4",
+    "file": "3-4.png",
+    "source": "docs/thesis/requirements-20261112/figures/diagrams.json",
+    "source_sha256": "106b9dfd9586ac2d9b27d1bc4c0df6b382c25b450427f9cb1a97909a9469506e",
+    "png_sha256": "eade6c368bad90026f0ffc9b37407dcc83233ae112b2d04b9d25162ef67bb3ad",
+    "svg_sha256": "d4d3cc0ea494061ca84efdf74c9281391b12e0d2673e86b2b5cb51ec407ad4d0",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      4404,
+      6072
+    ],
+    "actual_white_margins_px": [
+      99,
+      92,
+      101,
+      92
+    ],
+    "viewBox": [
+      50,
+      76,
+      1101,
+      1518
+    ],
+    "rectangles": [
+      {
+        "x": 280,
+        "y": 100,
+        "w": 700,
+        "h": 1470
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "学生",
+      "教师",
+      "管理员",
+      "AI模型",
+      "管理个人错题",
+      "分析错题",
+      "学习知识内容",
+      "开展做题练习",
+      "完成复习",
+      "查看个人学情",
+      "查看全站聚合学情",
+      "维护账号、科目与知识点",
+      "发布系统公告"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/3-5.png": {
+    "number": "3.5",
+    "file": "3-5.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/3-5.json",
+    "source_sha256": "606cc347b86b1865814e835066359202717dcf331f11d18dc20bc18d044d5e0c",
+    "png_sha256": "e24faab235e7fed6e940eae89de49a608993cca04a8bc1aaf77cc99d99abc26f",
+    "svg_sha256": "cef13e64c7497444f916771c5fd509f27b2de3dc8948feab44eca4410447f698",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1816,
+      1300
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      96,
+      95
+    ],
+    "viewBox": [
+      -3.5374011993408203,
+      -13,
+      454,
+      325
+    ],
+    "rectangles": [
+      {
+        "x": 20.46259875,
+        "y": 134.45472574999997,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 184.16338875,
+        "y": 11,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 184.16338875,
+        "y": 257.9094515,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 347.86417875,
+        "y": 134.45472574999997,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "0",
+      "错题分析与",
+      "学习推荐系统",
+      "学生",
+      "教师",
+      "管理员",
+      "AI模型",
+      "学生业务资料",
+      "学习结果与通知",
+      "模型请求上下文",
+      "模型处理结果",
+      "账户资料与",
+      "业务查询",
+      "账户、基础",
+      "与查询结果",
+      "账户、查询",
+      "与维护资料",
+      "账户、维护",
+      "与查询结果"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/3-6.png": {
+    "number": "3.6",
+    "file": "3-6.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/3-6.json",
+    "source_sha256": "a20a033a6c134226e242a6eeefa76df1b28eb64ee649797569061e8e2742f88f",
+    "png_sha256": "c8e2ee08f22d63576de8ae925fd1e06cae778c3ef8e0c8d10c713e772fd31cfa",
+    "svg_sha256": "4e7c8e539ae903c6366e8d5f3c446883e861cbe26104f04e883a861f1e519b6b",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1840,
+      1672
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      99,
+      105
+    ],
+    "viewBox": [
+      -3.5374011993408203,
+      -13.000001907348633,
+      460,
+      418
+    ],
+    "rectangles": [
+      {
+        "x": 20.46259875,
+        "y": 25.88189,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 20.46259875,
+        "y": 132.685041,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 20.46259875,
+        "y": 286.3661455000001,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "P1",
+      "认证与账户管理",
+      "学生、教师",
+      "管理员",
+      "D1 账户资料",
+      "P2",
+      "基础资料维护",
+      "学生、教师",
+      "管理员",
+      "D2",
+      "科目与知识点",
+      "D6 消息与公告",
+      "P5",
+      "学情与通知处理",
+      "学生、教师",
+      "管理员",
+      "D3 错题与解析",
+      "D5",
+      "练习与复习记录",
+      "D6 消息与公告",
+      "登录与账户资料",
+      "身份与账户结果",
+      "账户变更",
+      "账户数据",
+      "基础查询与",
+      "维护资料",
+      "基础信息与",
+      "维护结果",
+      "基础记录",
+      "基础资料",
+      "公告",
+      "报告查询／",
+      "通知操作",
+      "报告与通知信息",
+      "错题统计",
+      "练习复习数据",
+      "消息与公告",
+      "消息状态"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/3-7.png": {
+    "number": "3.7",
+    "file": "3-7.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/3-7.json",
+    "source_sha256": "96ec6af45016fd70bea53f44e7edc73ca1373851803c31bb8eac851d92769337",
+    "png_sha256": "f261a5a41845feab7b10045e59fedfd25502a895c5a4713b2a5c89a0a972fc2d",
+    "svg_sha256": "1d80acdf10a46784429cce9f556bf543f98bcc1c16667985031b79984eb950cd",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1840,
+      2124
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      99,
+      106
+    ],
+    "viewBox": [
+      -3.5374011993408203,
+      -13,
+      460,
+      531
+    ],
+    "rectangles": [
+      {
+        "x": 20.46259875,
+        "y": 115.17322999999999,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 184.16338875,
+        "y": 11,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 20.46259875,
+        "y": 360.9409495,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 184.16338875,
+        "y": 228.094491,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "P3",
+      "错题录入与分析",
+      "学生",
+      "AI模型",
+      "D2",
+      "科目与知识点",
+      "D3 错题与解析",
+      "D5",
+      "练习与复习记录",
+      "P4",
+      "学习练习与复习",
+      "学生",
+      "AI模型",
+      "D2",
+      "科目与知识点",
+      "D3 错题与解析",
+      "D4 学习资源",
+      "D5",
+      "练习与复习记录",
+      "错题资料与查询",
+      "错题信息与导出",
+      "识别分析上下文",
+      "识别分析结果",
+      "科目知识点",
+      "本人题目与参考",
+      "错题与解析",
+      "复习计划",
+      "学习、作答",
+      "与复习资料",
+      "资源与学习反馈",
+      "生成上下文",
+      "生成结果",
+      "科目知识点",
+      "本人原题／解析",
+      "掌握度",
+      "知识内容／",
+      "拓展题",
+      "生成资源",
+      "已练标识／任务",
+      "练习／复习状态"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/3-8.png": {
+    "number": "3.8",
+    "file": "3-8.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/3-8.json",
+    "source_sha256": "6f8406a134768e4e9917adbaad08e1643c4503a7500cc238cdc61f3cab15afba",
+    "png_sha256": "efada6626ac5c210c7eb00536faa2cd87c5a9fcffb96261de5d2b4e49e846503",
+    "svg_sha256": "49893028f3c643f512ac6afd80c50cfeb70ad6bde3734a6dffae5b66f857599a",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1840,
+      1624
+    ],
+    "actual_white_margins_px": [
+      94,
+      106,
+      99,
+      96
+    ],
+    "viewBox": [
+      -3.5374011993408203,
+      -15.070865631103516,
+      460,
+      406
+    ],
+    "rectangles": [
+      {
+        "x": 20.46259875,
+        "y": 76.87795349999999,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 20.46259875,
+        "y": 262.09252274999994,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 347.86417875,
+        "y": 336.5275629999999,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "P4.1",
+      "查询可用资源",
+      "学生",
+      "D2",
+      "科目与知识点",
+      "D3 错题与解析",
+      "D4 学习资源",
+      "D5",
+      "练习与复习记录",
+      "P4.2",
+      "生成与校验入库",
+      "AI模型",
+      "D4 学习资源",
+      "学生",
+      "学习请求",
+      "已有学习资源",
+      "科目知识点",
+      "本人原题／解析",
+      "知识内容／",
+      "拓展题",
+      "已练题标识",
+      "未满足的资源请求",
+      "生成结果",
+      "生成上下文",
+      "生成资源",
+      "学习资源／",
+      "失败提示"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/3-9.png": {
+    "number": "3.9",
+    "file": "3-9.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/3-9.json",
+    "source_sha256": "e108ac470714fc31489cc2d925a606aba79a72fc42e5ef0d9f9ef1c074efe1d5",
+    "png_sha256": "5407f8c795634e2a16f82899cbc966a29c4a825b6670b7ac8be38a3ba5e33425",
+    "svg_sha256": "8cff4e73afa1f0a58cffb4ad84add2ff1fa72ef8f4cc6325e3edd844408bf0aa",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1840,
+      1184
+    ],
+    "actual_white_margins_px": [
+      94,
+      106,
+      99,
+      96
+    ],
+    "viewBox": [
+      -3.5374011993408203,
+      -15.070865631103516,
+      460,
+      296
+    ],
+    "rectangles": [
+      {
+        "x": 20.46259875,
+        "y": 82.8307095,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      },
+      {
+        "x": 20.46259875,
+        "y": 211.86614400000002,
+        "w": 78.12992249999999,
+        "h": 29.763779999999997
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "P4.3",
+      "记录作答结果",
+      "学生",
+      "D3 错题与解析",
+      "D4 学习资源",
+      "D5",
+      "练习与复习记录",
+      "P4.4",
+      "更新复习状态",
+      "学生",
+      "D5",
+      "练习与复习记录",
+      "作答数据",
+      "练习反馈",
+      "本人原题／解析",
+      "掌握度",
+      "拓展题",
+      "练习记录",
+      "复习查询／",
+      "完成确认",
+      "复习信息",
+      "复习状态",
+      "复习任务"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "delivery-20261112/figures/5-1.png": {
+    "number": "5.1",
+    "file": "5-1.png",
+    "source": "docs/thesis/delivery-20261112/figures/5-1.json",
+    "source_sha256": "ea49e102e34400c73b38c4ce4586eb82e7f502c85b88d55729053a6abdc5443b",
+    "png_sha256": "f087e8e1c15e95e0301a4e9fc6e43c2c6765f14d3cebb5efb82805138db06007",
+    "svg_sha256": "e1033e41d31ea32391a9d7255e81bccf7bdf8d9c00e1f82873ffde9250e1f09a",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1936,
+      2004
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      101
+    ],
+    "viewBox": [
+      -19,
+      -18,
+      484,
+      501
+    ],
+    "rectangles": [
+      {
+        "x": 18,
+        "y": 6,
+        "w": 410,
+        "h": 43
+      },
+      {
+        "x": 18,
+        "y": 79,
+        "w": 410,
+        "h": 43
+      },
+      {
+        "x": 18,
+        "y": 155,
+        "w": 410,
+        "h": 50
+      },
+      {
+        "x": 18,
+        "y": 244,
+        "w": 187,
+        "h": 52
+      },
+      {
+        "x": 241,
+        "y": 244,
+        "w": 187,
+        "h": 52
+      },
+      {
+        "x": 18,
+        "y": 341,
+        "w": 187,
+        "h": 65
+      },
+      {
+        "x": 241,
+        "y": 341,
+        "w": 187,
+        "h": 65
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "浏览器：Vue 3 / Element Plus / Pinia / Vue Router",
+      "富文本编辑、图表、Axios 请求与轮询",
+      "Spring Boot 接口层：Controller + AuthInterceptor",
+      "JWT 校验、数据库角色与账号状态、参数校验",
+      "HTTP / JSON",
+      "业务服务层",
+      "错题、AI 编排、RAG、推荐、练习、复习、报告、消息",
+      "MyBatis-Plus / Mapper",
+      "MySQL 8：11 张物理表",
+      "题干向量为 TEXT 中的 JSON",
+      "本地文件存储",
+      "题图只经所属学生详情返回",
+      "数据库保存相对路径",
+      "LlmClient 模型网关",
+      "智谱 GLM 大模型文本生成",
+      "向量服务：1024 维",
+      "Mock 用于离线与常规回归",
+      "独立图片识别客户端",
+      "GLM 多模态识别（默认开启）",
+      "单图识别只返回候选值",
+      "识别阶段不写业务表",
+      "外部模型通过 HTTPS 调用；密钥只在服务端配置。",
+      "本地执行器处理异步解析；定时任务处理提醒，报告按请求聚合。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/5-2.png": {
+    "number": "5.2",
+    "file": "5-2.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/5-2.json",
+    "source_sha256": "5a65e2dfa9d1730c2c23c4545986bcb302bf74e903de880061107b2cfb3e5ec9",
+    "png_sha256": "95a11b118c023dd06f92745d08794eae7938a06e3d7ccb53613413f5df030c06",
+    "svg_sha256": "03a4b871f4c022bbc2a3a144b29c3dfd476e31acd2c68ba18be35bd0af9a60e7",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1952,
+      1024
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      94
+    ],
+    "viewBox": [
+      -21,
+      -17,
+      488,
+      256
+    ],
+    "rectangles": [
+      {
+        "x": 143,
+        "y": 7,
+        "w": 160,
+        "h": 32
+      },
+      {
+        "x": 3,
+        "y": 75,
+        "w": 140,
+        "h": 140
+      },
+      {
+        "x": 153,
+        "y": 75,
+        "w": 140,
+        "h": 140
+      },
+      {
+        "x": 303,
+        "y": 75,
+        "w": 140,
+        "h": 140
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "AI错题分析与学习推荐系统",
+      "学生学习业务",
+      "错题录入与编辑",
+      "AI分析与参考检索",
+      "知识内容与持续练习",
+      "复习计划与练习记录",
+      "学情查看与错题导出",
+      "公共与统计服务",
+      "登录与个人资料",
+      "本人消息与公共公告",
+      "学生本人学情",
+      "教师系统聚合学情",
+      "管理员基础维护",
+      "账号查询与停用",
+      "科目与知识点维护",
+      "公告发布"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "align-reference1-20261113/figures/5-3.png": {
+    "number": "5.3",
+    "file": "5-3.png",
+    "source": "docs/thesis/align-reference1-20261113/figures/5-3.json",
+    "source_sha256": "bc3077abed6fe080db6078b46c34a8935e0a1bd09d2697a14db9f74ca4568c84",
+    "png_sha256": "a1298c73b10f90b69ebb8056f082a2bab58ec4248bc7850c615aaaaebe925ba5",
+    "svg_sha256": "242afa50e656943777b20f2990e938530b3044fa5827ea7671c9901355266fe5",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1944,
+      1932
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      106
+    ],
+    "viewBox": [
+      -20,
+      -15.199999809265137,
+      486,
+      483
+    ],
+    "rectangles": [
+      {
+        "x": 4,
+        "y": 8.8,
+        "w": 90,
+        "h": 28.8
+      },
+      {
+        "x": 120,
+        "y": 8.8,
+        "w": 90,
+        "h": 28.8
+      },
+      {
+        "x": 236,
+        "y": 8.8,
+        "w": 90,
+        "h": 28.8
+      },
+      {
+        "x": 352,
+        "y": 8.8,
+        "w": 90,
+        "h": 28.8
+      },
+      {
+        "x": 227,
+        "y": 272.8,
+        "w": 109,
+        "h": 48.800000000000004
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "学生页面",
+      "接口与服务",
+      "本地执行器",
+      "数据库",
+      "提交错题",
+      "事务保存 question + 5 条 review_plan",
+      "返回题目 ID",
+      "另行触发解析",
+      "归属检查；创建或重置解析状态 0",
+      "提交任务",
+      "触发接口返回",
+      "读取解析记录与题目",
+      "执行向量与 RAG",
+      "请求外部 GLM",
+      "校验结构化响应",
+      "条件回写 + 完成消息",
+      "轮询解析状态",
+      "返回 0 / 1 / 2",
+      "保存事务不包含外部模型调用；任务与轮询可并发进行。",
+      "过期输入：回写事务回滚且不发完成消息；异常：当前解析置 2。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "delivery-20261112/figures/6-5.png": {
+    "number": "5.4",
+    "file": "5-4.png",
+    "source": "docs/thesis/delivery-20261112/figures/6-5.json",
+    "source_sha256": "c1fa67b3260da6fed7d047ccafc8a325d60bce5b4d9d38d9a850b5dbe900633a",
+    "png_sha256": "71fd071751e6d6a815b37c7974bc751c3526dabe9a2eac460f32a0e7bb5f73c3",
+    "svg_sha256": "7033bc9a6563d0b76f57f64077ca8926094192d37419877c4856006d065b6c21",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1736,
+      2448
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      100
+    ],
+    "viewBox": [
+      6,
+      -16,
+      434,
+      612
+    ],
+    "rectangles": [
+      {
+        "x": 30,
+        "y": 8,
+        "w": 386,
+        "h": 49
+      },
+      {
+        "x": 30,
+        "y": 80,
+        "w": 386,
+        "h": 49
+      },
+      {
+        "x": 30,
+        "y": 153,
+        "w": 386,
+        "h": 49
+      },
+      {
+        "x": 30,
+        "y": 226,
+        "w": 386,
+        "h": 49
+      },
+      {
+        "x": 30,
+        "y": 299,
+        "w": 386,
+        "h": 49
+      },
+      {
+        "x": 30,
+        "y": 372,
+        "w": 386,
+        "h": 49
+      },
+      {
+        "x": 30,
+        "y": 463,
+        "w": 386,
+        "h": 61
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "读取当前错题输入快照",
+      "纯文本题干、科目、可选答案",
+      "向量服务生成题干向量",
+      "客户端检查 1024 维与有限数",
+      "候选查询：同用户、同科目、排除原题",
+      "向量非空；再次核验候选所属用户",
+      "应用内余弦相似度计算",
+      "保留相似度 > 0，降序取最多 3 条",
+      "构造提示词：题干 + 可选答案 + 知识点候选",
+      "参考题只取题干片段（每题最多前 50 字）",
+      "调用智谱 GLM 大模型",
+      "校验精确字段、候选 ID、难度 1-5 和中文文本",
+      "短事务比较输入快照与解析记录状态",
+      "成功写入向量、归类、解析及 reference_ids",
+      "同事务发送完成消息",
+      "空参考集仍可生成；异常记失败，输入过期则放弃旧结果回写。",
+      "RAG 不强制同知识点；reference_ids 记录本次实际参考题。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "structure-20261112/figures/png/6-7.png": {
+    "number": "5.5",
+    "file": "5-5.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/6-7.json",
+    "source_sha256": "67d5bf214ea54667a5a110bbc4b290fa8a696ac677af518912812ba9f8be4faf",
+    "png_sha256": "c559f147da636fd678318614748d7c98f5e4226d9b07f1f0bd5eb1866fddd5f7",
+    "svg_sha256": "4a57a67ec76802a952cfa855a2d3c045e83a972da84b6ee9830979b6d1b3b24d",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1892,
+      1776
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      101
+    ],
+    "viewBox": [
+      -9,
+      -19,
+      473,
+      444
+    ],
+    "rectangles": [
+      {
+        "x": 15,
+        "y": 5,
+        "w": 90,
+        "h": 36
+      },
+      {
+        "x": 179,
+        "y": 5,
+        "w": 90,
+        "h": 36
+      },
+      {
+        "x": 343,
+        "y": 5,
+        "w": 90,
+        "h": 36
+      },
+      {
+        "x": 147,
+        "y": 97,
+        "w": 154,
+        "h": 56
+      },
+      {
+        "x": 132,
+        "y": 173,
+        "w": 308,
+        "h": 139
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "学生页面",
+      "PracticeService",
+      "Mapper / MySQL",
+      "作答与结果自评",
+      "校验 isCorrect 为 0 或 1",
+      "questionId / variantId 二选一",
+      "变式题回溯原题并检查归属",
+      "同一事务的两步写操作（失败均回滚）",
+      "插入练习记录",
+      "原子更新原题 mastery",
+      "答对 +15，答错 -20，限制在 0-100",
+      "提交成功并刷新题目",
+      "结果由学生自评提交，服务不执行自动判分。",
+      "此操作不自动完成复习计划，也不触发相似题重排。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "structure-20261112/figures/png/6-8.png": {
+    "number": "5.6",
+    "file": "5-6.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/6-8.json",
+    "source_sha256": "a95d7baf6d3908940a3d535d4abfeee61dc442ebdeb5d0e4a683b63e8eccf812",
+    "png_sha256": "a11741be3dcecefbcb19b5f2873feec3188edeb4119c4ff58760a14a3d348aa0",
+    "svg_sha256": "2200d965276bdc6669bded9a619ab2034a99728357234ae5a8469e3dc9f7bd0b",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1840,
+      1312
+    ],
+    "actual_white_margins_px": [
+      94,
+      105,
+      94,
+      100
+    ],
+    "viewBox": [
+      -7,
+      -6,
+      460,
+      328
+    ],
+    "rectangles": [
+      {
+        "x": 17,
+        "y": 35,
+        "w": 143,
+        "h": 55
+      },
+      {
+        "x": 286,
+        "y": 35,
+        "w": 143,
+        "h": 55
+      },
+      {
+        "x": 151,
+        "y": 193,
+        "w": 143,
+        "h": 55
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "待复习",
+      "status = 0",
+      "已过期",
+      "status = 2",
+      "已完成",
+      "status = 1",
+      "每日 08:00 扫描",
+      "plan_date < 当天",
+      "用户完成操作",
+      "用户完成操作",
+      "当天或更早、状态非 1 的计划显示在 /today 列表。",
+      "完成时记录 finish_time；再次完成返回业务错误；日期不重排。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "structure-20261112/figures/png/6-1.png": {
+    "number": "6.1",
+    "file": "6-1.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/6-1.json",
+    "source_sha256": "faa87e18b38d953cfeef55085768cc584008be6cb93655f5faf5ab9089b86d19",
+    "png_sha256": "a655db7ac900c3e0475948d0b7f79a8d066954bf8f9a85b4007b14f990d62fd3",
+    "svg_sha256": "ca41054a4e0fda0501c12a617344a36818f09e5b047a89da38d93a4f77423405",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1896,
+      1776
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      100
+    ],
+    "viewBox": [
+      -14,
+      -14,
+      474,
+      444
+    ],
+    "rectangles": [
+      {
+        "x": 10,
+        "y": 10,
+        "w": 162,
+        "h": 57
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "w": 162,
+        "h": 23
+      },
+      {
+        "x": 266,
+        "y": 10,
+        "w": 170,
+        "h": 57
+      },
+      {
+        "x": 266,
+        "y": 10,
+        "w": 170,
+        "h": 23
+      },
+      {
+        "x": 10,
+        "y": 157,
+        "w": 192,
+        "h": 87
+      },
+      {
+        "x": 10,
+        "y": 157,
+        "w": 192,
+        "h": 23
+      },
+      {
+        "x": 266,
+        "y": 137,
+        "w": 170,
+        "h": 72
+      },
+      {
+        "x": 266,
+        "y": 137,
+        "w": 170,
+        "h": 23
+      },
+      {
+        "x": 10,
+        "y": 320,
+        "w": 192,
+        "h": 72
+      },
+      {
+        "x": 10,
+        "y": 320,
+        "w": 192,
+        "h": 23
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "用户 user",
+      "PK id",
+      "role / status",
+      "科目 subject",
+      "PK id",
+      "UK name",
+      "错题 question",
+      "PK id",
+      "user_id / subject_id",
+      "knowledge_point_id 可空",
+      "stem / embedding",
+      "知识点 knowledge_point",
+      "PK id",
+      "subject_id",
+      "parent_id：0 为根节点",
+      "解析 ai_analysis",
+      "PK id / UK question_id",
+      "knowledge_point_id 可空",
+      "reference_ids：ID 数组",
+      "1 : 0..N",
+      "1 : 0..N",
+      "1 : 0..N",
+      "0..1 : 0..N",
+      "1 : 0..1",
+      "0..1 : 0..N",
+      "reference_ids 为 JSON 留痕，未另建关联表。",
+      "自关联：父 0..1，子 0..N"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "structure-20261112/figures/png/6-2.png": {
+    "number": "6.2",
+    "file": "6-2.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/6-2.json",
+    "source_sha256": "b91a5e964548e2d0b17239248df82cc52c4bb8e8559a6873dd28946b6fdb4743",
+    "png_sha256": "3b77dbf474e9dbc20434c5b66cc85c2fe22a21f5768e6af7cf36a76d333dfffe",
+    "svg_sha256": "9aee860b1ffe3678618860ce0723f8c3a4f272246fe36bf14b84c2af0b76dc7e",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1952,
+      1964
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      100
+    ],
+    "viewBox": [
+      -20,
+      -14,
+      488,
+      491
+    ],
+    "rectangles": [
+      {
+        "x": 10,
+        "y": 10,
+        "w": 164,
+        "h": 42
+      },
+      {
+        "x": 10,
+        "y": 10,
+        "w": 164,
+        "h": 23
+      },
+      {
+        "x": 266,
+        "y": 10,
+        "w": 170,
+        "h": 57
+      },
+      {
+        "x": 266,
+        "y": 10,
+        "w": 170,
+        "h": 23
+      },
+      {
+        "x": 10,
+        "y": 170,
+        "w": 176,
+        "h": 87
+      },
+      {
+        "x": 10,
+        "y": 170,
+        "w": 176,
+        "h": 23
+      },
+      {
+        "x": 260,
+        "y": 170,
+        "w": 176,
+        "h": 72
+      },
+      {
+        "x": 260,
+        "y": 170,
+        "w": 176,
+        "h": 23
+      },
+      {
+        "x": 117,
+        "y": 345,
+        "w": 212,
+        "h": 72
+      },
+      {
+        "x": 117,
+        "y": 345,
+        "w": 212,
+        "h": 23
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "用户 user",
+      "PK id",
+      "错题 question",
+      "PK id",
+      "user_id / mastery",
+      "复习 review_plan",
+      "PK id",
+      "user_id / question_id",
+      "review_stage / plan_date",
+      "status / finish_time",
+      "变式 variant_question",
+      "PK id",
+      "question_id",
+      "stem / answer / difficulty",
+      "练习 practice_record",
+      "PK id / user_id",
+      "question_id 或 variant_id",
+      "user_answer / is_correct",
+      "1 : 0..N",
+      "1 : 0..N",
+      "1 : 0..N",
+      "1 : 0..N",
+      "0..1 : 0..N",
+      "0..1 : 0..N",
+      "选择变式题时，通过 variant_question.question_id 更新原题掌握度。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "structure-20261112/figures/png/6-3.png": {
+    "number": "6.3",
+    "file": "6-3.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/6-3.json",
+    "source_sha256": "4d5ac2214ab143a753d5568b7192824e16f6d05689bf83da6bea515915b6809d",
+    "png_sha256": "3540e3e6919fa71ab258831e4593439a8867e7706e5a77d2a24ed467147d7ca2",
+    "svg_sha256": "e1304dec7d6a88a4931a61606d10c0f9400a1fe2a30aa359d833924d3ba37d37",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1896,
+      1012
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      101
+    ],
+    "viewBox": [
+      -14,
+      -16,
+      474,
+      253
+    ],
+    "rectangles": [
+      {
+        "x": 135,
+        "y": 8,
+        "w": 176,
+        "h": 42
+      },
+      {
+        "x": 135,
+        "y": 8,
+        "w": 176,
+        "h": 23
+      },
+      {
+        "x": 10,
+        "y": 120,
+        "w": 190,
+        "h": 57
+      },
+      {
+        "x": 10,
+        "y": 120,
+        "w": 190,
+        "h": 23
+      },
+      {
+        "x": 246,
+        "y": 120,
+        "w": 190,
+        "h": 57
+      },
+      {
+        "x": 246,
+        "y": 120,
+        "w": 190,
+        "h": 23
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "用户 user",
+      "PK id / role",
+      "消息 message",
+      "PK id / user_id",
+      "type / title / is_read",
+      "公告 announcement",
+      "PK id / publisher_id 可空",
+      "title / status",
+      "1 : 0..N",
+      "0..1 : 0..N",
+      "消息面向接收用户；公告由管理员发布，登录用户可查看。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "delivery-20261112/figures/6-9.png": {
+    "number": "6.4",
+    "file": "6-4.png",
+    "source": "docs/thesis/delivery-20261112/figures/6-9.json",
+    "source_sha256": "93110ae6f268a510b260bb3c54020055bea5e58b44b1401f9a5fe4be88256b2c",
+    "png_sha256": "2b33fcef836964ab3abdecab2e6880ade48b4ed4499f7bab1be7c37a1721f970",
+    "svg_sha256": "28a10030793613d212716655e3d8578429ab3cfbbb3e64ba61bdd009199841fe",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1864,
+      1388
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      106
+    ],
+    "viewBox": [
+      -10,
+      -14,
+      466,
+      347
+    ],
+    "rectangles": [
+      {
+        "x": 14,
+        "y": 10,
+        "w": 172,
+        "h": 64
+      },
+      {
+        "x": 260,
+        "y": 10,
+        "w": 172,
+        "h": 64
+      },
+      {
+        "x": 260,
+        "y": 210,
+        "w": 172,
+        "h": 64
+      },
+      {
+        "x": 14,
+        "y": 210,
+        "w": 172,
+        "h": 64
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "用户 user",
+      "id",
+      "错题 question",
+      "id / user_id",
+      "知识内容 learning_content",
+      "question_id（唯一）",
+      "知识点 knowledge_point",
+      "id",
+      "1",
+      "N",
+      "1",
+      "0..1",
+      "0..1",
+      "N",
+      "逻辑关联；知识内容归属由原题与当前学生共同校验"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  },
+  "structure-20261112/figures/png/6-4.png": {
+    "number": "6.5",
+    "file": "6-5.png",
+    "source": "docs/thesis/structure-20261112/figures/sources/6-4.json",
+    "source_sha256": "b36da74225e848593a15c13fcd4efa0b4209bc2e7e05957fe9b3d77130079adc",
+    "png_sha256": "c88454e403efcc34e29f4a938b9765bcea64141d66b51c9ac26a380ec5d6d20a",
+    "svg_sha256": "f0f106fdfd9d684e34fd5e5c0afac65467266192adb278e31ce34d28ed36d172",
+    "padding_svg_units": 24,
+    "raster_scale": 4,
+    "pixel_size": [
+      1912,
+      1584
+    ],
+    "actual_white_margins_px": [
+      94,
+      94,
+      94,
+      103
+    ],
+    "viewBox": [
+      -16,
+      -16,
+      478,
+      396
+    ],
+    "rectangles": [
+      {
+        "x": 8,
+        "y": 8,
+        "w": 200,
+        "h": 57
+      },
+      {
+        "x": 8,
+        "y": 8,
+        "w": 200,
+        "h": 23
+      },
+      {
+        "x": 238,
+        "y": 8,
+        "w": 200,
+        "h": 57
+      },
+      {
+        "x": 238,
+        "y": 8,
+        "w": 200,
+        "h": 23
+      },
+      {
+        "x": 8,
+        "y": 128,
+        "w": 190,
+        "h": 48
+      },
+      {
+        "x": 238,
+        "y": 112,
+        "w": 200,
+        "h": 72
+      },
+      {
+        "x": 238,
+        "y": 112,
+        "w": 200,
+        "h": 23
+      },
+      {
+        "x": 8,
+        "y": 276,
+        "w": 195,
+        "h": 57
+      },
+      {
+        "x": 8,
+        "y": 276,
+        "w": 195,
+        "h": 23
+      },
+      {
+        "x": 237,
+        "y": 276,
+        "w": 201,
+        "h": 57
+      },
+      {
+        "x": 237,
+        "y": 276,
+        "w": 201,
+        "h": 23
+      }
+    ],
+    "closed_outer_frame": null,
+    "text_content": [
+      "AiAnalysisServiceImpl",
+      "trigger(questionId)",
+      "getByQuestion(questionId)",
+      "VariantServiceImpl",
+      "generate(questionId)",
+      "list(questionId)",
+      "EmbeddingServiceImpl",
+      "embed(text)",
+      "«interface» LlmClient",
+      "chat(prompt): String",
+      "embed(text): List<Double>",
+      "model(): String",
+      "依赖",
+      "MockLlmClient",
+      "实现 LlmClient",
+      "离线输出",
+      "OpenAiCompatibleLlmClient",
+      "实现 LlmClient",
+      "外部 HTTP 调用",
+      "虚线箭头表示依赖；空心三角表示接口实现。"
+    ],
+    "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
+  }
+}

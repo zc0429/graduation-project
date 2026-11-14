@@ -1,0 +1,38 @@
+{
+  "phase": "after",
+  "scope": "isolated wrongbook_browser; explicit Mock; direct SQL only for declared fixture",
+  "observations": [
+    {
+      "case": "Q01 nonexistent subject must not create question and plans",
+      "http_status": 400,
+      "response": {
+        "code": 400,
+        "message": "所属科目不存在或已停用",
+        "data": null
+      },
+      "expected": "HTTP 400; no invalid write"
+    },
+    {
+      "case": "K01 a leaf must not accept a third hierarchy level",
+      "http_status": 400,
+      "response": {
+        "code": 400,
+        "message": "考点只能添加在一级章节下",
+        "data": null
+      },
+      "expected": "HTTP 400; no invalid write"
+    },
+    {
+      "case": "K02 referenced knowledge point must remain available",
+      "http_status": 400,
+      "response": {
+        "code": 400,
+        "message": "该知识点仍被错题或学习内容引用，不能删除",
+        "data": null
+      },
+      "expected": "HTTP 400; no invalid write",
+      "remaining_knowledge_point_rows": 1
+    }
+  ],
+  "regression_assertions_passed": true
+}

@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "check": "python-syntax",
+      "exit_code": 0
+    },
+    {
+      "check": "windows-actions",
+      "run_id": 43541893783,
+      "conclusion": "success",
+      "source_sha": "d117e1989b05921263f61d514b1b7456ff0d1d9b"
+    },
+    {
+      "check": "independent-pdf-fonts",
+      "originals_verified": true
+    },
+    {
+      "check": "negative-controls",
+      "old_94_wrong_page_number_fonts_rejected": true,
+      "old_linux_substitute_preview_rejected": true
+    },
+    {
+      "check": "manual-visual-review",
+      "windows_pages_viewed": 101,
+      "zoom_pages": [
+        1,
+        10,
+        59,
+        60,
+        72,
+        98
+      ]
+    },
+    {
+      "check": "source-and-report-whitespace",
+      "command": [
+        "git",
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        ".",
+        ":(glob,exclude)**/*.log"
+      ],
+      "exit_code": 0,
+      "raw_terminal_logs_excluded": true
+    }
+  ],
+  "system_tests_executed": false,
+  "microsoft_word_verified": false,
+  "raster_figure_fonts_verified": false,
+  "raw_windows_logs_preserved_byte_for_byte": true
+}
