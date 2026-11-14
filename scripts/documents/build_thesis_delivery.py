@@ -79,7 +79,7 @@ def bookmark_start(p,name):
     global BOOKMARK_ID
     BOOKMARK_ID+=1;p._p.append(el('bookmarkStart',id=BOOKMARK_ID,name=name));return BOOKMARK_ID
 def bookmark_end(p,n):p._p.append(el('bookmarkEnd',id=n))
-def plain(s):return re.sub(r'\[([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
+def plain(s):return re.sub(r'\[(?!\d+\])([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
 def inline(p,s,size=12,refs=True):
     s=plain(s)
     pattern=r'(\[\d+\]|[图表]\s*\d+\.\d+)'
