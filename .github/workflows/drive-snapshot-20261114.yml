@@ -1,11 +1,9 @@
-name: Snapshot latest thesis branch for private Drive backup
+name: Chunked snapshot latest thesis branch for private Drive backup
 
 on:
   push:
-    branches:
-      - codex/drive-backup-20261114
-    paths:
-      - .github/workflows/drive-snapshot-20261114.yml
+    branches: [codex/drive-backup-20261114]
+    paths: [.github/workflows/drive-snapshot-20261114.yml]
 
 permissions:
   contents: read
@@ -15,43 +13,126 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - name: Checkout original thesis branch commit
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: 34f6ac93fc3c45e43619eda9d4b36866658c29c4
           fetch-depth: 0
           lfs: true
           submodules: recursive
           persist-credentials: false
-      - name: Create complete source snapshot and Git history bundle
+      - name: Build source and ancestry, split transfer for Drive 100MB limit
         shell: bash
         run: |
           set -euo pipefail
           SOURCE_SHA=34f6ac93fc3c45e43619eda9d4b36866658c29c4
           test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
-          mkdir -p backup
-          ARCHIVE="graduation-project-34f6ac93-full-source.tar.gz"
-          BUNDLE="graduation-project-34f6ac93-branch-history.bundle"
-          tar -C . --exclude='./.git' --exclude='./backup' -czf "backup/$ARCHIVE" .
+          mkdir -p backup/payload backup/chunks backup/meta
+          tar -C . --exclude='./.git' --exclude='./backup' -czf backup/payload/full-source.tar.gz .
           git update-ref refs/heads/snapshot-34f6ac93 "$SOURCE_SHA"
-          git bundle create "backup/$BUNDLE" refs/heads/snapshot-34f6ac93
-          git bundle verify "backup/$BUNDLE"
-          {
-            echo "Repository: zc0429/graduation-project"
-            echo "Source branch: codex/thesis-final-quality-20261113"
-            echo "Exact source commit: $SOURCE_SHA"
-            echo "Source archive contains all checkout files (including hidden .github), excluding only .git."
-            echo "Git bundle contains the source branch commit and all reachable history."
-            echo "Git-tracked file count: $(git ls-files | wc -l)"
-            echo "Generated on GitHub Actions Ubuntu runner."
-          } > backup/README-BACKUP.txt
-          (cd backup && sha256sum "$ARCHIVE" "$BUNDLE" > SHA256SUMS.txt)
-          ls -lh backup/
-      - name: Upload archive as one backup artifact
+          git bundle create backup/payload/branch-history.bundle refs/heads/snapshot-34f6ac93
+          git bundle verify backup/payload/branch-history.bundle
+          (cd backup/payload && sha256sum full-source.tar.gz branch-history.bundle > SHA256SUMS.txt)
+          tar -C backup/payload -cf backup/full-backup.tar .
+          split -b 60000000 -d -a 2 backup/full-backup.tar backup/chunks/segment-
+          (cd backup && sha256sum full-backup.tar > meta/COMPLETE-SHA256.txt)
+          (cd backup/chunks && sha256sum segment-* > ../meta/CHUNKS-SHA256.txt)
+          cat > backup/meta/README-BACKUP.txt <<'EOF'
+          Repository: zc0429/graduation-project
+          Source branch: codex/thesis-final-quality-20261113
+          Source commit: 34f6ac93fc3c45e43619eda9d4b36866658c29c4
+          Backup contains: full-source.tar.gz (complete checkout, incl hidden .github; excludes .git),
+          branch-history.bundle (source commit plus all reachable Git commits), SHA256SUMS.txt.
+          The six GitHub Action artifact ZIPs each contain one segment-00 through segment-05.
+          Extract ALL six ZIPs into the same folder as restore.py and both checksum text files.
+          Then run: python restore.py
+          This verifies segment hashes, joins segments, verifies full archive, extracts into
+          a restored-backup/ directory, and verifies the bundled source/history checksums.
+          No project source, thesis or protected source branch was modified to make this backup.
+          EOF
+          cat > backup/meta/restore.py <<'PY'
+          from pathlib import Path
+          import hashlib,tarfile
+          root=Path(__file__).resolve().parent
+          def sha(path):
+              h=hashlib.sha256()
+              with path.open('rb') as f:
+                  for block in iter(lambda:f.read(1024*1024),b''):h.update(block)
+              return h.hexdigest()
+          def verify(manifest,resolve):
+              for line in (root/manifest).read_text().splitlines():
+                  expected,name=line.strip().split('  ',1)
+                  path=resolve(name)
+                  assert path.is_file() and sha(path)==expected, f'SHA256 mismatch or missing: {path}'
+                  print('OK',path.name)
+          verify('CHUNKS-SHA256.txt',lambda name: root/name)
+          archive=root/'full-backup.tar'
+          with archive.open('wb') as out:
+              for p in sorted(root.glob('segment-*')):
+                  with p.open('rb') as f:
+                      for block in iter(lambda:f.read(1024*1024),b''):out.write(block)
+          verify('COMPLETE-SHA256.txt',lambda name: archive)
+          dest=root/'restored-backup'
+          dest.mkdir(exist_ok=True)
+          with tarfile.open(archive) as t: t.extractall(dest,filter='data')
+          for line in (dest/'SHA256SUMS.txt').read_text().splitlines():
+              expected,name=line.split('  ',1)
+              assert sha(dest/name)==expected,f'Payload checksum mismatch: {name}'
+          print('RESTORE COMPLETE:',dest)
+          PY
+          ls -lh backup/chunks/
+          test "$(ls backup/chunks/segment-* | wc -l)" -eq 6
+      - name: Upload backup segment 00
         uses: actions/upload-artifact@v4
         with:
-          name: graduation-project-full-backup-34f6ac93-20261114
-          path: backup/
+          name: graduation-project-backup-34f6ac93-segment-00
+          path: backup/chunks/segment-00
           if-no-files-found: error
           compression-level: 0
+          retention-days: 30
+      - name: Upload backup segment 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-backup-34f6ac93-segment-01
+          path: backup/chunks/segment-01
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Upload backup segment 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-backup-34f6ac93-segment-02
+          path: backup/chunks/segment-02
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Upload backup segment 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-backup-34f6ac93-segment-03
+          path: backup/chunks/segment-03
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Upload backup segment 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-backup-34f6ac93-segment-04
+          path: backup/chunks/segment-04
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Upload backup segment 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-backup-34f6ac93-segment-05
+          path: backup/chunks/segment-05
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Upload restoration instructions and checksums
+        uses: actions/upload-artifact@v4
+        with:
+          name: graduation-project-backup-34f6ac93-restore
+          path: backup/meta/
+          if-no-files-found: error
           retention-days: 30
