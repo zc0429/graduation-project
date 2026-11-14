@@ -127,6 +127,7 @@ def verify_pdf(path, output):
               'standalone_font_binaries_exported': False,
               'raster_figure_fonts_verified': False, 'microsoft_word_verified': False}
     write_json(output, report)
+    doc.close()  # Release the Windows handle before a failed candidate is renamed.
     if not passed:
         raise RuntimeError('Actual PDF originals, embedded metadata, or page-number fonts failed verification')
     return report

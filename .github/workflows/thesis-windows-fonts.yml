@@ -8,6 +8,8 @@ on:
       - scripts/cloud/Invoke-ThesisWindows.ps1
       - scripts/documents/thesis_windows_cloud.py
       - scripts/documents/validate_thesis_delivery.py
+      - scripts/documents/build_thesis_delivery.py
+      - scripts/documents/audit_thesis_font_layout.py
   workflow_dispatch:
 
 permissions:

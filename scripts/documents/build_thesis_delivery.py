@@ -211,6 +211,16 @@ def main():
     header_style.paragraph_format.line_spacing=1
     header_style.paragraph_format.first_line_indent=Pt(0)
     edited_styles.append(header_style.style_id)
+    # LibreOffice's PAGE field importer takes the footer's paragraph-style
+    # font even when cached field runs explicitly declare Song. Keep the
+    # semantic style consistent too, including Latin digits and Roman numerals.
+    footer_style=d.styles['Footer']
+    font_properties(footer_style.element.get_or_add_rPr(),9,latin='宋体')
+    footer_style.paragraph_format.first_line_indent=Pt(0)
+    footer_style.paragraph_format.left_indent=Pt(0)
+    footer_style.paragraph_format.right_indent=Pt(0)
+    footer_style.paragraph_format.alignment=WD_ALIGN_PARAGRAPH.CENTER
+    edited_styles.append(footer_style.style_id)
     for name in ['Caption','Title','Thesis Code']:
         if name not in d.styles:
             st=d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH);edited_styles.append(st.style_id)

@@ -53,13 +53,13 @@ def main():
         expected={'Normal':(12,'宋体'),'heading 1':(14,'黑体'),'heading 2':(12,'黑体'),
                   'heading 3':(12,'黑体'),'Title':(18,'黑体'),
                   'TOC 1':(14,'黑体'),'TOC 2':(12,'黑体'),'TOC 3':(12,'黑体'),
-                  'Thesis Code':(12,'宋体')}
+                  'Thesis Code':(12,'宋体'),'footer':(9,'宋体')}
         for sid,s in by_id.items():
             name=s.find('w:name',NS).get(W+'val')
             if name not in expected:continue
             size,east=expected[name];props=style_props(sid)
             assert props['eastAsia']==east and props['sz']==str(size*2),(name,props)
-            assert props['ascii']==props['hAnsi']=='Times New Roman',(name,props)
+            assert props['ascii']==props['hAnsi']==('宋体' if name=='footer' else 'Times New Roman'),(name,props)
             assert not any(k.endswith('Theme') for k in props),(name,props)
             style_checks.append({'style':name,'effective':props})
         assert len(style_checks)==len(expected)
