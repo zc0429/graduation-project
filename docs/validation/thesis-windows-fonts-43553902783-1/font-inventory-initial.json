@@ -1,0 +1,142 @@
+{
+  "platform": "win32",
+  "source": "GitHub-hosted Windows system Fonts directory",
+  "license_scope": "Use on this hosted Windows VM; no standalone font redistribution or Linux copying",
+  "families_available": {
+    "SimSun": true,
+    "SimHei": false,
+    "Times New Roman": true,
+    "Courier New": true
+  },
+  "files": [
+    {
+      "file": "C:\\Windows\\Fonts\\simsun.ttc",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "version": "Version 5.24",
+      "style": "Regular",
+      "sha256": "1526ac24375f51f6eb73bc2d3f8072dbe4a80a3a65217677c9d9a84f67dab2ab",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\simsun.ttc",
+      "exists": true,
+      "index": 1,
+      "family_names": [
+        "NSimSun",
+        "新宋体"
+      ],
+      "version": "Version 5.24",
+      "style": "Regular",
+      "sha256": "1526ac24375f51f6eb73bc2d3f8072dbe4a80a3a65217677c9d9a84f67dab2ab",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\simhei.ttf",
+      "exists": false
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\times.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Times New Roman"
+      ],
+      "version": "Version 7.02",
+      "style": "Regular",
+      "sha256": "d91142c6503e396d5cfcb8d571e7fa44fef7588ba048f8c36f7fac4cd4da1f98",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\timesbd.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Times New Roman"
+      ],
+      "version": "Version 7.02",
+      "style": "Bold",
+      "sha256": "bb6c490834995f92fbf568a00c6ca9f7bccac317ac64e8367ab571b8a59813da",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\timesi.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Times New Roman"
+      ],
+      "version": "Version 7.02",
+      "style": "Italic",
+      "sha256": "e944d36632f8d81a89a7d670e432fc8eeefde017a69fb781d397664e71180bfc",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\timesbi.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Times New Roman"
+      ],
+      "version": "Version 7.02",
+      "style": "Bold Italic",
+      "sha256": "37cf3446cb24df8530fcfa9f4fa5a2772fd51bb3a4ad0a9d0d9060782d873886",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\cour.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Courier New"
+      ],
+      "version": "Version 6.92",
+      "style": "Regular",
+      "sha256": "93c3ff526c19d03496c01c6a1bfd1031f97af021a13e859a89dfc717a0b6b6ec",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\courbd.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Courier New"
+      ],
+      "version": "Version 6.92",
+      "style": "Bold",
+      "sha256": "716c08d704f154870bd9fb78b185d0b644912301dfa9c9e6daf45bdb4832a299",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\couri.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Courier New"
+      ],
+      "version": "Version 6.91",
+      "style": "Italic",
+      "sha256": "5861588608d3a3775d921a7e4acb8362b21630c6b63718bc68adb7137ce53beb",
+      "embedding_fsType": 8
+    },
+    {
+      "file": "C:\\Windows\\Fonts\\courbi.ttf",
+      "exists": true,
+      "index": 0,
+      "family_names": [
+        "Courier New"
+      ],
+      "version": "Version 6.91",
+      "style": "Bold Italic",
+      "sha256": "8fdb188252a2db0f020c89831bddb61cadfe290c3616fe534479b4d3b10d09c1",
+      "embedding_fsType": 8
+    }
+  ],
+  "all_originals_available": false,
+  "font_binaries_uploaded": false,
+  "microsoft_word_verified": false
+}

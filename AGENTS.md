@@ -1,3 +1,5 @@
+> **2026-11-14 PR #9 Master Prompt终稿交付（最新）**：按本轮用户明确指令修订正文与排版，64处文字替换；100页原字体PDF、九章正文86页、主目录3页、177个目录目标、全篇纵向A4、敏感词0。28图、正文27表＋附录2表、31段275行真实代码、27篇文献；新增表8.7追踪14FR，表A.1分开Mock与历史Live GLM。代码按本轮要求改为9.5pt Courier New／宋体代码框。Windows运行[43555726071](https://github.com/zc0429/graduation-project/actions/runs/43555726071)成功，导出源`a5bea84`；SimSun/SimHei/Times New Roman及代码Courier New实际使用并嵌入。100页视觉检查完成，1373项原件不变；不开新功能、不改开题/业务/历史证据，不合并PR。Word引擎、栅格图内原字体未认证，M14原文未提供；不把27题普通评分写成盲评。新入口：[交付报告](docs/validation/thesis-master-final-20261114/README.md)。旧记录按当时状态保留。
+
 > **2026-11-14 PR #9云端原字体交付（最新）**：Windows Actions运行[43541893783](https://github.com/zc0429/graduation-project/actions/runs/43541893783)成功，源提交`d117e19`；原有SimSun 5.24、Times New Roman 7.02，缺少的SimHei 5.03通过微软官方Hans补充字体组件安装。修复LibreOffice首次启动更新及动态PAGE字段的Footer字体继承；正式PDF101页、正文87页、120目录目标稳定，三种原字体实际使用/嵌入/子集化，94页页码实际9pt SimSun；101页校样已查看。无需用户本地Codex或Word导出；Word引擎、纸质打印和栅格图内原字体未认证。论文正文、开题、业务及历史证据不改；字体文件不入库或复制Linux，不合并PR。[新DOCX/PDF、报告与日志](docs/validation/thesis-cloud-fonts-20261114/README.md)。以下为历史入口。
 
 > **2026-11-13 PR #9字体排版续审（最新）**：继续`codex/thesis-final-quality-20261113`，起点`e211f65`。题目18pt黑体加粗居中、章14pt黑体、节/条12pt黑体、正文12pt宋体/Times New Roman、页码9pt宋体均按用户已确认规范执行，不再询问。修复样式/默认值/东亚与英数字体槽、代码小四与分页、校徽继承裁切及接口续表；Times New Roman四种原字体已合法安装并验证PDF实际使用。宋体/黑体缺本环境可验证授权安装包，Word未安装，原字体终验未完成，PDF明确为字体受限预览（101页、正文87页、120目录项）。28图26表31段275行代码27篇文献不变，1182项原件保护通过；不改正文源稿、开题、业务或历史证据，不合并PR。[报告与新DOCX/预览PDF](docs/validation/thesis-font-layout-20261113/README.md)。以下为历史入口。
@@ -33,11 +35,11 @@
 
 - **性质**：本科毕业设计（云南工商学院，人工智能学院，2027 届），指导教师：**胡韬**（邮箱 stevenbug@qq.com，任务书等文档经邮件提交）
 - **学生信息**：赵灿，学号 23612801026，2023级【本科】软件工程1班
-- **论文关键词（4 个，导师要求录入系统并用于摘要）**：错题分析；个性化推荐；检索增强生成；知识追踪
+- **论文关键词（4个，本轮用户指令）**：错题分析；学习资源推荐；检索增强生成；持续练习
 - **论文三稿节奏（导师明确要求）**：一稿完成需求分析 → 二稿完成概要设计与详细设计 → 三稿完成编码与测试
 - **题目（2026-08-23 修改）**：**基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现**
   - 原题（2026-07-21）：基于 Spring Boot+Vue 的 AI 错题分析与学习推荐系统设计与实现
-  - 英文题目：**Design and Implementation of an AI-Powered Wrong-Question Analysis and Learning Recommendation System Based on the Zhipu GLM Model**
+  - 英文题目：**Design and Implementation of an AI-Powered Error Analysis and Learning Recommendation System Based on the Zhipu GLM Model**
   （业务闭环：错题录入 → AI 知识点归类与解析（RAG）→ 相似题/变式题推荐 → 规则化间隔复习计划 → 学情报告；当前代码、数据库与论文统一为 11 张物理表）
 - **论文**：Word 撰写。**学校材料最高优先级目录 = `docs/materials/27届毕业设计学校通知和模板/`**。涉及开题报告、毕业论文格式、排版、节点、提交与归档时，先读该目录中的 2027 届通知、工作方案、撰写规范和对应模板；旧 `docs/materials/附件2：云南工商学院本科毕业论文（设计）.docx` 与导师往届范例仅在新材料未覆盖时补充参考。开题报告正式版以该目录 `附件3：毕业论文（设计）相关模板（2027）/附件3：毕业论文（设计）内容资料.docx` 中的开题报告表格为版式权威，毕业论文正文以 `附件3：毕业论文（设计）相关模板（2027）/附件4：毕业论文（设计）正文模板.docx` 为版式权威
 - **用户 Git 身份**：`zc0429 <17268890681@163.com>`（本仓库 local 配置，勿改全局）

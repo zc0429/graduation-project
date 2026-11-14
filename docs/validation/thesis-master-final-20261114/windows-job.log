@@ -1,0 +1,296 @@
+﻿2026-11-14T03:53:28.4244866Z Current runner version: '2.338.2'
+2026-11-14T03:53:28.4280198Z ##[group]Runner Image Provisioner
+2026-11-14T03:53:28.4281473Z Hosted Compute Agent
+2026-11-14T03:53:28.4282283Z Version: 20261103.629
+2026-11-14T03:53:28.4283216Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-14T03:53:28.4284429Z Build Date: 2026-11-03T17:26:59Z
+2026-11-14T03:53:28.4285737Z Worker ID: {3b8270bf-2d76-40de-ae74-070a53ae3c83}
+2026-11-14T03:53:28.4286994Z Region: eastus
+2026-11-14T03:53:28.4288057Z Cloud: Azure
+2026-11-14T03:53:28.4288924Z ##[endgroup]
+2026-11-14T03:53:28.4291163Z ##[group]Operating System
+2026-11-14T03:53:28.4292200Z Microsoft Windows Server 2022
+2026-11-14T03:53:28.4293222Z 10.0.20348
+2026-11-14T03:53:28.4293994Z Datacenter
+2026-11-14T03:53:28.4294790Z ##[endgroup]
+2026-11-14T03:53:28.4295634Z ##[group]Runner Image
+2026-11-14T03:53:28.4296551Z Image: windows-2022
+2026-11-14T03:53:28.4297492Z Version: 20261112.366.7
+2026-11-14T03:53:28.4299852Z Included Software: https://github.com/actions/runner-images/blob/win22/20261112.366/images/windows/Windows2022-Readme.md
+2026-11-14T03:53:28.4302608Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261112.366
+2026-11-14T03:53:28.4304192Z ##[endgroup]
+2026-11-14T03:53:28.4305917Z ##[group]GITHUB_TOKEN Permissions
+2026-11-14T03:53:28.4308549Z Contents: read
+2026-11-14T03:53:28.4309587Z Metadata: read
+2026-11-14T03:53:28.4310483Z ##[endgroup]
+2026-11-14T03:53:28.4313663Z Secret source: Actions
+2026-11-14T03:53:28.4315113Z Cache mode: write
+2026-11-14T03:53:28.4316158Z Prepare workflow directory
+2026-11-14T03:53:28.5036375Z Prepare all required actions
+2026-11-14T03:53:28.5105050Z Getting action download info
+2026-11-14T03:53:28.6972253Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-14T03:53:28.8330051Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-14T03:53:28.9703711Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-14T03:53:29.4362528Z Complete job name: render
+2026-11-14T03:53:29.5915180Z ##[group]Run git config --global core.autocrlf false
+2026-11-14T03:53:29.5916359Z [36;1mgit config --global core.autocrlf false[0m
+2026-11-14T03:53:29.6070034Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-14T03:53:29.6071663Z env:
+2026-11-14T03:53:29.6072375Z   PYTHONUTF8: 1
+2026-11-14T03:53:29.6073325Z   THESIS_DELIVERY_ID: thesis-windows-fonts-43553902783-1
+2026-11-14T03:53:29.6074475Z ##[endgroup]
+2026-11-14T03:53:30.5883397Z ##[group]Run actions/checkout@v4
+2026-11-14T03:53:30.5884575Z with:
+2026-11-14T03:53:30.5885493Z   ref: 4df4e0db1d1e48eae1eefeceba52edc6f609b82f
+2026-11-14T03:53:30.5886766Z   persist-credentials: false
+2026-11-14T03:53:30.5887829Z   repository: zc0429/graduation-project
+2026-11-14T03:53:30.5896530Z   token: ***
+2026-11-14T03:53:30.5897356Z   ssh-strict: true
+2026-11-14T03:53:30.5898242Z   ssh-user: git
+2026-11-14T03:53:30.5899055Z   clean: true
+2026-11-14T03:53:30.5899921Z   sparse-checkout-cone-mode: true
+2026-11-14T03:53:30.5900986Z   fetch-depth: 1
+2026-11-14T03:53:30.5901820Z   fetch-tags: false
+2026-11-14T03:53:30.5902694Z   show-progress: true
+2026-11-14T03:53:30.5903561Z   lfs: false
+2026-11-14T03:53:30.5904364Z   submodules: false
+2026-11-14T03:53:30.5905247Z   set-safe-directory: true
+2026-11-14T03:53:30.5906243Z   allow-unsafe-pr-checkout: false
+2026-11-14T03:53:30.5907278Z env:
+2026-11-14T03:53:30.5908032Z   PYTHONUTF8: 1
+2026-11-14T03:53:30.5909118Z   THESIS_DELIVERY_ID: thesis-windows-fonts-43553902783-1
+2026-11-14T03:53:30.5910404Z ##[endgroup]
+2026-11-14T03:53:30.7517180Z Syncing repository: zc0429/graduation-project
+2026-11-14T03:53:30.7523425Z ##[group]Getting Git version info
+2026-11-14T03:53:30.8765042Z Working directory is 'D:\a\graduation-project\graduation-project'
+2026-11-14T03:53:30.8771814Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-14T03:53:30.8983260Z git version 2.56.1.windows.1
+2026-11-14T03:53:30.9006884Z ##[endgroup]
+2026-11-14T03:53:30.9022891Z Copying 'C:\Users\runneradmin\.gitconfig' to 'D:\a\_temp\54253c86-e6b9-4dad-ac24-7173aaaed9d1\.gitconfig'
+2026-11-14T03:53:30.9046138Z Temporarily overriding HOME='D:\a\_temp\54253c86-e6b9-4dad-ac24-7173aaaed9d1' before making global git config changes
+2026-11-14T03:53:30.9050470Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-14T03:53:30.9063600Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\graduation-project\graduation-project
+2026-11-14T03:53:30.9347938Z Deleting the contents of 'D:\a\graduation-project\graduation-project'
+2026-11-14T03:53:30.9353146Z ##[group]Initializing the repository
+2026-11-14T03:53:30.9366802Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\graduation-project\graduation-project
+2026-11-14T03:53:31.0237964Z Initialized empty Git repository in D:/a/graduation-project/graduation-project/.git/
+2026-11-14T03:53:31.0250079Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/zc0429/graduation-project
+2026-11-14T03:53:31.0840613Z ##[endgroup]
+2026-11-14T03:53:31.0842958Z ##[group]Disabling automatic garbage collection
+2026-11-14T03:53:31.0845411Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-14T03:53:31.1116181Z ##[endgroup]
+2026-11-14T03:53:31.1118392Z ##[group]Setting up auth
+2026-11-14T03:53:31.1129810Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-14T03:53:31.7068888Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-14T03:53:32.4733306Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-14T03:53:32.5032160Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-14T03:53:33.0326861Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-14T03:53:33.0620363Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-14T03:53:34.2244748Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-14T03:53:34.2247543Z ##[endgroup]
+2026-11-14T03:53:34.2248302Z ##[group]Fetching the repository
+2026-11-14T03:53:34.2250070Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 4df4e0db1d1e48eae1eefeceba52edc6f609b82f
+2026-11-14T03:53:42.2360892Z From https://github.com/zc0429/graduation-project
+2026-11-14T03:53:42.2362711Z  * branch            4df4e0db1d1e48eae1eefeceba52edc6f609b82f -> FETCH_HEAD
+2026-11-14T03:53:42.2402695Z ##[endgroup]
+2026-11-14T03:53:42.2403675Z ##[group]Determining the checkout info
+2026-11-14T03:53:42.2516280Z ##[endgroup]
+2026-11-14T03:53:42.2531701Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-11-14T03:53:42.2861808Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-11-14T03:53:42.3155161Z ##[group]Checking out the ref
+2026-11-14T03:53:42.3165445Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force 4df4e0db1d1e48eae1eefeceba52edc6f609b82f
+2026-11-14T03:53:43.3559867Z Updating files:  90% (1266/1401)
+2026-11-14T03:53:43.3593587Z Updating files:  91% (1275/1401)
+2026-11-14T03:53:43.3622859Z Updating files:  92% (1289/1401)
+2026-11-14T03:53:43.3660999Z Updating files:  93% (1303/1401)
+2026-11-14T03:53:43.3698825Z Updating files:  94% (1317/1401)
+2026-11-14T03:53:43.3724667Z Updating files:  95% (1331/1401)
+2026-11-14T03:53:43.3757259Z Updating files:  96% (1345/1401)
+2026-11-14T03:53:43.3791523Z Updating files:  97% (1359/1401)
+2026-11-14T03:53:43.3874907Z Updating files:  98% (1373/1401)
+2026-11-14T03:53:43.3890626Z Updating files:  99% (1387/1401)
+2026-11-14T03:53:43.3891706Z Updating files: 100% (1401/1401)
+2026-11-14T03:53:43.3892640Z Updating files: 100% (1401/1401), done.
+2026-11-14T03:53:43.4018590Z Note: switching to '4df4e0db1d1e48eae1eefeceba52edc6f609b82f'.
+2026-11-14T03:53:43.4021492Z 
+2026-11-14T03:53:43.4022027Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-14T03:53:43.4023098Z changes and commit them, and you can discard any commits you make in this
+2026-11-14T03:53:43.4033675Z state without impacting any branches by switching back to a branch.
+2026-11-14T03:53:43.4034506Z 
+2026-11-14T03:53:43.4048491Z If you want to create a new branch to retain commits you create, you may
+2026-11-14T03:53:43.4050461Z do so (now or later) by using -c with the switch command. Example:
+2026-11-14T03:53:43.4051704Z 
+2026-11-14T03:53:43.4052328Z   git switch -c <new-branch-name>
+2026-11-14T03:53:43.4055327Z 
+2026-11-14T03:53:43.4080598Z Or undo this operation with:
+2026-11-14T03:53:43.4101677Z 
+2026-11-14T03:53:43.4140081Z   git switch -
+2026-11-14T03:53:43.4160890Z 
+2026-11-14T03:53:43.4176021Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-14T03:53:43.4176746Z 
+2026-11-14T03:53:43.4177369Z HEAD is now at 4df4e0d fix: retain bibliography labels before nationality parentheses
+2026-11-14T03:53:43.4282792Z ##[endgroup]
+2026-11-14T03:53:43.4715686Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-11-14T03:53:43.4986246Z 4df4e0db1d1e48eae1eefeceba52edc6f609b82f
+2026-11-14T03:53:43.5018739Z ##[group]Removing auth
+2026-11-14T03:53:43.5027908Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-14T03:53:43.5316186Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-14T03:53:44.0545529Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-14T03:53:44.0822478Z http.https://github.com/.extraheader
+2026-11-14T03:53:44.0859839Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-11-14T03:53:44.1157864Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-14T03:53:44.6150097Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-14T03:53:44.6441846Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-14T03:53:45.1612162Z ##[endgroup]
+2026-11-14T03:53:45.1926897Z ##[group]Run actions/setup-python@v5
+2026-11-14T03:53:45.1927250Z with:
+2026-11-14T03:53:45.1927440Z   python-version: 3.12
+2026-11-14T03:53:45.1927662Z   check-latest: false
+2026-11-14T03:53:45.1930103Z   token: ***
+2026-11-14T03:53:45.1930301Z   update-environment: true
+2026-11-14T03:53:45.1930535Z   allow-prereleases: false
+2026-11-14T03:53:45.1930758Z   freethreaded: false
+2026-11-14T03:53:45.1930944Z env:
+2026-11-14T03:53:45.1931100Z   PYTHONUTF8: 1
+2026-11-14T03:53:45.1931360Z   THESIS_DELIVERY_ID: thesis-windows-fonts-43553902783-1
+2026-11-14T03:53:45.1931670Z ##[endgroup]
+2026-11-14T03:53:45.3574570Z ##[group]Installed versions
+2026-11-14T03:53:45.3781074Z (node:5044) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-14T03:53:45.3782828Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-14T03:53:45.3783901Z Successfully set up CPython (3.12.10)
+2026-11-14T03:53:45.3787811Z ##[endgroup]
+2026-11-14T03:53:45.4022044Z ##[group]Run python -m pip install python-docx==1.2.0 lxml==6.0.2 Pillow==12.0.0 PyMuPDF==1.26.6 fonttools==4.60.1 brotli==1.2.0
+2026-11-14T03:53:45.4022965Z [36;1mpython -m pip install python-docx==1.2.0 lxml==6.0.2 Pillow==12.0.0 PyMuPDF==1.26.6 fonttools==4.60.1 brotli==1.2.0[0m
+2026-11-14T03:53:45.4065357Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-14T03:53:45.4065708Z env:
+2026-11-14T03:53:45.4065883Z   PYTHONUTF8: 1
+2026-11-14T03:53:45.4066145Z   THESIS_DELIVERY_ID: thesis-windows-fonts-43553902783-1
+2026-11-14T03:53:45.4066543Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:53:45.4067037Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-11-14T03:53:45.4067494Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:53:45.4067897Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:53:45.4068334Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:53:45.4068650Z ##[endgroup]
+2026-11-14T03:53:53.8394628Z Collecting python-docx==1.2.0
+2026-11-14T03:53:53.8395838Z   Downloading python_docx-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+2026-11-14T03:53:53.8396431Z Collecting lxml==6.0.2
+2026-11-14T03:53:53.8396936Z   Downloading lxml-6.0.2-cp312-cp312-win_amd64.whl.metadata (3.7 kB)
+2026-11-14T03:53:54.0493919Z Collecting Pillow==12.0.0
+2026-11-14T03:53:54.0923527Z   Downloading pillow-12.0.0-cp312-cp312-win_amd64.whl.metadata (9.0 kB)
+2026-11-14T03:53:54.3151409Z Collecting PyMuPDF==1.26.6
+2026-11-14T03:53:54.3431139Z   Downloading pymupdf-1.26.6-cp310-abi3-win_amd64.whl.metadata (3.4 kB)
+2026-11-14T03:53:54.6206409Z Collecting fonttools==4.60.1
+2026-11-14T03:53:54.6412338Z   Downloading fonttools-4.60.1-cp312-cp312-win_amd64.whl.metadata (114 kB)
+2026-11-14T03:53:54.7866575Z Collecting brotli==1.2.0
+2026-11-14T03:53:54.8070816Z   Downloading brotli-1.2.0-cp312-cp312-win_amd64.whl.metadata (6.3 kB)
+2026-11-14T03:53:54.8744345Z Collecting typing_extensions>=4.9.0 (from python-docx==1.2.0)
+2026-11-14T03:53:54.8940175Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-11-14T03:53:54.9368725Z Downloading python_docx-1.2.0-py3-none-any.whl (252 kB)
+2026-11-14T03:53:55.0001179Z Downloading lxml-6.0.2-cp312-cp312-win_amd64.whl (4.0 MB)
+2026-11-14T03:53:55.1107039Z    ---------------------------------------- 4.0/4.0 MB 40.3 MB/s  0:00:00
+2026-11-14T03:53:55.1365934Z Downloading pillow-12.0.0-cp312-cp312-win_amd64.whl (7.0 MB)
+2026-11-14T03:53:55.2451552Z    ---------------------------------------- 7.0/7.0 MB 61.8 MB/s  0:00:00
+2026-11-14T03:53:55.2673849Z Downloading pymupdf-1.26.6-cp310-abi3-win_amd64.whl (18.4 MB)
+2026-11-14T03:53:55.7550543Z    ---------------------------------------- 18.4/18.4 MB 37.5 MB/s  0:00:00
+2026-11-14T03:53:55.7851457Z Downloading fonttools-4.60.1-cp312-cp312-win_amd64.whl (2.3 MB)
+2026-11-14T03:53:55.8325851Z    ---------------------------------------- 2.3/2.3 MB 42.7 MB/s  0:00:00
+2026-11-14T03:53:55.8550329Z Downloading brotli-1.2.0-cp312-cp312-win_amd64.whl (369 kB)
+2026-11-14T03:53:55.9023185Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-11-14T03:53:56.7823060Z Installing collected packages: brotli, typing_extensions, PyMuPDF, Pillow, lxml, fonttools, python-docx
+2026-11-14T03:54:01.5799889Z 
+2026-11-14T03:54:01.5822877Z Successfully installed Pillow-12.0.0 PyMuPDF-1.26.6 brotli-1.2.0 fonttools-4.60.1 lxml-6.0.2 python-docx-1.2.0 typing_extensions-4.16.0
+2026-11-14T03:54:01.7533990Z ##[group]Run ./scripts/cloud/Invoke-ThesisWindows.ps1
+2026-11-14T03:54:01.7534467Z [36;1m./scripts/cloud/Invoke-ThesisWindows.ps1[0m
+2026-11-14T03:54:01.7575433Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-14T03:54:01.7575778Z env:
+2026-11-14T03:54:01.7575951Z   PYTHONUTF8: 1
+2026-11-14T03:54:01.7576230Z   THESIS_DELIVERY_ID: thesis-windows-fonts-43553902783-1
+2026-11-14T03:54:01.7576638Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:54:01.7577098Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-11-14T03:54:01.7577552Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:54:01.7577951Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:54:01.7578351Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:54:01.7578663Z ##[endgroup]
+2026-11-14T03:54:02.2276814Z Transcript started, output file is D:\a\graduation-project\graduation-project\docs\validation\thesis-windows-fonts-43553902783-1\windows-transcript.log
+2026-11-14T03:54:05.1340970Z {"families_available": {"SimSun": true, "SimHei": false, "Times New Roman": true, "Courier New": true}, "report": "D:\\a\\graduation-project\\graduation-project\\docs\\validation\\thesis-windows-fonts-43553902783-1\\font-inventory-initial.json"}
+2026-11-14T03:56:00.0358066Z {"families_available": {"SimSun": true, "SimHei": true, "Times New Roman": true, "Courier New": true}, "report": "D:\\a\\graduation-project\\graduation-project\\docs\\validation\\thesis-windows-fonts-43553902783-1\\font-inventory.json"}
+2026-11-14T03:56:17.5789419Z Chocolatey v2.7.5
+2026-11-14T03:56:18.5802524Z Installing the following packages:
+2026-11-14T03:56:18.5803105Z libreoffice-fresh
+2026-11-14T03:56:18.5803553Z By installing, you accept licenses for the packages.
+2026-11-14T03:56:26.0790273Z Downloading package from source 'https://community.chocolatey.org/api/v2/'
+2026-11-14T03:56:26.8725759Z 
+2026-11-14T03:56:26.8726624Z libreoffice-fresh v25.2.3 [Approved]
+2026-11-14T03:56:26.9099254Z libreoffice-fresh package files install completed. Performing other installation steps.
+2026-11-14T03:56:45.7691202Z Downloading libreoffice-fresh 64 bit
+2026-11-14T03:56:45.7934716Z   from 'https://downloadarchive.documentfoundation.org/libreoffice/old/25.2.3.2/win/x86_64/LibreOffice_25.2.3.2_Win_x86-64.msi'
+2026-11-14T03:57:01.7826055Z 
+2026-11-14T03:57:01.7829741Z Download of LibreOffice_25.2.3.2_Win_x86-64.msi (348.21 MB) completed.
+2026-11-14T03:57:12.4388567Z Hashes match.
+2026-11-14T03:57:12.6934827Z Installing libreoffice-fresh...
+2026-11-14T03:58:33.4541843Z libreoffice-fresh has been installed.
+2026-11-14T03:58:33.8025573Z   libreoffice-fresh may be able to be automatically uninstalled.
+2026-11-14T03:58:34.1020428Z  The install of libreoffice-fresh was successful.
+2026-11-14T03:58:34.1021560Z   Deployed to 'C:\Program Files\LibreOffice\'
+2026-11-14T03:58:34.1714298Z 
+2026-11-14T03:58:34.1740561Z Chocolatey installed 1/1 packages. 
+2026-11-14T03:58:34.1741764Z  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+2026-11-14T03:59:53.1722698Z Transcript stopped, output file is D:\a\graduation-project\graduation-project\docs\validation\thesis-windows-fonts-43553902783-1\windows-transcript.log
+2026-11-14T03:59:53.2273904Z ##[group]Run actions/upload-artifact@v4
+2026-11-14T03:59:53.2274378Z with:
+2026-11-14T03:59:53.2274654Z   name: thesis-windows-fonts-43553902783-1
+2026-11-14T03:59:53.2275299Z   path: output/thesis/thesis-windows-fonts-43553902783-1/
+docs/validation/thesis-windows-fonts-43553902783-1/
+
+2026-11-14T03:59:53.2275899Z   if-no-files-found: warn
+2026-11-14T03:59:53.2276187Z   retention-days: 14
+2026-11-14T03:59:53.2276425Z   compression-level: 6
+2026-11-14T03:59:53.2276679Z   overwrite: false
+2026-11-14T03:59:53.2276916Z   include-hidden-files: false
+2026-11-14T03:59:53.2277186Z env:
+2026-11-14T03:59:53.2277379Z   PYTHONUTF8: 1
+2026-11-14T03:59:53.2277687Z   THESIS_DELIVERY_ID: thesis-windows-fonts-43553902783-1
+2026-11-14T03:59:53.2278174Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:59:53.2279558Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-11-14T03:59:53.2280131Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:59:53.2280590Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:59:53.2281048Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-11-14T03:59:53.2281411Z ##[endgroup]
+2026-11-14T03:59:53.4237637Z (node:4944) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-14T03:59:53.4239288Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-14T03:59:53.4880016Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-14T03:59:53.4883333Z The least common ancestor is D:\a\graduation-project\graduation-project. This will be the root directory of the artifact
+2026-11-14T03:59:53.4884817Z With the provided path, there will be 159 files uploaded
+2026-11-14T03:59:53.4890106Z Artifact name is valid!
+2026-11-14T03:59:53.4892295Z Root directory input is valid!
+2026-11-14T03:59:53.7125808Z Beginning upload of artifact content to blob storage
+2026-11-14T03:59:54.0628893Z (node:4944) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-14T03:59:54.4049539Z Uploaded bytes 8388608
+2026-11-14T03:59:54.6879976Z Uploaded bytes 16777216
+2026-11-14T03:59:55.1673606Z Uploaded bytes 25165824
+2026-11-14T03:59:55.6373964Z Uploaded bytes 33554432
+2026-11-14T03:59:55.9746528Z Uploaded bytes 39474428
+2026-11-14T03:59:55.9937528Z Finished uploading artifact content to blob storage!
+2026-11-14T03:59:55.9938816Z SHA256 digest of uploaded artifact zip is e441699a8245bedb265519b1dbf7dbff0665cda5df2d8182040a5e98e4c83fb5
+2026-11-14T03:59:55.9939921Z Finalizing artifact upload
+2026-11-14T03:59:56.3733434Z Artifact thesis-windows-fonts-43553902783-1.zip successfully finalized. Artifact ID 14097612479
+2026-11-14T03:59:56.3735849Z Artifact thesis-windows-fonts-43553902783-1 has been successfully uploaded! Final size is 39474428 bytes. Artifact ID is 14097612479
+2026-11-14T03:59:56.3738159Z Artifact download URL: https://github.com/zc0429/graduation-project/actions/runs/43553902783/artifacts/14097612479
+2026-11-14T03:59:56.3982923Z Post job cleanup.
+2026-11-14T03:59:56.5871722Z (node:440) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-14T03:59:56.5882115Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-14T03:59:56.6303326Z Post job cleanup.
+2026-11-14T03:59:56.9401236Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-14T03:59:56.9923392Z git version 2.56.1.windows.1
+2026-11-14T03:59:57.0257365Z Copying 'C:\Users\runneradmin\.gitconfig' to 'D:\a\_temp\9e4cbc41-67d4-4388-9fac-b71b716676e0\.gitconfig'
+2026-11-14T03:59:57.0299413Z Temporarily overriding HOME='D:\a\_temp\9e4cbc41-67d4-4388-9fac-b71b716676e0' before making global git config changes
+2026-11-14T03:59:57.0344874Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-14T03:59:57.0369712Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\graduation-project\graduation-project
+2026-11-14T03:59:57.0995289Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-14T03:59:57.1663485Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-14T03:59:57.8553771Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-14T03:59:57.8966217Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-14T03:59:58.4553213Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-14T03:59:58.4962371Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-14T03:59:59.0950434Z Cleaning up orphan processes
+2026-11-14T03:59:59.1977724Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
