@@ -218,7 +218,7 @@ def main():
             'school_header_pages_checked':len(header_checks),'school_headers':header_checks,
             'original_pdf_fonts_verified':original_pdf,'microsoft_word_verified':False,
             'pdf_page_number_spans':page_spans,'raster_figure_fonts_revalidated':False,
-            'raster_figure_limit':'Historical screenshot UI remains unchanged; nine review derivatives remove editorial titles or reflow coordinates. Raster labels retain their source fonts; DOCX run fonts do not certify raster typography.'}
+            'raster_figure_limit':'Twenty diagrams are re-rendered from complete vector geometry with safe padding; screenshot evidence remains unchanged. DOCX run fonts do not certify raster-image typography.'}
     (RUN/'font-layout-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:v for k,v in result.items() if k not in {'style_checks','pdf_page_number_spans','school_headers'}},ensure_ascii=False))
 

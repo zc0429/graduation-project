@@ -215,6 +215,7 @@ def render(office):
         script('document-validation', 'validate_thesis_delivery.py')
         script('font-layout-validation', 'audit_thesis_font_layout.py')
         script('master-final-validation', 'check_thesis_master_final.py')
+        script('border-polish-validation', 'check_thesis_border_polish.py')
         script('render', 'render_thesis_audit.py')
         # Artifact includes every 120dpi page so the cloud task can inspect the
         # actual Windows result without requesting a local Word installation.

@@ -12,6 +12,9 @@ on:
       - scripts/documents/audit_thesis_font_layout.py
       - scripts/documents/check_thesis_master_final.py
       - scripts/documents/thesis_final_figures.py
+      - scripts/documents/build_thesis_border_figures.py
+      - scripts/documents/check_thesis_border_polish.py
+      - docs/thesis/border-polish-20261114/**
       - scripts/documents/update_delivery_page_map.py
       - scripts/documents/validate_thesis_references.py
       - docs/thesis/毕业论文.md

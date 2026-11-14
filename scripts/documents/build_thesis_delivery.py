@@ -151,12 +151,13 @@ def caption(doc,text,continued=False):
 TABLE_CHUNKS=[]
 def column_widths(rows,cap):
     n=len(rows[0])
-    if '系统接口一览' in cap:return [2.0,1.6,7.0,5.15]
+    if '系统接口一览' in cap:return [1.9,2.2,7.0,4.65]
+    if cap.startswith('表 6.4'):return [3.0,3.0,5.6,4.15]
     if cap.startswith('表 3.1'):return [1.5,3.0,8.0,3.25]
     if re.match(r'表 8\.[234] ',cap):return [4.0,4.0,7.75]
     if cap.startswith('表 8.7'):return [2.7,2.2,8.1,2.75]
     if cap.startswith('表 A.1'):return [3.0,6.0,6.75]
-    if rows[0]==['代码','文件','原始行范围']:return [1.5,11.1,3.15]
+    if rows[0]==['代码','文件','原始行范围']:return [1.35,11.8,2.6]
     return [3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else [3,4,5,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n
 
 def row_height(data,widths):
@@ -191,12 +192,23 @@ def table(doc,rows,cap):
         for ci,(c,value) in enumerate(zip(row.cells,data)):
             c.width=Cm(widths[ci]);c.vertical_alignment=WD_CELL_VERTICAL_ALIGNMENT.CENTER
             cp=c._tc.get_or_add_tcPr();margins=el('tcMar')
+            if ('系统接口一览' in cap and ci==1) or (rows[0]==['代码','文件','原始行范围'] and ci==1):
+                cp.append(el('noWrap'))
             for side,v in [('top',35),('bottom',35),('left',60),('right',60)]:margins.append(el(side,w=v,type='dxa'))
             cp.append(margins)
             if ri==0:
                 cb=el('tcBorders');cb.append(el('bottom',val='single',sz=8,color='000000'));cp.append(cb)
             p=c.paragraphs[0];fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER if ri==0 else WD_ALIGN_PARAGRAPH.LEFT,line=13,before=3,after=3,keep=ri<len(rows)-1)
             p._p.get_or_add_pPr().append(el('wordWrap',val=0))
+            if cap.startswith('表 8.7') and ci==2:
+                # Explicit CJK punctuation runs keep the ideographic comma
+                # visible between URL slashes; source wording is unchanged.
+                for index,item in enumerate(value.split('、')):
+                    if index:
+                        font(p.add_run('、'),10.5,latin='宋体')
+                        font(p.add_run('\u00a0'),10.5)
+                    inline(p,item,10.5,refs=False)
+                continue
             # Narrow class names at 9pt, with breaks only at camel-case
             # boundaries; no final isolated plural 's'. Source wording is intact.
             for part in re.split(r'([A-Za-z][A-Za-z0-9_]{23,})',plain(value)):
@@ -374,10 +386,8 @@ def main():
             # school / historical image originals are never overwritten.
             from thesis_final_figures import derivative
             im=derivative(target,im,RUN);w,h=im.size
-            if 'screenshots/' not in target:
-                box=ImageOps.invert(im.convert('L')).point(lambda x:255 if x>30 else 0).getbbox()
-                if box:
-                    x0,y0,x1,y1=box;pad=8;im=im.crop((max(0,x0-pad),max(0,y0-pad),min(w,x1+pad),min(h,y1+pad)));w,h=im.size
+            # Never crop diagram ink: measured vector derivatives already have
+            # safe white margins. Historical screenshots are embedded whole.
             max_height=19 if 'business-flow/' in target else 11 if re.search(r'(?:6-[123]\.png|6-9\.png)$',target) else 12.8 if re.search(r'/7-[2-6]\.png$',target) else 19
             width=min(15.0 if 'business-flow/' in target else 15.75,max_height*w/h)
             buf=BytesIO();im.save(buf,format='PNG');buf.seek(0);picture=buf
