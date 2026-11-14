@@ -107,6 +107,10 @@ def verify_pdf(path, output):
     chinese_wrong = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                      for p, s in spans if re.search(r'[\u3400-\u9fff]', s['text'])
                      and family(s['font']) not in {'SimSun', 'SimHei'}]
+    latin_wrong = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
+                   for p, s in spans if re.search(r'[A-Za-z0-9]', s['text'])
+                   and s['bbox'][1] <= doc[p - 1].rect.height - 55
+                   and family(s['font']) != 'Times New Roman']
     footer_wrong = [{'page': p, 'font': s['font'], 'text': s['text'], 'size': s['size']}
                     for p, s in spans if re.fullmatch(r'[IVX]+|\d+', s['text'].strip())
                     and s['bbox'][1] > doc[p - 1].rect.height - 55
@@ -114,10 +118,11 @@ def verify_pdf(path, output):
     metadata_ok = all(r['embedded'] and family(r['pdf_name']) in FAMILIES
                       and FAMILIES[family(r['pdf_name'])].intersection(r['embedded_family_names'])
                       for r in embedded)
-    passed = bool(embedded) and metadata_ok and all(usage.values()) and not (unknown or chinese_wrong or footer_wrong)
+    passed = bool(embedded) and metadata_ok and all(usage.values()) and not (unknown or chinese_wrong or latin_wrong or footer_wrong)
     report = {'pdf': str(path.relative_to(ROOT)), 'pdf_pages': len(doc), 'fonts': embedded,
               'used_text_spans': usage, 'unrecognized_fonts': unknown,
-              'chinese_font_errors': chinese_wrong, 'page_number_font_errors': footer_wrong,
+              'chinese_font_errors': chinese_wrong, 'latin_number_font_errors': latin_wrong,
+              'page_number_font_errors': footer_wrong,
               'original_pdf_text_fonts_verified': bool(passed),
               'standalone_font_binaries_exported': False,
               'raster_figure_fonts_verified': False, 'microsoft_word_verified': False}
@@ -153,6 +158,9 @@ def render(office):
                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
                                 encoding='utf-8', errors='replace', timeout=300)
         (run / (label + '.log')).write_text(result.stdout, encoding='utf-8')
+        with (run / 'commands.jsonl').open('a', encoding='utf-8') as log:
+            log.write(json.dumps({'label': label, 'argv': [str(x) for x in args],
+                                  'exit_code': result.returncode}, ensure_ascii=False) + '\n')
         if result.returncode:
             raise RuntimeError(f'{label} failed with exit code {result.returncode}; see its retained log')
     def script(label, filename):
@@ -163,13 +171,30 @@ def render(office):
         stable = False
         for iteration in range(1, 6):
             script(f'build-{iteration}', 'build_thesis_delivery.py')
-            with tempfile.TemporaryDirectory(prefix='thesis-office-') as temp:
+            with tempfile.TemporaryDirectory(prefix='thesis-office-', ignore_cleanup_errors=True) as temp:
                 temp_path = Path(temp)
+                profile = temp_path / 'profile'
+                (profile / 'user').mkdir(parents=True)
+                # The Windows build's MAR updater can detach the first process
+                # before conversion and keep the temporary profile locked.
+                # Disable it using the documented 25.2 configuration schema,
+                # not by changing the installed program or its font settings.
+                (profile / 'user/registrymodifications.xcu').write_text(
+                    '<?xml version="1.0" encoding="UTF-8"?>'
+                    '<oor:items xmlns:oor="http://openoffice.org/2001/registry">'
+                    '<item oor:path="/org.openoffice.Office.Update/Update">'
+                    '<prop oor:name="Enabled" oor:op="fuse"><value>false</value></prop>'
+                    '</item></oor:items>', encoding='utf-8')
                 command(f'export-{iteration}', [office, '-env:UserInstallation=' + (temp_path / 'profile').as_uri(),
-                        '--headless', '--convert-to', 'pdf:writer_pdf_Export', '--outdir', temp_path,
+                        '--headless', '--norestore', '--nofirststartwizard', '--nologo', '--nodefault',
+                        '--convert-to', 'pdf:writer_pdf_Export', '--outdir', temp_path,
                         out / '毕业论文.docx'])
                 candidate = temp_path / '毕业论文.pdf'
                 if not candidate.is_file():
+                    write_json(run / f'export-{iteration}-missing-pdf.json',
+                               {'temporary_files': [str(p.relative_to(temp_path)) for p in temp_path.rglob('*')]})
+                    for update in profile.glob('updates/*/update.log'):
+                        shutil.copy2(update, run / f'export-{iteration}-updater.log')
                     raise RuntimeError('LibreOffice returned without creating a PDF')
                 shutil.copy2(candidate, pdf)
             script(f'page-map-{iteration}', 'update_delivery_page_map.py')
