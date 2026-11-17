@@ -1,0 +1,24 @@
+{
+  "baseline_commit": "a9b90b40821564853ae69e3117deafe09d73b1ce",
+  "diagram_fix_commit": "a4294130596da8327b010ac6a8d30d9026e30558",
+  "protected_existing_files_unchanged": 1828,
+  "manuscript_sha256": "1dea4d2f0b167f8aa453735c2495936468870d31088644cb07bc1e63d1472937",
+  "manuscript_unchanged": true,
+  "historical_screenshots_unchanged": true,
+  "business_code_unchanged": true,
+  "diagrams_with_updated_rasters": 11,
+  "diagram_geometry_check": {
+    "figures": 20,
+    "labels": 454,
+    "visible_collisions": 0
+  },
+  "screenshot_replacements_committed": 0,
+  "screenshot_proposals_local_only": 3,
+  "runtime": {
+    "code_revision": "a9b90b40821564853ae69e3117deafe09d73b1ce",
+    "dev_revision": "6c667e0",
+    "database": "isolated MySQL 8.0.46",
+    "model": "explicit Mock",
+    "new_real_model_calls": 0
+  }
+}

@@ -22,3 +22,15 @@
 已就使用论文分支现有完整业务版本、以及是否在当前界面回放历史真实结果重截两点发出澄清。系统与隔离MySQL已启动，图7.1–7.3的deviceScaleFactor=2内容区域候选图已在本地生成并放大检查，尚未替换交付截图或改写历史来源记录。
 
 论文源稿SHA-256保持 `1dea4d2f0b167f8aa453735c2495936468870d31088644cb07bc1e63d1472937`。未修改论文正文、开题、业务代码或历史验证材料。
+
+## 图源部分 Windows 正式验证（截图未替换）
+
+[运行#14](https://github.com/zc0429/graduation-project/actions/runs/44078364436) **Success**，源提交`a429413`，总耗时4分26秒。注意：这是图源部分的正式导出，第7章仍使用既有截图，八张截图重截尚未交付。
+
+- DOCX对应实际PDF **100页**，全纵向A4。
+- 未知字体、中文字体、英文数字字体、页码字体四类错误：**0／0／0／0**。SimSun、SimHei、Times New Roman实际使用并嵌入。
+- **177个目录目标，2次导出稳定**；四项既有文档/字体/终稿/边框校验全部通过。
+- 原始报告见`../thesis-windows-fonts-44078364436-1/`；入库文本只统一换行与行尾空白。完整artifact：`thesis-windows-fonts-44078364436-1`（ID14325828708），原始ZIP SHA-256为`975e93d726dc275ccd42d251e0fff9b53c908141f9b6d8c0aa874b1c75716df5`。
+- 图源部分[DOCX](../../../output/thesis/thesis-windows-fonts-44078364436-1/毕业论文.docx)与[PDF](../../../output/thesis/thesis-windows-fonts-44078364436-1/毕业论文.pdf)已按artifact原字节取回。未经Microsoft Word引擎或打印核验。
+
+所有11张调整图的PNG已放大复核；关键五图及其余六图未见文字裁切或框线缺口。附加六图校样见`visual-proofs/`。其他9图的派生SVG/PNG未重渲染。
