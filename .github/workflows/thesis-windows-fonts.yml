@@ -2,7 +2,7 @@ name: Thesis Windows original fonts
 
 on:
   push:
-    branches: [codex/thesis-final-quality-20261113]
+    branches: [codex/thesis-final-quality-20261113, claude/thesis-voice-cleanup-20261117]
     paths:
       - .github/workflows/thesis-windows-fonts.yml
       - scripts/cloud/Invoke-ThesisWindows.ps1
@@ -28,7 +28,8 @@ permissions:
 jobs:
   render:
     if: >-
-      github.ref == 'refs/heads/codex/thesis-final-quality-20261113'
+      github.ref == 'refs/heads/codex/thesis-final-quality-20261113' ||
+      github.ref == 'refs/heads/claude/thesis-voice-cleanup-20261117'
     runs-on: windows-2022
     timeout-minutes: 30
     env:
