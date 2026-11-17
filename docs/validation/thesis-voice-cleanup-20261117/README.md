@@ -62,3 +62,10 @@
 - 顺带修正：第 7.4.2 节代码讲解段中 `choices[0]` 的方括号会被仓库文献校验误判为引用编号，改为「choices首项的message.content」，语义不变。
 - 导出验证：在本机以分支完整源码按仓库脚本流程实际运行（build_thesis_delivery.py → LibreOffice 转 PDF → update_delivery_page_map.py → 重建 → validate_thesis_delivery.py）。校验通过：101 页、九章真分页、28 图、29 表、目录 120 个目的地、177 个标题页码映射稳定、页界错误 0、文献首引顺序 1—27。导出产物已确认过滤源稿顶部说明块与封面/目录占位段（产物中「导出层」「占位」「Markdown」均 0 处），封面为模板真实封面，附录新段落完整呈现。
 - 限制：本机 Linux 无 SimSun/SimHei/Times New Roman 原字体，本次 PDF 为脚本明示的「字体受限预览」（Noto/Liberation 替代），页数与分页仅供参考；正式交付仍须走 Windows 原字体工作流（.github/workflows/thesis-windows-fonts.yml）导出并在 Word 中复核。
+
+## 第五轮（2026-11-17）：图 3.1/3.2 两处残留修复
+
+- 复查发现四类图表问题中边框不完整、箭头异常已修复，但有两处残留：图 3.1 连线标签「提交题目」被 e7 竖线（x=173.579）穿过首字；图 3.2「阅读知识内容」节点框宽 91.343 小于 16px 字号下 6 字文本宽约 96，首字「阅」被左边框裁切。
+- 修复（改源图 final-master SVG）：3-1 的 e7_label 整体右移 12.4 单位，标签与竖线留约 7.6 单位间隙；3-2 的 learn 节点框以中心 118.293 不变加宽至 112（x 72.625→62.293），文本两侧各留约 8 单位。
+- 按 build_thesis_border_figures.py 重新渲染 border-polish 图集：其余图的 SVG 与原版逐字节一致，仅 3-1/3-2 更新，manifest 相应条目已同步（其余条目保留原记录）。check_thesis_border_polish.py --figures-only 通过（20 图、117 矩形边覆盖、3 闭合外框、最小白边距 92px）。重导出后交付校验仍通过，PDF 中两处放大复核无压线、无裁切。
+- 提交：源图与清单经文本通道推送；两张 PNG 经 GitHub 网页上传提交 696276a2，blob SHA 与本地逐字节核对一致。
