@@ -23,7 +23,6 @@ FAMILIES = {
     'SimSun': {'SimSun', '宋体'},
     'SimHei': {'SimHei', '黑体'},
     'Times New Roman': {'Times New Roman'},
-    'Courier New': {'Courier New'},
 }
 
 
@@ -101,21 +100,19 @@ def verify_pdf(path, output):
     def family(name):
         name = name.split('+')[-1]
         return next((f for f, key in [('SimSun', 'SimSun'), ('SimHei', 'SimHei'),
-                                     ('Times New Roman', 'TimesNewRoman'), ('Courier New', 'CourierNew')] if key in name), None)
+                                     ('Times New Roman', 'TimesNewRoman')] if key in name), None)
     usage = {f: sum(family(s['font']) == f for _, s in spans) for f in FAMILIES}
     unknown = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                for p, s in spans if family(s['font']) is None]
     chinese_wrong = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                      for p, s in spans if re.search(r'[\u3400-\u9fff]', s['text'])
                      and family(s['font']) not in {'SimSun', 'SimHei'}]
-    code_regions={i+1:[d['rect'] for d in page.get_drawings() if d.get('fill') and all(abs(a-b)<.006 for a,b in zip(d['fill'],(.97255,.97647,.98039)))] for i,page in enumerate(doc)}
-    def is_code(p,s):
-        box=fitz.Rect(s['bbox']);centre=(box.tl+box.br)/2
-        return family(s['font'])=='Courier New' and abs(s['size']-9.5)<.05 and any(centre in rect for rect in code_regions[p])
+    # Code now follows the same SimSun / Times New Roman rule as prose.
+    # No region-based font exemption is needed for the unshaded code frames.
     latin_wrong = [{'page': p, 'font': s['font'], 'text': s['text'][:60]}
                    for p, s in spans if re.search(r'[A-Za-z0-9]', s['text'])
                    and s['bbox'][1] <= doc[p - 1].rect.height - 55
-                   and family(s['font']) != 'Times New Roman' and not is_code(p,s)]
+                   and family(s['font']) != 'Times New Roman']
     footer_wrong = [{'page': p, 'font': s['font'], 'text': s['text'], 'size': s['size']}
                     for p, s in spans if re.fullmatch(r'[IVX]+|\d+', s['text'].strip())
                     and s['bbox'][1] > doc[p - 1].rect.height - 55

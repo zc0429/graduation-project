@@ -57,18 +57,35 @@ def main():
         expected={'Normal':(12,'宋体'),'heading 1':(14,'黑体'),'heading 2':(12,'黑体'),
                   'heading 3':(12,'黑体'),'Title':(18,'黑体'),
                   'TOC 1':(14,'黑体'),'TOC 2':(12,'黑体'),'TOC 3':(12,'黑体'),
-                  'Thesis Code':(9.5,'宋体'),'footer':(9,'宋体')}
+                  'Thesis Code':(10.5,'宋体'),'footer':(9,'宋体')}
         for sid,s in by_id.items():
             name=s.find('w:name',NS).get(W+'val')
             if name not in expected:continue
             size,east=expected[name];props=style_props(sid)
             assert props['eastAsia']==east and props['sz']==str(int(size*2)),(name,props)
-            assert props['ascii']==props['hAnsi']==('宋体' if name=='footer' else 'Courier New' if name=='Thesis Code' else 'Times New Roman'),(name,props)
+            assert props['ascii']==props['hAnsi']==('宋体' if name=='footer' else 'Times New Roman'),(name,props)
             assert not any(k.endswith('Theme') for k in props),(name,props)
             style_checks.append({'style':name,'effective':props})
         assert len(style_checks)==len(expected)
         tree=E.fromstring(z.read('word/document.xml'))
         paragraphs=tree.findall('w:body/w:p',NS)
+        # Check cached list text, tabs (dot leaders) and PAGEREF numbers too;
+        # correct TOC styles alone cannot catch conflicting direct formatting.
+        directory_count=0
+        for p in paragraphs:
+            if not p.xpath('.//w:instrText[contains(.,"PAGEREF ")]',namespaces=NS):continue
+            sid=p.find('w:pPr/w:pStyle',NS).get(W+'val')
+            name=by_id[sid].find('w:name',NS).get(W+'val')
+            size='28' if name=='TOC 1' else '24'
+            mark=properties(p.find('w:pPr/w:rPr',NS))
+            assert mark['sz']==size and mark['eastAsia']=='黑体',(name,mark)
+            for run in p.findall('.//w:r',NS):
+                if not run.xpath('./w:t|./w:tab',namespaces=NS):continue
+                props=effective(run,p)
+                assert props['sz']==size and props['eastAsia']=='黑体',(name,props)
+                assert props['ascii']==props['hAnsi']=='Times New Roman',(name,props)
+            directory_count+=1
+        assert directory_count==177,directory_count
         for p in paragraphs[:6]:
             if p.xpath('.//w:drawing|.//w:pict',namespaces=NS):
                 spacing=p.find('w:pPr/w:spacing',NS)
@@ -119,8 +136,8 @@ def main():
         assert [''.join(p.xpath('.//w:t/text()',namespaces=NS)) for p in code_paragraphs]==expected_lines
         for p in code_paragraphs:
             for run in p.findall('w:r',NS):
-                props=effective(run,p);assert props['sz']=='19' and props['eastAsia']=='宋体'
-                assert props['ascii']==props['hAnsi']=='Courier New'
+                props=effective(run,p);assert props['sz']=='21' and props['eastAsia']=='宋体'
+                assert props['ascii']==props['hAnsi']=='Times New Roman'
         footers=[]
         for name in z.namelist():
             if not re.fullmatch(r'word/footer\d+\.xml',name):continue
