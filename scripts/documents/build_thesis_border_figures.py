@@ -138,7 +138,7 @@ def main():
             frame=None
             if number in {'3.1','3.2','3.3'}:
                 source=ROOT/'docs/thesis/final-master-20261114/figures'/(number.replace('.','-')+'.svg');svg,frame=swimlane(source)
-            elif number in {'3.6','3.7','3.8','3.9'}:
+            elif (ROOT/'docs/thesis/final-master-20261114/figures'/(number.replace('.','-')+'.svg')).is_file():
                 source=ROOT/'docs/thesis/final-master-20261114/figures'/(number.replace('.','-')+'.svg')
                 svg=source.read_text(encoding='utf-8')
             elif number=='3.4':
@@ -166,7 +166,7 @@ def main():
                 assert '«interface» LlmClient' in info['texts'] and not any('<<<<' in s for s in info['texts'])
             if number=='5.6':assert '每日 08:00 扫描' in info['texts']
             record={'number':number,'file':png.name,'source':str(source.relative_to(ROOT)),'source_sha256':digest(source),'png_sha256':digest(png),'svg_sha256':digest(OUT/(name+'.svg')),'padding_svg_units':PAD,'raster_scale':SCALE,'pixel_size':list(im.size),'actual_white_margins_px':margins,'viewBox':info['viewBox'],'rectangles':info['rectangles'],'closed_outer_frame':frame,'text_content':info['texts'],'semantics':'Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired.'}
-            if number in {'3.6','3.7','3.8','3.9'}:
+            if source.suffix=='.svg':
                 original=E.fromstring(svg.encode())
                 assert info['texts']==[''.join(t.itertext()) for t in original.iter(q('text'))]
             elif number not in {'3.1','3.2','3.3','3.4'}:assert info['texts']==[o['text'] for o in scene['ops'] if o['kind']=='text']

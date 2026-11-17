@@ -1,0 +1,233 @@
+[
+  {
+    "number": "3.1",
+    "before": 1,
+    "changes": [
+      {
+        "kind": "move-label",
+        "label": "图片辅助",
+        "dx": -6,
+        "dy": 0
+      }
+    ]
+  },
+  {
+    "number": "3.2",
+    "before": 8,
+    "changes": [
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "有合适资源？"
+        ],
+        "font_scale": 0.965
+      },
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "所选内容类型？"
+        ],
+        "font_scale": 0.895
+      },
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "完成所选复习？"
+        ],
+        "font_scale": 1
+      },
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "继续学习或练习？"
+        ],
+        "font_scale": 0.86
+      },
+      {
+        "kind": "move-label",
+        "label": "知识学习",
+        "dx": -6,
+        "dy": 0
+      },
+      {
+        "kind": "move-label",
+        "label": "否",
+        "dx": 0,
+        "dy": -2
+      },
+      {
+        "kind": "move-label",
+        "label": "是",
+        "dx": -2,
+        "dy": 0
+      },
+      {
+        "kind": "move-label",
+        "label": "否",
+        "dx": 0,
+        "dy": -2
+      }
+    ]
+  },
+  {
+    "number": "3.3",
+    "before": 1,
+    "changes": [
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "当前登录角色？"
+        ],
+        "font_scale": 1
+      }
+    ]
+  },
+  {
+    "number": "3.5",
+    "before": 1,
+    "changes": [
+      {
+        "kind": "move-label",
+        "label": "模型请求上下文",
+        "dx": 2,
+        "dy": -2
+      }
+    ]
+  },
+  {
+    "number": "3.6",
+    "before": 1,
+    "changes": [
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "D2",
+          "科目与知识点"
+        ],
+        "font_scale": 1
+      }
+    ]
+  },
+  {
+    "number": "3.7",
+    "before": 6,
+    "changes": [
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "D2",
+          "科目与知识点"
+        ],
+        "font_scale": 1
+      },
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "D2",
+          "科目与知识点"
+        ],
+        "font_scale": 1
+      },
+      {
+        "kind": "move-label",
+        "label": "本人题目与参考",
+        "dx": -2,
+        "dy": 0
+      },
+      {
+        "kind": "move-label",
+        "label": "本人原题／解析",
+        "dx": -2,
+        "dy": 0
+      },
+      {
+        "kind": "move-label",
+        "label": "已练标识／任务",
+        "dx": 6,
+        "dy": -4
+      },
+      {
+        "kind": "move-label",
+        "label": "练习／复习状态",
+        "dx": -2,
+        "dy": 2
+      }
+    ]
+  },
+  {
+    "number": "3.8",
+    "before": 2,
+    "changes": [
+      {
+        "kind": "fit-node-labels",
+        "labels": [
+          "D2",
+          "科目与知识点"
+        ],
+        "font_scale": 1
+      },
+      {
+        "kind": "move-label",
+        "label": "本人原题／解析",
+        "dx": -2,
+        "dy": 0
+      }
+    ]
+  },
+  {
+    "number": "3.9",
+    "before": 1,
+    "changes": [
+      {
+        "kind": "move-label",
+        "label": "本人原题／解析",
+        "dx": -2,
+        "dy": 0
+      }
+    ]
+  },
+  {
+    "number": "5.3",
+    "before": 2,
+    "changes": [
+      {
+        "kind": "white-backing",
+        "label": "事务保存 question + 5 条 review_plan"
+      },
+      {
+        "kind": "white-backing",
+        "label": "归属检查；创建或重置解析状态 0"
+      }
+    ]
+  },
+  {
+    "number": "5.6",
+    "before": 2,
+    "changes": [
+      {
+        "kind": "move-label",
+        "label": "用户完成操作",
+        "dx": -16,
+        "dy": 0
+      },
+      {
+        "kind": "move-label",
+        "label": "用户完成操作",
+        "dx": 16,
+        "dy": 0
+      }
+    ]
+  },
+  {
+    "number": "6.2",
+    "before": 1,
+    "changes": [
+      {
+        "kind": "move-label",
+        "label": "1 : 0..N",
+        "dx": -8,
+        "dy": 0
+      }
+    ]
+  }
+]
