@@ -157,6 +157,7 @@ def column_widths(rows,cap):
     if re.match(r'表 8\.[234] ',cap):return [4.0,4.0,7.75]
     if cap.startswith('表 8.7'):return [2.7,2.2,8.1,2.75]
     if cap.startswith('表 A.1'):return [3.0,6.0,6.75]
+    if rows[0]==['所在节','内容','文件','原始行范围']:return [1.55,3.9,7.9,2.4]
     if rows[0]==['代码','文件','原始行范围']:return [1.35,11.8,2.6]
     return [3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else [3,4,5,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n
 

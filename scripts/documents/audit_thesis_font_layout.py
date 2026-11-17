@@ -173,7 +173,7 @@ def main():
         indexed.append({'kind':kind,'number':number,'title':title,
                         'pdf_pages':';'.join(map(str,pages))})
     item_counts={kind:sum(r['kind']==kind for r in indexed) for kind in ['图','表','代码','文献']}
-    assert item_counts=={'图':28,'表':29,'代码':31,'文献':27},item_counts
+    assert item_counts=={'图':28,'表':29,'代码':0,'文献':27},item_counts
     with (RUN/'图表代码文献页码索引.csv').open('w') as f:
         writer=csv.DictWriter(f,fieldnames=['kind','number','title','pdf_pages'],lineterminator='\n')
         writer.writeheader();writer.writerows(indexed)

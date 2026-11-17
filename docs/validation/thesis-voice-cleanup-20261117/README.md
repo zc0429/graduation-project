@@ -56,16 +56,12 @@
 - 复核：标题 123、图 28、文献 27 不变；表格行数因附录索引删 10 行相应减少；11 表/88 字段/39 接口与全部测试数据未动。
 - 注意：本轮起正文代码段数与行数口径变更（21 段/225 行），此前「31 段/275 行」口径作废；DOCX/PDF 仍为旧文本，交付前须重导出复核分页目录，页数将变化。
 
-## 第四轮（2026-11-17）：附录末尾归档化与导出验证
+## 第六轮（2026-11-17）：Windows 原字体工作流适配
 
-- 附录1末尾两段按用户给定文本替换：删除内部临时构建目录名（thesis-align-reference1-20261113、thesis-system-consistency-20261113）与流水线式文件名罗列，改为正式归档行文（版本/提交号保留，实测记录按日期与内容描述，工程回归材料统一表述为「系统验证材料包」）。全文检索确认 `thesis-align-reference1`、`thesis-system-consistency` 均为 0 处；正文、表 A.1、表 A.2 未动。
-- 顺带修正：第 7.4.2 节代码讲解段中 `choices[0]` 的方括号会被仓库文献校验误判为引用编号，改为「choices首项的message.content」，语义不变。
-- 导出验证：在本机以分支完整源码按仓库脚本流程实际运行（build_thesis_delivery.py → LibreOffice 转 PDF → update_delivery_page_map.py → 重建 → validate_thesis_delivery.py）。校验通过：101 页、九章真分页、28 图、29 表、目录 120 个目的地、177 个标题页码映射稳定、页界错误 0、文献首引顺序 1—27。导出产物已确认过滤源稿顶部说明块与封面/目录占位段（产物中「导出层」「占位」「Markdown」均 0 处），封面为模板真实封面，附录新段落完整呈现。
-- 限制：本机 Linux 无 SimSun/SimHei/Times New Roman 原字体，本次 PDF 为脚本明示的「字体受限预览」（Noto/Liberation 替代），页数与分页仅供参考；正式交付仍须走 Windows 原字体工作流（.github/workflows/thesis-windows-fonts.yml）导出并在 Word 中复核。
-
-## 第五轮（2026-11-17）：图 3.1/3.2 两处残留修复
-
-- 复查发现四类图表问题中边框不完整、箭头异常已修复，但有两处残留：图 3.1 连线标签「提交题目」被 e7 竖线（x=173.579）穿过首字；图 3.2「阅读知识内容」节点框宽 91.343 小于 16px 字号下 6 字文本宽约 96，首字「阅」被左边框裁切。
-- 修复（改源图 final-master SVG）：3-1 的 e7_label 整体右移 12.4 单位，标签与竖线留约 7.6 单位间隙；3-2 的 learn 节点框以中心 118.293 不变加宽至 112（x 72.625→62.293），文本两侧各留约 8 单位。
-- 按 build_thesis_border_figures.py 重新渲染 border-polish 图集：其余图的 SVG 与原版逐字节一致，仅 3-1/3-2 更新，manifest 相应条目已同步（其余条目保留原记录）。check_thesis_border_polish.py --figures-only 通过（20 图、117 矩形边覆盖、3 闭合外框、最小白边距 92px）。重导出后交付校验仍通过，PDF 中两处放大复核无压线、无裁切。
-- 提交：源图与清单经文本通道推送；两张 PNG 经 GitHub 网页上传提交 696276a2，blob SHA 与本地逐字节核对一致。
+- 工作流触发扩展至本分支（`.github/workflows/thesis-voice-cleanup` 守卫同步放行），运行 #10 字体校验仅一处失败：7.4.6 讲解段「−20」的数学减号 U+2212 被渲染为微软雅黑；源稿已改为半角连字符（提交 f61b67d），运行 #11 字体校验通过（101 页、四字体全嵌入、未知字体 0）。
+- 运行 #11 止于版式审计：其代码清单夹具仍为旧稿 31 段编号题注口径。本轮按第三轮已定的参考论文 1 呈现方式更新校验资产，论文正文未动：
+  - `docs/validation/thesis-final-quality-20261113/code-excerpts.json` 按附录表 A.2 索引重建为现稿 21 段：每段非省略行逐行核对均为索引文件原始行范围内的真实源码行（21/21 全合），源码文件 SHA-256 未变。
+  - `check_thesis_master_final.py`：代码段校验由「源码切片与印刷文本全等」改为「印刷文本的非省略行是索引源码行范围的有序子序列」（与框内省略标记的呈现方式相容），代码段落数 275 → 237（21 段含省略标记行）。
+  - `audit_thesis_font_layout.py`：条目索引预期「代码 31」→「代码 0」（现稿无编号代码题注，与参考论文 1 一致）；图 28、表 29、文献 27 不变。
+  - `build_thesis_delivery.py`：为表 A.2 新表头（所在节/内容/文件/原始行范围）补列宽 [1.55, 3.9, 7.9, 2.4]，文件列加宽至 7.9cm，路径不再断行（原默认列宽下 components/LearningResources.vue 在 PDF 中被拆成两个词）。
+- 本地预演（替代字体预览 + 运行 #11 的 Windows 原字体 DOCX/PDF 模拟）：validate_thesis_delivery、audit_thesis_font_layout、check_thesis_master_final、check_thesis_border_polish 四项校验均通过。

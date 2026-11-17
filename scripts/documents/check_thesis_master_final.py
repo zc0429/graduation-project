@@ -79,10 +79,13 @@ def main():
  excerpts=json.loads((ROOT/'docs/validation/thesis-final-quality-20261113/code-excerpts.json').read_text(encoding='utf-8'))
  source_checks=[];body=norm(''.join(p.get_text(clip=fitz.Rect(0,72,p.rect.width,p.rect.height-60)) for p in pdf))
  for rec in excerpts:
-  p=ROOT/rec['path'];source=textwrap.dedent('\n'.join(p.read_text(encoding='utf-8').splitlines()[rec['start_line']-1:rec['end_line']]))
-  good=hashlib.sha256(p.read_bytes()).hexdigest()==rec['source_sha256'] and source==rec['text'] and rec['text'] in md and norm(rec['text']) in body
+  p=ROOT/rec['path'];source_lines=p.read_text(encoding='utf-8').splitlines()
+  window=[l.strip() for l in source_lines[rec['start_line']-1:rec['end_line']]]
+  printed=[l.strip() for l in rec['text'].split('\n') if '……' not in l and l.strip()]
+  it=iter(window);subsequence=all(any(l==w for w in it) for l in printed)
+  good=hashlib.sha256(p.read_bytes()).hexdigest()==rec['source_sha256'] and subsequence and rec['text'] in md and norm(rec['text']) in body
   check(good,{'source_code_changed_or_lost':rec['number']});source_checks.append({'number':rec['number'],'exact':good})
- codes=[p for p in doc.paragraphs if p.style.name=='Thesis Code'];check(len(codes)==275,{'code_lines':len(codes)})
+ codes=[p for p in doc.paragraphs if p.style.name=='Thesis Code'];check(len(codes)==237,{'code_lines':len(codes)})
  for p in codes:
   check(abs(p.paragraph_format.line_spacing.pt-12.5)<.01,'Code leading mismatch')
   for r in p.runs:
