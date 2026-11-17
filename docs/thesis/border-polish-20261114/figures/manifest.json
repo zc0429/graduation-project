@@ -3,9 +3,9 @@
     "number": "3.1",
     "file": "3-1.png",
     "source": "docs/thesis/final-master-20261114/figures/3-1.svg",
-    "source_sha256": "7dcd0ec356118963f5b924113e5c91605521ac74ee717bcefbf14052133de4e4",
-    "png_sha256": "22d6abedf53bb2a35c3cf00a63805ede1060021ce18f2055761f201a59133ec3",
-    "svg_sha256": "0d0afef49e5809d2b1a957b11761e39d2ad4334a0992df9b0509ac59f1080d60",
+    "source_sha256": "22acfa71efb9fa9ae422d26150282aa5b77a5f845c8588a9055f6ab1327045d2",
+    "png_sha256": "9520c2da1eb78d34ff7b852d8af0dd157f93a0642a7700aa1cce67938e2fc8f2",
+    "svg_sha256": "70d9268a868e20376c8e4439667eedb188bb195751479278b13d6ded4ab17cea",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -110,7 +110,7 @@
         "h": 24.0375
       },
       {
-        "x": 175.021,
+        "x": 187.421,
         "y": 519.625,
         "w": 45.192,
         "h": 24.0375
@@ -194,9 +194,9 @@
     "number": "3.2",
     "file": "3-2.png",
     "source": "docs/thesis/final-master-20261114/figures/3-2.svg",
-    "source_sha256": "459d9d6b3821cc614cf153904384a372b913c92c7b952523d8226774df1e4707",
-    "png_sha256": "b4f34df543e4c431d76f4effde17233ce69b57fe97c38324b1df00e5a98c3be8",
-    "svg_sha256": "3418aa55a9936f858e781f61c30323a0f8dbd9c9a6eef0d1018f308d9daed51e",
+    "source_sha256": "9e3b37a6be727549ba3f91c2434096093442fe55c347d4d5b028f2a9af2ab972",
+    "png_sha256": "45142f539b51ac78b4549cce2af4819fb4aae88fb6b31ed512bda45043911f82",
+    "svg_sha256": "d368eb3f7bdbed0113280c8462d96be2068a1235bc651a142e35e6824e51185e",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -253,9 +253,9 @@
         "h": 51.5125
       },
       {
-        "x": 72.625,
+        "x": 62.293,
         "y": 670.7125000000001,
-        "w": 91.343,
+        "w": 112,
         "h": 51.5125
       },
       {
