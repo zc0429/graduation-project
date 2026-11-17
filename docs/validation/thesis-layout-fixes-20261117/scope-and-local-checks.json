@@ -1,0 +1,47 @@
+{
+  "baseline_commit": "6aedd02c03771bf3e376ab07f63ca9f9609f7f1b",
+  "implementation_commit": "d137919a91a44fc2e766b7cb00c533d2f5cdd0b2",
+  "manuscript_sha256": "1dea4d2f0b167f8aa453735c2495936468870d31088644cb07bc1e63d1472937",
+  "manuscript_unchanged": true,
+  "existing_files_unchanged": 1794,
+  "changed_existing_files": [
+    "docs/thesis/border-polish-20261114/figures/3-6.png",
+    "docs/thesis/border-polish-20261114/figures/3-6.svg",
+    "docs/thesis/border-polish-20261114/figures/3-7.png",
+    "docs/thesis/border-polish-20261114/figures/3-7.svg",
+    "docs/thesis/border-polish-20261114/figures/3-8.png",
+    "docs/thesis/border-polish-20261114/figures/3-8.svg",
+    "docs/thesis/border-polish-20261114/figures/3-9.png",
+    "docs/thesis/border-polish-20261114/figures/3-9.svg",
+    "docs/thesis/border-polish-20261114/figures/manifest.json",
+    "scripts/documents/audit_thesis_font_layout.py",
+    "scripts/documents/build_thesis_border_figures.py",
+    "scripts/documents/build_thesis_delivery.py",
+    "scripts/documents/check_thesis_master_final.py",
+    "scripts/documents/thesis_windows_cloud.py"
+  ],
+  "new_source_files": [
+    "docs/thesis/final-master-20261114/figures/3-6.svg",
+    "docs/thesis/final-master-20261114/figures/3-7.svg",
+    "docs/thesis/final-master-20261114/figures/3-8.svg",
+    "docs/thesis/final-master-20261114/figures/3-9.svg"
+  ],
+  "other_16_figures_unchanged": true,
+  "closed_storage_frames": {
+    "3.6": 6,
+    "3.7": 7,
+    "3.8": 5,
+    "3.9": 4
+  },
+  "local_preview": {
+    "pdf_pages": 98,
+    "toc_targets": 177,
+    "stable_exports": 2,
+    "validate_thesis_delivery": "passed",
+    "check_thesis_master_final": "passed",
+    "check_thesis_border_polish": "passed",
+    "audit_thesis_font_layout": "DOCX checks passed; PDF original Times New Roman assertion failed as expected in substitute-font preview",
+    "fonts": "Noto Serif CJK SC / Noto Sans CJK SC / Liberation Serif",
+    "render_only_copy": "Detached template embedded font subset references in the temporary Linux render copy; deliverable DOCX unchanged."
+  }
+}
