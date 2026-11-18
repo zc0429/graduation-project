@@ -1,0 +1,56 @@
+{
+  "baseline": "89398d7",
+  "source": "5d62a6b7a2d3edff851b1cd73fd3b81dce6f1fcb",
+  "old_titles": [
+    {
+      "text": "基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现",
+      "size_pt": 18.0,
+      "alignment": "center",
+      "bold": true
+    },
+    {
+      "text": "Design and Implementation of an AI-Powered Error Analysis and Learning Recommendation System Based on the Zhipu GLM Model",
+      "size_pt": 12.0,
+      "alignment": "center",
+      "bold": true
+    }
+  ],
+  "new_titles": [
+    {
+      "text": "基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现",
+      "size_pt": 16.0,
+      "alignment": "center",
+      "bold": true,
+      "pdf_fonts": [
+        "SimHei",
+        "TimesNewRomanPS-BoldMT"
+      ],
+      "pdf_lines": 2
+    },
+    {
+      "text": "Design and Implementation of an AI-Powered Error Analysis and Learning Recommendation System Based on the Zhipu GLM Model",
+      "size_pt": 16.0,
+      "alignment": "center",
+      "bold": true,
+      "pdf_fonts": [
+        "TimesNewRomanPS-BoldMT"
+      ],
+      "pdf_lines": 3
+    }
+  ],
+  "only_four_manuscript_edits": true,
+  "remaining_document_xml_identical": true,
+  "remaining_styles_identical": true,
+  "media_headers_and_footers_identical": true,
+  "font_errors": {
+    "unrecognized_fonts": 0,
+    "chinese_font_errors": 0,
+    "latin_number_font_errors": 0,
+    "page_number_font_errors": 0
+  },
+  "pdf_pages": 99,
+  "toc_targets": 177,
+  "stable_exports": 2,
+  "docx_sha256": "a10d46c5c7331131955461901b9a439de92cd96f66055e68bfee5fe0905554ab",
+  "pdf_sha256": "416b5ae3da6b0fc21ff8d609783b106b9b6c3adf3be59f265b35030f849d0359"
+}

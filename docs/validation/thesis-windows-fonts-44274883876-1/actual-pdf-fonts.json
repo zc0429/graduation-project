@@ -1,0 +1,113 @@
+{
+  "pdf": "output\\thesis\\thesis-windows-fonts-44274883876-1\\毕业论文.pdf",
+  "pdf_pages": 99,
+  "fonts": [
+    {
+      "xref": 7365,
+      "pdf_name": "BAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 75652,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7355,
+      "pdf_name": "CAAAAA+SimHei",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 64132,
+      "embedded_family_names": [
+        "SimHei",
+        "黑体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7345,
+      "pdf_name": "DAAAAA+TimesNewRomanPS-BoldMT",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 45376,
+      "embedded_family_names": [
+        "Times New Roman"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7350,
+      "pdf_name": "EAAAAA+TimesNewRomanPSMT",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 76080,
+      "embedded_family_names": [
+        "Times New Roman"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7360,
+      "pdf_name": "FAAAAA+SimHei",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 18416,
+      "embedded_family_names": [
+        "SimHei",
+        "黑体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7370,
+      "pdf_name": "GAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 79836,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7375,
+      "pdf_name": "HAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 87320,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    },
+    {
+      "xref": 7380,
+      "pdf_name": "IAAAAA+SimSun",
+      "extension": "ttf",
+      "embedded": true,
+      "embedded_bytes": 70308,
+      "embedded_family_names": [
+        "SimSun",
+        "宋体"
+      ],
+      "metadata_error": null
+    }
+  ],
+  "used_text_spans": {
+    "SimSun": 3452,
+    "SimHei": 383,
+    "Times New Roman": 2845
+  },
+  "unrecognized_fonts": [],
+  "chinese_font_errors": [],
+  "latin_number_font_errors": [],
+  "page_number_font_errors": [],
+  "original_pdf_text_fonts_verified": true,
+  "standalone_font_binaries_exported": false,
+  "raster_figure_fonts_verified": false,
+  "microsoft_word_verified": false
+}
