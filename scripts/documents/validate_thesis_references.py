@@ -2,6 +2,8 @@
 from pathlib import Path
 import hashlib,json,re
 ROOT=Path(__file__).resolve().parents[2]
+CITATION_PATTERN = r"\[[1-9]\d*(?:,[1-9]\d*)*\]"
+
 def validate():
  data=json.loads((ROOT/'docs/references/reference-audit-20261113.json').read_text())
  md=(ROOT/'docs/thesis/毕业论文.md').read_text();records=data['records']
@@ -14,7 +16,7 @@ def validate():
  assert actual==re.findall(r'^\[(\d+)\]\s*(.+)$',(ROOT/'docs/references/gb7714-list.md').read_text(),re.M)
  assert [x['number'] for x in records]==list(range(1,len(records)+1))
  body=re.sub(r'```.*?```','',md.split('## 参考文献')[0],flags=re.S)
- citations=[int(n) for n in re.findall(r'\[(\d+)\]',body)]
+ citations=[int(n) for group in re.findall(CITATION_PATTERN,body) for n in group[1:-1].split(',')]
  first=list(dict.fromkeys(citations));assert first==list(range(1,len(records)+1)),first
  assert hashlib.sha256((ROOT/'docs/thesis/开题报告.md').read_bytes()).hexdigest()==data['opening_report_sha256']
  bib=(ROOT/'docs/references/references.bib').read_text()

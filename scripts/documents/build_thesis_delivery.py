@@ -17,6 +17,7 @@ from docx.enum.style import WD_STYLE_TYPE
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from PIL import Image,ImageOps
+from validate_thesis_references import CITATION_PATTERN, validate
 
 ROOT=Path(__file__).resolve().parents[2]
 DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113')
@@ -79,14 +80,21 @@ def bookmark_start(p,name):
     global BOOKMARK_ID
     BOOKMARK_ID+=1;p._p.append(el('bookmarkStart',id=BOOKMARK_ID,name=name));return BOOKMARK_ID
 def bookmark_end(p,n):p._p.append(el('bookmarkEnd',id=n))
-def plain(s):return re.sub(r'\[(?!\d+\])([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
+def plain(s):return re.sub(rf'(?!{CITATION_PATTERN})\[([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
 def inline(p,s,size=12,refs=True):
     s=plain(s)
-    pattern=r'(\[\d+\]|[图表]\s*\d+\.\d+)'
+    pattern=rf'({CITATION_PATTERN}|[图表]\s*\d+\.\d+)'
     for part in re.split(pattern,s):
-        if re.fullmatch(r'\[\d+\]',part) and refs:
-            link=el('hyperlink',anchor='ref'+part[1:-1],history=1)
-            r=font(p.add_run(part),size);r.font.superscript=True;link.append(r._r);p._p.append(link)
+        if refs and re.fullmatch(CITATION_PATTERN,part):
+            numbers=part[1:-1].split(',')
+            for i,number in enumerate(numbers):
+                label=('[' if i==0 else ',')+number
+                if i==len(numbers)-1:label+=']'
+                link=el('hyperlink',anchor='ref'+number,history=1)
+                r=font(p.add_run(label),size)
+                r.font.superscript=True
+                link.append(r._r)
+                p._p.append(link)
         elif re.fullmatch(r'[图表]\s*\d+\.\d+',part):
             kind=part[0];n=re.search(r'\d+\.\d+',part)[0];key=('fig' if kind=='图' else 'tab')+n.replace('.','_')
             field(p,f'REF {key} \\h',f'{kind} {n}',size)
@@ -238,7 +246,6 @@ def main():
     assert hashlib.sha256(TPL.read_bytes()).hexdigest()=='79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e'
     RUN.mkdir(parents=True,exist_ok=True)
     md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
-    from validate_thesis_references import validate
     validate()
     md=re.sub(r'<!--.*?-->','',md,flags=re.S)
     pages=json.loads((RUN/'page-map.json').read_text(encoding='utf-8')) if (RUN/'page-map.json').exists() else {}
