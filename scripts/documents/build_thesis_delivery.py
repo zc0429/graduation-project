@@ -256,10 +256,10 @@ def main():
         if x.tag in {qn('w:commentRangeStart'),qn('w:commentRangeEnd'),qn('w:commentReference'),qn('w:bookmarkStart'),qn('w:bookmarkEnd')}:
             x.getparent().remove(x)
     p=d.paragraphs[6];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=24)
-    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),18,'黑体',True)
-    paragraph_font(p,18,'黑体',True)
-    p=d.paragraphs[7];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=19,after=20)
-    font(p.add_run(re.search(r'> \*\*英文题目\*\*：(.*)',md)[1].strip()),12,'宋体',True)
+    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),16,'黑体',True)
+    paragraph_font(p,16,'黑体',True)
+    p=d.paragraphs[7];p.clear();fmt(p,size=16,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=19,after=20)
+    font(p.add_run(re.search(r'> \*\*英文题目\*\*：(.*)',md)[1].strip()),16,'宋体',True)
     for text in ['人工智能学院　软件工程','2023级【本科】软件工程1班','赵灿　23612801026　指导教师：胡韬']:
         p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=20);inline(p,text)
     append_sect(d,section_end(d,base[0]))
@@ -285,7 +285,7 @@ def main():
             st=d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH);edited_styles.append(st.style_id)
     for name,size,east,bold in [('Normal',12,'宋体',False),('Heading 1',14,'黑体',False),
             ('Heading 2',12,'黑体',False),('Heading 3',12,'黑体',False),
-            ('Title',18,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',10.5,'宋体',False)]:
+            ('Title',16,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',10.5,'宋体',False)]:
         st=d.styles[name];font_properties(st.element.get_or_add_rPr(),size,east,bold)
         if name.startswith('Heading'):
             st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']

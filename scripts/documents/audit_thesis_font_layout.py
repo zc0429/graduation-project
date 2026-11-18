@@ -55,7 +55,7 @@ def main():
             return result
         style_checks=[]
         expected={'Normal':(12,'宋体'),'heading 1':(14,'黑体'),'heading 2':(12,'黑体'),
-                  'heading 3':(12,'黑体'),'Title':(18,'黑体'),
+                  'heading 3':(12,'黑体'),'Title':(16,'黑体'),
                   'TOC 1':(14,'黑体'),'TOC 2':(12,'黑体'),'TOC 3':(12,'黑体'),
                   'Thesis Code':(10.5,'宋体'),'footer':(9,'宋体')}
         for sid,s in by_id.items():
@@ -92,11 +92,17 @@ def main():
                 assert spacing is not None and spacing.get(W+'lineRule')=='auto','Cover emblem could be clipped by fixed body leading'
         header_style=next(s for s in by_id.values() if s.find('w:name',NS).get(W+'val')=='header')
         assert header_style.find('w:pPr/w:spacing',NS).get(W+'lineRule')=='auto'
-        title=next(p for p in paragraphs if norm(''.join(p.xpath('.//w:t/text()',namespaces=NS)))==norm('基于智谱GLM模型的AI错题分析与学习推荐系统设计与实现'))
-        assert title.find('w:pPr/w:jc',NS).get(W+'val')=='center'
-        for run in title.findall('w:r',NS):
-            if not run.xpath('./w:t',namespaces=NS):continue
-            props=effective(run,title);assert props['sz']=='36' and props['b']=='1' and props['eastAsia']=='黑体',props
+        md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
+        cn_title=md.splitlines()[0].removeprefix('# ')
+        en_title=re.search(r'^> \*\*英文题目\*\*：(.*)$',md,re.M)[1].strip()
+        for expected_title in (cn_title,en_title):
+            title=next(p for p in paragraphs if norm(''.join(p.xpath('.//w:t/text()',namespaces=NS)))==norm(expected_title))
+            assert title.find('w:pPr/w:jc',NS).get(W+'val')=='center'
+            for run in title.xpath('./w:r[w:t]',namespaces=NS):
+                props=effective(run,title)
+                assert props['sz']=='32' and props['b']=='1',props
+                assert props['ascii']==props['hAnsi']=='Times New Roman',props
+                if expected_title==cn_title:assert props['eastAsia']=='黑体',props
         heading_checks=[]
         for p in paragraphs:
             text=''.join(p.xpath('.//w:t/text()',namespaces=NS))
@@ -111,7 +117,6 @@ def main():
                 assert props['ascii']==props['hAnsi']=='Times New Roman'
             heading_checks.append(text)
         # Match ordinary manuscript paragraphs, excluding code, tables and headings.
-        md=(ROOT/'docs/thesis/毕业论文.md').read_text()
         from build_thesis_delivery import plain
         prose={};inside_code=False
         for line in md[md.index('## 1 '):].splitlines():
@@ -202,9 +207,14 @@ def main():
     tnr_spans=[s for s in spans if 'TimesNewRoman' in s['font']]
     assert any(re.search(r'[A-Za-z0-9]',s['text']) for s in tnr_spans)
     assert any(abs(s['size']-12)<.05 for s in tnr_spans)
-    title_spans=[s for s in pdf[0].get_text('dict')['blocks'] if s['type']==0
-                 for line in s['lines'] for s in line['spans'] if any(t in s['text'] for t in ['基于智谱','与学习推荐'])]
-    assert title_spans and all(abs(s['size']-18)<.05 for s in title_spans),title_spans
+    cover_lines=[line['spans'] for block in pdf[0].get_text('dict')['blocks']
+                 if block['type']==0 for line in block['lines']]
+    for expected_title in (cn_title,en_title):
+        title_spans=[span for line in cover_lines
+                     if norm(''.join(s['text'] for s in line)) in norm(expected_title)
+                     for span in line]
+        assert norm(''.join(s['text'] for s in title_spans))==norm(expected_title)
+        assert all(abs(s['size']-16)<.05 for s in title_spans),title_spans
     # The page-number rule is 9pt Song; preview rendering is clearly qualified.
     start=next(page for _,title,page in pdf.get_toc() if norm(title)=='1绪论')
     page_spans=[]
@@ -226,7 +236,7 @@ def main():
         assert original_pdf,('Original PDF fonts not verified',names)
     result={'source_sha_unchanged':sha(ROOT/'docs/thesis/毕业论文.md')==baseline['docs/thesis/毕业论文.md'],
             'protected_files_checked':len(protected),'protected_changes':changed,
-            'cover_title':'18pt, bold, centred; East Asian SimHei / Latin Times New Roman',
+            'cover_title':'Chinese and English titles 16pt, bold, centred; East Asian SimHei / Latin Times New Roman',
             'style_checks':style_checks,'heading_paragraphs_checked':len(heading_checks),
             'source_code_lines_checked':len(code_paragraphs),
             'indexed_items':item_counts,
