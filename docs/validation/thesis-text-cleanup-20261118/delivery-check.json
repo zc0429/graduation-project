@@ -1,0 +1,42 @@
+{
+  "baseline": "4a00ba6",
+  "render_source": "5043f8d79382faca16f98db7460d72efc2ed7b95",
+  "source_lines_changed": 49,
+  "old_codename_occurrences": 9,
+  "old_codename_lines": 8,
+  "other_manuscript_bytes_match": true,
+  "numeric_sequences_match_after_excluding_removed_identifiers": true,
+  "appendix_a2_source_and_word_cells_match_baseline": true,
+  "table_8_6_word_cells_match_baseline": true,
+  "docx_embedded_media_match_baseline": true,
+  "checked_titles_in_body_and_lists": [
+    "图 7.1　错题录入界面",
+    "图 7.2　个人知识内容复用界面",
+    "图 7.3　持续练习与作答记录界面",
+    "图 7.4　GLM解析界面局部",
+    "图 7.5　RAG参考题标识局部",
+    "图 7.6　变式题及作答入口局部",
+    "图 7.7　学生统计与练习反馈局部",
+    "图 7.8　教师系统聚合报告范围局部",
+    "8.4.2 固定小样本实验设计与结果",
+    "表 8.6　固定小样本实验指标",
+    "表 A.1　测试批次与适用范围"
+  ],
+  "banned_identifier_hits": {
+    "manuscript": 0,
+    "docx_visible_text": 0,
+    "pdf_text": 0,
+    "pdf_bookmarks": 0
+  },
+  "pdf_pages": 99,
+  "pdf_font_errors": {
+    "unrecognized_fonts": 0,
+    "chinese_font_errors": 0,
+    "latin_number_font_errors": 0,
+    "page_number_font_errors": 0
+  },
+  "stable_toc_targets": 177,
+  "exports": 2,
+  "docx_sha256": "540ed1e69737493a7403d8d270a23733fc76d1e610e99abf5fb57de8b0c2de29",
+  "pdf_sha256": "65ca063646f439be6f93d23741f7352f88b44d4182885cf93f88a5e85425b996"
+}
