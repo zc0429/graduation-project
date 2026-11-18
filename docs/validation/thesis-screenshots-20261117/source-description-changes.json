@@ -1,0 +1,20 @@
+[
+  {
+    "line": 1323,
+    "old": "图7.1至图7.3展示隔离环境中的录入、个人资源复用和作答交互，模型为 Mock；图7.4至图7.8展示既有真实模型链路。截图日期、版本与证据适用范围统一列于附录1。",
+    "new": "图7.1至图7.8展示当前隔离环境中的录入、个人资源复用、作答及报告界面，AI内容取自既有真实GLM结果。截图日期、版本与来源统一列于附录1。",
+    "reason": "User-authorized screenshot-source/date/version update only"
+  },
+  {
+    "line": 1789,
+    "old": "图7.1–7.3取自版本bbe1c510对应的隔离环境（2026-11-13，真实 Spring Boot、MySQL、Chromium，Mock 模型，识别关闭），分别用于说明录入、缓存复用与作答状态。图7.4–7.8取自真实浏览器证据版ebda1278（2026-08-26），分别对应解析、参考题 ID 223、3道变式、学生统计和教师聚合范围；图像中的历史模型标识与业务数值保持原样。原图、运行日志、完整版本和 SHA-256 沿用本附录下方的文件索引。",
+    "new": "图7.1–7.8于2026-11-17在分支claude/thesis-voice-cleanup-20261117的版本bb7bc56e对应隔离环境中重截（真实 Spring Boot、MySQL、Chromium，设备缩放因子2）。图7.1–7.7使用学生赵灿，图7.8使用教师胡韬；AI内容来源为既有真实GLM留档，分别展示录入、缓存复用、作答、解析、参考题标识、3道变式及学生和教师报告。截图、运行记录、完整版本和 SHA-256 见本次截图来源清单。",
+    "reason": "User-authorized screenshot-source/date/version update only"
+  },
+  {
+    "line": 1817,
+    "old": "图 7.1—7.3 源自版本 `bbe1c510` 隔离环境下的基线界面截图清单；历史真实界面图 7.4—7.8 源自提交 `ebda1278` 的真实模型浏览器验证批次；Gate5 实验结果记录于提交 `e80b6e3e`。",
+    "new": "图 7.1—7.8 的界面版本为 `bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c`，截图日期为2026-11-17；AI内容源自提交 `ebda1278` 的真实模型浏览器留档及提交 `e80b6e3e` 的Gate5结果，完整来源见截图清单 `docs/thesis/align-reference1-20261113/screenshots/provenance.json`。",
+    "reason": "User-authorized screenshot-source/date/version update only"
+  }
+]

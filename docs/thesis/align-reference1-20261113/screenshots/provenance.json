@@ -1,26 +1,425 @@
 [
   {
+    "number": "7.1",
+    "captured_at": "2026-11-17T13:27:05.309Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".question-create-page",
+    "box": {
+      "x": 282.390625,
+      "y": 100,
+      "width": 959.21875,
+      "height": 1075.6875
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": 10,
+    "scope": "Manual form filled with archived source question; editor and image-assistance entry visible; no extra duplicate saved",
+    "sha256": "e6f3f07adda021a282badb2cdce7568447ff49ab3a7cef7490b1fb1ec764893d",
+    "banned_terms_found": [],
     "file": "thesis/align-reference1-20261113/screenshots/current-create.png",
-    "sha256": "cc2927a6d9b3494fb073ee3f4eb95311f02e58843744fb75cbaf49d45d44ff91",
-    "captured_at": "2026-11-13T05:50:05.638Z",
-    "model": "explicit Mock",
-    "question_id": 5,
-    "scope": "Current editor and manual form; recognition disabled, no live model claim"
+    "target": "align-reference1-20261113/screenshots/current-create.png",
+    "pixel_width": 1920,
+    "pixel_height": 2152,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
   },
   {
+    "number": "7.2",
+    "captured_at": "2026-11-17T13:27:00.504Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".resource-panel:nth-of-type(1)",
+    "box": {
+      "x": 310.390625,
+      "y": 734.140625,
+      "width": 903.21875,
+      "height": 170.1875
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": 10,
+    "scope": "Verbatim archived GLM analysis loaded through knowledge cache; actual reused=true response",
+    "sha256": "9f19cb3a621ecf397bfa928369b4a4352a288dfe2bc35de484a4b6e3edcf686a",
+    "banned_terms_found": [],
     "file": "thesis/align-reference1-20261113/screenshots/current-knowledge.png",
-    "sha256": "e4f8001564f15870e4e7dcb0863b7cb7677d0a0bd05846c6109e70323bbedb47",
-    "captured_at": "2026-11-13T05:50:07.212Z",
-    "model": "explicit Mock",
-    "question_id": 5,
-    "scope": "Saved knowledge cache reused through actual UI"
+    "target": "align-reference1-20261113/screenshots/current-knowledge.png",
+    "pixel_width": 1808,
+    "pixel_height": 342,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
   },
   {
+    "number": "7.3",
+    "captured_at": "2026-11-17T13:26:59.671Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".resource-panel:nth-of-type(2)",
+    "box": {
+      "x": 310.390625,
+      "y": 922.328125,
+      "width": 903.21875,
+      "height": 307.59375
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": 10,
+    "scope": "Existing archived variant obtained through next endpoint, actual incorrect self-assessment submitted, completed/retry state",
+    "sha256": "f6888a31569b852997df6809ec591be6749fbfebf38f40765aa44ab0acce481f",
+    "banned_terms_found": [],
     "file": "thesis/align-reference1-20261113/screenshots/current-practice.png",
-    "sha256": "a0eb9ff0e37cdc6a1e8c0ee11a575f0a555ab5b177b06d0a596e2ce9339dd440",
-    "captured_at": "2026-11-13T05:50:07.878Z",
-    "model": "explicit Mock",
-    "question_id": 5,
-    "scope": "Original recorded, generated variant recorded as incorrect, repeat action visible"
+    "target": "align-reference1-20261113/screenshots/current-practice.png",
+    "pixel_width": 1808,
+    "pixel_height": 616,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
+  },
+  {
+    "number": "7.4",
+    "captured_at": "2026-11-17T13:27:01.454Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".analysis-workbench",
+    "box": {
+      "x": 282.390625,
+      "y": 602.34375,
+      "width": 959.21875,
+      "height": 396.1875
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": 10,
+    "scope": "Archived GLM analysis completed through actual async analysis service; model, knowledge classification and full text",
+    "sha256": "a36c5b27b9bd1405f13e57ec4a26206ea74106f529f69d6335b287cfdedf25fa",
+    "banned_terms_found": [],
+    "file": "thesis/final-master-20261114/figures/7-4.png",
+    "target": "structure-20261112/figures/png/7-2.png",
+    "pixel_width": 1920,
+    "pixel_height": 794,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
+  },
+  {
+    "number": "7.5",
+    "captured_at": "2026-11-17T13:27:02.350Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".analysis-workbench",
+    "box": {
+      "x": 282.390625,
+      "y": 602.34375,
+      "width": 959.21875,
+      "height": 258.6875
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": 10,
+    "scope": "Actual same-account reference IDs from current backend over the local replay index",
+    "sha256": "1c3042bf0abd6f452ab2d760b3a75247880f70d57d1d1356f6e7c0b03e3570ef",
+    "banned_terms_found": [],
+    "file": "thesis/final-master-20261114/figures/7-5.png",
+    "target": "structure-20261112/figures/png/7-3.png",
+    "pixel_width": 1920,
+    "pixel_height": 520,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
+  },
+  {
+    "number": "7.6",
+    "captured_at": "2026-11-17T13:27:03.331Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".analysis-workbench",
+    "box": {
+      "x": 282.390625,
+      "y": 602.34375,
+      "width": 959.21875,
+      "height": 740.78125
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": 10,
+    "scope": "Three archived real-GLM variant stems with current practice actions; missing original answers remain NULL",
+    "sha256": "e570280cc6ad2950d05b209af08756269283261105f8774de9e845a8b0bcf010",
+    "banned_terms_found": [],
+    "file": "thesis/final-master-20261114/figures/7-6.png",
+    "target": "structure-20261112/figures/png/7-4.png",
+    "pixel_width": 1920,
+    "pixel_height": 1484,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
+  },
+  {
+    "number": "7.7",
+    "captured_at": "2026-11-17T13:29:56.259Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": null,
+    "box": {
+      "x": 0,
+      "y": 0,
+      "width": 960.0,
+      "height": 643.0
+    },
+    "account": {
+      "nickname": "赵灿",
+      "role": "student"
+    },
+    "question_id": null,
+    "scope": "Two actual current student-report regions: statistics and both weekly charts, stacked at unchanged pixel scale; full page retained separately",
+    "sha256": "fe41a3b3ebec331529fda9fcf1ed1605afdf6629574502c8ea84c98dee06f64d",
+    "banned_terms_found": [],
+    "capture_regions": [
+      {
+        "selector": ".stats-grid",
+        "box": {
+          "x": 282.390625,
+          "y": 262.34375,
+          "width": 959.21875,
+          "height": 184
+        },
+        "text": "01\n本周新增错题\n2道\n\n本周新进入错题闭环的题目\n\n02\n错题累计\n23道\n\n当前报告范围内的错题总量\n\n03\n复习完成\n5/ 24\n复习完成率\n21%\n04\n平均掌握度\n54%"
+      },
+      {
+        "selector": ".trend-grid",
+        "box": {
+          "x": 282.390625,
+          "y": 1058.34375,
+          "width": 959.21875,
+          "height": 440.6875
+        },
+        "text": "录入节奏\n每日新增错题\n\n本周共录入错题 2 次，11/16最多，为 1 次。\n\n查看每日错题数据表\n练习反馈\n每日练习量\n\n本周共完成练习 26 次，11/16最多，为 17 次。\n\n查看每日练习数据表"
+      }
+    ],
+    "composition": "Original region PNGs at native scale, 16 CSS px gap; no UI data/text changes",
+    "file": "thesis/final-master-20261114/figures/7-7.png",
+    "target": "structure-20261112/figures/png/7-5.png",
+    "pixel_width": 1920,
+    "pixel_height": 1286,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
+  },
+  {
+    "number": "7.8",
+    "captured_at": "2026-11-17T13:29:58.197Z",
+    "system_branch": "claude/thesis-voice-cleanup-20261117",
+    "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+    "deviceScaleFactor": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 1800
+    },
+    "selector": ".report-page: top through .stats-grid bottom",
+    "box": {
+      "x": 282.390625,
+      "y": 100,
+      "width": 959.21875,
+      "height": 466.34375
+    },
+    "account": {
+      "nickname": "胡韬",
+      "role": "teacher"
+    },
+    "question_id": null,
+    "scope": "Continuous crop of named teacher report: complete page heading, teacher system-wide scope and actual aggregate statistics",
+    "sha256": "d10f3de751ef95963fbb6ee8b8e9cc8ba4058eec7c7c78fe5af0f9cc2503096e",
+    "banned_terms_found": [],
+    "file": "thesis/final-master-20261114/figures/7-8.png",
+    "target": "structure-20261112/figures/png/7-6.png",
+    "pixel_width": 1918,
+    "pixel_height": 932,
+    "model": "Archived real GLM outputs, local replay",
+    "source_provenance": "docs/validation/thesis-screenshots-20261117/business-history.json",
+    "original_ai_sources": [
+      {
+        "path": "docs/experiments/gate5/results/experiment-results.json",
+        "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+        "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+      },
+      {
+        "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+        "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+      },
+      {
+        "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+        "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+      }
+    ]
   }
 ]
