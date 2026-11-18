@@ -1,0 +1,80 @@
+{
+  "pdf_pages": 99,
+  "source_sha": "f282f79",
+  "baseline": "e63537d",
+  "restored_manuscript_bytes_match": true,
+  "verified_outputs": {
+    "pdf": "f9095d7ecde2102ce7c050149f43aafdafac3fa598db935e017cabda000e80fb",
+    "docx": "e73724b9b9662016c323f898d0a806edf81681c47fb1f9af41e7baff13ff1a2d"
+  },
+  "toc_targets": 177,
+  "stable_after_exports": 2,
+  "font_errors": {
+    "unrecognized_fonts": 0,
+    "chinese_font_errors": 0,
+    "latin_number_font_errors": 0,
+    "page_number_font_errors": 0
+  },
+  "figure_label_count": 434,
+  "blocked_term_hits_in_visible_diagram_text": 0,
+  "assistant_or_branch_names_in_manuscript_docx_pdf": 0,
+  "reference_title_exception": "ChatGPT for good?",
+  "screenshots": [
+    {
+      "figure": "7.1",
+      "pdf_page": 75,
+      "docx_pixels_match": true,
+      "original_sha256": "e6f3f07adda021a282badb2cdce7568447ff49ab3a7cef7490b1fb1ec764893d",
+      "display_sha256": "e6f3f07adda021a282badb2cdce7568447ff49ab3a7cef7490b1fb1ec764893d"
+    },
+    {
+      "figure": "7.2",
+      "pdf_page": 75,
+      "docx_pixels_match": true,
+      "original_sha256": "9f19cb3a621ecf397bfa928369b4a4352a288dfe2bc35de484a4b6e3edcf686a",
+      "display_sha256": "9f19cb3a621ecf397bfa928369b4a4352a288dfe2bc35de484a4b6e3edcf686a"
+    },
+    {
+      "figure": "7.3",
+      "pdf_page": 76,
+      "docx_pixels_match": true,
+      "original_sha256": "f6888a31569b852997df6809ec591be6749fbfebf38f40765aa44ab0acce481f",
+      "display_sha256": "f6888a31569b852997df6809ec591be6749fbfebf38f40765aa44ab0acce481f"
+    },
+    {
+      "figure": "7.4",
+      "pdf_page": 76,
+      "docx_pixels_match": true,
+      "original_sha256": "a36c5b27b9bd1405f13e57ec4a26206ea74106f529f69d6335b287cfdedf25fa",
+      "display_sha256": "a36c5b27b9bd1405f13e57ec4a26206ea74106f529f69d6335b287cfdedf25fa"
+    },
+    {
+      "figure": "7.5",
+      "pdf_page": 76,
+      "docx_pixels_match": true,
+      "original_sha256": "1c3042bf0abd6f452ab2d760b3a75247880f70d57d1d1356f6e7c0b03e3570ef",
+      "display_sha256": "a8115720b0df77eb273a6bfc28a423e0d84bb20e59c87f60f4f519c0c9e26b21"
+    },
+    {
+      "figure": "7.6",
+      "pdf_page": 77,
+      "docx_pixels_match": true,
+      "original_sha256": "e570280cc6ad2950d05b209af08756269283261105f8774de9e845a8b0bcf010",
+      "display_sha256": "e570280cc6ad2950d05b209af08756269283261105f8774de9e845a8b0bcf010"
+    },
+    {
+      "figure": "7.7",
+      "pdf_page": 78,
+      "docx_pixels_match": true,
+      "original_sha256": "fe41a3b3ebec331529fda9fcf1ed1605afdf6629574502c8ea84c98dee06f64d",
+      "display_sha256": "fe41a3b3ebec331529fda9fcf1ed1605afdf6629574502c8ea84c98dee06f64d"
+    },
+    {
+      "figure": "7.8",
+      "pdf_page": 78,
+      "docx_pixels_match": true,
+      "original_sha256": "d10f3de751ef95963fbb6ee8b8e9cc8ba4058eec7c7c78fe5af0f9cc2503096e",
+      "display_sha256": "be7dfe448edcf19282bd74a86bdd5609226c3bf7ce0311a2a252fba7a7935909"
+    }
+  ]
+}
