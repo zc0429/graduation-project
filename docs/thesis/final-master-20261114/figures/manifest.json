@@ -97,11 +97,11 @@
     "retained_original_evidence_unchanged": true
   },
   "structure-20261112/figures/png/7-3.png": {
-    "file": "7-5.png",
+    "file": "7-5-detail.png",
     "number": "7.5",
     "source": "docs/validation/thesis-screenshots-20261117/capture-records.json",
     "source_sha256": "74ec391fa69015dbbba99c447e22330b83d7f06ecef53050162e2b145845e912",
-    "png_sha256": "1c3042bf0abd6f452ab2d760b3a75247880f70d57d1d1356f6e7c0b03e3570ef",
+    "png_sha256": "a8115720b0df77eb273a6bfc28a423e0d84bb20e59c87f60f4f519c0c9e26b21",
     "capture": {
       "number": "7.5",
       "captured_at": "2026-11-17T13:27:02.350Z",
@@ -152,7 +152,23 @@
         }
       ]
     },
-    "retained_original_evidence_unchanged": true
+    "retained_original_evidence_unchanged": true,
+    "display_crop": {
+      "file": "thesis/final-master-20261114/figures/7-5-detail.png",
+      "sha256": "a8115720b0df77eb273a6bfc28a423e0d84bb20e59c87f60f4f519c0c9e26b21",
+      "pixel_width": 1920,
+      "pixel_height": 296,
+      "source_rows_px_top_inclusive_bottom_exclusive": [
+        [
+          0,
+          144
+        ],
+        [
+          368,
+          520
+        ]
+      ]
+    }
   },
   "structure-20261112/figures/png/7-4.png": {
     "file": "7-6.png",
@@ -294,11 +310,11 @@
     "retained_original_evidence_unchanged": true
   },
   "structure-20261112/figures/png/7-6.png": {
-    "file": "7-8.png",
+    "file": "7-8-detail.png",
     "number": "7.8",
     "source": "docs/validation/thesis-screenshots-20261117/capture-records.json",
     "source_sha256": "74ec391fa69015dbbba99c447e22330b83d7f06ecef53050162e2b145845e912",
-    "png_sha256": "d10f3de751ef95963fbb6ee8b8e9cc8ba4058eec7c7c78fe5af0f9cc2503096e",
+    "png_sha256": "be7dfe448edcf19282bd74a86bdd5609226c3bf7ce0311a2a252fba7a7935909",
     "capture": {
       "number": "7.8",
       "captured_at": "2026-11-17T13:29:58.197Z",
@@ -349,7 +365,27 @@
         }
       ]
     },
-    "retained_original_evidence_unchanged": true
+    "retained_original_evidence_unchanged": true,
+    "display_crop": {
+      "file": "thesis/final-master-20261114/figures/7-8-detail.png",
+      "sha256": "be7dfe448edcf19282bd74a86bdd5609226c3bf7ce0311a2a252fba7a7935909",
+      "pixel_width": 1918,
+      "pixel_height": 618,
+      "source_rows_px_top_inclusive_bottom_exclusive": [
+        [
+          0,
+          134
+        ],
+        [
+          194,
+          292
+        ],
+        [
+          546,
+          932
+        ]
+      ]
+    }
   },
   "requirements-20261112/figures/3-1.png": {
     "file": "3-4.png",
