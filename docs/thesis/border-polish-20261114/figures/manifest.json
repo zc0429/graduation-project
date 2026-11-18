@@ -1132,27 +1132,27 @@
   "delivery-20261112/figures/5-1.png": {
     "number": "5.1",
     "file": "5-1.png",
-    "source": "docs/thesis/delivery-20261112/figures/5-1.json",
-    "source_sha256": "ea49e102e34400c73b38c4ce4586eb82e7f502c85b88d55729053a6abdc5443b",
-    "png_sha256": "f087e8e1c15e95e0301a4e9fc6e43c2c6765f14d3cebb5efb82805138db06007",
-    "svg_sha256": "e1033e41d31ea32391a9d7255e81bccf7bdf8d9c00e1f82873ffde9250e1f09a",
+    "source": "docs/thesis/final-master-20261114/figures/5-1.svg",
+    "source_sha256": "6a56bfc947d85d6f2ef282ebadc59f5427eadb54ac3f9ca88ac3407e2df1fd4d",
+    "png_sha256": "f30b4451691c0661a891e5e7fb49fe81dbf2b0bb86a7cf4df7962c9386ed892a",
+    "svg_sha256": "6a56bfc947d85d6f2ef282ebadc59f5427eadb54ac3f9ca88ac3407e2df1fd4d",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1936,
-      2004
+      1736
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      101
+      94
     ],
     "viewBox": [
       -19,
       -18,
       484,
-      501
+      434
     ],
     "rectangles": [
       {
@@ -1189,13 +1189,13 @@
         "x": 18,
         "y": 341,
         "w": 187,
-        "h": 65
+        "h": 51
       },
       {
         "x": 241,
         "y": 341,
         "w": 187,
-        "h": 65
+        "h": 51
       }
     ],
     "closed_outer_frame": null,
@@ -1216,13 +1216,9 @@
       "LlmClient 模型网关",
       "智谱 GLM 大模型文本生成",
       "向量服务：1024 维",
-      "Mock 用于离线与常规回归",
       "独立图片识别客户端",
-      "GLM 多模态识别（默认开启）",
       "单图识别只返回候选值",
-      "识别阶段不写业务表",
-      "外部模型通过 HTTPS 调用；密钥只在服务端配置。",
-      "本地执行器处理异步解析；定时任务处理提醒，报告按请求聚合。"
+      "识别阶段不写业务表"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
@@ -1302,26 +1298,26 @@
     "number": "5.3",
     "file": "5-3.png",
     "source": "docs/thesis/final-master-20261114/figures/5-3.svg",
-    "source_sha256": "b1c1c7df7726925c30a3c3d6984341791f7d6af75682850be79212c2a11f62e1",
-    "png_sha256": "d86530ce942562f575326e7141ff7366a1885efebae1b2575e4c0b40857e1670",
-    "svg_sha256": "232d2f0086a2439e114e7eb4b36fc335b68ae67d3e1898438024f3ef5482f383",
+    "source_sha256": "6d1fbdffa93211eb5b31298d91d6e1c385953abd87311193cd008dec4f384a2b",
+    "png_sha256": "be5fdd8655bd756a1d7d6f35c394ee30192a086b154eab47045cd27e49180988",
+    "svg_sha256": "6d1fbdffa93211eb5b31298d91d6e1c385953abd87311193cd008dec4f384a2b",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1944,
-      1932
+      1788
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      106
+      101
     ],
     "viewBox": [
       -20,
       -15.199999809265137,
       486,
-      483
+      447
     ],
     "rectangles": [
       {
@@ -1386,36 +1382,34 @@
       "校验结构化响应",
       "条件回写 + 完成消息",
       "轮询解析状态",
-      "返回 0 / 1 / 2",
-      "保存事务不包含外部模型调用；任务与轮询可并发进行。",
-      "过期输入：回写事务回滚且不发完成消息；异常：当前解析置 2。"
+      "返回 0 / 1 / 2"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "delivery-20261112/figures/6-5.png": {
     "number": "5.4",
     "file": "5-4.png",
-    "source": "docs/thesis/delivery-20261112/figures/6-5.json",
-    "source_sha256": "c1fa67b3260da6fed7d047ccafc8a325d60bce5b4d9d38d9a850b5dbe900633a",
-    "png_sha256": "71fd071751e6d6a815b37c7974bc751c3526dabe9a2eac460f32a0e7bb5f73c3",
-    "svg_sha256": "7033bc9a6563d0b76f57f64077ca8926094192d37419877c4856006d065b6c21",
+    "source": "docs/thesis/final-master-20261114/figures/5-4.svg",
+    "source_sha256": "8df7d6e3bf689daa8915ffc40f4bc88ef1ca6cf6c39d8d96faca74c373f01469",
+    "png_sha256": "2259810dde8ce5da4c46bae800e8f9495c509cda15a6ba08af87f5f0d02c5927",
+    "svg_sha256": "8df7d6e3bf689daa8915ffc40f4bc88ef1ca6cf6c39d8d96faca74c373f01469",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1736,
-      2448
+      2256
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      100
+      94
     ],
     "viewBox": [
       6,
       -16,
       434,
-      612
+      564
     ],
     "rectangles": [
       {
@@ -1477,36 +1471,34 @@
       "校验精确字段、候选 ID、难度 1-5 和中文文本",
       "短事务比较输入快照与解析记录状态",
       "成功写入向量、归类、解析及 reference_ids",
-      "同事务发送完成消息",
-      "空参考集仍可生成；异常记失败，输入过期则放弃旧结果回写。",
-      "RAG 不强制同知识点；reference_ids 记录本次实际参考题。"
+      "同事务发送完成消息"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-7.png": {
     "number": "5.5",
     "file": "5-5.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-7.json",
-    "source_sha256": "67d5bf214ea54667a5a110bbc4b290fa8a696ac677af518912812ba9f8be4faf",
-    "png_sha256": "c559f147da636fd678318614748d7c98f5e4226d9b07f1f0bd5eb1866fddd5f7",
-    "svg_sha256": "4a57a67ec76802a952cfa855a2d3c045e83a972da84b6ee9830979b6d1b3b24d",
+    "source": "docs/thesis/final-master-20261114/figures/5-5.svg",
+    "source_sha256": "eb3e2199612b6ee524a9e5a0e9a0d1fbb8d953ba1fea0ec79502ff10790e89d9",
+    "png_sha256": "2421370d1ed072e8ba37b8dd11aae95863ce0073c7b8be28be2c76a9a9c9e91b",
+    "svg_sha256": "eb3e2199612b6ee524a9e5a0e9a0d1fbb8d953ba1fea0ec79502ff10790e89d9",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1892,
-      1776
+      1576
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      101
+      104
     ],
     "viewBox": [
       -9,
       -19,
       473,
-      444
+      394
     ],
     "rectangles": [
       {
@@ -1553,9 +1545,7 @@
       "插入练习记录",
       "原子更新原题 mastery",
       "答对 +15，答错 -20，限制在 0-100",
-      "提交成功并刷新题目",
-      "结果由学生自评提交，服务不执行自动判分。",
-      "此操作不自动完成复习计划，也不触发相似题重排。"
+      "提交成功并刷新题目"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
@@ -1563,26 +1553,26 @@
     "number": "5.6",
     "file": "5-6.png",
     "source": "docs/thesis/final-master-20261114/figures/5-6.svg",
-    "source_sha256": "67d4d6f82861fad31c66e906d7f63f6fe1a51a3ad2c14ece97504ab133187951",
-    "png_sha256": "2336951fb3c20bd68d402937eba4cd7806b2223d9fc30b40a3c57ac3b0c72c5b",
-    "svg_sha256": "8ec2a02ece6b4d6c0044e8456a8f97f626979702dba72b2f2d2e5acd5a2b9558",
+    "source_sha256": "84838c4715e5cd73fb21f7a5b0f48091783b43acdd40467bfb373ed18277abe2",
+    "png_sha256": "008eb975e5907e1c6abea6017bfd4f06bc143e162f3c4146f5aa3e6a97b126dc",
+    "svg_sha256": "84838c4715e5cd73fb21f7a5b0f48091783b43acdd40467bfb373ed18277abe2",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1840,
-      1312
+      1112
     ],
     "actual_white_margins_px": [
       94,
       105,
       94,
-      103
+      94
     ],
     "viewBox": [
       -7,
       -6,
       460,
-      328
+      278
     ],
     "rectangles": [
       {
@@ -1615,36 +1605,34 @@
       "每日 08:00 扫描",
       "plan_date < 当天",
       "用户完成操作",
-      "用户完成操作",
-      "当天或更早、状态非 1 的计划显示在 /today 列表。",
-      "完成时记录 finish_time；再次完成返回业务错误；日期不重排。"
+      "用户完成操作"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-1.png": {
     "number": "6.1",
     "file": "6-1.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-1.json",
-    "source_sha256": "faa87e18b38d953cfeef55085768cc584008be6cb93655f5faf5ab9089b86d19",
-    "png_sha256": "a655db7ac900c3e0475948d0b7f79a8d066954bf8f9a85b4007b14f990d62fd3",
-    "svg_sha256": "ca41054a4e0fda0501c12a617344a36818f09e5b047a89da38d93a4f77423405",
+    "source": "docs/thesis/final-master-20261114/figures/6-1.svg",
+    "source_sha256": "7f99e5e232203d126818b889a88b5067346503f16da77ec8ab3952bdf82d85b8",
+    "png_sha256": "0c4f6890963e975a8b886612e39a2e66b1fdf171f6e19caa9244968fca5c3a8b",
+    "svg_sha256": "7f99e5e232203d126818b889a88b5067346503f16da77ec8ab3952bdf82d85b8",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1896,
-      1776
+      1720
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      100
+      94
     ],
     "viewBox": [
       -14,
       -14,
       474,
-      444
+      430
     ],
     "rectangles": [
       {
@@ -1735,7 +1723,6 @@
       "0..1 : 0..N",
       "1 : 0..1",
       "0..1 : 0..N",
-      "reference_ids 为 JSON 留痕，未另建关联表。",
       "自关联：父 0..1，子 0..N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
@@ -1744,26 +1731,26 @@
     "number": "6.2",
     "file": "6-2.png",
     "source": "docs/thesis/final-master-20261114/figures/6-2.svg",
-    "source_sha256": "71bbe2580fc2f3a9251e413b316c99c6599614f106e5f3aa09fdb54d48d1e6ce",
-    "png_sha256": "8a0eb6f49b9347c33073588f5482dadbebc0b21590370ce50485891d7b272638",
-    "svg_sha256": "216ee86dd0413236e5c8de23aac2424cad9c419ff43bc99a1adf41df8fc10d15",
+    "source_sha256": "03cec965351df4774b1ebfabd583d1a5659e52e3b99894287752d227eac407eb",
+    "png_sha256": "41049560630890e0ad1cd41e054ce8c8f7eceb43cefebd30ea87f40a6760051a",
+    "svg_sha256": "03cec965351df4774b1ebfabd583d1a5659e52e3b99894287752d227eac407eb",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1952,
-      1964
+      1820
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      100
+      94
     ],
     "viewBox": [
       -20,
       -14,
       488,
-      491
+      455
     ],
     "rectangles": [
       {
@@ -1852,35 +1839,34 @@
       "1 : 0..N",
       "1 : 0..N",
       "0..1 : 0..N",
-      "0..1 : 0..N",
-      "选择变式题时，通过 variant_question.question_id 更新原题掌握度。"
+      "0..1 : 0..N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-3.png": {
     "number": "6.3",
     "file": "6-3.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-3.json",
-    "source_sha256": "4d5ac2214ab143a753d5568b7192824e16f6d05689bf83da6bea515915b6809d",
-    "png_sha256": "3540e3e6919fa71ab258831e4593439a8867e7706e5a77d2a24ed467147d7ca2",
-    "svg_sha256": "e1304dec7d6a88a4931a61606d10c0f9400a1fe2a30aa359d833924d3ba37d37",
+    "source": "docs/thesis/final-master-20261114/figures/6-3.svg",
+    "source_sha256": "e7fd34347fb94c003c5bb2af19623d9d0c09b21fc75d8801ccf2d21ff03e66fe",
+    "png_sha256": "0393795049d9f965551b028a03ecfadf00c749b3a591bcf2c40e7d3c3f453f61",
+    "svg_sha256": "e7fd34347fb94c003c5bb2af19623d9d0c09b21fc75d8801ccf2d21ff03e66fe",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1896,
-      1012
+      868
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      101
+      94
     ],
     "viewBox": [
       -14,
       -16,
       474,
-      253
+      217
     ],
     "rectangles": [
       {
@@ -1931,35 +1917,34 @@
       "PK id / publisher_id 可空",
       "title / status",
       "1 : 0..N",
-      "0..1 : 0..N",
-      "消息面向接收用户；公告由管理员发布，登录用户可查看。"
+      "0..1 : 0..N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "delivery-20261112/figures/6-9.png": {
     "number": "6.4",
     "file": "6-4.png",
-    "source": "docs/thesis/delivery-20261112/figures/6-9.json",
-    "source_sha256": "93110ae6f268a510b260bb3c54020055bea5e58b44b1401f9a5fe4be88256b2c",
-    "png_sha256": "2b33fcef836964ab3abdecab2e6880ade48b4ed4499f7bab1be7c37a1721f970",
-    "svg_sha256": "28a10030793613d212716655e3d8578429ab3cfbbb3e64ba61bdd009199841fe",
+    "source": "docs/thesis/final-master-20261114/figures/6-4.svg",
+    "source_sha256": "ee6c1ce5a7e7215591fb9a4eefd60ea22fb4b04b9534ffbc32a1cf8b016f236d",
+    "png_sha256": "a0682bfc4a222821f4357a97c7956faa435e62e7e0b8b5241996f6293e42a01a",
+    "svg_sha256": "ee6c1ce5a7e7215591fb9a4eefd60ea22fb4b04b9534ffbc32a1cf8b016f236d",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1864,
-      1388
+      1248
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      106
+      94
     ],
     "viewBox": [
       -10,
       -14,
       466,
-      347
+      312
     ],
     "rectangles": [
       {
@@ -2002,35 +1987,34 @@
       "1",
       "0..1",
       "0..1",
-      "N",
-      "逻辑关联；知识内容归属由原题与当前学生共同校验"
+      "N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-4.png": {
     "number": "6.5",
     "file": "6-5.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-4.json",
-    "source_sha256": "b36da74225e848593a15c13fcd4efa0b4209bc2e7e05957fe9b3d77130079adc",
-    "png_sha256": "c88454e403efcc34e29f4a938b9765bcea64141d66b51c9ac26a380ec5d6d20a",
-    "svg_sha256": "f0f106fdfd9d684e34fd5e5c0afac65467266192adb278e31ce34d28ed36d172",
+    "source": "docs/thesis/final-master-20261114/figures/6-5.svg",
+    "source_sha256": "8ef119f2c0d04115abb7f8eed1255c6083e9a1c123bdf00298aa07152d05249a",
+    "png_sha256": "737d2efbe66bf6e45b2d8be21104f12b75567a3b7160e3ea1b143e8cf2f60e18",
+    "svg_sha256": "8ef119f2c0d04115abb7f8eed1255c6083e9a1c123bdf00298aa07152d05249a",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1912,
-      1584
+      1284
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      103
+      94
     ],
     "viewBox": [
       -16,
       -16,
       478,
-      396
+      321
     ],
     "rectangles": [
       {
@@ -2076,26 +2060,14 @@
         "h": 23
       },
       {
-        "x": 8,
-        "y": 276,
-        "w": 195,
-        "h": 57
-      },
-      {
-        "x": 8,
-        "y": 276,
-        "w": 195,
-        "h": 23
-      },
-      {
         "x": 237,
-        "y": 276,
+        "y": 224,
         "w": 201,
         "h": 57
       },
       {
         "x": 237,
-        "y": 276,
+        "y": 224,
         "w": 201,
         "h": 23
       }
@@ -2115,13 +2087,9 @@
       "embed(text): List<Double>",
       "model(): String",
       "依赖",
-      "MockLlmClient",
-      "实现 LlmClient",
-      "离线输出",
       "OpenAiCompatibleLlmClient",
       "实现 LlmClient",
-      "外部 HTTP 调用",
-      "虚线箭头表示依赖；空心三角表示接口实现。"
+      "外部 HTTP 调用"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   }

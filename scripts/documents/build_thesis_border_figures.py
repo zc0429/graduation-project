@@ -162,7 +162,7 @@ def main():
             im=Image.open(png).convert('RGB');im.save(png,dpi=(300,300));box=ImageChops.difference(im,Image.new('RGB',im.size,'white')).getbbox();assert box
             margins=[box[0],box[1],im.width-box[2],im.height-box[3]];assert min(margins)>=80 and max(margins)<=128,(number,margins)
             if number=='6.5':
-                rr=E.fromstring(rendered.encode());assert len(rr.xpath('//*[@data-role="realization-triangle"]'))==2
+                rr=E.fromstring(rendered.encode());assert len(rr.xpath('//*[@data-role="realization-triangle"]'))==1
                 assert '«interface» LlmClient' in info['texts'] and not any('<<<<' in s for s in info['texts'])
             if number=='5.6':assert '每日 08:00 扫描' in info['texts']
             record={'number':number,'file':png.name,'source':str(source.relative_to(ROOT)),'source_sha256':digest(source),'png_sha256':digest(png),'svg_sha256':digest(OUT/(name+'.svg')),'padding_svg_units':PAD,'raster_scale':SCALE,'pixel_size':list(im.size),'actual_white_margins_px':margins,'viewBox':info['viewBox'],'rectangles':info['rectangles'],'closed_outer_frame':frame,'text_content':info['texts'],'semantics':'Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired.'}

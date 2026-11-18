@@ -50,12 +50,13 @@ def inspect_figures():
             f=m['closed_outer_frame'];assert f['stroke_width']>=1.5
             frame_check=rectangle_edges(im,f,vb,scale);assert min(frame_check)>.995,(m['number'],frame_check)
         if m['number']=='6.5':
-            heads=tree.xpath('//*[@data-role="realization-triangle"]');shafts=tree.xpath('//*[@data-role="realization-shaft"]');joins=tree.xpath('//*[@data-role="realization-base-join"]');assert len(heads)==len(shafts)==len(joins)==2
+            heads=tree.xpath('//*[@data-role="realization-triangle"]');shafts=tree.xpath('//*[@data-role="realization-shaft"]');joins=tree.xpath('//*[@data-role="realization-base-join"]');assert len(heads)==len(shafts)==len(joins)==1
             for head,shaft,join in zip(heads,shafts,joins):
                 def pts(x):return [tuple(map(float,p.split(','))) for p in x.get('points').split()]
                 tip,a,b=pts(head);base=((a[0]+b[0])/2,(a[1]+b[1])/2)
                 assert math.dist(pts(shaft)[-1],base)<.001 and math.dist(pts(join)[-1],base)<.001
                 assert abs(tip[1]-184)<.001 and 238<=tip[0]<=438
+                assert pts(shaft)[0] == (337,224) and tip == (337,184), 'Client must connect to LlmClient'
             assert '«interface» LlmClient' in m['text_content'] and not any('<<<<' in t for t in m['text_content'])
         if m['number']=='5.6':assert '每日 08:00 扫描' in m['text_content']
         result.append({'number':m['number'],'target':target,'margins_px':pad,'rectangles':rect_checks,'outer_frame_coverage':frame_check,'pixel_sha256':pixels(im)})
