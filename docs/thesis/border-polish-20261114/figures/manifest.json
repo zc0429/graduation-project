@@ -3,9 +3,9 @@
     "number": "3.1",
     "file": "3-1.png",
     "source": "docs/thesis/final-master-20261114/figures/3-1.svg",
-    "source_sha256": "7dcd0ec356118963f5b924113e5c91605521ac74ee717bcefbf14052133de4e4",
-    "png_sha256": "22d6abedf53bb2a35c3cf00a63805ede1060021ce18f2055761f201a59133ec3",
-    "svg_sha256": "0d0afef49e5809d2b1a957b11761e39d2ad4334a0992df9b0509ac59f1080d60",
+    "source_sha256": "9746b2b42250583096aa003b2882adde0012927d88198de576132550cf5e5e7c",
+    "png_sha256": "b844fcabb432e82a3ab6dc56e739ea2b2e6a92b09ffd14cae71dbe8d836c33e0",
+    "svg_sha256": "cfc3aad541f1fd1736e6a3fc28cf38ab6d848ce734236d31109eb0dc6b8108bf",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -110,7 +110,7 @@
         "h": 24.0375
       },
       {
-        "x": 175.021,
+        "x": 187.421,
         "y": 519.625,
         "w": 45.192,
         "h": 24.0375
@@ -194,9 +194,9 @@
     "number": "3.2",
     "file": "3-2.png",
     "source": "docs/thesis/final-master-20261114/figures/3-2.svg",
-    "source_sha256": "459d9d6b3821cc614cf153904384a372b913c92c7b952523d8226774df1e4707",
-    "png_sha256": "b4f34df543e4c431d76f4effde17233ce69b57fe97c38324b1df00e5a98c3be8",
-    "svg_sha256": "3418aa55a9936f858e781f61c30323a0f8dbd9c9a6eef0d1018f308d9daed51e",
+    "source_sha256": "65d83d8b23ab2a0b5725d78435b5b243c0fa0051d2359909f9d9b85378ba93af",
+    "png_sha256": "d2dbb84921584c9670e9be2741d2a6fb7d2bf80f36e87d35d1c860d68f6e7bba",
+    "svg_sha256": "d654ce353f397c73f862d883c0c228fa5165e30d4dbf4f911198f94ef3c68106",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -253,9 +253,9 @@
         "h": 51.5125
       },
       {
-        "x": 72.625,
+        "x": 62.293,
         "y": 670.7125000000001,
-        "w": 91.343,
+        "w": 112,
         "h": 51.5125
       },
       {
@@ -423,9 +423,9 @@
     "number": "3.3",
     "file": "3-3.png",
     "source": "docs/thesis/final-master-20261114/figures/3-3.svg",
-    "source_sha256": "42c51ca40c64e356f765892265e88d44aea0d446fb35946710c8e5154992fc2a",
-    "png_sha256": "e5ed5f217e748c42b932beb8c8b2cbb906d39c3ffc3daa713ec5b04ecb9ff87a",
-    "svg_sha256": "815d27c4be1f8798e967390d650580d67bf98020d8dd0c1a3cd1ec885537289b",
+    "source_sha256": "d23beaf6dd36e796e0b0afb63834ee01eb2610afc0309e2dc4fbb44038ad4564",
+    "png_sha256": "549ddec336e98123d14b20d60ad58dc4c973aa8fd7153171e2848429a69ac166",
+    "svg_sha256": "d3149bad643113d98ae88cce0725896ea0f3f94453763e1b845b5b28f7286fea",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -597,10 +597,10 @@
   "align-reference1-20261113/figures/3-5.png": {
     "number": "3.5",
     "file": "3-5.png",
-    "source": "docs/thesis/align-reference1-20261113/figures/3-5.json",
-    "source_sha256": "606cc347b86b1865814e835066359202717dcf331f11d18dc20bc18d044d5e0c",
-    "png_sha256": "e24faab235e7fed6e940eae89de49a608993cca04a8bc1aaf77cc99d99abc26f",
-    "svg_sha256": "cef13e64c7497444f916771c5fd509f27b2de3dc8948feab44eca4410447f698",
+    "source": "docs/thesis/final-master-20261114/figures/3-5.svg",
+    "source_sha256": "3a045b2b4c355fd6fee2f1035c8a6c3f36de23851e14f57418414e47d8dd6079",
+    "png_sha256": "14937f488fd3b66757df147866978bcc47246c2132791d95c8de508ffbc64e20",
+    "svg_sha256": "cc1c3707b8a93d91c7ba7b31b86c654059583253a59d0d512001013ea30575b3",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -672,10 +672,10 @@
   "align-reference1-20261113/figures/3-6.png": {
     "number": "3.6",
     "file": "3-6.png",
-    "source": "docs/thesis/align-reference1-20261113/figures/3-6.json",
-    "source_sha256": "a20a033a6c134226e242a6eeefa76df1b28eb64ee649797569061e8e2742f88f",
-    "png_sha256": "c8e2ee08f22d63576de8ae925fd1e06cae778c3ef8e0c8d10c713e772fd31cfa",
-    "svg_sha256": "4e7c8e539ae903c6366e8d5f3c446883e861cbe26104f04e883a861f1e519b6b",
+    "source": "docs/thesis/final-master-20261114/figures/3-6.svg",
+    "source_sha256": "82c28eda8aac3b7493a0f990f9e5c91a4f93acc9a865a075b2f24d752f657510",
+    "png_sha256": "a2fdb83e47dfd32440a29242e08e4cc2267c1d790379b9fd2a2a5dd54081c888",
+    "svg_sha256": "b255c0a9690a55641114d922d88823d443964d9136e59104300afe6dd25ecaa7",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -685,7 +685,7 @@
     "actual_white_margins_px": [
       94,
       94,
-      99,
+      97,
       105
     ],
     "viewBox": [
@@ -702,16 +702,52 @@
         "h": 29.763779999999997
       },
       {
+        "x": 342.28347,
+        "y": 29.602362499999998,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
         "x": 20.46259875,
         "y": 132.685041,
         "w": 78.12992249999999,
         "h": 29.763779999999997
       },
       {
+        "x": 342.28347,
+        "y": 99.20078850000004,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 173.61023850000004,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
         "x": 20.46259875,
         "y": 286.3661455000001,
         "w": 78.12992249999999,
         "h": 29.763779999999997
+      },
+      {
+        "x": 342.28347,
+        "y": 230.55905800000005,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 290.08661800000004,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 349.6141780000001,
+        "w": 89.29133999999999,
+        "h": 22.322835000000055
       }
     ],
     "closed_outer_frame": null,
@@ -760,27 +796,27 @@
   "align-reference1-20261113/figures/3-7.png": {
     "number": "3.7",
     "file": "3-7.png",
-    "source": "docs/thesis/align-reference1-20261113/figures/3-7.json",
-    "source_sha256": "96ec6af45016fd70bea53f44e7edc73ca1373851803c31bb8eac851d92769337",
-    "png_sha256": "f261a5a41845feab7b10045e59fedfd25502a895c5a4713b2a5c89a0a972fc2d",
-    "svg_sha256": "1d80acdf10a46784429cce9f556bf543f98bcc1c16667985031b79984eb950cd",
+    "source": "docs/thesis/final-master-20261114/figures/3-7.svg",
+    "source_sha256": "5d9b07ef99a1e87f47bc2e1171dda4109938ed14645ec1abe50b687bd2179d06",
+    "png_sha256": "a5800d230efe598a5326b584bc30412f4b64b20b17c9c64f73a960196593215f",
+    "svg_sha256": "fd4b1b9538244494a71c7e2c36982855122d7e08cc7c831191d5a771177adb5f",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1840,
-      2124
+      2132
     ],
     "actual_white_margins_px": [
       94,
       94,
-      99,
+      97,
       106
     ],
     "viewBox": [
       -3.5374011993408203,
       -13,
       460,
-      531
+      533
     ],
     "rectangles": [
       {
@@ -796,6 +832,24 @@
         "h": 29.763779999999997
       },
       {
+        "x": 342.28347,
+        "y": 74.24803250000001,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 118.89370249999999,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 179.8189,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
         "x": 20.46259875,
         "y": 360.9409495,
         "w": 78.12992249999999,
@@ -806,6 +860,30 @@
         "y": 228.094491,
         "w": 78.12992249999999,
         "h": 29.763779999999997
+      },
+      {
+        "x": 342.28347,
+        "y": 295.062996,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 346.0590595,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 405.5866195,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 462.53543899999994,
+        "w": 89.29133999999999,
+        "h": 22.322835000000055
       }
     ],
     "closed_outer_frame": null,
@@ -856,10 +934,10 @@
   "align-reference1-20261113/figures/3-8.png": {
     "number": "3.8",
     "file": "3-8.png",
-    "source": "docs/thesis/align-reference1-20261113/figures/3-8.json",
-    "source_sha256": "6f8406a134768e4e9917adbaad08e1643c4503a7500cc238cdc61f3cab15afba",
-    "png_sha256": "efada6626ac5c210c7eb00536faa2cd87c5a9fcffb96261de5d2b4e49e846503",
-    "svg_sha256": "49893028f3c643f512ac6afd80c50cfeb70ad6bde3734a6dffae5b66f857599a",
+    "source": "docs/thesis/final-master-20261114/figures/3-8.svg",
+    "source_sha256": "bf1475332f27edc50db1cf33601c062822bdfad89bfea494c37154c3211cf0f2",
+    "png_sha256": "c632245fba84fd71e673d0d80897c6b3b973e691267821a995fffa681750f803",
+    "svg_sha256": "354b15242ccb7a366a65fe968c0509f3b16e631e4e7e627ea7c507538e8c8a06",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -869,7 +947,7 @@
     "actual_white_margins_px": [
       94,
       106,
-      99,
+      97,
       96
     ],
     "viewBox": [
@@ -886,10 +964,40 @@
         "h": 29.763779999999997
       },
       {
+        "x": 342.28347,
+        "y": 19.6732285,
+        "w": 89.29133999999999,
+        "h": 22.322835000000005
+      },
+      {
+        "x": 342.28347,
+        "y": 73.15748099999999,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 147.566931,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 198.5629945,
+        "w": 89.29133999999999,
+        "h": 22.32283499999997
+      },
+      {
         "x": 20.46259875,
         "y": 262.09252274999994,
         "w": 78.12992249999999,
         "h": 29.763779999999997
+      },
+      {
+        "x": 342.28347,
+        "y": 265.81299525,
+        "w": 89.29133999999999,
+        "h": 22.32283499999994
       },
       {
         "x": 347.86417875,
@@ -933,10 +1041,10 @@
   "align-reference1-20261113/figures/3-9.png": {
     "number": "3.9",
     "file": "3-9.png",
-    "source": "docs/thesis/align-reference1-20261113/figures/3-9.json",
-    "source_sha256": "e108ac470714fc31489cc2d925a606aba79a72fc42e5ef0d9f9ef1c074efe1d5",
-    "png_sha256": "5407f8c795634e2a16f82899cbc966a29c4a825b6670b7ac8be38a3ba5e33425",
-    "svg_sha256": "8cff4e73afa1f0a58cffb4ad84add2ff1fa72ef8f4cc6325e3edd844408bf0aa",
+    "source": "docs/thesis/final-master-20261114/figures/3-9.svg",
+    "source_sha256": "a6af62a4a5a7cbb30050d33669158d323a30d2baf6dda68d096920c65e2864aa",
+    "png_sha256": "bd3f2bc1be06fbbbd8d3a5514ff1b7f8d54ee431ed4e6e426236daa5b93bfb46",
+    "svg_sha256": "b43d01a4dc095724b67ef60e82199cc2f115e4995a6ec54e64ec7e5645b3bc65",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
@@ -946,7 +1054,7 @@
     "actual_white_margins_px": [
       94,
       106,
-      99,
+      97,
       96
     ],
     "viewBox": [
@@ -963,10 +1071,34 @@
         "h": 29.763779999999997
       },
       {
+        "x": 342.28347,
+        "y": 19.673228499999993,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 101.43307200000002,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
+        "x": 342.28347,
+        "y": 147.4763795,
+        "w": 89.29133999999999,
+        "h": 22.322834999999998
+      },
+      {
         "x": 20.46259875,
         "y": 211.86614400000002,
         "w": 78.12992249999999,
         "h": 29.763779999999997
+      },
+      {
+        "x": 342.28347,
+        "y": 215.58661650000005,
+        "w": 89.29133999999999,
+        "h": 22.32283499999994
       }
     ],
     "closed_outer_frame": null,
@@ -1000,27 +1132,27 @@
   "delivery-20261112/figures/5-1.png": {
     "number": "5.1",
     "file": "5-1.png",
-    "source": "docs/thesis/delivery-20261112/figures/5-1.json",
-    "source_sha256": "ea49e102e34400c73b38c4ce4586eb82e7f502c85b88d55729053a6abdc5443b",
-    "png_sha256": "f087e8e1c15e95e0301a4e9fc6e43c2c6765f14d3cebb5efb82805138db06007",
-    "svg_sha256": "e1033e41d31ea32391a9d7255e81bccf7bdf8d9c00e1f82873ffde9250e1f09a",
+    "source": "docs/thesis/final-master-20261114/figures/5-1.svg",
+    "source_sha256": "6a56bfc947d85d6f2ef282ebadc59f5427eadb54ac3f9ca88ac3407e2df1fd4d",
+    "png_sha256": "f30b4451691c0661a891e5e7fb49fe81dbf2b0bb86a7cf4df7962c9386ed892a",
+    "svg_sha256": "6a56bfc947d85d6f2ef282ebadc59f5427eadb54ac3f9ca88ac3407e2df1fd4d",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1936,
-      2004
+      1736
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      101
+      94
     ],
     "viewBox": [
       -19,
       -18,
       484,
-      501
+      434
     ],
     "rectangles": [
       {
@@ -1057,13 +1189,13 @@
         "x": 18,
         "y": 341,
         "w": 187,
-        "h": 65
+        "h": 51
       },
       {
         "x": 241,
         "y": 341,
         "w": 187,
-        "h": 65
+        "h": 51
       }
     ],
     "closed_outer_frame": null,
@@ -1084,13 +1216,9 @@
       "LlmClient 模型网关",
       "智谱 GLM 大模型文本生成",
       "向量服务：1024 维",
-      "Mock 用于离线与常规回归",
       "独立图片识别客户端",
-      "GLM 多模态识别（默认开启）",
       "单图识别只返回候选值",
-      "识别阶段不写业务表",
-      "外部模型通过 HTTPS 调用；密钥只在服务端配置。",
-      "本地执行器处理异步解析；定时任务处理提醒，报告按请求聚合。"
+      "识别阶段不写业务表"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
@@ -1169,27 +1297,27 @@
   "align-reference1-20261113/figures/5-3.png": {
     "number": "5.3",
     "file": "5-3.png",
-    "source": "docs/thesis/align-reference1-20261113/figures/5-3.json",
-    "source_sha256": "bc3077abed6fe080db6078b46c34a8935e0a1bd09d2697a14db9f74ca4568c84",
-    "png_sha256": "a1298c73b10f90b69ebb8056f082a2bab58ec4248bc7850c615aaaaebe925ba5",
-    "svg_sha256": "242afa50e656943777b20f2990e938530b3044fa5827ea7671c9901355266fe5",
+    "source": "docs/thesis/final-master-20261114/figures/5-3.svg",
+    "source_sha256": "6d1fbdffa93211eb5b31298d91d6e1c385953abd87311193cd008dec4f384a2b",
+    "png_sha256": "be5fdd8655bd756a1d7d6f35c394ee30192a086b154eab47045cd27e49180988",
+    "svg_sha256": "6d1fbdffa93211eb5b31298d91d6e1c385953abd87311193cd008dec4f384a2b",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1944,
-      1932
+      1788
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      106
+      101
     ],
     "viewBox": [
       -20,
       -15.199999809265137,
       486,
-      483
+      447
     ],
     "rectangles": [
       {
@@ -1217,6 +1345,18 @@
         "h": 28.8
       },
       {
+        "x": 207.578125,
+        "y": 74.19999694824219,
+        "w": 147.3408203125,
+        "h": 19
+      },
+      {
+        "x": 211.6171875,
+        "y": 158.1999969482422,
+        "w": 139.265625,
+        "h": 19
+      },
+      {
         "x": 227,
         "y": 272.8,
         "w": 109,
@@ -1242,36 +1382,34 @@
       "校验结构化响应",
       "条件回写 + 完成消息",
       "轮询解析状态",
-      "返回 0 / 1 / 2",
-      "保存事务不包含外部模型调用；任务与轮询可并发进行。",
-      "过期输入：回写事务回滚且不发完成消息；异常：当前解析置 2。"
+      "返回 0 / 1 / 2"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "delivery-20261112/figures/6-5.png": {
     "number": "5.4",
     "file": "5-4.png",
-    "source": "docs/thesis/delivery-20261112/figures/6-5.json",
-    "source_sha256": "c1fa67b3260da6fed7d047ccafc8a325d60bce5b4d9d38d9a850b5dbe900633a",
-    "png_sha256": "71fd071751e6d6a815b37c7974bc751c3526dabe9a2eac460f32a0e7bb5f73c3",
-    "svg_sha256": "7033bc9a6563d0b76f57f64077ca8926094192d37419877c4856006d065b6c21",
+    "source": "docs/thesis/final-master-20261114/figures/5-4.svg",
+    "source_sha256": "8df7d6e3bf689daa8915ffc40f4bc88ef1ca6cf6c39d8d96faca74c373f01469",
+    "png_sha256": "2259810dde8ce5da4c46bae800e8f9495c509cda15a6ba08af87f5f0d02c5927",
+    "svg_sha256": "8df7d6e3bf689daa8915ffc40f4bc88ef1ca6cf6c39d8d96faca74c373f01469",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1736,
-      2448
+      2256
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      100
+      94
     ],
     "viewBox": [
       6,
       -16,
       434,
-      612
+      564
     ],
     "rectangles": [
       {
@@ -1333,36 +1471,34 @@
       "校验精确字段、候选 ID、难度 1-5 和中文文本",
       "短事务比较输入快照与解析记录状态",
       "成功写入向量、归类、解析及 reference_ids",
-      "同事务发送完成消息",
-      "空参考集仍可生成；异常记失败，输入过期则放弃旧结果回写。",
-      "RAG 不强制同知识点；reference_ids 记录本次实际参考题。"
+      "同事务发送完成消息"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-7.png": {
     "number": "5.5",
     "file": "5-5.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-7.json",
-    "source_sha256": "67d5bf214ea54667a5a110bbc4b290fa8a696ac677af518912812ba9f8be4faf",
-    "png_sha256": "c559f147da636fd678318614748d7c98f5e4226d9b07f1f0bd5eb1866fddd5f7",
-    "svg_sha256": "4a57a67ec76802a952cfa855a2d3c045e83a972da84b6ee9830979b6d1b3b24d",
+    "source": "docs/thesis/final-master-20261114/figures/5-5.svg",
+    "source_sha256": "eb3e2199612b6ee524a9e5a0e9a0d1fbb8d953ba1fea0ec79502ff10790e89d9",
+    "png_sha256": "2421370d1ed072e8ba37b8dd11aae95863ce0073c7b8be28be2c76a9a9c9e91b",
+    "svg_sha256": "eb3e2199612b6ee524a9e5a0e9a0d1fbb8d953ba1fea0ec79502ff10790e89d9",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1892,
-      1776
+      1576
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      101
+      104
     ],
     "viewBox": [
       -9,
       -19,
       473,
-      444
+      394
     ],
     "rectangles": [
       {
@@ -1409,36 +1545,34 @@
       "插入练习记录",
       "原子更新原题 mastery",
       "答对 +15，答错 -20，限制在 0-100",
-      "提交成功并刷新题目",
-      "结果由学生自评提交，服务不执行自动判分。",
-      "此操作不自动完成复习计划，也不触发相似题重排。"
+      "提交成功并刷新题目"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-8.png": {
     "number": "5.6",
     "file": "5-6.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-8.json",
-    "source_sha256": "a95d7baf6d3908940a3d535d4abfeee61dc442ebdeb5d0e4a683b63e8eccf812",
-    "png_sha256": "a11741be3dcecefbcb19b5f2873feec3188edeb4119c4ff58760a14a3d348aa0",
-    "svg_sha256": "2200d965276bdc6669bded9a619ab2034a99728357234ae5a8469e3dc9f7bd0b",
+    "source": "docs/thesis/final-master-20261114/figures/5-6.svg",
+    "source_sha256": "84838c4715e5cd73fb21f7a5b0f48091783b43acdd40467bfb373ed18277abe2",
+    "png_sha256": "008eb975e5907e1c6abea6017bfd4f06bc143e162f3c4146f5aa3e6a97b126dc",
+    "svg_sha256": "84838c4715e5cd73fb21f7a5b0f48091783b43acdd40467bfb373ed18277abe2",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1840,
-      1312
+      1112
     ],
     "actual_white_margins_px": [
       94,
       105,
       94,
-      100
+      94
     ],
     "viewBox": [
       -7,
       -6,
       460,
-      328
+      278
     ],
     "rectangles": [
       {
@@ -1471,36 +1605,34 @@
       "每日 08:00 扫描",
       "plan_date < 当天",
       "用户完成操作",
-      "用户完成操作",
-      "当天或更早、状态非 1 的计划显示在 /today 列表。",
-      "完成时记录 finish_time；再次完成返回业务错误；日期不重排。"
+      "用户完成操作"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-1.png": {
     "number": "6.1",
     "file": "6-1.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-1.json",
-    "source_sha256": "faa87e18b38d953cfeef55085768cc584008be6cb93655f5faf5ab9089b86d19",
-    "png_sha256": "a655db7ac900c3e0475948d0b7f79a8d066954bf8f9a85b4007b14f990d62fd3",
-    "svg_sha256": "ca41054a4e0fda0501c12a617344a36818f09e5b047a89da38d93a4f77423405",
+    "source": "docs/thesis/final-master-20261114/figures/6-1.svg",
+    "source_sha256": "7f99e5e232203d126818b889a88b5067346503f16da77ec8ab3952bdf82d85b8",
+    "png_sha256": "0c4f6890963e975a8b886612e39a2e66b1fdf171f6e19caa9244968fca5c3a8b",
+    "svg_sha256": "7f99e5e232203d126818b889a88b5067346503f16da77ec8ab3952bdf82d85b8",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1896,
-      1776
+      1720
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      100
+      94
     ],
     "viewBox": [
       -14,
       -14,
       474,
-      444
+      430
     ],
     "rectangles": [
       {
@@ -1591,7 +1723,6 @@
       "0..1 : 0..N",
       "1 : 0..1",
       "0..1 : 0..N",
-      "reference_ids 为 JSON 留痕，未另建关联表。",
       "自关联：父 0..1，子 0..N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
@@ -1599,27 +1730,27 @@
   "structure-20261112/figures/png/6-2.png": {
     "number": "6.2",
     "file": "6-2.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-2.json",
-    "source_sha256": "b91a5e964548e2d0b17239248df82cc52c4bb8e8559a6873dd28946b6fdb4743",
-    "png_sha256": "3b77dbf474e9dbc20434c5b66cc85c2fe22a21f5768e6af7cf36a76d333dfffe",
-    "svg_sha256": "9aee860b1ffe3678618860ce0723f8c3a4f272246fe36bf14b84c2af0b76dc7e",
+    "source": "docs/thesis/final-master-20261114/figures/6-2.svg",
+    "source_sha256": "03cec965351df4774b1ebfabd583d1a5659e52e3b99894287752d227eac407eb",
+    "png_sha256": "41049560630890e0ad1cd41e054ce8c8f7eceb43cefebd30ea87f40a6760051a",
+    "svg_sha256": "03cec965351df4774b1ebfabd583d1a5659e52e3b99894287752d227eac407eb",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1952,
-      1964
+      1820
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      100
+      94
     ],
     "viewBox": [
       -20,
       -14,
       488,
-      491
+      455
     ],
     "rectangles": [
       {
@@ -1708,35 +1839,34 @@
       "1 : 0..N",
       "1 : 0..N",
       "0..1 : 0..N",
-      "0..1 : 0..N",
-      "选择变式题时，通过 variant_question.question_id 更新原题掌握度。"
+      "0..1 : 0..N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-3.png": {
     "number": "6.3",
     "file": "6-3.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-3.json",
-    "source_sha256": "4d5ac2214ab143a753d5568b7192824e16f6d05689bf83da6bea515915b6809d",
-    "png_sha256": "3540e3e6919fa71ab258831e4593439a8867e7706e5a77d2a24ed467147d7ca2",
-    "svg_sha256": "e1304dec7d6a88a4931a61606d10c0f9400a1fe2a30aa359d833924d3ba37d37",
+    "source": "docs/thesis/final-master-20261114/figures/6-3.svg",
+    "source_sha256": "e7fd34347fb94c003c5bb2af19623d9d0c09b21fc75d8801ccf2d21ff03e66fe",
+    "png_sha256": "0393795049d9f965551b028a03ecfadf00c749b3a591bcf2c40e7d3c3f453f61",
+    "svg_sha256": "e7fd34347fb94c003c5bb2af19623d9d0c09b21fc75d8801ccf2d21ff03e66fe",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1896,
-      1012
+      868
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      101
+      94
     ],
     "viewBox": [
       -14,
       -16,
       474,
-      253
+      217
     ],
     "rectangles": [
       {
@@ -1787,35 +1917,34 @@
       "PK id / publisher_id 可空",
       "title / status",
       "1 : 0..N",
-      "0..1 : 0..N",
-      "消息面向接收用户；公告由管理员发布，登录用户可查看。"
+      "0..1 : 0..N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "delivery-20261112/figures/6-9.png": {
     "number": "6.4",
     "file": "6-4.png",
-    "source": "docs/thesis/delivery-20261112/figures/6-9.json",
-    "source_sha256": "93110ae6f268a510b260bb3c54020055bea5e58b44b1401f9a5fe4be88256b2c",
-    "png_sha256": "2b33fcef836964ab3abdecab2e6880ade48b4ed4499f7bab1be7c37a1721f970",
-    "svg_sha256": "28a10030793613d212716655e3d8578429ab3cfbbb3e64ba61bdd009199841fe",
+    "source": "docs/thesis/final-master-20261114/figures/6-4.svg",
+    "source_sha256": "ee6c1ce5a7e7215591fb9a4eefd60ea22fb4b04b9534ffbc32a1cf8b016f236d",
+    "png_sha256": "a0682bfc4a222821f4357a97c7956faa435e62e7e0b8b5241996f6293e42a01a",
+    "svg_sha256": "ee6c1ce5a7e7215591fb9a4eefd60ea22fb4b04b9534ffbc32a1cf8b016f236d",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1864,
-      1388
+      1248
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      106
+      94
     ],
     "viewBox": [
       -10,
       -14,
       466,
-      347
+      312
     ],
     "rectangles": [
       {
@@ -1858,35 +1987,34 @@
       "1",
       "0..1",
       "0..1",
-      "N",
-      "逻辑关联；知识内容归属由原题与当前学生共同校验"
+      "N"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   },
   "structure-20261112/figures/png/6-4.png": {
     "number": "6.5",
     "file": "6-5.png",
-    "source": "docs/thesis/structure-20261112/figures/sources/6-4.json",
-    "source_sha256": "b36da74225e848593a15c13fcd4efa0b4209bc2e7e05957fe9b3d77130079adc",
-    "png_sha256": "c88454e403efcc34e29f4a938b9765bcea64141d66b51c9ac26a380ec5d6d20a",
-    "svg_sha256": "f0f106fdfd9d684e34fd5e5c0afac65467266192adb278e31ce34d28ed36d172",
+    "source": "docs/thesis/final-master-20261114/figures/6-5.svg",
+    "source_sha256": "8ef119f2c0d04115abb7f8eed1255c6083e9a1c123bdf00298aa07152d05249a",
+    "png_sha256": "737d2efbe66bf6e45b2d8be21104f12b75567a3b7160e3ea1b143e8cf2f60e18",
+    "svg_sha256": "8ef119f2c0d04115abb7f8eed1255c6083e9a1c123bdf00298aa07152d05249a",
     "padding_svg_units": 24,
     "raster_scale": 4,
     "pixel_size": [
       1912,
-      1584
+      1284
     ],
     "actual_white_margins_px": [
       94,
       94,
       94,
-      103
+      94
     ],
     "viewBox": [
       -16,
       -16,
       478,
-      396
+      321
     ],
     "rectangles": [
       {
@@ -1932,26 +2060,14 @@
         "h": 23
       },
       {
-        "x": 8,
-        "y": 276,
-        "w": 195,
-        "h": 57
-      },
-      {
-        "x": 8,
-        "y": 276,
-        "w": 195,
-        "h": 23
-      },
-      {
         "x": 237,
-        "y": 276,
+        "y": 224,
         "w": 201,
         "h": 57
       },
       {
         "x": 237,
-        "y": 276,
+        "y": 224,
         "w": 201,
         "h": 23
       }
@@ -1971,13 +2087,9 @@
       "embed(text): List<Double>",
       "model(): String",
       "依赖",
-      "MockLlmClient",
-      "实现 LlmClient",
-      "离线输出",
       "OpenAiCompatibleLlmClient",
       "实现 LlmClient",
-      "外部 HTTP 调用",
-      "虚线箭头表示依赖；空心三角表示接口实现。"
+      "外部 HTTP 调用"
     ],
     "semantics": "Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired."
   }

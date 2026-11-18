@@ -1,0 +1,897 @@
+{
+  "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+  "system_branch": "claude/thesis-voice-cleanup-20261117",
+  "capture_date": "2026-11-17",
+  "student": {
+    "id": 4,
+    "nickname": "赵灿",
+    "role": "student"
+  },
+  "teacher": {
+    "id": 5,
+    "nickname": "胡韬",
+    "role": "teacher"
+  },
+  "main_question_id": 10,
+  "questions": [
+    {
+      "case_id": "ENGLISH-TENSE-002",
+      "question_id": 2,
+      "subject_id": 3,
+      "created_at": "2026-10-22 17:13:07",
+      "mastery": 85,
+      "practice_count": 8,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/25/analysis",
+      "analysis_sha256": "77119d670e1638642f766e95b458dcfbb7a3ba1cc55a0433b486b389b425b0c6",
+      "error_cause_sha256": "005e1ddad124661f19bc1784e8568192fe6d3ba3b701349303450e919c03560b",
+      "reference_ids": [],
+      "input": {
+        "stem": "改正句子：She lived here since 2020. 学生使用一般过去时 lived。",
+        "answer": "She has lived here since 2020.",
+        "source": "课后习题订正 · 英语"
+      }
+    },
+    {
+      "case_id": "MATH-QUAD-002",
+      "question_id": 3,
+      "subject_id": 1,
+      "created_at": "2026-10-23 18:24:24",
+      "mastery": 40,
+      "practice_count": 5,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/4/analysis",
+      "analysis_sha256": "014555b005e7c0860c4dd57d907326463509a34b27c516d3c955fd5eeab78dcb",
+      "error_cause_sha256": "e0780f5cef7e7fa846f6255d0d26b856571bbb10415a06a2719f68f338ffb6f7",
+      "reference_ids": [],
+      "input": {
+        "stem": "将 y=x²+6x+5 配方。学生作答：y=(x+3)²+4。",
+        "answer": "x²+6x+5=(x+3)²-9+5=(x+3)²-4。",
+        "source": "单元巩固练习 · 数学"
+      }
+    },
+    {
+      "case_id": "MATH-QUAD-003",
+      "question_id": 4,
+      "subject_id": 1,
+      "created_at": "2026-10-25 19:35:41",
+      "mastery": 45,
+      "practice_count": 4,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/5/analysis",
+      "analysis_sha256": "042fe3617c5b78c11d5e6ffd878119b7689c68e4f2b7f672d6e1e57df6af1c64",
+      "error_cause_sha256": "84e99af1621d27b7a456cc3e22284252a72011571fc66a99dd5de35ec8fef61a",
+      "reference_ids": [
+        3
+      ],
+      "input": {
+        "stem": "二次函数 y=-2(x-1)²+3。学生作答：函数的最小值是 3。",
+        "answer": "二次项系数为负，抛物线开口向下，函数最大值为 3。",
+        "source": "期中复习卷 · 数学"
+      }
+    },
+    {
+      "case_id": "MATH-CIRCLE-001",
+      "question_id": 5,
+      "subject_id": 1,
+      "created_at": "2026-10-26 20:46:58",
+      "mastery": 40,
+      "practice_count": 5,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/9/analysis",
+      "analysis_sha256": "001cb8eb4a2e0c8c2e86ed7ca1e0d1888189e9037151a1081f8400345eb34a07",
+      "error_cause_sha256": "80c2e12a4dc46ea598ea6ddddd2069e74044184f72ece9a8ba153cab8d695b10",
+      "reference_ids": [
+        3,
+        4
+      ],
+      "input": {
+        "stem": "直线 l 与圆 O 相切于 A。学生作答：经过切点 A 的半径 OA 与切线 l 平行。",
+        "answer": "经过切点的半径 OA 垂直于切线 l。",
+        "source": "课后习题订正 · 数学"
+      }
+    },
+    {
+      "case_id": "ENGLISH-REL-002",
+      "question_id": 6,
+      "subject_id": 3,
+      "created_at": "2026-10-27 17:57:15",
+      "mastery": 85,
+      "practice_count": 8,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/22/analysis",
+      "analysis_sha256": "be81e77d52b677d02e3a154d9b5836a24de806b847753af397405cd3d059f3a3",
+      "error_cause_sha256": "2c72aa7db950ccc968b0cd127fc24e9f5ecb6e4b990815915a22fe0c8dc26701",
+      "reference_ids": [
+        2
+      ],
+      "input": {
+        "stem": "改正句子：This is the school which I studied last year. 学生认为 which 可直接作地点状语。",
+        "answer": "This is the school where I studied last year，或 in which I studied last year.",
+        "source": "单元巩固练习 · 英语"
+      }
+    },
+    {
+      "case_id": "PHYSICS-OHM-003",
+      "question_id": 7,
+      "subject_id": 2,
+      "created_at": "2026-10-28 18:08:32",
+      "mastery": 65,
+      "practice_count": 9,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/20/analysis",
+      "analysis_sha256": "462e59b5627eaa109b076b8cb428d21de3009b4fcb8019e2abc439f519147cbe",
+      "error_cause_sha256": "c77322b5586161d02c76a28be0f65d019fc4532ddd3cb0f8b3e2974a6f5bc9e9",
+      "reference_ids": [],
+      "input": {
+        "stem": "通过电阻的电流为 0.5 A，电阻为 8 Ω。学生作答：U=I/R=0.0625 V。",
+        "answer": "由 U=IR，电压 U=0.5×8=4 V。",
+        "source": "期中复习卷 · 物理"
+      }
+    },
+    {
+      "case_id": "PHYSICS-FRIC-003",
+      "question_id": 8,
+      "subject_id": 2,
+      "created_at": "2026-10-30 19:19:49",
+      "mastery": 60,
+      "practice_count": 4,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/17/analysis",
+      "analysis_sha256": "2ae504ea49718dcac9409433c44c8fdd21e2bef48973ef5db0b2ee9bc7ead6f6",
+      "error_cause_sha256": "9015fc66fef2bc6e126b4df31950912c8c58e002fe9e1132055bbc4caefbb36a",
+      "reference_ids": [
+        7
+      ],
+      "input": {
+        "stem": "质量 5 kg 的物体在水平面滑动，动摩擦因数 μ=0.2，取 g=10 m/s²。学生作答：滑动摩擦力 f=μm=1 N。",
+        "answer": "水平面支持力 N=mg=50 N，f=μN=10 N。",
+        "source": "课后习题订正 · 物理"
+      }
+    },
+    {
+      "case_id": "ENGLISH-REL-001",
+      "question_id": 9,
+      "subject_id": 3,
+      "created_at": "2026-10-31 20:30:06",
+      "mastery": 80,
+      "practice_count": 10,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/21/analysis",
+      "analysis_sha256": "fb8c810658fd718e70c04e8dfd56db58f84bb9f399c85ab7eef6cc25e8c5f7e1",
+      "error_cause_sha256": "053967e84b0fc9a209fa80acfba29cf4d9efe680757ea80a50c30bc45e3ad3e5",
+      "reference_ids": [
+        6,
+        2
+      ],
+      "input": {
+        "stem": "改正句子：The book who is on the desk is mine. 学生作答：原句正确。",
+        "answer": "The book which/that is on the desk is mine.",
+        "source": "单元巩固练习 · 英语"
+      }
+    },
+    {
+      "case_id": "BROWSER-GLM-225",
+      "question_id": 10,
+      "subject_id": 1,
+      "created_at": "2026-11-01 17:41:23",
+      "mastery": 45,
+      "practice_count": 10,
+      "archive": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+      "archive_pointer": null,
+      "analysis_sha256": "fa07cc92ba4493bf15c54dabf9adbc738178a12d6a79d6a35a3920f0e8d911b6",
+      "error_cause_sha256": "c32564cd0cd66275fd57451af7d6d79444902461db1be0a7b1d16fe1e9f79b2d",
+      "reference_ids": [
+        3,
+        4,
+        16
+      ],
+      "input": {
+        "stem": "已知二次函数 y=x²-6x+5，学生配方后写成 y=(x-3)²+5，并判断顶点为 (3,5)。求正确顶点与最小值，并分析这一步错在哪里。",
+        "answer": "y=(x-3)²-4，所以顶点为 (3,-4)，最小值为 -4；错误是配方时遗漏了补入 9 后应减去 9。",
+        "source": "期中复习卷 · 数学"
+      }
+    },
+    {
+      "case_id": "MATH-CIRCLE-003",
+      "question_id": 11,
+      "subject_id": 1,
+      "created_at": "2026-11-02 18:52:40",
+      "mastery": 40,
+      "practice_count": 5,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/11/analysis",
+      "analysis_sha256": "be0265fb8121b9f3f6b4273e10ee07fc8d71a49730e19ecfbb1249a6636e0eec",
+      "error_cause_sha256": "12e1741e0dc78109cf51984efad1fc912846441cf6ae5d29e72e9bca9fb7ccca",
+      "reference_ids": [
+        5,
+        3,
+        4
+      ],
+      "input": {
+        "stem": "AB 是圆 O 的直径，点 C 在圆上。学生作答：∠ACB 是 45° 的锐角。",
+        "answer": "直径所对的圆周角是直角，所以 ∠ACB=90°。",
+        "source": "课后习题订正 · 数学"
+      }
+    },
+    {
+      "case_id": "ENGLISH-TENSE-001",
+      "question_id": 12,
+      "subject_id": 3,
+      "created_at": "2026-11-03 19:03:57",
+      "mastery": 85,
+      "practice_count": 8,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/24/analysis",
+      "analysis_sha256": "5016401f2fd0601fc4897822f9027944aa1cdacfaa2c2f196f3c9f3245d6fb79",
+      "error_cause_sha256": "fcdb99583dbe4898854b59a6bf6f6fb28ee661396054b9e346b50230ab7138be",
+      "reference_ids": [
+        2,
+        6,
+        9
+      ],
+      "input": {
+        "stem": "改正句子：Yesterday I go to the library. 学生作答：go 使用原形即可。",
+        "answer": "Yesterday I went to the library.",
+        "source": "单元巩固练习 · 英语"
+      }
+    },
+    {
+      "case_id": "MATH-LINEAR-003",
+      "question_id": 13,
+      "subject_id": 1,
+      "created_at": "2026-11-05 20:14:14",
+      "mastery": 40,
+      "practice_count": 5,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/2/analysis",
+      "analysis_sha256": "5c92d3fbd01ce3174c1703b788851d859be9fae7a6960069ee5e9f16e7afa3bb",
+      "error_cause_sha256": "baf75b04eb2dc4418a619fdb37d92d9f202fa44c26419e76e4064ed00e214533",
+      "reference_ids": [
+        3,
+        4,
+        5
+      ],
+      "input": {
+        "stem": "一次函数经过点 (1,3) 和 (2,5)。学生作答：斜率 k=(5+3)/(2+1)=8/3。",
+        "answer": "斜率应为纵坐标之差除以横坐标之差，k=(5-3)/(2-1)=2。",
+        "source": "期中复习卷 · 数学"
+      }
+    },
+    {
+      "case_id": "ENGLISH-REL-003",
+      "question_id": 14,
+      "subject_id": 3,
+      "created_at": "2026-11-06 17:25:31",
+      "mastery": 85,
+      "practice_count": 8,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/23/analysis",
+      "analysis_sha256": "b61c54817ada2df9c4876921d7a987704c2eaaa61cc449684754a9175bf689f5",
+      "error_cause_sha256": "d8d053988a2808077aa0f476a21c512be477f3e2c992f345ee2a1ec73d9534ef",
+      "reference_ids": [
+        6,
+        9,
+        2
+      ],
+      "input": {
+        "stem": "改正句子：The man which helped me was kind. 学生作答：which 指代先行词 man。",
+        "answer": "The man who/that helped me was kind.",
+        "source": "课后习题订正 · 英语"
+      }
+    },
+    {
+      "case_id": "MATH-CIRCLE-002",
+      "question_id": 15,
+      "subject_id": 1,
+      "created_at": "2026-11-07 18:36:48",
+      "mastery": 40,
+      "practice_count": 5,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/10/analysis",
+      "analysis_sha256": "c257d6ed0aada660a2ac7078e68216c668f6eb0a09313d3b3a46b66752bc3a68",
+      "error_cause_sha256": "b5ad412ea1cf526a94a3f4ffe0a7381cbb7930c03841b865b77aaf841b26a10c",
+      "reference_ids": [
+        5,
+        11,
+        3
+      ],
+      "input": {
+        "stem": "圆中一条弧所对的圆心角为 80°。学生作答：同弧所对的圆周角也是 80°。",
+        "answer": "同弧所对圆周角等于圆心角的一半，因此为 40°。",
+        "source": "单元巩固练习 · 数学"
+      }
+    },
+    {
+      "case_id": "MATH-QUAD-001",
+      "question_id": 16,
+      "subject_id": 1,
+      "created_at": "2026-11-08 19:47:05",
+      "mastery": 45,
+      "practice_count": 4,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/3/analysis",
+      "analysis_sha256": "e51ea88c10d3b3116e28ed72fb93c1b2b67f5fa7f8e9a26c3aa727dd554133c0",
+      "error_cause_sha256": "35957900f60408cbacfb6e8cfbe59c05f0cf0afdcae1f9acb0d0aacab79d5a3a",
+      "reference_ids": [
+        3,
+        4,
+        10
+      ],
+      "input": {
+        "stem": "解方程 x²-4x+5=0。学生作答：方程有两个实数根 1 和 3。",
+        "answer": "判别式 Δ=(-4)²-4×1×5=-4<0，方程无实数根。",
+        "source": "期中复习卷 · 数学"
+      }
+    },
+    {
+      "case_id": "PHYSICS-OHM-001",
+      "question_id": 17,
+      "subject_id": 2,
+      "created_at": "2026-11-09 20:58:22",
+      "mastery": 65,
+      "practice_count": 9,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/18/analysis",
+      "analysis_sha256": "9cae6b82b6aec50a269a9170f8e768db0f4a9636cde6e9b8a37be6204ae098a7",
+      "error_cause_sha256": "9953dd67e6bfc2fd045ac67c8cf0f84a2b5eeffbed9b0e9f9ec09b717da30a2e",
+      "reference_ids": [
+        7,
+        8
+      ],
+      "input": {
+        "stem": "某电阻两端电压为 12 V，电阻为 4 Ω。学生作答：I=UR=48 A。",
+        "answer": "由 I=U/R，电流 I=12/4=3 A。",
+        "source": "课后习题订正 · 物理"
+      }
+    },
+    {
+      "case_id": "MATH-CONG-002",
+      "question_id": 18,
+      "subject_id": 1,
+      "created_at": "2026-11-10 17:09:39",
+      "mastery": 45,
+      "practice_count": 4,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/7/analysis",
+      "analysis_sha256": "975e9fa4ee6e32ddad555641be8fe88d8234e903fac82a6b60914e6d707d4560",
+      "error_cause_sha256": "79086dc546ce77d440fd5e8bbed5cc369291ba819b449c72e66ac81c127e9c68",
+      "reference_ids": [
+        3,
+        4,
+        5
+      ],
+      "input": {
+        "stem": "在 △ABC 与 △DEF 中，AB=DE、AC=DF、∠B=∠E。学生作答：由 SAS 判定两三角形全等。",
+        "answer": "已知角不是两条已知边的夹角，不能使用 SAS，现有条件不足以判定全等。",
+        "source": "单元巩固练习 · 数学"
+      }
+    },
+    {
+      "case_id": "MATH-LINEAR-001",
+      "question_id": 19,
+      "subject_id": 1,
+      "created_at": "2026-11-11 18:20:56",
+      "mastery": 40,
+      "practice_count": 5,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/0/analysis",
+      "analysis_sha256": "1757c174b5ea52f2519ab0c33057c0c165501106c8d8d4ffcf4a444c0310f518",
+      "error_cause_sha256": "d6e92abd9f91ead2c453a05bf6a0373363c83d381bd4466d65f37160ee0ca413",
+      "reference_ids": [
+        13,
+        3,
+        4
+      ],
+      "input": {
+        "stem": "已知一次函数 y=-3x+2。学生作答：图像随 x 增大而上升。判断并说明理由。",
+        "answer": "斜率 k=-3<0，图像随 x 增大而下降。",
+        "source": "期中复习卷 · 数学"
+      }
+    },
+    {
+      "case_id": "PHYSICS-FRIC-002",
+      "question_id": 20,
+      "subject_id": 2,
+      "created_at": "2026-11-13 19:31:13",
+      "mastery": 60,
+      "practice_count": 4,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/16/analysis",
+      "analysis_sha256": "3ba72463ff8058ed5271f064ffebeb6fd3b39341069ec83ebc0311330a416ad9",
+      "error_cause_sha256": "535a110fd1f330af38b21f9dcb4d8984297924b237e19d2363dc7bd136fd826b",
+      "reference_ids": [
+        8,
+        7,
+        17
+      ],
+      "input": {
+        "stem": "静止物体受 4 N 水平推力仍未运动，最大静摩擦力为 10 N。学生作答：物体所受静摩擦力就是 10 N。",
+        "answer": "静摩擦力会在最大值内随外力调整，此时大小为 4 N，方向与推力相反。",
+        "source": "课后习题订正 · 物理"
+      }
+    },
+    {
+      "case_id": "PHYSICS-N2-001",
+      "question_id": 21,
+      "subject_id": 2,
+      "created_at": "2026-11-14 20:42:30",
+      "mastery": 65,
+      "practice_count": 9,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/12/analysis",
+      "analysis_sha256": "2958af8987c9e85d8ccd6758c5a219a83f5d76000f9d58e1f36c53b625d8ecec",
+      "error_cause_sha256": "7f2c84a7562920b07668566d54db00c104a2daebfb9bf6fb21a48cbaf8caf578",
+      "reference_ids": [
+        7,
+        8,
+        17
+      ],
+      "input": {
+        "stem": "质量为 2 kg 的物体产生 3 m/s² 的加速度。学生作答：合力 F=m/a=2/3 N。",
+        "answer": "由 F=ma，合力 F=2×3=6 N。",
+        "source": "单元巩固练习 · 物理"
+      }
+    },
+    {
+      "case_id": "PHYSICS-N2-003",
+      "question_id": 22,
+      "subject_id": 2,
+      "created_at": "2026-11-15 17:53:47",
+      "mastery": 60,
+      "practice_count": 4,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/14/analysis",
+      "analysis_sha256": "5a9560fd99433305ef2af6e3822f8e5c69da8074d625564fe7bca0e18c157498",
+      "error_cause_sha256": "e53e67faeb6c0b19781d94d3c614ebe8c1c2bf5831b52b68e0ae403bfe15bccd",
+      "reference_ids": [
+        21,
+        7,
+        8
+      ],
+      "input": {
+        "stem": "质量 3 kg 的物体受水平向右 10 N、向左 4 N 的力。学生作答：合力为 14 N，加速度为 14/3 m/s²，方向向右。",
+        "answer": "相反方向的力相减，合力为 6 N 向右，加速度为 2 m/s² 向右。",
+        "source": "期中复习卷 · 物理"
+      }
+    },
+    {
+      "case_id": "PHYSICS-OHM-002",
+      "question_id": 23,
+      "subject_id": 2,
+      "created_at": "2026-11-16 18:04:04",
+      "mastery": 15,
+      "practice_count": 2,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/19/analysis",
+      "analysis_sha256": "7ebc1a5cce2bb61c64ec80cc688ca46070fa61bb61e98f4a875e8be193a056dd",
+      "error_cause_sha256": "e746ebebfd965fbfc6e39abbd1b0517e05355988fc7db9ab92e7ca601a50128c",
+      "reference_ids": [
+        7,
+        17,
+        8
+      ],
+      "input": {
+        "stem": "2 Ω 与 3 Ω 电阻串联接在 10 V 电源上。学生作答：两个电阻的电流分别为 5 A 和 10/3 A。",
+        "answer": "串联总电阻为 5 Ω，串联电路电流处处相同，I=10/5=2 A。",
+        "source": "课后习题订正 · 物理"
+      }
+    },
+    {
+      "case_id": "MATH-CONG-003",
+      "question_id": 24,
+      "subject_id": 1,
+      "created_at": "2026-11-17 19:15:21",
+      "mastery": 0,
+      "practice_count": 1,
+      "archive": "docs/experiments/gate5/results/experiment-results.json",
+      "archive_pointer": "/cases/8/analysis",
+      "analysis_sha256": "f0bdd37229195ffa30f1610192a7b615ab8affcfd6cab1cab3aa47d06017e38d",
+      "error_cause_sha256": "c91db2a59f41b341833d85a0d8bb02b0aafbb46dd422f69984115fc7df02f416",
+      "reference_ids": [
+        18,
+        3,
+        4
+      ],
+      "input": {
+        "stem": "两个直角三角形的斜边和一条对应直角边分别相等。学生作答：还缺一个锐角相等，无法判定全等。",
+        "answer": "可直接用斜边、直角边定理（HL）判定两个直角三角形全等。",
+        "source": "单元巩固练习 · 数学"
+      }
+    }
+  ],
+  "subjects": [
+    {
+      "subject_id": 1,
+      "count": 11,
+      "mastery": "38.2"
+    },
+    {
+      "subject_id": 2,
+      "count": 7,
+      "mastery": "55.7"
+    },
+    {
+      "subject_id": 3,
+      "count": 5,
+      "mastery": "84.0"
+    }
+  ],
+  "practice_summary": {
+    "count": 136,
+    "correct": "110",
+    "first": "2026-10-25 14:47:13",
+    "last": "2026-11-17 21:26:58"
+  },
+  "review_summary": [
+    {
+      "status": 1,
+      "count": 83
+    },
+    {
+      "status": 2,
+      "count": 2
+    },
+    {
+      "status": 0,
+      "count": 30
+    }
+  ],
+  "message_summary": [
+    {
+      "is_read": 1,
+      "count": 22
+    },
+    {
+      "is_read": 0,
+      "count": 3
+    }
+  ],
+  "student_report": {
+    "weekStart": "2026-11-16",
+    "newQuestionCount": 2,
+    "totalQuestionCount": 23,
+    "reviewFinishedCount": 5,
+    "reviewTotalCount": 24,
+    "masteryAvg": 53.5,
+    "knowledgeMastery": [
+      {
+        "knowledgePointId": 3,
+        "name": "二次函数",
+        "mastery": 43.8,
+        "questionCount": 4
+      },
+      {
+        "knowledgePointId": 6,
+        "name": "圆的性质",
+        "mastery": 40.0,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 2,
+        "name": "一次函数",
+        "mastery": 40.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 5,
+        "name": "三角形全等",
+        "mastery": 22.5,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 11,
+        "name": "欧姆定律",
+        "mastery": 48.3,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 9,
+        "name": "摩擦力",
+        "mastery": 60.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 8,
+        "name": "牛顿第二定律",
+        "mastery": 62.5,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 14,
+        "name": "动词时态",
+        "mastery": 85.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 13,
+        "name": "定语从句",
+        "mastery": 83.3,
+        "questionCount": 3
+      }
+    ],
+    "weakPoints": [
+      {
+        "knowledgePointId": 5,
+        "name": "三角形全等",
+        "mastery": 22.5,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 6,
+        "name": "圆的性质",
+        "mastery": 40.0,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 2,
+        "name": "一次函数",
+        "mastery": 40.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 3,
+        "name": "二次函数",
+        "mastery": 43.8,
+        "questionCount": 4
+      },
+      {
+        "knowledgePointId": 11,
+        "name": "欧姆定律",
+        "mastery": 48.3,
+        "questionCount": 3
+      }
+    ],
+    "dailyNewQuestions": [
+      {
+        "date": "2026-11-16",
+        "count": 1
+      },
+      {
+        "date": "2026-11-17",
+        "count": 1
+      },
+      {
+        "date": "2026-11-18",
+        "count": 0
+      },
+      {
+        "date": "2026-11-19",
+        "count": 0
+      },
+      {
+        "date": "2026-11-20",
+        "count": 0
+      },
+      {
+        "date": "2026-11-21",
+        "count": 0
+      },
+      {
+        "date": "2026-11-22",
+        "count": 0
+      }
+    ],
+    "dailyPractices": [
+      {
+        "date": "2026-11-16",
+        "count": 17
+      },
+      {
+        "date": "2026-11-17",
+        "count": 9
+      },
+      {
+        "date": "2026-11-18",
+        "count": 0
+      },
+      {
+        "date": "2026-11-19",
+        "count": 0
+      },
+      {
+        "date": "2026-11-20",
+        "count": 0
+      },
+      {
+        "date": "2026-11-21",
+        "count": 0
+      },
+      {
+        "date": "2026-11-22",
+        "count": 0
+      }
+    ]
+  },
+  "teacher_report": {
+    "weekStart": "2026-11-16",
+    "newQuestionCount": 2,
+    "totalQuestionCount": 23,
+    "reviewFinishedCount": 5,
+    "reviewTotalCount": 24,
+    "masteryAvg": 53.5,
+    "knowledgeMastery": [
+      {
+        "knowledgePointId": 14,
+        "name": "动词时态",
+        "mastery": 85.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 3,
+        "name": "二次函数",
+        "mastery": 43.8,
+        "questionCount": 4
+      },
+      {
+        "knowledgePointId": 6,
+        "name": "圆的性质",
+        "mastery": 40.0,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 13,
+        "name": "定语从句",
+        "mastery": 83.3,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 11,
+        "name": "欧姆定律",
+        "mastery": 48.3,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 9,
+        "name": "摩擦力",
+        "mastery": 60.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 2,
+        "name": "一次函数",
+        "mastery": 40.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 5,
+        "name": "三角形全等",
+        "mastery": 22.5,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 8,
+        "name": "牛顿第二定律",
+        "mastery": 62.5,
+        "questionCount": 2
+      }
+    ],
+    "weakPoints": [
+      {
+        "knowledgePointId": 5,
+        "name": "三角形全等",
+        "mastery": 22.5,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 6,
+        "name": "圆的性质",
+        "mastery": 40.0,
+        "questionCount": 3
+      },
+      {
+        "knowledgePointId": 2,
+        "name": "一次函数",
+        "mastery": 40.0,
+        "questionCount": 2
+      },
+      {
+        "knowledgePointId": 3,
+        "name": "二次函数",
+        "mastery": 43.8,
+        "questionCount": 4
+      },
+      {
+        "knowledgePointId": 11,
+        "name": "欧姆定律",
+        "mastery": 48.3,
+        "questionCount": 3
+      }
+    ],
+    "dailyNewQuestions": [
+      {
+        "date": "2026-11-16",
+        "count": 1
+      },
+      {
+        "date": "2026-11-17",
+        "count": 1
+      },
+      {
+        "date": "2026-11-18",
+        "count": 0
+      },
+      {
+        "date": "2026-11-19",
+        "count": 0
+      },
+      {
+        "date": "2026-11-20",
+        "count": 0
+      },
+      {
+        "date": "2026-11-21",
+        "count": 0
+      },
+      {
+        "date": "2026-11-22",
+        "count": 0
+      }
+    ],
+    "dailyPractices": [
+      {
+        "date": "2026-11-16",
+        "count": 17
+      },
+      {
+        "date": "2026-11-17",
+        "count": 9
+      },
+      {
+        "date": "2026-11-18",
+        "count": 0
+      },
+      {
+        "date": "2026-11-19",
+        "count": 0
+      },
+      {
+        "date": "2026-11-20",
+        "count": 0
+      },
+      {
+        "date": "2026-11-21",
+        "count": 0
+      },
+      {
+        "date": "2026-11-22",
+        "count": 0
+      }
+    ]
+  },
+  "same_aggregate": true,
+  "all_mastery_recomputed_from_submissions": true,
+  "all_ai_text_equals_archive": true,
+  "sources": [
+    {
+      "path": "docs/experiments/gate5/results/experiment-results.json",
+      "sha256": "d59cc8d9d617b0717cb8c0bd46de7c0f43b5d1f777fddcc3f4caf14ff5558360"
+    },
+    {
+      "path": "docs/thesis/screenshots/real-glm/05-question-detail-glm.png",
+      "sha256": "f20328bdadb0a1190974fd92730f3540519c1f06f61f16c053f5fbd1bba20673"
+    },
+    {
+      "path": "docs/thesis/screenshots/real-glm/08-variants.png",
+      "sha256": "7333a2e0bd3337aabf4f7d181166adfcb8977e749f316310cf1d6e2523880c42"
+    },
+    {
+      "path": "web/e2e/real-ai/real-glm-evidence.spec.ts",
+      "sha256": "85c2b912a5c3a922670499aec33dcc1fbbebbb1398e69566564bc7dbb00e9e0f"
+    }
+  ],
+  "generation": "Actual current-branch HTTP create/analyze/knowledge/practice/review/report flows; local-only archived GLM response gateway",
+  "chronology": "Isolated replay fixture relocated to 2026-10-22..2026-11-17; not a claim of actual weeks of human use",
+  "sql_exceptions": [
+    "Fixture creation/finish dates relocated; fixed plan offsets retained",
+    "Three archived variant stems/difficulty imported, unarchived answers NULL",
+    "Existing overdue rule applied to replay dates",
+    "Named teacher role assigned in isolated database"
+  ],
+  "ai_source": "Original Gate5 JSON and exact historical browser screenshot transcription; no new calls or authored AI text",
+  "knowledge_source": "Archived analysis copied verbatim as cached knowledge content",
+  "embedding_source": "Local deterministic replay index, not historical embedding-3 vectors; current RAG returns real IDs from this same account",
+  "variant_answers": "Not preserved in original screenshot; NULL, not reconstructed",
+  "business_source_changes": [],
+  "passed": true
+}

@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "figures": [
+    {
+      "number": "7.1",
+      "pixels": [
+        1920,
+        2152
+      ],
+      "pdf_page": 76,
+      "pdf_bbox": [
+        87.0,
+        77.85073852539062,
+        533.4500122070312,
+        578.250732421875
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.2",
+      "pixels": [
+        1808,
+        342
+      ],
+      "pdf_page": 76,
+      "pdf_bbox": [
+        87.0,
+        646.250732421875,
+        533.4500122070312,
+        730.7007446289062
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.3",
+      "pixels": [
+        1808,
+        616
+      ],
+      "pdf_page": 77,
+      "pdf_bbox": [
+        87.0,
+        123.85073852539062,
+        533.4500122070312,
+        275.95074462890625
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.4",
+      "pixels": [
+        1920,
+        794
+      ],
+      "pdf_page": 77,
+      "pdf_bbox": [
+        87.0,
+        323.9507751464844,
+        533.4500122070312,
+        508.55078125
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.5",
+      "pixels": [
+        1920,
+        520
+      ],
+      "pdf_page": 77,
+      "pdf_bbox": [
+        87.0,
+        576.5507202148438,
+        533.4500122070312,
+        697.500732421875
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.6",
+      "pixels": [
+        1920,
+        1484
+      ],
+      "pdf_page": 78,
+      "pdf_bbox": [
+        87.0,
+        77.85076904296875,
+        533.4500122070312,
+        422.9007568359375
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.7",
+      "pixels": [
+        1920,
+        1286
+      ],
+      "pdf_page": 79,
+      "pdf_bbox": [
+        87.0,
+        77.85076904296875,
+        533.4500122070312,
+        376.9007568359375
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    },
+    {
+      "number": "7.8",
+      "pixels": [
+        1918,
+        932
+      ],
+      "pdf_page": 79,
+      "pdf_bbox": [
+        87.0,
+        464.9007568359375,
+        533.4500122070312,
+        681.8507690429688
+      ],
+      "docx_pixels_exact": true,
+      "uncropped": true,
+      "provenance_hash_verified": true
+    }
+  ],
+  "figure_count": 8,
+  "deviceScaleFactor": 2,
+  "source_description_changes": 3,
+  "other_manuscript_text_exact": true,
+  "protected_baseline_files": 1400,
+  "protected_changes": [],
+  "business_changes": [],
+  "table_shading_unchanged": true,
+  "pdf_pages": 100,
+  "toc_targets": 177,
+  "capture_date": "2026-11-17",
+  "system_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c"
+}

@@ -1,0 +1,1788 @@
+{
+  "pdf_pages": 100,
+  "directory_entries": {
+    "abstract_cn": {
+      "pdf_page": 2,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "abstract_en": {
+      "pdf_page": 2,
+      "size": 14,
+      "fonts": [
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h2": {
+      "pdf_page": 2,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h3": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h4": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h5": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h6": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h7": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h8": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h9": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h10": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h11": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h12": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h13": {
+      "pdf_page": 2,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h14": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h15": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h16": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h17": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h18": {
+      "pdf_page": 2,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h19": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h20": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h21": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h22": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h23": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h24": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h25": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h26": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h27": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h28": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h29": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h30": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h31": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h32": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h33": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h34": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h35": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h36": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h37": {
+      "pdf_page": 2,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h38": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h39": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h40": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h41": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h42": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h43": {
+      "pdf_page": 3,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h44": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h45": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h46": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h47": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h48": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h49": {
+      "pdf_page": 3,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h50": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h51": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h52": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h53": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h54": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h55": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h56": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h57": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h58": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h59": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h60": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h61": {
+      "pdf_page": 3,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h62": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h63": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h64": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h65": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h66": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h67": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h68": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h69": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h70": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h71": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h72": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h73": {
+      "pdf_page": 3,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h74": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h75": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h76": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h77": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h78": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h79": {
+      "pdf_page": 3,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h80": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h81": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h82": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h83": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h84": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h85": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h86": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h87": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h88": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h89": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h90": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h91": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h92": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h93": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h94": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h95": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h96": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h97": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h98": {
+      "pdf_page": 4,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h99": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h100": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h101": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h102": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h103": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h104": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h105": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h106": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h107": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h108": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h109": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h110": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h111": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h112": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h113": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h114": {
+      "pdf_page": 4,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h115": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h116": {
+      "pdf_page": 4,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h117": {
+      "pdf_page": 4,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h118": {
+      "pdf_page": 4,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "h119": {
+      "pdf_page": 4,
+      "size": 14,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab3_1": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab3_2": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab3_3": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab3_4": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab5_1": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab5_2": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_1": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_2": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_3": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_4": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_5": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_6": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_7": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_8": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_9": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_10": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_11": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_12": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab6_13": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab7_1": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_1": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_2": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_3": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_4": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_5": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_6": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tab8_7": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tabA_1": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "tabA_2": {
+      "pdf_page": 5,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_1": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_2": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_3": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_4": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_5": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_6": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_7": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_8": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig3_9": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig5_1": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig5_2": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig5_3": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig5_4": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig5_5": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig5_6": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig6_1": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig6_2": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig6_3": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig6_4": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig6_5": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_1": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_2": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_3": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_4": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_5": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_6": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_7": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    },
+    "fig7_8": {
+      "pdf_page": 6,
+      "size": 12,
+      "fonts": [
+        "SimHei",
+        "TimesNewRomanPSMT"
+      ]
+    }
+  },
+  "directory_sizes_verified": 177,
+  "code_frames": [
+    {
+      "pdf_page": 65,
+      "bbox": [
+        80.5,
+        164.15,
+        521.95,
+        305.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 65,
+      "bbox": [
+        80.5,
+        588.15,
+        521.95,
+        714.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 66,
+      "bbox": [
+        80.5,
+        184.15,
+        521.95,
+        235.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 66,
+      "bbox": [
+        80.5,
+        356.15,
+        521.95,
+        542.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 67,
+      "bbox": [
+        80.5,
+        236.15,
+        521.95,
+        512.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 68,
+      "bbox": [
+        80.5,
+        276.15,
+        521.95,
+        492.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 69,
+      "bbox": [
+        80.5,
+        98.15,
+        521.95,
+        299.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 70,
+      "bbox": [
+        80.5,
+        98.15,
+        521.95,
+        254.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 70,
+      "bbox": [
+        80.5,
+        553.15,
+        521.95,
+        679.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 71,
+      "bbox": [
+        80.5,
+        316.15,
+        521.95,
+        547.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 72,
+      "bbox": [
+        80.5,
+        256.15,
+        521.95,
+        397.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 72,
+      "bbox": [
+        80.5,
+        598.15,
+        521.95,
+        754.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 73,
+      "bbox": [
+        80.5,
+        446.15,
+        521.95,
+        722.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 74,
+      "bbox": [
+        80.5,
+        440.15,
+        521.95,
+        626.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 75,
+      "bbox": [
+        80.5,
+        184.15,
+        521.95,
+        340.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 75,
+      "bbox": [
+        80.5,
+        461.15,
+        521.95,
+        587.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 80,
+      "bbox": [
+        80.5,
+        236.15,
+        521.95,
+        407.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 81,
+      "bbox": [
+        80.5,
+        184.15,
+        521.95,
+        385.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 82,
+      "bbox": [
+        80.5,
+        98.15,
+        521.95,
+        359.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 82,
+      "bbox": [
+        80.5,
+        500.15,
+        521.95,
+        701.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    },
+    {
+      "pdf_page": 83,
+      "bbox": [
+        80.5,
+        164.15,
+        521.95,
+        350.6
+      ],
+      "size": 10.5,
+      "fonts": [
+        "SimSun",
+        "TimesNewRomanPSMT"
+      ],
+      "closed_edges": true,
+      "unshaded": true
+    }
+  ],
+  "code_block_text_exact_ignoring_whitespace": true,
+  "review_pdf_pages": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    26,
+    27,
+    28,
+    29,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    80,
+    81,
+    82,
+    83
+  ],
+  "manual_visual_review_completed": true,
+  "manual_visual_review_scope": "24 affected pages: all five directory pages, four data-flow figure pages and all 15 pages containing 21 code frames; rendered sheets 01-06 inspected.",
+  "findings": "Directory text, leaders and page-number sizes agree; 22 data stores are closed; all code boxes are white, unshaded and closed, with indentation and code text retained; no visible clipping or border interruption in reviewed pages."
+}

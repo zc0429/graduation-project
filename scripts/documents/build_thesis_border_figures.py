@@ -8,7 +8,7 @@ from pathlib import Path
 from copy import deepcopy
 from math import atan2,cos,sin,hypot
 from xml.sax.saxutils import escape
-import hashlib,json,re
+import argparse,hashlib,json,re
 from lxml import etree as E
 from PIL import Image,ImageChops
 from playwright.sync_api import sync_playwright
@@ -119,19 +119,28 @@ def swimlane(path):
     return E.tostring(r).decode(),{'x':x0,'y':y0,'w':x1-x0,'h':y1-y0,'stroke_width':1.6}
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--figures',nargs='+',help='Only rebuild these figure numbers; retain other manifest records and files')
+    args=parser.parse_args()
     OUT.mkdir(parents=True,exist_ok=True)
     md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
     targets={}
     for m in re.finditer(r'!\[[^\]]*\]\(([^)]+)\)\s*\n\s*\*\*图 (\d+\.\d+)',md):targets[m[2]]=m[1]
-    manifest={};checks=[]
+    manifest=json.loads((OUT/'manifest.json').read_text(encoding='utf-8')) if args.figures else {}
+    if args.figures:assert set(args.figures)<=set(targets),args.figures
+    checks=[]
     with sync_playwright() as pw:
         browser=pw.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
         page=browser.new_page(viewport={'width':1400,'height':1800},device_scale_factor=SCALE)
         for number,target in targets.items():
             if number.startswith('7.'):continue
+            if args.figures and number not in args.figures:continue
             frame=None
             if number in {'3.1','3.2','3.3'}:
                 source=ROOT/'docs/thesis/final-master-20261114/figures'/(number.replace('.','-')+'.svg');svg,frame=swimlane(source)
+            elif (ROOT/'docs/thesis/final-master-20261114/figures'/(number.replace('.','-')+'.svg')).is_file():
+                source=ROOT/'docs/thesis/final-master-20261114/figures'/(number.replace('.','-')+'.svg')
+                svg=source.read_text(encoding='utf-8')
             elif number=='3.4':
                 source=ROOT/'docs/thesis/requirements-20261112/figures/diagrams.json';scene=next(s for s in json.loads(source.read_text()) if s['key']=='3-1');svg=usecase(scene)
             else:
@@ -153,11 +162,14 @@ def main():
             im=Image.open(png).convert('RGB');im.save(png,dpi=(300,300));box=ImageChops.difference(im,Image.new('RGB',im.size,'white')).getbbox();assert box
             margins=[box[0],box[1],im.width-box[2],im.height-box[3]];assert min(margins)>=80 and max(margins)<=128,(number,margins)
             if number=='6.5':
-                rr=E.fromstring(rendered.encode());assert len(rr.xpath('//*[@data-role="realization-triangle"]'))==2
+                rr=E.fromstring(rendered.encode());assert len(rr.xpath('//*[@data-role="realization-triangle"]'))==1
                 assert '«interface» LlmClient' in info['texts'] and not any('<<<<' in s for s in info['texts'])
             if number=='5.6':assert '每日 08:00 扫描' in info['texts']
             record={'number':number,'file':png.name,'source':str(source.relative_to(ROOT)),'source_sha256':digest(source),'png_sha256':digest(png),'svg_sha256':digest(OUT/(name+'.svg')),'padding_svg_units':PAD,'raster_scale':SCALE,'pixel_size':list(im.size),'actual_white_margins_px':margins,'viewBox':info['viewBox'],'rectangles':info['rectangles'],'closed_outer_frame':frame,'text_content':info['texts'],'semantics':'Original nodes, edges and labels retained; frame/padding and vector arrowheads repaired.'}
-            if number not in {'3.1','3.2','3.3','3.4'}:assert info['texts']==[o['text'] for o in scene['ops'] if o['kind']=='text']
+            if source.suffix=='.svg':
+                original=E.fromstring(svg.encode())
+                assert info['texts']==[''.join(t.itertext()) for t in original.iter(q('text'))]
+            elif number not in {'3.1','3.2','3.3','3.4'}:assert info['texts']==[o['text'] for o in scene['ops'] if o['kind']=='text']
             manifest[target]=record;checks.append({'number':number,'margins_px':margins,'pixel_size':list(im.size)})
         browser.close()
     assert len(manifest)==20

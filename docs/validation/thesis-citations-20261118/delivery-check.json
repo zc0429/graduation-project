@@ -1,0 +1,82 @@
+{
+  "baseline": "88e48b9",
+  "source": "6268e318aa2a7ddedf39cfe524e98db23d75bc10",
+  "only_three_source_changes": true,
+  "other_document_xml_identical": true,
+  "media_headers_footers_styles_identical": true,
+  "reference_first_appearance": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "citations": [
+    {
+      "old": "[2][3][23]",
+      "new": "[2,3,23]",
+      "pdf_page": 15,
+      "word_reference_bookmarks": [
+        "ref2",
+        "ref3",
+        "ref23"
+      ],
+      "pdf_link_destinations_match_by_reference": true
+    },
+    {
+      "old": "[15][17][12][26]",
+      "new": "[12,15,17,26]",
+      "pdf_page": 15,
+      "word_reference_bookmarks": [
+        "ref12",
+        "ref15",
+        "ref17",
+        "ref26"
+      ],
+      "pdf_link_destinations_match_by_reference": true
+    },
+    {
+      "old": "[15][17]",
+      "new": "[15,17]",
+      "pdf_page": 34,
+      "word_reference_bookmarks": [
+        "ref15",
+        "ref17"
+      ],
+      "pdf_link_destinations_match_by_reference": true
+    }
+  ],
+  "pdf_pages": 99,
+  "font_errors": {
+    "unrecognized_fonts": 0,
+    "chinese_font_errors": 0,
+    "latin_number_font_errors": 0,
+    "page_number_font_errors": 0
+  },
+  "stable_toc_targets": 177,
+  "exports": 2,
+  "docx_sha256": "e74235f0e6d2085c9332296be1f0436ce6e24833eb670f74beddd02d07e1cb74",
+  "pdf_sha256": "e7a0ccac2d1cffb4c39653189792dadabc84fe91c7caab00afaee91e45f86f21"
+}

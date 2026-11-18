@@ -1,0 +1,35 @@
+{
+  "branch": "claude/thesis-voice-cleanup-20261117",
+  "base_commit": "bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c",
+  "tracked_files": 1910,
+  "missing_tracked_files": [],
+  "changed_tracked_files": [],
+  "body_sha256": "1dea4d2f0b167f8aa453735c2495936468870d31088644cb07bc1e63d1472937",
+  "frontend_http": 200,
+  "backend_health": {
+    "code": 0,
+    "message": "success",
+    "data": {
+      "status": "ok"
+    }
+  },
+  "backend_build_success": true,
+  "java_build_workaround": [
+    "-Dmaven.compiler.release=",
+    "-Dmaven.compiler.source=21",
+    "-Dmaven.compiler.target=21"
+  ],
+  "business_source_changed": false,
+  "model_provider_currently": "mock; no AI generation requested",
+  "model_credential_present": false,
+  "figure_count": 20,
+  "labels_checked": 454,
+  "collisions": 0,
+  "border_check_passed": true,
+  "screenshot_replacements": 0,
+  "pending": [
+    "7.8 teacher scope versus same student account",
+    "fixed historical screenshot provenance in unchanged thesis text",
+    "AI response source without configured GLM credential"
+  ]
+}

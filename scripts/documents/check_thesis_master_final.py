@@ -79,16 +79,30 @@ def main():
  excerpts=json.loads((ROOT/'docs/validation/thesis-final-quality-20261113/code-excerpts.json').read_text(encoding='utf-8'))
  source_checks=[];body=norm(''.join(p.get_text(clip=fitz.Rect(0,72,p.rect.width,p.rect.height-60)) for p in pdf))
  for rec in excerpts:
-  p=ROOT/rec['path'];source=textwrap.dedent('\n'.join(p.read_text(encoding='utf-8').splitlines()[rec['start_line']-1:rec['end_line']]))
-  good=hashlib.sha256(p.read_bytes()).hexdigest()==rec['source_sha256'] and source==rec['text'] and rec['text'] in md and norm(rec['text']) in body
+  p=ROOT/rec['path'];source_lines=p.read_text(encoding='utf-8').splitlines()
+  window=[l.strip() for l in source_lines[rec['start_line']-1:rec['end_line']]]
+  printed=[l.strip() for l in rec['text'].split('\n') if '……' not in l and l.strip()]
+  it=iter(window);subsequence=all(any(l==w for w in it) for l in printed)
+  good=hashlib.sha256(p.read_bytes()).hexdigest()==rec['source_sha256'] and subsequence and rec['text'] in md and norm(rec['text']) in body
   check(good,{'source_code_changed_or_lost':rec['number']});source_checks.append({'number':rec['number'],'exact':good})
- codes=[p for p in doc.paragraphs if p.style.name=='Thesis Code'];check(len(codes)==275,{'code_lines':len(codes)})
- for p in codes:
-  check(abs(p.paragraph_format.line_spacing.pt-12.5)<.01,'Code leading mismatch')
+ codes=[p for p in doc.paragraphs if p.style.name=='Thesis Code'];check(len(codes)==237,{'code_lines':len(codes)})
+ code_blocks=re.findall(r'^```[^\n]*\n(.*?)^```',md,re.M|re.S)
+ expected_borders=[]
+ for block in code_blocks:
+  lines=block.splitlines()
+  for i,line in enumerate(lines):expected_borders.append({'left','right'}|({'top'} if i==0 else set())|({'bottom'} if i==len(lines)-1 else set()))
+ check(len(expected_borders)==len(codes),{'code_border_paragraphs':len(expected_borders)})
+ for index,p in enumerate(codes):
+  check(abs(p.paragraph_format.line_spacing.pt-15)<.01,'Code leading mismatch')
   for r in p.runs:
-   check(r.font.name=='Courier New' and r.font.size.pt==9.5,{'code_style':p.text[:60]})
-  check(bool(p._p.xpath('./w:pPr/w:shd[@w:fill="F8F9FA"]')),'Code shading absent')
- result={'pdf_file':pdfname,'pdf_pages':len(pdf),'sensitive_match_count':len(hits),'sensitive_hits':hits,'landscape_pages':landscape,'all_portrait_a4':not landscape,'main_toc_pages':main_toc_pages,'directory_entries':len(list_checks),'directory_checks':list_checks,'table_chunks':table_checks,'isolated_plural_s_pages':broken,'exact_code_excerpts':source_checks,'code_paragraphs':len(codes),'code_font':'Courier New 9.5pt / Chinese SimSun; exact 12.5pt leading','figures':28,'body_tables':27,'appendix_tables':2,'references':27,'errors':errors,'automated_checks_passed':not errors,'visual_review':'All-page rendering and human visual inspection are separate; this script does not certify image text or visual quality.','microsoft_word_verified':False}
+   check(r.font.name=='Times New Roman' and r.font.size.pt==10.5,{'code_style':p.text[:60]})
+   check(r._r.xpath('./w:rPr/w:rFonts/@w:eastAsia')==['宋体'],{'code_chinese_font':p.text[:60]})
+  check(not p._p.xpath('./w:pPr/w:shd'),'Code must have no shading')
+  borders=p._p.xpath('./w:pPr/w:pBdr/*')
+  check(index<len(expected_borders) and {etree.QName(b).localname for b in borders}==expected_borders[index],{'code_frame_edges':index})
+  check(all(b.get('{'+NS['w']+'}val')=='single' and b.get('{'+NS['w']+'}color')=='000000' for b in borders),{'code_frame_style':index})
+  check(p._p.xpath('./w:pPr/w:wordWrap/@w:val')==['1'],{'code_wrap':index})
+ result={'pdf_file':pdfname,'pdf_pages':len(pdf),'sensitive_match_count':len(hits),'sensitive_hits':hits,'landscape_pages':landscape,'all_portrait_a4':not landscape,'main_toc_pages':main_toc_pages,'directory_entries':len(list_checks),'directory_checks':list_checks,'table_chunks':table_checks,'isolated_plural_s_pages':broken,'exact_code_excerpts':source_checks,'code_paragraphs':len(codes),'code_font':'Times New Roman 10.5pt / Chinese SimSun; exact 15pt leading; unshaded closed paragraph frames','figures':28,'body_tables':27,'appendix_tables':2,'references':27,'errors':errors,'automated_checks_passed':not errors,'visual_review':'All-page rendering and human visual inspection are separate; this script does not certify image text or visual quality.','microsoft_word_verified':False}
  (RUN/'master-final-check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print(json.dumps({k:v for k,v in result.items() if k not in {'directory_checks','table_chunks','exact_code_excerpts'}},ensure_ascii=False))
  assert not errors,errors

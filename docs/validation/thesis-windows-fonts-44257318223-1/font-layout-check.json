@@ -1,0 +1,1701 @@
+{
+  "source_sha_unchanged": true,
+  "protected_files_checked": 2020,
+  "protected_changes": [],
+  "cover_title": "18pt, bold, centred; East Asian SimHei / Latin Times New Roman",
+  "style_checks": [
+    {
+      "style": "footer",
+      "effective": {
+        "ascii": "宋体",
+        "hAnsi": "宋体",
+        "cs": "宋体",
+        "eastAsia": "宋体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "18"
+      }
+    },
+    {
+      "style": "Normal",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "宋体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "24"
+      }
+    },
+    {
+      "style": "heading 1",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "28"
+      }
+    },
+    {
+      "style": "heading 2",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "24"
+      }
+    },
+    {
+      "style": "heading 3",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "24"
+      }
+    },
+    {
+      "style": "Title",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "1",
+        "sz": "36"
+      }
+    },
+    {
+      "style": "Thesis Code",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "宋体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "21"
+      }
+    },
+    {
+      "style": "TOC 1",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "28"
+      }
+    },
+    {
+      "style": "TOC 2",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "24"
+      }
+    },
+    {
+      "style": "TOC 3",
+      "effective": {
+        "ascii": "Times New Roman",
+        "hAnsi": "Times New Roman",
+        "cs": "Times New Roman",
+        "eastAsia": "黑体",
+        "hint": "eastAsia",
+        "b": "0",
+        "sz": "24"
+      }
+    }
+  ],
+  "heading_paragraphs_checked": 115,
+  "source_code_lines_checked": 237,
+  "indexed_items": {
+    "图": 28,
+    "表": 29,
+    "代码": 0,
+    "文献": 27
+  },
+  "ordinary_paragraphs_checked": 347,
+  "footer_parts_checked": [
+    "word/footer1.xml",
+    "word/footer2.xml",
+    "word/footer3.xml"
+  ],
+  "pdf_pages": 99,
+  "actual_pdf_fonts": [
+    "BAAAAA+SimSun",
+    "CAAAAA+SimHei",
+    "DAAAAA+TimesNewRomanPS-BoldMT",
+    "EAAAAA+TimesNewRomanPSMT",
+    "FAAAAA+SimHei",
+    "GAAAAA+SimSun",
+    "HAAAAA+SimSun",
+    "IAAAAA+SimSun"
+  ],
+  "times_new_roman_used_spans": 2865,
+  "school_header_pages_checked": 98,
+  "school_headers": [
+    {
+      "pdf_page": 2,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 3,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 4,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 5,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 6,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 7,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 8,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 9,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 10,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 11,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 12,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 13,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 14,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 15,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 16,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 17,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 18,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 19,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 20,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 21,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 22,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 23,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 24,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 25,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 26,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 27,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 28,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 29,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 30,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 31,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 32,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 33,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 34,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 35,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 36,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 37,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 38,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 39,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 40,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 41,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 42,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 43,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 44,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 45,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 46,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 47,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 48,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 49,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 50,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 51,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 52,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 53,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 54,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 55,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 56,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 57,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 58,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 59,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 60,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 61,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 62,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 63,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 64,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 65,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 66,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 67,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 68,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 69,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 70,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 71,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 72,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 73,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 74,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 75,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 76,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 77,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 78,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 79,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 80,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 81,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 82,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 83,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 84,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 85,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 86,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 87,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 88,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 89,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 90,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 91,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 92,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 93,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 94,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 95,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 96,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 97,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 98,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    },
+    {
+      "pdf_page": 99,
+      "logo_bbox": [
+        77.94999694824219,
+        43.500755310058594,
+        185.1999969482422,
+        69.6507568359375
+      ],
+      "header_rule_present": true
+    }
+  ],
+  "original_pdf_fonts_verified": true,
+  "microsoft_word_verified": false,
+  "pdf_page_number_spans": [
+    {
+      "pdf_page": 7,
+      "abstract_page": "I",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 8,
+      "abstract_page": "II",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 9,
+      "body_page": "1",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 10,
+      "body_page": "2",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 11,
+      "body_page": "3",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 12,
+      "body_page": "4",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 13,
+      "body_page": "5",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 14,
+      "body_page": "6",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 15,
+      "body_page": "7",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 16,
+      "body_page": "8",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 17,
+      "body_page": "9",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 18,
+      "body_page": "10",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 19,
+      "body_page": "11",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 20,
+      "body_page": "12",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 21,
+      "body_page": "13",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 22,
+      "body_page": "14",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 23,
+      "body_page": "15",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 24,
+      "body_page": "16",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 25,
+      "body_page": "17",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 26,
+      "body_page": "18",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 27,
+      "body_page": "19",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 28,
+      "body_page": "20",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 29,
+      "body_page": "21",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 30,
+      "body_page": "22",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 31,
+      "body_page": "23",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 32,
+      "body_page": "24",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 33,
+      "body_page": "25",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 34,
+      "body_page": "26",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 35,
+      "body_page": "27",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 36,
+      "body_page": "28",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 37,
+      "body_page": "29",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 38,
+      "body_page": "30",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 39,
+      "body_page": "31",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 40,
+      "body_page": "32",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 41,
+      "body_page": "33",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 42,
+      "body_page": "34",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 43,
+      "body_page": "35",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 44,
+      "body_page": "36",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 45,
+      "body_page": "37",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 46,
+      "body_page": "38",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 47,
+      "body_page": "39",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 48,
+      "body_page": "40",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 49,
+      "body_page": "41",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 50,
+      "body_page": "42",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 51,
+      "body_page": "43",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 52,
+      "body_page": "44",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 53,
+      "body_page": "45",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 54,
+      "body_page": "46",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 55,
+      "body_page": "47",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 56,
+      "body_page": "48",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 57,
+      "body_page": "49",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 58,
+      "body_page": "50",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 59,
+      "body_page": "51",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 60,
+      "body_page": "52",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 61,
+      "body_page": "53",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 62,
+      "body_page": "54",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 63,
+      "body_page": "55",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 64,
+      "body_page": "56",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 65,
+      "body_page": "57",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 66,
+      "body_page": "58",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 67,
+      "body_page": "59",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 68,
+      "body_page": "60",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 69,
+      "body_page": "61",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 70,
+      "body_page": "62",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 71,
+      "body_page": "63",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 72,
+      "body_page": "64",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 73,
+      "body_page": "65",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 74,
+      "body_page": "66",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 75,
+      "body_page": "67",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 76,
+      "body_page": "68",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 77,
+      "body_page": "69",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 78,
+      "body_page": "70",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 79,
+      "body_page": "71",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 80,
+      "body_page": "72",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 81,
+      "body_page": "73",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 82,
+      "body_page": "74",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 83,
+      "body_page": "75",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 84,
+      "body_page": "76",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 85,
+      "body_page": "77",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 86,
+      "body_page": "78",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 87,
+      "body_page": "79",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 88,
+      "body_page": "80",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 89,
+      "body_page": "81",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 90,
+      "body_page": "82",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 91,
+      "body_page": "83",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 92,
+      "body_page": "84",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 93,
+      "body_page": "85",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 94,
+      "body_page": "86",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 95,
+      "body_page": "87",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 96,
+      "body_page": "88",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 97,
+      "body_page": "89",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 98,
+      "body_page": "90",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    },
+    {
+      "pdf_page": 99,
+      "body_page": "91",
+      "size": 9.0,
+      "actual_font": "SimSun"
+    }
+  ],
+  "raster_figure_fonts_revalidated": false,
+  "raster_figure_limit": "Twenty diagrams are re-rendered from complete vector geometry with safe padding; screenshot evidence remains unchanged. DOCX run fonts do not certify raster-image typography."
+}

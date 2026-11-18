@@ -6,7 +6,7 @@
     "start_line": 46,
     "end_line": 53,
     "source_sha256": "a6b4c1af271efacca069be9c638147bf3509277fef21711ace870719949a8aae",
-    "text": "/** 题干语义向量（JSON 数组），不向前端返回 */\n@JsonIgnore\nprivate String embedding;\n\n/** 状态：1 正常，0 删除（软删除标记） */\n@TableLogic\n@JsonIgnore\nprivate Integer status;"
+    "text": "/** 题干语义向量（JSON 数组），不向前端返回 */\n@JsonIgnore\nprivate String embedding;\n\n/** 状态：1 正常，0 删除（软删除标记） */\n@TableLogic\n@JsonIgnore\nprivate Integer status;\n……以下部分代码省略……"
   },
   {
     "number": "7.2",
@@ -15,7 +15,7 @@
     "start_line": 87,
     "end_line": 92,
     "source_sha256": "7f23d2245d084ba5c8968ff2fb2c79ef642d01d7a55cb19950502a02ee749532",
-    "text": "LambdaQueryWrapper<Question> wrapper = new LambdaQueryWrapper<>();\nwrapper.eq(Question::getUserId, UserContext.getUserId())\n        .eq(subjectId != null, Question::getSubjectId, subjectId)\n        .eq(knowledgePointId != null, Question::getKnowledgePointId, knowledgePointId)\n        .orderByDesc(Question::getCreateTime);\nreturn questionMapper.selectPage(new Page<>(pageNum, pageSize), wrapper);"
+    "text": "……以上部分代码省略……\nLambdaQueryWrapper<Question> wrapper = new LambdaQueryWrapper<>();\nwrapper.eq(Question::getUserId, UserContext.getUserId())\n        .eq(subjectId != null, Question::getSubjectId, subjectId)\n        .eq(knowledgePointId != null, Question::getKnowledgePointId, knowledgePointId)\n        .orderByDesc(Question::getCreateTime);\nreturn questionMapper.selectPage(new Page<>(pageNum, pageSize), wrapper);\n……以下部分代码省略……"
   },
   {
     "number": "7.3",
@@ -24,7 +24,7 @@
     "start_line": 16,
     "end_line": 17,
     "source_sha256": "f1011dcc9eb46fe4709287146f0f320392115850a3baac6d778a9138cfd920b3",
-    "text": "@Select(\"SELECT * FROM question WHERE id = #{id} AND status = 1 FOR UPDATE\")\nQuestion selectByIdForUpdate(@Param(\"id\") Long id);"
+    "text": "@Select(\"SELECT * FROM question WHERE id = #{id} AND status = 1 FOR UPDATE\")\nQuestion selectByIdForUpdate(@Param(\"id\") Long id);\n……以下部分代码省略……"
   },
   {
     "number": "7.4",
@@ -33,7 +33,7 @@
     "start_line": 6,
     "end_line": 15,
     "source_sha256": "adcc6aa88dcc405806a3d4cf4cf4c75c8bc4ecfe7627c7b091b616339a9d10f9",
-    "text": "<select id=\"selectKpMastery\" resultType=\"map\">\n    SELECT knowledge_point_id AS kpId, AVG(mastery) AS avgMastery, COUNT(*) AS questionCount\n    FROM question\n    WHERE status = 1\n      AND knowledge_point_id IS NOT NULL\n    <if test=\"userId != null\">\n      AND user_id = #{userId}\n    </if>\n    GROUP BY knowledge_point_id\n</select>"
+    "text": "<select id=\"selectKpMastery\" resultType=\"map\">\n    SELECT knowledge_point_id AS kpId, AVG(mastery) AS avgMastery, COUNT(*) AS questionCount\n    FROM question\n    WHERE status = 1\n      AND knowledge_point_id IS NOT NULL\n    <if test=\"userId != null\">\n      AND user_id = #{userId}\n    </if>\n    GROUP BY knowledge_point_id\n</select>\n……以下部分代码省略……"
   },
   {
     "number": "7.5",
@@ -42,240 +42,150 @@
     "start_line": 63,
     "end_line": 78,
     "source_sha256": "7f23d2245d084ba5c8968ff2fb2c79ef642d01d7a55cb19950502a02ee749532",
-    "text": "Question question = new Question();\nquestion.setUserId(UserContext.getUserId());\nquestion.setSubjectId(requireSubject(request.getSubjectId()));\nquestion.setStem(QuestionContent.validatedStem(request.getStem()));\nquestion.setAnswer(request.getAnswer());\nquestion.setSource(request.getSource());\nString savedImageUrl = null;\ntry {\n    if (StringUtils.hasText(request.getImageBase64())) {\n        savedImageUrl = fileStorageUtil.saveBase64Image(request.getImageBase64());\n        question.setImageUrl(savedImageUrl);\n    }\n    questionMapper.insert(question);\n    // 录入成功建立固定第 1/2/4/7/15 天复习计划，不动态估计遗忘曲线。\n    reviewPlanService.createPlans(question);\n    return question.getId();"
+    "text": "……以上部分代码省略……\nQuestion question = new Question();\nquestion.setUserId(UserContext.getUserId());\nquestion.setSubjectId(requireSubject(request.getSubjectId()));\nquestion.setStem(QuestionContent.validatedStem(request.getStem()));\nquestion.setAnswer(request.getAnswer());\nquestion.setSource(request.getSource());\nString savedImageUrl = null;\ntry {\n    if (StringUtils.hasText(request.getImageBase64())) {\n        savedImageUrl = fileStorageUtil.saveBase64Image(request.getImageBase64());\n        question.setImageUrl(savedImageUrl);\n    }\n    questionMapper.insert(question);\n    // 录入成功建立固定第 1/2/4/7/15 天复习计划，不动态估计遗忘曲线。\n    reviewPlanService.createPlans(question);\n    return question.getId();\n……以下部分代码省略……"
   },
   {
     "number": "7.6",
-    "title": "编辑时的核心输入比较",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/QuestionServiceImpl.java",
-    "start_line": 109,
-    "end_line": 112,
-    "source_sha256": "7f23d2245d084ba5c8968ff2fb2c79ef642d01d7a55cb19950502a02ee749532",
-    "text": "String stem = QuestionContent.validatedStem(request.getStem());\nboolean aiInputChanged = !Objects.equals(question.getSubjectId(), request.getSubjectId())\n        || !Objects.equals(question.getStem(), stem)\n        || !Objects.equals(question.getAnswer(), request.getAnswer());"
-  },
-  {
-    "number": "7.7",
-    "title": "识别候选匹配与返回",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/QuestionRecognitionServiceImpl.java",
-    "start_line": 59,
-    "end_line": 71,
-    "source_sha256": "70da3ba9fafffbd5d8eb04ab11ea247e92e0c1b91e7c21891b19c88c7875ebd5",
-    "text": "QuestionRecognitionClient.Extraction extraction = client.recognize(\n        request.getImageBase64(),\n        subjects.stream().map(Subject::getName).filter(StringUtils::hasText).toList());\n\nSubject matchedSubject = StringUtils.hasText(extraction.subjectName())\n        ? subjectsByName.get(normalizeSubjectName(extraction.subjectName()))\n        : null;\nreturn new QuestionRecognitionResult(\n        matchedSubject == null ? null : matchedSubject.getId(),\n        matchedSubject == null ? null : matchedSubject.getName(),\n        extraction.stem(),\n        emptyToNull(extraction.studentAnswer()),\n        emptyToNull(extraction.source()));"
-  },
-  {
-    "number": "7.8",
     "title": "GLM响应获取与空内容拒绝",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java",
     "start_line": 106,
     "end_line": 117,
     "source_sha256": "445ea3a65c8e54895b8603872edd5f0deeceac1a9eda9aef55bd54ac03edad49",
-    "text": "body.put(\"response_format\", Map.of(\"type\", \"json_object\"));\nbody.put(\"temperature\", 0.2);\nbody.put(\"max_tokens\", CHAT_MAX_TOKENS);\nbody.put(\"stream\", false);\n\nJsonNode response = post(\"/chat/completions\", body);\nrequireResponseModel(response, chatModel, \"Chat\");\nJsonNode content = response.path(\"choices\").path(0).path(\"message\").path(\"content\");\nif (!content.isTextual() || !StringUtils.hasText(content.asText())) {\n    throw new IllegalStateException(\"大模型响应缺少 choices[0].message.content\");\n}\nreturn content.asText();"
+    "text": "……以上部分代码省略……\nbody.put(\"response_format\", Map.of(\"type\", \"json_object\"));\nbody.put(\"temperature\", 0.2);\nbody.put(\"max_tokens\", CHAT_MAX_TOKENS);\nbody.put(\"stream\", false);\n\nJsonNode response = post(\"/chat/completions\", body);\nrequireResponseModel(response, chatModel, \"Chat\");\nJsonNode content = response.path(\"choices\").path(0).path(\"message\").path(\"content\");\nif (!content.isTextual() || !StringUtils.hasText(content.asText())) {\n    throw new IllegalStateException(\"大模型响应缺少 choices[0].message.content\");\n}\nreturn content.asText();\n……以下部分代码省略……"
   },
   {
-    "number": "7.9",
-    "title": "分析响应字段集合校验",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
-    "start_line": 222,
-    "end_line": 227,
-    "source_sha256": "0eb607c082c0f13f030c4752273cd2e7f0aac6aa818edc2373917edaa3be1080",
-    "text": "if (json.size() != 4\n        || !json.has(\"knowledgePointId\")\n        || !json.has(\"errorCause\")\n        || !json.has(\"analysis\")\n        || !json.has(\"difficulty\")) {\n    throw new IllegalArgumentException(\"AI 解析响应字段必须与约定结构完全一致\");"
-  },
-  {
-    "number": "7.10",
+    "number": "7.7",
     "title": "候选知识点与难度范围校验",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
     "start_line": 233,
     "end_line": 242,
     "source_sha256": "0eb607c082c0f13f030c4752273cd2e7f0aac6aa818edc2373917edaa3be1080",
-    "text": "Set<Long> candidateIds = candidates.stream().map(KnowledgePoint::getId).collect(Collectors.toSet());\nif (knowledgePoint == null || !knowledgePoint.isIntegralNumber()\n        || !knowledgePoint.canConvertToLong()\n        || !candidateIds.contains(knowledgePoint.asLong())) {\n    throw new IllegalArgumentException(\"AI 解析知识点必须属于当前候选集合\");\n}\nif (difficulty == null || !difficulty.isIntegralNumber()\n        || !difficulty.canConvertToInt()\n        || difficulty.asInt() < 1 || difficulty.asInt() > 5) {\n    throw new IllegalArgumentException(\"AI 解析难度必须是 1-5 的整数\");"
+    "text": "……以上部分代码省略……\nSet<Long> candidateIds = candidates.stream().map(KnowledgePoint::getId).collect(Collectors.toSet());\nif (knowledgePoint == null || !knowledgePoint.isIntegralNumber()\n        || !knowledgePoint.canConvertToLong()\n        || !candidateIds.contains(knowledgePoint.asLong())) {\n    throw new IllegalArgumentException(\"AI 解析知识点必须属于当前候选集合\");\n}\nif (difficulty == null || !difficulty.isIntegralNumber()\n        || !difficulty.canConvertToInt()\n        || difficulty.asInt() < 1 || difficulty.asInt() > 5) {\n    throw new IllegalArgumentException(\"AI 解析难度必须是 1-5 的整数\");\n……以下部分代码省略……"
   },
   {
-    "number": "7.11",
-    "title": "异步结果的条件回写与回滚",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
-    "start_line": 127,
-    "end_line": 134,
-    "source_sha256": "0eb607c082c0f13f030c4752273cd2e7f0aac6aa818edc2373917edaa3be1080",
-    "text": "boolean completed = Boolean.TRUE.equals(transactionTemplate.execute(status -> {\n    int questionRows = questionMapper.update(null, matchingInput(question)\n            .set(Question::getEmbedding, embedding)\n            .set(Question::getKnowledgePointId, knowledgePointId)\n            .set(Question::getDifficulty, difficulty));\n    if (questionRows != 1) {\n        status.setRollbackOnly();\n        return false;"
-  },
-  {
-    "number": "7.12",
-    "title": "RAG候选查询的归属与科目边界",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/RagServiceImpl.java",
-    "start_line": 32,
-    "end_line": 37,
-    "source_sha256": "7f9286dc00113e67d0f8a4995f8e6c13191af14efc97f6af50fe9d5e12a37a9d",
-    "text": "Long ownerId = question.getUserId();\nList<Question> pool = questionMapper.selectList(new LambdaQueryWrapper<Question>()\n        .eq(Question::getUserId, ownerId)\n        .eq(Question::getSubjectId, question.getSubjectId())\n        .ne(Question::getId, question.getId())\n        .isNotNull(Question::getEmbedding));"
-  },
-  {
-    "number": "7.13",
+    "number": "7.8",
     "title": "相似度排序与结果归属复查",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/RagServiceImpl.java",
     "start_line": 39,
     "end_line": 46,
     "source_sha256": "7f9286dc00113e67d0f8a4995f8e6c13191af14efc97f6af50fe9d5e12a37a9d",
-    "text": "return pool.stream()\n        .filter(q -> ownerId.equals(q.getUserId()))\n        .map(q -> Map.entry(q, cosine(target, parseVector(q.getEmbedding()))))\n        .filter(e -> e.getValue() > 0)\n        .sorted(Map.Entry.<Question, Double>comparingByValue().reversed())\n        .limit(topN)\n        .map(Map.Entry::getKey)\n        .collect(Collectors.toList());"
+    "text": "……以上部分代码省略……\nreturn pool.stream()\n        .filter(q -> ownerId.equals(q.getUserId()))\n        .map(q -> Map.entry(q, cosine(target, parseVector(q.getEmbedding()))))\n        .filter(e -> e.getValue() > 0)\n        .sorted(Map.Entry.<Question, Double>comparingByValue().reversed())\n        .limit(topN)\n        .map(Map.Entry::getKey)\n        .collect(Collectors.toList());\n……以下部分代码省略……"
   },
   {
-    "number": "7.14",
-    "title": "规则候选不足时由向量结果补足",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/RecommendServiceImpl.java",
-    "start_line": 48,
-    "end_line": 54,
-    "source_sha256": "b6a16856b00cb725d3a0e48679ca4e1cc65421eafa5c95cbd97f5f0ce8fa0bfd",
-    "text": "if (result.size() < TOP_N) {\n    ragService.retrieveSimilar(question, TOP_N).stream()\n            .filter(q -> ownerId.equals(q.getUserId()))\n            .filter(q -> !questionId.equals(q.getId()))\n            .forEach(q -> result.putIfAbsent(q.getId(), q));\n}\nreturn new ArrayList<>(result.values()).stream().limit(TOP_N).toList();"
-  },
-  {
-    "number": "7.15",
+    "number": "7.9",
     "title": "知识缓存优先于模型就绪检查",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/LearningServiceImpl.java",
     "start_line": 49,
     "end_line": 54,
     "source_sha256": "cdb0edfbd013de414ed0f74938cad2a08cb312e2dd5f72d23a23a56d5862e82d",
-    "text": "Question question = access.ownQuestion(questionId);\nString hash = inputHash(question);\nLearningContent cached = find(questionId);\nif (cached != null && hash.equals(cached.getInputHash())) return view(cached, true);\n// Cache hits remain available even when no model credential is configured.\nllmClient.verifyReady();"
+    "text": "……以上部分代码省略……\nQuestion question = access.ownQuestion(questionId);\nString hash = inputHash(question);\nLearningContent cached = find(questionId);\nif (cached != null && hash.equals(cached.getInputHash())) return view(cached, true);\n// Cache hits remain available even when no model credential is configured.\nllmClient.verifyReady();\n……以下部分代码省略……"
   },
   {
-    "number": "7.16",
-    "title": "写入前复查输入摘要与并发缓存",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/LearningServiceImpl.java",
-    "start_line": 70,
-    "end_line": 77,
-    "source_sha256": "cdb0edfbd013de414ed0f74938cad2a08cb312e2dd5f72d23a23a56d5862e82d",
-    "text": "return transactionTemplate.execute(status -> {\n    Question current = questionMapper.selectByIdForUpdate(questionId);\n    if (current == null || !hash.equals(inputHash(current))) {\n        throw new IllegalStateException(\"题目内容已变化，请重新学习\");\n    }\n    LearningContent row = find(questionId);\n    // Recheck inside the short write transaction for concurrent requests on other instances.\n    if (row != null && hash.equals(row.getInputHash())) return view(row, true);"
-  },
-  {
-    "number": "7.17",
+    "number": "7.10",
     "title": "原题与已有未练变式优先",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/LearningServiceImpl.java",
     "start_line": 99,
     "end_line": 109,
     "source_sha256": "cdb0edfbd013de414ed0f74938cad2a08cb312e2dd5f72d23a23a56d5862e82d",
-    "text": "if (!access.originalPracticed(questionId)) {\n    return new PracticeResourceVO(q.getId(), null, q.getStem(), q.getAnswer(), q.getDifficulty(), \"original\");\n}\nList<VariantQuestion> variants = variantService.list(questionId);\nVariantQuestion available = variants.stream().filter(v -> !Boolean.TRUE.equals(v.getPracticed())).findFirst().orElse(null);\nString source = \"existing\";\nif (available == null) {\n    List<VariantQuestion> supplied = variantService.generate(questionId);\n    if (supplied.isEmpty()) throw new BizException(\"暂无可用练习题，可重做已练题或稍后重试\");\n    available = supplied.getFirst();\n    source = \"generated\";"
+    "text": "……以上部分代码省略……\nif (!access.originalPracticed(questionId)) {\n    return new PracticeResourceVO(q.getId(), null, q.getStem(), q.getAnswer(), q.getDifficulty(), \"original\");\n}\nList<VariantQuestion> variants = variantService.list(questionId);\nVariantQuestion available = variants.stream().filter(v -> !Boolean.TRUE.equals(v.getPracticed())).findFirst().orElse(null);\nString source = \"existing\";\nif (available == null) {\n    List<VariantQuestion> supplied = variantService.generate(questionId);\n    if (supplied.isEmpty()) throw new BizException(\"暂无可用练习题，可重做已练题或稍后重试\");\n    available = supplied.getFirst();\n    source = \"generated\";\n……以下部分代码省略……"
   },
   {
-    "number": "7.18",
-    "title": "变式历史去重与整批写入检查",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/VariantServiceImpl.java",
-    "start_line": 93,
-    "end_line": 100,
-    "source_sha256": "c848f2b6052103f79d6412fb6007a135b194d9c4fec85f6838301912b92d0bd1",
-    "text": "Set<String> stems = new HashSet<>();\ncurrent.forEach(v -> stems.add(normalizedStem(v.getStem())));\nfor (VariantQuestion variant : variants) {\n    if (!stems.add(normalizedStem(variant.getStem()))) {\n        throw new IllegalArgumentException(\"模型返回重复题目，未保存\");\n    }\n    if (variantQuestionMapper.insert(variant) != 1) {\n        throw new IllegalStateException(\"变式题保存失败\");"
-  },
-  {
-    "number": "7.19",
-    "title": "作答目标二选一与归属解析",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
-    "start_line": 39,
-    "end_line": 42,
-    "source_sha256": "fbab05617a53281b73551561217c4d67e025a364b37500b3189fd4a272dd1ade",
-    "text": "if ((request.getQuestionId() == null) == (request.getVariantId() == null)) {\n    throw new BizException(\"错题与变式题必须且只能选择一项\");\n}\nQuestion question = resolveQuestion(request);"
-  },
-  {
-    "number": "7.20",
+    "number": "7.11",
     "title": "记录后的原子分值更新",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/PracticeServiceImpl.java",
     "start_line": 52,
     "end_line": 58,
     "source_sha256": "fbab05617a53281b73551561217c4d67e025a364b37500b3189fd4a272dd1ade",
-    "text": "int delta = request.getIsCorrect() == 1 ? MASTERY_UP : -MASTERY_DOWN;\nint updated = questionMapper.update(null, new LambdaUpdateWrapper<Question>()\n        .eq(Question::getId, question.getId())\n        .eq(Question::getUserId, UserContext.getUserId())\n        .setSql(\"mastery = LEAST(100, GREATEST(0, mastery + {0}))\", delta));\nif (updated != 1) {\n    throw new BizException(ResultCode.SERVER_ERROR.getCode(), \"掌握度更新失败，请重试\");"
+    "text": "……以上部分代码省略……\nint delta = request.getIsCorrect() == 1 ? MASTERY_UP : -MASTERY_DOWN;\nint updated = questionMapper.update(null, new LambdaUpdateWrapper<Question>()\n        .eq(Question::getId, question.getId())\n        .eq(Question::getUserId, UserContext.getUserId())\n        .setSql(\"mastery = LEAST(100, GREATEST(0, mastery + {0}))\", delta));\nif (updated != 1) {\n    throw new BizException(ResultCode.SERVER_ERROR.getCode(), \"掌握度更新失败，请重试\");\n……以下部分代码省略……"
   },
   {
-    "number": "7.21",
+    "number": "7.12",
     "title": "五阶段复习计划的日期生成",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/ReviewPlanServiceImpl.java",
     "start_line": 35,
     "end_line": 42,
     "source_sha256": "6bf3ff3b7b12ea5b922c0ab4a70bb5983e95f6114c8555b70d8841256cd94fc2",
-    "text": "LocalDate base = LocalDate.now();\nfor (int i = 0; i < REVIEW_DAYS.length; i++) {\n    ReviewPlan plan = new ReviewPlan();\n    plan.setUserId(question.getUserId());\n    plan.setQuestionId(question.getId());\n    plan.setReviewStage(i + 1);\n    plan.setPlanDate(base.plusDays(REVIEW_DAYS[i]));\n    reviewPlanMapper.insert(plan);"
+    "text": "……以上部分代码省略……\nLocalDate base = LocalDate.now();\nfor (int i = 0; i < REVIEW_DAYS.length; i++) {\n    ReviewPlan plan = new ReviewPlan();\n    plan.setUserId(question.getUserId());\n    plan.setQuestionId(question.getId());\n    plan.setReviewStage(i + 1);\n    plan.setPlanDate(base.plusDays(REVIEW_DAYS[i]));\n    reviewPlanMapper.insert(plan);\n……以下部分代码省略……"
   },
   {
-    "number": "7.22",
-    "title": "学习资源统一归属检查",
-    "path": "server/src/main/java/com/example/wrongbook/service/impl/LearningResourceAccess.java",
-    "start_line": 29,
-    "end_line": 35,
-    "source_sha256": "d6de1ebf8c59a74304f1bdba863b35eef55a38aada9ecb5ec0e042b0255d45fb",
-    "text": "public Question ownQuestion(Long id) {\n    Question q = questionMapper.selectById(id);\n    if (q == null) throw new BizException(ResultCode.NOT_FOUND.getCode(), \"错题不存在\");\n    if (!\"student\".equals(UserContext.getRole()) || !q.getUserId().equals(UserContext.getUserId())) {\n        throw new BizException(ResultCode.FORBIDDEN.getCode(), \"无权访问该学习资源\");\n    }\n    return q;"
-  },
-  {
-    "number": "7.23",
+    "number": "7.13",
     "title": "学习控制器的角色与业务映射",
     "path": "server/src/main/java/com/example/wrongbook/controller/LearningController.java",
     "start_line": 12,
     "end_line": 28,
     "source_sha256": "cfc8a6b7f4989ce25920718a082245b6b44d809583dc9dbbae7f29208aa8255e",
-    "text": "@RestController\n@RequestMapping(\"/api/learning\")\n@RequireRole(\"student\")\n@RequiredArgsConstructor\npublic class LearningController {\n    private final LearningService learningService;\n    @PostMapping(\"/knowledge/{questionId}\")\n    public RestResponse<LearningContentVO> knowledge(@PathVariable Long questionId) {\n        return RestResponse.ok(learningService.knowledge(questionId));\n    }\n    @PostMapping(\"/practice/next/{questionId}\")\n    public RestResponse<PracticeResourceVO> nextPractice(@PathVariable Long questionId) {\n        return RestResponse.ok(learningService.nextPractice(questionId));\n    }\n    @GetMapping(\"/practice/progress/{questionId}\")\n    public RestResponse<PracticeProgressVO> progress(@PathVariable Long questionId) {\n        return RestResponse.ok(learningService.progress(questionId));"
+    "text": "@RestController\n@RequestMapping(\"/api/learning\")\n@RequireRole(\"student\")\n@RequiredArgsConstructor\npublic class LearningController {\n    private final LearningService learningService;\n    @PostMapping(\"/knowledge/{questionId}\")\n    public RestResponse<LearningContentVO> knowledge(@PathVariable Long questionId) {\n        return RestResponse.ok(learningService.knowledge(questionId));\n    }\n    @PostMapping(\"/practice/next/{questionId}\")\n    public RestResponse<PracticeResourceVO> nextPractice(@PathVariable Long questionId) {\n        return RestResponse.ok(learningService.nextPractice(questionId));\n    }\n    @GetMapping(\"/practice/progress/{questionId}\")\n    public RestResponse<PracticeProgressVO> progress(@PathVariable Long questionId) {\n        return RestResponse.ok(learningService.progress(questionId));\n……以下部分代码省略……"
   },
   {
-    "number": "7.24",
+    "number": "7.14",
     "title": "图片识别候选与临时学生作答",
     "path": "web/src/views/question/QuestionCreateView.vue",
     "start_line": 185,
     "end_line": 194,
     "source_sha256": "dafde50e54a6f887debbf3a8cd4976fb0433ec5438a51ed251dcc6c3dafcc8a5",
-    "text": "const result = await questionRecognitionApi.recognize(imageBase64.value)\nif (currentRecognition !== recognitionVersion) return\n\nif (result.subjectId && subjects.value.some((subject) => subject.id === result.subjectId)) {\n  form.subjectId = result.subjectId\n}\nform.stem = plainTextToHtml(result.stem)\nif (result.source?.trim()) form.source = result.source.trim()\nrecognizedStudentAnswer.value = result.studentAnswer?.trim() || ''\nrecognitionState.value = 'success'"
+    "text": "……以上部分代码省略……\nconst result = await questionRecognitionApi.recognize(imageBase64.value)\nif (currentRecognition !== recognitionVersion) return\n\nif (result.subjectId && subjects.value.some((subject) => subject.id === result.subjectId)) {\n  form.subjectId = result.subjectId\n}\nform.stem = plainTextToHtml(result.stem)\nif (result.source?.trim()) form.source = result.source.trim()\nrecognizedStudentAnswer.value = result.studentAnswer?.trim() || ''\nrecognitionState.value = 'success'\n……以下部分代码省略……"
   },
   {
-    "number": "7.25",
+    "number": "7.15",
     "title": "继续练习的迟到响应处理",
     "path": "web/src/components/LearningResources.vue",
     "start_line": 41,
     "end_line": 48,
     "source_sha256": "a2b06ce037cdd54e2bdce3a3ec68aa730f1238b690be10379989fdc880519866",
-    "text": "async function nextPractice() {\n  if (practiceLoading.value || saving.value) return\n  const requestVersion = version\n  practiceLoading.value = true; practiceError.value = ''\n  try {\n    const result = await learningApi.next(props.questionId)\n    if (version !== requestVersion) return\n    target.value = result; resetAnswer()"
+    "text": "……以上部分代码省略……\nasync function nextPractice() {\n  if (practiceLoading.value || saving.value) return\n  const requestVersion = version\n  practiceLoading.value = true; practiceError.value = ''\n  try {\n    const result = await learningApi.next(props.questionId)\n    if (version !== requestVersion) return\n    target.value = result; resetAnswer()\n……以下部分代码省略……"
   },
   {
-    "number": "7.26",
+    "number": "7.16",
     "title": "一种目标提交与成功后更新界面",
     "path": "web/src/components/LearningResources.vue",
     "start_line": 60,
     "end_line": 65,
     "source_sha256": "a2b06ce037cdd54e2bdce3a3ec68aa730f1238b690be10379989fdc880519866",
-    "text": "await practiceApi.submit({\n  ...(selected.variantId ? { variantId: selected.variantId } : { questionId: selected.questionId! }),\n  userAnswer: answer.value.trim() || undefined, isCorrect: correct.value, duration: duration.value,\n})\nif (version !== requestVersion) return\ncompleted.value = true; emit('practiced')"
+    "text": "……以上部分代码省略……\nawait practiceApi.submit({\n  ...(selected.variantId ? { variantId: selected.variantId } : { questionId: selected.questionId! }),\n  userAnswer: answer.value.trim() || undefined, isCorrect: correct.value, duration: duration.value,\n})\nif (version !== requestVersion) return\ncompleted.value = true; emit('practiced')\n……以下部分代码省略……"
   },
   {
-    "number": "7.27",
+    "number": "7.17",
     "title": "可重试外部异常分类",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/OpenAiCompatibleLlmClient.java",
     "start_line": 191,
     "end_line": 199,
     "source_sha256": "445ea3a65c8e54895b8603872edd5f0deeceac1a9eda9aef55bd54ac03edad49",
-    "text": "private boolean isTransient(RestClientException exception) {\n    if (exception instanceof ResourceAccessException) {\n        return isConnectionFailure(exception);\n    }\n    if (exception instanceof HttpClientErrorException.TooManyRequests rateLimit) {\n        return PLATFORM_OVERLOAD_CODE.matcher(rateLimit.getResponseBodyAsString()).find();\n    }\n    return exception instanceof HttpServerErrorException;\n}"
+    "text": "private boolean isTransient(RestClientException exception) {\n    if (exception instanceof ResourceAccessException) {\n        return isConnectionFailure(exception);\n    }\n    if (exception instanceof HttpClientErrorException.TooManyRequests rateLimit) {\n        return PLATFORM_OVERLOAD_CODE.matcher(rateLimit.getResponseBodyAsString()).find();\n    }\n    return exception instanceof HttpServerErrorException;\n}\n……以下部分代码省略……"
   },
   {
-    "number": "7.28",
+    "number": "7.18",
     "title": "解析输入快照的条件构造",
     "path": "server/src/main/java/com/example/wrongbook/service/impl/AiAnalysisServiceImpl.java",
     "start_line": 176,
     "end_line": 187,
     "source_sha256": "0eb607c082c0f13f030c4752273cd2e7f0aac6aa818edc2373917edaa3be1080",
-    "text": "private LambdaUpdateWrapper<Question> matchingInput(Question question) {\n    LambdaUpdateWrapper<Question> wrapper = new LambdaUpdateWrapper<Question>()\n            .eq(Question::getId, question.getId())\n            .eq(Question::getSubjectId, question.getSubjectId())\n            .eq(Question::getStem, question.getStem());\n    if (question.getAnswer() == null) {\n        wrapper.isNull(Question::getAnswer);\n    } else {\n        wrapper.eq(Question::getAnswer, question.getAnswer());\n    }\n    return wrapper;\n}"
+    "text": "private LambdaUpdateWrapper<Question> matchingInput(Question question) {\n    LambdaUpdateWrapper<Question> wrapper = new LambdaUpdateWrapper<Question>()\n            .eq(Question::getId, question.getId())\n            .eq(Question::getSubjectId, question.getSubjectId())\n            .eq(Question::getStem, question.getStem());\n    if (question.getAnswer() == null) {\n        wrapper.isNull(Question::getAnswer);\n    } else {\n        wrapper.eq(Question::getAnswer, question.getAnswer());\n    }\n    return wrapper;\n}\n……以下部分代码省略……"
   },
   {
-    "number": "7.29",
+    "number": "7.19",
     "title": "模型与导出共用的纯文本转换",
     "path": "server/src/main/java/com/example/wrongbook/util/QuestionContent.java",
     "start_line": 50,
     "end_line": 64,
     "source_sha256": "37173b8efeaba903e80173b0f2a7a85ec507ffa694ddb140b9d5e9995a7515b6",
-    "text": "public static String plainText(String input) {\n    if (input == null) {\n        return \"\";\n    }\n    if (!MARKUP.matcher(input).find()) {\n        return input.replace(\"\\r\\n\", \"\\n\").replace('\\r', '\\n').trim();\n    }\n    Element body = Jsoup.parseBodyFragment(sanitize(input)).body();\n    for (Element index : body.select(\"sup, sub\")) {\n        index.replaceWith(new TextNode((index.tagName().equals(\"sup\") ? \"^(\" : \"_(\") + index.text() + \")\"));\n    }\n    body.select(\"br\").forEach(element -> element.replaceWith(new TextNode(\"\\n\")));\n    body.select(\"p, li, ul, ol\").forEach(element -> element.appendChild(new TextNode(\"\\n\")));\n    return body.wholeText().replace('\\u00a0', ' ').replaceAll(\"\\\\n{3,}\", \"\\n\\n\").trim();\n}"
+    "text": "public static String plainText(String input) {\n    if (input == null) {\n        return \"\";\n    }\n    if (!MARKUP.matcher(input).find()) {\n        return input.replace(\"\\r\\n\", \"\\n\").replace('\\r', '\\n').trim();\n    }\n    Element body = Jsoup.parseBodyFragment(sanitize(input)).body();\n    for (Element index : body.select(\"sup, sub\")) {\n        index.replaceWith(new TextNode((index.tagName().equals(\"sup\") ? \"^(\" : \"_(\") + index.text() + \")\"));\n    }\n    body.select(\"br\").forEach(element -> element.replaceWith(new TextNode(\"\\n\")));\n    body.select(\"p, li, ul, ol\").forEach(element -> element.appendChild(new TextNode(\"\\n\")));\n    return body.wholeText().replace('\\u00a0', ' ').replaceAll(\"\\\\n{3,}\", \"\\n\\n\").trim();\n}\n……以下部分代码省略……"
   },
   {
-    "number": "7.30",
+    "number": "7.20",
     "title": "私有题图路径边界",
     "path": "server/src/main/java/com/example/wrongbook/util/FileStorageUtil.java",
     "start_line": 102,
     "end_line": 113,
     "source_sha256": "372a8ca87f171c22e9d6c7015c358790191569bb1259eb855021e7ad1e1f33bf",
-    "text": "private Path resolveUploadPath(String imageUrl) {\n    if (!isUploadPath(imageUrl)) {\n        throw new BizException(\"题目图片路径无效\");\n    }\n    Path root = Paths.get(uploadDir).toAbsolutePath().normalize();\n    String relative = imageUrl.substring(\"/uploads/\".length());\n    Path resolved = root.resolve(relative).normalize();\n    if (!resolved.startsWith(root)) {\n        throw new BizException(\"题目图片路径无效\");\n    }\n    return resolved;\n}"
+    "text": "private Path resolveUploadPath(String imageUrl) {\n    if (!isUploadPath(imageUrl)) {\n        throw new BizException(\"题目图片路径无效\");\n    }\n    Path root = Paths.get(uploadDir).toAbsolutePath().normalize();\n    String relative = imageUrl.substring(\"/uploads/\".length());\n    Path resolved = root.resolve(relative).normalize();\n    if (!resolved.startsWith(root)) {\n        throw new BizException(\"题目图片路径无效\");\n    }\n    return resolved;\n}\n……以下部分代码省略……"
   },
   {
-    "number": "7.31",
+    "number": "7.21",
     "title": "向量维护的二进制题干快照条件",
     "path": "server/src/main/java/com/example/wrongbook/mapper/QuestionMapper.java",
     "start_line": 29,
     "end_line": 39,
     "source_sha256": "f1011dcc9eb46fe4709287146f0f320392115850a3baac6d778a9138cfd920b3",
-    "text": "@Update(\"\"\"\n        UPDATE question\n        SET embedding = #{embedding}\n        WHERE id = #{id}\n          AND status = 1\n          AND BINARY stem = BINARY #{stem}\n        \"\"\")\nint updateEmbeddingIfStemUnchanged(\n        @Param(\"id\") Long id,\n        @Param(\"stem\") String stem,\n        @Param(\"embedding\") String embedding);"
+    "text": "@Update(\"\"\"\n        UPDATE question\n        SET embedding = #{embedding}\n        WHERE id = #{id}\n          AND status = 1\n          AND BINARY stem = BINARY #{stem}\n        \"\"\")\nint updateEmbeddingIfStemUnchanged(\n        @Param(\"id\") Long id,\n        @Param(\"stem\") String stem,\n        @Param(\"embedding\") String embedding);\n……以下部分代码省略……"
   }
 ]

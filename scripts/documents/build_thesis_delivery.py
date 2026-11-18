@@ -17,6 +17,7 @@ from docx.enum.style import WD_STYLE_TYPE
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from PIL import Image,ImageOps
+from validate_thesis_references import CITATION_PATTERN, validate
 
 ROOT=Path(__file__).resolve().parents[2]
 DELIVERY=os.environ.get('THESIS_DELIVERY_ID','thesis-align-reference1-20261113')
@@ -69,24 +70,31 @@ def paragraph_font(p,size=12,east='宋体',bold=False):
     ppr=p._p.get_or_add_pPr();rpr=ppr.find(qn('w:rPr'))
     if rpr is None:rpr=el('rPr');ppr.append(rpr)
     font_properties(rpr,size,east,bold)
-def field(p,instruction,cached,size=12):
+def field(p,instruction,cached,size=12,east='宋体'):
     p.add_run()._r.append(el('fldChar',fldCharType='begin'))
     x=el('instrText');x.set(qn('xml:space'),'preserve');x.text=' '+instruction+' ';p.add_run()._r.append(x)
     p.add_run()._r.append(el('fldChar',fldCharType='separate'))
-    font(p.add_run(str(cached)),size)
+    font(p.add_run(str(cached)),size,east)
     p.add_run()._r.append(el('fldChar',fldCharType='end'))
 def bookmark_start(p,name):
     global BOOKMARK_ID
     BOOKMARK_ID+=1;p._p.append(el('bookmarkStart',id=BOOKMARK_ID,name=name));return BOOKMARK_ID
 def bookmark_end(p,n):p._p.append(el('bookmarkEnd',id=n))
-def plain(s):return re.sub(r'\[(?!\d+\])([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
+def plain(s):return re.sub(rf'(?!{CITATION_PATTERN})\[([^]]+)\]\([^)]+\)',r'\1',s).replace('**','').replace('`','')
 def inline(p,s,size=12,refs=True):
     s=plain(s)
-    pattern=r'(\[\d+\]|[图表]\s*\d+\.\d+)'
+    pattern=rf'({CITATION_PATTERN}|[图表]\s*\d+\.\d+)'
     for part in re.split(pattern,s):
-        if re.fullmatch(r'\[\d+\]',part) and refs:
-            link=el('hyperlink',anchor='ref'+part[1:-1],history=1)
-            r=font(p.add_run(part),size);r.font.superscript=True;link.append(r._r);p._p.append(link)
+        if refs and re.fullmatch(CITATION_PATTERN,part):
+            numbers=part[1:-1].split(',')
+            for i,number in enumerate(numbers):
+                label=('[' if i==0 else ',')+number
+                if i==len(numbers)-1:label+=']'
+                link=el('hyperlink',anchor='ref'+number,history=1)
+                r=font(p.add_run(label),size)
+                r.font.superscript=True
+                link.append(r._r)
+                p._p.append(link)
         elif re.fullmatch(r'[图表]\s*\d+\.\d+',part):
             kind=part[0];n=re.search(r'\d+\.\d+',part)[0];key=('fig' if kind=='图' else 'tab')+n.replace('.','_')
             field(p,f'REF {key} \\h',f'{kind} {n}',size)
@@ -144,7 +152,7 @@ def caption(doc,text,continued=False):
     if not continued:bookmark_end(p,k)
     font(p.add_run('　'+title),10.5,bold=kind=='表')
     if not continued:
-        tc=el('fldSimple');tc.set(qn('w:instr'),f'TC "{kind} {ch}.{n}　{title}" \\f {"F" if kind=="图" else "T"} \\l 1');p._p.append(tc)
+        tc=el('fldSimple');tc.set(qn('w:instr'),f'TC "{kind} {ch}.{n}　{title}" \\f {"F" if kind=="图" else "T"} \\l 2');p._p.append(tc)
     if kind=='表':
         for r in p.runs:font(r,10.5,bold=True)
     return p
@@ -157,6 +165,7 @@ def column_widths(rows,cap):
     if re.match(r'表 8\.[234] ',cap):return [4.0,4.0,7.75]
     if cap.startswith('表 8.7'):return [2.7,2.2,8.1,2.75]
     if cap.startswith('表 A.1'):return [3.0,6.0,6.75]
+    if rows[0]==['所在节','内容','文件','原始行范围']:return [1.55,3.9,7.9,2.4]
     if rows[0]==['代码','文件','原始行范围']:return [1.35,11.8,2.6]
     return [3.0,3.0,4.75,5.0] if n==4 and '字段' in rows[0][0] else [3,4,5,3.75] if n==4 else [3.7,6,6.05] if n==3 else [15.75/n]*n
 
@@ -237,7 +246,6 @@ def main():
     assert hashlib.sha256(TPL.read_bytes()).hexdigest()=='79da5538204e7d6a9dcf9f3d4a4db297c9dc69fbbe807f493dca4ae6ed1c6c8e'
     RUN.mkdir(parents=True,exist_ok=True)
     md=(ROOT/'docs/thesis/毕业论文.md').read_text(encoding='utf-8')
-    from validate_thesis_references import validate
     validate()
     md=re.sub(r'<!--.*?-->','',md,flags=re.S)
     pages=json.loads((RUN/'page-map.json').read_text(encoding='utf-8')) if (RUN/'page-map.json').exists() else {}
@@ -255,10 +263,10 @@ def main():
         if x.tag in {qn('w:commentRangeStart'),qn('w:commentRangeEnd'),qn('w:commentReference'),qn('w:bookmarkStart'),qn('w:bookmarkEnd')}:
             x.getparent().remove(x)
     p=d.paragraphs[6];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=24)
-    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),18,'黑体',True)
-    paragraph_font(p,18,'黑体',True)
-    p=d.paragraphs[7];p.clear();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=19,after=20)
-    font(p.add_run(re.search(r'> \*\*英文题目\*\*：(.*)',md)[1].strip()),12,'宋体',True)
+    font(p.add_run(md.splitlines()[0][2:].replace('与学习推荐','\n与学习推荐')),16,'黑体',True)
+    paragraph_font(p,16,'黑体',True)
+    p=d.paragraphs[7];p.clear();fmt(p,size=16,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=19,after=20)
+    font(p.add_run(re.search(r'> \*\*英文题目\*\*：(.*)',md)[1].strip()),16,'宋体',True)
     for text in ['人工智能学院　软件工程','2023级【本科】软件工程1班','赵灿　23612801026　指导教师：胡韬']:
         p=d.add_paragraph();fmt(p,indent=0,align=WD_ALIGN_PARAGRAPH.CENTER,line=20);inline(p,text)
     append_sect(d,section_end(d,base[0]))
@@ -284,15 +292,15 @@ def main():
             st=d.styles.add_style(name,WD_STYLE_TYPE.PARAGRAPH);edited_styles.append(st.style_id)
     for name,size,east,bold in [('Normal',12,'宋体',False),('Heading 1',14,'黑体',False),
             ('Heading 2',12,'黑体',False),('Heading 3',12,'黑体',False),
-            ('Title',18,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',9.5,'宋体',False)]:
-        st=d.styles[name];font_properties(st.element.get_or_add_rPr(),size,east,bold,'Courier New' if name=='Thesis Code' else 'Times New Roman')
+            ('Title',16,'黑体',True),('Caption',10.5,'宋体',False),('Thesis Code',10.5,'宋体',False)]:
+        st=d.styles[name];font_properties(st.element.get_or_add_rPr(),size,east,bold)
         if name.startswith('Heading'):
             st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
         if name=='Normal':
             st.paragraph_format.line_spacing=Pt(20);st.paragraph_format.first_line_indent=Pt(24)
         if name=='Thesis Code':
             st.base_style=d.styles['Normal'];st.next_paragraph_style=d.styles['Normal']
-            st.paragraph_format.line_spacing=Pt(12.5);st.paragraph_format.first_line_indent=Pt(0)
+            st.paragraph_format.line_spacing=Pt(15);st.paragraph_format.first_line_indent=Pt(0)
         if name=='Title':st.paragraph_format.alignment=WD_ALIGN_PARAGRAPH.CENTER
         edited_styles.append(st.style_id)
     # Word rebuilds a TOC using TOC1/2/3, discarding cached direct formatting.
@@ -317,13 +325,15 @@ def main():
         if m:entries.append((m[2].replace('（预留）',''),'h'+str(len(entries)),len(m[1])-1))
     key_by_title={t:k for t,k,l in entries}
     for i,(t,key,lev) in enumerate(entries):
-        p=d.add_paragraph(style=f'TOC {lev}');fmt(p,indent=0,line=16,align=WD_ALIGN_PARAGRAPH.LEFT)
+        size=14 if lev==1 else 12
+        p=d.add_paragraph(style=f'TOC {lev}');fmt(p,size=size,indent=0,line=16,align=WD_ALIGN_PARAGRAPH.LEFT)
+        paragraph_font(p,size,'黑体')
         p.paragraph_format.left_indent=Cm((lev-1)*.5)
         p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
         if i==0:
             p.add_run()._r.append(el('fldChar',fldCharType='begin'));x=el('instrText');x.text=' TOC \\o "1-3" \\h \\z \\u ';p.add_run()._r.append(x);p.add_run()._r.append(el('fldChar',fldCharType='separate'))
         link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(t),14 if lev==1 else 12,'黑体');link.append(r._r);p._p.append(link)
-        font(p.add_run('\t'));field(p,f'PAGEREF {key} \\h',pages.get(key,'1'))
+        font(p.add_run('\t'),size,'黑体');field(p,f'PAGEREF {key} \\h',pages.get(key,'1'),size,'黑体')
         if i==len(entries)-1:p.add_run()._r.append(el('fldChar',fldCharType='end'))
     list_entries=[]
     for label,identifier in [('表','T'),('图','F')]:
@@ -333,12 +343,13 @@ def main():
             number=re.match(r'[图表]\s*([A-Z0-9]+\.\d+)',text)[1]
             key=('tab' if label=='表' else 'fig')+number.replace('.','_')
             list_entries.append((text,key,1))
-            p=d.add_paragraph();fmt(p,indent=0,line=17,align=WD_ALIGN_PARAGRAPH.LEFT)
+            p=d.add_paragraph(style='TOC 2');fmt(p,indent=0,line=17,align=WD_ALIGN_PARAGRAPH.LEFT)
+            paragraph_font(p,12,'黑体')
             p.paragraph_format.tab_stops.add_tab_stop(Cm(15.5),WD_TAB_ALIGNMENT.RIGHT,WD_TAB_LEADER.DOTS)
             if ci==0:
                 p.add_run()._r.append(el('fldChar',fldCharType='begin'));x=el('instrText');x.text=f' TOC \\f {identifier} \\h \\z ';p.add_run()._r.append(x);p.add_run()._r.append(el('fldChar',fldCharType='separate'))
-            link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(text),10.5);link.append(r._r);p._p.append(link)
-            font(p.add_run('\t'),10.5);field(p,f'PAGEREF {key} \\h',pages.get(key,'1'),10.5)
+            link=el('hyperlink',anchor=key,history=1);r=font(p.add_run(text),12,'黑体');link.append(r._r);p._p.append(link)
+            font(p.add_run('\t'),12,'黑体');field(p,f'PAGEREF {key} \\h',pages.get(key,'1'),12,'黑体')
             if ci==len(caps)-1:p.add_run()._r.append(el('fldChar',fldCharType='end'))
     append_sect(d,section_end(d,base[1],header='rId6',footer='rId7'))
     for title,key in [('摘　要','abstract_cn'),('Abstract','abstract_en')]:
@@ -370,14 +381,21 @@ def main():
             i+=1
             d.paragraphs[-1].paragraph_format.keep_with_next=True
             for j,text in enumerate(code):
-                p=d.add_paragraph(style='Thesis Code');fmt(p,size=9.5,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=12.5,keep=j<len(code)-1)
+                p=d.add_paragraph(style='Thesis Code');fmt(p,size=10.5,indent=0,align=WD_ALIGN_PARAGRAPH.LEFT,line=15,keep=j<len(code)-1)
                 p.paragraph_format.left_indent=Pt(6);p.paragraph_format.right_indent=Pt(6);p.paragraph_format.keep_together=True
-                font(p.add_run(text),9.5,latin='Courier New')
-                font_properties(p._p.get_or_add_pPr().find(qn('w:rPr')),9.5,latin='Courier New')
-                ppr=p._p.get_or_add_pPr();ppr.append(el('shd',val='clear',fill='F8F9FA'))
+                font(p.add_run(text),10.5)
+                # Keep the original source line and indentation intact. Wrapped
+                # continuations start at that line's code indentation as well.
+                leading=len(text)-len(text.lstrip(' '));hanging=leading*10.5/4
+                if hanging:
+                    p.paragraph_format.left_indent=Pt(6+hanging)
+                    p.paragraph_format.first_line_indent=Pt(-hanging)
+                ppr=p._p.get_or_add_pPr()
                 border=el('pBdr')
-                for side in ['top','left','bottom','right']:border.append(el(side,val='single',sz=3,space=3,color='D0D3D6'))
-                ppr.append(border);ppr.append(el('wordWrap',val=0));ppr.append(el('suppressAutoHyphens',val=1))
+                for side in ['top','left','bottom','right']:
+                    if side=='top' and j!=0 or side=='bottom' and j!=len(code)-1:continue
+                    border.append(el(side,val='single',sz=4,space=3,color='000000'))
+                ppr.append(border);ppr.append(el('wordWrap',val=1));ppr.append(el('suppressAutoHyphens',val=1))
             continue
         if line.startswith('!['):
             target=re.search(r'\]\(([^)]+)\)',line)[1];path=ROOT/'docs/thesis'/target

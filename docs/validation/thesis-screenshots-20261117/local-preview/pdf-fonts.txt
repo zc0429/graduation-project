@@ -1,0 +1,29 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+BAAAAA+NotoSerifCJKsc-Bold           Type 1            Builtin          yes yes yes   8772  0
+CAAAAA+NotoSansCJKsc-Bold            Type 1            Builtin          yes yes yes   8702  0
+DAAAAA+LiberationSerif-Bold          TrueType          WinAnsi          yes yes yes   8752  0
+EAAAAA+LiberationSerif-Bold          TrueType          WinAnsi          yes yes yes   8747  0
+FAAAAA+NotoSerifCJKsc-Bold           Type 1            Builtin          yes yes yes   8767  0
+GAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8792  0
+HAAAAA+LiberationSerif               TrueType          WinAnsi          yes yes yes   8717  0
+IAAAAA+NotoSansCJKsc-Regular         Type 1            Builtin          yes yes yes   8697  0
+JAAAAA+LiberationSerif               TrueType          WinAnsi          yes yes yes   8732  0
+KAAAAA+NotoSansCJKsc-Regular         Type 1            Builtin          yes yes yes   8682  0
+LAAAAA+NotoSansCJKsc-Regular         Type 1            Builtin          yes yes yes   8687  0
+MAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8812  0
+NAAAAA+LiberationSerif-Bold          TrueType          WinAnsi          yes yes yes   8757  0
+OAAAAA+NotoSansCJKsc-Bold            Type 1            Builtin          yes yes yes   8707  0
+PAAAAA+LiberationSerif               TrueType          WinAnsi          yes yes yes   8727  0
+QAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8797  0
+RAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8802  0
+SAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8777  0
+TAAAAA+LiberationSerif               TrueType          WinAnsi          yes yes yes   8712  0
+UAAAAA+NotoSerifCJKsc-Bold           Type 1            Builtin          yes yes yes   8762  0
+VAAAAA+LiberationSerif-Bold          TrueType          WinAnsi          yes yes yes   8742  0
+WAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8782  0
+XAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8807  0
+YAAAAA+LiberationSerif               TrueType          WinAnsi          yes yes yes   8737  0
+ZAAAAA+NotoSerifCJKsc-Regular        Type 1            Builtin          yes yes yes   8787  0
+ABAAAA+NotoSansCJKsc-Regular         Type 1            Builtin          yes yes yes   8692  0
+BBAAAA+LiberationSerif               TrueType          WinAnsi          yes yes yes   8722  0
