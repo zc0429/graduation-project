@@ -1,0 +1,50 @@
+{
+  "completed": true,
+  "pages": [
+    17,
+    19,
+    20,
+    23,
+    25,
+    26,
+    27,
+    28,
+    29,
+    36,
+    38,
+    39,
+    41,
+    42,
+    43,
+    46,
+    47,
+    48,
+    51,
+    57,
+    60,
+    61,
+    62,
+    76,
+    77,
+    78,
+    79,
+    93,
+    95,
+    96,
+    98,
+    99,
+    100
+  ],
+  "count": 33,
+  "findings": "Twenty diagrams, eight refreshed screenshots, source appendix and affected tables inspected; no cropped text, broken borders or abnormal arrows. Small contact sheets retained; full 300dpi proofs in local artifact.",
+  "screenshots": [
+    76,
+    77,
+    78,
+    79
+  ],
+  "source_appendix": [
+    98,
+    100
+  ]
+}

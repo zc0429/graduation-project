@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 242, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/graduation-project/scripts/documents/audit_thesis_font_layout.py", line 198, in main
+    assert any('TimesNewRoman' in f for f in names),names
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ['ABAAAA+NotoSansCJKsc-Regular', 'BAAAAA+NotoSerifCJKsc-Bold', 'BBAAAA+LiberationSerif', 'CAAAAA+NotoSansCJKsc-Bold', 'DAAAAA+LiberationSerif-Bold', 'EAAAAA+LiberationSerif-Bold', 'FAAAAA+NotoSerifCJKsc-Bold', 'GAAAAA+NotoSerifCJKsc-Regular', 'HAAAAA+LiberationSerif', 'IAAAAA+NotoSansCJKsc-Regular', 'JAAAAA+LiberationSerif', 'KAAAAA+NotoSansCJKsc-Regular', 'LAAAAA+NotoSansCJKsc-Regular', 'MAAAAA+NotoSerifCJKsc-Regular', 'NAAAAA+LiberationSerif-Bold', 'OAAAAA+NotoSansCJKsc-Bold', 'PAAAAA+LiberationSerif', 'QAAAAA+NotoSerifCJKsc-Regular', 'RAAAAA+NotoSerifCJKsc-Regular', 'SAAAAA+NotoSerifCJKsc-Regular', 'TAAAAA+LiberationSerif', 'UAAAAA+NotoSerifCJKsc-Bold', 'VAAAAA+LiberationSerif-Bold', 'WAAAAA+NotoSerifCJKsc-Regular', 'XAAAAA+NotoSerifCJKsc-Regular', 'YAAAAA+LiberationSerif', 'ZAAAAA+NotoSerifCJKsc-Regular']

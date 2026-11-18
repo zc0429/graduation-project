@@ -2,6 +2,19 @@
 
 分支 `claude/thesis-voice-cleanup-20261117`，Draft PR #10，不合并。系统实际版本 `bb7bc56e449ab8168fcb4cb87879e71b0a3ca41c`，继承PR #5完整业务及PR #8修复；未使用dev旧业务版本。用户已确认教师账号例外、仅截图来源说明更新及真实GLM历史回放。
 
+## 正式Windows交付结果
+
+[工作流44212428432](https://github.com/zc0429/graduation-project/actions/runs/44212428432) **Success**，导出源提交 `64d5e140c7943356bf6b2314cf08916bf6c122c6`。正式DOCX对应PDF为 **100页**，177个目录目标经2次导出稳定。
+
+- [正式DOCX](../../../output/thesis/thesis-windows-fonts-44212428432-1/毕业论文.docx) · [正式PDF](../../../output/thesis/thesis-windows-fonts-44212428432-1/毕业论文.pdf)
+- [原始Windows校验目录](../thesis-windows-fonts-44212428432-1/) · [最终摘要](final-delivery.json)
+- 四类字体错误：未识别字体0、中文字体0、英数字体0、页码字体0；宋体、黑体、Times New Roman实际使用并嵌入。
+- 文档交付、字体排版、终稿、完整边框校验全部通过；额外八图像素/裁切、三处正文变更范围、1400原文件保护及表格底色校验通过。
+- 33个受影响正式页面视觉复核完成，含20图、八张截图、来源说明及表格；图片无压线、缺框、箭头异常或文字裁切。八图位于PDF第76—79页。
+- Artifact ZIP SHA-256：`51e7eaa04dab3504b829bea95b576130a87ae19ad9b12710524676aadd1075db`。DOCX：`c0ae7001ae6648d41410317db1dc1b01b0178f19551164d8b8eba46a44b830d8`；PDF：`d42203ed955ead29e78eb26d3388f4f99cd1ca19882652ca9f34c571976c102c`。下载并逐字节核对，原始工作流报告未修改。
+
+实际导出引擎为Windows LibreOffice 25.2.3.2；未将其称为Microsoft Word实开验证。正文原字体验证不代表栅格截图内部字体认证。PR保持Draft，不合并。
+
 ## 全图与八张截图
 
 20图454标签与可见线段几何求交结果为0；指定五类问题均已在此前提交修复，本次复查无需再改SVG/PNG。图5.3移除两处白色底衬的负向对照可检出压线。139矩形、3个闭合泳道外框通过，原图最小白边92px；20图视觉复核无断框、异常箭头或文字裁切。见 `figure-label-check.json`、`border-polish-check.json`。
@@ -22,7 +35,7 @@ SQL例外仅有：迁移隔离数据的日期元数据（仍保留1/2/4/7/15天�
 
 依赖安装及后端打包成功（未将跳过测试的打包称为全量测试）。Maven代理配置与JDK兼容参数仅存本地，未改pom。2026-11-18恢复检查项目完整，环境重启后前后端/隔离数据库停止；已完成的数据与截图证据保留，未重建项目。
 
-本地替代字体预演98页，177个目录目标两次导出稳定；`validate_thesis_delivery`、`check_thesis_master_final`、完整`check_thesis_border_polish`及`check_delivery`通过。Linux原字体审计因缺Times New Roman未通过，不作为原字体正式验证。正式Windows结果待工作流完成后补入。
+本地替代字体预演98页，177个目录目标两次导出稳定；`validate_thesis_delivery`、`check_thesis_master_final`、完整`check_thesis_border_polish`及`check_delivery`通过。Linux原字体审计因缺Times New Roman未通过，不作为原字体正式验证。正式Windows原字体校验已通过，结果见本报告首节。
 
 ## 允许的三处来源文字变更（完整原值/新值）
 

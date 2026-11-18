@@ -1,0 +1,1 @@
+convert /workspace/graduation-project/.local/thesis-screenshots-20261117/render/input/毕业论文.docx as a Writer document -> /workspace/graduation-project/.local/thesis-screenshots-20261117/render/毕业论文.pdf using filter : writer_pdf_Export
