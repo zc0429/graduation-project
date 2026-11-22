@@ -1,0 +1,29 @@
+{
+  "pages": [
+    { "path": "pages/login/index", "style": { "navigationBarTitleText": "学生登录" } },
+    { "path": "pages/home/index", "style": { "navigationBarTitleText": "学情概览", "enablePullDownRefresh": true } },
+    { "path": "pages/questions/index", "style": { "navigationBarTitleText": "错题本", "enablePullDownRefresh": true } },
+    { "path": "pages/detail/index", "style": { "navigationBarTitleText": "错题详情" } },
+    { "path": "pages/create/index", "style": { "navigationBarTitleText": "录入错题" } },
+    { "path": "pages/knowledge/index", "style": { "navigationBarTitleText": "知识学习" } },
+    { "path": "pages/practice/index", "style": { "navigationBarTitleText": "练习作答" } },
+    { "path": "pages/review/index", "style": { "navigationBarTitleText": "复习计划", "enablePullDownRefresh": true } },
+    { "path": "pages/profile/index", "style": { "navigationBarTitleText": "我的" } }
+  ],
+  "globalStyle": {
+    "backgroundColor": "#f2f5f7",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#536273",
+    "selectedColor": "#155c50",
+    "backgroundColor": "#ffffff",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页" },
+      { "pagePath": "pages/questions/index", "text": "错题" },
+      { "pagePath": "pages/review/index", "text": "复习" },
+      { "pagePath": "pages/profile/index", "text": "我的" }
+    ]
+  }
+}
